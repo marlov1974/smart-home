@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repo": "marlov1974/smart-home",
+  "ref": "main",
+  "mandatory": true,
+  "fail_on_missing": true,
+  "purpose": "Mandatory read order for G2 Smart Home AI/Codex sessions.",
+  "read_order": [
+    "memory/00-index.md",
+    "memory/01-system-overview.md",
+    "memory/02-design-principles.md",
+    "memory/03-g1-g2-boundary.md",
+    "memory/04-codex-workflow.md",
+    "requirements/README.md",
+    "requirements/packages/TEMPLATE.md",
+    "requirements/packages/P0001-bootstrap-smart-home-repo.md"
+  ],
+  "governance": {
+    "truth_hierarchy": [
+      "implementation and deploy artifacts",
+      "package files",
+      "requirements files",
+      "memory files",
+      "historical discussion"
+    ],
+    "rule": "Any change that adds mandatory solution context must update this manifest when it is required for future AI/Codex reconstruction."
+  }
+}

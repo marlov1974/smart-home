@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -11,9 +11,35 @@
     "memory/02-design-principles.md",
     "memory/03-g1-g2-boundary.md",
     "memory/04-codex-workflow.md",
+
+    "memory/infrastructure/00-index.md",
+    "memory/infrastructure/network.md",
+    "memory/infrastructure/router-nat.md",
+    "memory/infrastructure/devices.md",
+
+    "memory/physical/00-index.md",
+    "memory/physical/ftx/00-index.md",
+    "memory/physical/ftx/devices.md",
+    "memory/physical/ftx/sensors.md",
+    "memory/physical/ftx/airflow.md",
+    "memory/physical/ftx/temperatures.md",
+    "memory/physical/ftx/cooling-risk.md",
+    "memory/physical/heating/00-index.md",
+    "memory/physical/heating/heat-pumps.md",
+    "memory/physical/heating/brine.md",
+    "memory/physical/heating/hot-water.md",
+    "memory/physical/floor/00-index.md",
+    "memory/physical/floor/floor-heating.md",
+    "memory/physical/floor/floor-cooling.md",
+    "memory/physical/floor/shunts-pumps-valves.md",
+    "memory/physical/home/00-index.md",
+    "memory/physical/home/rooms-zones.md",
+    "memory/physical/home/comfort-sensors.md",
+
     "requirements/README.md",
     "requirements/packages/TEMPLATE.md",
-    "requirements/packages/P0001-bootstrap-smart-home-repo.md"
+    "requirements/packages/P0001-bootstrap-smart-home-repo.md",
+    "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md"
   ],
   "governance": {
     "truth_hierarchy": [

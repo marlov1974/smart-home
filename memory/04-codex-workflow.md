@@ -6,12 +6,15 @@ Human operator:
 - owns priorities
 - validates physical reality
 - approves design and deploy decisions
+- tells Codex when a package should run
+- tells ChatGPT when Codex has completed or stopped
 
 ChatGPT:
 - reasoning partner
 - requirements/design author
 - package framer
 - reviewer
+- reviews Codex results directly from repository evidence
 
 Codex:
 - local coding and diagnostics agent
@@ -26,20 +29,23 @@ Codex:
 ## Standard flow
 
 1. Human and ChatGPT discuss problem and design.
-2. ChatGPT writes or updates an ordered package file.
-3. Codex reads bootstrap and the active package.
-4. Codex performs package consistency review.
-5. Codex reports `PASS`, `WARN` or `STOP`.
-6. Codex stores useful review evidence under `requirements/package-runs/<Pxxxx>/review.md`.
-7. If `PASS` or acceptable `WARN`, Codex summarizes understanding and plan.
-8. Codex implements within package scope.
-9. Codex runs package test cases and verification commands.
-10. If live testing is allowed, Codex captures logs and checks runtime health.
-11. Codex may fix package-scoped defects and retry up to the package attempt limit.
-12. Codex stores useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`.
-13. Codex promotes reusable global lessons into `memory/knowhow/` when appropriate.
-14. Codex reports diff, tests, logs/observations and uncertainty.
-15. Human/ChatGPT reviews before deploy.
+2. ChatGPT presents a final design/package proposal for human review.
+3. ChatGPT creates or updates an ordered package file.
+4. Human tells Codex a new package exists.
+5. Codex reads bootstrap and the active package.
+6. Codex performs package consistency review.
+7. Codex reports `PASS`, `WARN` or `STOP`.
+8. Codex stores useful review evidence under `requirements/package-runs/<Pxxxx>/review.md`.
+9. If `PASS` or acceptable `WARN`, Codex summarizes understanding and plan.
+10. Codex implements within package scope.
+11. Codex runs package test cases and verification commands.
+12. If live testing is allowed, Codex captures logs and checks runtime health.
+13. Codex may fix package-scoped defects and retry up to the package attempt limit.
+14. Codex stores useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`.
+15. Codex promotes reusable global lessons into `memory/knowhow/` when appropriate.
+16. Codex gives the human a short result.
+17. Human tells ChatGPT Codex is done or stopped.
+18. ChatGPT reads the repository directly and reviews the package result with the human.
 
 ## Codex bootstrap before coding
 
@@ -57,6 +63,26 @@ Codex must not edit before producing:
 - package consistency result
 - short understanding summary
 - implementation/debug plan
+
+## Repository-first ChatGPT review
+
+ChatGPT should review Codex results from repository state, not pasted terminal output, whenever repository access is available.
+
+Review sources may include:
+
+```text
+requirements/packages/Pxxxx-<name>.md
+requirements/package-runs/Pxxxx/review.md
+requirements/package-runs/Pxxxx/attempts.md
+requirements/package-runs/Pxxxx/findings.md
+requirements/package-runs/Pxxxx/logs/
+memory/knowhow/
+changed memory files
+changed source/deploy/test files
+commit/diff history when available
+```
+
+If repository access is unavailable, pasted Codex output may be used as fallback.
 
 ## Package consistency review
 

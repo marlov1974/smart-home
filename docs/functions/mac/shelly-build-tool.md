@@ -6,6 +6,155 @@ Mac-side G2 Shelly source/build/deploy artifact generation introduced by P0008.
 
 ## Functions
 
+### _manifest_label()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_build/core.py`
+
+Purpose:
+- Convert the manifest path supplied to the build into deterministic metadata text.
+
+Inputs:
+- Manifest path.
+
+Outputs:
+- POSIX-style manifest path string.
+
+Side effects:
+- None.
+
+Contract notes:
+- Used only for generated built-script metadata.
+
+Used by:
+- `_format_header()`
+
+Tests:
+- `tests/mac/tools/shelly_build/test_core.py`
+
+Introduced:
+- P0009
+
+Last changed:
+- P0009
+
+### _format_header()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_build/core.py`
+
+Purpose:
+- Generate deterministic built-script metadata header comments.
+
+Inputs:
+- Role, manifest path and source path list.
+
+Outputs:
+- Header text.
+
+Side effects:
+- None.
+
+Contract notes:
+- Header includes generated-file notice, role, manifest, sources, tool and package metadata.
+
+Used by:
+- `build_script()`
+
+Tests:
+- `tests/mac/tools/shelly_build/test_core.py`
+
+Introduced:
+- P0009
+
+Last changed:
+- P0009
+
+### _indent_source()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_build/core.py`
+
+Purpose:
+- Indent assembled source for placement inside the wrapper.
+
+Inputs:
+- Assembled source text.
+
+Outputs:
+- Indented source text.
+
+Side effects:
+- None.
+
+Contract notes:
+- Blank lines remain blank.
+
+Used by:
+- `_wrap_script()`
+
+Tests:
+- `tests/mac/tools/shelly_build/test_core.py`
+
+Introduced:
+- P0009
+
+Last changed:
+- P0009
+
+### _wrap_script()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_build/core.py`
+
+Purpose:
+- Combine generated header and assembled source into final built script text.
+
+Inputs:
+- Header text and assembled source text.
+
+Outputs:
+- Complete generated built script.
+
+Side effects:
+- None.
+
+Contract notes:
+- Wrapper uses `(function () { ... }());`.
+- `"use strict";` is placed inside the wrapper.
+
+Used by:
+- `build_script()`
+
+Tests:
+- `tests/mac/tools/shelly_build/test_core.py`
+
+Introduced:
+- P0009
+
+Last changed:
+- P0009
+
 ### load_manifest()
 
 Status: active
@@ -55,13 +204,13 @@ Source:
 - `src/mac/tools/shelly_build/core.py`
 
 Purpose:
-- Build one complete runnable Shelly script by concatenating explicit source files.
+- Build one complete generated Shelly script by assembling explicit source files.
 
 Inputs:
 - Manifest path and script definition.
 
 Outputs:
-- Role name and built script text.
+- Role name and generated built script text.
 
 Side effects:
 - Reads source files.
@@ -69,6 +218,8 @@ Side effects:
 Contract notes:
 - Source paths are relative to the manifest directory.
 - Absolute paths and paths escaping the manifest directory are rejected.
+- Built output includes a generated metadata header.
+- Built output wraps assembled source in an IIFE-style wrapper with `"use strict";`.
 
 Used by:
 - `build_from_manifest()`
@@ -80,7 +231,7 @@ Introduced:
 - P0008
 
 Last changed:
-- P0008
+- P0009
 
 ### chunk_text()
 

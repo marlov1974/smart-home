@@ -1,7 +1,7 @@
 # Package P0009: Shelly build wrapper and metadata
 
 ## Status
-planned
+implemented
 
 ## Package order
 P0009
@@ -200,4 +200,26 @@ Max implementation/debug attempts: 3
 
 ## Completion notes
 
-Filled after implementation.
+P0009 implemented generated Shelly built-script metadata and IIFE strict-mode wrapping in the P0008 build tool.
+
+Updated:
+
+- `src/mac/tools/shelly_build/core.py`
+- `tests/mac/tools/shelly_build/test_core.py`
+- `build/shelly/fixture/hello.js`
+- `dep/s/ch/hello/01.js`
+- `dep/s/rec/hello.json`
+- `memory/device-management/source-build-deploy-layers.md`
+- `docs/functions/mac/shelly-build-tool.md`
+- `requirements/package-runs/P0009/**`
+
+Verification passed:
+
+```bash
+python3 -m unittest discover tests/mac/tools/shelly_build
+python3 -m src.mac.tools.shelly_build build --manifest src/shelly/fixture/manifest.json --build-root build/shelly/fixture --dep-root dep/s
+python3 -m src.mac.tools.shelly_build validate --build-root build/shelly/fixture --dep-root dep/s --role hello
+git diff --check
+```
+
+No live testing or live writes were performed.

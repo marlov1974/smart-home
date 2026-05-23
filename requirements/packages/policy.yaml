@@ -1,0 +1,80 @@
+version: 1
+package: P0007
+purpose: package_template_policy
+applies_to: requirements/packages/Pxxxx-*.md
+required_sections:
+  identity:
+    - status
+    - package_order
+    - primary_area
+    - linked_requirements
+  design:
+    - decision_summary
+    - solution_model
+    - current_behavior
+    - problem
+    - target_behavior
+    - non_goals
+    - invariants
+  scope:
+    - knowledge_updates
+    - implementation_updates
+    - files_to_inspect
+    - files_allowed_to_change
+    - forbidden_changes
+  codex_review:
+    output: requirements/package-runs/Pxxxx/review.md
+    classification:
+      - PASS
+      - WARN
+      - STOP
+    checks:
+      - package_vs_memory
+      - package_vs_requirements
+      - package_vs_previous_packages
+      - package_vs_implementation_and_deploy_structure
+      - package_vs_g1_g2_boundary
+      - package_vs_invariants
+      - package_vs_testability_and_rollback
+  codex_design:
+    code_packages:
+      implementation_design: requirements/package-runs/Pxxxx/design.md
+      function_design: requirements/package-runs/Pxxxx/functions.md
+      function_catalog: docs/functions
+    phase_gates:
+      - bootstrap
+      - review
+      - design
+      - function_design
+      - implementation
+      - build_or_generation
+      - test_debug_verify
+      - final_evidence
+    context_rule: each_phase_reads_repo_artifacts_from_previous_phases
+  live_test_debug:
+    live_testing_default: false
+    live_write_default: false
+    max_attempts_default: 3
+  evidence:
+    path: requirements/package-runs/Pxxxx
+    expected_when_relevant:
+      - review.md
+      - design.md
+      - functions.md
+      - attempts.md
+      - findings.md
+      - logs
+  output_expectation:
+    - consistency_review_result
+    - implementation_design_path
+    - function_design_path
+    - files_changed
+    - tests_run
+    - verification_results
+    - runtime_observations_when_live_tested
+    - debug_attempts_used
+    - evidence_paths
+    - function_catalog_updates
+    - knowhow_promotions
+    - uncertainty
+    - diff_summary

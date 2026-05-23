@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -39,7 +39,8 @@
     "requirements/README.md",
     "requirements/packages/TEMPLATE.md",
     "requirements/packages/P0001-bootstrap-smart-home-repo.md",
-    "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md"
+    "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
+    "requirements/packages/P0003-codex-review-and-active-debug-policy.md"
   ],
   "governance": {
     "truth_hierarchy": [

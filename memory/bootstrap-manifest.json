@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -12,12 +12,17 @@
     "memory/03-g1-g2-boundary.md",
     "memory/04-codex-workflow.md",
     "memory/05-package-lifecycle.md",
-
+    "memory/device-management/00-index.md",
+    "memory/device-management/identity-and-registry.md",
+    "memory/device-management/installer-model.md",
+    "memory/device-management/local-state.md",
+    "memory/device-management/shelly-deploy-structure.md",
+    "memory/device-management/source-build-deploy-layers.md",
+    "memory/device-management/mac-layer.md",
     "memory/infrastructure/00-index.md",
     "memory/infrastructure/network.md",
     "memory/infrastructure/router-nat.md",
     "memory/infrastructure/devices.md",
-
     "memory/physical/00-index.md",
     "memory/physical/ftx/00-index.md",
     "memory/physical/ftx/devices.md",
@@ -36,11 +41,9 @@
     "memory/physical/home/00-index.md",
     "memory/physical/home/rooms-zones.md",
     "memory/physical/home/comfort-sensors.md",
-
     "memory/knowhow/00-index.md",
     "memory/knowhow/shelly.md",
     "memory/knowhow/codex.md",
-
     "requirements/README.md",
     "requirements/packages/TEMPLATE.md",
     "requirements/package-runs/README.md",
@@ -50,7 +53,8 @@
     "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
     "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
     "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md",
-    "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md"
+    "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md",
+    "requirements/packages/P0006-device-management-and-deploy-architecture.md"
   ],
   "governance": {
     "truth_hierarchy": [

@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -11,6 +11,7 @@
     "memory/02-design-principles.md",
     "memory/03-g1-g2-boundary.md",
     "memory/04-codex-workflow.md",
+    "memory/05-package-lifecycle.md",
 
     "memory/infrastructure/00-index.md",
     "memory/infrastructure/network.md",
@@ -48,7 +49,8 @@
     "requirements/packages/P0001-bootstrap-smart-home-repo.md",
     "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
     "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
-    "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md"
+    "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md",
+    "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md"
   ],
   "governance": {
     "truth_hierarchy": [

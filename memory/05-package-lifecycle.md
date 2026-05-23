@@ -5,7 +5,7 @@ This document defines the standard G2 change process from idea to verified packa
 ## Lifecycle summary
 
 ```text
-Idea -> design -> design freeze -> package -> Codex review/implementation/debug/evidence -> ChatGPT repo review -> deploy/rollback -> lessons learned
+Idea -> design -> design freeze -> package -> Codex review/implementation/debug/evidence/commit/push -> ChatGPT repo review -> deploy/rollback -> lessons learned
 ```
 
 ## Roles
@@ -29,7 +29,8 @@ Codex:
 - implements within package scope
 - tests, debugs and stores package-run evidence
 - promotes reusable lessons into knowhow when appropriate
-- reports a short result to the human operator
+- commits and pushes non-live package results when verification passes and the diff is inside package scope
+- reports a short result to the human operator, including commit SHA when pushed
 
 ## Process
 
@@ -77,6 +78,8 @@ For code packages, Codex normally updates documentation as part of the package s
 
 The human operator tells Codex that a new package exists.
 
+A short command such as `bygg paket 9`, `build package 9`, or `kör P0009` is enough for Codex to run the full package workflow when the package exists.
+
 Codex must:
 
 - bootstrap
@@ -87,7 +90,12 @@ Codex must:
 - test and debug
 - store package-run evidence under `requirements/package-runs/<Pxxxx>/`
 - promote durable lessons into `memory/knowhow/` when appropriate
-- give the human operator a short result
+- check `git status` and confirm the diff is inside package scope
+- run required verification commands and `git diff --check`
+- commit and push non-live package results when verification passes
+- give the human operator a short result including commit SHA, files changed, tests run and uncertainty
+
+Quick package commands do not grant extra permission for live writes, actuator changes, device writes, Home Assistant writes, secrets or destructive actions. Those still require explicit package permission.
 
 ### 6. ChatGPT repository review
 
@@ -100,6 +108,8 @@ Review sources may include:
 ```text
 requirements/packages/Pxxxx-<name>.md
 requirements/package-runs/Pxxxx/review.md
+requirements/package-runs/Pxxxx/design.md
+requirements/package-runs/Pxxxx/functions.md
 requirements/package-runs/Pxxxx/attempts.md
 requirements/package-runs/Pxxxx/findings.md
 requirements/package-runs/Pxxxx/logs/
@@ -159,10 +169,12 @@ Codex should update documentation as part of the package when:
 
 ## Repository-first review rule
 
-Codex output should be stored in the repository.
+Codex output should be stored in the repository and pushed for non-live packages when verification passes.
 
 ChatGPT should review Codex results from the repository, not from pasted terminal output, unless repository access is unavailable.
 
 ## Package history
 
 Created by `P0005-package-lifecycle-and-repo-review-process`.
+
+Updated after P0008 to make Codex commit/push the default for verified non-live package work.

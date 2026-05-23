@@ -1,7 +1,7 @@
 {
   "scripts": [
     {
-      "role": "hello",
+      "role": "hello_v1_0_0",
       "sources": [
         "helpers.js",
         "hello.js"

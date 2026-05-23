@@ -28,6 +28,7 @@ docs/functions/
     ftx-driver.md
   mac/
     shelly-build-tool.md
+    shelly-live-deploy-tool.md
     spot-forecast.md
   contracts/
     spot-forecast-contract.md

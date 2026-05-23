@@ -1,7 +1,7 @@
 # Package P0010: Shelly deploy tool and log listener
 
 ## Status
-planned
+implemented
 
 ## Package order
 P0010
@@ -262,4 +262,49 @@ Codex must not remove or alter unrelated scripts.
 
 ## Completion notes
 
-Filled after implementation.
+P0010 implemented a bounded Mac-side Shelly live deploy/log tool and verified it against dampers.
+
+Updated:
+
+- `src/mac/tools/shelly_live/**`
+- `tests/mac/tools/shelly_live/**`
+- `tests/mac/tools/**/__init__.py`
+- `src/shelly/fixture/manifest.json`
+- `build/shelly/fixture/hello_v1_0_0.js`
+- `dep/s/ch/hello_v1_0_0/01.js`
+- `dep/s/rec/hello_v1_0_0.json`
+- `tests/mac/tools/shelly_build/test_core.py`
+- `docs/functions/00-index.md`
+- `docs/functions/mac/shelly-live-deploy-tool.md`
+- `requirements/package-runs/P0010/**`
+
+Removed stale generated artifacts for the old fixture role:
+
+- `build/shelly/fixture/hello.js`
+- `dep/s/ch/hello/01.js`
+- `dep/s/rec/hello.json`
+
+Verification passed:
+
+```bash
+python3 -m unittest discover tests/mac/tools
+python3 -m src.mac.tools.shelly_build build --manifest src/shelly/fixture/manifest.json --build-root build/shelly/fixture --dep-root dep/s
+python3 -m src.mac.tools.shelly_build validate --build-root build/shelly/fixture --dep-root dep/s --role hello_v1_0_0
+git diff --check
+```
+
+Live dampers test passed:
+
+```bash
+python3 -m src.mac.tools.shelly_live deploy-hello --base-url http://192.168.86.240:8030/ --script build/shelly/fixture/hello_v1_0_0.js --expect hello --log-timeout 20
+```
+
+Evidence:
+
+- `requirements/package-runs/P0010/logs/live-dampers-hello.md`
+
+Final live state:
+
+- `hello_v1_0_0` is installed and stopped.
+- No cleanup was requested.
+- No forbidden device settings, actuator/output, relay, cover, switch, KVS, component, Wi-Fi, network, MQTT, Bluetooth or cloud operations were performed by the P0010 tool.

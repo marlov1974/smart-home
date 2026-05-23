@@ -9,7 +9,9 @@ Before coding:
 3. Read every file in the manifest `read_order`, in order.
 4. Read the active package in `requirements/packages/`.
 5. Perform package consistency review before editing.
-6. Summarize understanding, consistency result and plan before editing.
+6. For code packages, create package-scoped implementation design before editing.
+7. For code packages, create package-scoped function design before editing.
+8. Summarize understanding, consistency result, design and plan before editing.
 
 Rules:
 
@@ -36,23 +38,59 @@ Before editing, classify the package as:
 - `WARN`: implementable but with stated assumptions or minor uncertainty.
 - `STOP`: inconsistent, underspecified, unsafe or out of scope; do not edit.
 
-Review the package against:
-
-- memory files
-- linked requirements
-- previous packages
-- implementation/deploy structure
-- G1/G2 boundary
-- invariants
-- testability and rollback
-
-If the package relies on chat-only knowledge that should be durable, report it and require or make the package-scoped memory update before implementation.
-
 Store useful review evidence under:
 
 ```text
 requirements/package-runs/<Pxxxx>/review.md
 ```
+
+## Phase-gated package execution
+
+For substantial code packages, Codex should use explicit phase gates. Each phase may run in a fresh context.
+
+The next phase must read repository artifacts from earlier phases instead of relying on unwritten prior reasoning.
+
+Recommended phases:
+
+```text
+bootstrap -> review -> design -> function design -> implementation -> build/generation -> test/debug/verify -> final evidence
+```
+
+Repository state is the memory between phases.
+
+## Implementation design
+
+For code packages, Codex must write package-scoped implementation design before coding:
+
+```text
+requirements/package-runs/<Pxxxx>/design.md
+```
+
+The design must include package interpretation, implementation structure, intended changes, deliberate refactoring decisions, test strategy, risks and uncertainties.
+
+Codex may refactor deliberately when required for behavior, testability, safety, contract clarity or package-scoped maintainability.
+
+Codex must not do unrelated cleanup, broad renames, formatting churn or opportunistic refactors.
+
+## Function design and catalog
+
+For code packages, Codex must write package-scoped function design before coding:
+
+```text
+requirements/package-runs/<Pxxxx>/functions.md
+```
+
+Function design must list intended new, changed and removed functions, including purpose, inputs, outputs, side effects, reason and test coverage.
+
+If implementation requires an undocumented function-level change, update `functions.md` and explain the deviation, or stop if the change expands package scope.
+
+Durable cross-package function documentation belongs under:
+
+```text
+docs/functions/
+```
+
+Update the function catalog when functions are created, changed, removed or become relevant for future packages.
 
 ## Active debug mandate
 
@@ -60,14 +98,7 @@ When a package allows live testing, Codex may actively debug within package scop
 
 Codex may make up to 3 implementation/debug attempts per package unless the package says otherwise.
 
-Each attempt must:
-
-- capture relevant logs when live Shelly testing is involved
-- verify expected output/state
-- inspect runtime health and unexpected side effects
-- fix defects discovered within package scope
-- rerun verification after fixes
-- store useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`
+Each attempt must capture relevant logs when live Shelly testing is involved, verify expected output/state, inspect runtime health and unexpected side effects, fix defects discovered within package scope, rerun verification after fixes and store useful evidence under `requirements/package-runs/<Pxxxx>/`.
 
 After 3 failed attempts, stop and report evidence, attempts, current hypothesis and remaining uncertainty.
 
@@ -80,6 +111,8 @@ Use package-run evidence for package-specific output:
 ```text
 requirements/package-runs/<Pxxxx>/
   review.md
+  design.md
+  functions.md
   attempts.md
   logs/
   findings.md

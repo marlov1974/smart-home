@@ -8,7 +8,8 @@ Before coding:
 2. Read `memory/bootstrap-manifest.json`.
 3. Read every file in the manifest `read_order`, in order.
 4. Read the active package in `requirements/packages/`.
-5. Summarize understanding and plan before editing.
+5. Perform package consistency review before editing.
+6. Summarize understanding, consistency result and plan before editing.
 
 Rules:
 
@@ -20,7 +21,47 @@ Rules:
 - Shelly deploy artifacts live under `dep/s/`.
 - Shelly devices must not fetch from `src/`.
 - Do not invent Shelly APIs.
-- Do not write to live devices unless the package explicitly allows it.
 - Prefer read-only diagnostics by default.
+- Do not write to live devices unless the package explicitly allows it.
 - Run package test cases and verification commands before reporting done.
 - Report diff, tests run, results and uncertainty before commit unless the package explicitly allows committing.
+
+## Package consistency review
+
+Codex is not only an executor. Codex must challenge package instructions when they conflict with repository truth.
+
+Before editing, classify the package as:
+
+- `PASS`: consistent; continue implementation.
+- `WARN`: implementable but with stated assumptions or minor uncertainty.
+- `STOP`: inconsistent, underspecified, unsafe or out of scope; do not edit.
+
+Review the package against:
+
+- memory files
+- linked requirements
+- previous packages
+- implementation/deploy structure
+- G1/G2 boundary
+- invariants
+- testability and rollback
+
+If the package relies on chat-only knowledge that should be durable, report it and require or make the package-scoped memory update before implementation.
+
+## Active debug mandate
+
+When a package allows live testing, Codex may actively debug within package scope.
+
+Codex may make up to 3 implementation/debug attempts per package unless the package says otherwise.
+
+Each attempt must:
+
+- capture relevant logs when live Shelly testing is involved
+- verify expected output/state
+- inspect runtime health and unexpected side effects
+- fix defects discovered within package scope
+- rerun verification after fixes
+
+After 3 failed attempts, stop and report evidence, attempts, current hypothesis and remaining uncertainty.
+
+Live Shelly log streaming is read-only and may be used when live testing is allowed. Live writes, script starts/stops, KVS writes and actuator changes still require explicit package permission.

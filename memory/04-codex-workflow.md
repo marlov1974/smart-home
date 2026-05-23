@@ -20,6 +20,7 @@ Codex:
 - implements packages
 - runs tests and verification
 - performs active debugging within package scope
+- stores useful package evidence and promotes reusable lessons
 - prepares diffs/commits when allowed
 
 ## Standard flow
@@ -29,13 +30,16 @@ Codex:
 3. Codex reads bootstrap and the active package.
 4. Codex performs package consistency review.
 5. Codex reports `PASS`, `WARN` or `STOP`.
-6. If `PASS` or acceptable `WARN`, Codex summarizes understanding and plan.
-7. Codex implements within package scope.
-8. Codex runs package test cases and verification commands.
-9. If live testing is allowed, Codex captures logs and checks runtime health.
-10. Codex may fix package-scoped defects and retry up to the package attempt limit.
-11. Codex reports diff, tests, logs/observations and uncertainty.
-12. Human/ChatGPT reviews before deploy.
+6. Codex stores useful review evidence under `requirements/package-runs/<Pxxxx>/review.md`.
+7. If `PASS` or acceptable `WARN`, Codex summarizes understanding and plan.
+8. Codex implements within package scope.
+9. Codex runs package test cases and verification commands.
+10. If live testing is allowed, Codex captures logs and checks runtime health.
+11. Codex may fix package-scoped defects and retry up to the package attempt limit.
+12. Codex stores useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`.
+13. Codex promotes reusable global lessons into `memory/knowhow/` when appropriate.
+14. Codex reports diff, tests, logs/observations and uncertainty.
+15. Human/ChatGPT reviews before deploy.
 
 ## Codex bootstrap before coding
 
@@ -81,6 +85,12 @@ If Codex returns `STOP`, it must not edit. It should report the conflict and cit
 
 If Codex returns `WARN`, it may continue only when the uncertainty is minor and within package scope. Otherwise it should stop.
 
+Useful review output should be stored in:
+
+```text
+requirements/package-runs/<Pxxxx>/review.md
+```
+
 ## Active debugging policy
 
 Codex may actively debug defects discovered during verification if they are inside package scope.
@@ -99,6 +109,7 @@ Each attempt must:
 - verify expected output/state
 - inspect runtime health and unexpected side effects
 - summarize failure, fix and result
+- store useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`
 
 After 3 failed attempts, Codex must stop and report:
 
@@ -107,6 +118,50 @@ After 3 failed attempts, Codex must stop and report:
 - current hypothesis
 - remaining uncertainty
 - whether the package likely needs design/scope changes
+
+## Evidence storage
+
+Package-specific evidence belongs under:
+
+```text
+requirements/package-runs/<Pxxxx>/
+  review.md
+  attempts.md
+  logs/
+  findings.md
+```
+
+Use package-run evidence for:
+
+- consistency review details
+- warnings and assumptions
+- failed/passed attempts
+- log excerpts
+- runtime anomalies
+- semantic side effects
+- package-specific findings for human/ChatGPT review
+
+Do not put raw one-off package logs into global memory.
+
+## Knowhow promotion
+
+Reusable global lessons belong under:
+
+```text
+memory/knowhow/
+```
+
+Promote an observation to knowhow when it becomes generally useful for future packages.
+
+Examples:
+
+- Shelly RPC sequencing limitations
+- KVS size/shape limits
+- heap/memory safety patterns
+- package-writing mistakes that repeatedly cause review warnings
+- reliable diagnostics patterns
+
+A finding can be both package evidence and promoted knowhow: keep the package evidence where it occurred and add the reusable lesson to knowhow.
 
 ## Shelly live-debug guidance
 
@@ -171,6 +226,8 @@ Codex must report:
 - verification output
 - log/runtime observations when live tested
 - debug attempts used
+- package-run evidence paths created/updated
+- knowhow promotions created/updated
 - uncertainty / skipped checks
 - whether deploy artifacts changed
 - rollback implications

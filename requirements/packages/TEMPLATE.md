@@ -70,6 +70,12 @@ Checks:
 - package vs testability and rollback
 - package vs chat-only assumptions that should be made durable first
 
+Useful review output should be stored under:
+
+```text
+requirements/package-runs/<Pxxxx>/review.md
+```
+
 ## Live test/debug policy
 
 Live testing allowed:
@@ -85,6 +91,46 @@ Max implementation/debug attempts:
 3
 
 Codex may fix defects discovered during verification if they are inside package scope. Codex must stop after the attempt limit or if the fix requires scope/design changes.
+
+Useful debug output should be stored under:
+
+```text
+requirements/package-runs/<Pxxxx>/
+```
+
+## Evidence and learning policy
+
+Package-specific evidence location:
+
+```text
+requirements/package-runs/<Pxxxx>/
+```
+
+Expected evidence files when relevant:
+
+```text
+review.md
+attempts.md
+findings.md
+logs/
+```
+
+Use package-run evidence for package-specific:
+
+- review warnings/conflicts
+- failed or successful debug attempts
+- log excerpts
+- runtime anomalies
+- unexpected side effects
+- findings for human/ChatGPT review
+
+Reusable global lessons should be promoted to:
+
+```text
+memory/knowhow/
+```
+
+Do not store large raw logs by default. Prefer summaries or focused excerpts unless this package explicitly requires full logs.
 
 ## Test cases
 
@@ -126,6 +172,8 @@ Rollback is a new forward-moving package. Do not rely on lowering runtime versio
 - verification results
 - log/runtime observations when live tested
 - debug attempts used
+- package-run evidence paths created/updated
+- knowhow promotions created/updated
 - uncertainty / skipped checks
 - diff summary
 

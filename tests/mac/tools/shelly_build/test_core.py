@@ -1,0 +1,98 @@
+import ast
+import json
+import shutil
+import tempfile
+import unittest
+from pathlib import Path
+
+from src.mac.tools.shelly_build.core import (
+    BuildError,
+    build_from_manifest,
+    chunk_text,
+    validate_role,
+)
+
+
+REPO_ROOT = Path(__file__).resolve().parents[4]
+FIXTURE_MANIFEST = REPO_ROOT / "src" / "shelly" / "fixture" / "manifest.json"
+
+
+class ShellyBuildTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.build_root = self.tmp / "build" / "shelly" / "fixture"
+        self.dep_root = self.tmp / "dep" / "s"
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp)
+
+    def test_build_fixture_script(self):
+        results = build_from_manifest(FIXTURE_MANIFEST, self.build_root, self.dep_root)
+
+        self.assertEqual(["hello"], [result.role for result in results])
+        built = (self.build_root / "hello.js").read_text(encoding="utf-8")
+        self.assertIn("function log(msg)", built)
+        self.assertIn("function run()", built)
+        self.assertTrue(built.endswith("run();\n"))
+
+    def test_chunk_generation_writes_numeric_chunks_and_recipe(self):
+        build_from_manifest(FIXTURE_MANIFEST, self.build_root, self.dep_root, max_chunk_bytes=70)
+
+        chunk_paths = sorted((self.dep_root / "ch" / "hello").glob("*.js"))
+        self.assertEqual(["01.js", "02.js"], [path.name for path in chunk_paths])
+        recipe = json.loads((self.dep_root / "rec" / "hello.json").read_text(encoding="utf-8"))
+        self.assertEqual({"v": 1, "n": 2}, recipe)
+
+    def test_chunk_reconstruction_matches_built_script(self):
+        build_from_manifest(FIXTURE_MANIFEST, self.build_root, self.dep_root, max_chunk_bytes=70)
+
+        validate_role(self.build_root, self.dep_root, "hello", max_chunk_bytes=70)
+        built = (self.build_root / "hello.js").read_text(encoding="utf-8")
+        chunks = "".join(
+            path.read_text(encoding="utf-8")
+            for path in sorted((self.dep_root / "ch" / "hello").glob("*.js"))
+        )
+        self.assertEqual(built, chunks)
+
+    def test_validation_fails_for_missing_chunk(self):
+        build_from_manifest(FIXTURE_MANIFEST, self.build_root, self.dep_root, max_chunk_bytes=70)
+        (self.dep_root / "ch" / "hello" / "02.js").unlink()
+
+        with self.assertRaisesRegex(BuildError, "chunk missing"):
+            validate_role(self.build_root, self.dep_root, "hello", max_chunk_bytes=70)
+
+    def test_validation_fails_for_oversize_chunk(self):
+        build_from_manifest(FIXTURE_MANIFEST, self.build_root, self.dep_root)
+
+        with self.assertRaisesRegex(BuildError, "chunk exceeds max bytes"):
+            validate_role(self.build_root, self.dep_root, "hello", max_chunk_bytes=10)
+
+    def test_chunk_text_rejects_single_line_over_limit(self):
+        with self.assertRaisesRegex(BuildError, "one source line exceeds"):
+            chunk_text("abcdef\n", max_chunk_bytes=3)
+
+    def test_tool_uses_standard_library_imports_only(self):
+        package_root = REPO_ROOT / "src" / "mac" / "tools" / "shelly_build"
+        allowed_roots = {
+            "__future__",
+            "argparse",
+            "dataclasses",
+            "json",
+            "pathlib",
+            "shutil",
+            "typing",
+        }
+
+        for path in package_root.glob("*.py"):
+            tree = ast.parse(path.read_text(encoding="utf-8"))
+            imports = set()
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Import):
+                    imports.update(alias.name.split(".")[0] for alias in node.names)
+                elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
+                    imports.add(node.module.split(".")[0])
+            self.assertLessEqual(imports, allowed_roots, path)
+
+
+if __name__ == "__main__":
+    unittest.main()

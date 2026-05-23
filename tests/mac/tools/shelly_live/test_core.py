@@ -7,15 +7,22 @@ from pathlib import Path
 
 from src.mac.tools.shelly_live.core import (
     ALLOWED_SCRIPT_NAME,
+    HELLO_SCRIPT_NAME,
+    SPOTPRICE_KVS_KEYS,
+    SPOTPRICE_SCRIPT_NAME,
     ShellyLiveError,
     capture_debug_log,
     deploy_hello,
+    deploy_spotprice,
     ensure_allowed_script_name,
     ensure_script,
     find_script,
     normalize_base_url,
     put_script_code,
+    put_script_code_chunked,
     rpc_call,
+    split_rpc_upload_chunks,
+    verify_spotprice_kvs,
 )
 
 
@@ -96,6 +103,7 @@ class ShellyLiveTests(unittest.TestCase):
 
     def test_forbidden_script_name_is_rejected(self):
         ensure_allowed_script_name(ALLOWED_SCRIPT_NAME)
+        ensure_allowed_script_name(SPOTPRICE_SCRIPT_NAME)
 
         with self.assertRaisesRegex(ShellyLiveError, "forbidden script name"):
             ensure_allowed_script_name("g2-hello")
@@ -122,6 +130,71 @@ class ShellyLiveTests(unittest.TestCase):
         body = json.loads(opener.requests[0][0].data.decode("utf-8"))
         self.assertEqual("Script.PutCode", body["method"])
         self.assertEqual({"id": 9, "code": "print(1);", "append": False}, body["params"])
+
+    def test_split_rpc_upload_chunks_uses_multiple_bounded_chunks(self):
+        chunks = split_rpc_upload_chunks("abcdef", upload_chunk_bytes=2)
+
+        self.assertEqual(["ab", "cd", "ef"], chunks)
+
+        with self.assertRaisesRegex(ShellyLiveError, "positive"):
+            split_rpc_upload_chunks("abc", upload_chunk_bytes=0)
+
+    def test_put_script_code_chunked_appends_after_first_chunk(self):
+        opener = FakeOpener([rpc_response({}), rpc_response({}), rpc_response({})])
+
+        count = put_script_code_chunked(
+            "http://device",
+            10,
+            SPOTPRICE_SCRIPT_NAME,
+            "abcdef",
+            upload_chunk_bytes=2,
+            opener=opener,
+        )
+
+        self.assertEqual(3, count)
+        params = [
+            json.loads(request.data.decode("utf-8"))["params"]
+            for request, _timeout in opener.requests
+        ]
+        self.assertEqual(
+            [
+                {"id": 10, "code": "ab", "append": False},
+                {"id": 10, "code": "cd", "append": True},
+                {"id": 10, "code": "ef", "append": True},
+            ],
+            params,
+        )
+
+    def test_verify_spotprice_kvs_accepts_valid_price_series(self):
+        values = {
+            "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
+            "hp.price.date": "2026-05-24",
+            "hp.price.status": "ok",
+            "hp.price.updated": "2026-05-24T12:00:00",
+            "hp.price.source": "fallback",
+            "hp.price.debug": "no_token",
+            "hp.price.debug.len": "0",
+        }
+
+        summary = verify_spotprice_kvs(values)
+
+        self.assertEqual("ok", summary["status"])
+        self.assertEqual(12, summary["price_count"])
+        self.assertEqual(1.0, summary["price_min"])
+        self.assertEqual(12.0, summary["price_max"])
+
+    def test_verify_spotprice_kvs_rejects_malformed_price_series(self):
+        with self.assertRaisesRegex(ShellyLiveError, "12 values"):
+            verify_spotprice_kvs({"hp.price.status": "ok", "hp.price.2h": "1,2"})
+
+    def test_spotprice_kvs_get_missing_key_returns_none(self):
+        from src.mac.tools.shelly_live.core import kvs_get
+
+        opener = FakeOpener(
+            [FakeResponse(b'{"id":1,"error":{"code":-105,"message":"Argument key not found!"}}')]
+        )
+
+        self.assertIsNone(kvs_get("http://device", "hp.price.2h", opener=opener))
 
     def test_capture_debug_log_stops_when_expected_text_appears(self):
         opener = FakeOpener([FakeResponse(lines=[b"boot\n", b"hello world\n"])])
@@ -168,6 +241,85 @@ class ShellyLiveTests(unittest.TestCase):
             methods,
         )
         forbidden_fragments = ("Switch.", "Relay.", "Cover.", "KVS.", "Wifi.", "Mqtt.", "Bluetooth.")
+        self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
+
+    def test_deploy_spotprice_cleans_hello_uploads_chunks_and_reads_kvs(self):
+        self.script_path.write_text("abcdefghij", encoding="utf-8")
+        kvs_responses = []
+        kvs_values = {
+            "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
+            "hp.price.date": "2026-05-24",
+            "hp.price.status": "no_token",
+            "hp.price.updated": "2026-05-24T12:00:00",
+            "hp.price.source": "fallback",
+            "hp.price.debug": "no_token",
+            "hp.price.debug.len": "0",
+        }
+        for key in SPOTPRICE_KVS_KEYS:
+            kvs_responses.append(rpc_response({"value": kvs_values[key]}))
+        opener = FakeOpener(
+            [
+                rpc_response({"online": True}),
+                rpc_response({"scripts": [{"id": 3, "name": HELLO_SCRIPT_NAME, "running": True}]}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({"scripts": []}),
+                rpc_response({"scripts": []}),
+                rpc_response({"id": 10}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({}),
+                FakeResponse(lines=[b"spotprice NO TOKEN\n"]),
+                rpc_response({}),
+                *kvs_responses,
+                rpc_response({}),
+                rpc_response({"scripts": [{"id": 10, "name": SPOTPRICE_SCRIPT_NAME, "running": False}]}),
+            ]
+        )
+
+        result = deploy_spotprice(
+            "http://device",
+            self.script_path,
+            upload_chunk_bytes=3,
+            opener=opener,
+        )
+
+        self.assertTrue(result.cleaned_hello)
+        self.assertEqual(4, result.upload_chunk_count)
+        self.assertEqual(SPOTPRICE_SCRIPT_NAME, result.script_name)
+        methods = [
+            json.loads(request.data.decode("utf-8"))["method"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST"
+        ]
+        self.assertEqual(
+            [
+                "Shelly.GetStatus",
+                "Script.List",
+                "Script.Stop",
+                "Script.Delete",
+                "Script.List",
+                "Script.List",
+                "Script.Create",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.Start",
+                "KVS.Get",
+                "KVS.Get",
+                "KVS.Get",
+                "KVS.Get",
+                "KVS.Get",
+                "KVS.Get",
+                "KVS.Get",
+                "Script.Stop",
+                "Script.List",
+            ],
+            methods,
+        )
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.", "Virtual.")
         self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
 
     def test_tool_uses_standard_library_imports_only(self):

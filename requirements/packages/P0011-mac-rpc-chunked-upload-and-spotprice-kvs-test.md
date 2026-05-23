@@ -1,7 +1,7 @@
 # Package P0011: Mac RPC chunked upload and spotprice KVS test
 
 ## Status
-planned
+implemented
 
 ## Package order
 P0011
@@ -332,4 +332,51 @@ Codex must not remove or alter unrelated scripts.
 
 ## Completion notes
 
-Filled after implementation.
+P0011 implemented Mac-side chunked RPC upload and live spotprice KVS verification on dampers.
+
+Updated:
+
+- `src/mac/tools/shelly_live/**`
+- `tests/mac/tools/shelly_live/test_core.py`
+- `src/shelly/spotprice/**`
+- `build/shelly/spotprice/spotprice_v0_9_0.js`
+- `dep/s/ch/spotprice_v0_9_0/01.js`
+- `dep/s/rec/spotprice_v0_9_0.json`
+- `docs/functions/mac/shelly-live-deploy-tool.md`
+- `requirements/package-runs/P0011/**`
+
+G1 source/KVS contract:
+
+- source: `/Users/marcus.lovenstad/dev/shelly/rt/recipes/dampers/spotprice.json` and listed source chunks
+- allowed KVS keys: `hp.price.2h`, `hp.price.date`, `hp.price.status`, `hp.price.updated`, `hp.price.source`, `hp.price.debug`, `hp.price.debug.len`
+
+Verification passed:
+
+```bash
+python3 -m unittest discover tests/mac/tools
+python3 -m src.mac.tools.shelly_build build --manifest src/shelly/spotprice/manifest.json --build-root build/shelly/spotprice --dep-root dep/s
+python3 -m src.mac.tools.shelly_build validate --build-root build/shelly/spotprice --dep-root dep/s --role spotprice_v0_9_0
+git diff --check
+```
+
+Live dampers test passed:
+
+```bash
+python3 -m src.mac.tools.shelly_live deploy-spotprice --base-url http://192.168.86.240:8030/ --script build/shelly/spotprice/spotprice_v0_9_0.js --expect spotprice --upload-chunk-bytes 1500 --log-timeout 30 --kvs-timeout 30
+```
+
+Live result:
+
+- upload chunk size: 1500 bytes
+- upload chunk count: 6
+- KVS status: `no_token`
+- KVS source: `fallback`
+- KVS price count: 12
+- final script state: `spotprice_v0_9_0` installed and stopped
+- `hello_v1_0_0` was already absent
+
+Evidence:
+
+- `requirements/package-runs/P0011/logs/live-dampers-spotprice.md`
+
+No forbidden device settings, actuator/output, relay, cover, switch, component, Wi-Fi, network, MQTT, Bluetooth or cloud operations were performed by the P0011 Mac tool.

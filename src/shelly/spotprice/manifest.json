@@ -1,0 +1,10 @@
+{
+  "scripts": [
+    {
+      "role": "spotprice_v0_9_0",
+      "sources": [
+        "spotprice.js"
+      ]
+    }
+  ]
+}

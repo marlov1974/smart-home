@@ -1,0 +1,283 @@
+// spotprice_v0_9_0 adapted from G1 rt/spotprice-dampers for P0011.
+var SCRIPT_NAME = "spotprice_v0_9_0";
+
+var TIBBER_TOKEN_TEXT_ID = 201;
+var TIBBER_URL = "https://api.tibber.com/v1-beta/gql";
+var FETCH_TOMORROW = true;
+
+var KEY_PRICE_2H = "hp.price.2h";
+var KEY_PRICE_DATE = "hp.price.date";
+var KEY_PRICE_STATUS = "hp.price.status";
+var KEY_PRICE_UPDATED = "hp.price.updated";
+var KEY_PRICE_SOURCE = "hp.price.source";
+var KEY_PRICE_DEBUG = "hp.price.debug";
+var KEY_PRICE_DEBUG_LEN = "hp.price.debug.len";
+
+var FALLBACK_WINTER_PRICE_2H = "4.6,4.4,4.6,6.7,7.8,7.6,7.5,7.6,7.9,7.6,6.5,5.1";
+var FALLBACK_SUMMER_PRICE_2H = "3.2,3.3,4.1,5.8,5.1,3.9,3.4,4.0,5.1,5.1,4.1,3.4";
+
+var ENERGY_TAX_SEK_PER_KWH_INC_VAT = 0.450;
+var GRID_HIGH_SEK_PER_KWH_INC_VAT = 0.765;
+var GRID_LOW_SEK_PER_KWH_INC_VAT = 0.305;
+var GRID_HIGH_MONTHS = "1,2,3,11,12";
+var GRID_HIGH_WEEKDAYS = "1,2,3,4,5";
+var GRID_HIGH_START_HOUR = 6;
+var GRID_HIGH_END_HOUR = 22;
+
+function log(s) {
+  print(SCRIPT_NAME + " " + String(s || ""));
+}
+
+function finish() {
+  log("DONE");
+}
+
+function n(v, d) {
+  var x = Number(v);
+  return (x === x) ? x : d;
+}
+
+function d1(v) {
+  var x = Number(v);
+  if (x !== x) return 0;
+  return Math.round(x * 10) / 10;
+}
+
+function kvsSet(key, value, cb) {
+  Shelly.call("KVS.Set", { key: String(key || ""), value: value }, function (res, err) {
+    if (err) {
+      log("KVS ERR " + key);
+      if (cb) cb(0);
+      return;
+    }
+    if (cb) cb(1);
+  });
+}
+
+function readTibberToken(cb) {
+  Shelly.call("Text.GetStatus", { id: TIBBER_TOKEN_TEXT_ID }, function (res, err) {
+    var token = "";
+    if (!err && res && res.value) token = String(res.value || "");
+    if (!token) {
+      log("NO TOKEN");
+      kvsSet(KEY_PRICE_STATUS, "no_token", function () { cb(""); });
+      return;
+    }
+    cb(token);
+  });
+}
+
+function tibberPayload() {
+  return JSON.stringify({
+    query: "{viewer{homes{currentSubscription{priceInfo{today{total startsAt}tomorrow{total startsAt}}}}}}"
+  });
+}
+
+function tibberHeaders(token) {
+  return {
+    "Authorization": "Bearer " + token,
+    "Content-Type": "application/json"
+  };
+}
+
+function fetchTibberPrices(token, cb) {
+  kvsSet(KEY_PRICE_STATUS, "fetching", function () {
+    Shelly.call("HTTP.Request", {
+      method: "POST",
+      url: TIBBER_URL,
+      headers: tibberHeaders(token),
+      body: tibberPayload(),
+      timeout: 15
+    }, function (res, err) {
+      if (err || !res || !res.body) {
+        log("HTTP ERR");
+        kvsSet(KEY_PRICE_STATUS, "http_error", function () { cb(null); });
+        return;
+      }
+      cb(String(res.body || ""));
+    });
+  });
+}
+
+function spHasCsvInt(csv, value) {
+  return ("," + csv + ",").indexOf("," + String(value) + ",") >= 0;
+}
+
+function spWeekdayMon1(d) {
+  var w = d.getDay();
+  return w === 0 ? 7 : w;
+}
+
+function spTargetDate(wantTomorrow) {
+  var d = new Date();
+  if (wantTomorrow) d = new Date(d.getTime() + 86400000);
+  return d;
+}
+
+function spIsHighLoad(month, weekday, hour) {
+  return spHasCsvInt(GRID_HIGH_MONTHS, month) &&
+    spHasCsvInt(GRID_HIGH_WEEKDAYS, weekday) &&
+    hour >= GRID_HIGH_START_HOUR && hour < GRID_HIGH_END_HOUR;
+}
+
+function spGridFeeIncVat(month, weekday, hour) {
+  return spIsHighLoad(month, weekday, hour) ? GRID_HIGH_SEK_PER_KWH_INC_VAT : GRID_LOW_SEK_PER_KWH_INC_VAT;
+}
+
+function finalPriceFromTibber(tibberTotalIncVat, index, count, wantTomorrow) {
+  var d = spTargetDate(wantTomorrow);
+  var month = d.getMonth() + 1;
+  var weekday = spWeekdayMon1(d);
+  var hour = count >= 96 ? Math.floor(index / 4) : index;
+  return Number(tibberTotalIncVat) + ENERGY_TAX_SEK_PER_KWH_INC_VAT + spGridFeeIncVat(month, weekday, hour);
+}
+
+function parseTotals(body, wantTomorrow) {
+  var marker = wantTomorrow ? '"tomorrow"' : '"today"';
+  var p = body.indexOf(marker);
+  if (p < 0) return null;
+
+  var endMarker = wantTomorrow ? null : '"tomorrow"';
+  var e = body.length;
+  if (endMarker) {
+    var ep = body.indexOf(endMarker, p + marker.length);
+    if (ep > p) e = ep;
+  }
+
+  var out = [];
+  var key = '"total":';
+  while (out.length < 96) {
+    var i = body.indexOf(key, p);
+    if (i < 0 || i > e) break;
+    i += key.length;
+    var j = i;
+    while (j < body.length) {
+      var c = body.charAt(j);
+      if ((c >= "0" && c <= "9") || c === "." || c === "-") j++;
+      else break;
+    }
+    var v = Number(body.substring(i, j));
+    if (!isNaN(v)) out.push(v);
+    p = j;
+  }
+
+  return out;
+}
+
+function blocksFromTotals(values) {
+  var out = [];
+  var perBlock = 0;
+  var count = 0;
+
+  if (!values || !values.length) return null;
+  if (values.length >= 96) { count = 96; perBlock = 8; }
+  else if (values.length >= 24) { count = 24; perBlock = 2; }
+  else return null;
+
+  var idx = 0;
+  while (out.length < 12) {
+    var sum = 0;
+    var c = 0;
+    while (c < perBlock) {
+      sum += finalPriceFromTibber(values[idx], idx, count, FETCH_TOMORROW);
+      idx++;
+      c++;
+    }
+    out.push(d1(sum / perBlock));
+  }
+  return out;
+}
+
+function targetDateObj() {
+  var d = new Date();
+  if (FETCH_TOMORROW) d = new Date(d.getTime() + 86400000);
+  return d;
+}
+
+function todayIsoLite() {
+  var d = targetDateObj();
+  return d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1) + "-" + (d.getDate() < 10 ? "0" : "") + d.getDate();
+}
+
+function nowIsoLite() {
+  var d = new Date();
+  return d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1) + "-" + (d.getDate() < 10 ? "0" : "") + d.getDate() + "T" + (d.getHours() < 10 ? "0" : "") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes() + ":" + (d.getSeconds() < 10 ? "0" : "") + d.getSeconds();
+}
+
+function fallbackSeasonSeries() {
+  var d = targetDateObj();
+  var m = d.getMonth() + 1;
+  var day = d.getDate();
+  if (m === 11 || m === 12 || m === 1 || m === 2) return FALLBACK_WINTER_PRICE_2H;
+  if (m === 3 && day <= 29) return FALLBACK_WINTER_PRICE_2H;
+  if (m >= 4 && m <= 9) return FALLBACK_SUMMER_PRICE_2H;
+  if (m === 10 && day <= 25) return FALLBACK_SUMMER_PRICE_2H;
+  return FALLBACK_WINTER_PRICE_2H;
+}
+
+function writePriceSeries(series, source, status, cb) {
+  kvsSet(KEY_PRICE_2H, series, function () {
+    kvsSet(KEY_PRICE_DATE, todayIsoLite(), function () {
+      kvsSet(KEY_PRICE_SOURCE, source, function () {
+        kvsSet(KEY_PRICE_UPDATED, nowIsoLite(), function () {
+          kvsSet(KEY_PRICE_STATUS, status, function () {
+            log(status + " " + series);
+            if (cb) cb();
+          });
+        });
+      });
+    });
+  });
+}
+
+function writePriceBlocks(blocks, cb) {
+  writePriceSeries(blocks.join(","), "tibber", "ok", cb);
+}
+
+function writeFallbackPrices(reason, cb) {
+  writePriceSeries(fallbackSeasonSeries(), "fallback", reason || "fallback", cb);
+}
+
+function writeDebug(body, reason, cb) {
+  var s = String(body || "");
+  var shortBody = s;
+  if (shortBody.length > 220) shortBody = shortBody.substring(0, 220);
+  kvsSet(KEY_PRICE_DEBUG_LEN, String(s.length), function () {
+    kvsSet(KEY_PRICE_DEBUG, reason + " " + shortBody, function () {
+      if (cb) cb();
+    });
+  });
+}
+
+function fallback(reason, body) {
+  log("FALLBACK " + reason);
+  writeDebug(body || "", reason, function () {
+    writeFallbackPrices(reason, finish);
+  });
+}
+
+function run() {
+  readTibberToken(function (token) {
+    if (!token) { fallback("no_token", ""); return; }
+
+    fetchTibberPrices(token, function (body) {
+      if (!body) { fallback("no_body", ""); return; }
+
+      var values = parseTotals(body, FETCH_TOMORROW);
+      if (!values || !values.length) {
+        fallback("no_prices", body);
+        return;
+      }
+
+      var blocks = blocksFromTotals(values);
+      if (!blocks) {
+        fallback("bad_count_" + values.length, body);
+        return;
+      }
+
+      writePriceBlocks(blocks, finish);
+    });
+  });
+}
+
+run();

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log verification for inert Shelly test scripts introduced by P0010.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011.
 
 ## Safety Contract
 
@@ -10,9 +10,12 @@ The live-write boundary is hard-coded to:
 
 ```text
 hello_v1_0_0
+spotprice_v0_9_0
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. It does not expose switch, relay, cover, KVS, component, network, MQTT, Bluetooth, cloud or actuator operations.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011 upload/log/KVS verification.
+
+The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys for P0011.
 
 ## Functions
 
@@ -120,7 +123,7 @@ Source:
 - `src/mac/tools/shelly_live/core.py`
 
 Purpose:
-- Enforce the P0010 live-write script-name boundary.
+- Enforce the live-write script-name boundary.
 
 Inputs:
 - Script name.
@@ -132,7 +135,7 @@ Side effects:
 - None.
 
 Contract notes:
-- Raises unless the name is exactly `hello_v1_0_0`.
+- Raises unless the name is exactly `hello_v1_0_0` or `spotprice_v0_9_0`.
 
 Tests:
 - `tests/mac/tools/shelly_live/test_core.py`
@@ -141,7 +144,7 @@ Introduced:
 - P0010
 
 Last changed:
-- P0010
+- P0011
 
 ### ensure_script()
 
@@ -173,6 +176,161 @@ Introduced:
 
 Last changed:
 - P0010
+
+### split_rpc_upload_chunks()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Split built script code into bounded in-memory RPC upload chunks.
+
+Inputs:
+- Script code text and upload chunk byte limit.
+
+Outputs:
+- Ordered chunk strings.
+
+Side effects:
+- None.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0011
+
+Last changed:
+- P0011
+
+### put_script_code_chunked()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Upload script code by replacing with the first RPC chunk and appending subsequent chunks.
+
+Inputs:
+- Base URL, script id, script name, code text, upload chunk byte limit, timeout and optional opener.
+
+Outputs:
+- Upload chunk count.
+
+Side effects:
+- Performs `Script.PutCode`.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0011
+
+Last changed:
+- P0011
+
+### read_spotprice_kvs()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Read the documented P0011 spotprice KVS keys.
+
+Inputs:
+- Base URL, timeout and optional opener.
+
+Outputs:
+- Mapping from KVS key to value.
+
+Side effects:
+- Performs read-only `KVS.Get` calls.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0011
+
+Last changed:
+- P0011
+
+### verify_spotprice_kvs()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Validate that spotprice KVS output is present and parseable.
+
+Inputs:
+- Mapping of KVS key to value.
+
+Outputs:
+- Safe summary containing status, price count/range, date, updated time, source and debug length.
+
+Side effects:
+- None.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0011
+
+Last changed:
+- P0011
+
+### deploy_spotprice()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Run the P0011 live sequence: status read, `hello_v1_0_0` cleanup, `spotprice_v0_9_0` create/reuse, chunked code upload, start, bounded log capture, KVS read/validation, stop and final script list.
+
+Inputs:
+- Base URL, built script path, expected text, upload chunk byte limit, log timeout, KVS timeout, HTTP timeout and optional opener.
+
+Outputs:
+- `SpotpriceDeployResult` evidence object.
+
+Side effects:
+- Performs only allowed P0011 live actions for `hello_v1_0_0` and `spotprice_v0_9_0`, plus read-only `KVS.Get` for documented spotprice keys.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0011
+
+Last changed:
+- P0011
 
 ### put_script_code()
 

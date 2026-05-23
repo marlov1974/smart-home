@@ -10,6 +10,8 @@ Memory is not a backlog and not a task list. It describes the decided system mod
 - hardware and network facts
 - G1/G2 boundaries
 - Codex working model
+- package lifecycle
+- device management and deploy architecture
 
 ## Read order
 
@@ -18,6 +20,17 @@ Memory is not a backlog and not a task list. It describes the decided system mod
 3. `02-design-principles.md`
 4. `03-g1-g2-boundary.md`
 5. `04-codex-workflow.md`
+6. `05-package-lifecycle.md`
+7. `device-management/00-index.md`
+
+## Key folders
+
+```text
+device-management/  Shelly device identity, installer, deploy and build model
+infrastructure/     network, NAT and device reachability facts
+physical/           physical hardware, sensors and domain facts
+knowhow/            reusable lessons from packages and debugging
+```
 
 ## Boundary
 

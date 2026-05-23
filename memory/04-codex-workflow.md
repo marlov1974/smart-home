@@ -20,6 +20,8 @@ Codex:
 - local coding and diagnostics agent
 - independent package consistency reviewer
 - reads repo context
+- performs package-scoped implementation design
+- documents function-level design for code packages
 - implements packages
 - runs tests and verification
 - performs active debugging within package scope
@@ -36,16 +38,41 @@ Codex:
 6. Codex performs package consistency review.
 7. Codex reports `PASS`, `WARN` or `STOP`.
 8. Codex stores useful review evidence under `requirements/package-runs/<Pxxxx>/review.md`.
-9. If `PASS` or acceptable `WARN`, Codex summarizes understanding and plan.
-10. Codex implements within package scope.
-11. Codex runs package test cases and verification commands.
-12. If live testing is allowed, Codex captures logs and checks runtime health.
-13. Codex may fix package-scoped defects and retry up to the package attempt limit.
-14. Codex stores useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`.
-15. Codex promotes reusable global lessons into `memory/knowhow/` when appropriate.
-16. Codex gives the human a short result.
-17. Human tells ChatGPT Codex is done or stopped.
-18. ChatGPT reads the repository directly and reviews the package result with the human.
+9. If `PASS` or acceptable `WARN`, Codex writes package-scoped implementation design.
+10. For code packages, Codex writes package-scoped function design before implementation.
+11. Codex implements within package scope according to package, design and function docs.
+12. Codex runs package test cases and verification commands.
+13. If live testing is allowed, Codex captures logs and checks runtime health.
+14. Codex may fix package-scoped defects and retry up to the package attempt limit.
+15. Codex stores useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`.
+16. Codex updates cross-package function catalog when functions are created, changed or removed.
+17. Codex promotes reusable global lessons into `memory/knowhow/` when appropriate.
+18. Codex gives the human a short result.
+19. Human tells ChatGPT Codex is done or stopped.
+20. ChatGPT reads the repository directly and reviews the package result with the human.
+
+## Context-reset phase gates
+
+For substantial code packages, Codex should work in explicit phases. Each phase may be run in a fresh Codex context.
+
+The next phase must read repository artifacts from earlier phases rather than relying on unwritten prior reasoning.
+
+Repository state is the memory.
+
+Recommended phases:
+
+```text
+0. bootstrap
+1. package consistency review
+2. implementation design
+3. function design
+4. implementation
+5. build / generated deploy artifacts
+6. test / debug / verification
+7. final evidence and report
+```
+
+Small documentation-only packages may combine phases, but code packages, live-device packages, installer work and Mac/Shelly contract packages should use the phase-gate model.
 
 ## Codex bootstrap before coding
 
@@ -73,9 +100,12 @@ Review sources may include:
 ```text
 requirements/packages/Pxxxx-<name>.md
 requirements/package-runs/Pxxxx/review.md
+requirements/package-runs/Pxxxx/design.md
+requirements/package-runs/Pxxxx/functions.md
 requirements/package-runs/Pxxxx/attempts.md
 requirements/package-runs/Pxxxx/findings.md
 requirements/package-runs/Pxxxx/logs/
+docs/functions/
 memory/knowhow/
 changed memory files
 changed source/deploy/test files
@@ -117,6 +147,61 @@ Useful review output should be stored in:
 requirements/package-runs/<Pxxxx>/review.md
 ```
 
+## Implementation design
+
+For code packages, Codex must write package-scoped implementation design before coding:
+
+```text
+requirements/package-runs/<Pxxxx>/design.md
+```
+
+The design must include:
+
+- package interpretation
+- chosen implementation structure
+- files/modules intended to change
+- files/modules intentionally not changed
+- deliberate refactoring decisions and reasons
+- test strategy
+- risks and uncertainties
+
+Codex may refactor deliberately when the refactor is needed for target behavior, testability, safety, contract clarity or package-scoped maintainability.
+
+Codex must not perform unrelated cleanup, broad renames, formatting churn or opportunistic refactors.
+
+## Function design and catalog
+
+For code packages, Codex must write package-local function design before implementation:
+
+```text
+requirements/package-runs/<Pxxxx>/functions.md
+```
+
+Function design should list intended new, changed and removed functions.
+
+For each relevant function, document:
+
+- status: new / changed / removed / unchanged-but-relevant
+- purpose
+- inputs
+- outputs
+- side effects
+- change description
+- reason
+- test coverage
+
+If implementation requires a function-level change that was not documented, Codex must update `functions.md` and explain the design deviation, or stop if the change expands package scope.
+
+Cross-package durable function documentation belongs under:
+
+```text
+docs/functions/
+```
+
+Codex must update the cross-package function catalog when a function is created, changed, removed or becomes relevant for future packages.
+
+Package-local function design records the plan for one package. Cross-package function catalog records the durable current function design after implementation.
+
 ## Active debugging policy
 
 Codex may actively debug defects discovered during verification if they are inside package scope.
@@ -152,6 +237,8 @@ Package-specific evidence belongs under:
 ```text
 requirements/package-runs/<Pxxxx>/
   review.md
+  design.md
+  functions.md
   attempts.md
   logs/
   findings.md
@@ -160,6 +247,8 @@ requirements/package-runs/<Pxxxx>/
 Use package-run evidence for:
 
 - consistency review details
+- implementation design
+- function-level design
 - warnings and assumptions
 - failed/passed attempts
 - log excerpts
@@ -247,12 +336,15 @@ Forbidden by default:
 Codex must report:
 
 - consistency review result: PASS/WARN/STOP
+- implementation design path
+- function design path
 - files changed
 - tests run
 - verification output
 - log/runtime observations when live tested
 - debug attempts used
 - package-run evidence paths created/updated
+- function catalog updates
 - knowhow promotions created/updated
 - uncertainty / skipped checks
 - whether deploy artifacts changed

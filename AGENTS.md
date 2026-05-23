@@ -28,6 +28,20 @@ Rules:
 - Run package test cases and verification commands before reporting done.
 - Report diff, tests run, results and uncertainty before commit unless the package explicitly allows committing.
 
+## Quick package command
+
+If the human says a short command such as `build package 9`, `bygg paket 9`, or `kör P0009`, Codex should treat it as authorization to run the full package workflow for that package in `marlov1974/smart-home`.
+
+Codex must still perform the full workflow: bootstrap, package consistency review, package-run evidence, implementation design, function design, implementation, build/generation, tests, verification and final report.
+
+For non-live packages, the quick command also authorizes Codex to commit and push the package result when verification passes and the diff is inside package scope.
+
+For packages that allow live writes, actuator changes, device writes, Home Assistant writes, secrets or destructive actions, the quick command does not grant extra permission. Follow the explicit package live-test/write policy.
+
+Before committing and pushing, Codex must run `git status`, confirm the diff is inside package scope, run required verification commands and `git diff --check`.
+
+After pushing, Codex must report commit SHA, files changed, tests run, verification result and uncertainty.
+
 ## Package consistency review
 
 Codex is not only an executor. Codex must challenge package instructions when they conflict with repository truth.

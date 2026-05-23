@@ -48,6 +48,12 @@ Review the package against:
 
 If the package relies on chat-only knowledge that should be durable, report it and require or make the package-scoped memory update before implementation.
 
+Store useful review evidence under:
+
+```text
+requirements/package-runs/<Pxxxx>/review.md
+```
+
 ## Active debug mandate
 
 When a package allows live testing, Codex may actively debug within package scope.
@@ -61,7 +67,30 @@ Each attempt must:
 - inspect runtime health and unexpected side effects
 - fix defects discovered within package scope
 - rerun verification after fixes
+- store useful attempt/debug evidence under `requirements/package-runs/<Pxxxx>/`
 
 After 3 failed attempts, stop and report evidence, attempts, current hypothesis and remaining uncertainty.
 
 Live Shelly log streaming is read-only and may be used when live testing is allowed. Live writes, script starts/stops, KVS writes and actuator changes still require explicit package permission.
+
+## Learning and evidence storage
+
+Use package-run evidence for package-specific output:
+
+```text
+requirements/package-runs/<Pxxxx>/
+  review.md
+  attempts.md
+  logs/
+  findings.md
+```
+
+Use knowhow memory for reusable global lessons:
+
+```text
+memory/knowhow/
+```
+
+Promote a package observation to knowhow when it becomes a general rule or durable lesson for future packages.
+
+Do not store large raw logs by default. Prefer concise excerpts or summaries unless the package explicitly requires full logs.

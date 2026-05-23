@@ -49,6 +49,43 @@ Source/deploy areas expected to change.
 
 ## Forbidden changes
 
+## Pre-implementation consistency review
+
+Before editing, Codex must verify this package against repository truth.
+
+Codex must classify the package as:
+
+- `PASS`: consistent; continue implementation.
+- `WARN`: implementable but with stated assumptions or minor uncertainty.
+- `STOP`: inconsistent, unsafe, underspecified or out of scope; do not edit.
+
+Checks:
+
+- package vs memory
+- package vs linked requirements
+- package vs previous packages
+- package vs implementation/deploy structure
+- package vs G1/G2 boundary
+- package vs invariants
+- package vs testability and rollback
+- package vs chat-only assumptions that should be made durable first
+
+## Live test/debug policy
+
+Live testing allowed:
+no
+
+Live write actions allowed:
+no
+
+Shelly log capture required:
+no
+
+Max implementation/debug attempts:
+3
+
+Codex may fix defects discovered during verification if they are inside package scope. Codex must stop after the attempt limit or if the fix requires scope/design changes.
+
 ## Test cases
 
 ### TC1: <name>
@@ -58,6 +95,22 @@ Then ...
 
 ## Verification commands
 
+## Runtime health checks
+
+When live testing is allowed, verify expected output and inspect runtime/log health.
+
+Check for:
+
+- missing expected KVS/output
+- HTTP/KVS/JSON errors
+- script errors
+- unexpected restarts
+- repeated start/stop loops
+- unexpectedly long execution time
+- low or falling heap margin
+- unexpected actuator intent
+- semantically wrong side effects given the system model
+
 ## Deployment plan
 
 ## Rollback plan
@@ -65,11 +118,14 @@ Then ...
 Rollback is a new forward-moving package. Do not rely on lowering runtime versions.
 
 ## Expected Codex output
+- consistency review result: PASS/WARN/STOP
 - understanding summary
-- implementation plan
+- implementation/debug plan
 - files changed
 - tests run
 - verification results
+- log/runtime observations when live tested
+- debug attempts used
 - uncertainty / skipped checks
 - diff summary
 

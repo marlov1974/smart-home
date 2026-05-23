@@ -76,6 +76,54 @@ Useful review output should be stored under:
 requirements/package-runs/<Pxxxx>/review.md
 ```
 
+## Implementation design policy
+
+For code packages, Codex must create package-scoped implementation design before coding:
+
+```text
+requirements/package-runs/<Pxxxx>/design.md
+```
+
+The design must cover:
+
+- package interpretation
+- chosen implementation structure
+- files/modules intended to change
+- files/modules intentionally not changed
+- deliberate refactoring decisions and reasons
+- test strategy
+- risks and uncertainties
+
+## Function design policy
+
+For code packages, Codex must create package-scoped function design before coding:
+
+```text
+requirements/package-runs/<Pxxxx>/functions.md
+```
+
+The function design must list intended new, changed and removed functions, including purpose, inputs, outputs, side effects, reason and test coverage.
+
+Codex must update function design before making an undocumented function-level change, or stop if the change expands package scope.
+
+Durable cross-package function documentation belongs under:
+
+```text
+docs/functions/
+```
+
+Update the function catalog when functions are created, changed, removed or become relevant for future packages.
+
+## Context-reset phase gates
+
+For substantial code packages, Codex should use phase gates that may run in fresh context:
+
+```text
+bootstrap -> review -> design -> function design -> implementation -> build/generation -> test/debug/verify -> final evidence
+```
+
+Each phase must read repository artifacts from earlier phases instead of relying on unwritten prior reasoning.
+
 ## Live test/debug policy
 
 Live testing allowed:
@@ -110,6 +158,8 @@ Expected evidence files when relevant:
 
 ```text
 review.md
+design.md
+functions.md
 attempts.md
 findings.md
 logs/
@@ -118,6 +168,8 @@ logs/
 Use package-run evidence for package-specific:
 
 - review warnings/conflicts
+- implementation design
+- function design
 - failed or successful debug attempts
 - log excerpts
 - runtime anomalies
@@ -165,14 +217,15 @@ Rollback is a new forward-moving package. Do not rely on lowering runtime versio
 
 ## Expected Codex output
 - consistency review result: PASS/WARN/STOP
-- understanding summary
-- implementation/debug plan
+- implementation design path
+- function design path
 - files changed
 - tests run
 - verification results
 - log/runtime observations when live tested
 - debug attempts used
 - package-run evidence paths created/updated
+- function catalog updates
 - knowhow promotions created/updated
 - uncertainty / skipped checks
 - diff summary

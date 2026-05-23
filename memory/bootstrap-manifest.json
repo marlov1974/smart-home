@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -36,11 +36,19 @@
     "memory/physical/home/rooms-zones.md",
     "memory/physical/home/comfort-sensors.md",
 
+    "memory/knowhow/00-index.md",
+    "memory/knowhow/shelly.md",
+    "memory/knowhow/codex.md",
+
     "requirements/README.md",
     "requirements/packages/TEMPLATE.md",
+    "requirements/package-runs/README.md",
+    "requirements/package-runs/TEMPLATE-review.md",
+    "requirements/package-runs/TEMPLATE-attempts.md",
     "requirements/packages/P0001-bootstrap-smart-home-repo.md",
     "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
-    "requirements/packages/P0003-codex-review-and-active-debug-policy.md"
+    "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
+    "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md"
   ],
   "governance": {
     "truth_hierarchy": [

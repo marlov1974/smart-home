@@ -1,0 +1,67 @@
+name: Apply ChatGPT commit patch
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Apply patch file
+        shell: python
+        run: |
+          import pathlib
+          import yaml
+
+          patch_file = pathlib.Path(".github/chatgpt_commit.yaml")
+          if not patch_file.exists():
+              raise SystemExit("Missing .github/chatgpt_commit.yaml")
+
+          data = yaml.safe_load(patch_file.read_text(encoding="utf-8")) or {}
+          operations = data.get("operations", [])
+          if not operations:
+              raise SystemExit("No operations found in .github/chatgpt_commit.yaml")
+
+          for index, op in enumerate(operations, start=1):
+              action = op.get("action")
+              path = op.get("path")
+              content = op.get("content")
+
+              if action != "replace_file":
+                  raise SystemExit(f"Unsupported action at operation {index}: {action}")
+
+              if not path:
+                  raise SystemExit(f"Missing path at operation {index}")
+
+              if content is None:
+                  raise SystemExit(f"Missing content at operation {index}: {path}")
+
+              target = pathlib.Path(path)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_text(content.rstrip() + "\n", encoding="utf-8")
+              print(f"replaced {path}")
+
+      - name: Commit changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+
+          git add .
+          git commit -m "Apply ChatGPT commit patch"
+          git push

@@ -77,6 +77,31 @@ Home Assistant is primarily for visualization, dashboards, user interface and co
 
 The Mac is primarily for development, deploy, diagnostics, Codex/package execution and optional forecasting/lab services. Mac services may improve optimization, but Shelly runtime must remain safe when Mac-produced data is absent or stale.
 
+## Brain-local telemetry
+
+G2 has multiple brains, for example FTX, floor cooling and VP/VVB.
+
+Brains should not have to perform broad network polling across many devices every time they think. A brain should primarily read the inputs it needs from local KVS or local cached state on the device where that brain runs.
+
+Devices that own measurements or status should publish the data needed by each relevant brain to the brain's local input/cache contract. This may mean the same measured value is copied to more than one brain-local KVS contract.
+
+This duplication is acceptable because it makes brain execution local, fast and less dependent on many network reads at decision time.
+
+A local brain may still need to read many KVS keys, but local KVS reads are preferred over broad cross-device polling during the brain cycle.
+
+For every telemetry signal, G2 should define:
+
+```text
+producer/owner:    device or service that measures or derives it
+consumers:         brains or state builders that need it
+publish target:    local KVS/cache contract per consumer when needed
+cadence:           how often the producer refreshes it
+freshness:         when the consumer treats it as stale
+fallback:          what the consumer does when missing/stale
+```
+
+Fast-changing commands and safety-relevant status should be refreshed more often than slow derived metrics such as VVX efficiency, long-window power estimates or rarely changing device capabilities.
+
 ## Local hardware safety
 
 Devices that directly control hardware should have conservative local fallback/default behavior.

@@ -15,8 +15,9 @@ from typing import Any, Callable
 
 HELLO_SCRIPT_NAME = "hello_v1_0_0"
 SPOTPRICE_SCRIPT_NAME = "spotprice_v0_9_0"
+WEATHER_SCRIPT_NAME = "weather_v0_9_0"
 ALLOWED_SCRIPT_NAME = HELLO_SCRIPT_NAME
-ALLOWED_SCRIPT_NAMES = frozenset({HELLO_SCRIPT_NAME, SPOTPRICE_SCRIPT_NAME})
+ALLOWED_SCRIPT_NAMES = frozenset({HELLO_SCRIPT_NAME, SPOTPRICE_SCRIPT_NAME, WEATHER_SCRIPT_NAME})
 SPOTPRICE_KVS_KEYS = (
     "hp.price.2h",
     "hp.price.date",
@@ -24,6 +25,8 @@ SPOTPRICE_KVS_KEYS = (
     "hp.price.status",
     "hp.price.updated",
 )
+WEATHER_KVS_KEY = "g2.weather.act"
+TARGET_DAMPERS_PHYSICAL_ID = "8813bfd99f54"
 DEFAULT_UPLOAD_CHUNK_BYTES = 1500
 DEFAULT_HTTP_TIMEOUT_SECONDS = 5.0
 DEFAULT_LOG_TIMEOUT_SECONDS = 20.0
@@ -61,6 +64,23 @@ class SpotpriceDeployResult:
     upload_chunk_count: int
     log_excerpt: str
     kvs_values: dict[str, Any]
+    kvs_summary: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class WeatherDeployResult:
+    """Evidence returned by one weather deploy/KVS run."""
+
+    base_url: str
+    live_device_id: str
+    script_name: str
+    script_id: int
+    before_scripts: tuple[dict[str, Any], ...]
+    after_scripts: tuple[dict[str, Any], ...]
+    upload_chunk_bytes: int
+    upload_chunk_count: int
+    log_excerpt: str
+    kvs_value: dict[str, Any]
     kvs_summary: dict[str, Any]
 
 
@@ -123,6 +143,35 @@ def get_status(
     """Read Shelly device status."""
 
     return rpc_call(base_url, "Shelly.GetStatus", timeout=timeout, opener=opener)
+
+
+def get_device_info(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> dict[str, Any]:
+    """Read Shelly device identity."""
+
+    result = rpc_call(base_url, "Shelly.GetDeviceInfo", timeout=timeout, opener=opener)
+    if not isinstance(result, dict):
+        raise ShellyLiveError("Shelly.GetDeviceInfo returned non-object result")
+    return result
+
+
+def _normalized_id(value: Any) -> str:
+    return "".join(char for char in str(value or "").lower() if char.isalnum())
+
+
+def verify_dampers_identity(device_info: dict[str, Any]) -> str:
+    """Verify that the live endpoint is the P0015 dampers target."""
+
+    live_id = _normalized_id(device_info.get("id"))
+    target_id = _normalized_id(TARGET_DAMPERS_PHYSICAL_ID)
+    if not live_id.endswith(target_id):
+        raise ShellyLiveError(
+            f"target identity mismatch: expected {TARGET_DAMPERS_PHYSICAL_ID}, got {device_info.get('id')!r}"
+        )
+    return str(device_info.get("id"))
 
 
 def list_scripts(
@@ -387,6 +436,25 @@ def kvs_get(
     return None
 
 
+def weather_kvs_get(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> Any:
+    """Read the documented P0015 weather KVS key."""
+
+    try:
+        result = rpc_call(base_url, "KVS.Get", {"key": WEATHER_KVS_KEY}, timeout=timeout, opener=opener)
+    except ShellyLiveError as exc:
+        message = str(exc)
+        if "not found" in message and "KVS.Get" in message:
+            return None
+        raise
+    if isinstance(result, dict):
+        return result.get("value")
+    return None
+
+
 def read_spotprice_kvs(
     base_url: str,
     timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
@@ -395,6 +463,33 @@ def read_spotprice_kvs(
     """Read all documented spotprice KVS keys."""
 
     return {key: kvs_get(base_url, key, timeout=timeout, opener=opener) for key in SPOTPRICE_KVS_KEYS}
+
+
+def _number_in_range(value: Any, lower: float, upper: float, field: str) -> float:
+    try:
+        number = float(value)
+    except (TypeError, ValueError) as exc:
+        raise ShellyLiveError(f"weather KVS {field} is not numeric") from exc
+    if number < lower or number > upper:
+        raise ShellyLiveError(f"weather KVS {field} is outside range")
+    return number
+
+
+def verify_weather_kvs(kvs_value: Any) -> dict[str, Any]:
+    """Validate and summarize P0015 weather KVS output."""
+
+    if not isinstance(kvs_value, dict):
+        raise ShellyLiveError("weather KVS value is not an object")
+    solar = _number_in_range(kvs_value.get("solar_kwh_today"), 0, 999, "solar_kwh_today")
+    temp_now = _number_in_range(kvs_value.get("temp_now"), -99.9, 99.9, "temp_now")
+    temp_avg = _number_in_range(kvs_value.get("temp_avg_today"), -99.9, 99.9, "temp_avg_today")
+    humidity = _number_in_range(kvs_value.get("humidity_avg_today"), 0, 100, "humidity_avg_today")
+    return {
+        "solar_kwh_today": int(round(solar)),
+        "temp_now": round(temp_now, 1),
+        "temp_avg_today": round(temp_avg, 1),
+        "humidity_avg_today": round(humidity, 1),
+    }
 
 
 def verify_spotprice_kvs(kvs_values: dict[str, Any]) -> dict[str, Any]:
@@ -452,6 +547,28 @@ def wait_for_spotprice_kvs(
             last_error = str(exc)
             time.sleep(0.5)
     raise ShellyLiveError(f"spotprice KVS verification timed out: {last_error}")
+
+
+def wait_for_weather_kvs(
+    base_url: str,
+    kvs_timeout: float = DEFAULT_KVS_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Poll weather KVS until it validates or timeout expires."""
+
+    deadline = time.monotonic() + kvs_timeout
+    last_error = "weather KVS was not read"
+    value: Any = None
+    while time.monotonic() < deadline:
+        value = weather_kvs_get(base_url, timeout=http_timeout, opener=opener)
+        try:
+            summary = verify_weather_kvs(value)
+            return value, summary
+        except ShellyLiveError as exc:
+            last_error = str(exc)
+            time.sleep(0.5)
+    raise ShellyLiveError(f"weather KVS verification timed out: {last_error}")
 
 
 def deploy_hello(
@@ -589,6 +706,90 @@ def deploy_spotprice(
     )
 
 
+def _ensure_no_memory_pressure(log_excerpt: str) -> None:
+    lowered = log_excerpt.lower()
+    for marker in ("out_of_memory", "out of memory", "oom"):
+        if marker in lowered:
+            raise ShellyLiveError(f"memory pressure marker observed in log: {marker}")
+
+
+def deploy_weather(
+    base_url: str,
+    script_path: str | Path,
+    expected_text: str = "weather_v0_9_0 DONE",
+    upload_chunk_bytes: int = DEFAULT_UPLOAD_CHUNK_BYTES,
+    log_timeout: float = DEFAULT_LOG_TIMEOUT_SECONDS,
+    kvs_timeout: float = DEFAULT_KVS_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> WeatherDeployResult:
+    """Deploy, start and verify the P0015 weather script."""
+
+    if upload_chunk_bytes < 1:
+        raise ShellyLiveError("upload chunk bytes must be positive")
+
+    script_name = WEATHER_SCRIPT_NAME
+    code = Path(script_path).read_text(encoding="utf-8")
+
+    device_info = get_device_info(base_url, timeout=http_timeout, opener=opener)
+    live_device_id = verify_dampers_identity(device_info)
+    get_status(base_url, timeout=http_timeout, opener=opener)
+    before_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+    existing = find_script(list(before_scripts), script_name)
+    if existing is not None and existing.get("running") is True:
+        stop_script(base_url, _script_id(existing), script_name, timeout=http_timeout, opener=opener)
+
+    script_id = ensure_script(base_url, script_name, timeout=http_timeout, opener=opener)
+    upload_chunk_count = put_script_code_chunked(
+        base_url,
+        script_id,
+        script_name,
+        code,
+        upload_chunk_bytes=upload_chunk_bytes,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        log_future = executor.submit(
+            capture_debug_log,
+            base_url,
+            expected_text,
+            log_timeout,
+            http_timeout,
+            opener,
+        )
+        time.sleep(0.05)
+        start_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
+        try:
+            log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            _ensure_no_memory_pressure(log_excerpt)
+            kvs_value, kvs_summary = wait_for_weather_kvs(
+                base_url,
+                kvs_timeout=kvs_timeout,
+                http_timeout=http_timeout,
+                opener=opener,
+            )
+        except concurrent.futures.TimeoutError as exc:
+            raise ShellyLiveError("debug log capture timed out") from exc
+        finally:
+            stop_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
+    after_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+
+    return WeatherDeployResult(
+        base_url=normalize_base_url(base_url),
+        live_device_id=live_device_id,
+        script_name=script_name,
+        script_id=script_id,
+        before_scripts=before_scripts,
+        after_scripts=after_scripts,
+        upload_chunk_bytes=upload_chunk_bytes,
+        upload_chunk_count=upload_chunk_count,
+        log_excerpt=log_excerpt,
+        kvs_value=kvs_value,
+        kvs_summary=kvs_summary,
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     """Run Shelly live tooling from the command line."""
 
@@ -611,6 +812,15 @@ def main(argv: list[str] | None = None) -> int:
     spot_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
     spot_parser.add_argument("--kvs-timeout", type=float, default=DEFAULT_KVS_TIMEOUT_SECONDS)
     spot_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
+
+    weather_parser = subparsers.add_parser("deploy-weather")
+    weather_parser.add_argument("--base-url", required=True)
+    weather_parser.add_argument("--script", required=True)
+    weather_parser.add_argument("--expect", default="weather_v0_9_0 DONE")
+    weather_parser.add_argument("--upload-chunk-bytes", type=int, default=DEFAULT_UPLOAD_CHUNK_BYTES)
+    weather_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
+    weather_parser.add_argument("--kvs-timeout", type=float, default=DEFAULT_KVS_TIMEOUT_SECONDS)
+    weather_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
 
     args = parser.parse_args(argv)
     try:
@@ -653,6 +863,31 @@ def main(argv: list[str] | None = None) -> int:
             print("kvs_values_begin")
             print(json.dumps(result.kvs_values, separators=(",", ":"), sort_keys=True))
             print("kvs_values_end")
+            print("log_excerpt_begin")
+            print(result.log_excerpt.rstrip("\n"))
+            print("log_excerpt_end")
+            return 0
+        if args.command == "deploy-weather":
+            result = deploy_weather(
+                args.base_url,
+                args.script,
+                expected_text=args.expect,
+                upload_chunk_bytes=args.upload_chunk_bytes,
+                log_timeout=args.log_timeout,
+                kvs_timeout=args.kvs_timeout,
+                http_timeout=args.http_timeout,
+            )
+            print(f"target={result.base_url}")
+            print(f"live_device_id={result.live_device_id}")
+            print(f"script={result.script_name} id={result.script_id}")
+            print(f"upload_chunk_bytes={result.upload_chunk_bytes}")
+            print(f"upload_chunk_count={result.upload_chunk_count}")
+            print(f"before_scripts={json.dumps(result.before_scripts, separators=(',', ':'))}")
+            print(f"after_scripts={json.dumps(result.after_scripts, separators=(',', ':'))}")
+            print(f"kvs_summary={json.dumps(result.kvs_summary, separators=(',', ':'), sort_keys=True)}")
+            print("kvs_value_begin")
+            print(json.dumps(result.kvs_value, separators=(",", ":"), sort_keys=True))
+            print("kvs_value_end")
             print("log_excerpt_begin")
             print(result.log_excerpt.rstrip("\n"))
             print("log_excerpt_end")

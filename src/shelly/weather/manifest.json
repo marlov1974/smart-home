@@ -1,0 +1,10 @@
+{
+  "scripts": [
+    {
+      "role": "weather_v0_9_0",
+      "sources": [
+        "weather.js"
+      ]
+    }
+  ]
+}

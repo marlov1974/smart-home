@@ -23,6 +23,7 @@ docs/functions/
   00-index.md
   TEMPLATE.md
   shelly/
+    weather.md
     installer.md
     ftx-brain.md
     ftx-driver.md
@@ -30,6 +31,7 @@ docs/functions/
     shelly-build-tool.md
     shelly-live-deploy-tool.md
     shelly-device-management-tool.md
+    weather-contract-tool.md
     spot-forecast.md
   contracts/
     spot-forecast-contract.md

@@ -1,7 +1,7 @@
 # Package P0015: G2 weather script from G1 template
 
 ## Status
-planned
+verified
 
 ## Package order
 P0015
@@ -549,4 +549,62 @@ If an incorrect KVS key was written, Codex may only remove it if the package des
 
 ## Completion notes
 
-Filled after implementation.
+P0015 completed live verification on `2026-05-24`.
+
+Verified endpoint/identity:
+
+```text
+runtime endpoint used: http://192.168.86.240:8030
+stable LAN address: 192.168.77.30
+physical Shelly id: 8813bfd99f54
+live device id: shellypro1pm-8813bfd99f54
+```
+
+Mac Open-Meteo pre-live check passed:
+
+```text
+daily_response_bytes: 443
+hourly_response_bytes: 308
+solar_kwh_today: 52
+temp_now: 22.6
+temp_avg_today: 18.6
+humidity_avg_today: 62.0
+```
+
+Build/validate passed:
+
+```text
+built weather_v0_9_0: 1 chunks
+valid weather_v0_9_0
+```
+
+Live deploy and verification passed:
+
+```text
+script: weather_v0_9_0
+script id: 2
+upload_chunk_bytes: 1500
+upload_chunk_count: 4
+final script state: stopped
+KVS key: g2.weather.act
+```
+
+Readback:
+
+```json
+{
+  "solar_kwh_today": 52,
+  "temp_now": 22.6,
+  "temp_avg_today": 18.6,
+  "humidity_avg_today": 62
+}
+```
+
+Evidence:
+
+```text
+requirements/package-runs/P0015/review.md
+requirements/package-runs/P0015/design.md
+requirements/package-runs/P0015/functions.md
+requirements/package-runs/P0015/attempts.md
+```

@@ -10,10 +10,13 @@ from src.mac.tools.shelly_live.core import (
     HELLO_SCRIPT_NAME,
     SPOTPRICE_KVS_KEYS,
     SPOTPRICE_SCRIPT_NAME,
+    WEATHER_KVS_KEY,
+    WEATHER_SCRIPT_NAME,
     ShellyLiveError,
     capture_debug_log,
     deploy_hello,
     deploy_spotprice,
+    deploy_weather,
     ensure_allowed_script_name,
     ensure_script,
     find_script,
@@ -23,6 +26,7 @@ from src.mac.tools.shelly_live.core import (
     rpc_call,
     split_rpc_upload_chunks,
     verify_spotprice_kvs,
+    verify_weather_kvs,
 )
 
 
@@ -104,6 +108,7 @@ class ShellyLiveTests(unittest.TestCase):
     def test_forbidden_script_name_is_rejected(self):
         ensure_allowed_script_name(ALLOWED_SCRIPT_NAME)
         ensure_allowed_script_name(SPOTPRICE_SCRIPT_NAME)
+        ensure_allowed_script_name(WEATHER_SCRIPT_NAME)
 
         with self.assertRaisesRegex(ShellyLiveError, "forbidden script name"):
             ensure_allowed_script_name("g2-hello")
@@ -354,6 +359,138 @@ class ShellyLiveTests(unittest.TestCase):
         self.assertNotIn("hp.price.source", source)
         self.assertNotIn("hp.price.debug", source)
         self.assertNotIn("SEK_per_kWh", source)
+
+    def test_verify_weather_kvs_accepts_valid_contract(self):
+        summary = verify_weather_kvs(
+            {
+                "solar_kwh_today": 52,
+                "temp_now": 21.94,
+                "temp_avg_today": 18.44,
+                "humidity_avg_today": 62,
+            }
+        )
+
+        self.assertEqual(
+            {
+                "solar_kwh_today": 52,
+                "temp_now": 21.9,
+                "temp_avg_today": 18.4,
+                "humidity_avg_today": 62.0,
+            },
+            summary,
+        )
+
+    def test_verify_weather_kvs_rejects_missing_contract(self):
+        with self.assertRaisesRegex(ShellyLiveError, "not numeric"):
+            verify_weather_kvs({"solar_kwh_today": 1})
+
+    def test_deploy_weather_verifies_identity_uploads_chunks_and_reads_weather_kvs(self):
+        self.script_path.write_text("abcdefghij", encoding="utf-8")
+        weather_value = {
+            "solar_kwh_today": 52,
+            "temp_now": 21.9,
+            "temp_avg_today": 18.4,
+            "humidity_avg_today": 62,
+        }
+        opener = FakeOpener(
+            [
+                rpc_response({"id": "shellypro1pm-8813bfd99f54", "model": "SPSW-201PE15UL"}),
+                rpc_response({"online": True}),
+                rpc_response({"scripts": []}),
+                rpc_response({"scripts": []}),
+                rpc_response({"id": 11}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({}),
+                FakeResponse(lines=[b"weather_v0_9_0 BOT\n", b"weather_v0_9_0 DONE\n"]),
+                rpc_response({}),
+                rpc_response({"value": weather_value}),
+                rpc_response({}),
+                rpc_response({"scripts": [{"id": 11, "name": WEATHER_SCRIPT_NAME, "running": False}]}),
+            ]
+        )
+
+        result = deploy_weather(
+            "http://device",
+            self.script_path,
+            upload_chunk_bytes=3,
+            opener=opener,
+        )
+
+        self.assertEqual(WEATHER_SCRIPT_NAME, result.script_name)
+        self.assertEqual("shellypro1pm-8813bfd99f54", result.live_device_id)
+        self.assertEqual(4, result.upload_chunk_count)
+        self.assertEqual(52, result.kvs_summary["solar_kwh_today"])
+        methods = [
+            json.loads(request.data.decode("utf-8"))["method"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST"
+        ]
+        self.assertEqual(
+            [
+                "Shelly.GetDeviceInfo",
+                "Shelly.GetStatus",
+                "Script.List",
+                "Script.List",
+                "Script.Create",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.Start",
+                "KVS.Get",
+                "Script.Stop",
+                "Script.List",
+            ],
+            methods,
+        )
+        kvs_requests = [
+            request for request, _timeout in opener.requests
+            if request.get_method() == "POST" and json.loads(request.data.decode("utf-8"))["method"] == "KVS.Get"
+        ]
+        self.assertEqual({"key": WEATHER_KVS_KEY}, json.loads(kvs_requests[0].data.decode("utf-8"))["params"])
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.", "Virtual.")
+        self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
+
+    def test_deploy_weather_rejects_wrong_identity(self):
+        opener = FakeOpener([rpc_response({"id": "shellypro1pm-deadbeef0000"})])
+
+        with self.assertRaisesRegex(ShellyLiveError, "identity mismatch"):
+            deploy_weather("http://device", self.script_path, opener=opener)
+
+    def test_deploy_weather_rejects_memory_pressure_log(self):
+        self.script_path.write_text("abc", encoding="utf-8")
+        opener = FakeOpener(
+            [
+                rpc_response({"id": "shellypro1pm-8813bfd99f54"}),
+                rpc_response({"online": True}),
+                rpc_response({"scripts": []}),
+                rpc_response({"scripts": []}),
+                rpc_response({"id": 11}),
+                rpc_response({}),
+                FakeResponse(lines=[b"weather_v0_9_0 out_of_memory\n", b"weather_v0_9_0 DONE\n"]),
+                rpc_response({}),
+                rpc_response({}),
+            ]
+        )
+
+        with self.assertRaisesRegex(ShellyLiveError, "memory pressure"):
+            deploy_weather("http://device", self.script_path, upload_chunk_bytes=10, opener=opener)
+
+    def test_weather_source_uses_p0015_g2_contract(self):
+        source_path = Path(__file__).resolve().parents[4] / "src" / "shelly" / "weather" / "weather.js"
+        source = source_path.read_text(encoding="utf-8")
+
+        self.assertIn("weather_v0_9_0", source)
+        self.assertIn("g2.weather.act", source)
+        self.assertIn("relative_humidity_2m_mean", source)
+        self.assertIn("humidity_avg_today", source)
+        self.assertIn("api.open-meteo.com/v1/forecast", source)
+        self.assertIn("Script.Stop", source)
+        self.assertNotIn("ftx.weather.act", source)
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "MQTT.", "Wifi.", "Bluetooth.")
+        self.assertFalse(any(fragment in source for fragment in forbidden_fragments))
 
     def test_tool_uses_standard_library_imports_only(self):
         package_root = Path(__file__).resolve().parents[4] / "src" / "mac" / "tools" / "shelly_live"

@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015.
 
 ## Safety Contract
 
@@ -11,11 +11,12 @@ The live-write boundary is hard-coded to:
 ```text
 hello_v1_0_0
 spotprice_v0_9_0
+weather_v0_9_0
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification.
 
-The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys.
+The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys and P0015 `g2.weather.act`.
 
 ## Build/deploy source contract
 
@@ -154,7 +155,7 @@ Introduced:
 - P0010
 
 Last changed:
-- P0011
+- P0015
 
 ### ensure_script()
 
@@ -352,6 +353,44 @@ Introduced:
 
 Last changed:
 - P0013
+
+### deploy_weather()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Deploy, start, log-watch and verify `weather_v0_9_0` on the dampers development Shelly.
+
+Inputs:
+- Runtime base URL, complete built weather script path, expected log text, upload chunk size and timeouts.
+
+Outputs:
+- `WeatherDeployResult` with live device id, script id/status evidence, upload chunk count, log excerpt and `g2.weather.act` summary.
+
+Side effects:
+- Verifies dampers identity with `Shelly.GetDeviceInfo`.
+- May create/update/start/stop only `weather_v0_9_0`.
+- Reads only `g2.weather.act` from KVS.
+
+Contract notes:
+- Rejects target identity mismatch before writes.
+- Does not expose actuator, device-config, network, MQTT, Bluetooth, cloud or component writes.
+- Direct deploy reads the complete built script and uses in-memory RPC upload chunks.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0015
+
+Last changed:
+- P0015
 
 ### put_script_code()
 

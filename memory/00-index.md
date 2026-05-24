@@ -44,4 +44,11 @@ Deployable artifacts belong in `dep/`.
 
 Memory may be updated by any package when the package changes system understanding.
 
-No durable knowledge change should be made without a package id.
+Pure documentation and memory updates do not require a package id when they only record or correct physical facts, hardware inventory, model numbers, properties, notes, or other already-decided knowledge.
+
+Use package linkage when the documentation change is discovered during package development, explains package behavior, records package evidence, or is required to keep code, tests, deploy artifacts or runtime behavior synchronized.
+
+Examples:
+
+- Documenting heat-pump brand, model and properties can be a direct documentation update.
+- If P0014 discovers during implementation that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, that finding belongs in the P0014 package log/evidence and the relevant memory update should reference the package context.

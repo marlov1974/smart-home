@@ -42,6 +42,30 @@ Future ChatGPT sessions must treat the package files listed in `memory/bootstrap
 
 When a new package becomes part of durable project status, update `memory/bootstrap-manifest.json` so future sessions read it during bootstrap. If package files exist beyond the manifest, the manifest is stale and should be corrected before relying on package status.
 
+## GitHub file update methods
+
+ChatGPT has two ways to update files in GitHub.
+
+Method 1 is direct GitHub integration editing. Use it for small edits when it is likely to pass the connector and GitHub safety checks. This method is convenient but is often blocked by GitHub or integration safety controls.
+
+Method 2 is the YAML/action handoff. Use it when direct editing is blocked or likely to be blocked. The existing workflow must be reused:
+
+```text
+.github/workflows/apply-chatgpt-commit.yaml
+```
+
+Do not create a new workflow/action for each commit.
+
+The workflow reads:
+
+```text
+.github/chatgpt_commit.yaml
+```
+
+ChatGPT should update `.github/chatgpt_commit.yaml`; then the human operator runs the existing action.
+
+The YAML/action handoff may include at most 5 file changes per YAML/commit. If more than 5 files are needed, split the work into multiple handoffs.
+
 ## Documentation-only updates
 
 Not every memory/documentation update requires a package.

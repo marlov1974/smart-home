@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -62,7 +62,13 @@
     "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md",
     "requirements/packages/P0006-device-management-and-deploy-architecture.md",
     "requirements/packages/P0007-codex-phased-package-build-process.md",
-    "requirements/packages/P0008-g2-shelly-build-deploy-tools.md"
+    "requirements/packages/P0008-g2-shelly-build-deploy-tools.md",
+    "requirements/packages/P0009-shelly-build-wrapper-and-metadata.md",
+    "requirements/packages/P0010-shelly-deploy-tool-and-log-listener.md",
+    "requirements/packages/P0011-mac-rpc-chunked-upload-and-spotprice-kvs-test.md",
+    "requirements/packages/P0012-correct-spotprice-template-and-clean-deploy-artifacts.md",
+    "requirements/packages/P0013-spotprice-low-memory-se-elpris-runtime.md",
+    "requirements/packages/P0014-device-management-safe-dampers-baseline.md"
   ],
   "governance": {
     "truth_hierarchy": [

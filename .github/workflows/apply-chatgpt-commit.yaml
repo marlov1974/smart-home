@@ -2,6 +2,11 @@ name: Apply ChatGPT commit patch
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/chatgpt_commit.yaml"
 
 permissions:
   contents: write

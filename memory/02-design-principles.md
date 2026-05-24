@@ -67,6 +67,16 @@ Prefer deterministic logic, explicit state and visible failures.
 
 Avoid broad defensive normalizers that hide bugs. Use explicit fallback behavior for missing telemetry, unavailable services or stale external inputs.
 
+## Runtime autonomy
+
+Shelly is the autonomous runtime surface for local hardware behavior.
+
+Shelly devices must be able to remain safe and useful without Mac or Home Assistant at runtime. Any Shelly script that consumes external data must define freshness, stale handling and fallback behavior.
+
+Home Assistant is primarily for visualization, dashboards, user interface and convenient user-facing controls. G2 safety and local runtime continuity must not depend on Home Assistant availability.
+
+The Mac is primarily for development, deploy, diagnostics, Codex/package execution and optional forecasting/lab services. Mac services may improve optimization, but Shelly runtime must remain safe when Mac-produced data is absent or stale.
+
 ## Local hardware safety
 
 Devices that directly control hardware should have conservative local fallback/default behavior.
@@ -75,11 +85,13 @@ Remote planners and optimizers may improve comfort/cost, but local hardware cont
 
 ## Separation of planning and actuation
 
-Planning can happen on Mac or Home Assistant.
+Planning can happen on Mac, Home Assistant or Shelly depending on the domain and safety boundary.
 
 Slow equipment should not be constantly replanned by fast loops.
 
 Shelly edge code should stay small, deterministic and focused on local control/application.
+
+A planner may compute intent, but actuator ownership must remain explicit. Physical outputs should only be changed by the package/runtime layer that owns that actuator and has a defined fallback.
 
 ## Device identity and replacement
 

@@ -1,16 +1,4 @@
 version: 1
 purpose: chatgpt_commit_patch
 package: null
-operations:
-  - action: replace_file
-    path: tmp/chatgpt-action-trigger-test.md
-    content: |
-      # ChatGPT Action Trigger Test
-
-      This file was created by a minimal test of the automatic push trigger for `.github/chatgpt_commit.yaml`.
-
-      Expected result:
-
-      - ChatGPT updates `.github/chatgpt_commit.yaml`
-      - GitHub Actions runs `.github/workflows/apply-chatgpt-commit.yaml` automatically
-      - The action creates or replaces this file
+operations: []

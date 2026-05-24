@@ -22,6 +22,7 @@ Known imported roles:
 - outdoor or supply air before VVX proxy
 - supply air after VVX
 - supply fan RPM
+- to_outdoor temperature
 
 Pressure sensor:
 
@@ -140,3 +141,5 @@ Do not treat all high ppm readings as occupancy-driven CO2.
 Imported from G1 `memory/ftx-fysiskt/02-hardware-inventory.md` during `P0002`.
 
 Pressure sensor model and pressure-measurement caution imported from G1 `memory/ftx-fysiskt/02-hardware-inventory.md` and `memory/ftx-fysiskt/03-airflow-and-pressure-model.md` during `P0009`.
+
+Supply UNI `to_outdoor` temperature role added from operator-provided physical knowledge during publisher-design discussion.

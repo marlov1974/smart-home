@@ -2,7 +2,7 @@
 
 ## Identity levels
 
-G2 separates physical device identity from logical device identity.
+G2 separates physical device identity from logical device identity and human/device-facing labels.
 
 ```text
 Physical identity:
@@ -10,6 +10,12 @@ Physical identity:
 
 Logical identity:
   stable role/name in the G2 solution.
+
+Shelly device name:
+  device-local human-facing name configured on the Shelly.
+
+Channel name:
+  human-facing name for a Shelly output/input/channel.
 ```
 
 Examples of logical devices:
@@ -39,6 +45,42 @@ Replaceable:
   192.168.77.40
   hardware model, within compatibility limits
 ```
+
+## Naming standard
+
+G2 uses different names for different layers. Do not collapse them into one field.
+
+Suggested standard:
+
+```text
+logical device name:
+  kebab-case, stable G2 role, e.g. ftx-dampers
+
+Shelly device name:
+  human/local device label. Prefer a clear variant of the logical device name.
+  Existing packages may test exact Shelly display names before the standard is finalized.
+
+Shelly channel name:
+  short human-facing channel label, e.g. dampers
+
+physical Shelly id:
+  lowercase hardware id, e.g. 8813bfd99f54
+
+runtime endpoint:
+  current Mac/operator access URL, not durable identity
+```
+
+For P0014, the deliberate test is:
+
+```text
+logical device / infrastructure role: ftx-dampers
+physical Shelly id: 8813bfd99f54
+stable LAN address: 192.168.77.30
+Shelly device name to test: ftx_dampers
+Shelly channel name to test: dampers
+```
+
+This P0014 underscore device name is a live device-management test, not a final naming standard for all G2 devices. If the test proves the API behavior, a later package should decide whether Shelly device names should use `ftx-dampers`, `ftx_dampers` or another consistent display convention.
 
 ## Global registry
 
@@ -127,7 +169,7 @@ Shelly installer should remain simpler:
 
 ## Device name and note
 
-The Shelly device name should normally store the logical device name.
+The Shelly device name should normally store the logical device name or a deliberate, documented display-name variant.
 
 Example:
 

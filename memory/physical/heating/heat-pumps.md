@@ -9,7 +9,7 @@ Manufacturer: Mitsubishi Electric
 Product name/family: Geodan
 Model: EHGT17D-YM9ED
 Service ref. from service manual: EHGT17D-YM9ED.UK
-Type: ground-source heat pump / bergvärme with integrated DHW tank
+Type: ground-source heat pump / bergvarme with integrated DHW tank
 Quantity: 2
 ```
 
@@ -117,72 +117,55 @@ High-pressure switch/sensor and pressure sensor in refrigerant circuit
 Main remote controller and FTC controller board
 ```
 
-## Useful Geodan terminals and I/O
+## House-specific Geodan control terminals
 
-This section describes Mitsubishi FTC terminals that may be useful for future integration. It does not mean they are currently wired to G2.
-
-### Signal inputs on TBI terminals
-
-All listed input semantics are from the service manual table.
+The house-specific control truth is:
 
 ```text
-IN1  TBI.1 7-8  Room thermostat 1 input
-IN2  TBI.1 5-6  Flow switch 1 input
-IN3  TBI.1 3-4  Flow switch 2 input, Zone1
+The two external control contacts to drive are physical terminals/plints 11 and 12.
+```
+
+Important correction:
+
+A previous documentation pass over-read the Mitsubishi service manual's generic `IN11` and `IN12` names as if they were the house control terminals. That was wrong for this installation.
+
+The service manual appears to match the installed model family (`EHGT17D-YM9ED` / `EHGT17D-YM9ED.UK`), but its generic TBI input table must not be treated as the actual house wiring map. The actual installation uses plints 11 and 12 for the external control contacts.
+
+Open details to verify before any live write/control package:
+
+- exact physical terminal block label where plints 11 and 12 sit
+- which Shelly/relay output drives plint 11
+- which Shelly/relay output drives plint 12
+- whether each contact is dry contact, voltage input, or referenced to a shared common
+- whether closed contact means logical `1` for the existing 2-bit command model
+- how plints 11 and 12 map to the existing command bits used for VP1 and VP2
+
+Do not use Mitsubishi generic `IN4`, `IN5`, `IN11`, or `IN12` names as the implementation authority for this house until the actual wiring has been traced.
+
+## Mitsubishi manual I/O references, not current house truth
+
+The uploaded service manual contains generic FTC terminal information that may be useful as reference only.
+
+Examples from the generic manual table:
+
+```text
 IN4  TBI.1 1-2  Demand control input
-                 OFF/open: Normal
-                 ON/short: Heat source OFF or Boiler operation, depending external input setting
-
 IN5  TBI.2 7-8  Outdoor thermostat input
-                 OFF/open: Standard operation
-                 ON/short: Heater operation or Boiler operation, depending external input setting
-IN6  TBI.2 5-6  Room thermostat 2 input
-IN7  TBI.2 3-4  Flow switch 3 input, Zone2
-IN10 TBI.2 1-2  Heat meter input
-
 IN8  TBI.3 7-8  Electric energy meter 1 input
 IN9  TBI.3 5-6  Electric energy meter 2 input
+IN10 TBI.2 1-2  Heat meter input
 IN11 TBI.3 3-4  spare/unspecified in table
 IN12 TBI.3 1-2  Smart Grid Ready input
-
-INA1 TBI.4 1-3 / CN1A  Flow sensor input
-OUTA1 TBI.4 7-8       Analog output
+OUT11 TBO.3 5-6 Error output
+OUT15 TBO.4 1-2 Compressor ON signal
+OUT16 TBO.3 3-4 Heating thermo ON signal
 ```
 
-Practical integration interpretation:
+Practical interpretation:
 
-- IN4 Demand control is the cleanest manual-visible binary input for external suppression of heat source operation, if configured appropriately in the Mitsubishi controller.
-- IN12 Smart Grid Ready exists and may be a better future integration path for price/energy coordination if its behavior matches house needs after verification.
-- IN8/IN9 electric meter inputs and IN10 heat meter input may allow Mitsubishi energy monitor integration, but pulse semantics and current wiring must be verified.
-- Room thermostat inputs IN1/IN6 may be useful only if Mitsubishi control mode is intentionally changed; avoid accidental short-cycling.
-
-### Outputs on TBO terminals
-
-```text
-OUT1  TBO.1 1-2  Water circulation pump 1 output, Space heating & DHW
-OUT2  TBO.1 3-4  Water circulation pump 2 output, Zone1 local supply
-OUT3  TBO.1 5-6  Water circulation pump 3 output, Zone2 local supply / 2-way valve 2b depending setup
-
-OUT4  CN851      Built-in 3-way valve output, Heating vs DHW
-OUT5             Mixing valve output for 2-zone temperature control; state is stop/open/close
-OUT6  CNBH 1-3   Booster heater 1 output
-OUT7  CNBH 5-7   Booster heater 2 output
-OUT8  TBO.4 7-8  Signal output, Cooling
-OUT9  TBO.4 5-6  Immersion heater output
-OUT10 TBO.3 1-2  Boiler output
-OUT11 TBO.3 5-6  Error output
-OUT13 TBO.4 3-4  2-way valve 2a output
-OUT14 CNP4       Water circulation pump 4 output, DHW
-OUT15 TBO.4 1-2  Compressor ON signal
-OUT16 TBO.3 3-4  Heating thermo ON signal
-```
-
-Practical integration interpretation:
-
-- OUT15 Compressor ON and OUT16 Heating thermo ON are useful non-invasive status outputs if available/wired.
-- OUT11 Error output may be useful for G2 fault awareness.
-- OUT8 Cooling output and OUT5 mixing valve output are interesting for floor cooling / 2-zone work but must not be assumed wired.
-- OUT10 Boiler output may be repurposable only if Mitsubishi configuration intentionally uses boiler mode; do not assume safe.
+- Generic manual I/O is useful for diagnostics and future options.
+- It is not sufficient to identify the installed control wiring.
+- For G2 control packages, the installation-specific truth `plints 11 and 12` overrides the generic manual labels.
 
 ### Service/request values useful for diagnostics
 
@@ -231,9 +214,9 @@ Example:
 30/32 = 30 C flow temperature and 32 C domestic hot water target
 ```
 
-Open mapping detail:
+House-specific mapping note:
 
-The existing house-specific 2-bit command model may be implemented via Mitsubishi external inputs/settings rather than directly matching the generic IN4/IN5 descriptions above. Before changing hardware or software, verify actual wiring from Shelly/relay outputs to the Geodan/FTC terminals on VP1 and VP2.
+The two bits are expected to be driven via plints 11 and 12, but the exact bit order and active state must be verified from installed wiring before any G2 live control package.
 
 ## VP1 command mapping
 
@@ -373,4 +356,6 @@ Imported from G1 `memory/house-control/02-heat-pump-operating-schedules.md` duri
 
 Physical unit identity and initial capacity notes added from operator-provided hardware knowledge during direct documentation update.
 
-Geodan model/specification, COP/SCOP, operating limits and terminal notes condensed from Mitsubishi Electric product page for `EHGT17D-YM9ED` and uploaded service manual `Geodan SER.pdf` during direct documentation update.
+Geodan model/specification, COP/SCOP, operating limits and generic FTC terminal notes condensed from Mitsubishi Electric product page for `EHGT17D-YM9ED` and uploaded service manual `Geodan SER.pdf` during direct documentation update.
+
+House-specific correction that the actual external control terminals are plints 11 and 12 added from operator-provided installation knowledge during direct documentation update.

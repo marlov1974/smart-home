@@ -1,7 +1,7 @@
 # Package P0008: G2 Shelly build/deploy tools
 
 ## Status
-planned
+implemented
 
 ## Package order
 P0008
@@ -13,7 +13,7 @@ G2 / Mac tooling / Shelly deploy generation
 
 Build/deploy tooling must exist before the G2 Shelly installer is implemented.
 
-P0008 should create deterministic Python tooling that turns logical Shelly source into complete built scripts and numeric deploy chunks.
+P0008 creates deterministic Python tooling that turns logical Shelly source into complete built scripts and numeric deploy chunks.
 
 ## Solution model
 
@@ -149,3 +149,21 @@ Max implementation/debug attempts: 3
 - verification results
 - uncertainty
 - diff summary
+
+## Completion notes
+
+P0008 implemented the initial deterministic Shelly build/deploy generation tool used by later packages.
+
+It created the baseline Mac-side Shelly build path:
+
+- `src/mac/tools/shelly_build/**`
+- `tests/mac/tools/shelly_build/**`
+- fixture Shelly source/build/deploy artifacts
+- package-run evidence under `requirements/package-runs/P0008/**`
+
+Later packages refined and corrected the P0008 tool:
+
+- P0009 added generated metadata header, IIFE wrapper and strict mode.
+- P0010/P0011/P0013 established that Mac direct live deploy reads the complete built script and uses in-memory RPC upload chunks, not repo deploy chunks, as the direct deploy transport source.
+
+P0008 remains the package that introduced the build/deploy generation baseline.

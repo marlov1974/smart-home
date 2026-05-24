@@ -3,272 +3,219 @@ purpose: chatgpt_commit_patch
 package: null
 operations:
   - action: replace_file
-    path: memory/physical/heating/geodan-smart-grid.md
+    path: memory/physical/floor/floor-heating.md
     content: |
-      # Geodan Smart Grid Control
+      # Floor Heating
 
-      ## Sources
+      ## Scope
 
-      Condensed from:
+      Physical and control-relevant facts about floor heating belong here.
 
-      - uploaded Mitsubishi Electric Swedish Smart Grid manual `15371.pdf`, titled `Användarmanual SMART GRID - Styrning via externa enheter`
-      - uploaded Mitsubishi Electric Geodan service manual `ZEMES_SILTUMSUKNIS_GEODAN_SERVISA_INSTRUKCIJA.pdf`, model `EHGT17D-YM9ED`, service ref `EHGT17D-YM9ED.UK`
+      ## Design status
 
-      ## Model and terminal confirmation
+      There is no final G2 room-level floor-control design yet.
 
-      The service manual confirms the relevant model track:
+      Current documentation separates:
 
-      ```text
-      Model: EHGT17D-YM9ED
-      Service ref: EHGT17D-YM9ED.UK
-      FTC terminal block: TBI.3
-      IN11: TBI.3 3-4
-      IN12: TBI.3 1-2
-      Function: Smart grid ready input
-      ```
+      - existing physical/control baseline
+      - operator design ideas
+      - open design decisions
 
-      The wiring diagram shows TBI.3 with `IN8`, `IN9`, `IN11`, and `IN12`, and Table 1 names `IN12` as Smart grid ready input while referring `IN11`/`IN12` behavior to the installation manual / Smart Grid settings.
+      Do not treat the bedroom-control or bathroom-control ideas below as implemented G2 behavior until a later design/package makes them concrete.
 
-      ## Active control inputs
+      ## Existing room-control baseline
 
-      The Geodan/Ecodan Smart Grid function is controlled through two external inputs:
+      The existing floor room-control solution is a Siemens solution:
 
       ```text
-      IN11
-      IN12
+      Room thermostats: Siemens room thermostats
+      Room control capability: heating and cooling logic
+      Valve control: Siemens 0-10 V valves
+      Remote setpoint control: not available
       ```
 
-      The external controller must be able to close two contacts.
+      Each room temperature is manually set on the room thermostat.
 
-      ## Contact semantics
+      The current Siemens room thermostats cannot be remotely controlled by G2.
+
+      This Siemens thermostat / Siemens 0-10 V valve baseline also applies to bathrooms.
+
+      ## Current design idea for general rooms
+
+      Design idea:
+
+      Keep the old Siemens room-control solution in the general rooms:
 
       ```text
-      IN11 OFF/open  + IN12 OFF/open  = Normal function
-      IN11 ON/closed + IN12 OFF/open  = Start recommendation
-      IN11 OFF/open  + IN12 ON/closed = Stop command
-      IN11 ON/closed + IN12 ON/closed = Start command
+      - kitchen
+      - living room
+      - TV room
+      - hall
+      - laundry room
+      - corridor
       ```
+
+      Operating idea:
+
+      - in winter, manually set the room thermostats slightly high
+      - in summer, manually set the room thermostats slightly low
+      - then let the heat pump / floor-cooling system control these rooms globally through source temperature, operating windows and mode selection
 
       Interpretation:
 
-      - start recommendation means the machine may start if there is a need
-      - start command means the machine must start directly
-      - stop command blocks the Smart Grid selected function
-      - normal function means ordinary Geodan settings apply
-      - after a stop command, the machine may take up to about 20 minutes to stop to protect the compressor
+      The general rooms remain locally/manual-set rooms. G2 should mainly influence them through the global heating/cooling supply behavior, not by remote room setpoint changes.
 
-      ## Manual price-control example
+      ## Current design idea for bedrooms
 
-      High electricity price:
+      Bedrooms have more fine-grained comfort requirements than the general rooms.
 
-      ```text
-      IN11 OFF/open
-      IN12 ON/closed
-      ```
+      Design idea:
 
-      Low electricity price:
+      Replace bedroom room-control hardware with equipment that G2 can control remotely.
 
-      ```text
-      IN11 ON/closed
-      IN12 ON/closed
-      ```
+      Winter behavior idea:
 
-      Normal operation:
+      - bedrooms are normally kept a little cooler than general rooms
+      - bedrooms are warmed after midnight
+      - goal: cool when going to sleep, warm when waking up
+      - secondary goal: avoid expensive daytime heating by shifting some bedroom heat into cheaper night periods
 
-      ```text
-      IN11 OFF/open
-      IN12 OFF/open
-      ```
+      Summer behavior idea:
 
-      ## Smart Grid configuration scope
+      - bedrooms should generally be cold/cool around the clock
+      - bedroom summer comfort is more important than using the same thermal-mass strategy as general rooms
 
-      Smart Grid can be configured to affect:
+      Design implication:
 
-      ```text
-      - domestic hot water
-      - heating
-      - cooling
-      - pump cycles
-      ```
+      Bedroom control likely needs separate controllable actuators/thermostats/sensors from the existing Siemens manual thermostats.
 
-      If more than one function is selected, Smart Grid controls them together; the Smart Grid manual states they cannot be controlled separately by the same IN11/IN12 signal combination.
+      ## Current design idea for bathrooms
 
-      The service manual menu tree places Smart grid ready under:
+      Bathrooms currently use the same Siemens thermostat / Siemens 0-10 V valve type as the other floor rooms.
 
-      ```text
-      Main menu -> Service -> Operation settings -> Smart grid ready
-      ```
+      Need / hypothesis:
 
-      with settings for DHW, Heating, Pump cycles and target/interval behavior.
+      Bathrooms probably also need more active future control than the current manual Siemens thermostat model.
 
-      ## Efficiency warning
+      Winter behavior idea:
 
-      The Smart Grid manual warns that high storage temperatures:
+      - warm bathroom floors in the morning
+      - more moderate/lagom floor heat during the rest of the day
 
-      - reduce efficiency
-      - increase heat losses
-      - can reduce heat-pump lifetime
+      Summer behavior idea:
 
-      G2 planning consequence:
+      - slightly warm bathroom floors in the morning
+      - off during the rest of the day unless the weather feels cold/damp/rugged enough to justify heat
 
-      - avoid unnecessary high DHW/storage targets
-      - avoid high flow temperatures unless needed
-      - treat Smart Grid boost as a cost/need trade-off, not free storage
+      Design implication:
 
-      ## House command bit order
+      Bathroom control may need separate controllable actuators/thermostats/sensors, or another way for G2 to override/coordinate the existing Siemens local control, if morning comfort scheduling should be automated.
 
-      Unless installation evidence proves otherwise:
+      ## Five heating/cooling loops context
 
-      ```text
-      first bit  = IN11
-      second bit = IN12
-      0 = OFF/open
-      1 = ON/closed
-      ```
+      The house has five relevant heating/cooling loops:
 
-      Therefore:
+      1. FTX cooling coil
+      2. FTX heating coil
+      3. bathroom floor heating loop
+      4. rest-of-house floor loop, switchable between heating and cooling
+      5. brine loop for floor cooling
 
-      ```text
-      00 = normal function
-      10 = start recommendation
-      01 = stop command
-      11 = start command
-      ```
+      This file focuses on the floor-heating parts of that topology.
 
-      The house-specific VP1/VP2 flow/DHW target mappings remain documented in `heat-pumps.md`.
+      ## Functional roles
 
-      ## Diagnostics useful for future G2 work
+      Bathroom floor loop:
 
-      Service menu running information includes request codes useful for non-invasive diagnostics:
+      - always heating
+      - primary purpose is bathroom comfort
+      - contributes a little to the house heat-energy battery
+      - likely needs active comfort scheduling in future G2 design
 
-      ```text
-      175 = FTC output signal information
-      176 = FTC input signal information
-      553 = FTC output signal information at time of error
-      554 = FTC input signal information at time of error
-      ```
+      Rest-of-house floor loop:
 
-      The service manual also states that if the heat pump is forced ON/OFF because Smart grid ready input `IN11` and `IN12` are used, and switch-on/off commands are input, this is normal operation and no action is necessary.
+      - primary house heater when it is cold
+      - primary house cooler when it is warm
+      - primary actuator for using the house thermal mass as an energy battery
+      - can switch between heat-pump/heating side and floor-cooling automation side
 
-      ## Open installation checks
+      FTX heating coil:
 
-      Before any live control package, verify:
+      - secondary house heater
+      - can heat quickly
+      - can act as counter-heater against the FTX cooling coil when the system wants to dry the house without cooling it down
+      - primary focus is comfort rather than slow thermal storage
 
-      - which Shelly/relay output drives IN11
-      - which Shelly/relay output drives IN12
-      - that the installed interface closes contacts as expected
-      - current Smart Grid settings for VP1
-      - current Smart Grid settings for VP2
-      - whether VP1 and VP2 use identical Smart Grid function selection
+      FTX cooling coil:
 
-  - action: replace_file
-    path: memory/physical/heating/00-index.md
-    content: |
-      # Heating Physical Index
+      - primarily for air humidity and air-temperature comfort
+      - has limited ability to cool the house mass or store cooling
 
-      This folder contains physical and operating knowledge for heat pumps, brine, hot water and related slow energy systems.
+      ## Bathroom floor heating loop
 
-      ## Files
+      Known facts:
 
       ```text
-      heat-pumps.md          VP1/VP2 physical command model and logical levels
-      geodan-smart-grid.md   Geodan IN11/IN12 Smart Grid control semantics and diagnostics
-      brine.md               brine/borehole planning model
-      hot-water.md           domestic hot water notes and open gaps
+      Loop: bathroom floor heating
+      Connection: parallel with other heating loops
+      Heat source: always connected to the heat-pump/heating side
+      Room control baseline: Siemens room thermostat and Siemens 0-10 V valve
       ```
 
-      ## Boundary
+      Control/topology implication:
 
-      This folder contains physical facts and planning baselines.
+      The bathroom floor heating loop is not part of the floor-cooling source switching. It remains a heating-side loop.
 
-      Future planners/optimizers belong in requirements, source and deploy artifacts.
+      Comfort implication:
 
-      Created by `P0002-import-infrastructure-and-physical-baseline`.
+      Bathroom floor comfort is time-dependent, especially morning comfort. Future G2 design should consider how to automate or coordinate this without assuming the current Siemens manual thermostats can be remotely controlled.
 
-  - action: replace_file
-    path: memory/bootstrap-manifest.json
-    content: |
-      {
-        "version": 12,
-        "repo": "marlov1974/smart-home",
-        "ref": "main",
-        "mandatory": true,
-        "fail_on_missing": true,
-        "purpose": "Mandatory read order for G2 Smart Home AI/Codex sessions.",
-        "read_order": [
-          "memory/00-index.md",
-          "memory/01-system-overview.md",
-          "memory/02-design-principles.md",
-          "memory/03-g1-g2-boundary.md",
-          "memory/04-codex-workflow.md",
-          "memory/05-package-lifecycle.md",
-          "memory/06-chatgpt-requirements-analyst.md",
-          "memory/07-project-instructions.md",
-          "memory/device-management/00-index.md",
-          "memory/device-management/identity-and-registry.md",
-          "memory/device-management/installer-model.md",
-          "memory/device-management/local-state.md",
-          "memory/device-management/shelly-deploy-structure.md",
-          "memory/device-management/source-build-deploy-layers.md",
-          "memory/device-management/mac-layer.md",
-          "memory/infrastructure/00-index.md",
-          "memory/infrastructure/network.md",
-          "memory/infrastructure/router-nat.md",
-          "memory/infrastructure/devices.md",
-          "memory/physical/00-index.md",
-          "memory/physical/ftx/00-index.md",
-          "memory/physical/ftx/devices.md",
-          "memory/physical/ftx/sensors.md",
-          "memory/physical/ftx/airflow.md",
-          "memory/physical/ftx/temperatures.md",
-          "memory/physical/ftx/cooling-risk.md",
-          "memory/physical/heating/00-index.md",
-          "memory/physical/heating/heat-pumps.md",
-          "memory/physical/heating/geodan-smart-grid.md",
-          "memory/physical/heating/brine.md",
-          "memory/physical/heating/hot-water.md",
-          "memory/physical/floor/00-index.md",
-          "memory/physical/floor/floor-heating.md",
-          "memory/physical/floor/floor-cooling.md",
-          "memory/physical/floor/shunts-pumps-valves.md",
-          "memory/physical/home/00-index.md",
-          "memory/physical/home/rooms-zones.md",
-          "memory/physical/home/comfort-sensors.md",
-          "memory/knowhow/00-index.md",
-          "memory/knowhow/shelly.md",
-          "memory/knowhow/codex.md",
-          "docs/functions/00-index.md",
-          "docs/functions/TEMPLATE.md",
-          "requirements/README.md",
-          "requirements/packages/TEMPLATE.md",
-          "requirements/package-runs/README.md",
-          "requirements/package-runs/TEMPLATE-review.md",
-          "requirements/package-runs/TEMPLATE-design.md",
-          "requirements/package-runs/TEMPLATE-functions.md",
-          "requirements/package-runs/TEMPLATE-attempts.md",
-          "requirements/packages/P0001-bootstrap-smart-home-repo.md",
-          "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
-          "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
-          "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md",
-          "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md",
-          "requirements/packages/P0006-device-management-and-deploy-architecture.md",
-          "requirements/packages/P0007-codex-phased-package-build-process.md",
-          "requirements/packages/P0008-g2-shelly-build-deploy-tools.md",
-          "requirements/packages/P0009-shelly-build-wrapper-and-metadata.md",
-          "requirements/packages/P0010-shelly-deploy-tool-and-log-listener.md",
-          "requirements/packages/P0011-mac-rpc-chunked-upload-and-spotprice-kvs-test.md",
-          "requirements/packages/P0012-correct-spotprice-template-and-clean-deploy-artifacts.md",
-          "requirements/packages/P0013-spotprice-low-memory-se-elpris-runtime.md",
-          "requirements/packages/P0014-device-management-safe-dampers-baseline.md"
-        ],
-        "governance": {
-          "truth_hierarchy": [
-            "implementation and deploy artifacts",
-            "package files",
-            "requirements files",
-            "memory files",
-            "historical discussion"
-          ],
-          "rule": "Any change that adds mandatory solution context must update this manifest when it is required for future AI/Codex reconstruction."
-        }
-      }
+      ## Rest-of-house floor loop in heating mode
+
+      Known facts:
+
+      ```text
+      Loop: rest-of-house floor loop
+      Heating connection: heat-pump/heating side
+      Cooling connection: floor-cooling automation side
+      Mode switching: via three-way valve
+      ```
+
+      In heating mode, the rest-of-house floor loop is connected to the heat-pump/heating side.
+
+      In cooling mode, it is switched away from the heat-pump/heating side and connected to the floor-cooling automation.
+
+      The three-way valve that switches this loop should be controlled by the floor-cooling automation.
+
+      ## Relation to FTX heating coil
+
+      The FTX heating coil is always connected to the heat-pump/heating side, in parallel with the other heating loops.
+
+      FTX can choose to use or not use the heating coil through its own shunt.
+
+      ## Open gaps
+
+      Known remaining gaps:
+
+      - final G2 room-level floor-control design
+      - bedroom replacement thermostat/actuator/sensor hardware
+      - bathroom active-control hardware or override strategy
+      - mapping from existing Siemens thermostats to rooms/zones
+      - bathroom floor loop pump/valve/shunt identities, if any
+      - rest-of-house floor-loop pump identity
+      - three-way valve hardware identity
+      - floor-cooling automation hardware
+      - valve/switch states
+      - analog outputs
+      - Shelly device mappings
+      - Home Assistant entities
+      - fallback/default behavior
+      - interaction with heat-pump planner
+
+      ## Source
+
+      Physical topology and loop role details added from operator-provided hardware knowledge during direct documentation update.
+
+      Existing Siemens room-control baseline and room-level design ideas added from operator-provided hardware/design knowledge during direct documentation update.
+
+      Bathroom Siemens-control baseline and active-control needs added from operator-provided hardware/design knowledge during direct documentation update.

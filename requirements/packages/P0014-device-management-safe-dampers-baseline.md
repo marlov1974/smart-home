@@ -1,7 +1,7 @@
 # Package P0014: Device management safe dampers baseline
 
 ## Status
-planned
+verified
 
 ## Package order
 P0014
@@ -328,4 +328,36 @@ If an incorrect duplicate `House Temp` component is created, Codex may remove on
 
 ## Completion notes
 
-Filled after implementation.
+P0014 completed live verification on `2026-05-24`.
+
+Verified endpoint/identity:
+
+```text
+runtime endpoint used: http://192.168.86.240:8030
+stable LAN address: 192.168.77.30
+physical Shelly id: 8813bfd99f54
+live device id: shellypro1pm-8813bfd99f54
+model: SPSW-201PE15UL
+app: Pro1PM
+firmware: 1.7.5
+```
+
+Applied and verified:
+
+```text
+device name: ftx_dampers
+channel name: dampers
+restore output state when rebooted: initial_state = restore_last
+number component: number:200 / House Temp
+```
+
+Idempotent rerun reported `action_count: 0` and verify-only readback passed.
+
+Evidence:
+
+```text
+requirements/package-runs/P0014/review.md
+requirements/package-runs/P0014/design.md
+requirements/package-runs/P0014/functions.md
+requirements/package-runs/P0014/attempts.md
+```

@@ -82,6 +82,18 @@ Shelly channel name to test: dampers
 
 This P0014 underscore device name is a live device-management test, not a final naming standard for all G2 devices. If the test proves the API behavior, a later package should decide whether Shelly device names should use `ftx-dampers`, `ftx_dampers` or another consistent display convention.
 
+P0014 verified the live dampers baseline on `shellypro1pm-8813bfd99f54`:
+
+```text
+Shelly device name: ftx_dampers
+Shelly switch:0 channel name: dampers
+Switch restore output after reboot setting: initial_state = restore_last
+Virtual number component: number:200 / House Temp
+House Temp config: min 10, max 30, default 21, persisted true, UI unit C, step 0.1
+```
+
+`House Temp` is a non-actuating G2 device-management proof and is not a production control input until a later package explicitly makes it one.
+
 ## Global registry
 
 Every Shelly installer starts from:

@@ -29,6 +29,7 @@ docs/functions/
   mac/
     shelly-build-tool.md
     shelly-live-deploy-tool.md
+    shelly-device-management-tool.md
     spot-forecast.md
   contracts/
     spot-forecast-contract.md

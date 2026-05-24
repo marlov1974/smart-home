@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -62,8 +62,7 @@
     "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md",
     "requirements/packages/P0006-device-management-and-deploy-architecture.md",
     "requirements/packages/P0007-codex-phased-package-build-process.md",
-    "requirements/packages/P0008-g2-shelly-build-deploy-tools.md",
-    "requirements/packages/P0009-import-ftx-pressure-sensors-from-g1.md"
+    "requirements/packages/P0008-g2-shelly-build-deploy-tools.md"
   ],
   "governance": {
     "truth_hierarchy": [

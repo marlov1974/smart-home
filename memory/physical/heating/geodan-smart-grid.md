@@ -7,6 +7,14 @@ Condensed from:
 - uploaded Mitsubishi Electric Swedish Smart Grid manual `15371.pdf`, titled `Användarmanual SMART GRID - Styrning via externa enheter`
 - uploaded Mitsubishi Electric Geodan service manual `ZEMES_SILTUMSUKNIS_GEODAN_SERVISA_INSTRUKCIJA.pdf`, model `EHGT17D-YM9ED`, service ref `EHGT17D-YM9ED.UK`
 
+## Current project status
+
+Heat-pump Smart Grid control is not ready for G2 live control.
+
+Before any G2 package controls VP1/VP2 Smart Grid inputs, the operator must manually verify and set the heat-pump Smart Grid settings. Until that manual verification is possible, the heat pumps must remain in their current unmanaged/ostyrt operating mode so the house continues to function without G2 control.
+
+A future VP-control package must start with an installed-settings verification gate and must not assume the intended `IN11`/`IN12` behavior is active just because the wiring exists.
+
 ## Model and terminal confirmation
 
 The service manual confirms the relevant model track:
@@ -153,3 +161,4 @@ Before any live control package, verify:
 - current Smart Grid settings for VP1
 - current Smart Grid settings for VP2
 - whether VP1 and VP2 use identical Smart Grid function selection
+- that the operator has intentionally moved the heat pumps from unmanaged/ostyrt operation into the required Smart Grid-ready configuration

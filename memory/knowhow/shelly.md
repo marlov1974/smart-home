@@ -22,6 +22,30 @@ Opening `/debug/log` is diagnostic observation. It does not itself change device
 
 Starting/stopping scripts, writing KVS, uploading scripts, changing components or changing actuators are live actions and require explicit package permission.
 
+### Log final outcome honestly
+
+Shelly one-shot scripts should make the final log line reflect the true outcome.
+
+Use a success marker such as:
+
+```text
+DONE
+```
+
+only after the script's critical work has succeeded.
+
+If a critical write or verification step fails, log a distinct terminal state before self-stop, for example:
+
+```text
+DONE_WITH_ERROR
+KVS_ERR_DONE
+FALLBACK_DONE
+```
+
+The exact marker may be package-specific, but it must not make a failed KVS write, failed parse, fallback-only result or partial result look like a clean success.
+
+This is especially important for one-shot scripts that self-stop after writing KVS. A script may still self-stop safely after failure, but its logs and package evidence must distinguish safe termination from successful output.
+
 ### Keep Shelly HTTP payloads small
 
 P0012 showed that fetching and parsing a large spot-price JSON object list on Shelly can cause memory pressure, including `out_of_memory` and a stuck/failing runtime before KVS output is written.

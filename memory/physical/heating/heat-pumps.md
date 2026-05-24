@@ -1,5 +1,40 @@
 # Heat Pumps
 
+## Physical units
+
+The house has two physically identical ground-source heat pumps:
+
+```text
+Manufacturer: Mitsubishi
+Product family/model: Ecodan ground-source heat pump / bergvärme
+Quantity: 2
+```
+
+The two heat pumps have different operational roles in the control model, but the underlying hardware is treated as identical unless future nameplate/manual data proves otherwise.
+
+Known capacity note:
+
+```text
+Manual nominal/max value: 11 kW
+Observed/practical peak capability: about 16 kW
+```
+
+Interpretation:
+
+Mitsubishi appears to rate the unit conservatively compared with practical observed peak behavior. Treat `11 kW` as the documented/manual capacity value and `16 kW` as a short-term peak capability, not as a confirmed sustainable average-day output.
+
+Planning implication:
+
+- use conservative capacity assumptions for daily energy planning
+- do not assume 16 kW is continuously available over a full day
+- peak/recovery logic may use the higher observed capability only with caution and future calibration
+
+Open details:
+
+- exact Mitsubishi Ecodan model designation / nameplate
+- whether manual `11 kW` refers to nominal, maximum, or sustainable continuous output under specified brine/flow conditions
+- measured duration for observed/practical 16 kW peak behavior
+
 ## Physical command model
 
 Each heat pump is controlled through two external digital inputs.
@@ -160,3 +195,5 @@ Purpose:
 ## Source
 
 Imported from G1 `memory/house-control/02-heat-pump-operating-schedules.md` during `P0002`.
+
+Physical unit identity and capacity notes added from operator-provided hardware knowledge during direct documentation update.

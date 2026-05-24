@@ -1,7 +1,7 @@
 # Package P0012: Correct spotprice template and clean deploy artifacts
 
 ## Status
-planned
+failed-live
 
 ## Package order
 P0012
@@ -321,4 +321,20 @@ Codex must not remove or alter unrelated scripts.
 
 ## Completion notes
 
-Filled after implementation.
+P0012 was attempted and stopped after 3 live attempts.
+
+Outcome:
+
+- package-run evidence was preserved under `requirements/package-runs/P0012/`
+- current-state implementation changes were reverted because live verification failed
+- no corrected spotprice runtime/tooling changes from P0012 were promoted as current truth
+- final live finding: dampers `spotprice_v0_9_0` hit Shelly `out_of_memory` / stuck `fetching` before corrected elprisetjustnu KVS output was written
+
+Evidence:
+
+- `requirements/package-runs/P0012/review.md`
+- `requirements/package-runs/P0012/design.md`
+- `requirements/package-runs/P0012/functions.md`
+- `requirements/package-runs/P0012/attempts.md`
+- `requirements/package-runs/P0012/findings.md`
+- `requirements/package-runs/P0012/logs/live-dampers-spotprice.md`

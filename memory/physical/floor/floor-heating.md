@@ -14,7 +14,7 @@ Current documentation separates:
 - operator design ideas
 - open design decisions
 
-Do not treat the bedroom-control ideas below as implemented G2 behavior until a later design/package makes them concrete.
+Do not treat the bedroom-control or bathroom-control ideas below as implemented G2 behavior until a later design/package makes them concrete.
 
 ## Existing room-control baseline
 
@@ -30,6 +30,8 @@ Remote setpoint control: not available
 Each room temperature is manually set on the room thermostat.
 
 The current Siemens room thermostats cannot be remotely controlled by G2.
+
+This Siemens thermostat / Siemens 0-10 V valve baseline also applies to bathrooms.
 
 ## Current design idea for general rooms
 
@@ -80,6 +82,28 @@ Design implication:
 
 Bedroom control likely needs separate controllable actuators/thermostats/sensors from the existing Siemens manual thermostats.
 
+## Current design idea for bathrooms
+
+Bathrooms currently use the same Siemens thermostat / Siemens 0-10 V valve type as the other floor rooms.
+
+Need / hypothesis:
+
+Bathrooms probably also need more active future control than the current manual Siemens thermostat model.
+
+Winter behavior idea:
+
+- warm bathroom floors in the morning
+- more moderate/lagom floor heat during the rest of the day
+
+Summer behavior idea:
+
+- slightly warm bathroom floors in the morning
+- off during the rest of the day unless the weather feels cold/damp/rugged enough to justify heat
+
+Design implication:
+
+Bathroom control may need separate controllable actuators/thermostats/sensors, or another way for G2 to override/coordinate the existing Siemens local control, if morning comfort scheduling should be automated.
+
 ## Five heating/cooling loops context
 
 The house has five relevant heating/cooling loops:
@@ -99,6 +123,7 @@ Bathroom floor loop:
 - always heating
 - primary purpose is bathroom comfort
 - contributes a little to the house heat-energy battery
+- likely needs active comfort scheduling in future G2 design
 
 Rest-of-house floor loop:
 
@@ -127,11 +152,16 @@ Known facts:
 Loop: bathroom floor heating
 Connection: parallel with other heating loops
 Heat source: always connected to the heat-pump/heating side
+Room control baseline: Siemens room thermostat and Siemens 0-10 V valve
 ```
 
 Control/topology implication:
 
 The bathroom floor heating loop is not part of the floor-cooling source switching. It remains a heating-side loop.
+
+Comfort implication:
+
+Bathroom floor comfort is time-dependent, especially morning comfort. Future G2 design should consider how to automate or coordinate this without assuming the current Siemens manual thermostats can be remotely controlled.
 
 ## Rest-of-house floor loop in heating mode
 
@@ -162,6 +192,7 @@ Known remaining gaps:
 
 - final G2 room-level floor-control design
 - bedroom replacement thermostat/actuator/sensor hardware
+- bathroom active-control hardware or override strategy
 - mapping from existing Siemens thermostats to rooms/zones
 - bathroom floor loop pump/valve/shunt identities, if any
 - rest-of-house floor-loop pump identity
@@ -179,3 +210,5 @@ Known remaining gaps:
 Physical topology and loop role details added from operator-provided hardware knowledge during direct documentation update.
 
 Existing Siemens room-control baseline and room-level design ideas added from operator-provided hardware/design knowledge during direct documentation update.
+
+Bathroom Siemens-control baseline and active-control needs added from operator-provided hardware/design knowledge during direct documentation update.

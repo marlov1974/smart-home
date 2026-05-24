@@ -66,6 +66,18 @@ ChatGPT should update `.github/chatgpt_commit.yaml`; then the human operator run
 
 The YAML/action handoff may include at most 5 file changes per YAML/commit. If more than 5 files are needed, split the work into multiple handoffs.
 
+Action guard rule:
+
+```text
+The apply-chatgpt-commit action routine must not modify its own input file `.github/chatgpt_commit.yaml`.
+```
+
+Reason:
+
+If the workflow is later given a push trigger on `.github/chatgpt_commit.yaml`, changing that same file from inside the action could create recursive workflow runs or make it unclear which patch was applied.
+
+ChatGPT may update `.github/chatgpt_commit.yaml` as the handoff input, but the action-applied operations must target other files only.
+
 ## Documentation-only updates
 
 Not every memory/documentation update requires a package.

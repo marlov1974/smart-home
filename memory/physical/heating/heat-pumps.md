@@ -122,50 +122,45 @@ Main remote controller and FTC controller board
 The house-specific control truth is:
 
 ```text
-The two external control contacts to drive are physical terminals/plints 11 and 12.
+The two external control inputs to drive are Geodan/FTC IN11 and IN12.
 ```
 
-Important correction:
+Correction history:
 
-A previous documentation pass over-read the Mitsubishi service manual's generic `IN11` and `IN12` names as if they were the house control terminals. That was wrong for this installation.
+A previous documentation pass incorrectly treated `IN11` and `IN12` as if they were only generic/manual labels or informal plint numbers. That was wrong. In this installation and the relevant Mitsubishi manual track, the heat-pump control inputs are named `IN11` and `IN12`.
 
-The service manual appears to match the installed model family (`EHGT17D-YM9ED` / `EHGT17D-YM9ED.UK`), but its generic TBI input table must not be treated as the actual house wiring map. The actual installation uses plints 11 and 12 for the external control contacts.
+The earlier uploaded service manual for `EHGT17D-YM9ED` listed generic FTC input information, but it was not sufficient on its own to identify the intended house control inputs. Use the installation-specific truth above: control goes via `IN11` and `IN12`.
 
 Open details to verify before any live write/control package:
 
-- exact physical terminal block label where plints 11 and 12 sit
-- which Shelly/relay output drives plint 11
-- which Shelly/relay output drives plint 12
-- whether each contact is dry contact, voltage input, or referenced to a shared common
+- exact physical terminal block location for `IN11` and `IN12`
+- which Shelly/relay output drives `IN11`
+- which Shelly/relay output drives `IN12`
+- whether each input is dry contact, voltage input, or referenced to a shared common
 - whether closed contact means logical `1` for the existing 2-bit command model
-- how plints 11 and 12 map to the existing command bits used for VP1 and VP2
+- how `IN11` and `IN12` map to the existing command bits used for VP1 and VP2
 
-Do not use Mitsubishi generic `IN4`, `IN5`, `IN11`, or `IN12` names as the implementation authority for this house until the actual wiring has been traced.
+## Mitsubishi manual I/O references
 
-## Mitsubishi manual I/O references, not current house truth
+Generic FTC terminal tables are useful for diagnostics and future options, but the house control authority for the two-bit command model is `IN11` and `IN12`.
 
-The uploaded service manual contains generic FTC terminal information that may be useful as reference only.
-
-Examples from the generic manual table:
+Other potentially useful Mitsubishi/FTC I/O from the uploaded service manual includes:
 
 ```text
-IN4  TBI.1 1-2  Demand control input
-IN5  TBI.2 7-8  Outdoor thermostat input
-IN8  TBI.3 7-8  Electric energy meter 1 input
-IN9  TBI.3 5-6  Electric energy meter 2 input
-IN10 TBI.2 1-2  Heat meter input
-IN11 TBI.3 3-4  spare/unspecified in table
-IN12 TBI.3 1-2  Smart Grid Ready input
-OUT11 TBO.3 5-6 Error output
-OUT15 TBO.4 1-2 Compressor ON signal
-OUT16 TBO.3 3-4 Heating thermo ON signal
+IN4   Demand control input
+IN5   Outdoor thermostat input
+IN8   Electric energy meter 1 input
+IN9   Electric energy meter 2 input
+IN10  Heat meter input
+OUT11 Error output
+OUT15 Compressor ON signal
+OUT16 Heating thermo ON signal
 ```
 
 Practical interpretation:
 
-- Generic manual I/O is useful for diagnostics and future options.
-- It is not sufficient to identify the installed control wiring.
-- For G2 control packages, the installation-specific truth `plints 11 and 12` overrides the generic manual labels.
+- `IN11` and `IN12` are the relevant two external command inputs for this house.
+- Other manual I/O may be useful for diagnostics or future integration but must not replace the known `IN11`/`IN12` command model without a deliberate design decision.
 
 ### Service/request values useful for diagnostics
 
@@ -216,7 +211,7 @@ Example:
 
 House-specific mapping note:
 
-The two bits are expected to be driven via plints 11 and 12, but the exact bit order and active state must be verified from installed wiring before any G2 live control package.
+The two command bits are driven via Geodan/FTC `IN11` and `IN12`, but the exact bit order and active state must be verified from installed wiring before any G2 live control package.
 
 ## VP1 command mapping
 
@@ -358,4 +353,4 @@ Physical unit identity and initial capacity notes added from operator-provided h
 
 Geodan model/specification, COP/SCOP, operating limits and generic FTC terminal notes condensed from Mitsubishi Electric product page for `EHGT17D-YM9ED` and uploaded service manual `Geodan SER.pdf` during direct documentation update.
 
-House-specific correction that the actual external control terminals are plints 11 and 12 added from operator-provided installation knowledge during direct documentation update.
+House-specific correction that the external control inputs are Geodan/FTC `IN11` and `IN12` added from operator-provided installation/manual knowledge during direct documentation update.

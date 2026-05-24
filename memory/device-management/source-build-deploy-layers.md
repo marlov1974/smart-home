@@ -76,7 +76,32 @@ Chunks have numeric names and no logical meaning.
 
 A chunk may contain parts of multiple source files. That is acceptable because chunks are transport artifacts, not source architecture.
 
-These repo deploy chunks are distinct from Mac direct-deploy RPC chunks. The Mac live deploy tool may split one complete built script into bounded in-memory `Script.PutCode` append chunks for transport without reading or requiring `dep/s/ch/**`.
+These repo deploy chunks are distinct from Mac direct-deploy RPC chunks.
+
+## Mac direct-deploy source contract
+
+Mac direct deploy must read the complete built script from the build layer, for example:
+
+```text
+build/shelly/spotprice/spotprice_v0_9_0.js
+```
+
+Then the Mac live-deploy tool may split that complete script into bounded in-memory RPC upload chunks for `Script.PutCode` transport.
+
+Mac direct deploy must not read `dep/s/ch/**` as its deployment source unless a future package explicitly changes that model.
+
+Current meaning:
+
+```text
+RPC upload chunks:
+  temporary chunks created in Mac memory from one complete built script.
+  Required for Mac direct deploy of larger scripts.
+
+Repo deploy chunks:
+  generated files under dep/s/ch/**.
+  Optional artifacts for a possible future Shelly-side pull/install model.
+  Not the source for normal Mac-as-installer direct deploy.
+```
 
 ## Recipe
 
@@ -127,6 +152,8 @@ For Shelly code packages, Codex should:
 ```
 
 Codex must not manually maintain deploy chunks unless the package explicitly modifies build/deploy tooling or generated artifact policy.
+
+For packages using Mac direct deploy, Codex must verify that the live-deploy path reads the built script and uses in-memory RPC upload chunks. It must not make `dep/s/ch/**` mandatory for Mac direct deploy by accident.
 
 ## Why this replaces G1 chunk thinking
 

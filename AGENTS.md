@@ -70,13 +70,31 @@ A quick package command starts with repository synchronization. Codex must fetch
 
 Codex must still perform the full workflow: repository synchronization, bootstrap, package consistency review, package-run evidence, implementation design, function design, implementation, build/generation, tests, verification and final report.
 
-For non-live packages, the quick command also authorizes Codex to commit and push the package result when verification passes and the diff is inside package scope.
+For pre-production G2 packages, the quick command authorizes Codex to commit and push the package result when verification passes and the diff is inside package scope, including packages that performed live writes, if all of these are true:
 
-For packages that allow live writes, actuator changes, device writes, Home Assistant writes, secrets or destructive actions, the quick command does not grant extra permission. Follow the explicit package live-test/write policy.
+- the package explicitly allowed the live writes that were performed
+- live actions stayed inside the package allowlist
+- no actuator/output actions were performed unless the package explicitly allowed them
+- tests and required verification commands passed
+- live verification passed when required
+- package-run evidence and completion notes were updated
+- `git diff --check` passed
+
+This pre-production commit/push permission does not authorize production activation, broad rollout, G1 runtime migration, Home Assistant production changes, secrets, destructive actions, or live actions outside the package allowlist.
+
+For production-critical G2 runtime packages, the active package must explicitly state what successful verification authorizes:
+
+```text
+commit/push only
+commit/push plus staged deploy
+commit/push plus production activation
+```
+
+Production activation means making G2 code/config the active controller for production behavior. Production activation always requires explicit package permission and operator approval.
 
 Before committing and pushing, Codex must run `git status`, confirm the diff is inside package scope, run required verification commands and `git diff --check`.
 
-After pushing, Codex must report commit SHA, files changed, tests run, verification result and uncertainty.
+After pushing, Codex must report commit SHA, files changed, tests run, verification result, live actions performed if any, final live state and uncertainty.
 
 ## Package consistency review
 
@@ -153,6 +171,25 @@ Each attempt must capture relevant logs when live Shelly testing is involved, ve
 After 3 failed attempts, stop and report evidence, attempts, current hypothesis and remaining uncertainty.
 
 Live Shelly log streaming is read-only and may be used when live testing is allowed. Live writes, script starts/stops, KVS writes and actuator changes still require explicit package permission.
+
+## Production-mode rollback and pre-live testing
+
+Future production G2 must support simple operator rollback by version/package, for example:
+
+```text
+backa till 27
+```
+
+Rollback must be implemented as a safe forward-moving operation that restores the selected target version/config/runtime state without relying on ad-hoc manual edits.
+
+Future production G2 must also support test levels that reduce risk before production activation:
+
+- Mac/Codex tests of external APIs and data contracts before Shelly runtime deploy
+- non-production or low-criticality Shelly device tests before central production devices receive a script
+- staged rollout where a less central device may validate a new runtime behavior before a central device such as dampers receives it
+- live verification that is read-only or non-actuating whenever possible before production activation
+
+These production-mode capabilities are future work. They do not change the current pre-production G2 rule that successful, package-scoped, verified package results may be committed and pushed.
 
 ## Learning and evidence storage
 

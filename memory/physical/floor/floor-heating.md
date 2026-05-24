@@ -4,6 +4,82 @@
 
 Physical and control-relevant facts about floor heating belong here.
 
+## Design status
+
+There is no final G2 room-level floor-control design yet.
+
+Current documentation separates:
+
+- existing physical/control baseline
+- operator design ideas
+- open design decisions
+
+Do not treat the bedroom-control ideas below as implemented G2 behavior until a later design/package makes them concrete.
+
+## Existing room-control baseline
+
+The existing floor room-control solution is a Siemens solution:
+
+```text
+Room thermostats: Siemens room thermostats
+Room control capability: heating and cooling logic
+Valve control: Siemens 0-10 V valves
+Remote setpoint control: not available
+```
+
+Each room temperature is manually set on the room thermostat.
+
+The current Siemens room thermostats cannot be remotely controlled by G2.
+
+## Current design idea for general rooms
+
+Design idea:
+
+Keep the old Siemens room-control solution in the general rooms:
+
+```text
+- kitchen
+- living room
+- TV room
+- hall
+- laundry room
+- corridor
+```
+
+Operating idea:
+
+- in winter, manually set the room thermostats slightly high
+- in summer, manually set the room thermostats slightly low
+- then let the heat pump / floor-cooling system control these rooms globally through source temperature, operating windows and mode selection
+
+Interpretation:
+
+The general rooms remain locally/manual-set rooms. G2 should mainly influence them through the global heating/cooling supply behavior, not by remote room setpoint changes.
+
+## Current design idea for bedrooms
+
+Bedrooms have more fine-grained comfort requirements than the general rooms.
+
+Design idea:
+
+Replace bedroom room-control hardware with equipment that G2 can control remotely.
+
+Winter behavior idea:
+
+- bedrooms are normally kept a little cooler than general rooms
+- bedrooms are warmed after midnight
+- goal: cool when going to sleep, warm when waking up
+- secondary goal: avoid expensive daytime heating by shifting some bedroom heat into cheaper night periods
+
+Summer behavior idea:
+
+- bedrooms should generally be cold/cool around the clock
+- bedroom summer comfort is more important than using the same thermal-mass strategy as general rooms
+
+Design implication:
+
+Bedroom control likely needs separate controllable actuators/thermostats/sensors from the existing Siemens manual thermostats.
+
 ## Five heating/cooling loops context
 
 The house has five relevant heating/cooling loops:
@@ -84,6 +160,9 @@ FTX can choose to use or not use the heating coil through its own shunt.
 
 Known remaining gaps:
 
+- final G2 room-level floor-control design
+- bedroom replacement thermostat/actuator/sensor hardware
+- mapping from existing Siemens thermostats to rooms/zones
 - bathroom floor loop pump/valve/shunt identities, if any
 - rest-of-house floor-loop pump identity
 - three-way valve hardware identity
@@ -98,3 +177,5 @@ Known remaining gaps:
 ## Source
 
 Physical topology and loop role details added from operator-provided hardware knowledge during direct documentation update.
+
+Existing Siemens room-control baseline and room-level design ideas added from operator-provided hardware/design knowledge during direct documentation update.

@@ -4,6 +4,11 @@ This repository is the G2 Smart Home source of truth.
 
 Before coding:
 
+0. Sync the local repository before reading package files:
+   - run `git fetch origin`
+   - run `git status --short --branch`
+   - if the current branch is only behind `origin/main`, run `git pull --ff-only`
+   - if there are local changes, local commits, ahead/behind divergence, merge conflicts, or any non-fast-forward situation, stop and report `SYNC BLOCKED` with the exact git status and branch divergence
 1. Read `README.md`.
 2. Read `memory/bootstrap-manifest.json`.
 3. Read every file in the manifest `read_order`, in order.
@@ -28,11 +33,42 @@ Rules:
 - Run package test cases and verification commands before reporting done.
 - Report diff, tests run, results and uncertainty before commit unless the package explicitly allows committing.
 
+## Repository synchronization
+
+Codex must never infer that a requested package does not exist until it has synchronized the local repository with `origin/main`.
+
+For every package run, including quick package commands, repository synchronization is part of bootstrap and must happen before reading `memory/bootstrap-manifest.json` and before searching for `requirements/packages/Pxxxx-*.md`.
+
+Required command sequence:
+
+```bash
+git fetch origin
+git status --short --branch
+```
+
+If local main is only behind `origin/main`, update with:
+
+```bash
+git pull --ff-only
+```
+
+If the branch is ahead/behind, has local modifications, or cannot fast-forward, Codex must stop and report:
+
+```text
+SYNC BLOCKED
+<git status --short --branch output>
+<git log --oneline --decorate --left-right HEAD...origin/main output when available>
+```
+
+Codex must not spend time reconstructing or guessing a missing package from stale local files. If a package is absent locally after successful sync, then report it missing.
+
 ## Quick package command
 
 If the human says a short command such as `build package 9`, `bygg paket 9`, or `kör P0009`, Codex should treat it as authorization to run the full package workflow for that package in `marlov1974/smart-home`.
 
-Codex must still perform the full workflow: bootstrap, package consistency review, package-run evidence, implementation design, function design, implementation, build/generation, tests, verification and final report.
+A quick package command starts with repository synchronization. Codex must fetch/pull first so newly created package files are visible locally before it attempts to understand or implement the package.
+
+Codex must still perform the full workflow: repository synchronization, bootstrap, package consistency review, package-run evidence, implementation design, function design, implementation, build/generation, tests, verification and final report.
 
 For non-live packages, the quick command also authorizes Codex to commit and push the package result when verification passes and the diff is inside package scope.
 

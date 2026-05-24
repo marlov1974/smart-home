@@ -16,6 +16,32 @@ The house has five relevant heating/cooling loops:
 
 This file focuses on the floor-cooling parts of that topology.
 
+## Functional roles
+
+Rest-of-house floor loop:
+
+- primary house cooler when it is warm
+- primary house heater when it is cold
+- primary actuator for using the house thermal mass as an energy battery
+- in cooling mode, it receives cooling from the floor-cooling automation rather than the heat-pump heating side
+
+FTX cooling coil:
+
+- primarily for comfort through air humidity control and air-temperature control
+- has limited ability to cool the house mass or store cooling
+- can cooperate with FTX heating coil when drying is desired without excessive house cooling
+
+FTX heating coil:
+
+- can act as counter-heater against FTX cooling coil when the system wants to dry the house without cooling it down
+- secondary/fast comfort heater, not the main thermal-mass actuator
+
+Bathroom floor loop:
+
+- always heating
+- comfort-first bathroom loop
+- not part of floor-cooling source switching
+
 ## Rest-of-house floor loop
 
 The rest-of-house floor loop can switch between two sources:
@@ -33,10 +59,13 @@ Control ownership:
 The three-way valve should be controlled by the floor-cooling automation.
 ```
 
-Hardware status:
+Known hardware:
 
 ```text
-Three-way valve hardware/control hardware: to be documented later
+Three-way valve motor: probably ESBE ARA661
+Three-way valve controller: Shelly Pro 2
+Floor-loop pump: Wilo Yonos PICO 25/1-8
+Floor-loop pump controller: Shelly Pro Dimmer 0-10V switch output
 ```
 
 Pump fact:
@@ -56,8 +85,10 @@ There is a dedicated brine loop for floor cooling.
 Known facts:
 
 ```text
-Dedicated brine-side pump: yes
+Dedicated brine-side pump: Grundfos MAGNA3 32-100 180
 Dedicated shunt/mixing solution: yes
+Shunt valve actuator: Siemens SAS61.03
+Shunt control signal: 0-10 V from Shelly Pro Dimmer 0-10V
 ```
 
 Purpose:
@@ -88,20 +119,16 @@ FTX cooling/dehumidification may help keep the house dry enough for floor coolin
 
 Known remaining gaps:
 
-- three-way valve hardware identity
-- floor-cooling automation hardware
-- floor-loop pump identity
-- brine-loop pump identity
-- shunt/mixing hardware identity
-- valve/switch states
-- analog outputs
-- Shelly device mappings
-- Home Assistant entities
+- confirmed three-way valve identity; likely ESBE ARA661
+- final Shelly device names and IDs
+- final relay/channel mapping
+- valve-open timing delay before floor-loop pump start
 - floor temperature sensors
 - house dewpoint sensors/entities
+- Home Assistant entities
 - fallback/default behavior
 - condensation safety limits
 
 ## Source
 
-Physical topology added from operator-provided hardware knowledge during direct documentation update.
+Physical topology, hardware and loop role details added from operator-provided hardware knowledge during direct documentation update.

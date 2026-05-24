@@ -4,6 +4,14 @@
 
 Physical and control-relevant facts about floor cooling belong here.
 
+## Current project status
+
+Floor cooling is currently in inventory and later-design mode.
+
+Some ordered devices are not yet installed, and not all floor-cooling hardware is physically connected. G2 must not implement floor-cooling control logic until a later package verifies the physical I/O baseline, device identities, channel mappings, valve timing, sensor availability and safe default behavior.
+
+Future floor-cooling work should start with an inventory/readback/safe-state package, not a control algorithm package.
+
 ## Five heating/cooling loops context
 
 The house has five relevant heating/cooling loops:
@@ -97,7 +105,7 @@ The shunt solution mixes brine until the floor-water side reaches the desired co
 
 Control implication:
 
-The floor-cooling automation must control the brine-side pump and shunt/mixing solution so floor-water temperature stays above condensation-safe limits while still providing useful cooling.
+The floor-cooling automation must eventually control the brine-side pump and shunt/mixing solution so floor-water temperature stays above condensation-safe limits while still providing useful cooling. This is not yet ready for implementation because physical installation, I/O mapping and safe defaults are still incomplete.
 
 ## Relation to FTX cooling coil
 
@@ -128,7 +136,11 @@ Known remaining gaps:
 - Home Assistant entities
 - fallback/default behavior
 - condensation safety limits
+- physical installation completion for ordered devices
+- verification that all required devices are installed and wired
 
 ## Source
 
 Physical topology, hardware and loop role details added from operator-provided hardware knowledge during direct documentation update.
+
+Inventory/design-waiting status and note that some ordered devices are not yet installed or connected added from operator project knowledge during direct documentation update.

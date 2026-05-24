@@ -16,8 +16,18 @@ from typing import Any, Callable
 HELLO_SCRIPT_NAME = "hello_v1_0_0"
 SPOTPRICE_SCRIPT_NAME = "spotprice_v0_9_0"
 WEATHER_SCRIPT_NAME = "weather_v0_9_0"
+SUPPLY_UNI_PUB_SCRIPT_NAME = "supply_uni_pub"
+SUPPLY_UNI_REFRESH_SCRIPT_NAME = "supply_uni_refresh"
 ALLOWED_SCRIPT_NAME = HELLO_SCRIPT_NAME
-ALLOWED_SCRIPT_NAMES = frozenset({HELLO_SCRIPT_NAME, SPOTPRICE_SCRIPT_NAME, WEATHER_SCRIPT_NAME})
+ALLOWED_SCRIPT_NAMES = frozenset(
+    {
+        HELLO_SCRIPT_NAME,
+        SPOTPRICE_SCRIPT_NAME,
+        WEATHER_SCRIPT_NAME,
+        SUPPLY_UNI_PUB_SCRIPT_NAME,
+        SUPPLY_UNI_REFRESH_SCRIPT_NAME,
+    }
+)
 SPOTPRICE_KVS_KEYS = (
     "hp.price.2h",
     "hp.price.date",
@@ -26,6 +36,7 @@ SPOTPRICE_KVS_KEYS = (
     "hp.price.updated",
 )
 WEATHER_KVS_KEY = "g2.weather.act"
+SUPPLY_UNI_KVS_KEY = "tele.supply_uni"
 TARGET_DAMPERS_PHYSICAL_ID = "8813bfd99f54"
 DEFAULT_UPLOAD_CHUNK_BYTES = 1500
 DEFAULT_HTTP_TIMEOUT_SECONDS = 5.0
@@ -80,6 +91,27 @@ class WeatherDeployResult:
     upload_chunk_bytes: int
     upload_chunk_count: int
     log_excerpt: str
+    kvs_value: dict[str, Any]
+    kvs_summary: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class SupplyUniDeployResult:
+    """Evidence returned by one P0016 supply UNI deploy/KVS run."""
+
+    supply_base_url: str
+    dampers_base_url: str
+    supply_device_id: str
+    dampers_device_id: str
+    supply_status_summary: dict[str, Any]
+    publisher_script_id: int
+    refresher_script_id: int
+    before_scripts: tuple[dict[str, Any], ...]
+    after_scripts: tuple[dict[str, Any], ...]
+    publisher_upload_chunk_count: int
+    refresher_upload_chunk_count: int
+    publisher_log_excerpt: str
+    refresher_log_excerpt: str
     kvs_value: dict[str, Any]
     kvs_summary: dict[str, Any]
 
@@ -172,6 +204,111 @@ def verify_dampers_identity(device_info: dict[str, Any]) -> str:
             f"target identity mismatch: expected {TARGET_DAMPERS_PHYSICAL_ID}, got {device_info.get('id')!r}"
         )
     return str(device_info.get("id"))
+
+
+def verify_supply_identity(device_info: dict[str, Any]) -> str:
+    """Verify that the endpoint looks like a Shelly supply UNI device."""
+
+    live_id = str(device_info.get("id") or "")
+    if not _normalized_id(live_id):
+        raise ShellyLiveError("supply UNI identity is missing")
+    return live_id
+
+
+def _component(status: dict[str, Any], key: str) -> dict[str, Any] | None:
+    value = status.get(key)
+    return value if isinstance(value, dict) else None
+
+
+def _number_from(component: dict[str, Any] | None, *names: str) -> float | None:
+    if component is None:
+        return None
+    for name in names:
+        value = component.get(name)
+        if isinstance(value, (int, float)):
+            return float(value)
+    return None
+
+
+def _round1(value: float) -> float:
+    return round(float(value), 1)
+
+
+def _clip(value: float, lower: float, upper: float) -> float:
+    number = float(value)
+    if number < lower:
+        return lower
+    if number > upper:
+        return upper
+    return number
+
+
+def parse_supply_status(status: dict[str, Any]) -> dict[str, Any]:
+    """Parse supply UNI local status into the P0016 telemetry shape."""
+
+    if not isinstance(status, dict):
+        raise ShellyLiveError("supply UNI status is not an object")
+    pressure = _number_from(_component(status, "voltmeter:100"), "xvoltage", "value", "pa", "pressure")
+    rpm = _number_from(_component(status, "input:2"), "xfreq", "value", "rpm", "frequency")
+    post_vvx = _number_from(_component(status, "temperature:100"), "tC", "tc", "value", "temp")
+    outdoor = _number_from(_component(status, "temperature:101"), "tC", "tc", "value", "temp")
+    to_outdoor = _number_from(_component(status, "temperature:102"), "tC", "tc", "value", "temp")
+
+    missing = []
+    for name, value in (
+        ("supply_pa", pressure),
+        ("supply_rpm", rpm),
+        ("post_vvx", post_vvx),
+        ("outdoor", outdoor),
+        ("to_outdoor", to_outdoor),
+    ):
+        if value is None:
+            missing.append(name)
+    if missing:
+        raise ShellyLiveError(f"supply UNI status missing required values: {', '.join(missing)}")
+
+    return {
+        "supply_pa": int(round(_clip(pressure, 0, 999))),
+        "outdoor": _round1(_clip(outdoor, -99.9, 99.9)),
+        "post_vvx": _round1(_clip(post_vvx, -99.9, 99.9)),
+        "to_outdoor": _round1(_clip(to_outdoor, -99.9, 99.9)),
+        "supply_rpm": int(round(_clip(rpm, 0, 9999))),
+    }
+
+
+def verify_supply_snapshot(kvs_value: Any) -> dict[str, Any]:
+    """Validate and summarize the P0016 supply UNI telemetry snapshot."""
+
+    if not isinstance(kvs_value, dict):
+        raise ShellyLiveError("supply UNI KVS value is not an object")
+    expected_keys = {"t", "supply_pa", "outdoor", "post_vvx", "to_outdoor", "supply_rpm"}
+    actual_keys = set(kvs_value)
+    if actual_keys != expected_keys:
+        raise ShellyLiveError(f"supply UNI KVS keys mismatch: {sorted(actual_keys)}")
+    return {
+        "t": int(_number_in_range(kvs_value.get("t"), 0, 4_102_444_800, "t")),
+        "supply_pa": int(round(_number_in_range(kvs_value.get("supply_pa"), 0, 999, "supply_pa"))),
+        "outdoor": round(_number_in_range(kvs_value.get("outdoor"), -99.9, 99.9, "outdoor"), 1),
+        "post_vvx": round(_number_in_range(kvs_value.get("post_vvx"), -99.9, 99.9, "post_vvx"), 1),
+        "to_outdoor": round(_number_in_range(kvs_value.get("to_outdoor"), -99.9, 99.9, "to_outdoor"), 1),
+        "supply_rpm": int(round(_number_in_range(kvs_value.get("supply_rpm"), 0, 9999, "supply_rpm"))),
+    }
+
+
+def supply_snapshot_changed(current: dict[str, Any], previous: dict[str, Any] | None) -> bool:
+    """Mirror the P0016 publisher delta thresholds for tests and review."""
+
+    if previous is None:
+        return True
+    cur = verify_supply_snapshot(current)
+    prev = verify_supply_snapshot(previous)
+    return (
+        abs(cur["supply_pa"] - prev["supply_pa"]) >= 10
+        or abs(cur["outdoor"] - prev["outdoor"]) >= 1.0
+        or abs(cur["post_vvx"] - prev["post_vvx"]) >= 1.0
+        or abs(cur["to_outdoor"] - prev["to_outdoor"]) >= 1.0
+        or abs(cur["supply_rpm"] - prev["supply_rpm"]) >= 100
+    )
 
 
 def list_scripts(
@@ -455,6 +592,25 @@ def weather_kvs_get(
     return None
 
 
+def supply_uni_kvs_get(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> Any:
+    """Read the documented P0016 supply UNI telemetry KVS key."""
+
+    try:
+        result = rpc_call(base_url, "KVS.Get", {"key": SUPPLY_UNI_KVS_KEY}, timeout=timeout, opener=opener)
+    except ShellyLiveError as exc:
+        message = str(exc)
+        if "not found" in message and "KVS.Get" in message:
+            return None
+        raise
+    if isinstance(result, dict):
+        return result.get("value")
+    return None
+
+
 def read_spotprice_kvs(
     base_url: str,
     timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
@@ -569,6 +725,28 @@ def wait_for_weather_kvs(
             last_error = str(exc)
             time.sleep(0.5)
     raise ShellyLiveError(f"weather KVS verification timed out: {last_error}")
+
+
+def wait_for_supply_uni_kvs(
+    base_url: str,
+    kvs_timeout: float = DEFAULT_KVS_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Poll supply UNI telemetry KVS until it validates or timeout expires."""
+
+    deadline = time.monotonic() + kvs_timeout
+    last_error = "supply UNI KVS was not read"
+    value: Any = None
+    while time.monotonic() < deadline:
+        value = supply_uni_kvs_get(base_url, timeout=http_timeout, opener=opener)
+        try:
+            summary = verify_supply_snapshot(value)
+            return value, summary
+        except ShellyLiveError as exc:
+            last_error = str(exc)
+            time.sleep(0.5)
+    raise ShellyLiveError(f"supply UNI KVS verification timed out: {last_error}")
 
 
 def deploy_hello(
@@ -790,6 +968,133 @@ def deploy_weather(
     )
 
 
+def deploy_supply_uni(
+    supply_base_url: str,
+    dampers_base_url: str,
+    publisher_script_path: str | Path,
+    refresher_script_path: str | Path,
+    publisher_expected_text: str = "supply_uni_pub PUB OK",
+    refresher_expected_text: str = "supply_uni_refresh DONE",
+    upload_chunk_bytes: int = DEFAULT_UPLOAD_CHUNK_BYTES,
+    log_timeout: float = DEFAULT_LOG_TIMEOUT_SECONDS,
+    kvs_timeout: float = DEFAULT_KVS_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> SupplyUniDeployResult:
+    """Deploy and verify the P0016 supply UNI publisher/refresher proof."""
+
+    if upload_chunk_bytes < 1:
+        raise ShellyLiveError("upload chunk bytes must be positive")
+
+    publisher_code = Path(publisher_script_path).read_text(encoding="utf-8")
+    refresher_code = Path(refresher_script_path).read_text(encoding="utf-8")
+
+    supply_info = get_device_info(supply_base_url, timeout=http_timeout, opener=opener)
+    supply_device_id = verify_supply_identity(supply_info)
+    supply_status = get_status(supply_base_url, timeout=http_timeout, opener=opener)
+    supply_status_summary = parse_supply_status(supply_status)
+
+    dampers_info = get_device_info(dampers_base_url, timeout=http_timeout, opener=opener)
+    dampers_device_id = verify_dampers_identity(dampers_info)
+    get_status(dampers_base_url, timeout=http_timeout, opener=opener)
+
+    before_scripts = tuple(list_scripts(supply_base_url, timeout=http_timeout, opener=opener))
+    for script_name in (SUPPLY_UNI_PUB_SCRIPT_NAME, SUPPLY_UNI_REFRESH_SCRIPT_NAME):
+        existing = find_script(list(before_scripts), script_name)
+        if existing is not None and existing.get("running") is True:
+            stop_script(supply_base_url, _script_id(existing), script_name, timeout=http_timeout, opener=opener)
+
+    publisher_script_id = ensure_script(
+        supply_base_url,
+        SUPPLY_UNI_PUB_SCRIPT_NAME,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    publisher_upload_chunk_count = put_script_code_chunked(
+        supply_base_url,
+        publisher_script_id,
+        SUPPLY_UNI_PUB_SCRIPT_NAME,
+        publisher_code,
+        upload_chunk_bytes=upload_chunk_bytes,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    refresher_script_id = ensure_script(
+        supply_base_url,
+        SUPPLY_UNI_REFRESH_SCRIPT_NAME,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    refresher_upload_chunk_count = put_script_code_chunked(
+        supply_base_url,
+        refresher_script_id,
+        SUPPLY_UNI_REFRESH_SCRIPT_NAME,
+        refresher_code,
+        upload_chunk_bytes=upload_chunk_bytes,
+        timeout=http_timeout,
+        opener=opener,
+    )
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        log_future = executor.submit(
+            capture_debug_log,
+            supply_base_url,
+            publisher_expected_text,
+            log_timeout,
+            http_timeout,
+            opener,
+        )
+        time.sleep(0.05)
+        start_script(supply_base_url, publisher_script_id, SUPPLY_UNI_PUB_SCRIPT_NAME, timeout=http_timeout, opener=opener)
+        try:
+            publisher_log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            _ensure_no_memory_pressure(publisher_log_excerpt)
+            kvs_value, kvs_summary = wait_for_supply_uni_kvs(
+                dampers_base_url,
+                kvs_timeout=kvs_timeout,
+                http_timeout=http_timeout,
+                opener=opener,
+            )
+        except concurrent.futures.TimeoutError as exc:
+            raise ShellyLiveError("publisher debug log capture timed out") from exc
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        log_future = executor.submit(
+            capture_debug_log,
+            supply_base_url,
+            refresher_expected_text,
+            log_timeout,
+            http_timeout,
+            opener,
+        )
+        time.sleep(0.05)
+        start_script(supply_base_url, refresher_script_id, SUPPLY_UNI_REFRESH_SCRIPT_NAME, timeout=http_timeout, opener=opener)
+        try:
+            refresher_log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            _ensure_no_memory_pressure(refresher_log_excerpt)
+        except concurrent.futures.TimeoutError as exc:
+            raise ShellyLiveError("refresher debug log capture timed out") from exc
+
+    after_scripts = tuple(list_scripts(supply_base_url, timeout=http_timeout, opener=opener))
+    return SupplyUniDeployResult(
+        supply_base_url=normalize_base_url(supply_base_url),
+        dampers_base_url=normalize_base_url(dampers_base_url),
+        supply_device_id=supply_device_id,
+        dampers_device_id=dampers_device_id,
+        supply_status_summary=supply_status_summary,
+        publisher_script_id=publisher_script_id,
+        refresher_script_id=refresher_script_id,
+        before_scripts=before_scripts,
+        after_scripts=after_scripts,
+        publisher_upload_chunk_count=publisher_upload_chunk_count,
+        refresher_upload_chunk_count=refresher_upload_chunk_count,
+        publisher_log_excerpt=publisher_log_excerpt,
+        refresher_log_excerpt=refresher_log_excerpt,
+        kvs_value=kvs_value,
+        kvs_summary=kvs_summary,
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     """Run Shelly live tooling from the command line."""
 
@@ -821,6 +1126,18 @@ def main(argv: list[str] | None = None) -> int:
     weather_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
     weather_parser.add_argument("--kvs-timeout", type=float, default=DEFAULT_KVS_TIMEOUT_SECONDS)
     weather_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
+
+    supply_parser = subparsers.add_parser("deploy-supply-uni")
+    supply_parser.add_argument("--supply-base-url", required=True)
+    supply_parser.add_argument("--dampers-base-url", required=True)
+    supply_parser.add_argument("--publisher-script", required=True)
+    supply_parser.add_argument("--refresher-script", required=True)
+    supply_parser.add_argument("--publisher-expect", default="supply_uni_pub PUB OK")
+    supply_parser.add_argument("--refresher-expect", default="supply_uni_refresh DONE")
+    supply_parser.add_argument("--upload-chunk-bytes", type=int, default=DEFAULT_UPLOAD_CHUNK_BYTES)
+    supply_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
+    supply_parser.add_argument("--kvs-timeout", type=float, default=DEFAULT_KVS_TIMEOUT_SECONDS)
+    supply_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
 
     args = parser.parse_args(argv)
     try:
@@ -891,6 +1208,42 @@ def main(argv: list[str] | None = None) -> int:
             print("log_excerpt_begin")
             print(result.log_excerpt.rstrip("\n"))
             print("log_excerpt_end")
+            return 0
+        if args.command == "deploy-supply-uni":
+            result = deploy_supply_uni(
+                args.supply_base_url,
+                args.dampers_base_url,
+                args.publisher_script,
+                args.refresher_script,
+                publisher_expected_text=args.publisher_expect,
+                refresher_expected_text=args.refresher_expect,
+                upload_chunk_bytes=args.upload_chunk_bytes,
+                log_timeout=args.log_timeout,
+                kvs_timeout=args.kvs_timeout,
+                http_timeout=args.http_timeout,
+            )
+            print(f"supply_target={result.supply_base_url}")
+            print(f"dampers_target={result.dampers_base_url}")
+            print(f"supply_device_id={result.supply_device_id}")
+            print(f"dampers_device_id={result.dampers_device_id}")
+            print(f"supply_status_summary={json.dumps(result.supply_status_summary, separators=(',', ':'), sort_keys=True)}")
+            print(f"publisher_script=supply_uni_pub id={result.publisher_script_id}")
+            print(f"refresher_script=supply_uni_refresh id={result.refresher_script_id}")
+            print(f"upload_chunk_bytes={args.upload_chunk_bytes}")
+            print(f"publisher_upload_chunk_count={result.publisher_upload_chunk_count}")
+            print(f"refresher_upload_chunk_count={result.refresher_upload_chunk_count}")
+            print(f"before_scripts={json.dumps(result.before_scripts, separators=(',', ':'))}")
+            print(f"after_scripts={json.dumps(result.after_scripts, separators=(',', ':'))}")
+            print(f"kvs_summary={json.dumps(result.kvs_summary, separators=(',', ':'), sort_keys=True)}")
+            print("kvs_value_begin")
+            print(json.dumps(result.kvs_value, separators=(",", ":"), sort_keys=True))
+            print("kvs_value_end")
+            print("publisher_log_excerpt_begin")
+            print(result.publisher_log_excerpt.rstrip("\n"))
+            print("publisher_log_excerpt_end")
+            print("refresher_log_excerpt_begin")
+            print(result.refresher_log_excerpt.rstrip("\n"))
+            print("refresher_log_excerpt_end")
             return 0
     except (OSError, ShellyLiveError) as exc:
         print(f"error: {exc}")

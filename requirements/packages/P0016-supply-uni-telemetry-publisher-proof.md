@@ -1,7 +1,7 @@
 # Package P0016: Supply UNI telemetry publisher proof
 
 ## Status
-planned
+verified
 
 ## Package order
 P0016
@@ -593,4 +593,19 @@ If an incorrect KVS key was written, Codex may only remove it if the package des
 
 ## Completion notes
 
-Filled after implementation.
+Implemented and verified live by Codex on 2026-05-24.
+
+Evidence:
+
+- `requirements/package-runs/P0016/review.md`
+- `requirements/package-runs/P0016/design.md`
+- `requirements/package-runs/P0016/functions.md`
+- `requirements/package-runs/P0016/attempts.md`
+- `requirements/package-runs/P0016/logs/live-supply-uni.md`
+
+Final live state:
+
+- `supply_uni_pub` installed on `ftx-supply-uni` and intentionally left running.
+- `supply_uni_refresh` installed on `ftx-supply-uni` and stopped.
+- `tele.supply_uni` present on dampers with the latest supply UNI snapshot.
+- No actuator/output/device-config/Home Assistant/G1 production actions were performed.

@@ -24,6 +24,7 @@ docs/functions/
   TEMPLATE.md
   shelly/
     weather.md
+    supply-uni-publisher.md
     installer.md
     ftx-brain.md
     ftx-driver.md

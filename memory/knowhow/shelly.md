@@ -80,6 +80,19 @@ Mac direct deploy uses temporary in-memory RPC upload chunks to send one complet
 
 Repo deploy chunks under `dep/s/ch/**` are generated artifacts for a possible Shelly-side pull/install model. They must not be treated as the source for Mac direct deploy unless a future package explicitly changes that model.
 
+### Shelly-to-Shelly KVS publish can use HTTP.POST JSON-RPC
+
+P0016 verified a Shelly Plus UNI script can publish a compact telemetry object to another Shelly on the local Shelly network by calling:
+
+```text
+HTTP.POST http://<target-ip>/rpc
+{"id":1,"method":"KVS.Set","params":{"key":"tele.supply_uni","value":{...}}}
+```
+
+The verified case was `ftx-supply-uni` writing `tele.supply_uni` to dampers at `192.168.77.30`. The response completed with HTTP 200 and the value was readable from dampers KVS.
+
+Use this pattern only for explicitly allowed KVS contracts. Do not generalize it to actuator, device configuration, network, MQTT, Bluetooth, cloud or component writes without a package that explicitly allows and verifies those actions.
+
 ## Future promoted lessons
 
 Promote repeated or important package observations here, for example:

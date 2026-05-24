@@ -1,0 +1,61 @@
+// supply_uni_refresh P0016 one-shot publisher restart proof.
+var SCRIPT_NAME = "supply_uni_refresh";
+var PUB_NAME = "supply_uni_pub";
+
+function log(s) {
+  print(SCRIPT_NAME + " " + String(s || ""));
+}
+
+function findScriptByName(scripts, name) {
+  var i;
+  if (!scripts) return null;
+  for (i = 0; i < scripts.length; i++) {
+    if (scripts[i] && scripts[i].name === name) return scripts[i];
+  }
+  return null;
+}
+
+function selfStop() {
+  Shelly.call("Script.List", {}, function (res) {
+    var self = findScriptByName(res && res.scripts, SCRIPT_NAME);
+    if (self) Shelly.call("Script.Stop", { id: self.id });
+  });
+}
+
+function runRefresh() {
+  log("BOT");
+  Shelly.call("Script.List", {}, function (res, err) {
+    var pub;
+    if (err || !res || !res.scripts) {
+      log("LIST ERR");
+      selfStop();
+      return;
+    }
+
+    pub = findScriptByName(res.scripts, PUB_NAME);
+    if (!pub) {
+      log("NO PUB");
+      selfStop();
+      return;
+    }
+
+    function startPub() {
+      log("START PUB");
+      Shelly.call("Script.Start", { id: pub.id }, function () {
+        log("DONE");
+        selfStop();
+      });
+    }
+
+    if (pub.running) {
+      log("STOP PUB");
+      Shelly.call("Script.Stop", { id: pub.id }, function () {
+        Timer.set(200, false, startPub);
+      });
+    } else {
+      startPub();
+    }
+  });
+}
+
+runRefresh();

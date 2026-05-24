@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015/P0016.
 
 ## Safety Contract
 
@@ -12,11 +12,13 @@ The live-write boundary is hard-coded to:
 hello_v1_0_0
 spotprice_v0_9_0
 weather_v0_9_0
+supply_uni_pub
+supply_uni_refresh
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification. `supply_uni_pub` and `supply_uni_refresh` are used for P0016 supply UNI publisher/refresher verification.
 
-The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys and P0015 `g2.weather.act`.
+The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys, P0015 `g2.weather.act`, and P0016 `tele.supply_uni`.
 
 ## Build/deploy source contract
 
@@ -146,7 +148,7 @@ Side effects:
 - None.
 
 Contract notes:
-- Raises unless the name is exactly `hello_v1_0_0` or `spotprice_v0_9_0`.
+- Raises unless the name is in the current hard-coded allowlist.
 
 Tests:
 - `tests/mac/tools/shelly_live/test_core.py`
@@ -155,7 +157,7 @@ Introduced:
 - P0010
 
 Last changed:
-- P0015
+- P0016
 
 ### ensure_script()
 
@@ -391,6 +393,138 @@ Introduced:
 
 Last changed:
 - P0015
+
+### parse_supply_status()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Validate that a live supply UNI `Shelly.GetStatus` response exposes the P0016 component values before deployment.
+
+Inputs:
+- Status object.
+
+Outputs:
+- Summary with `supply_pa`, `outdoor`, `post_vvx`, `to_outdoor` and `supply_rpm`.
+
+Side effects:
+- None.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0016
+
+Last changed:
+- P0016
+
+### verify_supply_snapshot()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Validate the P0016 `tele.supply_uni` KVS shape and numeric ranges.
+
+Inputs:
+- Raw KVS value.
+
+Outputs:
+- Normalized telemetry summary.
+
+Side effects:
+- None.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0016
+
+Last changed:
+- P0016
+
+### deploy_supply_uni()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Deploy, start, log-watch and verify the P0016 `supply_uni_pub` and `supply_uni_refresh` scripts on supply UNI while reading back `tele.supply_uni` from dampers.
+
+Inputs:
+- Supply UNI base URL, dampers base URL, complete built publisher/refresher script paths, expected log text, upload chunk size and timeouts.
+
+Outputs:
+- `SupplyUniDeployResult` with identity evidence, status summary, script ids, upload chunk counts, log excerpts and KVS summary.
+
+Side effects:
+- Verifies supply identity is present.
+- Verifies dampers identity with `Shelly.GetDeviceInfo`.
+- May create/update/start/stop only `supply_uni_pub` and `supply_uni_refresh` on supply UNI.
+- Reads only `tele.supply_uni` from dampers KVS.
+
+Contract notes:
+- Rejects dampers target identity mismatch before writes.
+- Requires supply status shape to parse before writes.
+- Direct deploy reads complete built scripts and uses in-memory RPC upload chunks.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0016
+
+Last changed:
+- P0016
+
+### supply_snapshot_changed()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Mirror the P0016 publisher delta thresholds for unit tests and package review.
+
+Inputs:
+- Current and previous `tele.supply_uni` snapshots.
+
+Outputs:
+- Boolean.
+
+Side effects:
+- None.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0016
+
+Last changed:
+- P0016
 
 ### put_script_code()
 

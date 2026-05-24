@@ -10,21 +10,28 @@ from src.mac.tools.shelly_live.core import (
     HELLO_SCRIPT_NAME,
     SPOTPRICE_KVS_KEYS,
     SPOTPRICE_SCRIPT_NAME,
+    SUPPLY_UNI_KVS_KEY,
+    SUPPLY_UNI_PUB_SCRIPT_NAME,
+    SUPPLY_UNI_REFRESH_SCRIPT_NAME,
     WEATHER_KVS_KEY,
     WEATHER_SCRIPT_NAME,
     ShellyLiveError,
     capture_debug_log,
     deploy_hello,
     deploy_spotprice,
+    deploy_supply_uni,
     deploy_weather,
     ensure_allowed_script_name,
     ensure_script,
     find_script,
     normalize_base_url,
+    parse_supply_status,
     put_script_code,
     put_script_code_chunked,
     rpc_call,
     split_rpc_upload_chunks,
+    supply_snapshot_changed,
+    verify_supply_snapshot,
     verify_spotprice_kvs,
     verify_weather_kvs,
 )
@@ -109,6 +116,8 @@ class ShellyLiveTests(unittest.TestCase):
         ensure_allowed_script_name(ALLOWED_SCRIPT_NAME)
         ensure_allowed_script_name(SPOTPRICE_SCRIPT_NAME)
         ensure_allowed_script_name(WEATHER_SCRIPT_NAME)
+        ensure_allowed_script_name(SUPPLY_UNI_PUB_SCRIPT_NAME)
+        ensure_allowed_script_name(SUPPLY_UNI_REFRESH_SCRIPT_NAME)
 
         with self.assertRaisesRegex(ShellyLiveError, "forbidden script name"):
             ensure_allowed_script_name("g2-hello")
@@ -491,6 +500,210 @@ class ShellyLiveTests(unittest.TestCase):
         self.assertNotIn("ftx.weather.act", source)
         forbidden_fragments = ("Switch.", "Relay.", "Cover.", "MQTT.", "Wifi.", "Bluetooth.")
         self.assertFalse(any(fragment in source for fragment in forbidden_fragments))
+
+    def test_parse_supply_status_accepts_expected_component_keys(self):
+        status = {
+            "voltmeter:100": {"xvoltage": 42.2},
+            "input:2": {"xfreq": 1234.4},
+            "temperature:100": {"tC": 18.44},
+            "temperature:101": {"tC": -3.24},
+            "temperature:102": {"tC": 7.25},
+        }
+
+        self.assertEqual(
+            {
+                "supply_pa": 42,
+                "outdoor": -3.2,
+                "post_vvx": 18.4,
+                "to_outdoor": 7.2,
+                "supply_rpm": 1234,
+            },
+            parse_supply_status(status),
+        )
+
+    def test_parse_supply_status_rejects_missing_values(self):
+        with self.assertRaisesRegex(ShellyLiveError, "missing required"):
+            parse_supply_status({"voltmeter:100": {"xvoltage": 42}})
+
+    def test_verify_supply_snapshot_accepts_exact_contract(self):
+        summary = verify_supply_snapshot(
+            {
+                "t": 1780000000,
+                "supply_pa": 42,
+                "outdoor": -3.24,
+                "post_vvx": 18.44,
+                "to_outdoor": 7.25,
+                "supply_rpm": 1234,
+            }
+        )
+
+        self.assertEqual(
+            {
+                "t": 1780000000,
+                "supply_pa": 42,
+                "outdoor": -3.2,
+                "post_vvx": 18.4,
+                "to_outdoor": 7.2,
+                "supply_rpm": 1234,
+            },
+            summary,
+        )
+
+    def test_verify_supply_snapshot_rejects_extra_keys(self):
+        with self.assertRaisesRegex(ShellyLiveError, "keys mismatch"):
+            verify_supply_snapshot(
+                {
+                    "t": 1780000000,
+                    "source": "ftx-supply-uni",
+                    "supply_pa": 42,
+                    "outdoor": -3.2,
+                    "post_vvx": 18.4,
+                    "to_outdoor": 7.2,
+                    "supply_rpm": 1234,
+                }
+            )
+
+    def test_supply_snapshot_changed_uses_p0016_thresholds(self):
+        previous = {
+            "t": 1780000000,
+            "supply_pa": 42,
+            "outdoor": 1.0,
+            "post_vvx": 18.0,
+            "to_outdoor": 7.0,
+            "supply_rpm": 1200,
+        }
+        below = {
+            "t": 1780000015,
+            "supply_pa": 51,
+            "outdoor": 1.9,
+            "post_vvx": 18.9,
+            "to_outdoor": 7.9,
+            "supply_rpm": 1299,
+        }
+        crossing = dict(below)
+        crossing["supply_pa"] = 52
+
+        self.assertTrue(supply_snapshot_changed(previous, None))
+        self.assertFalse(supply_snapshot_changed(below, previous))
+        self.assertTrue(supply_snapshot_changed(crossing, previous))
+
+    def test_deploy_supply_uni_verifies_status_uploads_scripts_and_reads_kvs(self):
+        publisher_path = self.tmp / "supply_uni_pub.js"
+        refresher_path = self.tmp / "supply_uni_refresh.js"
+        publisher_path.write_text("abcdef", encoding="utf-8")
+        refresher_path.write_text("wxyz", encoding="utf-8")
+        status = {
+            "voltmeter:100": {"xvoltage": 42.2},
+            "input:2": {"xfreq": 1234.4},
+            "temperature:100": {"tC": 18.44},
+            "temperature:101": {"tC": -3.24},
+            "temperature:102": {"tC": 7.25},
+        }
+        kvs_value = {
+            "t": 1780000000,
+            "supply_pa": 42,
+            "outdoor": -3.2,
+            "post_vvx": 18.4,
+            "to_outdoor": 7.2,
+            "supply_rpm": 1234,
+        }
+        opener = FakeOpener(
+            [
+                rpc_response({"id": "shellyplusuni-aabbccddeeff", "model": "SNSN-0043X"}),
+                rpc_response(status),
+                rpc_response({"id": "shellypro1pm-8813bfd99f54", "model": "SPSW-201PE15UL"}),
+                rpc_response({"online": True}),
+                rpc_response({"scripts": []}),
+                rpc_response({"scripts": []}),
+                rpc_response({"id": 20}),
+                rpc_response({}),
+                rpc_response({}),
+                rpc_response({"scripts": [{"id": 20, "name": SUPPLY_UNI_PUB_SCRIPT_NAME, "running": False}]}),
+                rpc_response({"id": 21}),
+                rpc_response({}),
+                rpc_response({}),
+                FakeResponse(lines=[b"supply_uni_pub BOT\n", b"supply_uni_pub PUB OK pa=42 rpm=1234\n"]),
+                rpc_response({}),
+                rpc_response({"value": kvs_value}),
+                FakeResponse(lines=[b"supply_uni_refresh BOT\n", b"supply_uni_refresh DONE\n"]),
+                rpc_response({}),
+                rpc_response(
+                    {
+                        "scripts": [
+                            {"id": 20, "name": SUPPLY_UNI_PUB_SCRIPT_NAME, "running": True},
+                            {"id": 21, "name": SUPPLY_UNI_REFRESH_SCRIPT_NAME, "running": False},
+                        ]
+                    }
+                ),
+            ]
+        )
+
+        result = deploy_supply_uni(
+            "http://supply",
+            "http://dampers",
+            publisher_path,
+            refresher_path,
+            upload_chunk_bytes=3,
+            opener=opener,
+        )
+
+        self.assertEqual("shellyplusuni-aabbccddeeff", result.supply_device_id)
+        self.assertEqual("shellypro1pm-8813bfd99f54", result.dampers_device_id)
+        self.assertEqual(2, result.publisher_upload_chunk_count)
+        self.assertEqual(2, result.refresher_upload_chunk_count)
+        self.assertEqual(42, result.kvs_summary["supply_pa"])
+        methods = [
+            json.loads(request.data.decode("utf-8"))["method"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST"
+        ]
+        self.assertEqual(
+            [
+                "Shelly.GetDeviceInfo",
+                "Shelly.GetStatus",
+                "Shelly.GetDeviceInfo",
+                "Shelly.GetStatus",
+                "Script.List",
+                "Script.List",
+                "Script.Create",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.List",
+                "Script.Create",
+                "Script.PutCode",
+                "Script.PutCode",
+                "Script.Start",
+                "KVS.Get",
+                "Script.Start",
+                "Script.List",
+            ],
+            methods,
+        )
+        kvs_requests = [
+            request for request, _timeout in opener.requests
+            if request.get_method() == "POST" and json.loads(request.data.decode("utf-8"))["method"] == "KVS.Get"
+        ]
+        self.assertEqual({"key": SUPPLY_UNI_KVS_KEY}, json.loads(kvs_requests[0].data.decode("utf-8"))["params"])
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.", "Virtual.")
+        self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
+
+    def test_supply_uni_source_uses_p0016_contract(self):
+        root = Path(__file__).resolve().parents[4] / "src" / "shelly" / "supply_uni"
+        publisher = (root / "supply_uni_pub.js").read_text(encoding="utf-8")
+        refresher = (root / "supply_uni_refresh.js").read_text(encoding="utf-8")
+
+        self.assertIn("supply_uni_pub", publisher)
+        self.assertIn("tele.supply_uni", publisher)
+        self.assertIn("voltmeter:100", publisher)
+        self.assertIn("temperature:102", publisher)
+        self.assertIn("HTTP.POST", publisher)
+        self.assertIn("KVS.Set", publisher)
+        self.assertIn("supply_uni_refresh", refresher)
+        self.assertIn("supply_uni_pub", refresher)
+        self.assertNotIn("g2.", publisher)
+        self.assertNotIn("g2.", refresher)
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "MQTT.", "Wifi.", "Bluetooth.")
+        self.assertFalse(any(fragment in publisher + refresher for fragment in forbidden_fragments))
 
     def test_tool_uses_standard_library_imports_only(self):
         package_root = Path(__file__).resolve().parents[4] / "src" / "mac" / "tools" / "shelly_live"

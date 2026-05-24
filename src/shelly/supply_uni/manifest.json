@@ -1,0 +1,16 @@
+{
+  "scripts": [
+    {
+      "role": "supply_uni_pub",
+      "sources": [
+        "supply_uni_pub.js"
+      ]
+    },
+    {
+      "role": "supply_uni_refresh",
+      "sources": [
+        "supply_uni_refresh.js"
+      ]
+    }
+  ]
+}

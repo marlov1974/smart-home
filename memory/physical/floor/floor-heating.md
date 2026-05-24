@@ -16,6 +16,33 @@ The house has five relevant heating/cooling loops:
 
 This file focuses on the floor-heating parts of that topology.
 
+## Functional roles
+
+Bathroom floor loop:
+
+- always heating
+- primary purpose is bathroom comfort
+- contributes a little to the house heat-energy battery
+
+Rest-of-house floor loop:
+
+- primary house heater when it is cold
+- primary house cooler when it is warm
+- primary actuator for using the house thermal mass as an energy battery
+- can switch between heat-pump/heating side and floor-cooling automation side
+
+FTX heating coil:
+
+- secondary house heater
+- can heat quickly
+- can act as counter-heater against the FTX cooling coil when the system wants to dry the house without cooling it down
+- primary focus is comfort rather than slow thermal storage
+
+FTX cooling coil:
+
+- primarily for air humidity and air-temperature comfort
+- has limited ability to cool the house mass or store cooling
+
 ## Bathroom floor heating loop
 
 Known facts:
@@ -45,7 +72,7 @@ In heating mode, the rest-of-house floor loop is connected to the heat-pump/heat
 
 In cooling mode, it is switched away from the heat-pump/heating side and connected to the floor-cooling automation.
 
-The three-way valve that switches this loop should be controlled by the floor-cooling automation. Hardware details will be documented later.
+The three-way valve that switches this loop should be controlled by the floor-cooling automation.
 
 ## Relation to FTX heating coil
 
@@ -70,4 +97,4 @@ Known remaining gaps:
 
 ## Source
 
-Physical topology added from operator-provided hardware knowledge during direct documentation update.
+Physical topology and loop role details added from operator-provided hardware knowledge during direct documentation update.

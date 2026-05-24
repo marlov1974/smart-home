@@ -34,6 +34,14 @@ A good ChatGPT response often results in one of these:
 
 Do not rely on Codex seeing previous chat context. If Codex needs to know something for package execution, put it in the package or memory.
 
+## Bootstrap and development status
+
+Package files are not only implementation instructions. They also preserve the ordered development timeline and current project status.
+
+Future ChatGPT sessions must treat the package files listed in `memory/bootstrap-manifest.json` as status-bearing bootstrap context, not optional background reading.
+
+When a new package becomes part of durable project status, update `memory/bootstrap-manifest.json` so future sessions read it during bootstrap. If package files exist beyond the manifest, the manifest is stale and should be corrected before relying on package status.
+
 ## Documentation-only updates
 
 Not every memory/documentation update requires a package.

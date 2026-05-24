@@ -1,7 +1,7 @@
 # Package P0013: Spotprice low-memory se.elpris runtime
 
 ## Status
-planned
+completed
 
 ## Package order
 P0013
@@ -449,4 +449,11 @@ If the package fails verification, follow the failed-package cleanup process and
 
 ## Completion notes
 
-Filled after implementation.
+Implemented and live-verified on dampers.
+
+- Source: `se.elpris.eu` compact `avg24` endpoint.
+- Date policy: today before 14:00 local, tomorrow at or after 14:00 local.
+- KVS contract: `hp.price.2h`, `hp.price.date`, `hp.price.area`, `hp.price.status`, `hp.price.updated`.
+- Live attempt: passed on first try with 4 RPC upload chunks of 1500 bytes.
+- Final live state: `spotprice_v0_9_0` installed and stopped on dampers with `status=ok`.
+- No `out_of_memory` observed in bounded live evidence.

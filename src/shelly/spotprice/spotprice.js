@@ -1,22 +1,18 @@
-// spotprice_v0_9_0 adapted from G1 rt/spotprice-dampers for P0011.
+// spotprice_v0_9_0 low-memory se.elpris runtime for P0013.
 var SCRIPT_NAME = "spotprice_v0_9_0";
 
-var TIBBER_TOKEN_TEXT_ID = 201;
-var TIBBER_URL = "https://api.tibber.com/v1-beta/gql";
-var FETCH_TOMORROW = true;
+var PRICE_AREA = "SE3";
+var TOMORROW_AFTER_HOUR = 14;
+var BASE_URL = "https://se.elpris.eu/api/v1/prices/";
 
-var KEY_PRICE_2H = "hp.price.2h";
-var KEY_PRICE_DATE = "hp.price.date";
-var KEY_PRICE_STATUS = "hp.price.status";
-var KEY_PRICE_UPDATED = "hp.price.updated";
-var KEY_PRICE_SOURCE = "hp.price.source";
-var KEY_PRICE_DEBUG = "hp.price.debug";
-var KEY_PRICE_DEBUG_LEN = "hp.price.debug.len";
+var VAT_RATE = 0.25;
+var SPOT_PRICE_IS_EX_VAT = true;
+var RETAILER_MARKUP_SEK_PER_KWH_EX_VAT = 0.06;
+var RETAILER_VARIABLE_COST_SEK_PER_KWH_EX_VAT = 0.00;
+var ENERGY_TAX_SEK_PER_KWH_EX_VAT = 0.36;
 
-var FALLBACK_WINTER_PRICE_2H = "4.6,4.4,4.6,6.7,7.8,7.6,7.5,7.6,7.9,7.6,6.5,5.1";
-var FALLBACK_SUMMER_PRICE_2H = "3.2,3.3,4.1,5.8,5.1,3.9,3.4,4.0,5.1,5.1,4.1,3.4";
-
-var ENERGY_TAX_SEK_PER_KWH_INC_VAT = 0.450;
+var GRID_MODEL = "time_tariff";
+var GRID_FLAT_SEK_PER_KWH_INC_VAT = 0.305;
 var GRID_HIGH_SEK_PER_KWH_INC_VAT = 0.765;
 var GRID_LOW_SEK_PER_KWH_INC_VAT = 0.305;
 var GRID_HIGH_MONTHS = "1,2,3,11,12";
@@ -24,205 +20,136 @@ var GRID_HIGH_WEEKDAYS = "1,2,3,4,5";
 var GRID_HIGH_START_HOUR = 6;
 var GRID_HIGH_END_HOUR = 22;
 
+var KEY_PRICE_2H = "hp.price.2h";
+var KEY_PRICE_DATE = "hp.price.date";
+var KEY_PRICE_AREA = "hp.price.area";
+var KEY_PRICE_STATUS = "hp.price.status";
+var KEY_PRICE_UPDATED = "hp.price.updated";
+
 function log(s) {
   print(SCRIPT_NAME + " " + String(s || ""));
 }
 
-function finish() {
-  log("DONE");
-}
-
-function n(v, d) {
-  var x = Number(v);
-  return (x === x) ? x : d;
-}
-
-function d1(v) {
+function round3(v) {
   var x = Number(v);
   if (x !== x) return 0;
-  return Math.round(x * 10) / 10;
+  return Math.round(x * 1000) / 1000;
 }
 
-function kvsSet(key, value, cb) {
-  Shelly.call("KVS.Set", { key: String(key || ""), value: value }, function (res, err) {
-    if (err) {
-      log("KVS ERR " + key);
-      if (cb) cb(0);
-      return;
-    }
-    if (cb) cb(1);
-  });
+function pad2(n) {
+  n = Number(n);
+  return n < 10 ? "0" + n : String(n);
 }
 
-function readTibberToken(cb) {
-  Shelly.call("Text.GetStatus", { id: TIBBER_TOKEN_TEXT_ID }, function (res, err) {
-    var token = "";
-    if (!err && res && res.value) token = String(res.value || "");
-    if (!token) {
-      log("NO TOKEN");
-      kvsSet(KEY_PRICE_STATUS, "no_token", function () { cb(""); });
-      return;
-    }
-    cb(token);
-  });
+function incVat(v) {
+  return v * (1 + VAT_RATE);
 }
 
-function tibberPayload() {
-  return JSON.stringify({
-    query: "{viewer{homes{currentSubscription{priceInfo{today{total startsAt}tomorrow{total startsAt}}}}}}"
-  });
-}
-
-function tibberHeaders(token) {
-  return {
-    "Authorization": "Bearer " + token,
-    "Content-Type": "application/json"
-  };
-}
-
-function fetchTibberPrices(token, cb) {
-  kvsSet(KEY_PRICE_STATUS, "fetching", function () {
-    Shelly.call("HTTP.Request", {
-      method: "POST",
-      url: TIBBER_URL,
-      headers: tibberHeaders(token),
-      body: tibberPayload(),
-      timeout: 15
-    }, function (res, err) {
-      if (err || !res || !res.body) {
-        log("HTTP ERR");
-        kvsSet(KEY_PRICE_STATUS, "http_error", function () { cb(null); });
-        return;
-      }
-      cb(String(res.body || ""));
-    });
-  });
-}
-
-function spHasCsvInt(csv, value) {
+function containsCsvInt(csv, value) {
   return ("," + csv + ",").indexOf("," + String(value) + ",") >= 0;
 }
 
-function spWeekdayMon1(d) {
+function weekdayMon1(d) {
   var w = d.getDay();
   return w === 0 ? 7 : w;
 }
 
-function spTargetDate(wantTomorrow) {
-  var d = new Date();
-  if (wantTomorrow) d = new Date(d.getTime() + 86400000);
-  return d;
-}
-
-function spIsHighLoad(month, weekday, hour) {
-  return spHasCsvInt(GRID_HIGH_MONTHS, month) &&
-    spHasCsvInt(GRID_HIGH_WEEKDAYS, weekday) &&
-    hour >= GRID_HIGH_START_HOUR && hour < GRID_HIGH_END_HOUR;
-}
-
-function spGridFeeIncVat(month, weekday, hour) {
-  return spIsHighLoad(month, weekday, hour) ? GRID_HIGH_SEK_PER_KWH_INC_VAT : GRID_LOW_SEK_PER_KWH_INC_VAT;
-}
-
-function finalPriceFromTibber(tibberTotalIncVat, index, count, wantTomorrow) {
-  var d = spTargetDate(wantTomorrow);
-  var month = d.getMonth() + 1;
-  var weekday = spWeekdayMon1(d);
-  var hour = count >= 96 ? Math.floor(index / 4) : index;
-  return Number(tibberTotalIncVat) + ENERGY_TAX_SEK_PER_KWH_INC_VAT + spGridFeeIncVat(month, weekday, hour);
-}
-
-function parseTotals(body, wantTomorrow) {
-  var marker = wantTomorrow ? '"tomorrow"' : '"today"';
-  var p = body.indexOf(marker);
-  if (p < 0) return null;
-
-  var endMarker = wantTomorrow ? null : '"tomorrow"';
-  var e = body.length;
-  if (endMarker) {
-    var ep = body.indexOf(endMarker, p + marker.length);
-    if (ep > p) e = ep;
-  }
-
-  var out = [];
-  var key = '"total":';
-  while (out.length < 96) {
-    var i = body.indexOf(key, p);
-    if (i < 0 || i > e) break;
-    i += key.length;
-    var j = i;
-    while (j < body.length) {
-      var c = body.charAt(j);
-      if ((c >= "0" && c <= "9") || c === "." || c === "-") j++;
-      else break;
-    }
-    var v = Number(body.substring(i, j));
-    if (!isNaN(v)) out.push(v);
-    p = j;
-  }
-
-  return out;
-}
-
-function blocksFromTotals(values) {
-  var out = [];
-  var perBlock = 0;
-  var count = 0;
-
-  if (!values || !values.length) return null;
-  if (values.length >= 96) { count = 96; perBlock = 8; }
-  else if (values.length >= 24) { count = 24; perBlock = 2; }
-  else return null;
-
-  var idx = 0;
-  while (out.length < 12) {
-    var sum = 0;
-    var c = 0;
-    while (c < perBlock) {
-      sum += finalPriceFromTibber(values[idx], idx, count, FETCH_TOMORROW);
-      idx++;
-      c++;
-    }
-    out.push(d1(sum / perBlock));
-  }
-  return out;
-}
-
-function targetDateObj() {
-  var d = new Date();
-  if (FETCH_TOMORROW) d = new Date(d.getTime() + 86400000);
-  return d;
-}
-
-function todayIsoLite() {
-  var d = targetDateObj();
-  return d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1) + "-" + (d.getDate() < 10 ? "0" : "") + d.getDate();
+function dateStr(d) {
+  return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate());
 }
 
 function nowIsoLite() {
   var d = new Date();
-  return d.getFullYear() + "-" + (d.getMonth() + 1 < 10 ? "0" : "") + (d.getMonth() + 1) + "-" + (d.getDate() < 10 ? "0" : "") + d.getDate() + "T" + (d.getHours() < 10 ? "0" : "") + d.getHours() + ":" + (d.getMinutes() < 10 ? "0" : "") + d.getMinutes() + ":" + (d.getSeconds() < 10 ? "0" : "") + d.getSeconds();
+  return dateStr(d) + "T" + pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + ":" + pad2(d.getSeconds());
 }
 
-function fallbackSeasonSeries() {
-  var d = targetDateObj();
-  var m = d.getMonth() + 1;
-  var day = d.getDate();
-  if (m === 11 || m === 12 || m === 1 || m === 2) return FALLBACK_WINTER_PRICE_2H;
-  if (m === 3 && day <= 29) return FALLBACK_WINTER_PRICE_2H;
-  if (m >= 4 && m <= 9) return FALLBACK_SUMMER_PRICE_2H;
-  if (m === 10 && day <= 25) return FALLBACK_SUMMER_PRICE_2H;
-  return FALLBACK_WINTER_PRICE_2H;
+function targetDateObj() {
+  var d = new Date();
+  if (d.getHours() >= TOMORROW_AFTER_HOUR) d = new Date(d.getTime() + 86400000);
+  return d;
 }
 
-function writePriceSeries(series, source, status, cb) {
+function urlForDate(d) {
+  return BASE_URL + d.getFullYear() + "/" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()) + "_" + PRICE_AREA + ".json?avg24";
+}
+
+function isHighLoad(month, weekday, hour) {
+  return GRID_MODEL === "time_tariff" &&
+    containsCsvInt(GRID_HIGH_MONTHS, month) &&
+    containsCsvInt(GRID_HIGH_WEEKDAYS, weekday) &&
+    hour >= GRID_HIGH_START_HOUR && hour < GRID_HIGH_END_HOUR;
+}
+
+function gridPriceIncVat(month, weekday, hour) {
+  if (GRID_MODEL === "flat") return GRID_FLAT_SEK_PER_KWH_INC_VAT;
+  return isHighLoad(month, weekday, hour) ? GRID_HIGH_SEK_PER_KWH_INC_VAT : GRID_LOW_SEK_PER_KWH_INC_VAT;
+}
+
+function totalPriceIncVat(spotPrice, month, weekday, hour) {
+  var spotIncVat = SPOT_PRICE_IS_EX_VAT ? incVat(spotPrice) : spotPrice;
+  var retailerIncVat = incVat(RETAILER_MARKUP_SEK_PER_KWH_EX_VAT) + incVat(RETAILER_VARIABLE_COST_SEK_PER_KWH_EX_VAT);
+  var energyTaxIncVat = incVat(ENERGY_TAX_SEK_PER_KWH_EX_VAT);
+  return spotIncVat + retailerIncVat + energyTaxIncVat + gridPriceIncVat(month, weekday, hour);
+}
+
+function kvsSet(key, value, cb) {
+  Shelly.call("KVS.Set", { key: key, value: String(value) }, function (res, err) {
+    if (err) log("KVS ERR " + key);
+    if (cb) cb(!err);
+  });
+}
+
+function buildBlocksFromBody(body, d) {
+  var key = '"p":[';
+  var pos = body.indexOf(key);
+  var month = d.getMonth() + 1;
+  var weekday = weekdayMon1(d);
+  var out = [];
+  var sum = 0;
+  var count = 0;
+  if (pos < 0) return null;
+  pos += key.length;
+
+  while (pos < body.length && count < 24) {
+    var c = body.charAt(pos);
+    if (c === "]") break;
+    if ((c >= "0" && c <= "9") || c === "-" || c === ".") {
+      var start = pos;
+      pos++;
+      while (pos < body.length) {
+        c = body.charAt(pos);
+        if ((c >= "0" && c <= "9") || c === ".") pos++;
+        else break;
+      }
+      var spot = Number(body.substring(start, pos));
+      if (spot === spot) {
+        sum += totalPriceIncVat(spot, month, weekday, count);
+        count++;
+        if (count % 2 === 0) {
+          out.push(round3(sum / 2));
+          sum = 0;
+        }
+      }
+    } else {
+      pos++;
+    }
+  }
+
+  if (count !== 24 || out.length !== 12) {
+    log("bad count p=" + count + " blocks=" + out.length);
+    return null;
+  }
+  return out;
+}
+
+function writeBlocks(blocks, d) {
+  var series = blocks.join(",");
   kvsSet(KEY_PRICE_2H, series, function () {
-    kvsSet(KEY_PRICE_DATE, todayIsoLite(), function () {
-      kvsSet(KEY_PRICE_SOURCE, source, function () {
+    kvsSet(KEY_PRICE_DATE, dateStr(d), function () {
+      kvsSet(KEY_PRICE_AREA, PRICE_AREA, function () {
         kvsSet(KEY_PRICE_UPDATED, nowIsoLite(), function () {
-          kvsSet(KEY_PRICE_STATUS, status, function () {
-            log(status + " " + series);
-            if (cb) cb();
+          kvsSet(KEY_PRICE_STATUS, "ok", function () {
+            log("ok " + dateStr(d) + " " + series);
           });
         });
       });
@@ -230,52 +157,23 @@ function writePriceSeries(series, source, status, cb) {
   });
 }
 
-function writePriceBlocks(blocks, cb) {
-  writePriceSeries(blocks.join(","), "tibber", "ok", cb);
-}
-
-function writeFallbackPrices(reason, cb) {
-  writePriceSeries(fallbackSeasonSeries(), "fallback", reason || "fallback", cb);
-}
-
-function writeDebug(body, reason, cb) {
-  var s = String(body || "");
-  var shortBody = s;
-  if (shortBody.length > 220) shortBody = shortBody.substring(0, 220);
-  kvsSet(KEY_PRICE_DEBUG_LEN, String(s.length), function () {
-    kvsSet(KEY_PRICE_DEBUG, reason + " " + shortBody, function () {
-      if (cb) cb();
-    });
-  });
-}
-
-function fallback(reason, body) {
-  log("FALLBACK " + reason);
-  writeDebug(body || "", reason, function () {
-    writeFallbackPrices(reason, finish);
-  });
-}
-
 function run() {
-  readTibberToken(function (token) {
-    if (!token) { fallback("no_token", ""); return; }
-
-    fetchTibberPrices(token, function (body) {
-      if (!body) { fallback("no_body", ""); return; }
-
-      var values = parseTotals(body, FETCH_TOMORROW);
-      if (!values || !values.length) {
-        fallback("no_prices", body);
+  var d = targetDateObj();
+  var url = urlForDate(d);
+  log("GET " + url);
+  kvsSet(KEY_PRICE_STATUS, "fetching", function () {
+    Shelly.call("HTTP.GET", { url: url, timeout: 15 }, function (res, err) {
+      if (err || !res || !res.body) {
+        log("http error");
+        kvsSet(KEY_PRICE_STATUS, "http_error", null);
         return;
       }
-
-      var blocks = blocksFromTotals(values);
+      var blocks = buildBlocksFromBody(String(res.body || ""), d);
       if (!blocks) {
-        fallback("bad_count_" + values.length, body);
+        kvsSet(KEY_PRICE_STATUS, "bad_payload", null);
         return;
       }
-
-      writePriceBlocks(blocks, finish);
+      writeBlocks(blocks, d);
     });
   });
 }

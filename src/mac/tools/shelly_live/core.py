@@ -20,11 +20,9 @@ ALLOWED_SCRIPT_NAMES = frozenset({HELLO_SCRIPT_NAME, SPOTPRICE_SCRIPT_NAME})
 SPOTPRICE_KVS_KEYS = (
     "hp.price.2h",
     "hp.price.date",
+    "hp.price.area",
     "hp.price.status",
     "hp.price.updated",
-    "hp.price.source",
-    "hp.price.debug",
-    "hp.price.debug.len",
 )
 DEFAULT_UPLOAD_CHUNK_BYTES = 1500
 DEFAULT_HTTP_TIMEOUT_SECONDS = 5.0
@@ -51,7 +49,7 @@ class DeployResult:
 
 @dataclass(frozen=True)
 class SpotpriceDeployResult:
-    """Evidence returned by one P0011 spotprice deploy/KVS run."""
+    """Evidence returned by one spotprice deploy/KVS run."""
 
     base_url: str
     script_name: str
@@ -403,9 +401,14 @@ def verify_spotprice_kvs(kvs_values: dict[str, Any]) -> dict[str, Any]:
     """Validate and summarize spotprice KVS output."""
 
     status = str(kvs_values.get("hp.price.status") or "")
+    area = str(kvs_values.get("hp.price.area") or "")
     price_csv = str(kvs_values.get("hp.price.2h") or "")
     if not status:
         raise ShellyLiveError("spotprice KVS status is empty")
+    if status != "ok":
+        raise ShellyLiveError(f"spotprice KVS status is not ok: {status}")
+    if area != "SE3":
+        raise ShellyLiveError(f"spotprice KVS area is not SE3: {area}")
     parts = price_csv.split(",") if price_csv else []
     if len(parts) != 12:
         raise ShellyLiveError("spotprice KVS price series must contain 12 values")
@@ -422,12 +425,11 @@ def verify_spotprice_kvs(kvs_values: dict[str, Any]) -> dict[str, Any]:
         "price_min": min(prices),
         "price_max": max(prices),
         "date": kvs_values.get("hp.price.date"),
+        "area": area,
         "updated": kvs_values.get("hp.price.updated"),
-        "source": kvs_values.get("hp.price.source"),
-        "debug_len": kvs_values.get("hp.price.debug.len"),
     }
-    if not summary["date"] or not summary["updated"] or not summary["source"]:
-        raise ShellyLiveError("spotprice KVS date, updated and source must be present")
+    if not summary["date"] or not summary["updated"]:
+        raise ShellyLiveError("spotprice KVS date and updated must be present")
     return summary
 
 
@@ -516,7 +518,7 @@ def deploy_spotprice(
     http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
     opener: OpenUrl | None = None,
 ) -> SpotpriceDeployResult:
-    """Deploy, start and verify the P0011 spotprice script."""
+    """Deploy, start and verify the spotprice script."""
 
     if upload_chunk_bytes < 1:
         raise ShellyLiveError("upload chunk bytes must be positive")
@@ -560,16 +562,16 @@ def deploy_spotprice(
         start_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
         try:
             log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            kvs_values, kvs_summary = wait_for_spotprice_kvs(
+                base_url,
+                kvs_timeout=kvs_timeout,
+                http_timeout=http_timeout,
+                opener=opener,
+            )
         except concurrent.futures.TimeoutError as exc:
             raise ShellyLiveError("debug log capture timed out") from exc
-
-    kvs_values, kvs_summary = wait_for_spotprice_kvs(
-        base_url,
-        kvs_timeout=kvs_timeout,
-        http_timeout=http_timeout,
-        opener=opener,
-    )
-    stop_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
+        finally:
+            stop_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
     after_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
 
     return SpotpriceDeployResult(

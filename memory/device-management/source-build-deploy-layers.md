@@ -76,6 +76,8 @@ Chunks have numeric names and no logical meaning.
 
 A chunk may contain parts of multiple source files. That is acceptable because chunks are transport artifacts, not source architecture.
 
+These repo deploy chunks are distinct from Mac direct-deploy RPC chunks. The Mac live deploy tool may split one complete built script into bounded in-memory `Script.PutCode` append chunks for transport without reading or requiring `dep/s/ch/**`.
+
 ## Recipe
 
 The recipe only stores chunk count.

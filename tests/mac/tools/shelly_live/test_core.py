@@ -169,23 +169,46 @@ class ShellyLiveTests(unittest.TestCase):
         values = {
             "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
             "hp.price.date": "2026-05-24",
+            "hp.price.area": "SE3",
             "hp.price.status": "ok",
             "hp.price.updated": "2026-05-24T12:00:00",
-            "hp.price.source": "fallback",
-            "hp.price.debug": "no_token",
-            "hp.price.debug.len": "0",
         }
 
         summary = verify_spotprice_kvs(values)
 
         self.assertEqual("ok", summary["status"])
+        self.assertEqual("SE3", summary["area"])
         self.assertEqual(12, summary["price_count"])
         self.assertEqual(1.0, summary["price_min"])
         self.assertEqual(12.0, summary["price_max"])
 
+    def test_verify_spotprice_kvs_rejects_non_ok_status(self):
+        values = {
+            "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
+            "hp.price.date": "2026-05-24",
+            "hp.price.area": "SE3",
+            "hp.price.status": "fetching",
+            "hp.price.updated": "2026-05-24T12:00:00",
+        }
+
+        with self.assertRaisesRegex(ShellyLiveError, "status is not ok"):
+            verify_spotprice_kvs(values)
+
+    def test_verify_spotprice_kvs_rejects_wrong_area(self):
+        values = {
+            "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
+            "hp.price.date": "2026-05-24",
+            "hp.price.area": "SE4",
+            "hp.price.status": "ok",
+            "hp.price.updated": "2026-05-24T12:00:00",
+        }
+
+        with self.assertRaisesRegex(ShellyLiveError, "area is not SE3"):
+            verify_spotprice_kvs(values)
+
     def test_verify_spotprice_kvs_rejects_malformed_price_series(self):
         with self.assertRaisesRegex(ShellyLiveError, "12 values"):
-            verify_spotprice_kvs({"hp.price.status": "ok", "hp.price.2h": "1,2"})
+            verify_spotprice_kvs({"hp.price.status": "ok", "hp.price.area": "SE3", "hp.price.2h": "1,2"})
 
     def test_spotprice_kvs_get_missing_key_returns_none(self):
         from src.mac.tools.shelly_live.core import kvs_get
@@ -249,11 +272,9 @@ class ShellyLiveTests(unittest.TestCase):
         kvs_values = {
             "hp.price.2h": "1,2,3,4,5,6,7,8,9,10,11,12",
             "hp.price.date": "2026-05-24",
-            "hp.price.status": "no_token",
+            "hp.price.area": "SE3",
+            "hp.price.status": "ok",
             "hp.price.updated": "2026-05-24T12:00:00",
-            "hp.price.source": "fallback",
-            "hp.price.debug": "no_token",
-            "hp.price.debug.len": "0",
         }
         for key in SPOTPRICE_KVS_KEYS:
             kvs_responses.append(rpc_response({"value": kvs_values[key]}))
@@ -312,8 +333,6 @@ class ShellyLiveTests(unittest.TestCase):
                 "KVS.Get",
                 "KVS.Get",
                 "KVS.Get",
-                "KVS.Get",
-                "KVS.Get",
                 "Script.Stop",
                 "Script.List",
             ],
@@ -321,6 +340,20 @@ class ShellyLiveTests(unittest.TestCase):
         )
         forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.", "Virtual.")
         self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
+
+    def test_spotprice_source_uses_p0013_low_memory_contract(self):
+        source_path = Path(__file__).resolve().parents[4] / "src" / "shelly" / "spotprice" / "spotprice.js"
+        source = source_path.read_text(encoding="utf-8")
+
+        self.assertIn("se.elpris.eu/api/v1/prices", source)
+        self.assertIn("?avg24", source)
+        self.assertIn("hp.price.area", source)
+        self.assertIn('var key = \'"p":[\';', source)
+        self.assertNotIn("JSON.parse", source)
+        self.assertNotIn("api.tibber.com", source)
+        self.assertNotIn("hp.price.source", source)
+        self.assertNotIn("hp.price.debug", source)
+        self.assertNotIn("SEK_per_kWh", source)
 
     def test_tool_uses_standard_library_imports_only(self):
         package_root = Path(__file__).resolve().parents[4] / "src" / "mac" / "tools" / "shelly_live"

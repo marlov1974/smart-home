@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013.
 
 ## Safety Contract
 
@@ -13,9 +13,9 @@ hello_v1_0_0
 spotprice_v0_9_0
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011 upload/log/KVS verification.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification.
 
-The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys for P0011.
+The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys.
 
 ## Functions
 

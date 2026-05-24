@@ -30,6 +30,8 @@ shelly deploy validation
 package evidence helpers
 ```
 
+Mac direct-deploy tools may use bounded in-memory RPC upload chunks as a transport detail. Those chunks are not repo source architecture and are separate from generated Shelly repo deploy chunks under `dep/s/**`.
+
 Mac services run continuously or on schedule.
 
 Examples:

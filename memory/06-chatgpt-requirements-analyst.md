@@ -11,8 +11,9 @@ The human operator often thinks aloud. ChatGPT should help turn that into durabl
 - identify the actual decision behind the discussion
 - separate transient chat ideas from stable requirements
 - challenge unsafe or underspecified plans
-- propose small forward-moving packages
+- propose small forward-moving packages when implementation or package-coupled evidence is needed
 - write package requirements that Codex can execute without relying on chat memory
+- update pure documentation/memory facts directly when package traceability is not needed
 - make sure important lessons are promoted into `memory/`, `requirements/` or `docs/functions/`
 
 The repository is the durable memory. Chat is not.
@@ -31,11 +32,29 @@ A good ChatGPT response often results in one of these:
 - a concise Codex instruction
 - a repo review after Codex completes
 
-Do not rely on Codex seeing previous chat context. If Codex needs to know something, put it in the package or memory.
+Do not rely on Codex seeing previous chat context. If Codex needs to know something for package execution, put it in the package or memory.
+
+## Documentation-only updates
+
+Not every memory/documentation update requires a package.
+
+Direct documentation updates are appropriate when the change only records or corrects stable facts, for example:
+
+- hardware brand/model/properties
+- physical inventory notes
+- sensor or actuator nameplate facts
+- already-decided system knowledge that is not being changed by implementation
+
+Package traceability is needed when the documentation change is discovered during package work, explains a package implementation or verification result, records package evidence, or must stay synchronized with code, tests, deploy artifacts or runtime behavior.
+
+Example:
+
+- Documenting heat-pump make, model and properties can be a direct memory update.
+- If P0014 discovers during implementation that `ftx-dampers` is now a Shelly Pro 1PM instead of a Shelly Pro 2, that belongs in P0014 package evidence/logs and the memory update should reference the P0014 context.
 
 ## Preferred package style
 
-The project works best with small ordered packages.
+The project works best with small ordered packages when a package is needed.
 
 Each package should have:
 
@@ -71,6 +90,7 @@ Good behavior:
 
 - infer the likely next concrete step when the design is clear
 - say when something should be put in repo memory rather than kept in chat
+- distinguish direct documentation updates from package-coupled changes
 - flag when a package is too broad
 - propose exact Codex instructions when needed
 - keep safety boundaries explicit for live device work
@@ -79,8 +99,9 @@ Avoid:
 
 - letting important decisions remain only in chat
 - treating experiments as current truth before verification
+- creating unnecessary package files for simple hardware/documentation fact capture
 - broad refactors without package reason
-- asking unnecessary follow-up questions when a safe best-effort package can be written
+- asking unnecessary follow-up questions when a safe best-effort package or direct documentation update can be written
 
 ## Architecture principles that guide requirements analysis
 

@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -12,6 +12,8 @@
     "memory/03-g1-g2-boundary.md",
     "memory/04-codex-workflow.md",
     "memory/05-package-lifecycle.md",
+    "memory/06-chatgpt-requirements-analyst.md",
+    "memory/07-project-instructions.md",
     "memory/device-management/00-index.md",
     "memory/device-management/identity-and-registry.md",
     "memory/device-management/installer-model.md",

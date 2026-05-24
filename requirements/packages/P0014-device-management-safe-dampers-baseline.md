@@ -29,37 +29,47 @@ This package is intentionally narrow. It should prove that Mac tooling can plan,
 ```text
 logical device: dampers
 stable LAN address: 192.168.77.30
-current outside-Mac access knowledge: current Mac may need to reach the device through the existing outside/NAT endpoint
 ```
 
-The stable Shelly LAN address is `192.168.77.30`. The current Mac is outside the `192.168.77.0/24` network and may need local/operator knowledge to translate that LAN address to the currently reachable endpoint, for example the existing `192.168.86.240:8030` access path.
+The stable Shelly LAN address is `192.168.77.30`.
 
-That translated outside endpoint is not the device identity and must not be treated as hardcoded repository truth. It is Mac/Codex access knowledge for the current execution environment.
+The endpoint used by a Mac to reach that device is execution-environment knowledge, not durable package truth. The current Mac may be outside the `192.168.77.0/24` network and may need a translated/NAT access endpoint known to the operator or current Codex environment. A future Mac on `192.168.77.0/24` should normally use the direct LAN endpoint.
 
-Future Macs on `192.168.77.0/24` should normally use the direct LAN endpoint:
+P0014 must not hardcode a translated outside endpoint as package truth or device identity.
+
+The device-management tool must support explicit runtime endpoint selection, for example:
 
 ```text
-http://192.168.77.30/
+--base-url <reachable endpoint for this Mac right now>
 ```
 
-Codex must confirm the target device from repository memory and from live device identity/status before applying changes. The package must not identify the device by outside endpoint alone.
+Future device-management tooling may add an access resolver/profile, but P0014 must at minimum keep these separate:
+
+```text
+stable device network address: 192.168.77.30
+runtime access endpoint: supplied by operator/Codex for current Mac environment
+verified physical device identity/status: read from Shelly before live writes
+```
+
+Codex must confirm the target device from repository memory and live device identity/status before applying changes. The package must not identify the device by runtime endpoint alone.
 
 ## Required behavior
 
 Build or extend Python standard-library Mac tooling that can:
 
-1. read current relevant device state
-2. produce a plan for the P0014 baseline
-3. apply only the P0014 baseline changes
-4. verify readback after apply
-5. run a second time idempotently
-6. store evidence under `requirements/package-runs/P0014/`
+1. read current relevant device state from a runtime `--base-url`
+2. verify the target device identity/status before writes
+3. produce a plan for the P0014 baseline
+4. apply only the P0014 baseline changes
+5. verify readback after apply
+6. run a second time idempotently
+7. store evidence under `requirements/package-runs/P0014/`
 
 The tool must discover and document the exact Shelly RPC/API calls for device name, channel name, restore-on-reboot behavior and number component creation before live apply.
 
 If the API for any requested setting/component is unclear or unsupported, Codex must stop before applying that item.
 
-The tool should accept an explicit `--base-url` or equivalent runtime argument. It should not require the outside translated endpoint to be stored as durable device identity.
+The tool should accept an explicit `--base-url` or equivalent runtime argument. It should not require any translated outside endpoint to be stored as durable device identity.
 
 ## Allowed live changes
 
@@ -100,7 +110,7 @@ If user-created number components are unsupported on dampers, Codex must stop an
 - Idempotent plan/apply/verify behavior.
 - Exact APIs must be documented before apply.
 - Before/after evidence is required.
-- Stable LAN address is device network truth; outside translated endpoints are execution-environment access knowledge.
+- Stable LAN address is device network truth; runtime endpoints are execution-environment access knowledge.
 - Failed-package cleanup from `memory/05-package-lifecycle.md` applies if verification fails after allowed attempts.
 
 ## Files to inspect
@@ -149,7 +159,7 @@ The design must include:
 
 ```text
 Target device confirmation
-Access endpoint selection
+Runtime access endpoint selection
 Shelly API/RPC discovery
 Plan/apply/verify model
 Idempotency model
@@ -201,7 +211,7 @@ Then it reports no required changes or makes no unnecessary writes.
 ### TC7: Endpoint is not device identity
 Given the tool receives a runtime base URL
 When it plans/applies P0014
-Then it still verifies the target device identity/status and does not treat the outside translated endpoint as durable device identity.
+Then it still verifies the target device identity/status and does not treat the runtime endpoint as durable device identity.
 
 ## Verification commands
 
@@ -212,7 +222,7 @@ python3 -m unittest discover tests/mac/tools
 git diff --check
 ```
 
-Live evidence must include base URL used, stable LAN address, device identity/status evidence, before-state summary, plan, after-state summary, idempotent rerun result and final status.
+Live evidence must include runtime base URL used, stable LAN address, device identity/status evidence, before-state summary, plan, after-state summary, idempotent rerun result and final status.
 
 ## Rollback plan
 
@@ -225,7 +235,7 @@ If an incorrect duplicate `House Temp` component is created, Codex may remove on
 - PASS/WARN/STOP review
 - design path
 - functions path
-- base URL used for this Mac execution
+- runtime base URL used for this Mac execution
 - stable LAN address and identity/status verification
 - discovered APIs/RPCs
 - files changed

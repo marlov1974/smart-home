@@ -44,6 +44,18 @@ ML/forecast jobs
 
 Both belong to the Mac layer.
 
+## Device access endpoints
+
+G2 separates device identity from Mac reachability.
+
+Stable device facts belong in device/infrastructure memory and registry, for example logical name, physical Shelly id and stable LAN address.
+
+A Mac runtime access endpoint is environment-specific. A Mac on the device LAN may use the stable LAN address directly. A Mac outside that LAN may need a translated local/NAT/port-forward endpoint known to the operator or current Codex environment.
+
+Mac device-management tools must therefore accept the runtime endpoint as an execution parameter or resolve it from local operator/Codex environment knowledge. The outside translated endpoint is not durable device identity and should not be hardcoded into package truth.
+
+Before live writes, Mac tools must verify that the reached endpoint is the intended physical/logical device by reading live identity/status evidence.
+
 ## Source layout
 
 Recommended source layout:

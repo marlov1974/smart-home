@@ -21,10 +21,20 @@ It coordinates multiple subsystems as one energy, comfort and safety system:
 G2 may run code in multiple environments:
 
 ```text
-Mac             forecasting, ML/POC, diagnostics, developer tooling, Codex, build/deploy tools
-Home Assistant  orchestration, UI, integrations, automations where appropriate
-Shelly          local hardware control, fallback, deterministic edge logic
+Mac             development, deploy, diagnostics, Codex/local tools, forecasts/lab projects
+Home Assistant  visualization, user interface, dashboards and user-facing controls
+Shelly          autonomous local runtime, local hardware control, fallback, deterministic edge logic
 ```
+
+## Runtime responsibility principle
+
+Shelly devices must be able to live without Mac or Home Assistant at runtime.
+
+This does not mean every advanced optimization must run on Shelly. It means that a Shelly device that owns local hardware behavior must have enough local state, fallback and deterministic logic to remain safe and useful if Mac and Home Assistant are unavailable.
+
+Home Assistant is primarily the visualization and user-interface surface. It may expose controls, display state and provide convenient user workflows, but G2 hardware safety and local runtime continuity must not depend on Home Assistant being up.
+
+The Mac is primarily for development, build/deploy, diagnostics and controlled package execution. The Mac may also run forecasting, experimentation and lab projects, including projects that are adjacent to but not directly part of house runtime, such as spot-price forecast experiments. A Mac forecast or optimizer may improve G2 behavior, but Shelly runtime must define stale/fallback behavior when Mac-produced data is absent.
 
 ## Mac layer
 
@@ -49,6 +59,8 @@ updated spot forecast service on Mac
 +
 updated Shelly client that consumes the new forecast contract
 ```
+
+When a Shelly runtime consumes Mac-produced data, the package must define contract, freshness, stale handling and fallback behavior so the Shelly remains autonomous if the Mac service disappears.
 
 ## Deploy surfaces
 

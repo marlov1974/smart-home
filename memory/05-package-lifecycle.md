@@ -26,6 +26,7 @@ ChatGPT:
 - helps reason and design
 - writes design summaries and package drafts
 - creates or updates package files when appropriate
+- updates pure documentation/memory facts directly when no package trace is needed
 - reviews Codex results directly from the repository
 - helps extract lessons learned after completion
 
@@ -58,9 +59,11 @@ Human and ChatGPT discuss:
 - rollback
 - what is decided vs temporary discussion
 
+For pure physical/documentation facts, design discussion may be unnecessary. ChatGPT may update memory directly when the change only records or corrects already-decided knowledge.
+
 ### 3. Design freeze
 
-Before repository updates, ChatGPT presents a final proposed solution:
+Before package-driven repository updates, ChatGPT presents a final proposed solution:
 
 - documentation/memory changes
 - package content
@@ -70,9 +73,11 @@ Before repository updates, ChatGPT presents a final proposed solution:
 
 The human operator reviews and corrects misunderstandings.
 
+For direct documentation-only updates, the relevant review is simply whether the fact is correct and belongs in memory.
+
 ### 4. Package creation
 
-Once agreed, a package is created or updated under:
+Once agreed, package-driven work is created or updated under:
 
 ```text
 requirements/packages/Pxxxx-<name>.md
@@ -81,6 +86,10 @@ requirements/packages/Pxxxx-<name>.md
 Documentation may be updated by ChatGPT when it is pure design/memory work.
 
 For code packages, Codex normally updates documentation as part of the package so code, tests and memory stay synchronized.
+
+A package is not required for documentation-only fact capture that is independent of an active package. Examples include documenting hardware brand/model/properties or correcting a physical inventory note.
+
+A documentation change should be linked to a package when it was discovered during that package, explains that package's implementation or verification, records package evidence, or changes understanding that the package relies on. Example: if P0014 discovers that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, the finding belongs in P0014 evidence/logs and the memory update should reference that package context.
 
 ### 5. Codex execution
 
@@ -160,6 +169,8 @@ If Codex misunderstood the package or changed the wrong thing:
 
 If runtime/deploy state was already affected, rollback should normally be a new forward package.
 
+For documentation-only updates that are not tied to package execution, correction can be another direct documentation update.
+
 ### 9. Verified/live completion
 
 When the package is implemented, reviewed and live/verified as applicable:
@@ -191,6 +202,8 @@ superseded
 
 ChatGPT may update documentation directly for small, pure design/memory changes.
 
+Documentation-only physical facts and inventory corrections do not need package traceability unless they were discovered during package work or affect package implementation/verification.
+
 Codex should update documentation as part of the package when:
 
 - code changed
@@ -198,6 +211,7 @@ Codex should update documentation as part of the package when:
 - tests or diagnostics changed
 - package review found conflicts
 - local repo inspection is required
+- the documentation records a finding discovered during package execution
 
 ## Repository-first review rule
 
@@ -214,3 +228,5 @@ Created by `P0005-package-lifecycle-and-repo-review-process`.
 Updated after P0008 to make Codex commit/push the default for verified non-live package work.
 
 Updated after the stopped P0012 spotprice attempt to require failed-package cleanup and evidence-only commits.
+
+Updated by direct documentation correction to clarify that pure documentation and hardware fact updates do not require package traceability unless tied to package work.

@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -34,6 +34,7 @@
     "memory/physical/ftx/cooling-risk.md",
     "memory/physical/heating/00-index.md",
     "memory/physical/heating/heat-pumps.md",
+    "memory/physical/heating/geodan-smart-grid.md",
     "memory/physical/heating/brine.md",
     "memory/physical/heating/hot-water.md",
     "memory/physical/floor/00-index.md",

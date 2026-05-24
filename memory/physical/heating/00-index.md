@@ -5,9 +5,10 @@ This folder contains physical and operating knowledge for heat pumps, brine, hot
 ## Files
 
 ```text
-heat-pumps.md   VP1/VP2 physical command model and logical levels
-brine.md        brine/borehole planning model
-hot-water.md    domestic hot water notes and open gaps
+heat-pumps.md          VP1/VP2 physical command model and logical levels
+geodan-smart-grid.md   Geodan IN11/IN12 Smart Grid control semantics and diagnostics
+brine.md               brine/borehole planning model
+hot-water.md           domestic hot water notes and open gaps
 ```
 
 ## Boundary

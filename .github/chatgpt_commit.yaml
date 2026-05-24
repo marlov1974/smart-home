@@ -7,9 +7,27 @@ operations:
     content: |
       # Geodan Smart Grid Control
 
-      ## Source
+      ## Sources
 
-      Condensed from uploaded Mitsubishi Electric Swedish Smart Grid manual `15371.pdf`, titled `Användarmanual SMART GRID - Styrning via externa enheter`.
+      Condensed from:
+
+      - uploaded Mitsubishi Electric Swedish Smart Grid manual `15371.pdf`, titled `Användarmanual SMART GRID - Styrning via externa enheter`
+      - uploaded Mitsubishi Electric Geodan service manual `ZEMES_SILTUMSUKNIS_GEODAN_SERVISA_INSTRUKCIJA.pdf`, model `EHGT17D-YM9ED`, service ref `EHGT17D-YM9ED.UK`
+
+      ## Model and terminal confirmation
+
+      The service manual confirms the relevant model track:
+
+      ```text
+      Model: EHGT17D-YM9ED
+      Service ref: EHGT17D-YM9ED.UK
+      FTC terminal block: TBI.3
+      IN11: TBI.3 3-4
+      IN12: TBI.3 1-2
+      Function: Smart grid ready input
+      ```
+
+      The wiring diagram shows TBI.3 with `IN8`, `IN9`, `IN11`, and `IN12`, and Table 1 names `IN12` as Smart grid ready input while referring `IN11`/`IN12` behavior to the installation manual / Smart Grid settings.
 
       ## Active control inputs
 
@@ -73,11 +91,19 @@ operations:
       - pump cycles
       ```
 
-      If more than one function is selected, Smart Grid controls them together; the manual states they cannot be controlled separately by the same IN11/IN12 signal combination.
+      If more than one function is selected, Smart Grid controls them together; the Smart Grid manual states they cannot be controlled separately by the same IN11/IN12 signal combination.
+
+      The service manual menu tree places Smart grid ready under:
+
+      ```text
+      Main menu -> Service -> Operation settings -> Smart grid ready
+      ```
+
+      with settings for DHW, Heating, Pump cycles and target/interval behavior.
 
       ## Efficiency warning
 
-      The manual warns that high storage temperatures:
+      The Smart Grid manual warns that high storage temperatures:
 
       - reduce efficiency
       - increase heat losses
@@ -111,6 +137,19 @@ operations:
 
       The house-specific VP1/VP2 flow/DHW target mappings remain documented in `heat-pumps.md`.
 
+      ## Diagnostics useful for future G2 work
+
+      Service menu running information includes request codes useful for non-invasive diagnostics:
+
+      ```text
+      175 = FTC output signal information
+      176 = FTC input signal information
+      553 = FTC output signal information at time of error
+      554 = FTC input signal information at time of error
+      ```
+
+      The service manual also states that if the heat pump is forced ON/OFF because Smart grid ready input `IN11` and `IN12` are used, and switch-on/off commands are input, this is normal operation and no action is necessary.
+
       ## Open installation checks
 
       Before any live control package, verify:
@@ -121,3 +160,115 @@ operations:
       - current Smart Grid settings for VP1
       - current Smart Grid settings for VP2
       - whether VP1 and VP2 use identical Smart Grid function selection
+
+  - action: replace_file
+    path: memory/physical/heating/00-index.md
+    content: |
+      # Heating Physical Index
+
+      This folder contains physical and operating knowledge for heat pumps, brine, hot water and related slow energy systems.
+
+      ## Files
+
+      ```text
+      heat-pumps.md          VP1/VP2 physical command model and logical levels
+      geodan-smart-grid.md   Geodan IN11/IN12 Smart Grid control semantics and diagnostics
+      brine.md               brine/borehole planning model
+      hot-water.md           domestic hot water notes and open gaps
+      ```
+
+      ## Boundary
+
+      This folder contains physical facts and planning baselines.
+
+      Future planners/optimizers belong in requirements, source and deploy artifacts.
+
+      Created by `P0002-import-infrastructure-and-physical-baseline`.
+
+  - action: replace_file
+    path: memory/bootstrap-manifest.json
+    content: |
+      {
+        "version": 12,
+        "repo": "marlov1974/smart-home",
+        "ref": "main",
+        "mandatory": true,
+        "fail_on_missing": true,
+        "purpose": "Mandatory read order for G2 Smart Home AI/Codex sessions.",
+        "read_order": [
+          "memory/00-index.md",
+          "memory/01-system-overview.md",
+          "memory/02-design-principles.md",
+          "memory/03-g1-g2-boundary.md",
+          "memory/04-codex-workflow.md",
+          "memory/05-package-lifecycle.md",
+          "memory/06-chatgpt-requirements-analyst.md",
+          "memory/07-project-instructions.md",
+          "memory/device-management/00-index.md",
+          "memory/device-management/identity-and-registry.md",
+          "memory/device-management/installer-model.md",
+          "memory/device-management/local-state.md",
+          "memory/device-management/shelly-deploy-structure.md",
+          "memory/device-management/source-build-deploy-layers.md",
+          "memory/device-management/mac-layer.md",
+          "memory/infrastructure/00-index.md",
+          "memory/infrastructure/network.md",
+          "memory/infrastructure/router-nat.md",
+          "memory/infrastructure/devices.md",
+          "memory/physical/00-index.md",
+          "memory/physical/ftx/00-index.md",
+          "memory/physical/ftx/devices.md",
+          "memory/physical/ftx/sensors.md",
+          "memory/physical/ftx/airflow.md",
+          "memory/physical/ftx/temperatures.md",
+          "memory/physical/ftx/cooling-risk.md",
+          "memory/physical/heating/00-index.md",
+          "memory/physical/heating/heat-pumps.md",
+          "memory/physical/heating/geodan-smart-grid.md",
+          "memory/physical/heating/brine.md",
+          "memory/physical/heating/hot-water.md",
+          "memory/physical/floor/00-index.md",
+          "memory/physical/floor/floor-heating.md",
+          "memory/physical/floor/floor-cooling.md",
+          "memory/physical/floor/shunts-pumps-valves.md",
+          "memory/physical/home/00-index.md",
+          "memory/physical/home/rooms-zones.md",
+          "memory/physical/home/comfort-sensors.md",
+          "memory/knowhow/00-index.md",
+          "memory/knowhow/shelly.md",
+          "memory/knowhow/codex.md",
+          "docs/functions/00-index.md",
+          "docs/functions/TEMPLATE.md",
+          "requirements/README.md",
+          "requirements/packages/TEMPLATE.md",
+          "requirements/package-runs/README.md",
+          "requirements/package-runs/TEMPLATE-review.md",
+          "requirements/package-runs/TEMPLATE-design.md",
+          "requirements/package-runs/TEMPLATE-functions.md",
+          "requirements/package-runs/TEMPLATE-attempts.md",
+          "requirements/packages/P0001-bootstrap-smart-home-repo.md",
+          "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
+          "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
+          "requirements/packages/P0004-codex-evidence-and-learning-storage-policy.md",
+          "requirements/packages/P0005-package-lifecycle-and-repo-review-process.md",
+          "requirements/packages/P0006-device-management-and-deploy-architecture.md",
+          "requirements/packages/P0007-codex-phased-package-build-process.md",
+          "requirements/packages/P0008-g2-shelly-build-deploy-tools.md",
+          "requirements/packages/P0009-shelly-build-wrapper-and-metadata.md",
+          "requirements/packages/P0010-shelly-deploy-tool-and-log-listener.md",
+          "requirements/packages/P0011-mac-rpc-chunked-upload-and-spotprice-kvs-test.md",
+          "requirements/packages/P0012-correct-spotprice-template-and-clean-deploy-artifacts.md",
+          "requirements/packages/P0013-spotprice-low-memory-se-elpris-runtime.md",
+          "requirements/packages/P0014-device-management-safe-dampers-baseline.md"
+        ],
+        "governance": {
+          "truth_hierarchy": [
+            "implementation and deploy artifacts",
+            "package files",
+            "requirements files",
+            "memory files",
+            "historical discussion"
+          ],
+          "rule": "Any change that adds mandatory solution context must update this manifest when it is required for future AI/Codex reconstruction."
+        }
+      }

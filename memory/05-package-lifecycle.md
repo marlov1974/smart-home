@@ -14,6 +14,131 @@ If a package fails verification, the lifecycle is:
 package attempt -> evidence -> cleanup -> evidence commit/push -> follow-up package
 ```
 
+## Current phase: pre-production G2
+
+G2 is currently a pre-production system. It may run controlled live tests on selected physical devices, but it is not yet the production owner of the house control runtime.
+
+In pre-production, committing/pushing verified G2 package results is considered documentation and source-of-truth hygiene, not production activation.
+
+Therefore, a quick package command authorizes Codex to commit and push verified package results, including live-write packages, when all of these are true:
+
+- the active package explicitly allowed the live writes that were performed
+- live actions stayed inside the package allowlist
+- no actuator/output actions occurred unless the package explicitly allowed them
+- tests and required verification commands passed
+- live verification passed when required
+- package-run evidence and completion notes were updated
+- `git diff --check` passed
+- the diff is inside package scope
+
+This does not authorize production activation, broad rollout, G1 runtime migration, Home Assistant production changes, secrets, destructive actions or live actions outside the package allowlist.
+
+## Future phase: production G2
+
+When G2 becomes production control, packages must distinguish:
+
+```text
+commit/push:
+  Save verified source, deploy artifacts, evidence and documentation to repository truth.
+
+deploy/stage:
+  Put code/config onto one or more devices but do not necessarily make it production-active.
+
+production activation:
+  Make G2 code/config the active controller for production behavior.
+```
+
+For production-critical G2 runtime packages, the active package must explicitly state what successful verification authorizes:
+
+```text
+commit/push only
+commit/push plus staged deploy
+commit/push plus production activation
+```
+
+Production activation always requires explicit package permission and operator approval.
+
+## Future production rollback requirement
+
+Production G2 must support simple operator rollback by target version/package.
+
+The operator goal is a command such as:
+
+```text
+backa till 27
+```
+
+Meaning:
+
+```text
+Restore the relevant production devices/services to the desired known-good target version associated with package/version 27.
+```
+
+Rollback remains a forward-moving controlled operation. It should not require ad-hoc manual editing or hidden history rewriting.
+
+A future rollback implementation must define:
+
+- what target version means per logical device/service
+- which deploy artifacts/config/scripts belong to that target
+- how to verify device identity before rollback writes
+- how to stage rollback safely
+- how to verify success and runtime health after rollback
+- how to record rollback evidence in the repo
+
+## Future production pre-live test levels
+
+Production G2 should reduce risk before central devices receive new runtime behavior.
+
+Useful test levels:
+
+### Mac/API contract tests
+
+Before deploying Shelly runtime changes, the Mac/Codex should test external APIs and data contracts where practical.
+
+Examples:
+
+- verify that a weather API returns expected schema/units before deploying a Shelly weather script
+- verify spot-price endpoint shape before Shelly runtime consumes it
+- validate forecast output schema before Home Assistant or Shelly reads it
+
+This catches ordinary code/data-contract errors before they become device-runtime errors.
+
+### Low-criticality device test
+
+A production device that is not central to the current control path may act as a safer live Shelly test target.
+
+Example:
+
+```text
+A cooling-dimmer device may test a new weather script before dampers receives the production version.
+```
+
+This is not a substitute for final target verification, but it can catch runtime, heap, HTTP, KVS and Shelly API issues on real hardware with lower system risk.
+
+### Staged rollout
+
+Production packages should support deploying to a less central device or one logical device before broad rollout when the change type allows it.
+
+Staged rollout evidence should record:
+
+- test device identity
+- why it is safe/lower criticality
+- script/config deployed
+- runtime health
+- whether the central target is still unchanged
+- what must be reverified on the central target before activation
+
+### Non-actuating live verification
+
+Prefer read-only or non-actuating live verification before production activation when possible.
+
+Examples:
+
+- read status/config/logs
+- run script in a mode that writes only diagnostic KVS
+- verify API parsing without changing outputs
+- verify computed intent without applying it to actuators
+
 ## Roles
 
 Human operator:
@@ -89,7 +214,7 @@ For code packages, Codex normally updates documentation as part of the package s
 
 A package is not required for documentation-only fact capture that is independent of an active package. Examples include documenting hardware brand/model/properties or correcting a physical inventory note.
 
-A documentation change should be linked to a package when it was discovered during that package, explains that package's implementation or verification, records package evidence, or changes understanding that the package relies on. Example: if P0014 discovers that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, the finding belongs in P0014 evidence/logs and the memory update should reference that package context.
+A documentation change should be linked to a package when it was discovered during that package, explains that package's implementation or verification, records package evidence, or changes understanding that the package relies on. Example: if P0014 discovers that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, the finding belongs in P0014 evidence/logs and the memory update should reference the package context.
 
 ### 5. Codex execution
 
@@ -115,6 +240,8 @@ Codex must:
 - give the human operator a short result including commit SHA, files changed, tests run and uncertainty
 
 Quick package commands do not grant extra permission for live writes, actuator changes, device writes, Home Assistant writes, secrets or destructive actions. Those still require explicit package permission.
+
+In pre-production G2, quick package commands do authorize commit/push after verified success, including for live-write packages, under the pre-production conditions defined above.
 
 ### 6. Failed package cleanup
 
@@ -215,11 +342,11 @@ Codex should update documentation as part of the package when:
 
 ## Repository-first review rule
 
-Codex output should be stored in the repository and pushed for non-live packages when verification passes.
+Codex output should be stored in the repository and pushed when verification passes and the diff is inside package scope, under the current phase rules above.
 
 For failed packages, useful evidence should also be stored in the repository and pushed after unverified implementation changes are reverted.
 
-ChatGPT should review Codex results from the repository, not from pasted terminal output, unless repository access is unavailable.
+ChatGPT should review Codex results from the repository, not from pasted output, unless repository access is unavailable.
 
 ## Package history
 
@@ -230,3 +357,5 @@ Updated after P0008 to make Codex commit/push the default for verified non-live 
 Updated after the stopped P0012 spotprice attempt to require failed-package cleanup and evidence-only commits.
 
 Updated by direct documentation correction to clarify that pure documentation and hardware fact updates do not require package traceability unless tied to package work.
+
+Updated by direct documentation correction to define pre-production G2 commit/push policy and future production rollback/pre-live test requirements.

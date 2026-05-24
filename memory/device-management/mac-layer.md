@@ -30,7 +30,9 @@ shelly deploy validation
 package evidence helpers
 ```
 
-Mac direct-deploy tools may use bounded in-memory RPC upload chunks as a transport detail. Those chunks are not repo source architecture and are separate from generated Shelly repo deploy chunks under `dep/s/**`.
+Mac direct-deploy tools use bounded in-memory RPC upload chunks as a transport detail. Those chunks are not repo source architecture and are separate from generated Shelly repo deploy chunks under `dep/s/**`.
+
+Mac direct deploy must read the complete built script from `build/shelly/**`, then split that script into temporary RPC upload chunks for `Script.PutCode`. It must not read `dep/s/ch/**` as the normal direct-deploy source unless a future package explicitly changes that deployment model.
 
 Mac services run continuously or on schedule.
 

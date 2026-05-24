@@ -1,7 +1,7 @@
 # Package P0013: Spotprice low-memory se.elpris runtime
 
 ## Status
-completed
+verified
 
 ## Package order
 P0013

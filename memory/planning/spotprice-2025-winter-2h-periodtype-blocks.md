@@ -39,17 +39,19 @@ This keeps the reduction compact and consistent with the previously stored dayty
 
 ## Period averages, maxima and minima
 
-| Daytype | Period | Mean | Max | Min |
-|---|---|---:|---:|---:|
-| Vardag | 22:00-06:00 | 5.245 | 5.557 | 4.955 |
-| Vardag | 06:00-14:00 | 8.945 | 9.515 | 8.082 |
-| Vardag | 14:00-22:00 | 8.600 | 9.269 | 7.351 |
-| Lördag | 22:00-06:00 | 3.182 | 3.603 | 2.975 |
-| Lördag | 06:00-14:00 | 3.208 | 3.268 | 3.105 |
-| Lördag | 14:00-22:00 | 3.370 | 3.467 | 3.259 |
-| Söndag | 22:00-06:00 | 3.407 | 4.981 | 2.818 |
-| Söndag | 06:00-14:00 | 3.871 | 4.240 | 3.281 |
-| Söndag | 14:00-22:00 | 5.545 | 6.396 | 4.629 |
+`Max/Min` shows how much more expensive the most expensive 2h block in the period is than the cheapest 2h block in the same period.
+
+| Daytype | Period | Mean | Max | Min | Max/Min |
+|---|---|---:|---:|---:|---:|
+| Vardag | 22:00-06:00 | 5.245 | 5.557 | 4.955 | 112.1% |
+| Vardag | 06:00-14:00 | 8.945 | 9.515 | 8.082 | 117.7% |
+| Vardag | 14:00-22:00 | 8.600 | 9.269 | 7.351 | 126.1% |
+| Lördag | 22:00-06:00 | 3.182 | 3.603 | 2.975 | 121.1% |
+| Lördag | 06:00-14:00 | 3.208 | 3.268 | 3.105 | 105.2% |
+| Lördag | 14:00-22:00 | 3.370 | 3.467 | 3.259 | 106.4% |
+| Söndag | 22:00-06:00 | 3.407 | 4.981 | 2.818 | 176.8% |
+| Söndag | 06:00-14:00 | 3.871 | 4.240 | 3.281 | 129.2% |
+| Söndag | 14:00-22:00 | 5.545 | 6.396 | 4.629 | 138.2% |
 
 ## Source block values
 
@@ -71,3 +73,4 @@ This keeps the reduction compact and consistent with the previously stored dayty
 - Weekday `06:00-14:00` and `14:00-22:00` are both expensive; avoiding heat-pump heavy blocks here is valuable when COP loss does not erase the gain.
 - Saturday is consistently cheap across all periods.
 - Sunday evening/balance period is notably more expensive than Sunday night/morning and should not be treated like Saturday.
+- Period-internal price spread is small for Saturday daytime/evening, moderate for weekdays, and largest for Sunday `22:00-06:00` because Sunday 22:00-00:00 is much more expensive than Sunday 00:00-06:00 in this daytype attribution.

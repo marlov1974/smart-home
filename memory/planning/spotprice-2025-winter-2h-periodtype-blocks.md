@@ -97,6 +97,15 @@ Weekend macroblock 2, hold full:
   Mission: keep house charge at 100% until Monday 06:00 if macroblock 1 already reached full charge.
   Use smooth production across SP3 and Monday PV1.
   Do not aggressively shift between SP3 and Monday PV1 because their price difference is below the 40% COP-risk threshold.
+
+VP intraperiod level ordering:
+  Intraperiod optimization should normally not move large amounts of energy between 2h blocks.
+  The period/macroblock planner first decides the required VP production level counts for the four 2h blocks.
+  Because VP levels are discrete L0-L4 and neighbouring blocks will normally have similar required levels, the intraperiod optimizer only orders those already-required levels by price.
+  Highest required VP levels should be assigned to the cheapest 2h blocks and lower required VP levels to the more expensive 2h blocks.
+  This is not expected to create erratic patterns such as L1, L2, L3, L4 inside one period; typical period outputs should be adjacent or near-adjacent levels, for example two L4 blocks and two L3 blocks.
+  In weekday PV1, the 00:00-02:00 block is a standing DHW charging exception and should always receive L4 for VP1.
+  The remaining PV1 blocks should then carry similar levels and be price-ordered around that fixed DHW block.
 ```
 
 These are strategy defaults. Comfort, humidity, DHW minimum, safety, stale fallback and unacceptable COP loss may override them.

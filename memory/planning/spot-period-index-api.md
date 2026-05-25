@@ -2,24 +2,24 @@
 
 This contract belongs to the Mac spot forecast / price-index service.
 
-The purpose is to expose a compact JSON response with 21 period price indexes for a requested week.
+The purpose is to expose a very compact JSON response with 21 period price indexes for a requested ISO week.
 
 The initial service has no authentication or authorization. It is intended for trusted LAN / local Mac use only.
 
-## Endpoint
+## Forecast endpoint
 
 ```text
-GET /spot/period-index?year=YYYY&week=WW
+GET /spot/period-index?week=WW
 ```
 
 Examples:
 
 ```text
-GET /spot/period-index?year=2025&week=2
-GET /spot/period-index?year=2025&week=52
+GET /spot/period-index?week=2
+GET /spot/period-index?week=52
 ```
 
-The week is ISO week number.
+The `week` argument is ISO week number. Forecast mode does not need a year argument in v1. It returns the normal/expected period shape for that week number using the current Mac model.
 
 ## Period order
 
@@ -57,65 +57,54 @@ D 22-06 = D 22-00 + D+1 00-06
 
 ## Compact response
 
-Default response:
+Default response is only a JSON array of 21 numbers.
+
+Values are rounded to two decimals.
+
+Example:
 
 ```json
-{
-  "s": "spot_period_index.v1",
-  "y": 2025,
-  "w": 2,
-  "m": 8.468769,
-  "i": [0.971471, 0.725192, 0.377093, 0.488928, 0.479794, 0.326416, 0.592105, 0.622359, 0.766493, 2.135052, 3.341794, 1.728326, 3.121192, 2.739403, 0.569829, 0.372741, 0.409023, 0.34195, 0.299863, 0.297909, 0.293067]
-}
+[0.97,0.73,0.38,0.49,0.48,0.33,0.59,0.62,0.77,2.14,3.34,1.73,3.12,2.74,0.57,0.37,0.41,0.34,0.30,0.30,0.29]
 ```
 
-Fields:
+Each value is:
 
 ```text
-s  schema short name
-y  ISO year
-w  ISO week
-m  weekly mean total cost, SEK/kWh including VAT, tax, tariff and Tibber markup
-i  21 period indexes, where 1.0 is weekly mean price
+period_price_index = period_price / week_mean_price
 ```
 
-The indexes should be normalized so that their arithmetic mean is approximately 1.0.
-
-## Optional debug response
-
-For diagnostics, the API may support:
+So:
 
 ```text
-GET /spot/period-index?year=YYYY&week=WW&debug=1
+1.00 = expected weekly mean price
+0.50 = half expected weekly mean price
+2.00 = double expected weekly mean price
 ```
 
-Optional debug response may include absolute period prices and labels:
+The 21 returned values should have arithmetic mean approximately 1.00 before rounding. Rounding to two decimals may make the displayed mean slightly different.
 
-```json
-{
-  "schema": "smart_home.spot_period_index.v1",
-  "iso_year": 2025,
-  "iso_week": 2,
-  "mean_total_inc_vat_sek_kwh": 8.468769,
-  "period_order": ["mon 06-14", "mon 14-22", "mon 22-06"],
-  "total_inc_vat_sek_kwh": [8.227161, 6.141487, 3.193515],
-  "price_index": [0.971471, 0.725192, 0.377093],
-  "source": "spotprices-2025-winter-8h-weekly-period-index.json"
-}
+## Optional historical lookup endpoint
+
+Historical/debug lookup may use year + week, but this is not the default planner API:
+
+```text
+GET /spot/period-index/history?year=YYYY&week=WW
 ```
+
+The historical endpoint may return the same compact array or a debug object if explicitly requested by a future tool. The planner should use the compact forecast endpoint.
 
 ## Error responses
 
-Missing arguments:
+Missing or invalid week:
 
 ```json
-{"error":"missing year or week"}
+{"error":"invalid week"}
 ```
 
 Unknown week:
 
 ```json
-{"error":"week not found","year":2025,"week":1}
+{"error":"week not found"}
 ```
 
 The service should use HTTP 400 for invalid input and HTTP 404 for missing week data.
@@ -134,10 +123,9 @@ This file stores absolute prices and indexes derived from uploaded `SpotPrices2h
 
 The same endpoint can later serve a Mac ML / analog forecast instead of a historical week lookup.
 
-The planner should depend on the response contract, not on whether the data came from:
+The planner should depend only on the compact response contract, not on whether the data came from:
 
 ```text
-- historical lookup
 - week-weight analog model
 - later weather-aware model
 - fallback static table

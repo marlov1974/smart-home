@@ -83,7 +83,34 @@ The current planning interpretation is:
 Weekday:
   PV1 22:00-06:00 is the primary production window.
   Move as much movable VP production as practical from PV2/PV3 into PV1.
-  PV2/PV3 normally run base heat plus required corrections only.
+  PV2/PV3 normally run only the weather-dependent daytime minimum plus any required correction.
+  Weekday planning is now locked as a kWh energy-budget planner, not a fixed-level brute-force planner.
+
+Weekday kWh energy-budget planner:
+  The weekday planner starts from the daily heat need, calculated from the heat-loss/weather model.
+  It first reserves the minimum hydronic daytime heat for 06:00-22:00.
+  Current planning assumption for this minimum is about 25 C flow temperature, approximately 3 kW heat to the house, or 6 kWh per 2h block.
+  Therefore the 06:00-22:00 minimum is 8 blocks * 6 kWh = 48 kWh/day.
+  If the implementation treats the minimum as 6 kW continuous instead, the value is 6 kW * 16h = 96 kWh/day; this must be explicit and not confused with 6 kWh/block.
+
+  After daytime minimum has been subtracted, the planner allocates as much of the remaining production as practical to PV1 22:00-06:00.
+  Night production is bounded by the sustainable VP capacity and by the block regulator's COP/brine/flow-temperature protection.
+  A representative planning value is about 20 kW for the combined VP system across 8h, or about 160 kWh per PV1 night, but this should be calibrated from measured delivered heat.
+  If the remaining need is lower than night capacity, PV1 only produces what is needed.
+  If production still remains after daytime minimum and night allocation, the residual is spread across 06:00-22:00 on top of the daytime minimum.
+  Residual daytime production should be smoothed unless live prices give a compelling reason to weight it.
+
+  Formula shape:
+    daily_need_kWh = heatNeedKwhDay(...)
+    day_min_kWh = 8 * min_day_block_kWh
+    remaining_after_day_min = max(0, daily_need_kWh - day_min_kWh)
+    night_target_kWh = min(remaining_after_day_min, night_capacity_kWh)
+    day_extra_kWh = max(0, remaining_after_day_min - night_target_kWh)
+    day_block_target_kWh = min_day_block_kWh + day_extra_kWh / 8
+    night_block_target_kWh = night_target_kWh / 4, adjusted for DHW and measured block constraints
+
+  This means Save is not a fixed level. Save means minimum hydronic heat plus any overflow energy that cannot fit into PV1 while still meeting the daily energy budget.
+  The goal is still to shift as much energy as possible to 22:00-06:00, while preserving enough daytime floor/ventilation heat to avoid undercooling.
 
 Weekend macroblock 1, recharge:
   LP1, LP2, LP3, SP1 and SP2 form the main weekend recharge macroblock.
@@ -107,17 +134,15 @@ VP intraperiod level ordering:
   In weekday PV1, the 00:00-02:00 block is a standing DHW charging exception and should always receive L4 for VP1.
   The remaining PV1 blocks should then carry similar levels and be price-ordered around that fixed DHW block.
 
-Weekday daily brute force:
-  The weekday 22:00 planner builds a next-day plan from 12 two-hour blocks.
-  Start plan is L1 base heat in all blocks plus the fixed 00:00-02:00 L4 DHW block.
-  The brute-force optimizer may only raise the three remaining PV1 blocks around the fixed DHW block:
+Legacy weekday daily brute force:
+  Previous discussion used a fixed-level brute-force model where the weekday 22:00 planner built a next-day plan from 12 two-hour blocks, starting with L1 base heat in all blocks plus fixed 00:00-02:00 L4 DHW.
+  That legacy model only raised the three remaining PV1 blocks around the fixed DHW block:
     block 2: 22:00-00:00
     block 3: 02:00-04:00
     block 4: 04:00-06:00
-  It does not raise period 2, period 3 or period 4.
-  The rest of the day normally stays at base heat unless another policy/safety correction explicitly overrides it.
-  The three playable PV1 blocks may differ by at most one VP level.
-  The optimizer raises the cheapest allowed playable block first, then the next cheapest, until the daily production target is met or the constraints prevent further increases.
+  It did not raise period 2, period 3 or period 4.
+  This is retained only as historical fallback context.
+  The locked weekday strategy is the kWh energy-budget planner above, assuming block-level kWh production control is available.
 ```
 
 These are strategy defaults. Comfort, humidity, DHW minimum, safety, stale fallback and unacceptable COP loss may override them.

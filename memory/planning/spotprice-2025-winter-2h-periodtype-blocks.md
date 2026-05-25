@@ -74,3 +74,25 @@ This keeps the reduction compact and consistent with the previously stored dayty
 - Saturday is consistently cheap across all periods.
 - Sunday evening/balance period is notably more expensive than Sunday night/morning and should not be treated like Saturday.
 - Period-internal price spread is small for Saturday daytime/evening, moderate for weekdays, and largest for Sunday `22:00-06:00` because Sunday 22:00-00:00 is much more expensive than Sunday 00:00-06:00 in this daytype attribution.
+
+## Current winter production strategy derived from this table
+
+The current planning interpretation is:
+
+```text
+Weekday:
+  PV1 22:00-06:00 is the primary production window.
+  Move as much movable VP production as practical from PV2/PV3 into PV1.
+  PV2/PV3 normally run base heat plus required corrections only.
+
+Saturday:
+  LP1-LP3 are all low-price recovery periods.
+  Use recharge smoothing across the whole Saturday rather than aggressive period shifting.
+
+Sunday:
+  SP1 22:00-06:00 and SP2 06:00-14:00 are the Sunday recharge windows.
+  Move as much production as practical from SP3 into SP1/SP2.
+  SP3 14:00-22:00 normally runs base heat plus required corrections only.
+```
+
+These are strategy defaults. Comfort, humidity, DHW minimum, safety, stale fallback and unacceptable COP loss may override them.

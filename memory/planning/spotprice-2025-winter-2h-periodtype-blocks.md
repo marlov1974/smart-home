@@ -119,6 +119,16 @@ Weekend macroblock 1, recharge:
   Use smooth production across the macroblock rather than aggressive period shifting.
   The point is efficient recharge with good COP, not micro-optimizing small price differences.
 
+Friday 22 weekend recharge planner:
+  The planner runs daily at 22:00 and writes the next 24h plan.
+  At Friday 22:00, it plans Friday 22:00 through Saturday 22:00.
+  The active macroblock target is still Sunday 14:00 full charge, because weekend macroblock 1 runs Friday 22:00 through Sunday 14:00.
+  The planner calculates the total energy requirement from Friday 22:00 to Sunday 14:00 from current charge state, target 100% charge at Sunday 14:00, and forecast heat loss during the whole macroblock.
+  Heat loss must be calculated using the house target temperature / setpoint, not the current house temperature. This is also the rule for weekday heat-loss planning. The reason is that during a charge/discharge interval the house will cross the setpoint roughly inside the interval, so using current temperature biases the forecast.
+  Friday 22:00 through Saturday 22:00 is 24h of the 40h macroblock, so the Friday daily plan receives 3/5 of the total macroblock energy requirement.
+  That 24h energy is distributed evenly across the 12 two-hour blocks from Friday 22:00 to Saturday 22:00.
+  Price may be used later as a light weighting factor, but the locked first rule is even distribution to protect COP and keep weekend recharge smooth.
+
 Weekend macroblock 2, hold full:
   SP3 and the following Monday PV1 form the weekend hold-full macroblock.
   Mission: keep house charge at 100% until Monday 06:00 if macroblock 1 already reached full charge.

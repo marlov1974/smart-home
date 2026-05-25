@@ -49,3 +49,5 @@ docs/functions/
 ## Package history
 
 Created by `P0007-codex-phased-package-build-process`.
+
+`P0017` added `docs/functions/mac/spot-forecast.md` for the Mac spot period index service.

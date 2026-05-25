@@ -129,6 +129,25 @@ Friday 22 weekend recharge planner:
   That 24h energy is distributed evenly across the 12 two-hour blocks from Friday 22:00 to Saturday 22:00.
   Price may be used later as a light weighting factor, but the locked first rule is even distribution to protect COP and keep weekend recharge smooth.
 
+Saturday 22 weekend recharge and hold planner:
+  At Saturday 22:00, the planner writes the next 24h plan from Saturday 22:00 through Sunday 22:00.
+  This 24h plan crosses the boundary between weekend macroblock 1 and weekend macroblock 2, so it is built as two separate subplans.
+
+  Subplan A, Saturday 22:00 through Sunday 14:00:
+    This is the final 16h of weekend macroblock 1.
+    The planner checks current charge state and forecast heat loss through Sunday 14:00.
+    It calculates the remaining energy needed to reach 100% charge at Sunday 14:00, including heat losses until that time.
+    Heat loss is calculated against the house target temperature / setpoint, not current house temperature.
+    The resulting energy is distributed evenly across the 8 two-hour blocks from Saturday 22:00 to Sunday 14:00.
+
+  Subplan B, Sunday 14:00 through Sunday 22:00:
+    This is the first 8h of weekend macroblock 2.
+    The planner calculates expected heat loss for Sunday 14:00 through Sunday 22:00.
+    The mission is hold-full, not recharge: keep house charge at 100%.
+    The heat-loss energy is distributed evenly across the 4 two-hour blocks from Sunday 14:00 to Sunday 22:00.
+
+  Price may be used later as light weighting, but the locked first rule is even distribution inside both subplans to protect COP and avoid unnecessary Sunday-evening charging spikes.
+
 Weekend macroblock 2, hold full:
   SP3 and the following Monday PV1 form the weekend hold-full macroblock.
   Mission: keep house charge at 100% until Monday 06:00 if macroblock 1 already reached full charge.

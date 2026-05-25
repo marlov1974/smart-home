@@ -106,6 +106,18 @@ VP intraperiod level ordering:
   This is not expected to create erratic patterns such as L1, L2, L3, L4 inside one period; typical period outputs should be adjacent or near-adjacent levels, for example two L4 blocks and two L3 blocks.
   In weekday PV1, the 00:00-02:00 block is a standing DHW charging exception and should always receive L4 for VP1.
   The remaining PV1 blocks should then carry similar levels and be price-ordered around that fixed DHW block.
+
+Weekday daily brute force:
+  The weekday 22:00 planner builds a next-day plan from 12 two-hour blocks.
+  Start plan is L1 base heat in all blocks plus the fixed 00:00-02:00 L4 DHW block.
+  The brute-force optimizer may only raise the three remaining PV1 blocks around the fixed DHW block:
+    block 2: 22:00-00:00
+    block 3: 02:00-04:00
+    block 4: 04:00-06:00
+  It does not raise period 2, period 3 or period 4.
+  The rest of the day normally stays at base heat unless another policy/safety correction explicitly overrides it.
+  The three playable PV1 blocks may differ by at most one VP level.
+  The optimizer raises the cheapest allowed playable block first, then the next cheapest, until the daily production target is met or the constraints prevent further increases.
 ```
 
 These are strategy defaults. Comfort, humidity, DHW minimum, safety, stale fallback and unacceptable COP loss may override them.

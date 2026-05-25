@@ -80,24 +80,44 @@ This keeps the reduction compact and consistent with the previously stored dayty
 The current planning interpretation is:
 
 ```text
-Rolling 7-day strategy:
-  The planner should use a rolling 7-day horizon with 21 strategy periods.
-  Each day has three 8h periods: 22:00-06:00, 06:00-14:00 and 14:00-22:00.
-  The planner combines a 7-day weather forecast with a statistical spot-price period model.
-  The statistical model gives each 8h period a price index where 1.0 is the week average, 0.5 is half price and 2.0 is double price.
+Plan-to-Monday-06 strategy:
+  The planner does not use an always-rolling 7-day execution horizon.
+  Each planning run builds a plan from now until the next Monday 06:00 boundary.
+  Monday 06:00 is the only strategic anchor and should be 100% house charge.
+  At Monday 06:00, that plan is complete and a new plan cycle begins.
+  This anchor lets the planner avoid looking beyond Monday 06:00 for normal winter planning.
+
+Replanning cadence:
+  Replan every 8h, aligned with strategy periods.
+  At each replan, read current house charge/state, fetch a fresh weather forecast and load fresh spot-statistics/prognosis values.
+  Recompute the full remaining plan from the current period to next Monday 06:00.
+  Only the next executable period/block schedule needs to be applied, but the calculated remaining plan is used for context and anchor feasibility.
+
+Period model:
+  The horizon is divided into 8h strategy periods: 22:00-06:00, 06:00-14:00 and 14:00-22:00.
+  Heat need is calculated from weather forecast and target house temperature/setpoint.
+  Production is allocated across the remaining periods using period price indexes, then constrained by min/max production, block-regulator capacity, COP/brine/flow-temperature protection, DHW, comfort, humidity and safety.
+
+Spot-statistics / price-index model:
+  Runtime code must include a deterministic fallback statistical price model.
+  The fallback model gives each 8h period a price index where 1.0 is the remaining-horizon/week average, 0.5 is half price and 2.0 is double price.
+  The Mac layer should later host a better ML/statistical model that can produce more period-unique forecasts, potentially using weather, calendar, seasonality and live market signals.
+  Planner logic should consume price indexes from either source through the same contract, so fallback and Mac ML output are interchangeable.
+
+Comfort weighting:
   Comfort mode boosts the price-index contrast before energy allocation:
     LOW:    exponent 2.0
     MEDIUM: exponent 1.5
     HIGH:   exponent 1.0
   Boosted index is calculated as price_index ^ exponent.
   Energy weight is the inverse: weight = 1 / boosted_index.
-  Weekly heat production is allocated across the 21 periods by these weights, then constrained by min/max production, block regulator capacity, COP/brine/flow-temperature protection, DHW, comfort, humidity and safety.
+  Lower comfort therefore shifts more production into cheap periods; higher comfort keeps production more even.
 
 Single anchor model:
   The planner has one strategic anchor: Monday 06:00 should be 100% house charge.
-  Friday 22:00 = 0% and Sunday 14:00 = 100% are no longer hard planner anchors.
+  Friday 22:00 = 0% and Sunday 14:00 = 100% are not hard planner anchors.
   Those states may still emerge naturally from the statistical price model, because weekday periods are expensive and weekend periods are cheap, but they should not be enforced as separate anchor constraints.
-  The Monday 06 anchor is applied as a rolling horizon constraint/target: the simulated charge curve after planned production and forecast heat losses should reach 100% at the relevant Monday 06 boundary.
+  The Monday 06 anchor is applied as a horizon-end constraint/target: the simulated charge curve after planned production and forecast heat losses should reach 100% at next Monday 06.
 
 Weekday:
   PV1 22:00-06:00 is the primary production window.
@@ -137,7 +157,7 @@ Legacy weekend macroblock context:
     SP3 plus following Monday PV1: hold full
   Earlier discussion also defined Friday 22 and Saturday 22 special daily planning rules.
   These are retained as historical fallback context only.
-  The current preferred model is the rolling 7-day / 21-period allocation with a single Monday 06 100% anchor.
+  The current preferred model is plan-to-next-Monday-06 allocation with a single Monday 06 100% anchor.
 
 VP intraperiod level ordering:
   Intraperiod optimization should normally not move large amounts of energy between 2h blocks.

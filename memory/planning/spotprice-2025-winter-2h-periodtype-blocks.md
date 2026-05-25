@@ -80,6 +80,25 @@ This keeps the reduction compact and consistent with the previously stored dayty
 The current planning interpretation is:
 
 ```text
+Rolling 7-day strategy:
+  The planner should use a rolling 7-day horizon with 21 strategy periods.
+  Each day has three 8h periods: 22:00-06:00, 06:00-14:00 and 14:00-22:00.
+  The planner combines a 7-day weather forecast with a statistical spot-price period model.
+  The statistical model gives each 8h period a price index where 1.0 is the week average, 0.5 is half price and 2.0 is double price.
+  Comfort mode boosts the price-index contrast before energy allocation:
+    LOW:    exponent 2.0
+    MEDIUM: exponent 1.5
+    HIGH:   exponent 1.0
+  Boosted index is calculated as price_index ^ exponent.
+  Energy weight is the inverse: weight = 1 / boosted_index.
+  Weekly heat production is allocated across the 21 periods by these weights, then constrained by min/max production, block regulator capacity, COP/brine/flow-temperature protection, DHW, comfort, humidity and safety.
+
+Single anchor model:
+  The planner has one strategic anchor: Monday 06:00 should be 100% house charge.
+  Friday 22:00 = 0% and Sunday 14:00 = 100% are no longer hard planner anchors.
+  Those states may still emerge naturally from the statistical price model, because weekday periods are expensive and weekend periods are cheap, but they should not be enforced as separate anchor constraints.
+  The Monday 06 anchor is applied as a rolling horizon constraint/target: the simulated charge curve after planned production and forecast heat losses should reach 100% at the relevant Monday 06 boundary.
+
 Weekday:
   PV1 22:00-06:00 is the primary production window.
   Move as much movable VP production as practical from PV2/PV3 into PV1.
@@ -112,47 +131,13 @@ Weekday kWh energy-budget planner:
   This means Save is not a fixed level. Save means minimum hydronic heat plus any overflow energy that cannot fit into PV1 while still meeting the daily energy budget.
   The goal is still to shift as much energy as possible to 22:00-06:00, while preserving enough daytime floor/ventilation heat to avoid undercooling.
 
-Weekend macroblock 1, recharge:
-  LP1, LP2, LP3, SP1 and SP2 form the main weekend recharge macroblock.
-  Mission: move house charge from Friday 22:00 lowpoint toward 100%.
-  If this macroblock can reach 100%, it should do so.
-  Use smooth production across the macroblock rather than aggressive period shifting.
-  The point is efficient recharge with good COP, not micro-optimizing small price differences.
-
-Friday 22 weekend recharge planner:
-  The planner runs daily at 22:00 and writes the next 24h plan.
-  At Friday 22:00, it plans Friday 22:00 through Saturday 22:00.
-  The active macroblock target is still Sunday 14:00 full charge, because weekend macroblock 1 runs Friday 22:00 through Sunday 14:00.
-  The planner calculates the total energy requirement from Friday 22:00 to Sunday 14:00 from current charge state, target 100% charge at Sunday 14:00, and forecast heat loss during the whole macroblock.
-  Heat loss must be calculated using the house target temperature / setpoint, not the current house temperature. This is also the rule for weekday heat-loss planning. The reason is that during a charge/discharge interval the house will cross the setpoint roughly inside the interval, so using current temperature biases the forecast.
-  Friday 22:00 through Saturday 22:00 is 24h of the 40h macroblock, so the Friday daily plan receives 3/5 of the total macroblock energy requirement.
-  That 24h energy is distributed evenly across the 12 two-hour blocks from Friday 22:00 to Saturday 22:00.
-  Price may be used later as a light weighting factor, but the locked first rule is even distribution to protect COP and keep weekend recharge smooth.
-
-Saturday 22 weekend recharge and hold planner:
-  At Saturday 22:00, the planner writes the next 24h plan from Saturday 22:00 through Sunday 22:00.
-  This 24h plan crosses the boundary between weekend macroblock 1 and weekend macroblock 2, so it is built as two separate subplans.
-
-  Subplan A, Saturday 22:00 through Sunday 14:00:
-    This is the final 16h of weekend macroblock 1.
-    The planner checks current charge state and forecast heat loss through Sunday 14:00.
-    It calculates the remaining energy needed to reach 100% charge at Sunday 14:00, including heat losses until that time.
-    Heat loss is calculated against the house target temperature / setpoint, not current house temperature.
-    The resulting energy is distributed evenly across the 8 two-hour blocks from Saturday 22:00 to Sunday 14:00.
-
-  Subplan B, Sunday 14:00 through Sunday 22:00:
-    This is the first 8h of weekend macroblock 2.
-    The planner calculates expected heat loss for Sunday 14:00 through Sunday 22:00.
-    The mission is hold-full, not recharge: keep house charge at 100%.
-    The heat-loss energy is distributed evenly across the 4 two-hour blocks from Sunday 14:00 to Sunday 22:00.
-
-  Price may be used later as light weighting, but the locked first rule is even distribution inside both subplans to protect COP and avoid unnecessary Sunday-evening charging spikes.
-
-Weekend macroblock 2, hold full:
-  SP3 and the following Monday PV1 form the weekend hold-full macroblock.
-  Mission: keep house charge at 100% until Monday 06:00 if macroblock 1 already reached full charge.
-  Use smooth production across SP3 and Monday PV1.
-  Do not aggressively shift between SP3 and Monday PV1 because their price difference is below the 40% COP-risk threshold.
+Legacy weekend macroblock context:
+  Earlier discussion split the weekend into a recharge macroblock and a hold-full macroblock:
+    LP1, LP2, LP3, SP1, SP2: recharge toward 100%
+    SP3 plus following Monday PV1: hold full
+  Earlier discussion also defined Friday 22 and Saturday 22 special daily planning rules.
+  These are retained as historical fallback context only.
+  The current preferred model is the rolling 7-day / 21-period allocation with a single Monday 06 100% anchor.
 
 VP intraperiod level ordering:
   Intraperiod optimization should normally not move large amounts of energy between 2h blocks.

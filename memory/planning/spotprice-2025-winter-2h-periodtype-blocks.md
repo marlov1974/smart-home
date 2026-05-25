@@ -1,0 +1,73 @@
+# Winter 2025 spot cost by daytype strategy period
+
+This file stores the 9-period reduction derived from:
+
+```text
+memory/planning/spotprice-2025-winter-2h-daytype-blocks.md
+```
+
+The 36 daytype 2h blocks are converted into 9 strategy-period blocks:
+
+```text
+3 weekday periods
+3 Saturday periods
+3 Sunday periods
+```
+
+Strategy periods:
+
+```text
+22:00-06:00  charge / recover
+06:00-14:00  save
+14:00-22:00  balance
+```
+
+Unit: SEK/kWh, including VAT, Tibber markup, energy tax and Vattenfall grid tariff.
+
+## Attribution note
+
+This reduction uses the daytype table directly. The `22:00-06:00` period is calculated from these four 2h block values for each daytype:
+
+```text
+22:00-00:00
+00:00-02:00
+02:00-04:00
+04:00-06:00
+```
+
+This keeps the reduction compact and consistent with the previously stored daytype table. If a future planner needs strict operational-night attribution across calendar days, for example Friday 22:00 through Saturday 06:00 as a weekend-recovery night, that should be defined as a separate operational-calendar contract.
+
+## Period averages, maxima and minima
+
+| Daytype | Period | Mean | Max | Min |
+|---|---|---:|---:|---:|
+| Vardag | 22:00-06:00 | 5.245 | 5.557 | 4.955 |
+| Vardag | 06:00-14:00 | 8.945 | 9.515 | 8.082 |
+| Vardag | 14:00-22:00 | 8.600 | 9.269 | 7.351 |
+| Lördag | 22:00-06:00 | 3.182 | 3.603 | 2.975 |
+| Lördag | 06:00-14:00 | 3.208 | 3.268 | 3.105 |
+| Lördag | 14:00-22:00 | 3.370 | 3.467 | 3.259 |
+| Söndag | 22:00-06:00 | 3.407 | 4.981 | 2.818 |
+| Söndag | 06:00-14:00 | 3.871 | 4.240 | 3.281 |
+| Söndag | 14:00-22:00 | 5.545 | 6.396 | 4.629 |
+
+## Source block values
+
+| Daytype | Period | Included 2h block values |
+|---|---|---|
+| Vardag | 22:00-06:00 | 5.557, 5.185, 4.955, 5.283 |
+| Vardag | 06:00-14:00 | 8.082, 9.515, 9.198, 8.985 |
+| Vardag | 14:00-22:00 | 9.100, 9.269, 8.678, 7.351 |
+| Lördag | 22:00-06:00 | 3.062, 3.603, 3.089, 2.975 |
+| Lördag | 06:00-14:00 | 3.105, 3.200, 3.268, 3.259 |
+| Lördag | 14:00-22:00 | 3.355, 3.467, 3.398, 3.259 |
+| Söndag | 22:00-06:00 | 4.981, 2.867, 2.818, 2.964 |
+| Söndag | 06:00-14:00 | 3.281, 3.850, 4.113, 4.240 |
+| Söndag | 14:00-22:00 | 4.629, 5.798, 6.396, 5.356 |
+
+## Planning interpretation
+
+- Weekday charge period `22:00-06:00` is much cheaper than weekday save/balance periods.
+- Weekday `06:00-14:00` and `14:00-22:00` are both expensive; avoiding heat-pump heavy blocks here is valuable when COP loss does not erase the gain.
+- Saturday is consistently cheap across all periods.
+- Sunday evening/balance period is notably more expensive than Sunday night/morning and should not be treated like Saturday.

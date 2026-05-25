@@ -85,14 +85,18 @@ Weekday:
   Move as much movable VP production as practical from PV2/PV3 into PV1.
   PV2/PV3 normally run base heat plus required corrections only.
 
-Saturday:
-  LP1-LP3 are all low-price recovery periods.
-  Use recharge smoothing across the whole Saturday rather than aggressive period shifting.
+Weekend macroblock 1, recharge:
+  LP1, LP2, LP3, SP1 and SP2 form the main weekend recharge macroblock.
+  Mission: move house charge from Friday 22:00 lowpoint toward 100%.
+  If this macroblock can reach 100%, it should do so.
+  Use smooth production across the macroblock rather than aggressive period shifting.
+  The point is efficient recharge with good COP, not micro-optimizing small price differences.
 
-Sunday:
-  SP1 22:00-06:00 and SP2 06:00-14:00 are the Sunday recharge windows.
-  Move as much production as practical from SP3 into SP1/SP2.
-  SP3 14:00-22:00 normally runs base heat plus required corrections only.
+Weekend macroblock 2, hold full:
+  SP3 and the following Monday PV1 form the weekend hold-full macroblock.
+  Mission: keep house charge at 100% until Monday 06:00 if macroblock 1 already reached full charge.
+  Use smooth production across SP3 and Monday PV1.
+  Do not aggressively shift between SP3 and Monday PV1 because their price difference is below the 40% COP-risk threshold.
 ```
 
 These are strategy defaults. Comfort, humidity, DHW minimum, safety, stale fallback and unacceptable COP loss may override them.

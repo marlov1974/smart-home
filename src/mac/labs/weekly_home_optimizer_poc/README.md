@@ -12,3 +12,25 @@ python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 700 --house-tem
 ```
 
 The module does not control Shelly, Home Assistant, heat pumps or FTX runtime behavior.
+
+## Browser UI
+
+Start the local browser UI on the Mac:
+
+```bash
+python3 -m src.mac.labs.weekly_home_optimizer_poc.server --host 127.0.0.1 --port 8081
+```
+
+For phone testing on the same LAN, explicitly bind to all interfaces:
+
+```bash
+python3 -m src.mac.labs.weekly_home_optimizer_poc.server --host 0.0.0.0 --port 8081
+```
+
+Then open:
+
+```text
+http://<mac-lan-ip>:8081/
+```
+
+The server is trusted-local read-only POC tooling. It runs the local planner and does not write to devices.

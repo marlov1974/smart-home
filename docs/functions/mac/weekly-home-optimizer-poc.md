@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Last changed: P0018
+Last changed: P0020
 
 ## Module
 
@@ -20,6 +20,15 @@ The module is inspectable and deterministic. It does not perform live control.
 python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 500 --house-temp 22
 python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 700 --house-temp 22 --format json
 ```
+
+## Browser Server
+
+```bash
+python3 -m src.mac.labs.weekly_home_optimizer_poc.server --host 127.0.0.1 --port 8081
+python3 -m src.mac.labs.weekly_home_optimizer_poc.server --host 0.0.0.0 --port 8081
+```
+
+The first command is local-only. The second command is for explicit trusted-LAN phone testing.
 
 ## Important Functions
 
@@ -45,6 +54,16 @@ python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 700 --house-tem
 
 `format_table(plan)`, `format_json(plan)` and `format_csv(plan)` render inspectable outputs.
 
+`parse_plan_query(query)` validates HTTP query parameters for `week`, `ppm` and `houseTemp`.
+
+`plan_payload(request)` builds the JSON-compatible browser/API payload by calling the P0018 planner and flattening rows.
+
+`build_handler()` creates the standard-library HTTP request handler for `/`, `/health` and `/api/weekly-home-poc`.
+
+`run_server(host, port)` starts the local read-only HTTP server.
+
+`run_once_smoke()` performs a non-blocking server smoke check for package verification.
+
 ## Contracts
 
 Public required inputs are:
@@ -62,3 +81,19 @@ Normal supply modes are limited to:
 ```text
 25, 28, 31, 34, 37, 40, 43, 46, 49, 52, 55
 ```
+
+Browser API endpoint:
+
+```text
+GET /api/weekly-home-poc?week=2&ppm=500&houseTemp=22
+```
+
+The JSON response contains:
+
+```text
+input
+summary
+hours
+```
+
+`hours` has 168 rows for a valid plan.

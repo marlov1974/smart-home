@@ -93,6 +93,15 @@ def plan_payload(request: PlanRequest, prefer_real_weather: bool = True) -> dict
         "weather_provider": plan.weather_provider,
         "weather_profile_strategy": plan.weather_profile_strategy,
         "weather_profile_year": plan.weather_profile_year,
+        "heat_optimizer": plan.heat.heat_optimizer,
+        "heat_modes_kw": plan.heat.heat_modes_kw,
+        "heat_soc_capacity_kWh": plan.heat.heat_soc_capacity_kWh,
+        "heat_soc_step_kWh": plan.heat.heat_soc_step_kWh,
+        "start_soc_pct": plan.heat.start_soc_pct,
+        "end_soc_min_pct": plan.heat.end_soc_min_pct,
+        "min_heat_soc_pct": plan.heat.min_heat_soc_pct,
+        "end_heat_soc_pct": plan.heat.end_heat_soc_pct,
+        "heat_optimizer_warnings": plan.heat.heat_optimizer_warnings,
     }
     if plan.weather_fallback_reason:
         summary["weather_fallback_reason"] = plan.weather_fallback_reason

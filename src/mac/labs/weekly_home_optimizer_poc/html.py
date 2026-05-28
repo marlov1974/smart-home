@@ -16,6 +16,8 @@ TABLE_COLUMNS = (
     "heat_kWh",
     "heat_soc_pct",
     "heat_cost_weight",
+    "heat_price_index",
+    "heat_action_kw",
     "rh_weight",
     "supply_pct",
     "flow_lps",
@@ -245,6 +247,9 @@ def render_result(payload: Mapping[str, Any]) -> str:
         ("Max PPM", summary["max_ppm"]),
         ("Avg Supply", summary["avg_supply_pct"]),
         ("Heat kWh", summary["total_heat_kWh"]),
+        ("Heat Opt", summary["heat_optimizer"]),
+        ("End SOC", summary["end_heat_soc_pct"]),
+        ("Min SOC", summary["min_heat_soc_pct"]),
         ("People", summary["people"]),
         ("PPM/h", summary["occupancy_gain_ppm_h"]),
         ("Weather", summary["weather_source"]),
@@ -253,6 +258,8 @@ def render_result(payload: Mapping[str, Any]) -> str:
     ]
     if summary.get("weather_fallback_reason"):
         metrics.append(("Fallback", summary["weather_fallback_reason"]))
+    if summary.get("heat_optimizer_warnings"):
+        metrics.append(("Heat Warnings", ", ".join(summary["heat_optimizer_warnings"])))
     metric_html = "\n".join(
         f'<div class="metric"><span>{escape(label)}</span><strong>{escape(str(value))}</strong></div>'
         for label, value in metrics

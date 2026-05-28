@@ -1,6 +1,6 @@
 # Weekly Heat PPM RH POC
 
-Last changed: P0021
+Last changed: P0022
 
 This file records the durable contract for the Mac-only weekly heat, PPM and RH-policy planning POC.
 
@@ -81,7 +81,42 @@ In POC v1:
 set_temp_c = current_house_temp
 ```
 
-Heat production is allocated toward lower spot-index hours, clamped by POC planning limits, and used to derive `heat_cost_weight` for ventilation planning.
+Heat production is optimized by a deterministic discrete dynamic program over a virtual heat battery SOC.
+
+P0022 default heat optimizer settings:
+
+```text
+heat_optimizer = discrete_dp
+heat_modes_kw = 2..22
+heat_soc_capacity_kWh = 300
+heat_soc_step_kWh = 1
+start_soc_pct = 100
+end_soc_min_pct = 50
+min_soc_pct = 0
+max_soc_pct = 100
+```
+
+The DP chooses one delivered thermal output mode per hour. It minimizes spot-index-weighted heat production plus low-SOC and overflow penalties, then derives `heat_cost_weight` from the optimized heat action, SOC and price index for downstream ventilation planning.
+
+Output keeps the established heat row fields:
+
+```text
+heat_need_kWh
+heat_kWh
+heat_soc_pct
+heat_cost_weight
+```
+
+Rows may also expose DP diagnostics:
+
+```text
+heat_price_index
+heat_action_kw
+heat_dp_cost_component
+soc_penalty_component
+```
+
+Plan metadata includes heat optimizer identity, mode list, SOC configuration, min/end SOC and optimizer warnings.
 
 These are POC planning values, not final live VP constraints.
 

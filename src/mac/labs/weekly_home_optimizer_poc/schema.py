@@ -64,6 +64,19 @@ class HeatPlan:
     heat_kWh: tuple[float, ...]
     heat_soc_pct: tuple[float, ...]
     heat_cost_weight: tuple[float, ...]
+    heat_optimizer: str = "heuristic"
+    heat_modes_kw: tuple[int, ...] = ()
+    heat_soc_capacity_kWh: float = 0.0
+    heat_soc_step_kWh: float = 0.0
+    start_soc_pct: float = 0.0
+    end_soc_min_pct: float = 0.0
+    min_heat_soc_pct: float = 0.0
+    end_heat_soc_pct: float = 0.0
+    heat_optimizer_warnings: tuple[str, ...] = ()
+    heat_price_index: tuple[float, ...] = ()
+    heat_action_kw: tuple[int, ...] = ()
+    heat_dp_cost_component: tuple[float, ...] = ()
+    soc_penalty_component: tuple[float, ...] = ()
 
 
 @dataclass(frozen=True)

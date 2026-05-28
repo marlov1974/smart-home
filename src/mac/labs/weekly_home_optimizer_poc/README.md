@@ -1,8 +1,10 @@
 # Weekly Home Optimizer POC
 
-Package: `P0018`, updated by `P0020` and `P0021`
+Package: `P0018`, updated by `P0020`, `P0021` and `P0022`
 
 This Mac-only lab module builds a one-week plan for heat, PPM and RH-policy ventilation tradeoffs.
+
+Heat production uses the P0022 discrete DP optimizer with 2..22 kW hourly heat modes and a virtual 300 kWh heat battery SOC. Output preserves the established heat fields and adds optimizer metadata plus optional DP diagnostics.
 
 Run from the repository root:
 

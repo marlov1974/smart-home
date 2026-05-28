@@ -57,3 +57,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0020` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the local browser/API server wrapper.
 
 `P0021` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with real-weather metadata and people-derived occupancy load.
+
+`P0022` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the discrete DP heat optimizer and heat optimizer metadata.

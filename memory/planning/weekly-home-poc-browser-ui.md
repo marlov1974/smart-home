@@ -1,6 +1,6 @@
 # Weekly Home POC Browser UI
 
-Last changed: P0021
+Last changed: P0022
 
 This file records the durable local browser contract for the Mac weekly home POC.
 
@@ -82,6 +82,15 @@ weather_provider
 weather_profile_strategy
 weather_profile_year
 weather_fallback_reason, when fallback occurred
+heat_optimizer
+heat_modes_kw
+heat_soc_capacity_kWh
+heat_soc_step_kWh
+start_soc_pct
+end_soc_min_pct
+min_heat_soc_pct
+end_heat_soc_pct
+heat_optimizer_warnings
 ```
 
 ## Runtime boundary

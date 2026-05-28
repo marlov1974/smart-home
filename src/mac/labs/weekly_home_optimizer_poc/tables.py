@@ -36,6 +36,10 @@ def rows_for_plan(plan: WeeklyPlan) -> list[dict[str, Any]]:
                 "heat_kWh": round(plan.heat.heat_kWh[hour], 3),
                 "heat_soc_pct": round(plan.heat.heat_soc_pct[hour], 2),
                 "heat_cost_weight": round(plan.heat.heat_cost_weight[hour], 3),
+                "heat_price_index": round(plan.heat.heat_price_index[hour], 4),
+                "heat_action_kw": plan.heat.heat_action_kw[hour],
+                "heat_dp_cost_component": round(plan.heat.heat_dp_cost_component[hour], 4),
+                "soc_penalty_component": round(plan.heat.soc_penalty_component[hour], 4),
                 "rh_weight": round(plan.rh_weight[hour], 2),
                 "supply_pct": plan.ppm.supply_pct[hour],
                 "flow_lps": round(plan.ppm.flow_lps[hour], 2),
@@ -64,6 +68,15 @@ def _metadata(plan: WeeklyPlan) -> dict[str, Any]:
         "weather_profile_strategy": plan.weather_profile_strategy,
         "weather_profile_year": plan.weather_profile_year,
         "weather_fallback_reason": plan.weather_fallback_reason,
+        "heat_optimizer": plan.heat.heat_optimizer,
+        "heat_modes_kw": plan.heat.heat_modes_kw,
+        "heat_soc_capacity_kWh": plan.heat.heat_soc_capacity_kWh,
+        "heat_soc_step_kWh": plan.heat.heat_soc_step_kWh,
+        "start_soc_pct": plan.heat.start_soc_pct,
+        "end_soc_min_pct": plan.heat.end_soc_min_pct,
+        "min_heat_soc_pct": plan.heat.min_heat_soc_pct,
+        "end_heat_soc_pct": plan.heat.end_heat_soc_pct,
+        "heat_optimizer_warnings": plan.heat.heat_optimizer_warnings,
         "hours": HOURS_PER_WEEK,
     }
 
@@ -109,8 +122,10 @@ def format_json(plan: WeeklyPlan) -> str:
 def format_csv(plan: WeeklyPlan) -> str:
     """Render CSV output."""
 
+    rows = rows_for_plan(plan)
     output = io.StringIO()
-    writer = csv.DictWriter(output, fieldnames=REQUIRED_COLUMNS)
+    fieldnames = tuple(dict.fromkeys((*REQUIRED_COLUMNS, *rows[0].keys())))
+    writer = csv.DictWriter(output, fieldnames=fieldnames)
     writer.writeheader()
-    writer.writerows(rows_for_plan(plan))
+    writer.writerows(rows)
     return output.getvalue()

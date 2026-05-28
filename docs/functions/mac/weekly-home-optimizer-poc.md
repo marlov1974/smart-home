@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Last changed: P0021
+Last changed: P0022
 
 ## Module
 
@@ -47,7 +47,15 @@ The first command is local-only. The second command is for explicit trusted-LAN 
 
 `spot_indexes_for_week(week_number)` reuses the P0017 spot forecast model and expands it to hourly values.
 
-`plan_heat(outdoor_temp_c, spot_index, current_house_temp)` computes heat need, heat production, heat SOC and heat-derived ventilation cost weights.
+`plan_heat(outdoor_temp_c, spot_index, current_house_temp)` computes hourly heat need and delegates heat production, SOC and heat-derived ventilation cost weights to the discrete DP heat optimizer.
+
+`default_heat_optimizer_config()` returns the P0022 heat optimizer defaults: 2..22 kW hourly heat modes, 300 kWh virtual SOC capacity, 1 kWh SOC steps, 100% start SOC and 50% minimum end SOC.
+
+`low_soc_penalty(soc_pct, threshold_pct, scale)` returns the convex comfort penalty used by the heat DP below the low-SOC threshold.
+
+`derive_heat_cost_weight(heat_need_kWh, heat_action_kw, heat_soc_pct, heat_price_index)` derives the downstream ventilation heat-cost signal from the optimized heat action, SOC and price index.
+
+`optimize_heat_dp(heat_need_kWh, heat_price_index, config)` chooses 168 hourly discrete heat modes using deterministic dynamic programming over virtual heat battery SOC and returns heat output, SOC, cost weights, optimizer metadata and row diagnostics.
 
 `rh_weight_for_hour(outdoor_temp_c, outdoor_rh_pct)` converts weather into RH policy cost or reward.
 
@@ -112,4 +120,4 @@ hours
 
 `hours` has 168 rows for a valid plan.
 
-`summary` includes people, occupancy gain and weather source metadata.
+`summary` includes people, occupancy gain, weather source metadata and heat optimizer metadata.

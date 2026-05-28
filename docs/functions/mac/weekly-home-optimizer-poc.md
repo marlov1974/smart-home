@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Last changed: P0022
+Last changed: P0023
 
 ## Module
 
@@ -56,6 +56,10 @@ The first command is local-only. The second command is for explicit trusted-LAN 
 `derive_heat_cost_weight(heat_need_kWh, heat_action_kw, heat_soc_pct, heat_price_index)` derives the downstream ventilation heat-cost signal from the optimized heat action, SOC and price index.
 
 `optimize_heat_dp(heat_need_kWh, heat_price_index, config)` chooses 168 hourly discrete heat modes using deterministic dynamic programming over virtual heat battery SOC and returns heat output, SOC, cost weights, optimizer metadata and row diagnostics.
+
+`estimate_cop(outdoor_temp_c, heat_kw)` estimates heat-pump COP with the P0023 deterministic outdoor-temperature-and-load emulator, clamped to the POC range `2.2..5.2`.
+
+`compare_heat_costs(outdoor_temp_c, heat_need_kWh, optimized_heat_kWh, heat_price_index)` computes COP-emulated optimized electric kWh/cost, flat-production electric kWh/cost, average COP values, optimized-vs-flat percentage and warning metadata.
 
 `rh_weight_for_hour(outdoor_temp_c, outdoor_rh_pct)` converts weather into RH policy cost or reward.
 
@@ -120,4 +124,4 @@ hours
 
 `hours` has 168 rows for a valid plan.
 
-`summary` includes people, occupancy gain, weather source metadata and heat optimizer metadata.
+`summary` includes people, occupancy gain, weather source metadata, heat optimizer metadata and COP-emulated optimized-vs-flat heat cost metadata.

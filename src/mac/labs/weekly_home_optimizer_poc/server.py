@@ -102,6 +102,19 @@ def plan_payload(request: PlanRequest, prefer_real_weather: bool = True) -> dict
         "min_heat_soc_pct": plan.heat.min_heat_soc_pct,
         "end_heat_soc_pct": plan.heat.end_heat_soc_pct,
         "heat_optimizer_warnings": plan.heat.heat_optimizer_warnings,
+        "heat_cost_model": plan.heat_cost_comparison.heat_cost_model,
+        "cop_model": plan.heat_cost_comparison.cop_model,
+        "cop_min": plan.heat_cost_comparison.cop_min,
+        "cop_max": plan.heat_cost_comparison.cop_max,
+        "optimized_heat_el_kWh": plan.heat_cost_comparison.optimized_heat_el_kWh_total,
+        "flat_heat_el_kWh": plan.heat_cost_comparison.flat_heat_el_kWh_total,
+        "optimized_heat_el_cost": plan.heat_cost_comparison.optimized_heat_el_cost_total,
+        "flat_heat_el_cost": plan.heat_cost_comparison.flat_heat_el_cost_total,
+        "optimized_vs_flat_cost_pct": plan.heat_cost_comparison.optimized_vs_flat_cost_pct,
+        "optimized_saving_pct": plan.heat_cost_comparison.optimized_saving_pct,
+        "avg_cop_optimized": plan.heat_cost_comparison.avg_cop_optimized,
+        "avg_cop_flat": plan.heat_cost_comparison.avg_cop_flat,
+        "heat_cost_comparison_warnings": plan.heat_cost_comparison.heat_cost_comparison_warnings,
     }
     if plan.weather_fallback_reason:
         summary["weather_fallback_reason"] = plan.weather_fallback_reason

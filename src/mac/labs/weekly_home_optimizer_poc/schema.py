@@ -94,6 +94,30 @@ class PpmPlan:
 
 
 @dataclass(frozen=True)
+class HeatCostComparison:
+    heat_cost_model: str
+    cop_model: str
+    cop_min: float
+    cop_max: float
+    optimized_heat_el_kWh: tuple[float, ...]
+    optimized_heat_el_cost: tuple[float, ...]
+    cop_optimized: tuple[float, ...]
+    flat_heat_kWh: tuple[float, ...]
+    flat_heat_el_kWh: tuple[float, ...]
+    flat_heat_el_cost: tuple[float, ...]
+    cop_flat: tuple[float, ...]
+    optimized_heat_el_kWh_total: float
+    flat_heat_el_kWh_total: float
+    optimized_heat_el_cost_total: float
+    flat_heat_el_cost_total: float
+    optimized_vs_flat_cost_pct: float | None
+    optimized_saving_pct: float | None
+    avg_cop_optimized: float | None
+    avg_cop_flat: float | None
+    heat_cost_comparison_warnings: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class WeeklyPlan:
     week_number: int
     current_ppm: float
@@ -110,4 +134,5 @@ class WeeklyPlan:
     spot_index: tuple[float, ...]
     rh_weight: tuple[float, ...]
     heat: HeatPlan
+    heat_cost_comparison: HeatCostComparison
     ppm: PpmPlan

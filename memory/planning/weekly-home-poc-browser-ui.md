@@ -1,6 +1,6 @@
 # Weekly Home POC Browser UI
 
-Last changed: P0022
+Last changed: P0023
 
 This file records the durable local browser contract for the Mac weekly home POC.
 
@@ -91,7 +91,20 @@ end_soc_min_pct
 min_heat_soc_pct
 end_heat_soc_pct
 heat_optimizer_warnings
+heat_cost_model
+cop_model
+optimized_heat_el_kWh
+flat_heat_el_kWh
+optimized_heat_el_cost
+flat_heat_el_cost
+optimized_vs_flat_cost_pct
+optimized_saving_pct
+avg_cop_optimized
+avg_cop_flat
+heat_cost_comparison_warnings
 ```
+
+The result page displays the COP-emulated optimized-vs-flat comparison in summary cards and a plain operator sentence. The wording must keep the comparison labeled as emulated/POC rather than measured savings.
 
 ## Runtime boundary
 

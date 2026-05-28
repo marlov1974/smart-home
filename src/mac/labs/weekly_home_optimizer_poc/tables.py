@@ -40,6 +40,13 @@ def rows_for_plan(plan: WeeklyPlan) -> list[dict[str, Any]]:
                 "heat_action_kw": plan.heat.heat_action_kw[hour],
                 "heat_dp_cost_component": round(plan.heat.heat_dp_cost_component[hour], 4),
                 "soc_penalty_component": round(plan.heat.soc_penalty_component[hour], 4),
+                "cop_optimized": round(plan.heat_cost_comparison.cop_optimized[hour], 3),
+                "heat_el_kWh": round(plan.heat_cost_comparison.optimized_heat_el_kWh[hour], 4),
+                "heat_el_cost": round(plan.heat_cost_comparison.optimized_heat_el_cost[hour], 4),
+                "flat_heat_kWh": round(plan.heat_cost_comparison.flat_heat_kWh[hour], 4),
+                "cop_flat": round(plan.heat_cost_comparison.cop_flat[hour], 3),
+                "flat_heat_el_kWh": round(plan.heat_cost_comparison.flat_heat_el_kWh[hour], 4),
+                "flat_heat_el_cost": round(plan.heat_cost_comparison.flat_heat_el_cost[hour], 4),
                 "rh_weight": round(plan.rh_weight[hour], 2),
                 "supply_pct": plan.ppm.supply_pct[hour],
                 "flow_lps": round(plan.ppm.flow_lps[hour], 2),
@@ -77,6 +84,19 @@ def _metadata(plan: WeeklyPlan) -> dict[str, Any]:
         "min_heat_soc_pct": plan.heat.min_heat_soc_pct,
         "end_heat_soc_pct": plan.heat.end_heat_soc_pct,
         "heat_optimizer_warnings": plan.heat.heat_optimizer_warnings,
+        "heat_cost_model": plan.heat_cost_comparison.heat_cost_model,
+        "cop_model": plan.heat_cost_comparison.cop_model,
+        "cop_min": plan.heat_cost_comparison.cop_min,
+        "cop_max": plan.heat_cost_comparison.cop_max,
+        "optimized_heat_el_kWh": plan.heat_cost_comparison.optimized_heat_el_kWh_total,
+        "flat_heat_el_kWh": plan.heat_cost_comparison.flat_heat_el_kWh_total,
+        "optimized_heat_el_cost": plan.heat_cost_comparison.optimized_heat_el_cost_total,
+        "flat_heat_el_cost": plan.heat_cost_comparison.flat_heat_el_cost_total,
+        "optimized_vs_flat_cost_pct": plan.heat_cost_comparison.optimized_vs_flat_cost_pct,
+        "optimized_saving_pct": plan.heat_cost_comparison.optimized_saving_pct,
+        "avg_cop_optimized": plan.heat_cost_comparison.avg_cop_optimized,
+        "avg_cop_flat": plan.heat_cost_comparison.avg_cop_flat,
+        "heat_cost_comparison_warnings": plan.heat_cost_comparison.heat_cost_comparison_warnings,
         "hours": HOURS_PER_WEEK,
     }
 
@@ -94,7 +114,10 @@ def format_table(plan: WeeklyPlan) -> str:
             f"weather_source={plan.weather_source} "
             f"weather_provider={plan.weather_provider} "
             f"weather_profile_year={plan.weather_profile_year} "
-            f"weather_fallback_reason={plan.weather_fallback_reason or ''}"
+            f"weather_fallback_reason={plan.weather_fallback_reason or ''} "
+            f"heat_cost_model={plan.heat_cost_comparison.heat_cost_model} "
+            f"optimized_vs_flat_cost_pct={plan.heat_cost_comparison.optimized_vs_flat_cost_pct} "
+            f"optimized_saving_pct={plan.heat_cost_comparison.optimized_saving_pct}"
         ),
         (
             "hour weekday_hour temp rh spot need heat soc hcw rhw sup flow "

@@ -18,6 +18,13 @@ TABLE_COLUMNS = (
     "heat_cost_weight",
     "heat_price_index",
     "heat_action_kw",
+    "cop_optimized",
+    "heat_el_kWh",
+    "heat_el_cost",
+    "flat_heat_kWh",
+    "cop_flat",
+    "flat_heat_el_kWh",
+    "flat_heat_el_cost",
     "rh_weight",
     "supply_pct",
     "flow_lps",
@@ -186,6 +193,10 @@ def render_page(title: str, body: str, status_message: str | None = None) -> str
       color: var(--bad);
       font-weight: 650;
     }}
+    .comparison {{
+      margin: 14px 0 0;
+      font-weight: 700;
+    }}
     @media (max-width: 760px) {{
       .wrap {{ width: min(100% - 20px, 1180px); padding: 14px 0; }}
       h1 {{ font-size: 20px; }}
@@ -250,6 +261,13 @@ def render_result(payload: Mapping[str, Any]) -> str:
         ("Heat Opt", summary["heat_optimizer"]),
         ("End SOC", summary["end_heat_soc_pct"]),
         ("Min SOC", summary["min_heat_soc_pct"]),
+        ("Heat Cost", summary["heat_cost_model"]),
+        ("Opt El Cost", summary["optimized_heat_el_cost"]),
+        ("Flat El Cost", summary["flat_heat_el_cost"]),
+        ("Opt vs Flat", _pct(summary["optimized_vs_flat_cost_pct"])),
+        ("Estimated saving", _pct(summary["optimized_saving_pct"])),
+        ("COP Opt", summary["avg_cop_optimized"]),
+        ("COP Flat", summary["avg_cop_flat"]),
         ("People", summary["people"]),
         ("PPM/h", summary["occupancy_gain_ppm_h"]),
         ("Weather", summary["weather_source"]),
@@ -260,6 +278,8 @@ def render_result(payload: Mapping[str, Any]) -> str:
         metrics.append(("Fallback", summary["weather_fallback_reason"]))
     if summary.get("heat_optimizer_warnings"):
         metrics.append(("Heat Warnings", ", ".join(summary["heat_optimizer_warnings"])))
+    if summary.get("heat_cost_comparison_warnings"):
+        metrics.append(("Cost Warnings", ", ".join(summary["heat_cost_comparison_warnings"])))
     metric_html = "\n".join(
         f'<div class="metric"><span>{escape(label)}</span><strong>{escape(str(value))}</strong></div>'
         for label, value in metrics
@@ -269,8 +289,10 @@ def render_result(payload: Mapping[str, Any]) -> str:
     for row in hours:
         cells = "".join(f"<td>{escape(str(row[column]))}</td>" for column in TABLE_COLUMNS)
         row_html.append(f"<tr>{cells}</tr>")
+    comparison = _comparison_sentence(summary)
     body = f"""
 {_result_form(input_data)}
+{comparison}
 <section class="summary">{metric_html}</section>
 <div class="actions">
   <a class="button" href="/api/weekly-home-poc?{query}">JSON</a>
@@ -283,6 +305,25 @@ def render_result(payload: Mapping[str, Any]) -> str:
 </div>
 """
     return render_page("Weekly Home POC Result", body)
+
+
+def _pct(value: object) -> str:
+    if value is None:
+        return "n/a"
+    return f"{value}%"
+
+
+def _comparison_sentence(summary: Mapping[str, Any]) -> str:
+    pct = summary.get("optimized_vs_flat_cost_pct")
+    saving = summary.get("optimized_saving_pct")
+    if pct is None:
+        text = "Optimized heat cost comparison is unavailable for this emulated POC run."
+    else:
+        text = (
+            f"Optimized heat did the weekly job at {pct}% of flat-production cost "
+            f"({saving}% estimated saving, emulated POC)."
+        )
+    return f'<p class="comparison">{escape(text)}</p>'
 
 
 def _result_form(input_data: Mapping[str, Any]) -> str:

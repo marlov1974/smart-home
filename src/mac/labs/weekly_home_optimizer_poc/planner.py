@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .cop import compare_heat_costs
 from .heat_plan import plan_heat
 from .input_profiles import build_input_profile, spot_indexes_for_week
 from .ppm_plan import DEFAULT_PEOPLE, occupancy_gain_for_people, optimize_ppm_plan, rh_weight_for_hour
@@ -25,6 +26,12 @@ def build_weekly_plan(
         rh_weight_for_hour(temp, rh)
         for temp, rh in zip(profile.outdoor_temp_c, profile.outdoor_rh_pct)
     )
+    heat_cost_comparison = compare_heat_costs(
+        profile.outdoor_temp_c,
+        heat.heat_need_kWh,
+        heat.heat_kWh,
+        heat.heat_price_index,
+    )
     ppm = optimize_ppm_plan(
         heat.heat_cost_weight,
         rh_weight,
@@ -47,5 +54,6 @@ def build_weekly_plan(
         spot_index=spot_index,
         rh_weight=rh_weight,
         heat=heat,
+        heat_cost_comparison=heat_cost_comparison,
         ppm=ppm,
     )

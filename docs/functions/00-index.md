@@ -59,3 +59,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0021` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with real-weather metadata and people-derived occupancy load.
 
 `P0022` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the discrete DP heat optimizer and heat optimizer metadata.
+
+`P0023` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the COP emulator and optimized-vs-flat heat electric cost comparison.

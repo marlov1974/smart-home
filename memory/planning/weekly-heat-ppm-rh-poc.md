@@ -1,6 +1,6 @@
 # Weekly Heat PPM RH POC
 
-Last changed: P0022
+Last changed: P0023
 
 This file records the durable contract for the Mac-only weekly heat, PPM and RH-policy planning POC.
 
@@ -117,6 +117,42 @@ soc_penalty_component
 ```
 
 Plan metadata includes heat optimizer identity, mode list, SOC configuration, min/end SOC and optimizer warnings.
+
+P0023 adds COP-emulated electric cost reporting. This is an emulated POC comparison, not measured real-world savings.
+
+COP model:
+
+```text
+heat_cost_model = cop_emulated_v1
+cop_model = outdoor_temp_and_load_v1
+cop range = 2.2..5.2
+```
+
+The model estimates COP from outdoor temperature and delivered heat output, then computes:
+
+```text
+optimized_heat_el_kWh = heat_kWh / cop_optimized
+optimized_heat_el_cost = optimized_heat_el_kWh * heat_price_index
+flat_heat_kWh = heat_need_kWh
+flat_heat_el_kWh = flat_heat_kWh / cop_flat
+flat_heat_el_cost = flat_heat_el_kWh * heat_price_index
+optimized_vs_flat_cost_pct = optimized_heat_el_cost_total / flat_heat_el_cost_total * 100
+optimized_saving_pct = 100 - optimized_vs_flat_cost_pct
+```
+
+The flat-production baseline means producing each hour's heat need directly in that hour. It uses the same heat-need, weather and price-index inputs as the optimized plan.
+
+Rows may expose:
+
+```text
+cop_optimized
+heat_el_kWh
+heat_el_cost
+flat_heat_kWh
+cop_flat
+flat_heat_el_kWh
+flat_heat_el_cost
+```
 
 These are POC planning values, not final live VP constraints.
 

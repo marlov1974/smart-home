@@ -51,3 +51,5 @@ docs/functions/
 Created by `P0007-codex-phased-package-build-process`.
 
 `P0017` added `docs/functions/mac/spot-forecast.md` for the Mac spot period index service.
+
+`P0018` added `docs/functions/mac/weekly-home-optimizer-poc.md` for the Mac weekly heat, PPM and RH-policy lab POC.

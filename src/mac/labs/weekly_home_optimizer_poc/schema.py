@@ -51,6 +51,11 @@ class InputProfile:
     week_number: int
     outdoor_temp_c: tuple[float, ...]
     outdoor_rh_pct: tuple[float, ...]
+    weather_source: str
+    weather_provider: str
+    weather_profile_strategy: str
+    weather_profile_year: int | None = None
+    weather_fallback_reason: str | None = None
 
 
 @dataclass(frozen=True)
@@ -80,7 +85,13 @@ class WeeklyPlan:
     week_number: int
     current_ppm: float
     current_house_temp: float
+    people: float
     occupancy_gain_ppm_h: float
+    weather_source: str
+    weather_provider: str
+    weather_profile_strategy: str
+    weather_profile_year: int | None
+    weather_fallback_reason: str | None
     outdoor_temp_c: tuple[float, ...]
     outdoor_rh_pct: tuple[float, ...]
     spot_index: tuple[float, ...]

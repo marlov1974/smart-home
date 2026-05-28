@@ -57,7 +57,13 @@ def _metadata(plan: WeeklyPlan) -> dict[str, Any]:
         "week_number": plan.week_number,
         "current_ppm": plan.current_ppm,
         "current_house_temp": plan.current_house_temp,
+        "people": plan.people,
         "occupancy_gain_ppm_h": plan.occupancy_gain_ppm_h,
+        "weather_source": plan.weather_source,
+        "weather_provider": plan.weather_provider,
+        "weather_profile_strategy": plan.weather_profile_strategy,
+        "weather_profile_year": plan.weather_profile_year,
+        "weather_fallback_reason": plan.weather_fallback_reason,
         "hours": HOURS_PER_WEEK,
     }
 
@@ -70,7 +76,12 @@ def format_table(plan: WeeklyPlan) -> str:
         (
             f"# week={plan.week_number} current_ppm={plan.current_ppm:.1f} "
             f"house_temp={plan.current_house_temp:.1f} "
-            f"occupancy_gain_ppm_h={plan.occupancy_gain_ppm_h:.1f}"
+            f"people={plan.people:g} "
+            f"occupancy_gain_ppm_h={plan.occupancy_gain_ppm_h:.1f} "
+            f"weather_source={plan.weather_source} "
+            f"weather_provider={plan.weather_provider} "
+            f"weather_profile_year={plan.weather_profile_year} "
+            f"weather_fallback_reason={plan.weather_fallback_reason or ''}"
         ),
         (
             "hour weekday_hour temp rh spot need heat soc hcw rhw sup flow "

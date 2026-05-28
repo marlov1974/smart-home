@@ -1,14 +1,20 @@
 # Weekly Home Optimizer POC
 
-Package: `P0018`
+Package: `P0018`, updated by `P0020` and `P0021`
 
-This Mac-only lab module builds a deterministic one-week plan for heat, PPM and RH-policy ventilation tradeoffs.
+This Mac-only lab module builds a one-week plan for heat, PPM and RH-policy ventilation tradeoffs.
 
 Run from the repository root:
 
 ```bash
 python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 500 --house-temp 22
-python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 700 --house-temp 22 --format json
+python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 700 --house-temp 22 --people 6 --format json
+```
+
+Manual runs prefer Open-Meteo archive weather and fall back explicitly if real weather is unavailable. Offline deterministic fixture weather is available for tests and development:
+
+```bash
+python3 -m src.mac.labs.weekly_home_optimizer_poc --week 2 --ppm 500 --house-temp 22 --people 3 --fixture-weather
 ```
 
 The module does not control Shelly, Home Assistant, heat pumps or FTX runtime behavior.
@@ -31,6 +37,12 @@ Then open:
 
 ```text
 http://<mac-lan-ip>:8081/
+```
+
+Direct phone URL with stronger occupancy pressure:
+
+```text
+http://<mac-lan-ip>:8081/?week=2&ppm=500&houseTemp=22&people=6
 ```
 
 The server is trusted-local read-only POC tooling. It runs the local planner and does not write to devices.

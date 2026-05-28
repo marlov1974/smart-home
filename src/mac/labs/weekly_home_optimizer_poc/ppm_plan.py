@@ -11,6 +11,10 @@ from .schema import HOURS_PER_WEEK, PpmPlan, SUPPLY_MODES, VENT_COST_BY_SUPPLY
 HOUSE_VOLUME_M3 = 780.0
 OUTDOOR_PPM = 420.0
 DEFAULT_OCCUPANCY_GAIN_PPM_H = 70.0
+BASE_PEOPLE = 3.0
+DEFAULT_PEOPLE = 3.0
+MIN_PEOPLE = 0.0
+MAX_PEOPLE = 20.0
 STATE_MIN_PPM = 400
 STATE_MAX_PPM = 1400
 STATE_STEP_PPM = 10
@@ -38,6 +42,25 @@ _PPM_COST_POINTS = (
     (975, 190),
     (1000, 210),
 )
+
+
+def validate_people(people: float | int | str) -> float:
+    """Validate public POC people input."""
+
+    try:
+        value = float(people)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("people invalid") from exc
+    if value < MIN_PEOPLE or value > MAX_PEOPLE:
+        raise ValueError("people invalid")
+    return value
+
+
+def occupancy_gain_for_people(people: float | int | str = DEFAULT_PEOPLE) -> float:
+    """Scale PPM occupancy pressure from people count."""
+
+    value = validate_people(people)
+    return DEFAULT_OCCUPANCY_GAIN_PPM_H * value / BASE_PEOPLE
 
 
 def _validate_hourly(values: Sequence[float], name: str) -> tuple[float, ...]:

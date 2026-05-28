@@ -79,7 +79,7 @@ def render_page(title: str, body: str, status_message: str | None = None) -> str
     main .wrap {{ padding-top: 20px; }}
     form {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       align-items: end;
       background: var(--panel);
@@ -208,6 +208,7 @@ def render_form(values: Mapping[str, object] | None = None, error: str | None = 
     week = _attr(current.get("week", 2))
     ppm = _attr(current.get("ppm", 500))
     house_temp = _attr(current.get("houseTemp", 22))
+    people = _attr(current.get("people", 3))
     body = f"""
 <form method="get" action="/">
   <label>Week
@@ -218,6 +219,9 @@ def render_form(values: Mapping[str, object] | None = None, error: str | None = 
   </label>
   <label>House Temp
     <input name="houseTemp" inputmode="decimal" value="{house_temp}" required>
+  </label>
+  <label>People
+    <input name="people" inputmode="decimal" value="{people}" required>
   </label>
   <button type="submit">Run Plan</button>
 </form>
@@ -233,7 +237,7 @@ def render_result(payload: Mapping[str, Any]) -> str:
     hours = payload["hours"]
     query = (
         f"week={_attr(input_data['week'])}&ppm={_attr(input_data['ppm'])}"
-        f"&houseTemp={_attr(input_data['houseTemp'])}"
+        f"&houseTemp={_attr(input_data['houseTemp'])}&people={_attr(input_data['people'])}"
     )
     metrics = [
         ("Hours", summary["hours"]),
@@ -241,7 +245,14 @@ def render_result(payload: Mapping[str, Any]) -> str:
         ("Max PPM", summary["max_ppm"]),
         ("Avg Supply", summary["avg_supply_pct"]),
         ("Heat kWh", summary["total_heat_kWh"]),
+        ("People", summary["people"]),
+        ("PPM/h", summary["occupancy_gain_ppm_h"]),
+        ("Weather", summary["weather_source"]),
+        ("Provider", summary["weather_provider"]),
+        ("Weather Year", summary["weather_profile_year"]),
     ]
+    if summary.get("weather_fallback_reason"):
+        metrics.append(("Fallback", summary["weather_fallback_reason"]))
     metric_html = "\n".join(
         f'<div class="metric"><span>{escape(label)}</span><strong>{escape(str(value))}</strong></div>'
         for label, value in metrics
@@ -271,6 +282,7 @@ def _result_form(input_data: Mapping[str, Any]) -> str:
     week = _attr(input_data["week"])
     ppm = _attr(input_data["ppm"])
     house_temp = _attr(input_data["houseTemp"])
+    people = _attr(input_data.get("people", 3))
     return f"""
 <form method="get" action="/">
   <label>Week
@@ -281,6 +293,9 @@ def _result_form(input_data: Mapping[str, Any]) -> str:
   </label>
   <label>House Temp
     <input name="houseTemp" inputmode="decimal" value="{house_temp}" required>
+  </label>
+  <label>People
+    <input name="people" inputmode="decimal" value="{people}" required>
   </label>
   <button type="submit">Run Plan</button>
 </form>

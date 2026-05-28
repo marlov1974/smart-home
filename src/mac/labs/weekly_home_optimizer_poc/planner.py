@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from .heat_plan import plan_heat
 from .input_profiles import build_input_profile, spot_indexes_for_week
-from .ppm_plan import DEFAULT_OCCUPANCY_GAIN_PPM_H, optimize_ppm_plan, rh_weight_for_hour
+from .ppm_plan import DEFAULT_PEOPLE, occupancy_gain_for_people, optimize_ppm_plan, rh_weight_for_hour
 from .schema import WeeklyPlan
 
 
@@ -12,13 +12,15 @@ def build_weekly_plan(
     week_number: int,
     current_ppm: float,
     current_house_temp: float,
-    occupancy_gain_ppm_h: float = DEFAULT_OCCUPANCY_GAIN_PPM_H,
+    people: float = DEFAULT_PEOPLE,
+    prefer_real_weather: bool = True,
 ) -> WeeklyPlan:
     """Build a deterministic 168-hour weekly heat, PPM and RH-policy plan."""
 
-    profile = build_input_profile(week_number)
+    profile = build_input_profile(week_number, prefer_real_weather=prefer_real_weather)
     spot_index = spot_indexes_for_week(week_number)
     heat = plan_heat(profile.outdoor_temp_c, spot_index, current_house_temp)
+    occupancy_gain_ppm_h = occupancy_gain_for_people(people)
     rh_weight = tuple(
         rh_weight_for_hour(temp, rh)
         for temp, rh in zip(profile.outdoor_temp_c, profile.outdoor_rh_pct)
@@ -33,7 +35,13 @@ def build_weekly_plan(
         week_number=int(week_number),
         current_ppm=float(current_ppm),
         current_house_temp=float(current_house_temp),
+        people=float(people),
         occupancy_gain_ppm_h=float(occupancy_gain_ppm_h),
+        weather_source=profile.weather_source,
+        weather_provider=profile.weather_provider,
+        weather_profile_strategy=profile.weather_profile_strategy,
+        weather_profile_year=profile.weather_profile_year,
+        weather_fallback_reason=profile.weather_fallback_reason,
         outdoor_temp_c=profile.outdoor_temp_c,
         outdoor_rh_pct=profile.outdoor_rh_pct,
         spot_index=spot_index,

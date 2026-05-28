@@ -1,13 +1,13 @@
-"""Deterministic input profiles for the P0018 POC."""
+"""Input profiles for the weekly home optimizer POC."""
 
 from __future__ import annotations
 
-import math
 from typing import Sequence
 
 from src.mac.services.spot_forecast.model import forecast_period_indexes
 
 from .schema import HOURS_PER_PERIOD, HOURS_PER_WEEK, InputProfile, PERIODS_PER_WEEK
+from .weather import synthetic_fallback_profile, weather_profile_for_week
 
 
 def _validate_week_number(week_number: int) -> int:
@@ -23,31 +23,16 @@ def _validate_hourly(values: Sequence[float], name: str) -> tuple[float, ...]:
     return tuple(float(value) for value in values)
 
 
-def build_input_profile(week_number: int) -> InputProfile:
-    """Build a deterministic synthetic weather profile keyed by ISO week."""
+def build_input_profile(week_number: int, prefer_real_weather: bool = True) -> InputProfile:
+    """Build a weather profile with real-weather preference and explicit fallback."""
 
-    week = _validate_week_number(week_number)
-    seasonal_angle = 2.0 * math.pi * ((week - 3) / 52.0)
-    seasonal_temp = 7.0 - 13.0 * math.cos(seasonal_angle)
-    coldness = max(0.0, min(1.0, (8.0 - seasonal_temp) / 18.0))
-    outdoor_temp_c: list[float] = []
-    outdoor_rh_pct: list[float] = []
-    for hour in range(HOURS_PER_WEEK):
-        day = hour // 24
-        hour_of_day = (6 + hour) % 24
-        daily_temp = 3.2 * math.sin(2.0 * math.pi * (hour_of_day - 14) / 24.0)
-        weekly_wave = 1.8 * math.sin(2.0 * math.pi * (day + week % 7) / 7.0)
-        temp = seasonal_temp + daily_temp + weekly_wave
-        rh = 62.0 + 24.0 * coldness - 0.8 * daily_temp
-        if temp > 10.0:
-            rh += 8.0 * math.sin(2.0 * math.pi * (hour_of_day - 4) / 24.0)
-        outdoor_temp_c.append(round(temp, 2))
-        outdoor_rh_pct.append(round(max(35.0, min(98.0, rh)), 2))
-    return InputProfile(
-        week_number=week,
-        outdoor_temp_c=tuple(outdoor_temp_c),
-        outdoor_rh_pct=tuple(outdoor_rh_pct),
-    )
+    return weather_profile_for_week(week_number, prefer_real=prefer_real_weather)
+
+
+def build_fixture_input_profile(week_number: int) -> InputProfile:
+    """Build deterministic fixture weather for tests and offline development."""
+
+    return synthetic_fallback_profile(week_number, reason="fixture weather requested")
 
 
 def expand_period_indexes_to_hours(period_indexes: Sequence[float]) -> tuple[float, ...]:

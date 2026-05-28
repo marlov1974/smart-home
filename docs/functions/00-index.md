@@ -55,3 +55,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0018` added `docs/functions/mac/weekly-home-optimizer-poc.md` for the Mac weekly heat, PPM and RH-policy lab POC.
 
 `P0020` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the local browser/API server wrapper.
+
+`P0021` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with real-weather metadata and people-derived occupancy load.

@@ -1,6 +1,6 @@
 # Weekly Home POC Browser UI
 
-Last changed: P0020
+Last changed: P0021
 
 This file records the durable local browser contract for the Mac weekly home POC.
 
@@ -36,8 +36,8 @@ The default port is `8081` so it does not collide with the P0017 spot forecast s
 
 ```text
 GET /
-GET /?week=2&ppm=500&houseTemp=22
-GET /api/weekly-home-poc?week=2&ppm=500&houseTemp=22
+GET /?week=2&ppm=500&houseTemp=22&people=6
+GET /api/weekly-home-poc?week=2&ppm=500&houseTemp=22&people=6
 GET /health
 ```
 
@@ -65,9 +65,24 @@ Required query parameters:
 week
 ppm
 houseTemp
+people
 ```
 
 The browser UI does not add a reference year or indoor RH input.
+
+`people` defaults to `3` when omitted and is valid in the POC range `0..20`.
+
+The result summary includes:
+
+```text
+people
+occupancy_gain_ppm_h
+weather_source
+weather_provider
+weather_profile_strategy
+weather_profile_year
+weather_fallback_reason, when fallback occurred
+```
 
 ## Runtime boundary
 

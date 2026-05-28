@@ -13,6 +13,7 @@ from urllib.parse import parse_qs, urlparse
 
 from .html import render_form, render_page, render_result
 from .planner import build_weekly_plan
+from .ppm_plan import DEFAULT_PEOPLE, validate_people
 from .tables import rows_for_plan
 
 
@@ -30,6 +31,7 @@ class PlanRequest:
     week: int
     ppm: float
     house_temp: float
+    people: float = DEFAULT_PEOPLE
 
 
 def _single_value(query: Mapping[str, list[str]], key: str) -> str:
@@ -60,13 +62,23 @@ def parse_plan_query(query: Mapping[str, list[str]]) -> PlanRequest:
         raise RequestError("houseTemp invalid") from exc
     if house_temp < 5 or house_temp > 35:
         raise RequestError("houseTemp invalid")
-    return PlanRequest(week=week, ppm=ppm, house_temp=house_temp)
+    try:
+        people = validate_people(query.get("people", [str(DEFAULT_PEOPLE)])[0])
+    except ValueError as exc:
+        raise RequestError("people invalid") from exc
+    return PlanRequest(week=week, ppm=ppm, house_temp=house_temp, people=people)
 
 
-def plan_payload(request: PlanRequest) -> dict[str, object]:
+def plan_payload(request: PlanRequest, prefer_real_weather: bool = True) -> dict[str, object]:
     """Build the JSON-serializable payload for API and HTML responses."""
 
-    plan = build_weekly_plan(request.week, request.ppm, request.house_temp)
+    plan = build_weekly_plan(
+        request.week,
+        request.ppm,
+        request.house_temp,
+        people=request.people,
+        prefer_real_weather=prefer_real_weather,
+    )
     rows = rows_for_plan(plan)
     summary = {
         "hours": len(rows),
@@ -75,12 +87,21 @@ def plan_payload(request: PlanRequest) -> dict[str, object]:
         "avg_supply_pct": round(sum(row["supply_pct"] for row in rows) / len(rows), 1),
         "total_heat_kWh": round(sum(row["heat_kWh"] for row in rows), 1),
         "total_cost": round(sum(row["total_cost"] for row in rows), 1),
+        "people": plan.people,
+        "occupancy_gain_ppm_h": round(plan.occupancy_gain_ppm_h, 1),
+        "weather_source": plan.weather_source,
+        "weather_provider": plan.weather_provider,
+        "weather_profile_strategy": plan.weather_profile_strategy,
+        "weather_profile_year": plan.weather_profile_year,
     }
+    if plan.weather_fallback_reason:
+        summary["weather_fallback_reason"] = plan.weather_fallback_reason
     return {
         "input": {
             "week": request.week,
             "ppm": request.ppm,
             "houseTemp": request.house_temp,
+            "people": request.people,
         },
         "summary": summary,
         "hours": rows,
@@ -175,7 +196,10 @@ def run_server(host: str = DEFAULT_HOST, port: int = DEFAULT_PORT) -> None:
 def run_once_smoke() -> int:
     """Run a deterministic non-blocking server smoke check."""
 
-    payload = plan_payload(PlanRequest(week=2, ppm=500.0, house_temp=22.0))
+    payload = plan_payload(
+        PlanRequest(week=2, ppm=500.0, house_temp=22.0, people=DEFAULT_PEOPLE),
+        prefer_real_weather=False,
+    )
     html = render_result(payload)
     health = _compact_json({"status": "ok", "service": SERVICE_NAME})
     if len(payload["hours"]) != 168:

@@ -1,6 +1,6 @@
 # Weekly Heat PPM RH POC
 
-Last changed: P0018
+Last changed: P0021
 
 This file records the durable contract for the Mac-only weekly heat, PPM and RH-policy planning POC.
 
@@ -24,6 +24,7 @@ The public operator inputs are:
 week_number
 current_ppm
 current_house_temp
+people
 ```
 
 The POC does not accept a reference year or current indoor RH in v1.
@@ -31,13 +32,31 @@ The POC does not accept a reference year or current indoor RH in v1.
 The CLI may expose diagnostic/output options such as:
 
 ```text
---occupancy-gain-ppm-h
 --format
+--fixture-weather
 ```
 
 ## Input model
 
-Weather input is deterministic synthetic data keyed by ISO week number. This keeps the POC and tests independent from network access.
+Manual weather input prefers Open-Meteo archive weather for the requested week. Because public input is week-number only, the internal strategy is:
+
+```text
+Use the latest completed ISO week occurrence.
+If the requested week in the current year has fully completed, use current year.
+Otherwise use previous year.
+```
+
+Weather source metadata is part of output:
+
+```text
+weather_source
+weather_provider
+weather_profile_strategy
+weather_profile_year
+weather_fallback_reason
+```
+
+Automated tests and offline development use deterministic fallback weather. Fallback must be explicit; synthetic weather must not be silently presented as real weather.
 
 Spot-price input reuses the P0017 Mac spot period-index model:
 
@@ -87,10 +106,12 @@ removal_ppm_h = flow_lps * 3.6 / 780 * max(0, ppm - 420)
 ppm_after = ppm + occupancy_gain_ppm_h - removal_ppm_h
 ```
 
-Default occupancy gain is:
+Occupancy gain is derived from `people`:
 
 ```text
-70 ppm/h
+base_people = 3
+base_occupancy_gain_ppm_h = 70
+occupancy_gain_ppm_h = 70 * people / 3
 ```
 
 Normal supply modes are restricted to:

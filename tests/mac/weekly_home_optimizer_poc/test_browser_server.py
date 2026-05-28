@@ -3,8 +3,9 @@ from __future__ import annotations
 import json
 import unittest
 from io import BytesIO
+from unittest.mock import patch
 
-from src.mac.labs.weekly_home_optimizer_poc.server import build_handler, main
+from src.mac.labs.weekly_home_optimizer_poc import server
 
 
 class _FakeSocket:
@@ -24,7 +25,7 @@ class _FakeSocket:
 def _request(path: str) -> tuple[int, dict[str, str], str]:
     raw = f"GET {path} HTTP/1.1\r\nHost: test.local\r\nConnection: close\r\n\r\n".encode("ascii")
     fake = _FakeSocket(raw)
-    handler_class = build_handler()
+    handler_class = server.build_handler()
     handler_class(fake, ("127.0.0.1", 12345), object())
     response = fake.response.getvalue().decode("utf-8")
     header_text, _, body = response.partition("\r\n\r\n")
@@ -53,22 +54,30 @@ class BrowserServerTests(unittest.TestCase):
         self.assertIn('name="week"', html)
         self.assertIn('name="ppm"', html)
         self.assertIn('name="houseTemp"', html)
+        self.assertIn('name="people"', html)
 
     def test_html_plan_result(self) -> None:
-        status, _, html = _request("/?week=2&ppm=500&houseTemp=22")
+        original_plan_payload = server.plan_payload
+        with patch.object(server, "plan_payload", side_effect=lambda request: original_plan_payload(request, prefer_real_weather=False)):
+            status, _, html = _request("/?week=2&ppm=500&houseTemp=22&people=6")
 
         self.assertEqual(status, 200)
         self.assertIn("Weekly Home POC", html)
         self.assertIn("<table>", html)
         self.assertIn("ppm_absolute", html)
+        self.assertIn("People", html)
 
     def test_json_plan_result(self) -> None:
-        status, _, body = _request("/api/weekly-home-poc?week=2&ppm=500&houseTemp=22")
+        original_plan_payload = server.plan_payload
+        with patch.object(server, "plan_payload", side_effect=lambda request: original_plan_payload(request, prefer_real_weather=False)):
+            status, _, body = _request("/api/weekly-home-poc?week=2&ppm=500&houseTemp=22&people=6")
         payload = json.loads(body)
 
         self.assertEqual(status, 200)
         self.assertEqual(payload["input"]["week"], 2)
+        self.assertEqual(payload["input"]["people"], 6)
         self.assertEqual(payload["summary"]["hours"], 168)
+        self.assertEqual(payload["summary"]["weather_source"], "synthetic_fallback")
         self.assertEqual(len(payload["hours"]), 168)
 
     def test_invalid_api_returns_400_json(self) -> None:
@@ -79,7 +88,7 @@ class BrowserServerTests(unittest.TestCase):
         self.assertIn("error", payload)
 
     def test_once_smoke(self) -> None:
-        self.assertEqual(main(["--once-smoke"]), 0)
+        self.assertEqual(server.main(["--once-smoke"]), 0)
 
 
 if __name__ == "__main__":

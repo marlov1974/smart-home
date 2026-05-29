@@ -2,7 +2,7 @@
 
 ## Status
 
-Implemented and verified locally.
+Implemented, package status corrected to `verified-local-live`, and read-only live KVS.Get verified.
 
 ## User-visible behavior changed
 
@@ -33,8 +33,15 @@ The NAT port is implemented as `8000 + octet`, preserving documented examples su
 - `python3 -m unittest discover tests/mac/tools/local_kvs_read`
 - `python3 -m unittest discover tests/mac/tools`
 - `python3 -m src.mac.tools.local_kvs_read get --octet 0 --key hp.price.status`
+- `python3 -m src.mac.tools.local_kvs_read get --octet 30 --key hp.price.status --timeout 5`
 
-Live KVS.Get verification was skipped because no explicit live octet/key was supplied.
+Live KVS.Get follow-up:
+
+- Derived URL: `http://192.168.86.240:8030/rpc/KVS.Get?key=hp.price.status`
+- First sandboxed run: failed with `result_status: network_error` and audit directory permission error for `/Users/marcus.lovenstad/.smart-home`.
+- Escalated read-only run: succeeded with HTTP `200`, `result_status: success`, result value `"ok"` and audit path `/Users/marcus.lovenstad/.smart-home/local_kvs_read_audit.jsonl`.
+
+No write-capable RPC, script control, actuator command, generic proxy or MCP server was used.
 
 ## Known limitations and follow-up
 

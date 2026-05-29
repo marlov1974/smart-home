@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified-local-live
 
 ## Package order
 
@@ -435,4 +435,20 @@ If implementation fails verification after allowed attempts, Codex must preserve
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in commit `7259a50` and verified locally by unit tests.
+
+Follow-up live verification was performed read-only against octet `30` and key `hp.price.status`:
+
+```bash
+python3 -m src.mac.tools.local_kvs_read get --octet 30 --key hp.price.status --timeout 5
+```
+
+Derived URL:
+
+```text
+http://192.168.86.240:8030/rpc/KVS.Get?key=hp.price.status
+```
+
+Result: HTTP 200, `result_status: success`, value `"ok"`.
+
+No write-capable RPC, script control, actuator control, generic HTTP proxy, MCP server or deploy action was used.

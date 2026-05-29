@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Last changed: P0023
+Last changed: P0024
 
 ## Module
 
@@ -43,9 +43,19 @@ The first command is local-only. The second command is for explicit trusted-LAN 
 
 `synthetic_fallback_profile(week_number, reason)` returns deterministic fallback weather with explicit fallback metadata.
 
-`expand_period_indexes_to_hours(period_indexes)` converts P0017 21x8h period indexes to 168 hourly spot indexes.
+`expand_period_indexes_to_hours(period_indexes)` converts P0017 21x8h period indexes to 168 hourly forecast spot indexes.
 
-`spot_indexes_for_week(week_number)` reuses the P0017 spot forecast model and expands it to hourly values.
+`forecast_spot_index_for_week(week_number)` builds the 168-hour internal forecast baseline from the P0017 period-index model.
+
+`resolve_week_utc_hours(week_number, iso_year)` converts the operational week to 168 chronological UTC fixture keys. P0024 uses ISO year 2025 because the actual-price fixture covers 2025 and the POC public input remains week-only.
+
+`load_actual_spot_prices(path)` loads the 2025 hourly actual spot fixture, validates unique `utc_hour_start` keys and complete four-quarter hourly rows, and returns actual prices keyed by UTC hour.
+
+`patch_forecast_with_actual_prices(forecast_index, utc_hours, actual_prices, actual_fixture_path)` applies actual price shape for overlapping hours and rescales it so the patched values preserve the forecast sum over the overlap period.
+
+`build_spot_plan(week_number, actual_fixture_path)` returns the P0024 `SpotPlan` with final `spot_index`, hourly provenance, patch diagnostics and summary metadata.
+
+`spot_indexes_for_week(week_number)` returns `build_spot_plan(...).spot_index` for compatibility callers.
 
 `plan_heat(outdoor_temp_c, spot_index, current_house_temp)` computes hourly heat need and delegates heat production, SOC and heat-derived ventilation cost weights to the discrete DP heat optimizer.
 
@@ -124,4 +134,4 @@ hours
 
 `hours` has 168 rows for a valid plan.
 
-`summary` includes people, occupancy gain, weather source metadata, heat optimizer metadata and COP-emulated optimized-vs-flat heat cost metadata.
+`summary` includes people, occupancy gain, weather source metadata, spot model metadata, heat optimizer metadata and COP-emulated optimized-vs-flat heat cost metadata.

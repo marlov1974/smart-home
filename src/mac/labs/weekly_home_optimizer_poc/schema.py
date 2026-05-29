@@ -28,6 +28,11 @@ REQUIRED_COLUMNS = (
     "outdoor_temp_c",
     "outdoor_rh_pct",
     "spot_index",
+    "spot_source",
+    "spot_forecast_index",
+    "spot_actual_price",
+    "spot_actual_proto_index",
+    "spot_patched_actual_index",
     "heat_need_kWh",
     "heat_kWh",
     "heat_soc_pct",
@@ -118,6 +123,27 @@ class HeatCostComparison:
 
 
 @dataclass(frozen=True)
+class SpotPlan:
+    spot_index: tuple[float, ...]
+    spot_source: tuple[str, ...]
+    spot_forecast_index: tuple[float, ...]
+    spot_actual_price: tuple[float | None, ...]
+    spot_actual_proto_index: tuple[float | None, ...]
+    spot_patched_actual_index: tuple[float | None, ...]
+    spot_model: str
+    spot_resolution: str
+    spot_actual_fixture_path: str
+    spot_actual_known_hours: int
+    spot_forecast_hours: int
+    spot_actual_patched_hours: int
+    spot_patch_strategy: str
+    spot_index_min: float
+    spot_index_max: float
+    spot_index_avg: float
+    spot_patch_warnings: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class WeeklyPlan:
     week_number: int
     current_ppm: float
@@ -132,6 +158,7 @@ class WeeklyPlan:
     outdoor_temp_c: tuple[float, ...]
     outdoor_rh_pct: tuple[float, ...]
     spot_index: tuple[float, ...]
+    spot: SpotPlan
     rh_weight: tuple[float, ...]
     heat: HeatPlan
     heat_cost_comparison: HeatCostComparison

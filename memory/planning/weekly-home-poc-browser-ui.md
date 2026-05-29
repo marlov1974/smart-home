@@ -1,6 +1,6 @@
 # Weekly Home POC Browser UI
 
-Last changed: P0023
+Last changed: P0024
 
 This file records the durable local browser contract for the Mac weekly home POC.
 
@@ -82,6 +82,17 @@ weather_provider
 weather_profile_strategy
 weather_profile_year
 weather_fallback_reason, when fallback occurred
+spot_model
+spot_resolution
+spot_actual_fixture_path
+spot_actual_known_hours
+spot_forecast_hours
+spot_actual_patched_hours
+spot_patch_strategy
+spot_index_min
+spot_index_max
+spot_index_avg
+spot_patch_warnings
 heat_optimizer
 heat_modes_kw
 heat_soc_capacity_kWh
@@ -105,6 +116,8 @@ heat_cost_comparison_warnings
 ```
 
 The result page displays the COP-emulated optimized-vs-flat comparison in summary cards and a plain operator sentence. The wording must keep the comparison labeled as emulated/POC rather than measured savings.
+
+The result page displays spot model summary cards and includes `spot_source` in the hourly table so forecast and actual-patched hours are inspectable from the browser or phone.
 
 ## Runtime boundary
 

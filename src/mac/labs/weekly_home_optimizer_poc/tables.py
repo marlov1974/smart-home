@@ -10,6 +10,12 @@ from typing import Any
 from .schema import HOURS_PER_WEEK, REQUIRED_COLUMNS, WeeklyPlan
 
 
+def _round_optional(value: float | None, digits: int) -> float | None:
+    if value is None:
+        return None
+    return round(value, digits)
+
+
 def weekday_hour(hour: int) -> str:
     """Return operational-week weekday/hour label for an hour index."""
 
@@ -32,6 +38,11 @@ def rows_for_plan(plan: WeeklyPlan) -> list[dict[str, Any]]:
                 "outdoor_temp_c": round(plan.outdoor_temp_c[hour], 2),
                 "outdoor_rh_pct": round(plan.outdoor_rh_pct[hour], 2),
                 "spot_index": round(plan.spot_index[hour], 2),
+                "spot_source": plan.spot.spot_source[hour],
+                "spot_forecast_index": round(plan.spot.spot_forecast_index[hour], 4),
+                "spot_actual_price": _round_optional(plan.spot.spot_actual_price[hour], 6),
+                "spot_actual_proto_index": _round_optional(plan.spot.spot_actual_proto_index[hour], 6),
+                "spot_patched_actual_index": _round_optional(plan.spot.spot_patched_actual_index[hour], 6),
                 "heat_need_kWh": round(plan.heat.heat_need_kWh[hour], 3),
                 "heat_kWh": round(plan.heat.heat_kWh[hour], 3),
                 "heat_soc_pct": round(plan.heat.heat_soc_pct[hour], 2),
@@ -75,6 +86,17 @@ def _metadata(plan: WeeklyPlan) -> dict[str, Any]:
         "weather_profile_strategy": plan.weather_profile_strategy,
         "weather_profile_year": plan.weather_profile_year,
         "weather_fallback_reason": plan.weather_fallback_reason,
+        "spot_model": plan.spot.spot_model,
+        "spot_resolution": plan.spot.spot_resolution,
+        "spot_actual_fixture_path": plan.spot.spot_actual_fixture_path,
+        "spot_actual_known_hours": plan.spot.spot_actual_known_hours,
+        "spot_forecast_hours": plan.spot.spot_forecast_hours,
+        "spot_actual_patched_hours": plan.spot.spot_actual_patched_hours,
+        "spot_patch_strategy": plan.spot.spot_patch_strategy,
+        "spot_index_min": plan.spot.spot_index_min,
+        "spot_index_max": plan.spot.spot_index_max,
+        "spot_index_avg": plan.spot.spot_index_avg,
+        "spot_patch_warnings": plan.spot.spot_patch_warnings,
         "heat_optimizer": plan.heat.heat_optimizer,
         "heat_modes_kw": plan.heat.heat_modes_kw,
         "heat_soc_capacity_kWh": plan.heat.heat_soc_capacity_kWh,
@@ -115,6 +137,9 @@ def format_table(plan: WeeklyPlan) -> str:
             f"weather_provider={plan.weather_provider} "
             f"weather_profile_year={plan.weather_profile_year} "
             f"weather_fallback_reason={plan.weather_fallback_reason or ''} "
+            f"spot_model={plan.spot.spot_model} "
+            f"spot_actual_patched_hours={plan.spot.spot_actual_patched_hours} "
+            f"spot_patch_warnings={','.join(plan.spot.spot_patch_warnings)} "
             f"heat_cost_model={plan.heat_cost_comparison.heat_cost_model} "
             f"optimized_vs_flat_cost_pct={plan.heat_cost_comparison.optimized_vs_flat_cost_pct} "
             f"optimized_saving_pct={plan.heat_cost_comparison.optimized_saving_pct}"

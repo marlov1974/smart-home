@@ -61,3 +61,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0022` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the discrete DP heat optimizer and heat optimizer metadata.
 
 `P0023` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the COP emulator and optimized-vs-flat heat electric cost comparison.
+
+`P0024` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with hourly spot planning, 2025 actual-price fixture loading and forecast-sum-preserving actual-price patching.

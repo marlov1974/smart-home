@@ -1,6 +1,6 @@
 # Weekly Heat PPM RH POC
 
-Last changed: P0023
+Last changed: P0024
 
 This file records the durable contract for the Mac-only weekly heat, PPM and RH-policy planning POC.
 
@@ -58,13 +58,48 @@ weather_fallback_reason
 
 Automated tests and offline development use deterministic fallback weather. Fallback must be explicit; synthetic weather must not be silently presented as real weather.
 
-Spot-price input reuses the P0017 Mac spot period-index model:
+Spot-price input uses the P0024 hourly spot plan:
 
 ```text
-21 8h period indexes -> 168 hourly indexes
+spot_model = hourly_forecast_with_actual_patch_v1
+spot_resolution = hourly
+spot_patch_strategy = actual_shape_forecast_sum
 ```
 
-Each P0017 8h operational period is repeated for eight hourly values.
+The internal forecast baseline may reuse the P0017 21x8h period-index model expanded to 168 hours. Public output and optimizer input are always hourly.
+
+When actual 2025 spot fixture prices overlap the requested week, the POC patches actual price shape into the forecast:
+
+```text
+actual_proto_index = actual_price / mean(actual_price over overlap)
+patched_actual_index = actual_proto_index * forecast_overlap_sum / actual_proto_sum
+```
+
+The patch preserves the forecast sum over known actual hours. The public POC input remains week-only, so actual-price patching maps requested weeks to ISO year 2025 and uses `utc_hour_start` as the canonical fixture key.
+
+Spot output metadata includes:
+
+```text
+spot_actual_fixture_path
+spot_actual_known_hours
+spot_forecast_hours
+spot_actual_patched_hours
+spot_index_min
+spot_index_max
+spot_index_avg
+spot_patch_warnings
+```
+
+Rows expose:
+
+```text
+spot_index
+spot_source
+spot_forecast_index
+spot_actual_price
+spot_actual_proto_index
+spot_patched_actual_index
+```
 
 ## Heat model
 

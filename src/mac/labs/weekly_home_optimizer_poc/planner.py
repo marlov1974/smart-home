@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from .cop import compare_heat_costs
 from .heat_plan import plan_heat
-from .input_profiles import build_input_profile, spot_indexes_for_week
+from .input_profiles import build_input_profile
 from .ppm_plan import DEFAULT_PEOPLE, occupancy_gain_for_people, optimize_ppm_plan, rh_weight_for_hour
 from .schema import WeeklyPlan
+from .spot import build_spot_plan
 
 
 def build_weekly_plan(
@@ -19,8 +20,8 @@ def build_weekly_plan(
     """Build a deterministic 168-hour weekly heat, PPM and RH-policy plan."""
 
     profile = build_input_profile(week_number, prefer_real_weather=prefer_real_weather)
-    spot_index = spot_indexes_for_week(week_number)
-    heat = plan_heat(profile.outdoor_temp_c, spot_index, current_house_temp)
+    spot = build_spot_plan(week_number)
+    heat = plan_heat(profile.outdoor_temp_c, spot.spot_index, current_house_temp)
     occupancy_gain_ppm_h = occupancy_gain_for_people(people)
     rh_weight = tuple(
         rh_weight_for_hour(temp, rh)
@@ -51,7 +52,8 @@ def build_weekly_plan(
         weather_fallback_reason=profile.weather_fallback_reason,
         outdoor_temp_c=profile.outdoor_temp_c,
         outdoor_rh_pct=profile.outdoor_rh_pct,
-        spot_index=spot_index,
+        spot_index=spot.spot_index,
+        spot=spot,
         rh_weight=rh_weight,
         heat=heat,
         heat_cost_comparison=heat_cost_comparison,

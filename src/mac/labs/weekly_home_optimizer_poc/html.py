@@ -12,6 +12,7 @@ TABLE_COLUMNS = (
     "outdoor_temp_c",
     "outdoor_rh_pct",
     "spot_index",
+    "spot_source",
     "heat_need_kWh",
     "heat_kWh",
     "heat_soc_pct",
@@ -273,6 +274,13 @@ def render_result(payload: Mapping[str, Any]) -> str:
         ("Weather", summary["weather_source"]),
         ("Provider", summary["weather_provider"]),
         ("Weather Year", summary["weather_profile_year"]),
+        ("Spot Model", summary["spot_model"]),
+        ("Spot Resolution", summary["spot_resolution"]),
+        ("Spot Patched", summary["spot_actual_patched_hours"]),
+        ("Spot Forecast", summary["spot_forecast_hours"]),
+        ("Spot Min", summary["spot_index_min"]),
+        ("Spot Max", summary["spot_index_max"]),
+        ("Spot Avg", summary["spot_index_avg"]),
     ]
     if summary.get("weather_fallback_reason"):
         metrics.append(("Fallback", summary["weather_fallback_reason"]))
@@ -280,6 +288,8 @@ def render_result(payload: Mapping[str, Any]) -> str:
         metrics.append(("Heat Warnings", ", ".join(summary["heat_optimizer_warnings"])))
     if summary.get("heat_cost_comparison_warnings"):
         metrics.append(("Cost Warnings", ", ".join(summary["heat_cost_comparison_warnings"])))
+    if summary.get("spot_patch_warnings"):
+        metrics.append(("Spot Warnings", ", ".join(summary["spot_patch_warnings"])))
     metric_html = "\n".join(
         f'<div class="metric"><span>{escape(label)}</span><strong>{escape(str(value))}</strong></div>'
         for label, value in metrics

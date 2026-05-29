@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Package: `P0018`, updated by `P0020`, `P0021`, `P0022`, `P0023` and `P0024`
+Package: `P0018`, updated by `P0020`, `P0021`, `P0022`, `P0023`, `P0024` and `P0025`
 
 This Mac-only lab module builds a one-week plan for heat, PPM and RH-policy ventilation tradeoffs.
 
@@ -9,6 +9,8 @@ Heat production uses the P0022 discrete DP optimizer with 2..22 kW hourly heat m
 P0023 adds a deterministic COP emulator and compares optimized heat electric cost with flat production, where flat production means each hour produces that hour's heat need directly. The comparison is an emulated POC estimate, not measured savings.
 
 P0024 adds an hourly spot plan. The internal forecast baseline still starts from the P0017 period-index model, but public optimizer output is always 168 hourly values. When 2025 actual spot fixture prices overlap the requested week, actual price shape is patched into the forecast while preserving the forecast sum over the overlap period.
+
+P0025 limits actual-price knowledge to a fixed 20-hour horizon. The optimizer uses `spot_planning_index`: first known actual hours are patched, and the rest stay forecast. Future fixture actuals are still exposed as diagnostic outcome/error fields, but they are not planner inputs.
 
 Run from the repository root:
 
@@ -55,10 +57,10 @@ The server is trusted-local read-only POC tooling. It runs the local planner and
 
 ## Spot Fixture
 
-P0024 reads:
+P0024/P0025 reads:
 
 ```text
 data/spot/spot_2025_hourly_europe_stockholm.csv
 ```
 
-The fixture is keyed by `utc_hour_start` to avoid DST ambiguity. The POC public input is still week-only, so actual spot patching maps requested weeks to ISO year 2025.
+The fixture is keyed by `utc_hour_start` to avoid DST ambiguity. The POC public input is still week-only, so default actual spot patching maps requested weeks to ISO year 2025. Internal tests may pass another fixture year/path to compare a forecast estimate with a supplied actual outcome fixture.

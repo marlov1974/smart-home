@@ -63,3 +63,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0023` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with the COP emulator and optimized-vs-flat heat electric cost comparison.
 
 `P0024` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with hourly spot planning, 2025 actual-price fixture loading and forecast-sum-preserving actual-price patching.
+
+`P0025` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with fixed 20-hour known spot horizon planning and forecast-vs-actual outcome diagnostics.

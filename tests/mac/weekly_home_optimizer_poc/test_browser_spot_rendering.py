@@ -13,9 +13,11 @@ class BrowserSpotRenderingTests(unittest.TestCase):
         html = render_result(payload)
 
         self.assertIn("Spot Model", html)
+        self.assertIn("Spot Horizon", html)
         self.assertIn("Spot Patched", html)
         self.assertIn("spot_source", html)
-        self.assertIn("actual_patched", html)
+        self.assertIn("spot_planning_source", html)
+        self.assertIn("actual_horizon_patched", html)
 
 
 if __name__ == "__main__":

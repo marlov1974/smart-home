@@ -29,10 +29,16 @@ REQUIRED_COLUMNS = (
     "outdoor_rh_pct",
     "spot_index",
     "spot_source",
+    "spot_planning_index",
+    "spot_planning_source",
     "spot_forecast_index",
     "spot_actual_price",
     "spot_actual_proto_index",
     "spot_patched_actual_index",
+    "spot_actual_outcome_index",
+    "spot_actual_available",
+    "spot_forecast_error_index",
+    "spot_forecast_error_pct",
     "heat_need_kWh",
     "heat_kWh",
     "heat_soc_pct",
@@ -126,13 +132,20 @@ class HeatCostComparison:
 class SpotPlan:
     spot_index: tuple[float, ...]
     spot_source: tuple[str, ...]
+    spot_planning_index: tuple[float, ...]
+    spot_planning_source: tuple[str, ...]
     spot_forecast_index: tuple[float, ...]
     spot_actual_price: tuple[float | None, ...]
     spot_actual_proto_index: tuple[float | None, ...]
     spot_patched_actual_index: tuple[float | None, ...]
+    spot_actual_outcome_index: tuple[float | None, ...]
+    spot_actual_available: tuple[bool, ...]
+    spot_forecast_error_index: tuple[float | None, ...]
+    spot_forecast_error_pct: tuple[float | None, ...]
     spot_model: str
     spot_resolution: str
     spot_actual_fixture_path: str
+    spot_actual_horizon_hours: int
     spot_actual_known_hours: int
     spot_forecast_hours: int
     spot_actual_patched_hours: int

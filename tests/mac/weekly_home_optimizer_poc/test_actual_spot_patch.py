@@ -30,12 +30,13 @@ class ActualSpotPatchTests(unittest.TestCase):
             "h3": _actual("h3", 40.0),
         }
 
-        plan = patch_forecast_with_actual_prices(forecast, utc_hours, actual)
+        plan = patch_forecast_with_actual_prices(forecast, utc_hours, actual, actual_horizon_hours=4)
 
         for actual, expected in zip(plan.spot_index[:4], (0.6, 1.2, 1.8, 2.4)):
             self.assertAlmostEqual(actual, expected)
         self.assertAlmostEqual(sum(plan.spot_index[:4]), 6.0)
-        self.assertEqual(plan.spot_source[:4], ("actual_patched",) * 4)
+        self.assertEqual(plan.spot_source[:4], ("actual_horizon_patched",) * 4)
+        self.assertEqual(plan.spot_planning_source[:4], ("actual_horizon_patched",) * 4)
         self.assertEqual(plan.spot_forecast_index[:4], (1.0, 1.0, 2.0, 2.0))
         self.assertEqual(plan.spot_actual_proto_index[:4], (0.4, 0.8, 1.2, 1.6))
         for actual, expected in zip(plan.spot_patched_actual_index[:4], (0.6, 1.2, 1.8, 2.4)):
@@ -52,7 +53,7 @@ class ActualSpotPatchTests(unittest.TestCase):
         self.assertEqual(plan.spot_index, forecast)
         self.assertEqual(set(plan.spot_source), {"forecast"})
         self.assertEqual(plan.spot_actual_patched_hours, 0)
-        self.assertEqual(plan.spot_patch_warnings, ("no_actual_overlap",))
+        self.assertEqual(plan.spot_patch_warnings, ("no_actual_overlap", "actual_horizon_short"))
 
 
 if __name__ == "__main__":

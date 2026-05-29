@@ -21,10 +21,17 @@ class HourlySpotForecastTests(unittest.TestCase):
         self.assertEqual(len(plan.spot_actual_price), 168)
         self.assertEqual(len(plan.spot_actual_proto_index), 168)
         self.assertEqual(len(plan.spot_patched_actual_index), 168)
-        self.assertEqual(plan.spot_model, "hourly_forecast_with_actual_patch_v1")
+        self.assertEqual(len(plan.spot_planning_index), 168)
+        self.assertEqual(len(plan.spot_planning_source), 168)
+        self.assertEqual(len(plan.spot_actual_outcome_index), 168)
+        self.assertEqual(len(plan.spot_actual_available), 168)
+        self.assertEqual(len(plan.spot_forecast_error_index), 168)
+        self.assertEqual(len(plan.spot_forecast_error_pct), 168)
+        self.assertEqual(plan.spot_model, "hourly_forecast_with_actual_horizon_patch_v1")
         self.assertEqual(plan.spot_resolution, "hourly")
-        self.assertGreater(plan.spot_actual_patched_hours, 0)
-        self.assertIn("actual_patched", plan.spot_source)
+        self.assertEqual(plan.spot_actual_horizon_hours, 20)
+        self.assertEqual(plan.spot_actual_patched_hours, 20)
+        self.assertIn("actual_horizon_patched", plan.spot_source)
 
 
 if __name__ == "__main__":

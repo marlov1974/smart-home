@@ -39,10 +39,16 @@ def rows_for_plan(plan: WeeklyPlan) -> list[dict[str, Any]]:
                 "outdoor_rh_pct": round(plan.outdoor_rh_pct[hour], 2),
                 "spot_index": round(plan.spot_index[hour], 2),
                 "spot_source": plan.spot.spot_source[hour],
+                "spot_planning_index": round(plan.spot.spot_planning_index[hour], 4),
+                "spot_planning_source": plan.spot.spot_planning_source[hour],
                 "spot_forecast_index": round(plan.spot.spot_forecast_index[hour], 4),
                 "spot_actual_price": _round_optional(plan.spot.spot_actual_price[hour], 6),
                 "spot_actual_proto_index": _round_optional(plan.spot.spot_actual_proto_index[hour], 6),
                 "spot_patched_actual_index": _round_optional(plan.spot.spot_patched_actual_index[hour], 6),
+                "spot_actual_outcome_index": _round_optional(plan.spot.spot_actual_outcome_index[hour], 6),
+                "spot_actual_available": plan.spot.spot_actual_available[hour],
+                "spot_forecast_error_index": _round_optional(plan.spot.spot_forecast_error_index[hour], 6),
+                "spot_forecast_error_pct": _round_optional(plan.spot.spot_forecast_error_pct[hour], 3),
                 "heat_need_kWh": round(plan.heat.heat_need_kWh[hour], 3),
                 "heat_kWh": round(plan.heat.heat_kWh[hour], 3),
                 "heat_soc_pct": round(plan.heat.heat_soc_pct[hour], 2),
@@ -89,6 +95,7 @@ def _metadata(plan: WeeklyPlan) -> dict[str, Any]:
         "spot_model": plan.spot.spot_model,
         "spot_resolution": plan.spot.spot_resolution,
         "spot_actual_fixture_path": plan.spot.spot_actual_fixture_path,
+        "spot_actual_horizon_hours": plan.spot.spot_actual_horizon_hours,
         "spot_actual_known_hours": plan.spot.spot_actual_known_hours,
         "spot_forecast_hours": plan.spot.spot_forecast_hours,
         "spot_actual_patched_hours": plan.spot.spot_actual_patched_hours,
@@ -138,6 +145,7 @@ def format_table(plan: WeeklyPlan) -> str:
             f"weather_profile_year={plan.weather_profile_year} "
             f"weather_fallback_reason={plan.weather_fallback_reason or ''} "
             f"spot_model={plan.spot.spot_model} "
+            f"spot_actual_horizon_hours={plan.spot.spot_actual_horizon_hours} "
             f"spot_actual_patched_hours={plan.spot.spot_actual_patched_hours} "
             f"spot_patch_warnings={','.join(plan.spot.spot_patch_warnings)} "
             f"heat_cost_model={plan.heat_cost_comparison.heat_cost_model} "

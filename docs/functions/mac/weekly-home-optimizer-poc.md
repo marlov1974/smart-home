@@ -1,6 +1,6 @@
 # Weekly Home Optimizer POC
 
-Last changed: P0024
+Last changed: P0025
 
 ## Module
 
@@ -47,13 +47,17 @@ The first command is local-only. The second command is for explicit trusted-LAN 
 
 `forecast_spot_index_for_week(week_number)` builds the 168-hour internal forecast baseline from the P0017 period-index model.
 
-`resolve_week_utc_hours(week_number, iso_year)` converts the operational week to 168 chronological UTC fixture keys. P0024 uses ISO year 2025 because the actual-price fixture covers 2025 and the POC public input remains week-only.
+`resolve_week_utc_hours(week_number, iso_year)` converts the operational week to 168 chronological UTC fixture keys. The default fixture year is 2025 because the committed actual-price fixture covers 2025 and the POC public input remains week-only.
 
 `load_actual_spot_prices(path)` loads the 2025 hourly actual spot fixture, validates unique `utc_hour_start` keys and complete four-quarter hourly rows, and returns actual prices keyed by UTC hour.
 
-`patch_forecast_with_actual_prices(forecast_index, utc_hours, actual_prices, actual_fixture_path)` applies actual price shape for overlapping hours and rescales it so the patched values preserve the forecast sum over the overlap period.
+`normalize_actual_indexes(actual_prices_by_index, forecast_index)` converts actual prices into proto indexes and rescales them so the normalized actual indexes preserve the matching forecast sum.
 
-`build_spot_plan(week_number, actual_fixture_path)` returns the P0024 `SpotPlan` with final `spot_index`, hourly provenance, patch diagnostics and summary metadata.
+`patch_forecast_with_actual_prices(forecast_index, utc_hours, actual_prices, actual_fixture_path, actual_horizon_hours)` applies actual price shape only inside the fixed known horizon and computes forecast-vs-actual diagnostics for all available outcome hours.
+
+`build_spot_plan_for_window(week_number, iso_year, actual_fixture_path, actual_horizon_hours)` builds a spot plan for a fixture year and known actual horizon. This is the internal hook for deterministic 2026 fixture tests without adding public API inputs.
+
+`build_spot_plan(week_number, actual_fixture_path)` returns the P0025 `SpotPlan` with `spot_index` as a compatibility alias for `spot_planning_index`, 20-hour known-horizon patching, hourly provenance, outcome diagnostics and summary metadata.
 
 `spot_indexes_for_week(week_number)` returns `build_spot_plan(...).spot_index` for compatibility callers.
 
@@ -134,4 +138,4 @@ hours
 
 `hours` has 168 rows for a valid plan.
 
-`summary` includes people, occupancy gain, weather source metadata, spot model metadata, heat optimizer metadata and COP-emulated optimized-vs-flat heat cost metadata.
+`summary` includes people, occupancy gain, weather source metadata, spot model and known-horizon metadata, heat optimizer metadata and COP-emulated optimized-vs-flat heat cost metadata.

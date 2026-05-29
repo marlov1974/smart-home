@@ -96,6 +96,7 @@ def plan_payload(request: PlanRequest, prefer_real_weather: bool = True) -> dict
         "spot_model": plan.spot.spot_model,
         "spot_resolution": plan.spot.spot_resolution,
         "spot_actual_fixture_path": plan.spot.spot_actual_fixture_path,
+        "spot_actual_horizon_hours": plan.spot.spot_actual_horizon_hours,
         "spot_actual_known_hours": plan.spot.spot_actual_known_hours,
         "spot_forecast_hours": plan.spot.spot_forecast_hours,
         "spot_actual_patched_hours": plan.spot.spot_actual_patched_hours,

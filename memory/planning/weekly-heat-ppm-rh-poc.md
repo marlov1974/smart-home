@@ -1,6 +1,6 @@
 # Weekly Heat PPM RH POC
 
-Last changed: P0024
+Last changed: P0025
 
 This file records the durable contract for the Mac-only weekly heat, PPM and RH-policy planning POC.
 
@@ -58,29 +58,47 @@ weather_fallback_reason
 
 Automated tests and offline development use deterministic fallback weather. Fallback must be explicit; synthetic weather must not be silently presented as real weather.
 
-Spot-price input uses the P0024 hourly spot plan:
+Spot-price input uses the P0025 hourly known-horizon spot plan:
 
 ```text
-spot_model = hourly_forecast_with_actual_patch_v1
+spot_model = hourly_forecast_with_actual_horizon_patch_v1
 spot_resolution = hourly
-spot_patch_strategy = actual_shape_forecast_sum
+spot_actual_horizon_hours = 20
+spot_patch_strategy = actual_shape_forecast_sum_horizon
 ```
 
 The internal forecast baseline may reuse the P0017 21x8h period-index model expanded to 168 hours. Public output and optimizer input are always hourly.
 
-When actual 2025 spot fixture prices overlap the requested week, the POC patches actual price shape into the forecast:
+When actual 2025 spot fixture prices overlap the requested week, the POC patches actual price shape into the first known horizon only:
 
 ```text
 actual_proto_index = actual_price / mean(actual_price over overlap)
 patched_actual_index = actual_proto_index * forecast_overlap_sum / actual_proto_sum
 ```
 
-The patch preserves the forecast sum over known actual hours. The public POC input remains week-only, so actual-price patching maps requested weeks to ISO year 2025 and uses `utc_hour_start` as the canonical fixture key.
+The patch preserves the forecast sum over known actual hours. The public POC input remains week-only, so default actual-price patching maps requested weeks to ISO year 2025 and uses `utc_hour_start` as the canonical fixture key.
+
+The optimizer must use:
+
+```text
+spot_planning_index
+```
+
+`spot_index` remains a compatibility alias for `spot_planning_index`.
+
+Actual fixture values outside the known horizon are diagnostic outcome data only:
+
+```text
+spot_actual_outcome_index
+spot_forecast_error_index
+spot_forecast_error_pct
+```
 
 Spot output metadata includes:
 
 ```text
 spot_actual_fixture_path
+spot_actual_horizon_hours
 spot_actual_known_hours
 spot_forecast_hours
 spot_actual_patched_hours
@@ -95,10 +113,16 @@ Rows expose:
 ```text
 spot_index
 spot_source
+spot_planning_index
+spot_planning_source
 spot_forecast_index
 spot_actual_price
 spot_actual_proto_index
 spot_patched_actual_index
+spot_actual_outcome_index
+spot_actual_available
+spot_forecast_error_index
+spot_forecast_error_pct
 ```
 
 ## Heat model

@@ -65,3 +65,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0024` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with hourly spot planning, 2025 actual-price fixture loading and forecast-sum-preserving actual-price patching.
 
 `P0025` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with fixed 20-hour known spot horizon planning and forecast-vs-actual outcome diagnostics.
+
+`P0026` added `docs/functions/mac/local-kvs-read-poc.md` for the read-only Mac local Shelly KVS.Get NAT helper.

@@ -1,5 +1,5 @@
 {
-  "version": 12,
+  "version": 13,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -14,6 +14,7 @@
     "memory/05-package-lifecycle.md",
     "memory/06-chatgpt-requirements-analyst.md",
     "memory/07-project-instructions.md",
+    "memory/08-context-bootstrap-modes.md",
     "memory/device-management/00-index.md",
     "memory/device-management/identity-and-registry.md",
     "memory/device-management/installer-model.md",
@@ -56,6 +57,7 @@
     "requirements/package-runs/TEMPLATE-design.md",
     "requirements/package-runs/TEMPLATE-functions.md",
     "requirements/package-runs/TEMPLATE-attempts.md",
+    "requirements/package-runs/TEMPLATE-changelog.md",
     "requirements/packages/P0001-bootstrap-smart-home-repo.md",
     "requirements/packages/P0002-import-infrastructure-and-physical-baseline.md",
     "requirements/packages/P0003-codex-review-and-active-debug-policy.md",
@@ -69,16 +71,18 @@
     "requirements/packages/P0011-mac-rpc-chunked-upload-and-spotprice-kvs-test.md",
     "requirements/packages/P0012-correct-spotprice-template-and-clean-deploy-artifacts.md",
     "requirements/packages/P0013-spotprice-low-memory-se-elpris-runtime.md",
-    "requirements/packages/P0014-device-management-safe-dampers-baseline.md"
+    "requirements/packages/P0014-device-management-safe-dampers-baseline.md",
+    "requirements/packages/P0015-package-changelog-bootstrap-policy.md"
   ],
   "governance": {
     "truth_hierarchy": [
       "implementation and deploy artifacts",
+      "package-run changelog and evidence",
       "package files",
       "requirements files",
       "memory files",
       "historical discussion"
     ],
-    "rule": "Any change that adds mandatory solution context must update this manifest when it is required for future AI/Codex reconstruction."
+    "rule": "Any change that adds mandatory solution context must update this manifest when it is required for future AI/Codex reconstruction. Package-run CHANGELOG.md files are the first delta-bootstrap artifact for follow-up fixes after the normal session bootstrap."
   }
 }

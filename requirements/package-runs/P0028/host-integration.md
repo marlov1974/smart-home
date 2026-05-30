@@ -108,6 +108,225 @@ Expected next action if the tool is not visible in ChatGPT/Codex:
 3. Check that tool `shelly_kvs_get_by_nat_octet` appears.
 4. If using ChatGPT Desktop instead of Codex, add an equivalent MCP server entry in ChatGPT's MCP config once its config path/format is known.
 
+## ChatGPT Desktop/App Local MCP Follow-up
+
+Follow-up date:
+
+```text
+2026-05-30
+```
+
+Goal:
+
+```text
+Determine whether ChatGPT Desktop/App on this Mac supports local MCP server config and, only if a safe config path/format is identified, add P0028 as a ChatGPT-local MCP server.
+```
+
+Installed ChatGPT app evidence:
+
+```text
+path: /Applications/ChatGPT.app
+bundle id: com.openai.chat
+CFBundleShortVersionString: 1.2026.118
+CFBundleVersion: 1777682760
+```
+
+Local paths checked:
+
+```text
+/Users/marcus.lovenstad/Library/Application Support/com.openai.chat
+/Users/marcus.lovenstad/Library/Preferences
+/Users/marcus.lovenstad/Library/Containers
+/Users/marcus.lovenstad/Library/Application Support
+/Applications/ChatGPT.app/Contents
+```
+
+Observed ChatGPT support/preference files:
+
+```text
+/Users/marcus.lovenstad/Library/Application Support/com.openai.chat
+/Users/marcus.lovenstad/Library/Application Support/com.openai.chat/connectors-4f2e078c-1f99-4fc6-944b-a35551a357b4/connectors.data
+/Users/marcus.lovenstad/Library/Preferences/com.openai.chat.plist
+/Users/marcus.lovenstad/Library/Preferences/com.openai.chat.StatsigService.plist
+/Users/marcus.lovenstad/Library/Preferences/com.openai.chat.RemoteFeatureFlags.4f2e078c-1f99-4fc6-944b-a35551a357b4.plist
+/Users/marcus.lovenstad/Library/Preferences/ChatGPTHelper.plist
+```
+
+Search result:
+
+```text
+No safe local ChatGPT MCP config file was found.
+No ChatGPT-local config file with a clear mcpServers/mcp_servers/custom stdio server format was found.
+No file was found under ChatGPT support/preferences/containers that safely matched the Codex-style local stdio MCP config model.
+The only connector-looking local ChatGPT file found was connectors.data, identified by file(1) as binary data; it was not treated as a safe config target.
+Focused string/search checks did not find a usable local MCP config entry for g2-local-operator or stdio local server configuration.
+```
+
+ChatGPT binary evidence:
+
+```text
+The installed ChatGPT app contains MCP-related strings such as MCPSession, mcpServers, MCP_SERVER_CONFIG, mcpServerStatus/list, mcpServer/oauth/login and config/mcpServer/reload.
+This proves MCP/app support exists in the app binary, but does not identify a safe local filesystem config path or stdio local-server format.
+```
+
+Official OpenAI documentation checked:
+
+```text
+OpenAI Help Center: Developer mode and MCP apps in ChatGPT, updated May 2026.
+OpenAI developer docs: ChatGPT Developer mode.
+OpenAI developer docs: Building MCP servers for ChatGPT Apps and API integrations.
+```
+
+Relevant current documentation facts:
+
+```text
+ChatGPT developer mode creates apps from remote MCP servers.
+Supported ChatGPT developer-mode MCP protocols are SSE and streaming HTTP.
+OpenAI Help Center FAQ says ChatGPT cannot connect to a local MCP server directly; if the MCP server runs locally, on-premises or on a private network, use Secure MCP Tunnel.
+```
+
+Conclusion:
+
+```text
+ChatGPT-local-MCP config not found.
+No ChatGPT Desktop/App filesystem config was modified.
+No backup was needed because no safe ChatGPT config target was identified.
+The P0028 MCP server is currently configured only for Codex through /Users/marcus.lovenstad/.codex/config.toml.
+```
+
+Next manual ChatGPT UI steps:
+
+```text
+1. In ChatGPT, check Settings -> Apps or Settings -> Connectors.
+2. If available, enable Advanced settings -> Developer mode.
+3. Use Create app / Create custom MCP connector.
+4. ChatGPT expects a remote MCP endpoint, not the local stdio wrapper.
+5. To use this P0028 server from ChatGPT, add a remote/SSE or streamable HTTP wrapper or use OpenAI Secure MCP Tunnel once that flow is chosen and package-scoped.
+```
+
+## ChatGPT Desktop/App Local MCP Diagnostic Rerun
+
+Rerun date:
+
+```text
+2026-05-30
+```
+
+Reason:
+
+```text
+The first follow-up searched local ChatGPT files but needed a clearer Mac-level diagnosis of whether this installed ChatGPT Desktop/App version supports direct local MCP servers at all.
+```
+
+Repository sync state before rerun:
+
+```text
+git fetch origin: passed
+git status --short --branch:
+## main...origin/main
+ M requirements/package-runs/P0028/CHANGELOG.md
+ M requirements/package-runs/P0028/host-integration.md
+```
+
+The modified files were the current P0028 evidence files from the active host-integration follow-up.
+
+Installed ChatGPT Desktop/App:
+
+```text
+path: /Applications/ChatGPT.app
+bundle id: com.openai.chat
+version: 1.2026.118
+build: 1777682760
+```
+
+Local Mac diagnostic commands and results:
+
+```text
+/usr/libexec/PlistBuddy -c 'Print :CFBundleIdentifier' /Applications/ChatGPT.app/Contents/Info.plist
+=> com.openai.chat
+
+/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' /Applications/ChatGPT.app/Contents/Info.plist
+=> 1.2026.118
+
+/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' /Applications/ChatGPT.app/Contents/Info.plist
+=> 1777682760
+
+find ~/Library/Application Support/com.openai.chat -maxdepth 3 ... config-like files
+=> /Users/marcus.lovenstad/Library/Application Support/com.openai.chat/connectors-4f2e078c-1f99-4fc6-944b-a35551a357b4/connectors.data
+
+file .../connectors.data
+=> data
+
+find ~/Library/Preferences -maxdepth 1 '*openai*'/'*chatgpt*'
+=> com.openai.chat.plist, com.openai.chat.StatsigService.plist, com.openai.chat.RemoteFeatureFlags..., ChatGPTHelper.plist, com.openai.codex.plist, com.openai.sky.CUAService.plist
+
+find ~/Library/Containers -maxdepth 1 '*openai*'/'*chatgpt*'
+=> no matching ChatGPT/OpenAI containers
+```
+
+MCP-related app-binary evidence:
+
+```text
+strings -a /Applications/ChatGPT.app/Contents/Frameworks/ChatGPT.framework/Versions/A/ChatGPT | rg 'MCP_SERVER_CONFIG|mcpServers|config/mcpServer/reload|mcpServerStatus/list|mcpServer/oauth/login|MCPSession|CodexRemoteMCPToolCall'
+=> CodexRemoteMCPToolCall
+=> MCPSession
+=> config/mcpServer/reload
+=> mcpServerStatus/list
+=> mcpServer/oauth/login
+=> MCP_SERVER_CONFIG
+=> mcpServers
+```
+
+This shows the installed ChatGPT app includes MCP-related client/status/config code paths, but it does not identify a documented or safe local filesystem config path for launching a local stdio MCP server.
+
+Negative local config evidence:
+
+```text
+strings -a .../connectors.data | rg 'mcpServers|mcp_servers|MCP_SERVER_CONFIG|stdio|g2-local|local-operator|/Users/marcus.lovenstad/bin/g2-local-operator-mcp'
+=> no matches
+
+rg -a -n 'mcpServers|mcp_servers|MCP_SERVER_CONFIG|stdio|g2-local|local-operator' ChatGPT plist/preferences
+=> no matches
+```
+
+Documented OpenAI/ChatGPT support checked:
+
+```text
+https://help.openai.com/en/articles/12584461-developer-mode-and-mcp-apps-in-chatgpt
+https://platform.openai.com/docs/guides/developer-mode
+https://platform.openai.com/docs/mcp
+```
+
+Documentation result:
+
+```text
+OpenAI's ChatGPT developer-mode documentation describes creating an app for a remote MCP server.
+The documented ChatGPT developer-mode MCP protocols are SSE and streaming HTTP.
+The Help Center FAQ explicitly says ChatGPT cannot connect to a local MCP server directly; local, private-network, on-premises or developer-machine MCP servers require Secure MCP Tunnel for supported OpenAI products.
+The Help Center also scopes apps/full MCP/developer mode primarily to ChatGPT web/workspace settings, not a documented local ChatGPT Desktop stdio config file.
+```
+
+Conclusion for ChatGPT Desktop/App version 1.2026.118:
+
+```text
+This installed ChatGPT Desktop/App version cannot be verified as supporting direct local stdio MCP server configuration.
+No documented ChatGPT Desktop local MCP config path or local stdio config format was found.
+No ChatGPT Desktop/App config was modified.
+The current P0028 local stdio MCP server is usable from Codex, where ~/.codex/config.toml is documented/observed and already configured, but it is not usable directly from this ChatGPT Desktop/App surface right now.
+```
+
+Documented ChatGPT path if ChatGPT integration is still desired:
+
+```text
+1. Use ChatGPT web/workspace settings, not a local Desktop plist/TOML file.
+2. Enable Developer mode where available:
+   Settings -> Apps -> Advanced settings -> Developer mode
+   or workspace/admin Apps settings depending on plan/workspace.
+3. Create/import a custom app/connector by providing a remote MCP endpoint.
+4. Use SSE or streaming HTTP as the MCP transport.
+5. For a local/developer-machine server, use Secure MCP Tunnel or build a package-scoped remote/SSE/streamable-HTTP wrapper around the P0028 read-only tool.
+```
+
 ## Safety
 
 No `KVS.Set`, `Script.*`, switch/light/cover/relay/dimmer/actuator call, generic proxy, shell-tool, Codex-runner, launchd service or persistent daemon was added.

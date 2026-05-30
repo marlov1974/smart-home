@@ -61,6 +61,8 @@ Mac host integration follow-up:
 - Added MCP server `g2-local-operator` pointing to the wrapper command.
 - Verified the wrapper with MCP `initialize`, `notifications/initialized`, `tools/list` and read-only `tools/call`; `tools/list` returned `shelly_kvs_get_by_nat_octet`, and escalated live `tools/call` returned HTTP `200`, `result_status: success`, value `"ok"`.
 - Current running Codex session cannot prove host-visible tool discovery until the host reloads/restarts and rereads config.
+- ChatGPT Desktop/App follow-up on 2026-05-30 found `/Applications/ChatGPT.app` version `1.2026.118` (`com.openai.chat`) and MCP-related app-binary strings, but did not find a safe local filesystem MCP config path/format to edit. No ChatGPT config was changed. Official OpenAI docs currently describe ChatGPT MCP apps as remote SSE/streamable HTTP endpoints and state that local MCP servers require Secure MCP Tunnel rather than direct local config.
+- A rerun local Mac diagnosis confirmed the same result: ChatGPT Desktop/App `1.2026.118` has MCP-related binary strings (`MCPSession`, `MCP_SERVER_CONFIG`, `mcpServers`, `mcpServerStatus/list`) but no documented or safely editable local stdio MCP config was found under ChatGPT Application Support, Preferences or Containers. This ChatGPT surface cannot currently use the P0028 local stdio MCP server directly; Codex can.
 
 ## Known limitations and follow-up
 
@@ -68,6 +70,7 @@ Mac host integration follow-up:
 - Only the P0028-required MCP lifecycle/tool subset is implemented.
 - The server intentionally exposes only the P0026 read-only KVS.Get helper.
 - No persistent service/launchd installation was added.
+- ChatGPT Desktop/App is not currently wired to this local stdio server; only Codex is configured. A later package would need a remote/SSE or streamable HTTP wrapper or a Secure MCP Tunnel setup if ChatGPT integration is required.
 
 ## Bootstrap for next package
 

@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified-local-live
 
 ## Package order
 
@@ -571,4 +571,49 @@ If implementation fails verification after allowed attempts, Codex must preserve
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as a true MCP stdio-compatible local server for the P0028-required lifecycle/tool subset.
+
+Chosen path:
+
+```text
+src/mac/services/local_operator_mcp/
+```
+
+Supported MCP protocol revision:
+
+```text
+2025-06-18
+```
+
+Supported MCP methods:
+
+```text
+initialize
+notifications/initialized
+tools/list
+tools/call
+```
+
+Supported tool:
+
+```text
+shelly_kvs_get_by_nat_octet
+```
+
+The server delegates to P0027 `handle_tool_call(...)`, which delegates to P0026 `kvs_get_by_nat_octet(...)`. It does not duplicate Shelly HTTP access.
+
+Read-only live verification through the MCP stdio path succeeded for:
+
+```text
+tool: shelly_kvs_get_by_nat_octet
+octet: 30
+key: hp.price.status
+timeout: 5
+derived URL: http://192.168.86.240:8030/rpc/KVS.Get?key=hp.price.status
+HTTP status: 200
+result_status: success
+MCP isError: false
+result value: "ok"
+```
+
+No `KVS.Set`, `Script.*`, actuator call, arbitrary URL fetch, shell command, generic proxy, Codex runner, Home Assistant bridge, Streamable HTTP server or production service installation was implemented or used.

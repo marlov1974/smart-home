@@ -71,3 +71,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0027` added `docs/functions/mac/local-operator-bridge.md` for the read-only MCP-shaped local JSON-RPC operator bridge that delegates to P0026.
 
 `P0028` added `docs/functions/mac/local-operator-mcp.md` for the true MCP stdio adapter over the read-only P0027/P0026 bridge.
+
+`P0029` added `docs/functions/mac/chatgpt-mcp-access.md` for the localhost Streamable HTTP MCP wrapper intended as a private target for Secure MCP Tunnel or another approved ChatGPT-compatible remote endpoint.

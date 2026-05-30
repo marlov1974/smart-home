@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified-local-live
 
 ## Package order
 
@@ -530,4 +530,55 @@ If local config files are changed, Codex must create a timestamped backup first 
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as a localhost Streamable HTTP MCP wrapper around the existing P0028/P0027/P0026 read-only tool path.
+
+Chosen path:
+
+```text
+package-scoped remote MCP wrapper path
+```
+
+Implemented endpoint:
+
+```text
+http://127.0.0.1:8765/mcp
+```
+
+CLI:
+
+```bash
+python3 -m src.mac.services.chatgpt_mcp_access serve --host 127.0.0.1 --port 8765
+```
+
+Supported HTTP behavior:
+
+```text
+POST /mcp: MCP JSON-RPC request/notification handling
+GET /mcp: 405 Method Not Allowed because P0029 does not provide server-initiated SSE
+other paths: rejected
+non-local browser Origin: rejected
+```
+
+Supported tool:
+
+```text
+shelly_kvs_get_by_nat_octet
+```
+
+Read-only live verification through the P0029 HTTP path succeeded for:
+
+```text
+tool: shelly_kvs_get_by_nat_octet
+octet: 30
+key: hp.price.status
+timeout: 5
+derived URL: http://192.168.86.240:8030/rpc/KVS.Get?key=hp.price.status
+HTTP status: 200
+result_status: success
+MCP isError: false
+result value: "ok"
+```
+
+ChatGPT host visibility was not verified because no Secure MCP Tunnel or approved remote endpoint was configured in this package. The wrapper is the local private target for a later/manual ChatGPT registration step.
+
+No `KVS.Set`, `Script.*`, actuator call, arbitrary URL fetch, shell command, generic proxy, Codex runner, Home Assistant bridge, public endpoint, authentication secret or persistent service installation was implemented or used.

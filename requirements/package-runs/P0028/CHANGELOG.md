@@ -65,6 +65,7 @@ Mac host integration follow-up:
 - A rerun local Mac diagnosis confirmed the same result: ChatGPT Desktop/App `1.2026.118` has MCP-related binary strings (`MCPSession`, `MCP_SERVER_CONFIG`, `mcpServers`, `mcpServerStatus/list`) but no documented or safely editable local stdio MCP config was found under ChatGPT Application Support, Preferences or Containers. This ChatGPT surface cannot currently use the P0028 local stdio MCP server directly; Codex can.
 - After committing/pushing the evidence to clear the sync blocker, a clean-state rerun confirmed the same ChatGPT Desktop/App result: no direct local stdio MCP config path/format found; Codex remains the only configured local host for P0028.
 - ChatGPT access remediation check stopped within P0028 scope: official docs require a remote MCP endpoint via SSE/streaming HTTP or Secure MCP Tunnel; no local tunnel CLI was installed, Browser UI was unavailable, and P0028 explicitly forbids Streamable HTTP/SSE transport or dependency/service expansion. A new package is required to add a ChatGPT-compatible remote/tunnel surface.
+- Updated the P0028 package file with a next-package requirement seed for ChatGPT: make the existing read-only P0028 tool available through either Secure MCP Tunnel or a package-scoped SSE/streamable HTTP wrapper, while preserving the one-tool read-only safety boundary.
 
 ## Known limitations and follow-up
 

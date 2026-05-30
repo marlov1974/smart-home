@@ -617,3 +617,55 @@ result value: "ok"
 ```
 
 No `KVS.Set`, `Script.*`, actuator call, arbitrary URL fetch, shell command, generic proxy, Codex runner, Home Assistant bridge, Streamable HTTP server or production service installation was implemented or used.
+
+## Follow-up requirement seed for next package
+
+P0028 successfully made the read-only local operator available to local stdio MCP hosts such as Codex, but it did not make the tool available to ChatGPT.
+
+Current ChatGPT finding from P0028 host-integration evidence:
+
+```text
+Installed ChatGPT Desktop/App:
+  path: /Applications/ChatGPT.app
+  bundle id: com.openai.chat
+  version: 1.2026.118
+  build: 1777682760
+
+ChatGPT Desktop/App has MCP-related code paths, but no documented or safely editable local stdio MCP config path was found.
+OpenAI documentation says ChatGPT connects to remote MCP servers.
+Documented ChatGPT developer-mode MCP transports are SSE and streaming HTTP.
+For local/private-network/on-premises/developer-machine MCP servers, OpenAI documents Secure MCP Tunnel as the supported bridge path.
+```
+
+Therefore a later package is required if ChatGPT must access the P0028 function.
+
+Suggested next package objective:
+
+```text
+Make the existing read-only P0028 tool available to ChatGPT by adding a ChatGPT-compatible remote MCP access path, without expanding Shelly capabilities.
+```
+
+The next package should choose one of these approaches after review:
+
+```text
+1. Secure MCP Tunnel to the existing local P0028 stdio server, if the required OpenAI/ChatGPT tunnel tooling and account/UI access can be verified.
+2. A package-scoped SSE or streamable HTTP MCP wrapper around the existing read-only tool.
+```
+
+Safety constraints to preserve:
+
+```text
+only tool: shelly_kvs_get_by_nat_octet
+read-only only
+no KVS.Set
+no Script.*
+no Switch.*, Light.*, Cover.*, relay, dimmer or actuator operations
+no generic HTTP proxy
+no arbitrary shell execution
+no Codex package runner
+no Home Assistant production changes
+no secrets in repo evidence
+backup before any host config change
+```
+
+The next package must explicitly authorize any new transport, tunnel, dependency, service process, public URL exposure, authentication/OAuth setup, ChatGPT UI configuration or live verification. P0028 itself forbids Streamable HTTP/SSE transport and persistent service installation, so those changes must not be treated as a P0028 follow-up implementation.

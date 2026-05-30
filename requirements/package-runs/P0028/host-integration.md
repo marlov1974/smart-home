@@ -444,6 +444,14 @@ No Streamable HTTP/SSE server was added under P0028.
 No device writes were performed.
 ```
 
+Next-package handoff:
+
+```text
+P0028 package file now includes a follow-up requirement seed for ChatGPT to turn into the next ordered package.
+The next package should not be framed as continuing P0028 implementation unless it only edits evidence.
+Any actual ChatGPT access fix must explicitly allow either Secure MCP Tunnel or an SSE/streamable HTTP MCP wrapper plus the required host/UI configuration and verification.
+```
+
 ## Safety
 
 No `KVS.Set`, `Script.*`, switch/light/cover/relay/dimmer/actuator call, generic proxy, shell-tool, Codex-runner, launchd service or persistent daemon was added.

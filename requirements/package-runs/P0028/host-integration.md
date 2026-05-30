@@ -372,6 +372,78 @@ This ChatGPT surface cannot use the P0028 local stdio MCP server directly right 
 Codex can use the server through /Users/marcus.lovenstad/.codex/config.toml.
 ```
 
+## ChatGPT Access Remediation Check
+
+Date:
+
+```text
+2026-05-30
+```
+
+Operator request:
+
+```text
+Fix what needs to be fixed so ChatGPT can access the P0028 function.
+```
+
+Current technical requirement from official OpenAI documentation:
+
+```text
+ChatGPT does not connect directly to local stdio MCP servers.
+ChatGPT custom MCP apps/connectors use remote MCP endpoints.
+Documented ChatGPT developer-mode MCP transports are SSE and streaming HTTP.
+If the MCP server is local, private-network, on-premises or on a developer machine, OpenAI documents Secure MCP Tunnel as the supported bridge path.
+```
+
+Local remediation checks:
+
+```text
+command -v cloudflared => not installed
+command -v ngrok => not installed
+command -v tailscale => not installed
+command -v openai => not installed
+codex mcp list => g2-local-operator configured and enabled for Codex
+ChatGPT app strings search => no local Secure MCP Tunnel CLI or direct local stdio config path identified
+Browser plugin attempt for ChatGPT settings => Browser is not available: iab
+```
+
+Package-scope decision:
+
+```text
+STOP for P0028 implementation changes.
+P0028 explicitly forbids Streamable HTTP MCP transport, generic HTTP proxy, persistent service installation and dependency expansion.
+Making ChatGPT access this function requires a new package/scope, not another P0028 stdio host-integration edit.
+```
+
+What is already fixed:
+
+```text
+Codex access is fixed and configured through /Users/marcus.lovenstad/.codex/config.toml.
+The wrapper command /Users/marcus.lovenstad/bin/g2-local-operator-mcp starts the P0028 stdio server.
+The only exposed tool remains shelly_kvs_get_by_nat_octet.
+```
+
+What remains required for ChatGPT:
+
+```text
+1. A ChatGPT-compatible remote MCP endpoint:
+   - Secure MCP Tunnel to the local/developer-machine MCP server if available in the ChatGPT/OpenAI UI, or
+   - a new package-scoped SSE/streamable HTTP MCP wrapper around the existing read-only tool.
+2. ChatGPT web/UI configuration:
+   - Settings -> Apps -> Advanced settings -> Developer mode, then
+   - Create app / custom MCP connector with the remote endpoint.
+3. Verification from ChatGPT that tool shelly_kvs_get_by_nat_octet is listed and callable.
+```
+
+Safety decision:
+
+```text
+No ChatGPT filesystem config was edited.
+No tunnel service was installed.
+No Streamable HTTP/SSE server was added under P0028.
+No device writes were performed.
+```
+
 ## Safety
 
 No `KVS.Set`, `Script.*`, switch/light/cover/relay/dimmer/actuator call, generic proxy, shell-tool, Codex-runner, launchd service or persistent daemon was added.

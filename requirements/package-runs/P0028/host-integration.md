@@ -327,6 +327,51 @@ Documented ChatGPT path if ChatGPT integration is still desired:
 5. For a local/developer-machine server, use Secure MCP Tunnel or build a package-scoped remote/SSE/streamable-HTTP wrapper around the P0028 read-only tool.
 ```
 
+## Post-blocker Clean Rerun
+
+Date:
+
+```text
+2026-05-30
+```
+
+Blocker handling:
+
+```text
+Committed and pushed prior P0028 ChatGPT-local-MCP diagnosis evidence as:
+cac330f docs: record P0028 ChatGPT local MCP diagnosis
+```
+
+Clean sync after push:
+
+```text
+git fetch origin: passed
+git status --short --branch:
+## main...origin/main
+```
+
+Local Mac diagnosis from clean sync state:
+
+```text
+ChatGPT Desktop/App path: /Applications/ChatGPT.app
+bundle id: com.openai.chat
+version: 1.2026.118
+build: 1777682760
+config-like file found under ChatGPT Application Support: connectors.data only
+connectors.data type: binary data
+ChatGPT app binary MCP strings: CodexRemoteMCPToolCall, MCPSession, config/mcpServer/reload, mcpServerStatus/list, mcpServer/oauth/login, MCP_SERVER_CONFIG, mcpServers
+ChatGPT preferences search for mcpServers/mcp_servers/MCP_SERVER_CONFIG/stdio/g2-local/local-operator: no matches
+```
+
+Clean-rerun conclusion:
+
+```text
+No change from the earlier diagnosis.
+ChatGPT Desktop/App 1.2026.118 on this Mac has MCP-related code paths, but direct local stdio MCP server config support is not documented and no safe local config path/format was found.
+This ChatGPT surface cannot use the P0028 local stdio MCP server directly right now.
+Codex can use the server through /Users/marcus.lovenstad/.codex/config.toml.
+```
+
 ## Safety
 
 No `KVS.Set`, `Script.*`, switch/light/cover/relay/dimmer/actuator call, generic proxy, shell-tool, Codex-runner, launchd service or persistent daemon was added.

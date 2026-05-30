@@ -39,6 +39,32 @@ python3 -m src.mac.services.local_operator_mcp serve
 
 The process reads MCP JSON-RPC messages from stdin and writes only valid JSON-RPC/MCP response lines to stdout. Diagnostics must go to stderr.
 
+## Mac Host Wrapper
+
+P0028 host-integration follow-up established this wrapper for local MCP hosts:
+
+```text
+/Users/marcus.lovenstad/bin/g2-local-operator-mcp
+```
+
+Wrapper behavior:
+
+```sh
+cd /Users/marcus.lovenstad/dev/smart-home
+exec python3 -m src.mac.services.local_operator_mcp serve
+```
+
+Codex Desktop/App config entry:
+
+```toml
+[mcp_servers.g2-local-operator]
+args = []
+command = "/Users/marcus.lovenstad/bin/g2-local-operator-mcp"
+startup_timeout_sec = 30
+```
+
+The host may need restart or config reload before the tool appears.
+
 ## Initialize
 
 `initialize` returns:

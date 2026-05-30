@@ -53,6 +53,15 @@ Live MCP result:
 - Escalated read-only live run: HTTP `200`, P0026 `result_status: success`, MCP `isError: false`, value `"ok"`, audit path `/Users/marcus.lovenstad/.smart-home/local_kvs_read_audit.jsonl`.
 - No write-capable RPC, script control, actuator command, generic proxy, shell command, Codex runner, Streamable HTTP server or persistent install was used.
 
+Mac host integration follow-up:
+
+- Created wrapper `/Users/marcus.lovenstad/bin/g2-local-operator-mcp`.
+- Identified Codex Desktop/App MCP config at `/Users/marcus.lovenstad/.codex/config.toml`.
+- Backed it up to `/Users/marcus.lovenstad/.codex/config.toml.p0028-host-backup-20260530`.
+- Added MCP server `g2-local-operator` pointing to the wrapper command.
+- Verified the wrapper with MCP `initialize`, `notifications/initialized`, `tools/list` and read-only `tools/call`; `tools/list` returned `shelly_kvs_get_by_nat_octet`, and escalated live `tools/call` returned HTTP `200`, `result_status: success`, value `"ok"`.
+- Current running Codex session cannot prove host-visible tool discovery until the host reloads/restarts and rereads config.
+
 ## Known limitations and follow-up
 
 - This is stdio MCP only, not Streamable HTTP.
@@ -62,4 +71,4 @@ Live MCP result:
 
 ## Bootstrap for next package
 
-Read `docs/functions/mac/local-operator-mcp.md` for the durable MCP server contract. The implementation lives in `src/mac/services/local_operator_mcp/core.py`, with mocked unit tests in `tests/mac/services/local_operator_mcp/test_core.py`.
+Read `docs/functions/mac/local-operator-mcp.md` for the durable MCP server contract. The implementation lives in `src/mac/services/local_operator_mcp/core.py`, with mocked unit tests in `tests/mac/services/local_operator_mcp/test_core.py`. Host integration evidence is in `requirements/package-runs/P0028/host-integration.md`.

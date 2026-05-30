@@ -91,3 +91,24 @@ Safety:
 ```text
 No KVS.Set, Script.*, actuator call, generic proxy, arbitrary URL fetch, shell execution, Codex runner, public exposure or persistent service installation was added or used.
 ```
+
+## Tunnel / ChatGPT registration phase
+
+Status: stopped with evidence.
+
+Actions:
+
+- Verified local P0029 server still lists exactly `shelly_kvs_get_by_nat_octet`.
+- Verified local P0029 `tools/call` for `octet=30`, `key=hp.price.status`, `timeout=5` still returns `result_status=success`, value `"ok"`.
+- Checked local commands for `tunnel-client`, `mcp-tunnel`, `openai`, `cloudflared`, `ngrok` and `tailscale`; none were installed.
+- Checked the installed ChatGPT app bundle and local ChatGPT Application Support for tunnel/config artifacts; no safe tunnel CLI or editable config target was found.
+- Attempted Browser access to ChatGPT settings; Browser backend `iab` was unavailable.
+
+Decision:
+
+```text
+STOP for tunnel configuration from Codex.
+Manual ChatGPT/OpenAI UI action is required to create Secure MCP Tunnel and register the custom MCP app.
+```
+
+No third-party tunnel software was installed.

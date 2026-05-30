@@ -72,13 +72,25 @@ Secure MCP Tunnel -> http://127.0.0.1:8765/mcp
 approved authenticated reverse proxy -> http://127.0.0.1:8765/mcp
 ```
 
-Then use ChatGPT web/workspace settings:
+OpenAI Help Center guidance checked during P0029 says ChatGPT connects to remote MCP servers and cannot connect directly to local MCP servers. For local/private-network/on-premises/developer-machine MCP servers, use Secure MCP Tunnel.
+
+Manual registration steps:
 
 ```text
-Settings -> Apps -> Advanced settings -> Developer mode
-Create app / custom MCP connector
-Endpoint: the tunnel or authenticated remote endpoint
-Scan tools
+1. Start local P0029:
+   python3 -m src.mac.services.chatgpt_mcp_access serve --host 127.0.0.1 --port 8765
+
+2. In OpenAI/ChatGPT web, create or enable Secure MCP Tunnel to:
+   http://127.0.0.1:8765/mcp
+
+3. In ChatGPT web/workspace settings, enable Developer mode if required.
+
+4. Create a custom MCP app/connector:
+   Settings or Workspace Settings -> Apps -> Create
+   endpoint: Secure MCP Tunnel remote endpoint
+   auth: tunnel/OpenAI-recommended authenticated path
+   Scan Tools
+   Create
 ```
 
 Expected tool list:
@@ -86,6 +98,8 @@ Expected tool list:
 ```text
 shelly_kvs_get_by_nat_octet
 ```
+
+Do not store tunnel tokens, secrets or private auth material in repo evidence. Do not expose this endpoint publicly without an authenticated tunnel/reverse-proxy boundary.
 
 ## Functions
 

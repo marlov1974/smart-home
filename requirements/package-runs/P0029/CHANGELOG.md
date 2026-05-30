@@ -70,6 +70,7 @@ tools/call: HTTP 200, MCP isError=false, P0026 result_status=success, value="ok"
 - ChatGPT host visibility was not verified by Codex.
 - No persistent service/launchd installation was added.
 - No public unauthenticated endpoint was created.
+- Tunnel/ChatGPT registration phase on 2026-05-30 stopped with evidence: local P0029 still works, but no official Secure MCP Tunnel CLI or safe local tunnel config was found on the Mac, Browser access to ChatGPT settings was unavailable, and manual ChatGPT/OpenAI web UI setup is required.
 
 ## Bootstrap for next package
 

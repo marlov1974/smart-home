@@ -11,7 +11,16 @@ import sys
 
 from .ingest import backfill, ingest_daily, latest_safe_complete_day
 from .launchd import install_launchd_plist
-from .storage import connect_db, default_db_path, initialize_schema, validate_weather_continuity
+from .storage import (
+    compute_all_area_proxy_hourly,
+    connect_db,
+    create_ingest_run,
+    default_db_path,
+    finish_ingest_run,
+    initialize_schema,
+    validate_proxy_groups,
+    validate_weather_continuity,
+)
 
 
 DEFAULT_START_DATE = date(2022, 5, 30)
@@ -33,6 +42,16 @@ def main(argv: list[str] | None = None) -> int:
     validate_parser.add_argument("--db", default=str(default_db_path()))
     validate_parser.add_argument("--start-date", "--start", dest="start_date", default=DEFAULT_START_DATE.isoformat())
     validate_parser.add_argument("--end-date", "--end", dest="end_date")
+
+    compute_parser = sub.add_parser("compute-proxy-groups")
+    compute_parser.add_argument("--db", default=str(default_db_path()))
+    compute_parser.add_argument("--start-date", "--start", dest="start_date", default=DEFAULT_START_DATE.isoformat())
+    compute_parser.add_argument("--end-date", "--end", dest="end_date")
+
+    validate_proxy_parser = sub.add_parser("validate-proxy-groups")
+    validate_proxy_parser.add_argument("--db", default=str(default_db_path()))
+    validate_proxy_parser.add_argument("--start-date", "--start", dest="start_date", default=DEFAULT_START_DATE.isoformat())
+    validate_proxy_parser.add_argument("--end-date", "--end", dest="end_date")
 
     ingest_parser = sub.add_parser("ingest-daily")
     ingest_parser.add_argument("--db", default=str(default_db_path()))
@@ -61,6 +80,26 @@ def main(argv: list[str] | None = None) -> int:
                 report = validate_weather_continuity(conn, start, end, db_path=db_path)
                 print(_json(report))
                 return 0 if report.complete else 2
+            if args.command == "compute-proxy-groups":
+                start = date.fromisoformat(args.start_date)
+                end = date.fromisoformat(args.end_date) if args.end_date else latest_safe_complete_day()
+                run_id = create_ingest_run(
+                    conn,
+                    run_type="compute-proxy-groups",
+                    start_date=start,
+                    end_date=end,
+                    locations_requested=0,
+                )
+                rows = compute_all_area_proxy_hourly(conn, start_date=start, end_date=end, ingest_run_id=run_id)
+                finish_ingest_run(conn, run_id, status="ok", records_inserted=rows, records_updated=0, gaps_detected=0)
+                print(_json({"ok": True, "rows": rows, "db_path": db_path}))
+                return 0
+            if args.command == "validate-proxy-groups":
+                start = date.fromisoformat(args.start_date)
+                end = date.fromisoformat(args.end_date) if args.end_date else latest_safe_complete_day()
+                report = validate_proxy_groups(conn, start, end, db_path=db_path)
+                print(_json(report))
+                return 0 if report["complete"] else 2
             if args.command == "ingest-daily":
                 print(_json(ingest_daily(conn, db_path=db_path)))
                 return 0

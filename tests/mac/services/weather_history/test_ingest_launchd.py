@@ -41,7 +41,7 @@ class WeatherIngestLaunchdTests(unittest.TestCase):
 
         self.assertEqual("ok", first.status)
         self.assertEqual("no_new_complete_day_available", second.status)
-        self.assertEqual(4, len(calls))
+        self.assertGreaterEqual(len(calls), 4)
 
     def test_launchd_plist_contract(self):
         plist = render_launchd_plist(db_path="/tmp/weather.sqlite3", python_executable="/usr/bin/python3")

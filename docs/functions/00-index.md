@@ -77,3 +77,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0030` added `docs/functions/mac/spotprice-history.md` for the Mac historical spotprice SQLite dataset and daily ingest job.
 
 `P0031` added `docs/functions/mac/weather-history-dataset.md` for the Mac historical Open-Meteo weather SQLite dataset and daily ingest job.
+
+`P0032` updated `docs/functions/mac/spotprice-history.md` with the SE1 system-proxy view and updated `docs/functions/mac/weather-history-dataset.md` with weather proxy groups and gradients.

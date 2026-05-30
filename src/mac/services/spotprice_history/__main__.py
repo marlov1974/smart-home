@@ -9,9 +9,9 @@ import json
 from pathlib import Path
 import sys
 
-from .ingest import backfill, ingest_daily
+from .ingest import backfill, ingest_daily, ingest_daily_for_areas
 from .launchd import install_daily_job
-from .storage import connect_db, default_db_path, init_db, validate_range
+from .storage import connect_db, default_db_path, init_db, validate_range, validate_system_proxy
 
 
 DEFAULT_START_DATE = date(2022, 5, 30)
@@ -31,11 +31,17 @@ def main(argv: list[str] | None = None) -> int:
 
     ingest_parser = sub.add_parser("ingest-daily")
     _add_common(ingest_parser)
+    ingest_parser.add_argument("--areas", default="SE3,SE1")
 
     validate_parser = sub.add_parser("validate")
     _add_common(validate_parser)
     validate_parser.add_argument("--start-date", default=DEFAULT_START_DATE.isoformat())
     validate_parser.add_argument("--end-date")
+
+    proxy_parser = sub.add_parser("validate-system-proxy")
+    proxy_parser.add_argument("--db", default=str(default_db_path()))
+    proxy_parser.add_argument("--start-date", default=DEFAULT_START_DATE.isoformat())
+    proxy_parser.add_argument("--end-date")
 
     launchd_parser = sub.add_parser("install-daily-job")
     _add_common(launchd_parser)
@@ -58,7 +64,8 @@ def main(argv: list[str] | None = None) -> int:
                 print(_json(summary))
                 return 0
             if args.command == "ingest-daily":
-                summary = ingest_daily(conn, area=args.area, db_path=db_path)
+                areas = [area.strip() for area in args.areas.split(",") if area.strip()] if args.areas else [args.area]
+                summary = ingest_daily_for_areas(conn, areas=areas, db_path=db_path)
                 print(_json(summary))
                 return 0
             if args.command == "validate":
@@ -67,6 +74,15 @@ def main(argv: list[str] | None = None) -> int:
                 report = validate_range(conn, args.area, start, end, db_path=db_path)
                 print(_json(report))
                 return 0 if report.ok else 2
+            if args.command == "validate-system-proxy":
+                start = date.fromisoformat(args.start_date)
+                end = date.fromisoformat(args.end_date) if args.end_date else None
+                if end is None:
+                    row = conn.execute("SELECT MAX(local_date) AS local_date FROM spot_prices WHERE area='SE1'").fetchone()
+                    end = date.fromisoformat(row["local_date"]) if row and row["local_date"] else start
+                report = validate_system_proxy(conn, start, end, db_path=db_path)
+                print(_json(report))
+                return 0 if report["complete"] else 2
             if args.command == "install-daily-job":
                 result = install_daily_job(db_path=db_path, run_launchctl=not args.no_launchctl)
                 print(_json(result))

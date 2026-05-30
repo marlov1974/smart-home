@@ -1,6 +1,6 @@
 # Weather History Dataset
 
-Last changed: P0031
+Last changed: P0032
 
 ## Module
 
@@ -69,6 +69,8 @@ python3 -m src.mac.services.weather_history backfill --db ~/.smart-home/data/wea
 python3 -m src.mac.services.weather_history validate --db ~/.smart-home/data/weather_history.sqlite3 --start-date 2022-05-30
 python3 -m src.mac.services.weather_history ingest-daily --db ~/.smart-home/data/weather_history.sqlite3
 python3 -m src.mac.services.weather_history install-daily-job --db ~/.smart-home/data/weather_history.sqlite3
+python3 -m src.mac.services.weather_history compute-proxy-groups --db ~/.smart-home/data/weather_history.sqlite3 --start-date 2022-05-30
+python3 -m src.mac.services.weather_history validate-proxy-groups --db ~/.smart-home/data/weather_history.sqlite3 --start-date 2022-05-30
 ```
 
 ## Important Functions
@@ -100,6 +102,27 @@ python3 -m src.mac.services.weather_history install-daily-job --db ~/.smart-home
 `render_launchd_plist(db_path, python_executable)` renders the user LaunchAgent.
 
 `install_launchd_plist(db_path, plist_path, python_executable, run_launchctl)` writes and loads the LaunchAgent.
+
+## P0032 Proxy Groups
+
+P0032 adds these queryable proxy groups in `weather_area_hourly` plus stable views:
+
+```text
+se1_core_weather                 weather_proxy_se1_core_hourly
+nordic_connected_weather         weather_proxy_nordic_connected_hourly
+south_connected_weather          weather_proxy_south_connected_hourly
+se3_load_weather                 weather_proxy_se3_load_hourly
+```
+
+P0032 also adds `weather_proxy_gradients_hourly` with:
+
+```text
+temp_gradient_se3_load_minus_se1_core
+apparent_temp_gradient_se3_load_minus_se1_core
+heating_degree_gradient_se3_load_minus_se1_core
+wind_100m_gradient_nordic_connected_minus_se3_load
+south_temp_gradient_minus_se1_core
+```
 
 ## LaunchAgent
 

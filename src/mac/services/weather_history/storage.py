@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 from .models import WEATHER_VARIABLES, WeatherLocation, WeatherObservation, ValidationReport
 
 
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "2"
 AREA_PROXY = "SE3"
 SOURCE = "open-meteo archive"
 SOURCE_MODEL = "era5_seamless"
@@ -23,6 +23,43 @@ DEFAULT_LOCATIONS = (
     WeatherLocation("goteborg", "Goteborg / western SE3", 57.7089, 11.9746, 0.25, AREA_PROXY, SOURCE),
     WeatherLocation("orebro", "Orebro / inland SE3", 59.2753, 15.2134, 0.20, AREA_PROXY, SOURCE),
     WeatherLocation("linkoping", "Linkoping / southern SE3", 58.4108, 15.6214, 0.20, AREA_PROXY, SOURCE),
+)
+
+P0032_PROXY_LOCATIONS = (
+    WeatherLocation("se1_core_kiruna", "Kiruna", 67.8558, 20.2253, 0.11, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_gallivare", "Gallivare", 67.1339, 20.6528, 0.10, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_lulea", "Lulea", 65.5848, 22.1547, 0.10, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_skelleftea", "Skelleftea", 64.7507, 20.9528, 0.09, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_umea", "Umea", 63.8258, 20.2630, 0.09, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_ostersund", "Ostersund", 63.1792, 14.6357, 0.08, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_sundsvall", "Sundsvall", 62.3908, 17.3069, 0.08, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_rovaniemi", "Rovaniemi", 66.5039, 25.7294, 0.08, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_oulu", "Oulu", 65.0121, 25.4651, 0.08, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_tromso", "Tromso", 69.6492, 18.9553, 0.07, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_narvik", "Narvik", 68.4385, 17.4273, 0.06, "se1_core_weather", SOURCE),
+    WeatherLocation("se1_core_bodo", "Bodo", 67.2804, 14.4049, 0.06, "se1_core_weather", SOURCE),
+    WeatherLocation("nordic_connected_trondheim", "Trondheim", 63.4305, 10.3951, 0.18, "nordic_connected_weather", SOURCE),
+    WeatherLocation("nordic_connected_oslo", "Oslo", 59.9139, 10.7522, 0.18, "nordic_connected_weather", SOURCE),
+    WeatherLocation("nordic_connected_bergen", "Bergen", 60.3913, 5.3221, 0.14, "nordic_connected_weather", SOURCE),
+    WeatherLocation("nordic_connected_helsinki", "Helsinki", 60.1699, 24.9384, 0.18, "nordic_connected_weather", SOURCE),
+    WeatherLocation("nordic_connected_tampere", "Tampere", 61.4978, 23.7610, 0.16, "nordic_connected_weather", SOURCE),
+    WeatherLocation("nordic_connected_turku", "Turku", 60.4518, 22.2666, 0.16, "nordic_connected_weather", SOURCE),
+    WeatherLocation("south_connected_stockholm", "Stockholm", 59.3293, 18.0686, 0.06, "south_connected_weather", SOURCE),
+    WeatherLocation("south_connected_goteborg", "Goteborg", 57.7089, 11.9746, 0.05, "south_connected_weather", SOURCE),
+    WeatherLocation("south_connected_malmo", "Malmo", 55.6050, 13.0038, 0.05, "south_connected_weather", SOURCE),
+    WeatherLocation("south_connected_copenhagen", "Copenhagen", 55.6761, 12.5683, 0.04, "south_connected_weather", SOURCE),
+    WeatherLocation("se3_load_stockholm", "Stockholm", 59.3293, 18.0686, 0.16, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_orebro", "Orebro", 59.2753, 15.2134, 0.10, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_vasteras", "Vasteras", 59.6099, 16.5448, 0.10, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_linkoping", "Linkoping", 58.4108, 15.6214, 0.09, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_norrkoping", "Norrkoping", 58.5877, 16.1924, 0.08, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_goteborg", "Goteborg", 57.7089, 11.9746, 0.10, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_jonkoping", "Jonkoping", 57.7826, 14.1618, 0.08, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_karlstad", "Karlstad", 59.4022, 13.5115, 0.07, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_borlange", "Borlange", 60.4858, 15.4371, 0.06, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_gavle", "Gavle", 60.6749, 17.1413, 0.06, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_kalmar", "Kalmar", 56.6634, 16.3568, 0.05, "se3_load_weather", SOURCE),
+    WeatherLocation("se3_load_vaxjo", "Vaxjo", 56.8790, 14.8059, 0.05, "se3_load_weather", SOURCE),
 )
 
 
@@ -133,10 +170,34 @@ def initialize_schema(path: Path | str) -> None:
             );
             CREATE INDEX IF NOT EXISTS idx_weather_area_hourly_local_date
               ON weather_area_hourly(local_date);
+            CREATE TABLE IF NOT EXISTS weather_proxy_gradients_hourly (
+              area_proxy TEXT NOT NULL,
+              utc_hour_start TEXT NOT NULL,
+              local_hour_start TEXT NOT NULL,
+              local_date TEXT NOT NULL,
+              local_hour INTEGER NOT NULL,
+              temp_gradient_se3_load_minus_se1_core REAL,
+              apparent_temp_gradient_se3_load_minus_se1_core REAL,
+              heating_degree_gradient_se3_load_minus_se1_core REAL,
+              wind_100m_gradient_nordic_connected_minus_se3_load REAL,
+              south_temp_gradient_minus_se1_core REAL,
+              source_coverage_status TEXT NOT NULL,
+              computed_at TEXT NOT NULL,
+              ingest_run_id INTEGER,
+              PRIMARY KEY (area_proxy, utc_hour_start)
+            );
+            CREATE VIEW IF NOT EXISTS weather_proxy_se1_core_hourly AS
+              SELECT * FROM weather_area_hourly WHERE area_proxy='se1_core_weather';
+            CREATE VIEW IF NOT EXISTS weather_proxy_nordic_connected_hourly AS
+              SELECT * FROM weather_area_hourly WHERE area_proxy='nordic_connected_weather';
+            CREATE VIEW IF NOT EXISTS weather_proxy_south_connected_hourly AS
+              SELECT * FROM weather_area_hourly WHERE area_proxy='south_connected_weather';
+            CREATE VIEW IF NOT EXISTS weather_proxy_se3_load_hourly AS
+              SELECT * FROM weather_area_hourly WHERE area_proxy='se3_load_weather';
             """
         )
         conn.execute("INSERT OR REPLACE INTO schema_meta(key, value) VALUES('schema_version', ?)", (SCHEMA_VERSION,))
-        for location in DEFAULT_LOCATIONS:
+        for location in DEFAULT_LOCATIONS + P0032_PROXY_LOCATIONS:
             conn.execute(
                 """
                 INSERT OR REPLACE INTO weather_locations
@@ -154,6 +215,13 @@ def initialize_schema(path: Path | str) -> None:
                     1 if location.active else 0,
                 ),
             )
+
+
+def all_area_proxies(conn: sqlite3.Connection) -> list[str]:
+    rows = conn.execute(
+        "SELECT DISTINCT area_proxy FROM weather_locations WHERE active=1 ORDER BY area_proxy"
+    ).fetchall()
+    return [str(row["area_proxy"]) for row in rows]
 
 
 def configured_locations(conn: sqlite3.Connection, area_proxy: str = AREA_PROXY) -> list[WeatherLocation]:
@@ -405,6 +473,161 @@ def compute_area_proxy_hourly(
         payload,
     )
     return len(payload)
+
+
+def compute_all_area_proxy_hourly(
+    conn: sqlite3.Connection,
+    *,
+    start_date: date,
+    end_date: date,
+    ingest_run_id: int,
+) -> int:
+    total = 0
+    for area_proxy in all_area_proxies(conn):
+        total += compute_area_proxy_hourly(
+            conn,
+            area_proxy=area_proxy,
+            start_date=start_date,
+            end_date=end_date,
+            ingest_run_id=ingest_run_id,
+        )
+    total += compute_weather_gradients(conn, start_date=start_date, end_date=end_date, ingest_run_id=ingest_run_id)
+    return total
+
+
+def compute_weather_gradients(
+    conn: sqlite3.Connection,
+    *,
+    start_date: date,
+    end_date: date,
+    ingest_run_id: int,
+) -> int:
+    now = _now()
+    rows = conn.execute(
+        """
+        SELECT
+          se3.utc_hour_start,
+          se3.local_hour_start,
+          se3.local_date,
+          se3.local_hour,
+          se3.weighted_temperature_2m AS se3_temp,
+          se3.weighted_apparent_temperature AS se3_apparent,
+          se3.heating_degree_hours AS se3_heating,
+          se3.weighted_wind_speed_100m AS se3_wind_100m,
+          se1.weighted_temperature_2m AS se1_temp,
+          se1.weighted_apparent_temperature AS se1_apparent,
+          se1.heating_degree_hours AS se1_heating,
+          nordic.weighted_wind_speed_100m AS nordic_wind_100m,
+          south.weighted_temperature_2m AS south_temp
+        FROM weather_area_hourly se3
+        JOIN weather_area_hourly se1
+          ON se1.utc_hour_start=se3.utc_hour_start AND se1.area_proxy='se1_core_weather'
+        JOIN weather_area_hourly nordic
+          ON nordic.utc_hour_start=se3.utc_hour_start AND nordic.area_proxy='nordic_connected_weather'
+        JOIN weather_area_hourly south
+          ON south.utc_hour_start=se3.utc_hour_start AND south.area_proxy='south_connected_weather'
+        WHERE se3.area_proxy='se3_load_weather'
+          AND se3.local_date BETWEEN ? AND ?
+        ORDER BY se3.utc_hour_start
+        """,
+        (start_date.isoformat(), end_date.isoformat()),
+    ).fetchall()
+    payload = []
+    for row in rows:
+        payload.append(
+            (
+                "se3_area_diff_weather",
+                row["utc_hour_start"],
+                row["local_hour_start"],
+                row["local_date"],
+                row["local_hour"],
+                _diff(row["se3_temp"], row["se1_temp"]),
+                _diff(row["se3_apparent"], row["se1_apparent"]),
+                _diff(row["se3_heating"], row["se1_heating"]),
+                _diff(row["nordic_wind_100m"], row["se3_wind_100m"]),
+                _diff(row["south_temp"], row["se1_temp"]),
+                "se1_core+nordic_connected+south_connected+se3_load_aligned",
+                now,
+                ingest_run_id,
+            )
+        )
+    conn.executemany(
+        """
+        INSERT INTO weather_proxy_gradients_hourly (
+          area_proxy, utc_hour_start, local_hour_start, local_date, local_hour,
+          temp_gradient_se3_load_minus_se1_core,
+          apparent_temp_gradient_se3_load_minus_se1_core,
+          heating_degree_gradient_se3_load_minus_se1_core,
+          wind_100m_gradient_nordic_connected_minus_se3_load,
+          south_temp_gradient_minus_se1_core,
+          source_coverage_status,
+          computed_at,
+          ingest_run_id
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(area_proxy, utc_hour_start) DO UPDATE SET
+          local_hour_start=excluded.local_hour_start,
+          local_date=excluded.local_date,
+          local_hour=excluded.local_hour,
+          temp_gradient_se3_load_minus_se1_core=excluded.temp_gradient_se3_load_minus_se1_core,
+          apparent_temp_gradient_se3_load_minus_se1_core=excluded.apparent_temp_gradient_se3_load_minus_se1_core,
+          heating_degree_gradient_se3_load_minus_se1_core=excluded.heating_degree_gradient_se3_load_minus_se1_core,
+          wind_100m_gradient_nordic_connected_minus_se3_load=excluded.wind_100m_gradient_nordic_connected_minus_se3_load,
+          south_temp_gradient_minus_se1_core=excluded.south_temp_gradient_minus_se1_core,
+          source_coverage_status=excluded.source_coverage_status,
+          computed_at=excluded.computed_at,
+          ingest_run_id=excluded.ingest_run_id
+        """,
+        payload,
+    )
+    return len(payload)
+
+
+def validate_proxy_groups(
+    conn: sqlite3.Connection,
+    start_date: date,
+    end_date: date,
+    db_path: str = "",
+) -> dict[str, object]:
+    reports = {
+        area_proxy: validate_weather_continuity(conn, start_date, end_date, area_proxy=area_proxy, db_path=db_path)
+        for area_proxy in ("se1_core_weather", "nordic_connected_weather", "south_connected_weather", "se3_load_weather")
+    }
+    expected = len(expected_utc_hours_for_range(start_date, end_date))
+    gradient_rows = conn.execute(
+        """
+        SELECT *
+        FROM weather_proxy_gradients_hourly
+        WHERE area_proxy='se3_area_diff_weather' AND local_date BETWEEN ? AND ?
+        """,
+        (start_date.isoformat(), end_date.isoformat()),
+    ).fetchall()
+    gradient_null_count = 0
+    for row in gradient_rows:
+        for key in (
+            "temp_gradient_se3_load_minus_se1_core",
+            "apparent_temp_gradient_se3_load_minus_se1_core",
+            "heating_degree_gradient_se3_load_minus_se1_core",
+            "wind_100m_gradient_nordic_connected_minus_se3_load",
+            "south_temp_gradient_minus_se1_core",
+        ):
+            if row[key] is None:
+                gradient_null_count += 1
+    return {
+        "db_path": db_path,
+        "start_date": start_date.isoformat(),
+        "end_date": end_date.isoformat(),
+        "complete": all(report.complete for report in reports.values()) and len(gradient_rows) == expected and gradient_null_count == 0,
+        "proxy_groups": reports,
+        "gradient_row_count": len(gradient_rows),
+        "gradient_expected_count": expected,
+        "gradient_null_count": gradient_null_count,
+    }
+
+
+def _diff(left: object, right: object) -> float | None:
+    if left is None or right is None:
+        return None
+    return float(left) - float(right)
 
 
 def latest_complete_local_date(conn: sqlite3.Connection, area_proxy: str = AREA_PROXY) -> date | None:

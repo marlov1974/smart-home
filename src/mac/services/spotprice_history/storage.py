@@ -11,7 +11,7 @@ from zoneinfo import ZoneInfo
 from .models import HourlySpotPrice, ValidationReport
 
 
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "2"
 DEFAULT_DB_PATH = Path.home() / ".smart-home" / "data" / "spotprice_history.sqlite3"
 STOCKHOLM = ZoneInfo("Europe/Stockholm")
 
@@ -69,12 +69,80 @@ def init_db(path: Path | str) -> None:
               ok INTEGER NOT NULL,
               message TEXT NOT NULL
             );
+            CREATE VIEW IF NOT EXISTS spotprice_system_proxy_hourly AS
+            SELECT
+              se3.utc_hour_start AS utc_hour_start,
+              se3.local_hour_start AS local_hour_start,
+              se3.local_date AS local_date,
+              se3.local_hour AS local_hour,
+              se3.price_sek_per_kwh AS se3_price,
+              se1.price_sek_per_kwh AS se1_system_proxy_price,
+              se3.price_sek_per_kwh - se1.price_sek_per_kwh AS area_diff_proxy_se3,
+              CASE
+                WHEN ABS(se1.price_sek_per_kwh) < 0.000001 THEN NULL
+                ELSE se3.price_sek_per_kwh / se1.price_sek_per_kwh
+              END AS area_ratio_proxy_se3,
+              'se3_se1_aligned' AS source_coverage_status
+            FROM spot_prices se3
+            JOIN spot_prices se1
+              ON se1.utc_hour_start = se3.utc_hour_start
+             AND se1.area = 'SE1'
+            WHERE se3.area = 'SE3';
             """
         )
         conn.execute(
             "INSERT OR REPLACE INTO schema_meta(key, value) VALUES('schema_version', ?)",
             (SCHEMA_VERSION,),
         )
+
+
+def validate_system_proxy(
+    conn: sqlite3.Connection,
+    start_date: date,
+    end_date: date,
+    db_path: str = "",
+) -> dict[str, object]:
+    se1 = validate_range(conn, "SE1", start_date, end_date, db_path=db_path)
+    se3 = validate_range(conn, "SE3", start_date, end_date, db_path=db_path)
+    rows = conn.execute(
+        """
+        SELECT local_date, area_diff_proxy_se3, area_ratio_proxy_se3
+        FROM spotprice_system_proxy_hourly
+        WHERE local_date BETWEEN ? AND ?
+        ORDER BY utc_hour_start
+        """,
+        (start_date.isoformat(), end_date.isoformat()),
+    ).fetchall()
+    expected = se3.expected_count
+    diffs = [float(row["area_diff_proxy_se3"]) for row in rows if row["area_diff_proxy_se3"] is not None]
+    ratios = [float(row["area_ratio_proxy_se3"]) for row in rows if row["area_ratio_proxy_se3"] is not None]
+    ratio_null_count = len(rows) - len(ratios)
+    per_year: dict[str, int] = {}
+    for row in rows:
+        year = row["local_date"][:4]
+        per_year[year] = per_year.get(year, 0) + 1
+    return {
+        "db_path": db_path,
+        "start_date": start_date.isoformat(),
+        "end_date": end_date.isoformat(),
+        "complete": se1.ok and se3.ok and len(rows) == expected,
+        "se1": se1,
+        "se3": se3,
+        "aligned_count": len(rows),
+        "expected_aligned_count": expected,
+        "missing_se1_for_se3": max(0, expected - len(rows)),
+        "missing_se3_for_se1": max(0, se1.expected_count - len(rows)),
+        "per_year_aligned_counts": per_year,
+        "area_diff_stats": _stats(diffs),
+        "area_ratio_stats": _stats(ratios),
+        "area_ratio_null_count": ratio_null_count,
+    }
+
+
+def _stats(values: list[float]) -> dict[str, float | None]:
+    if not values:
+        return {"min": None, "max": None, "mean": None}
+    return {"min": min(values), "max": max(values), "mean": sum(values) / len(values)}
 
 
 def expected_utc_hours_for_local_date(local_date: date) -> tuple[datetime, ...]:

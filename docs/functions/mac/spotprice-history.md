@@ -1,6 +1,6 @@
 # Spot Price History
 
-Last changed: P0030
+Last changed: P0032
 
 ## Module
 
@@ -25,9 +25,10 @@ The repo commits code, tests and docs, not the mutable DB.
 ```bash
 python3 -m src.mac.services.spotprice_history init-db --db ~/.smart-home/data/spotprice_history.sqlite3
 python3 -m src.mac.services.spotprice_history backfill --area SE3 --db ~/.smart-home/data/spotprice_history.sqlite3 --start-date 2022-05-30 --end-date 2026-05-29
-python3 -m src.mac.services.spotprice_history ingest-daily --area SE3 --db ~/.smart-home/data/spotprice_history.sqlite3
+python3 -m src.mac.services.spotprice_history ingest-daily --areas SE3,SE1 --db ~/.smart-home/data/spotprice_history.sqlite3
 python3 -m src.mac.services.spotprice_history validate --area SE3 --db ~/.smart-home/data/spotprice_history.sqlite3 --start-date 2022-05-30
-python3 -m src.mac.services.spotprice_history install-daily-job --area SE3 --db ~/.smart-home/data/spotprice_history.sqlite3
+python3 -m src.mac.services.spotprice_history validate-system-proxy --db ~/.smart-home/data/spotprice_history.sqlite3 --start-date 2022-05-30
+python3 -m src.mac.services.spotprice_history install-daily-job --db ~/.smart-home/data/spotprice_history.sqlite3
 ```
 
 ## Important Functions
@@ -57,6 +58,26 @@ python3 -m src.mac.services.spotprice_history install-daily-job --area SE3 --db 
 `render_launch_agent_plist(db_path, python_executable)` renders the user LaunchAgent.
 
 `install_daily_job(db_path, plist_path, python_executable, run_launchctl)` writes and loads the user LaunchAgent.
+
+`validate_system_proxy(conn, start_date, end_date, db_path)` validates P0032 SE1 system-proxy coverage, SE3/SE1 alignment, `area_diff_proxy_se3` and `area_ratio_proxy_se3`.
+
+## P0032 System Proxy View
+
+P0032 stores SE1 spot prices in the same `spot_prices` table:
+
+```text
+spot_prices(area='SE1', ...)
+```
+
+The deterministic SQLite view is:
+
+```text
+spotprice_system_proxy_hourly
+```
+
+It exposes `se3_price`, `se1_system_proxy_price`, `area_diff_proxy_se3` and `area_ratio_proxy_se3`. The ratio is `NULL` when `abs(SE1) < 0.000001`.
+
+SE1 is a practical system proxy, not official Nordic SYS. `area_diff_proxy_se3` is a realized SE3-SE1 proxy, not EPAD.
 
 ## Daily LaunchAgent
 

@@ -116,5 +116,19 @@ def ingest_daily(
     )
 
 
+def ingest_daily_for_areas(
+    conn: sqlite3.Connection,
+    *,
+    areas: list[str],
+    db_path: str,
+    today: date | None = None,
+    fetcher: Fetcher | None = None,
+) -> list[IngestSummary]:
+    return [
+        ingest_daily(conn, area=area, db_path=db_path, today=today, fetcher=fetcher)
+        for area in areas
+    ]
+
+
 def _now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

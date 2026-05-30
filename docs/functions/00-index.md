@@ -67,3 +67,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0025` updated `docs/functions/mac/weekly-home-optimizer-poc.md` with fixed 20-hour known spot horizon planning and forecast-vs-actual outcome diagnostics.
 
 `P0026` added `docs/functions/mac/local-kvs-read-poc.md` for the read-only Mac local Shelly KVS.Get NAT helper.
+
+`P0027` added `docs/functions/mac/local-operator-bridge.md` for the read-only MCP-shaped local JSON-RPC operator bridge that delegates to P0026.

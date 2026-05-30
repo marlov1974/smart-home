@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified-local-live
 
 ## Package order
 
@@ -496,4 +496,40 @@ If implementation fails verification after allowed attempts, Codex must preserve
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as an MCP-shaped newline-delimited JSON-RPC bridge POC, not a true MCP stdio server.
+
+Chosen path:
+
+```text
+src/mac/services/local_operator_bridge/
+```
+
+Supported bridge methods:
+
+```text
+tools/list
+tools/call
+```
+
+Supported tool:
+
+```text
+shelly_kvs_get_by_nat_octet
+```
+
+The bridge delegates to P0026 `kvs_get_by_nat_octet(...)` and does not duplicate Shelly HTTP access.
+
+Read-only live verification through the bridge succeeded for:
+
+```text
+tool: shelly_kvs_get_by_nat_octet
+octet: 30
+key: hp.price.status
+timeout: 5
+derived URL: http://192.168.86.240:8030/rpc/KVS.Get?key=hp.price.status
+HTTP status: 200
+result_status: success
+result value: "ok"
+```
+
+No `KVS.Set`, `Script.*`, actuator call, arbitrary URL fetch, shell command, generic proxy, Codex runner, Home Assistant bridge or production service installation was implemented or used.

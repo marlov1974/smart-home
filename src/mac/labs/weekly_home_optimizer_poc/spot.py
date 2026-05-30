@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Mapping, Sequence
 from zoneinfo import ZoneInfo
 
-from src.mac.services.spot_forecast.model import forecast_period_indexes
+from src.mac.services.spot_forecast.model import forecast_period_indexes, load_history
 
 from .schema import HOURS_PER_PERIOD, HOURS_PER_WEEK, PERIODS_PER_WEEK, SpotPlan
 
@@ -59,7 +59,7 @@ def expand_period_indexes_to_hours(period_indexes: Sequence[float]) -> tuple[flo
 def forecast_spot_index_for_week(week_number: int) -> tuple[float, ...]:
     """Build the hourly forecast baseline for a requested week."""
 
-    period_indexes = forecast_period_indexes(validate_week_number(week_number))
+    period_indexes = forecast_period_indexes(validate_week_number(week_number), history=load_history())
     return expand_period_indexes_to_hours(period_indexes)
 
 

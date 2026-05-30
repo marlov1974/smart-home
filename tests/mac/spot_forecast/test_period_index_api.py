@@ -33,6 +33,25 @@ class PeriodIndexApiTests(unittest.TestCase):
         self.assertTrue(body.startswith("["))
         self.assertNotIn(" ", body)
 
+    def test_metadata_endpoint_returns_db_context(self):
+        history = [record(2, [1.0] * 21)]
+        handler_class = build_handler(history, {"source": "sqlite", "area": "SE3"})
+        handler = object.__new__(handler_class)
+        handler.path = "/spot/period-index/meta?week=2"
+        handler.wfile = io.BytesIO()
+        captured = {"status": None, "headers": []}
+        handler.send_response = lambda status: captured.__setitem__("status", status)
+        handler.send_header = lambda key, value: captured["headers"].append((key, value))
+        handler.end_headers = lambda: None
+
+        handler.do_GET()
+
+        self.assertEqual(200, captured["status"])
+        parsed = json.loads(handler.wfile.getvalue().decode("utf-8"))
+        self.assertEqual("sqlite", parsed["source"])
+        self.assertEqual("SE3", parsed["area"])
+        self.assertEqual(2, parsed["week"])
+
     def test_invalid_week_returns_400(self):
         history = [record(2, [1.0] * 21)]
         status, body = call_handler(history, "/spot/period-index?week=abc")

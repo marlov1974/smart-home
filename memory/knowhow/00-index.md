@@ -11,6 +11,7 @@ Do not store one-off package artifacts here unless they have been promoted into 
 ```text
 shelly.md     Shelly platform/runtime/debugging lessons
 codex.md      Codex workflow lessons
+spotprice.md  Spot price source and history ingestion lessons
 ```
 
 ## Promotion rule

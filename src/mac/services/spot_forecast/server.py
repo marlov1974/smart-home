@@ -15,13 +15,16 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[4]))
 
 from src.mac.services.spot_forecast.model import (  # noqa: E402
+    DEFAULT_AREA,
     HistoricalWeek,
     SpotForecastError,
     WeekNotFoundError,
+    db_history_metadata,
     forecast_period_indexes,
-    load_history,
+    load_history_from_db,
 )
 from src.mac.services.spot_forecast.schema import InvalidWeekError, compact_json, parse_week  # noqa: E402
+from src.mac.services.spotprice_history.storage import default_db_path  # noqa: E402
 
 
 ERROR_INVALID_WEEK = {"error": "invalid week"}
@@ -45,14 +48,36 @@ def _query_week(path: str) -> int:
     return parse_week(raw)
 
 
-def build_handler(history: Sequence[HistoricalWeek]) -> type[BaseHTTPRequestHandler]:
+def build_handler(
+    history: Sequence[HistoricalWeek],
+    metadata: dict[str, object] | None = None,
+) -> type[BaseHTTPRequestHandler]:
     """Create a request handler bound to historical model records."""
 
     records = list(history)
+    meta = dict(metadata or {})
 
     class SpotForecastHandler(BaseHTTPRequestHandler):
         def do_GET(self) -> None:
             parsed = urlparse(self.path)
+            if parsed.path == "/spot/period-index/meta":
+                try:
+                    week = _query_week(self.path)
+                    forecast_period_indexes(week, records)
+                except InvalidWeekError:
+                    _write_json(self, HTTPStatus.BAD_REQUEST, ERROR_INVALID_WEEK)
+                    return
+                except WeekNotFoundError:
+                    _write_json(self, HTTPStatus.NOT_FOUND, ERROR_WEEK_NOT_FOUND)
+                    return
+                except SpotForecastError as exc:
+                    _write_json(self, HTTPStatus.INTERNAL_SERVER_ERROR, {"error": str(exc)})
+                    return
+                body = dict(meta)
+                body["week"] = week
+                body["period_count"] = 21
+                _write_json(self, HTTPStatus.OK, body)
+                return
             if parsed.path != "/spot/period-index":
                 _write_json(self, HTTPStatus.NOT_FOUND, ERROR_NOT_FOUND)
                 return
@@ -76,12 +101,18 @@ def build_handler(history: Sequence[HistoricalWeek]) -> type[BaseHTTPRequestHand
     return SpotForecastHandler
 
 
-def run_once(week_arg: str | None, out=sys.stdout, err=sys.stderr) -> int:
+def run_once(
+    week_arg: str | None,
+    db_path: Path | str | None = None,
+    area: str = DEFAULT_AREA,
+    out=sys.stdout,
+    err=sys.stderr,
+) -> int:
     """Print one compact period-index response and exit."""
 
     try:
         week = parse_week(week_arg)
-        response = forecast_period_indexes(week)
+        response = forecast_period_indexes(week, db_path=db_path or default_db_path(), area=area)
     except InvalidWeekError:
         print(compact_json(ERROR_INVALID_WEEK), file=err)
         return 2
@@ -95,11 +126,19 @@ def run_once(week_arg: str | None, out=sys.stdout, err=sys.stderr) -> int:
     return 0
 
 
-def serve(host: str, port: int, history: Sequence[HistoricalWeek] | None = None) -> None:
+def serve(
+    host: str,
+    port: int,
+    db_path: Path | str | None = None,
+    area: str = DEFAULT_AREA,
+    history: Sequence[HistoricalWeek] | None = None,
+) -> None:
     """Run the trusted-local spot forecast HTTP service."""
 
-    records = list(history) if history is not None else load_history()
-    server = ThreadingHTTPServer((host, port), build_handler(records))
+    source_path = db_path or default_db_path()
+    records = list(history) if history is not None else load_history_from_db(source_path, area)
+    metadata = {} if history is not None else db_history_metadata(source_path, area)
+    server = ThreadingHTTPServer((host, port), build_handler(records, metadata))
     try:
         server.serve_forever()
     finally:
@@ -114,14 +153,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--port", type=int, default=8080)
     parser.add_argument("--once", action="store_true")
     parser.add_argument("--week")
+    parser.add_argument("--area", default=DEFAULT_AREA)
+    parser.add_argument("--db", default=str(default_db_path()))
     args = parser.parse_args(argv)
 
     if args.once:
-        return run_once(args.week)
-    serve(args.host, args.port)
+        return run_once(args.week, db_path=args.db, area=args.area)
+    serve(args.host, args.port, db_path=args.db, area=args.area)
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

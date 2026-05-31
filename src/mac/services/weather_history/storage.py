@@ -62,6 +62,21 @@ P0032_PROXY_LOCATIONS = (
     WeatherLocation("se3_load_vaxjo", "Vaxjo", 56.8790, 14.8059, 0.05, "se3_load_weather", SOURCE),
 )
 
+P0038_WIND_SOLAR_LOCATIONS = (
+    WeatherLocation("p0038_wind_south_malmo", "Malmo P0038 wind/solar", 55.6050, 13.0038, 0.55, "p0038_south_wind_proxy", SOURCE),
+    WeatherLocation("p0038_wind_south_kalmar", "Kalmar P0038 wind/solar", 56.6634, 16.3568, 0.45, "p0038_south_wind_proxy", SOURCE),
+    WeatherLocation("p0038_wind_central_kristinehamn", "Kristinehamn P0038 wind", 59.3098, 14.1081, 1.00, "p0038_central_wind_proxy", SOURCE),
+    WeatherLocation("p0038_wind_north_pitea", "Pitea P0038 wind/solar", 65.3172, 21.4794, 0.35, "p0038_north_wind_proxy", SOURCE),
+    WeatherLocation("p0038_wind_north_ange", "Ange P0038 wind", 62.5246, 15.6590, 0.35, "p0038_north_wind_proxy", SOURCE),
+    WeatherLocation("p0038_wind_north_harnosand", "Harnosand P0038 wind", 62.6323, 17.9379, 0.30, "p0038_north_wind_proxy", SOURCE),
+    WeatherLocation("p0038_solar_south_malmo", "Malmo P0038 solar", 55.6050, 13.0038, 0.55, "p0038_south_solar_proxy", SOURCE),
+    WeatherLocation("p0038_solar_south_kalmar", "Kalmar P0038 solar", 56.6634, 16.3568, 0.45, "p0038_south_solar_proxy", SOURCE),
+    WeatherLocation("p0038_solar_se3_orebro", "Orebro P0038 solar", 59.2753, 15.2134, 0.55, "p0038_se3_load_solar_proxy", SOURCE),
+    WeatherLocation("p0038_solar_se3_borlange", "Borlange P0038 solar", 60.4858, 15.4371, 0.45, "p0038_se3_load_solar_proxy", SOURCE),
+    WeatherLocation("p0038_solar_north_umea", "Umea P0038 solar", 63.8258, 20.2630, 0.55, "p0038_north_solar_proxy", SOURCE),
+    WeatherLocation("p0038_solar_north_pitea", "Pitea P0038 solar", 65.3172, 21.4794, 0.45, "p0038_north_solar_proxy", SOURCE),
+)
+
 
 def default_db_path() -> Path:
     return DEFAULT_DB_PATH
@@ -197,7 +212,7 @@ def initialize_schema(path: Path | str) -> None:
             """
         )
         conn.execute("INSERT OR REPLACE INTO schema_meta(key, value) VALUES('schema_version', ?)", (SCHEMA_VERSION,))
-        for location in DEFAULT_LOCATIONS + P0032_PROXY_LOCATIONS:
+        for location in DEFAULT_LOCATIONS + P0032_PROXY_LOCATIONS + P0038_WIND_SOLAR_LOCATIONS:
             conn.execute(
                 """
                 INSERT OR REPLACE INTO weather_locations

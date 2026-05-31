@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -564,4 +564,12 @@ Required tests:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented 2026-05-31.
+
+Result: WARN.
+
+P0038 added P0038 wind/solar proxy locations, backfilled local weather, built conservative M3C/M3D diagnostics, wrote local M3C/M3D/M3ABCD feature tables and persisted full-year 2025 evidence.
+
+M3D modestly improves recomposed SE3, M3C is neutral/slightly harmful, and M4_area_diff improves area_diff but worsens recomposed SE3 after M3C/M3D. M4_SE1 remains disabled.
+
+No M5/M6/M7/API, Shelly, Home Assistant, KVS or device action was performed.

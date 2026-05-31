@@ -39,7 +39,8 @@ src.mac.services.spotprice_ml_model
 
 `train_m4_target_model(rows, target, feature_names, ridge_lambda)`
 
-- Trains one pure-Python Ridge model for one target.
+- Trains one scikit-learn `PolynomialFeatures(degree=2) + Ridge(alpha=1.0)` model for one target when sklearn is available.
+- Falls back to pure-Python Ridge if sklearn cannot import.
 
 `train_m4_level_model(...)`
 
@@ -63,7 +64,7 @@ src.mac.services.spotprice_ml_model
 
 `write_model_artifact_manifest(...)`
 
-- Writes JSON model coefficients and artifact manifest.
+- Writes JSON model metadata, joblib estimator artifacts when sklearn is used, and artifact manifest.
 
 `validate_m4_outputs(...)`
 

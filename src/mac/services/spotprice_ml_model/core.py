@@ -16,8 +16,9 @@ DEFAULT_FEATURE_DB = Path.home() / ".smart-home" / "data" / "spotprice_model_fea
 DEFAULT_MODEL_DIR = Path.home() / ".smart-home" / "data" / "spotprice_ml_models" / "m4"
 MODEL_DB_NAME = "m4_model.sqlite3"
 PACKAGE_ID = "P0034"
-MODEL_VERSION = "m4_ridge_calendar_v1"
+MODEL_VERSION = "m4_sklearn_polynomial_ridge_v2"
 RIDGE_LAMBDA = 1.0
+RANDOM_SEED = 34
 
 FEATURE_NAMES = (
     "intercept",
@@ -286,16 +287,7 @@ def train_m4(
     for target, column in TARGETS.items():
         x = [row["features"] for row in train_rows]
         y = [float(row[column]) for row in train_rows]
-        coefficients = fit_ridge(x, y, ridge_lambda)
-        models[target] = {
-            "target": target,
-            "target_column": column,
-            "feature_names": list(FEATURE_NAMES),
-            "coefficients": coefficients,
-            "ridge_lambda": ridge_lambda,
-            "algorithm": "pure_python_ridge_normal_equation",
-            "model_version": MODEL_VERSION,
-        }
+        models[target] = train_m4_target_model(target=target, target_column=column, x=x, y=y, ridge_lambda=ridge_lambda)
     _write_model_artifacts(model_dir, models)
     predictions = predict_rows(rows, models)
     with connect_model_db(model_dir) as conn:
@@ -352,7 +344,25 @@ def validate_m4_outputs(
         forbidden = [name for name in feature_names if any(token in name for token in ("temp", "weather", "wind", "solar", "cloud"))]
         splits = dict(conn.execute("SELECT split, COUNT(*) FROM m4_feature_matrix GROUP BY split").fetchall())
     artifacts = [Path(model_dir).expanduser() / f"{target}_model.json" for target in TARGETS]
-    ok = all(count > 0 for count in counts.values()) and not forbidden and all(path.exists() for path in artifacts)
+    joblib_artifacts: list[Path] = []
+    for metadata_path in artifacts:
+        if not metadata_path.exists():
+            continue
+        metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+        if str(metadata.get("algorithm", "")).startswith("sklearn_"):
+            joblib_artifacts.append(metadata_path.with_suffix(".joblib"))
+    evidence_paths = [
+        Path("requirements/package-runs/P0034/holdout-results.md"),
+        Path("requirements/package-runs/P0034/baseline-comparison.md"),
+    ]
+    evidence_files = {str(path): path.exists() for path in evidence_paths}
+    ok = (
+        all(count > 0 for count in counts.values())
+        and not forbidden
+        and all(path.exists() for path in artifacts)
+        and all(path.exists() for path in joblib_artifacts)
+        and all(evidence_files.values())
+    )
     return {
         "ok": ok,
         "model_db": str(db_path),
@@ -360,7 +370,8 @@ def validate_m4_outputs(
         "splits": splits,
         "feature_count": len(feature_names),
         "forbidden_features": forbidden,
-        "artifacts": [str(path) for path in artifacts],
+        "artifacts": [str(path) for path in artifacts + joblib_artifacts],
+        "evidence_files": evidence_files,
     }
 
 
@@ -376,6 +387,53 @@ def fit_ridge(x: list[list[float]], y: list[float], ridge_lambda: float) -> list
     for i in range(1, n_features):
         xtx[i][i] += ridge_lambda
     return solve_linear_system(xtx, xty)
+
+
+def train_m4_target_model(
+    *,
+    target: str,
+    target_column: str,
+    x: list[list[float]],
+    y: list[float],
+    ridge_lambda: float = RIDGE_LAMBDA,
+) -> dict[str, object]:
+    try:
+        from sklearn.linear_model import Ridge
+        from sklearn.pipeline import make_pipeline
+        from sklearn.preprocessing import PolynomialFeatures
+
+        estimator = make_pipeline(
+            PolynomialFeatures(degree=2, include_bias=False),
+            Ridge(alpha=ridge_lambda, fit_intercept=True),
+        )
+        estimator.fit(x, y)
+        return {
+            "target": target,
+            "target_column": target_column,
+            "feature_names": list(FEATURE_NAMES),
+            "algorithm": "sklearn_polynomial_features_ridge",
+            "model_version": MODEL_VERSION,
+            "random_seed": RANDOM_SEED,
+            "parameters": {
+                "polynomial_degree": 2,
+                "polynomial_include_bias": False,
+                "ridge_alpha": ridge_lambda,
+                "ridge_fit_intercept": True,
+            },
+            "estimator": estimator,
+        }
+    except Exception as exc:
+        coefficients = fit_ridge(x, y, ridge_lambda)
+        return {
+            "target": target,
+            "target_column": target_column,
+            "feature_names": list(FEATURE_NAMES),
+            "coefficients": coefficients,
+            "ridge_lambda": ridge_lambda,
+            "algorithm": "pure_python_ridge_normal_equation",
+            "fallback_reason": f"{type(exc).__name__}: {exc}",
+            "model_version": "m4_ridge_calendar_v1",
+        }
 
 
 def solve_linear_system(a: list[list[float]], b: list[float]) -> list[float]:
@@ -401,8 +459,8 @@ def solve_linear_system(a: list[list[float]], b: list[float]) -> list[float]:
 def predict_rows(rows: list[dict[str, object]], models: dict[str, dict[str, object]]) -> list[dict[str, object]]:
     output: list[dict[str, object]] = []
     for row in rows:
-        pred_se1 = dot(row["features"], models["system_proxy_se1"]["coefficients"])
-        pred_area = dot(row["features"], models["area_diff_proxy_se3"]["coefficients"])
+        pred_se1 = predict_m4_target_model(models["system_proxy_se1"], row["features"])
+        pred_area = predict_m4_target_model(models["area_diff_proxy_se3"], row["features"])
         output.append(
             {
                 **row,
@@ -412,6 +470,13 @@ def predict_rows(rows: list[dict[str, object]], models: dict[str, dict[str, obje
             }
         )
     return output
+
+
+def predict_m4_target_model(model: dict[str, object], features: list[float]) -> float:
+    estimator = model.get("estimator")
+    if estimator is not None:
+        return float(estimator.predict([features])[0])
+    return dot(features, model["coefficients"])
 
 
 def build_level_targets(rows: list[TrainingRow]) -> dict[tuple[str, str, str], float]:
@@ -671,15 +736,52 @@ def _replace_metrics(conn: sqlite3.Connection, predictions: list[dict[str, objec
                     ("baseline_m1", target, split, "rmse", rmse(actual, base)),
                 ]
             )
-    level_groups = conn.execute(
-        "SELECT target, split, actual_level, predicted_level FROM m4_level_predictions"
-    ).fetchall()
-    _extend_group_metrics(rows, "level", level_groups, "actual_level", "predicted_level")
-    curve_groups = conn.execute(
-        "SELECT target, split, actual_index, predicted_index FROM m4_curve_predictions"
-    ).fetchall()
-    _extend_group_metrics(rows, "curve_index", curve_groups, "actual_index", "predicted_index")
+    for period_type in ("week", "month"):
+        level_groups = conn.execute(
+            "SELECT target, split, actual_level, predicted_level FROM m4_level_predictions WHERE period_type=?",
+            (period_type,),
+        ).fetchall()
+        _extend_group_metrics(rows, f"{period_type}_level", level_groups, "actual_level", "predicted_level")
+    for period_type in ("week", "month"):
+        curve_groups = conn.execute(
+            "SELECT target, split, actual_index, predicted_index FROM m4_curve_predictions WHERE curve_type=?",
+            (f"{period_type}_curve_index",),
+        ).fetchall()
+        _extend_group_metrics(rows, f"{period_type}_curve_index", curve_groups, "actual_index", "predicted_index")
+    _extend_baseline_level_and_curve_metrics(rows, predictions)
     conn.executemany("INSERT INTO m4_backtest_results VALUES (?, ?, ?, ?, ?)", rows)
+
+
+def _extend_baseline_level_and_curve_metrics(
+    output: list[tuple[str, str, str, str, float]],
+    predictions: list[dict[str, object]],
+) -> None:
+    for target, actual_col, baseline_col in (
+        ("system_proxy_se1", "target_se1", "baseline_se1"),
+        ("area_diff_proxy_se3", "target_area_diff", "baseline_area_diff"),
+    ):
+        for period_type in ("week", "month"):
+            groups: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)
+            for row in predictions:
+                d = date.fromisoformat(str(row["local_date"]))
+                key = f"{d.isocalendar().year}-W{d.isocalendar().week:02d}" if period_type == "week" else f"{d.year}-{d.month:02d}"
+                groups[(str(row["split"]), key)].append(row)
+            for split in ("train", "validate", "holdout"):
+                period_items = [items for (group_split, _key), items in groups.items() if group_split == split]
+                if not period_items:
+                    continue
+                actual_levels = [sum(float(row[actual_col]) for row in items) / len(items) for items in period_items]
+                baseline_levels = [sum(float(row[baseline_col]) for row in items) / len(items) for items in period_items]
+                output.append((f"baseline_m1_{period_type}_level", target, split, "mae", mae(actual_levels, baseline_levels)))
+                output.append((f"baseline_m1_{period_type}_level", target, split, "rmse", rmse(actual_levels, baseline_levels)))
+                actual_indexes: list[float] = []
+                baseline_indexes: list[float] = []
+                for items, actual_level, baseline_level in zip(period_items, actual_levels, baseline_levels):
+                    for row in items:
+                        actual_indexes.append(_safe_ratio(float(row[actual_col]), actual_level))
+                        baseline_indexes.append(_safe_ratio(float(row[baseline_col]), baseline_level))
+                output.append((f"baseline_m1_{period_type}_curve_index", target, split, "mae", mae(actual_indexes, baseline_indexes)))
+                output.append((f"baseline_m1_{period_type}_curve_index", target, split, "rmse", rmse(actual_indexes, baseline_indexes)))
 
 
 def _extend_group_metrics(
@@ -712,7 +814,17 @@ def _write_model_artifacts(model_dir: Path | str, models: dict[str, dict[str, ob
     path = Path(model_dir).expanduser()
     path.mkdir(parents=True, exist_ok=True)
     for target, model in models.items():
-        (path / f"{target}_model.json").write_text(json.dumps(model, indent=2, sort_keys=True), encoding="utf-8")
+        metadata = {key: value for key, value in model.items() if key != "estimator"}
+        (path / f"{target}_model.json").write_text(json.dumps(metadata, indent=2, sort_keys=True), encoding="utf-8")
+        estimator = model.get("estimator")
+        if estimator is not None:
+            try:
+                import joblib
+
+                joblib.dump(estimator, path / f"{target}_model.joblib")
+            except Exception as exc:
+                metadata["joblib_write_error"] = f"{type(exc).__name__}: {exc}"
+                (path / f"{target}_model.json").write_text(json.dumps(metadata, indent=2, sort_keys=True), encoding="utf-8")
 
 
 def _artifact_manifest(model_dir: Path | str, models: dict[str, dict[str, object]]) -> dict[str, object]:
@@ -720,9 +832,15 @@ def _artifact_manifest(model_dir: Path | str, models: dict[str, dict[str, object
     return {
         "package_id": PACKAGE_ID,
         "model_version": MODEL_VERSION,
-        "algorithm": "pure_python_ridge_normal_equation",
+        "algorithm": sorted({str(model["algorithm"]) for model in models.values()}),
         "targets": sorted(models),
-        "artifacts": {target: str(path / f"{target}_model.json") for target in models},
+        "artifacts": {
+            target: {
+                "metadata": str(path / f"{target}_model.json"),
+                "joblib": str(path / f"{target}_model.joblib") if model.get("estimator") is not None else "",
+            }
+            for target, model in models.items()
+        },
         "created_at": _now(),
     }
 

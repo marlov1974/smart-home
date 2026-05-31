@@ -61,14 +61,16 @@ M4_normal_price_se3 = M4_normal_price_se1 + M4_normal_area_diff_proxy
 
 ## Model algorithms
 
-Because `scikit-learn` is unavailable, P0034 uses a deterministic pure-Python Ridge linear model:
+P0034 now uses `scikit-learn` when available:
 
 ```text
-beta = (X'X + lambda I)^-1 X'y
-lambda = 1.0
+PolynomialFeatures(degree=2, include_bias=False)
+Ridge(alpha=1.0, fit_intercept=True)
 ```
 
-The intercept is not regularized. Gaussian elimination with partial pivoting solves the normal equations.
+The model is deterministic and stores a joblib estimator plus JSON metadata per target.
+
+A pure-Python Ridge normal-equation implementation remains as fallback for environments where sklearn cannot import. That fallback is not the preferred M4 result.
 
 ## Level and curve components
 
@@ -121,7 +123,9 @@ Local generated DB:
 Artifacts:
 
 - `system_proxy_se1_model.json`
+- `system_proxy_se1_model.joblib`
 - `area_diff_proxy_se3_model.json`
+- `area_diff_proxy_se3_model.joblib`
 - `m4_artifact_manifest.json`
 
 ## CLI
@@ -149,6 +153,13 @@ Metrics:
 - weekly curve index MAE
 - monthly curve index MAE
 - baseline comparison against P0033 M1 normals
+
+Holdout evidence is persisted in:
+
+```text
+requirements/package-runs/P0034/holdout-results.md
+requirements/package-runs/P0034/baseline-comparison.md
+```
 
 ## Deferred work
 

@@ -89,3 +89,11 @@ stderr = ~/.smart-home/logs/spotprice-temperature-normalization-daily.err.log
 ```
 
 The 16:00 schedule follows the existing P0030 spotprice ingest at 14:00 and P0031/P0032 weather ingest at 15:30. The P0033 build itself is synchronous: M1 writes normal prices, M2 writes climate normals/anomalies, then M3 writes temperature deltas and normalized prices.
+
+## Holdout evidence
+
+P0033 M1 holdout metrics used by P0034 are persisted in:
+
+```text
+requirements/package-runs/P0033/holdout-results.md
+```

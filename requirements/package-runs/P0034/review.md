@@ -1,6 +1,6 @@
 # P0034 consistency review
 
-Result: WARN
+Result: PASS for dependency availability; holdout outcome remains WARN.
 
 ## Package interpretation
 
@@ -49,15 +49,29 @@ Required target columns exist:
 
 ## ML dependency decision
 
-`scikit-learn` is not installed:
+Initial P0034 run found `scikit-learn` missing:
 
 ```text
 NO_SKLEARN ModuleNotFoundError No module named 'sklearn'
 ```
 
-P0034 allows Ridge/Linear baseline candidates. To avoid adding an unreviewed dependency, P0034 will implement a deterministic pure-Python Ridge regression baseline with fixed feature schema and no external packages.
+Follow-up on 2026-05-31 installed:
 
-This is a `WARN`, not `STOP`, because a meaningful reproducible M4 model can still be implemented, trained and backtested without external dependency installation.
+```text
+scikit-learn 1.6.1
+numpy 2.0.2
+scipy 1.13.1
+joblib 1.5.3
+threadpoolctl 3.6.0
+```
+
+HGB was tested but did not complete within a practical rebuild window, so P0034 now uses a deterministic scikit-learn pipeline:
+
+```text
+PolynomialFeatures(degree=2, include_bias=False) + Ridge(alpha=1.0)
+```
+
+This removes the dependency blocker. The holdout result is still classified as `WARN` because M4 does not beat the P0033 M1 baseline.
 
 ## Existing baseline
 
@@ -74,4 +88,4 @@ It provides a 21-period weekly price index service. P0034 will compare directly 
 
 No weather features are allowed in the M4 feature matrix. No live devices or network calls are required.
 
-Decision: WARN, proceed with pure-Python deterministic Ridge M4.
+Decision: PASS to build with scikit-learn; WARN on model quality versus M1.

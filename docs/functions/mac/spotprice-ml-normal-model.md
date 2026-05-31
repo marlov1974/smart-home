@@ -48,7 +48,9 @@ M4 does not use temperature, weather, wind, solar, cloud, radiation or weather-g
 ~/.smart-home/data/spotprice_ml_models/m4/
   m4_model.sqlite3
   system_proxy_se1_model.json
+  system_proxy_se1_model.joblib
   area_diff_proxy_se3_model.json
+  area_diff_proxy_se3_model.joblib
   m4_artifact_manifest.json
 ```
 
@@ -65,14 +67,14 @@ python3 -m src.mac.services.spotprice_ml_model validate-m4 --feature-db ~/.smart
 
 ## Model
 
-`scikit-learn` was unavailable during P0034. The implemented M4 algorithm is a deterministic pure-Python Ridge regression baseline:
+P0034 uses `scikit-learn` when available:
 
 ```text
-beta = (X'X + lambda I)^-1 X'y
-lambda = 1.0
+PolynomialFeatures(degree=2, include_bias=False)
+Ridge(alpha=1.0, fit_intercept=True)
 ```
 
-The intercept is not regularized. Coefficients are solved through Gaussian elimination with partial pivoting.
+The model writes joblib estimator artifacts and JSON metadata for each primary target. A pure-Python Ridge normal-equation implementation remains as fallback if sklearn cannot import, but the fallback is not the preferred M4 result.
 
 Feature schema:
 
@@ -117,7 +119,9 @@ No random split is used.
 
 `build_clipped_month_curves(rows, level_targets)` builds calendar-month clipped curves and renormalizes each month to mean `1.0`.
 
-`fit_ridge(x, y, ridge_lambda)` trains the pure-Python Ridge model.
+`train_m4_target_model(...)` trains the sklearn target model or fallback Ridge model.
+
+`fit_ridge(x, y, ridge_lambda)` is the pure-Python fallback Ridge solver.
 
 `train_m4(...)` builds features, trains separate SE1 and area-diff models, writes artifacts and predictions.
 

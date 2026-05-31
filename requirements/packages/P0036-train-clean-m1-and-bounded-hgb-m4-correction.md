@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -432,4 +432,10 @@ Required tests:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented 2026-05-31.
+
+Result: PASS.
+
+P0036 built strict train-only M1 baselines, replaced the primary P0035 polynomial Ridge residual model with bounded `HistGradientBoostingRegressor`, removed the unsafe `days_since_start_scaled` primary feature path, persisted holdout evidence and promoted the corrected M4 artifacts after the quality gate passed.
+
+No M5/M6/M7/API, Shelly, Home Assistant, KVS or device changes were made.

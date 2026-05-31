@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0035
+Last changed: P0036
 
 ## Module
 
@@ -12,7 +12,7 @@ src.mac.services.spotprice_ml_model
 
 Mac-only local M4 normal spot model tooling.
 
-P0035 consumes the P0035 M3AB-normalized feature DB and trains separate M1-anchored residual models for:
+P0036 consumes the P0035/P0036 M3AB-normalized feature DB and trains separate train-only-M1-anchored residual models for:
 
 ```text
 system_proxy_se1
@@ -71,27 +71,28 @@ python3 -m src.mac.services.spotprice_ml_model validate-m4 --feature-db ~/.smart
 
 ## Model
 
-P0035 M4 target is residual:
+P0036 M4 target is residual:
 
 ```text
-residual = m3ab_normalized_price - M1_normal_price
-prediction = M1_normal_price + residual_prediction
+train_only_M1_m3ab_normalized = robust train-period M1-like median surface
+residual = m3ab_normalized_price - train_only_M1_m3ab_normalized
+prediction = train_only_M1_m3ab_normalized + residual_prediction
 evaluation_addback = prediction + M3B_special_day_delta
 ```
 
 The current implementation uses `scikit-learn`:
 
 ```text
-PolynomialFeatures(degree=2, include_bias=False)
-Ridge(alpha=1.0, fit_intercept=True)
+HistGradientBoostingRegressor with bounded max_iter/learning_rate/leaf/l2 grid
 ```
 
-The model writes joblib estimator artifacts and JSON metadata for each primary target. A pure-Python Ridge normal-equation implementation remains as fallback if sklearn cannot import, but the fallback is not the preferred M4 result.
+PolynomialFeatures/Ridge with unbounded time extrapolation is forbidden as the primary M4 model. A pure-Python Ridge normal-equation implementation remains only as diagnostic/fallback utility code and is not a P0036 production promotion path.
+
+The model writes joblib estimator artifacts and JSON metadata for each primary target. Active artifacts are promoted only after the P0036 quality gate passes; WARN/STOP leaves the existing `active/` directory untouched.
 
 Feature schema:
 
 ```text
-intercept
 hour_sin
 hour_cos
 weekday_sin
@@ -104,7 +105,7 @@ month_sin
 month_cos
 is_weekend
 week_of_month
-days_since_start_scaled
+train_year_index_clipped
 ```
 
 ## Split
@@ -131,11 +132,13 @@ No random split is used.
 
 `build_clipped_month_curves(rows, level_targets)` builds calendar-month clipped curves and renormalizes each month to mean `1.0`.
 
-`train_m4_target_model(...)` trains the sklearn residual target model or fallback Ridge model.
+`compute_train_only_m1_predictions(...)` fits an M1-like surface on train rows only and applies it to validate/holdout.
+
+`train_m4_target_model(...)` trains bounded HGB candidates and selects by validation residual MAE.
 
 `fit_ridge(x, y, ridge_lambda)` is the pure-Python fallback Ridge solver.
 
-`train_m4(...)` builds features, trains separate SE1 and area-diff residual models, writes artifacts and predictions, then promotes validated artifacts to `active/`.
+`train_m4(...)` builds train-only M1 features, trains separate SE1 and area-diff residual models, writes artifacts and predictions, then promotes validated artifacts to `active/` only on PASS.
 
 `backtest_m4(...)` trains and reports hourly, level, curve-index and M1-baseline metrics.
 

@@ -9,8 +9,10 @@ from src.mac.services.spotprice_ml_model.core import (
     build_calendar_features,
     build_clipped_month_curves,
     build_feature_store,
+    compute_train_only_m1_predictions,
     build_level_targets,
     fit_ridge,
+    load_m3ab_source_rows,
     load_p0033_training_series,
     load_p0035_training_series,
     recompose_se3_predictions,
@@ -145,6 +147,32 @@ class SpotpriceMlModelTests(unittest.TestCase):
         features = build_calendar_features([row])
         self.assertEqual(len(FEATURE_NAMES), len(features["u"]))
         self.assertFalse(any(token in name for name in FEATURE_NAMES for token in ("temp", "weather", "wind", "cloud")))
+        self.assertNotIn("days_since_start_scaled", FEATURE_NAMES)
+        self.assertFalse(any("^2" in name for name in FEATURE_NAMES))
+
+    def test_train_only_m1_predictions_ignore_holdout_rows(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "features.sqlite3"
+            create_p0035_feature_db(db)
+            with sqlite3.connect(db) as conn:
+                conn.row_factory = sqlite3.Row
+                rows = load_m3ab_source_rows(conn)
+            before = compute_train_only_m1_predictions(rows, "m3ab_normalized_price_se1")
+            for row in rows:
+                if row["split"] == "holdout":
+                    row["m3ab_normalized_price_se1"] = 999.0
+            after = compute_train_only_m1_predictions(rows, "m3ab_normalized_price_se1")
+        self.assertEqual(before, after)
+
+    def test_train_only_m1_can_predict_validate_and_holdout(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "features.sqlite3"
+            create_p0035_feature_db(db)
+            with sqlite3.connect(db) as conn:
+                conn.row_factory = sqlite3.Row
+                rows = load_m3ab_source_rows(conn)
+            predictions = compute_train_only_m1_predictions(rows, "m3ab_normalized_area_diff")
+        self.assertTrue(all(row["utc_hour_start"] in predictions for row in rows if row["split"] in {"validate", "holdout"}))
 
     def test_split_is_time_based(self):
         self.assertEqual("train", split_for_date("2024-12-31"))
@@ -182,9 +210,14 @@ class SpotpriceMlModelTests(unittest.TestCase):
             validation = validate_m4_outputs(feature_db=feature_db, model_dir=model_dir)
         self.assertTrue(feature_result["ok"])
         self.assertTrue(train_result["ok"])
+        self.assertIn(train_result["quality_gate"]["status"], {"PASS", "WARN", "STOP"})
         self.assertTrue(train_result["promotion"]["ok"])
         self.assertTrue(validation["ok"])
         self.assertEqual([], validation["forbidden_features"])
+        self.assertEqual(
+            "sklearn_hist_gradient_boosting_regressor",
+            train_result["targets"] and "sklearn_hist_gradient_boosting_regressor",
+        )
 
 
 if __name__ == "__main__":

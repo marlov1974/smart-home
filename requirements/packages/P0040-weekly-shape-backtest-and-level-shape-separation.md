@@ -1,4 +1,4 @@
-# Package P0040: Weekly shape backtest and level/shape separation
+# Package P0040: Weekly anchored forecast backtest and level/shape separation
 
 ## Status
 
@@ -10,56 +10,52 @@ P0040
 
 ## Primary area
 
-G2 / Mac tooling / spotprice V2 / shape-first evaluation / weekly forecast backtest / level-shape separation
+G2 / Mac tooling / spotprice V2 / anchored weekly forecast backtest / level-shape separation / shape diagnostics
 
 ## Decision summary
 
-P0040 changes the primary evaluation target for the spotprice V2 model stack from absolute-price accuracy to shape accuracy.
+P0040 evaluates the short-term forecast use case by emulating weekly 7-day forecasts.
 
-The model stack is intended to learn price shapes/forms, not final absolute market levels. Absolute levels will later be supplied by:
+The primary metric is **absolute forecast accuracy after level anchoring** from 16 known spot prices, not pure unanchored shape accuracy.
 
-```text
-short-term mode:
-  known latest spot prices + current level anchoring + weather forecast + special-day calendar
-
-long-term mode:
-  futures/forward curves + shape allocation + special-day/weather-normal adjustments
-```
-
-Historical futures are not available, so P0040 must test the short-term use case by emulating weekly forecasts.
-
-Primary backtest scenario:
+The model stack is still intended to learn price shapes/forms. However, in the short-term use case the general level is supplied by known current spot prices:
 
 ```text
-At Monday 06:00, the forecaster has 16 known spot prices for the current day.
-It also knows the coming special days/holidays.
-Actual weather is used as proxy for weather forecast.
-The system predicts the price shape for the next 7 days.
+At Monday 06:00, the forecaster has the 16 known spot prices for Monday 00:00..15:00.
+Those known prices set the general current price level.
+The model then distributes/extends that level over the next 7 days using shape, weather and special-day information.
 ```
+
+Therefore P0040 must test:
+
+```text
+Given current anchored price level + holiday calendar + weather forecast proxy + shape model,
+how accurate are the absolute hourly prices for the next 7 days?
+```
+
+Shape metrics remain required diagnostics because they explain why an anchored absolute forecast succeeds or fails.
 
 P0040 must not build M5, M6/API or M7.
 
 ## Why this package exists
 
-Previous packages reported MAE/RMSE in absolute price units. That is useful but insufficient and partly misleading because absolute price level is not the core purpose of M1/M3/M4 shape models.
+Previous packages reported MAE/RMSE in absolute price units without a realistic short-term level anchor. That can be misleading because the shape model should not guess the market level from nothing.
 
-A shape model can be useful even when absolute level is wrong, if it correctly identifies:
+P0040 creates a realistic short-term backtest:
 
 ```text
-- expensive and cheap hours
-- daily shape
-- weekly shape
-- holiday shape deviations
-- weather-adjusted shape deviations
-- relative allocation of a known level across hours
+known spot prices set the level;
+model shape + weather + special days create the 7-day curve;
+absolute forecast accuracy after anchoring is the primary pass/fail evidence;
+shape/rank metrics are secondary diagnostics.
 ```
 
-P0040 must therefore separate:
+This separates:
 
 ```text
-shape quality
-level anchoring quality
-absolute recomposition quality
+1. level anchoring quality from the 16 known spot hours
+2. shape quality over the future horizon
+3. final absolute recomposition quality after anchoring
 ```
 
 ## Primary holdout/backtest period
@@ -109,7 +105,7 @@ Actual weather may be used as weather-forecast proxy and must be labeled:
 weather_oracle = actual_weather_used_as_forecast_proxy
 ```
 
-This is acceptable because P0040 evaluates shape logic, not weather forecast provider accuracy.
+This is acceptable because P0040 evaluates the forecast stack and shape logic, not weather-provider forecast error.
 
 ## Required model variants
 
@@ -117,25 +113,25 @@ Evaluate at least these variants:
 
 ```text
 V0 naive_flat_week:
-  distribute anchored weekly/daily level flat across hours
+  use 16h anchor level and distribute it flat across the 168h horizon
 
 V1 M1_shape_only:
-  M1 shape with level anchoring from known 16 spot hours
+  M1 shape anchored from known 16 spot hours
 
 V2 M1_plus_existing_M3A_M3B:
-  current pre-P0039 M1 + M3A + M3B shape
+  current pre-P0039 M1 + M3A + M3B shape, anchored from known 16 spot hours
 
 V3 M1_plus_M3A_m1b_M3B_m1b:
-  P0039 corrected chain using M1 baseplate and M1B-trained M3A/M3B deltas
+  P0039 corrected chain using M1 baseplate and M1B-trained M3A/M3B deltas, anchored from known 16 spot hours
 
 V4 M1_plus_M3A_m1b_M3B_m1b_plus_M3D_if_available:
-  include useful wind delta if it improves shape metrics
+  include useful wind delta if it improves anchored absolute metrics or shape diagnostics
 
 V5 diagnostic_with_M3C:
-  include solar delta diagnostic only; do not make default unless it improves shape metrics
+  include solar delta diagnostic only; do not make default unless it improves anchored absolute metrics or important shape subsets
 
 V6 diagnostic_with_M4_area_diff:
-  include area_diff M4 diagnostic only; do not make default unless recomposed SE3 shape improves
+  include area_diff M4 diagnostic only; do not make default unless anchored recomposed SE3 improves
 ```
 
 If a variant cannot be computed, document why.
@@ -148,24 +144,24 @@ Required anchoring methods to compare:
 
 ```text
 anchor_16h_mean:
-  scale forecast shape so Monday 00-15 mean equals known Monday 00-15 actual mean
+  calibrate forecast so Monday 00-15 mean equals known Monday 00-15 actual mean
 
 anchor_16h_median:
-  scale forecast shape so Monday 00-15 median equals known Monday 00-15 actual median
+  calibrate forecast so Monday 00-15 median equals known Monday 00-15 actual median
 
-anchor_16h_regression_or_ratio_safe:
+anchor_16h_robust:
   optional robust calibration using known 16h actual vs model 16h shape
 ```
 
-The primary anchor should initially be:
+Primary anchor:
 
 ```text
 anchor_16h_mean
 ```
 
-but P0040 must report whether median/robust anchoring is better.
+P0040 must report whether median/robust anchoring is better.
 
-Handle zero/negative prices safely. If multiplicative scaling is unstable, use an additive or hybrid anchor and document the policy.
+Handle zero/negative prices safely. If multiplicative scaling is unstable, use additive or hybrid anchoring and document the policy.
 
 Suggested hybrid:
 
@@ -176,24 +172,39 @@ else:
   additive offset scaling
 ```
 
-## Shape metrics
+## Primary metrics: anchored absolute forecast accuracy
 
-Absolute MAE/RMSE must remain secondary. Primary metrics must be shape metrics.
+The primary comparison is the final absolute 168-hour forecast after 16h level anchoring.
 
-Required shape normalization scopes:
+Required primary metrics per variant and target:
 
 ```text
-daily_index:
-  price / daily_mean or price - daily_mean, with safe handling for near-zero/negative means
-
-weekly_index:
-  price / weekly_mean or price - weekly_mean, with safe handling
-
-monthly_index if horizon crosses month:
-  optional diagnostic
+anchored_absolute_MAE
+anchored_absolute_RMSE
+anchored_signed_error
+anchored_daily_mean_MAE
+anchored_weekly_mean_error
+p90_weekly_absolute_MAE
+best_10_weeks_by_absolute_MAE
+worst_10_weeks_by_absolute_MAE
 ```
 
-Because Nordic spot prices can be zero or negative, P0040 must implement safe index definitions.
+Primary user-facing target:
+
+```text
+recomposed SE3
+```
+
+Also report separately:
+
+```text
+SE1 system_proxy
+SE3-SE1 area_diff_proxy
+```
+
+## Secondary diagnostics: shape metrics
+
+Shape metrics are required diagnostics, not the primary pass/fail metric.
 
 Required safe shape representations:
 
@@ -210,7 +221,7 @@ rank_shape:
 
 Do not rely only on ratio indices when means can be near zero or negative.
 
-Required metrics per forecast week:
+Required shape metrics per forecast week:
 
 ```text
 weekly_centered_shape_MAE
@@ -225,9 +236,6 @@ daily_top_3h_hit_rate
 daily_bottom_3h_hit_rate
 expensive_hour_recall
 cheap_hour_recall
-absolute_MAE_secondary
-absolute_RMSE_secondary
-signed_error_secondary
 ```
 
 Required aggregation:
@@ -239,9 +247,16 @@ p90 error across forecast origins
 best/worst 10 forecast weeks
 ```
 
-## Level metrics
+## Level/shape interpretation
 
-Separate level quality from shape quality.
+P0040 must explicitly classify each variant:
+
+```text
+good anchored absolute forecast + good shape
+good anchored absolute forecast + weak shape
+good shape but weak level anchoring
+weak shape and weak anchored absolute forecast
+```
 
 Required level metrics:
 
@@ -250,10 +265,7 @@ known_16h_anchor_error
 forecast_week_mean_error
 daily_mean_error
 weekly_mean_error
-absolute_MAE_after_anchor
 ```
-
-P0040 must explicitly say whether a variant has good shape but poor level, or poor shape but good level.
 
 ## Short-term forecast interpretation
 
@@ -272,7 +284,7 @@ Output:
 Mechanism:
   shape model creates relative curve
   known spot context anchors level
-  weather/special-day deltas adjust shape
+  weather/special-day deltas adjust shape and/or absolute deviations
 ```
 
 This is design/evaluation only. Do not build production API in P0040.
@@ -319,25 +331,9 @@ static model diagnostic mode
 
 but must label it and not use it for PASS unless leakage is controlled.
 
-## Targets
-
-Evaluate separately:
-
-```text
-SE1 system_proxy
-SE3-SE1 area_diff_proxy
-recomposed SE3
-```
-
-Primary user-facing target:
-
-```text
-recomposed SE3
-```
-
 ## Required subset breakdowns
 
-Report shape metrics by:
+Report anchored absolute metrics and shape diagnostics by:
 
 ```text
 all forecast weeks
@@ -369,6 +365,7 @@ requirements/package-runs/P0040/functions.md
 requirements/package-runs/P0040/weekly-backtest-method.md
 requirements/package-runs/P0040/level-shape-separation.md
 requirements/package-runs/P0040/shape-metrics-definition.md
+requirements/package-runs/P0040/anchored-absolute-results.md
 requirements/package-runs/P0040/weekly-shape-results.md
 requirements/package-runs/P0040/level-anchor-results.md
 requirements/package-runs/P0040/variant-comparison.md
@@ -381,6 +378,7 @@ requirements/package-runs/P0040/component-attribution-summary.md
 Optional machine-readable summaries:
 
 ```text
+requirements/package-runs/P0040/anchored-absolute-results.json
 requirements/package-runs/P0040/weekly-shape-results.json
 requirements/package-runs/P0040/variant-comparison.json
 ```
@@ -392,16 +390,17 @@ Do not commit large prediction dumps.
 P0040 must explicitly answer:
 
 ```text
-1. Which variant has the best weekly shape, independent of absolute level?
-2. Which variant best identifies expensive hours?
-3. Which variant best identifies cheap hours?
-4. Does P0039 M1B-trained M3A/M3B improve shape vs existing M3A/M3B?
-5. Does M3D improve shape, or only absolute level?
-6. Does M3C help any solar/daylight subset, despite weak absolute MAE in P0038?
-7. Does M4_area_diff help shape even if it hurts absolute recomposed SE3 MAE?
-8. Which level anchoring method works best from 16 known Monday spot prices?
-9. How much of absolute error remains after level anchoring?
-10. Is the model stack ready for short-term 7-day forecast design, or what is missing?
+1. Which variant has the best anchored absolute 7-day forecast?
+2. Which 16h level anchoring method works best?
+3. How much absolute error remains after level anchoring?
+4. Which variant has the best weekly shape independent of absolute level?
+5. Which variant best identifies expensive hours?
+6. Which variant best identifies cheap hours?
+7. Does P0039 M1B-trained M3A/M3B improve anchored absolute forecast vs existing M3A/M3B?
+8. Does M3D improve anchored absolute forecast, shape, or only a subset?
+9. Does M3C help any solar/daylight subset?
+10. Does M4_area_diff help anchored absolute recomposed SE3 even if prior full-year absolute MAE was weak?
+11. Is the model stack ready for short-term 7-day forecast design, or what is missing?
 ```
 
 ## Tests
@@ -413,8 +412,10 @@ Required tests:
 - each origin has exactly 16 known spot hours Monday 00-15 or is skipped with reason
 - horizon is 168 hours per complete forecast week
 - future forecast-horizon spot prices are not used as features
+- known 16h spot prices are used only for anchoring/calibration
 - actual weather is marked as forecast proxy/oracle
 - recomposed SE3 = SE1 + area_diff
+- anchored absolute metrics are computed after level anchoring
 - centered shape metrics are invariant to additive level shifts
 - scaled/rank metrics handle zero/negative prices safely
 - top/bottom hour metrics are computed from horizon actuals only for evaluation
@@ -442,11 +443,12 @@ Required tests:
 - exact backtest period and forecast origin count
 - skipped origins and reasons
 - level anchoring methods tested
+- anchored absolute forecast winner
+- remaining absolute MAE/RMSE after anchoring
 - weekly shape metric winner
 - top/bottom hour winner
-- absolute metric secondary results
-- whether M3A/M3B_m1b improves shape
-- whether M3C/M3D/M4_area_diff improve shape
+- whether M3A/M3B_m1b improves anchored forecast
+- whether M3C/M3D/M4_area_diff improve anchored forecast or shape diagnostics
 - short-term 7-day forecast design conclusion
 - long-term futures-shape design note
 - tests run

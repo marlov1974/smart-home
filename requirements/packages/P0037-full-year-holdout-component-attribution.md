@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -422,4 +422,10 @@ Required tests:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented 2026-05-31.
+
+Result: WARN.
+
+P0037 created strict full-year 2025 component attribution. M3A and M3B help the full-year observed reconstruction modestly, but M4 does not improve recomposed SE3 on the full-year structural target even though it helps `area_diff_proxy_se3`. Therefore the prior P0036 PASS does not fully hold under the 2025 full-year diagnostic.
+
+No production model promotion, M5/M6/M7/API, Shelly, Home Assistant, KVS or device action was performed.

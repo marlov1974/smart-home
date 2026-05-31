@@ -98,6 +98,7 @@ se1_system_apparent_temperature|4|5|4.05494505494505|55|64
 se1_system_cooling_degree|4|5|4.05494505494505|55|64
 se1_system_heating_degree|4|5|4.05494505494505|55|64
 se1_system_temperature|4|5|4.05494505494505|55|64
+se3_load_temperature|4|5|4.05494505494505|55|64
 south_temp_gradient_minus_se1_core|4|5|4.05494505494505|55|64
 temp_gradient_se3_load_minus_se1_core|4|5|4.05494505494505|55|64
 ```

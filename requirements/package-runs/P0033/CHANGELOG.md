@@ -9,3 +9,4 @@
 - Added cross-package function documentation for P0033.
 - Corrected M1 to use Python ISO week and optimized M1/M2 calendar bucket normal calculation.
 - Added `bucket_year_count` diagnostics for M1/M2 normals and documented cross-year smoothing to prevent year-specific normal memorization.
+- Added `se3_load_temperature` as an M2 signal and changed `area_diff_proxy_se3` M3 deltas to use direct SE3-load temperature anomaly.

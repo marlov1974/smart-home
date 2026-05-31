@@ -89,6 +89,7 @@ se1_system_temperature
 se1_system_apparent_temperature
 se1_system_heating_degree
 se1_system_cooling_degree
+se3_load_temperature
 temp_gradient_se3_load_minus_se1_core
 apparent_temp_gradient_se3_load_minus_se1_core
 heating_degree_gradient_se3_load_minus_se1_core
@@ -110,6 +111,13 @@ signal + local_hour + day-of-year distance <= 7
 ```
 
 The normal value is the median over all available years in that bucket. Year is not part of the model key. `bucket_year_count` is stored only as diagnostic coverage.
+
+M3 primary temperature anomaly signals:
+
+```text
+system_proxy_se1      -> se1_system_temperature
+area_diff_proxy_se3   -> se3_load_temperature
+```
 
 M3 creates conservative bucketed temperature deltas from M1 residuals. It writes:
 

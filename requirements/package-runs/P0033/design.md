@@ -42,8 +42,9 @@ Applied independently to:
 - heating degree hours
 - cooling degree hours
 
-Area-diff climate signal keeps P0032 gradients as separate signals:
+Area-diff climate signal includes both SE3-load absolute temperature anomaly and P0032 gradients:
 
+- `se3_load_temperature`
 - `temp_gradient_se3_load_minus_se1_core`
 - `apparent_temp_gradient_se3_load_minus_se1_core`
 - `heating_degree_gradient_se3_load_minus_se1_core`
@@ -102,7 +103,9 @@ Targets:
 Primary anomaly feature:
 
 - SE1: `se1_system_temperature_anomaly`
-- area-diff: `temp_gradient_se3_load_minus_se1_core_anomaly`
+- area-diff: `se3_load_temperature_anomaly`
+
+The area-diff target still stores P0032 gradients as M2 signals, but M3 uses the direct SE3-load temperature anomaly so both `system_proxy_se1` and `area_diff_proxy_se3` expose a price-delta function of deviating temperature.
 
 Buckets:
 

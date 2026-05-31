@@ -39,6 +39,7 @@ def sample_rows():
                 "se1_system_apparent_temperature": 2.0 + anomaly,
                 "se1_system_heating_degree": max(0.0, 14.0 - anomaly),
                 "se1_system_cooling_degree": max(0.0, anomaly - 14.0),
+                "se3_load_temperature": 5.0 + anomaly,
                 "temp_gradient_se3_load_minus_se1_core": anomaly,
                 "apparent_temp_gradient_se3_load_minus_se1_core": anomaly,
                 "heating_degree_gradient_se3_load_minus_se1_core": -anomaly,
@@ -80,6 +81,7 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
         anomalies = compute_m2_climate_anomalies(rows, normals)
         self.assertEqual(len(normals), len(anomalies))
         self.assertTrue(any(row["signal"] == "se1_system_temperature" for row in anomalies))
+        self.assertTrue(any(row["signal"] == "se3_load_temperature" for row in anomalies))
 
     def test_m1_m2_buckets_aggregate_across_years(self):
         rows = []
@@ -96,6 +98,7 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
                     "weekday": 0,
                     "day_of_year": 2,
                     "se1_system_temperature": temp,
+                    "se3_load_temperature": temp + 2.0,
                 }
             )
             rows.append(row)
@@ -109,6 +112,9 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
         se1_temp = [row for row in m2 if row["signal"] == "se1_system_temperature"]
         self.assertTrue(all(row["bucket_year_count"] == 3 for row in se1_temp))
         self.assertTrue(all(row["normal_value"] == 0.0 for row in se1_temp))
+        se3_temp = [row for row in m2 if row["signal"] == "se3_load_temperature"]
+        self.assertTrue(all(row["bucket_year_count"] == 3 for row in se3_temp))
+        self.assertTrue(all(row["normal_value"] == 2.0 for row in se3_temp))
 
     def test_level2_weight_selection(self):
         weights = select_m2_target_weights()

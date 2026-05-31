@@ -48,6 +48,7 @@ SE1_SYSTEM_SIGNALS = {
 }
 
 AREA_DIFF_SIGNALS = (
+    "se3_load_temperature",
     "temp_gradient_se3_load_minus_se1_core",
     "apparent_temp_gradient_se3_load_minus_se1_core",
     "heating_degree_gradient_se3_load_minus_se1_core",
@@ -56,7 +57,7 @@ AREA_DIFF_SIGNALS = (
 
 M3_PRIMARY_ANOMALY_SIGNAL = {
     "system_proxy_se1": "se1_system_temperature",
-    "area_diff_proxy_se3": "temp_gradient_se3_load_minus_se1_core",
+    "area_diff_proxy_se3": "se3_load_temperature",
 }
 
 
@@ -308,6 +309,7 @@ def _load_joined_rows(
           south.weighted_apparent_temperature AS south_apparent_temperature,
           south.heating_degree_hours AS south_heating_degree,
           south.cooling_degree_hours AS south_cooling_degree,
+          se3.weighted_temperature_2m AS se3_load_temperature,
           g.temp_gradient_se3_load_minus_se1_core,
           g.apparent_temp_gradient_se3_load_minus_se1_core,
           g.heating_degree_gradient_se3_load_minus_se1_core,

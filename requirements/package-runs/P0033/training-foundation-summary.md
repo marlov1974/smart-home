@@ -4,7 +4,7 @@
 
 ```text
 path = /Users/marcus.lovenstad/.smart-home/data/spotprice_model_features.sqlite3
-size = 146M
+size = 158M
 ```
 
 ## Build result
@@ -23,7 +23,7 @@ Result:
   "start_date": "2022-05-30",
   "end_date": "2026-05-24",
   "row_count": 34944,
-  "run_id": 3,
+  "run_id": 4,
   "feature_db": "/Users/marcus.lovenstad/.smart-home/data/spotprice_model_features.sqlite3"
 }
 ```
@@ -31,11 +31,11 @@ Result:
 ## Output table counts
 
 ```text
-model_runs: 3
+model_runs: 4
 m1_normal_price_v1: 69888
-m2_climate_anomalies: 279552
-m2_climate_normals: 279552
-m2_climate_weights: 16
+m2_climate_anomalies: 314496
+m2_climate_normals: 314496
+m2_climate_weights: 17
 m3_temp_normalized_prices_v1: 34944
 m3_temperature_delta_buckets: 10
 m3_temperature_delta_v1: 69888
@@ -64,4 +64,12 @@ Observed local coverage:
 ```text
 M1 bucket_year_count: min 4, max 5, avg 4.1043956043956
 M2 bucket_year_count: min 4, max 5, avg 4.05494505494505
+```
+
+## Area-diff temperature delta
+
+P0033 now stores `se3_load_temperature` as an M2 signal and uses it as the primary M3 anomaly signal for `area_diff_proxy_se3`.
+
+```text
+area_diff_proxy_se3 anomaly_signal = se3_load_temperature
 ```

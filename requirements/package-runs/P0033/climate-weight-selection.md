@@ -23,12 +23,13 @@ Rationale: SE1 should be dominated by northern Sweden and connected northern-are
 
 P0033 keeps P0032 gradients separate instead of collapsing them to one scalar:
 
+- `se3_load_temperature`
 - `temp_gradient_se3_load_minus_se1_core`
 - `apparent_temp_gradient_se3_load_minus_se1_core`
 - `heating_degree_gradient_se3_load_minus_se1_core`
 - `south_temp_gradient_minus_se1_core`
 
-Rationale: the area-diff target is a spread target, so gradients are more interpretable and preserve the P0032 SE1 plus SE3-area-diff decomposition.
+Rationale: the area-diff target is a spread target, so gradients are useful diagnostics and preserve the P0032 SE1 plus SE3-area-diff decomposition. `se3_load_temperature` is the primary M3 anomaly signal so the area-diff target also exposes a price-delta function of deviating temperature.
 
 ## Deferred signals
 

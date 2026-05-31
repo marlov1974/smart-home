@@ -20,6 +20,7 @@ Result:
 - Full real build then completed successfully with 34944 rows.
 - M1 was corrected to use Python ISO week rather than SQLite `%W`; M1/M2 bucket normal calculation was optimized and the feature DB was rebuilt successfully.
 - Added M1/M2 `bucket_year_count` diagnostics and rebuilt the feature DB as schema version 2. Local M1/M2 buckets aggregate across at least 4 years.
+- Added direct `se3_load_temperature` anomaly for the area-diff M3 target and rebuilt the feature DB. M2 now has 9 signals and 17 stored climate-weight rows.
 - Validation and diagnostics passed.
 
 Knowhow promotion: skipped. The SQLite detach behavior and bucket precomputation fix are package-local implementation details, not a durable cross-package rule.

@@ -116,8 +116,10 @@ M3 primary temperature anomaly signals:
 
 ```text
 system_proxy_se1      -> se1_system_temperature
-area_diff_proxy_se3   -> se3_load_temperature
+area_diff_proxy_se3   -> temp_gradient_se3_load_minus_se1_core
 ```
+
+`se3_load_temperature` remains an M2 normal/anomaly signal for local context. M3 uses the gradient for `area_diff_proxy_se3` because the price target is the SE3-SE1 spread.
 
 M3 creates conservative bucketed temperature deltas from M1 residuals. It writes:
 

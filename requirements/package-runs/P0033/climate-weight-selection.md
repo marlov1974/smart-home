@@ -29,7 +29,7 @@ P0033 keeps P0032 gradients separate instead of collapsing them to one scalar:
 - `heating_degree_gradient_se3_load_minus_se1_core`
 - `south_temp_gradient_minus_se1_core`
 
-Rationale: the area-diff target is a spread target, so gradients are useful diagnostics and preserve the P0032 SE1 plus SE3-area-diff decomposition. `se3_load_temperature` is the primary M3 anomaly signal so the area-diff target also exposes a price-delta function of deviating temperature.
+Rationale: the area-diff target is a spread target, so gradients preserve the P0032 SE1 plus SE3-area-diff decomposition. `temp_gradient_se3_load_minus_se1_core` is the primary M3 anomaly signal, while `se3_load_temperature` is kept as M2 context.
 
 ## Deferred signals
 

@@ -105,10 +105,10 @@ system_proxy_se1:
 
 area_diff_proxy_se3:
   count = 34944
-  min = -0.014985000000000002
-  max = 0.0
-  mean = -0.00003387748969780224
-  stddev = 0.0007116926997051063
+  min = -0.0011050000000000226
+  max = 0.18590687500000003
+  mean = 0.006181245635874052
+  stddev = 0.020811992573350556
 ```
 
 ## Temperature association before/after
@@ -120,9 +120,9 @@ system_proxy_se1:
   after_corr = -0.19968312245517977
 
 area_diff_proxy_se3:
-  anomaly_signal = se3_load_temperature
-  before_corr = -0.057261824114486284
-  after_corr = -0.057108600411923
+  anomaly_signal = temp_gradient_se3_load_minus_se1_core
+  before_corr = -0.08089063808643632
+  after_corr = -0.06124586918938008
 ```
 
 Assessment: absolute residual association with the selected temperature anomaly decreased for both targets after M3.

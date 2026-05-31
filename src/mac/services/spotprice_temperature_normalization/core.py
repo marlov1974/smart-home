@@ -57,7 +57,7 @@ AREA_DIFF_SIGNALS = (
 
 M3_PRIMARY_ANOMALY_SIGNAL = {
     "system_proxy_se1": "se1_system_temperature",
-    "area_diff_proxy_se3": "se3_load_temperature",
+    "area_diff_proxy_se3": "temp_gradient_se3_load_minus_se1_core",
 }
 
 

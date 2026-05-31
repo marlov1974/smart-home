@@ -103,9 +103,9 @@ Targets:
 Primary anomaly feature:
 
 - SE1: `se1_system_temperature_anomaly`
-- area-diff: `se3_load_temperature_anomaly`
+- area-diff: `temp_gradient_se3_load_minus_se1_core_anomaly`
 
-The area-diff target still stores P0032 gradients as M2 signals, but M3 uses the direct SE3-load temperature anomaly so both `system_proxy_se1` and `area_diff_proxy_se3` expose a price-delta function of deviating temperature.
+The area-diff target stores direct `se3_load_temperature` as M2 context, but M3 uses the SE3-load minus SE1-core temperature-gradient anomaly. That matches the target shape: `area_diff_proxy_se3` is a relative SE3-SE1 price spread, so its local weather delta must react to SE3 being unusually cold or warm relative to SE1.
 
 Buckets:
 

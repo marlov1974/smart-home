@@ -66,10 +66,12 @@ M1 bucket_year_count: min 4, max 5, avg 4.1043956043956
 M2 bucket_year_count: min 4, max 5, avg 4.05494505494505
 ```
 
-## Area-diff temperature delta
+## Area-diff local temperature delta
 
-P0033 now stores `se3_load_temperature` as an M2 signal and uses it as the primary M3 anomaly signal for `area_diff_proxy_se3`.
+P0033 stores `se3_load_temperature` as an M2 signal, but uses `temp_gradient_se3_load_minus_se1_core` as the primary M3 anomaly signal for `area_diff_proxy_se3`.
 
 ```text
-area_diff_proxy_se3 anomaly_signal = se3_load_temperature
+area_diff_proxy_se3 anomaly_signal = temp_gradient_se3_load_minus_se1_core
 ```
+
+Reason: the area-diff target is a SE3-SE1 spread, so local weather pressure is represented by SE3-load temperature deviating relative to SE1-core temperature.

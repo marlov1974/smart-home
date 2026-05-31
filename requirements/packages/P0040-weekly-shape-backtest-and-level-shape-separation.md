@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+implemented-warn
 
 ## Package order
 
@@ -458,4 +458,28 @@ Required tests:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as Mac-side diagnostics and evidence.
+
+P0040 ran a strict static pre-backtest component fit and evaluated 50 Monday-origin 7-day forecasts:
+
+```text
+backtest_start = 2025-06-02
+backtest_end = 2026-05-18
+forecast_origin_count = 50
+known_spot_context = Monday 00:00..15:00
+horizon = 168 hours
+weather_oracle = actual_weather_used_as_forecast_proxy
+```
+
+Status is `WARN`: the best anchored absolute recomposed SE3 forecast was the simple `V0_naive_flat_week` with `anchor_16h_mean`:
+
+```text
+V0 anchor_16h_mean recomposed SE3 MAE = 0.333955
+V2 existing M3A/M3B recomposed SE3 MAE = 0.365197
+V3 M1B-trained M3A/M3B recomposed SE3 MAE = 0.364194
+V4 M3D diagnostic recomposed SE3 MAE = 0.353274
+```
+
+P0039 M1B-trained M3A/M3B improves slightly versus existing M3A/M3B after anchoring, and M3D improves further, but the component shape stack does not beat the flat anchored baseline on absolute MAE. P0040 therefore does not justify production short-term API work yet.
+
+No M5/M6/M7/API, Shelly, Home Assistant, KVS or device action was performed.

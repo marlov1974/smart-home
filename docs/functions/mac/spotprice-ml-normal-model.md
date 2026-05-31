@@ -188,3 +188,18 @@ No random split is used.
 ## Safety
 
 This module reads local SQLite data and writes local model artifacts. It does not start a server, install launchd jobs, call devices, call Shelly, call Home Assistant, write KVS, expose an API, or implement M5/M6/M7.
+
+## P0040 Weekly Anchored Diagnostics
+
+P0040 adds a Mac-side diagnostic backtest for short-term 7-day forecasts. It does not build a production API.
+
+The diagnostic emulates Monday 06:00 forecast origins:
+
+```text
+known spot context = Monday 00:00..15:00
+horizon = 168 hours
+primary anchor = additive 16h mean
+weather = actual historical weather labeled as forecast proxy/oracle
+```
+
+P0040 confirms that M1 remains the baseplate and M1B is only a training/normalization surface for deltas. In the first full weekly anchored backtest, the naive flat anchored week beat component variants on absolute MAE, so the short-term stack still needs level-aware shape work before production API work.

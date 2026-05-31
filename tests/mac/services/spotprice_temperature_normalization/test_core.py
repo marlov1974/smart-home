@@ -81,6 +81,35 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
         self.assertEqual(len(normals), len(anomalies))
         self.assertTrue(any(row["signal"] == "se1_system_temperature" for row in anomalies))
 
+    def test_m1_m2_buckets_aggregate_across_years(self):
+        rows = []
+        for year, price, temp in ((2023, 1.0, -4.0), (2024, 3.0, 0.0), (2025, 100.0, 4.0)):
+            row = sample_rows()[0].copy()
+            row.update(
+                {
+                    "utc_hour_start": f"{year}-01-02T00:00Z",
+                    "local_date": f"{year}-01-02",
+                    "actual_se1": price,
+                    "actual_area_diff": price / 10.0,
+                    "actual_se3": price + price / 10.0,
+                    "iso_week": 1,
+                    "weekday": 0,
+                    "day_of_year": 2,
+                    "se1_system_temperature": temp,
+                }
+            )
+            rows.append(row)
+
+        m1 = compute_m1_calm_normal_price(rows)
+        se1_m1 = [row for row in m1 if row["target"] == "system_proxy_se1"]
+        self.assertTrue(all(row["bucket_year_count"] == 3 for row in se1_m1))
+        self.assertTrue(all(row["normal_price"] == 3.0 for row in se1_m1))
+
+        m2 = compute_m2_climate_normals(rows)
+        se1_temp = [row for row in m2 if row["signal"] == "se1_system_temperature"]
+        self.assertTrue(all(row["bucket_year_count"] == 3 for row in se1_temp))
+        self.assertTrue(all(row["normal_value"] == 0.0 for row in se1_temp))
+
     def test_level2_weight_selection(self):
         weights = select_m2_target_weights()
         se1_temp = [row for row in weights if row["target"] == "se1_system_temperature"]
@@ -109,7 +138,11 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
             db = Path(tmp) / "features.sqlite3"
             with open_feature_database(db) as conn:
                 initialize_schema(conn)
+                m1_columns = {row["name"] for row in conn.execute("PRAGMA table_info(m1_normal_price_v1)")}
+                m2_columns = {row["name"] for row in conn.execute("PRAGMA table_info(m2_climate_normals)")}
                 report = validate_training_foundation(conn)
+        self.assertIn("bucket_year_count", m1_columns)
+        self.assertIn("bucket_year_count", m2_columns)
         self.assertFalse(report["ok"])
 
     def test_temperature_bucket_boundaries(self):

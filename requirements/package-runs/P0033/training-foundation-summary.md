@@ -23,7 +23,7 @@ Result:
   "start_date": "2022-05-30",
   "end_date": "2026-05-24",
   "row_count": 34944,
-  "run_id": 2,
+  "run_id": 3,
   "feature_db": "/Users/marcus.lovenstad/.smart-home/data/spotprice_model_features.sqlite3"
 }
 ```
@@ -31,7 +31,7 @@ Result:
 ## Output table counts
 
 ```text
-model_runs: 2
+model_runs: 3
 m1_normal_price_v1: 69888
 m2_climate_anomalies: 279552
 m2_climate_normals: 279552
@@ -53,4 +53,15 @@ full ML implemented: no
 forecast API implemented: no
 wind normalization in M3: no
 device/Shelly/HA/KVS access: no
+```
+
+## M1/M2 anti-year-memorization
+
+M1 and M2 normal surfaces do not condition on year. The rebuilt feature DB stores `bucket_year_count` as diagnostic coverage only.
+
+Observed local coverage:
+
+```text
+M1 bucket_year_count: min 4, max 5, avg 4.1043956043956
+M2 bucket_year_count: min 4, max 5, avg 4.05494505494505
 ```

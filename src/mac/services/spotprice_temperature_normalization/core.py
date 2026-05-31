@@ -14,7 +14,7 @@ from typing import Iterable
 DEFAULT_FEATURE_DB_PATH = Path.home() / ".smart-home" / "data" / "spotprice_model_features.sqlite3"
 DEFAULT_PRICE_DB_PATH = Path.home() / ".smart-home" / "data" / "spotprice_history.sqlite3"
 DEFAULT_WEATHER_DB_PATH = Path.home() / ".smart-home" / "data" / "weather_history.sqlite3"
-SCHEMA_VERSION = "1"
+SCHEMA_VERSION = "2"
 M1_VERSION = "m1_calm_normal_price_v1"
 M2_VERSION = "m2_climate_normals_v1"
 M3_VERSION = "m3_temperature_delta_v1"
@@ -97,6 +97,7 @@ def initialize_schema(conn: sqlite3.Connection) -> None:
           weekday INTEGER NOT NULL,
           normal_price REAL NOT NULL,
           sample_count INTEGER NOT NULL,
+          bucket_year_count INTEGER NOT NULL,
           method TEXT NOT NULL,
           run_id INTEGER NOT NULL,
           PRIMARY KEY (target, utc_hour_start)
@@ -117,6 +118,7 @@ def initialize_schema(conn: sqlite3.Connection) -> None:
           day_of_year INTEGER NOT NULL,
           normal_value REAL NOT NULL,
           sample_count INTEGER NOT NULL,
+          bucket_year_count INTEGER NOT NULL,
           method TEXT NOT NULL,
           run_id INTEGER NOT NULL,
           PRIMARY KEY (signal, utc_hour_start)
@@ -184,6 +186,8 @@ def initialize_schema(conn: sqlite3.Connection) -> None:
         "INSERT OR REPLACE INTO training_foundation_manifest(key, value) VALUES('schema_version', ?)",
         (SCHEMA_VERSION,),
     )
+    _ensure_column(conn, "m1_normal_price_v1", "bucket_year_count", "INTEGER NOT NULL DEFAULT 0")
+    _ensure_column(conn, "m2_climate_normals", "bucket_year_count", "INTEGER NOT NULL DEFAULT 0")
 
 
 def dump_p0032_location_weights(weather_db: Path | str) -> list[dict[str, object]]:
@@ -342,30 +346,38 @@ def compute_m1_calm_normal_price(rows: list[dict[str, object]]) -> list[dict[str
         target: defaultdict(list) for target in TARGETS
     }
     by_target_hour: dict[str, dict[int, list[float]]] = {target: defaultdict(list) for target in TARGETS}
+    bucket_years: dict[tuple[int, int, int], set[int]] = defaultdict(set)
+    hour_years: dict[int, set[int]] = defaultdict(set)
     for row in rows:
         key = (int(row["iso_week"]), int(row["weekday"]), int(row["local_hour"]))
+        year = date.fromisoformat(str(row["local_date"])).year
+        bucket_years[key].add(year)
+        hour_years[int(row["local_hour"])].add(year)
         for target, field in TARGETS.items():
             value = float(row[field])
             by_target_bucket[target][key].append(value)
             by_target_hour[target][int(row["local_hour"])].append(value)
 
-    normal_by_target_bucket: dict[tuple[str, int, int, int], tuple[float, int]] = {}
+    normal_by_target_bucket: dict[tuple[str, int, int, int], tuple[float, int, int]] = {}
     for target in TARGETS:
         for iso_week, weekday, hour in by_target_bucket[target]:
             values: list[float] = []
+            years: set[int] = set()
             for week, candidate_weekday, candidate_hour in by_target_bucket[target]:
                 if candidate_weekday != weekday or candidate_hour != hour:
                     continue
                 if _week_distance(week, iso_week) <= 2:
                     values.extend(by_target_bucket[target][(week, candidate_weekday, candidate_hour)])
+                    years.update(bucket_years[(week, candidate_weekday, candidate_hour)])
             if not values:
                 values = by_target_hour[target][hour]
-            normal_by_target_bucket[(target, iso_week, weekday, hour)] = (float(median(values)), len(values))
+                years.update(hour_years[hour])
+            normal_by_target_bucket[(target, iso_week, weekday, hour)] = (float(median(values)), len(values), len(years))
 
     output: list[dict[str, object]] = []
     for row in rows:
         for target, field in TARGETS.items():
-            normal, sample_count = normal_by_target_bucket[
+            normal, sample_count, bucket_year_count = normal_by_target_bucket[
                 (target, int(row["iso_week"]), int(row["weekday"]), int(row["local_hour"]))
             ]
             output.append(
@@ -378,6 +390,7 @@ def compute_m1_calm_normal_price(rows: list[dict[str, object]]) -> list[dict[str
                     "weekday": row["weekday"],
                     "normal_price": normal,
                     "sample_count": sample_count,
+                    "bucket_year_count": bucket_year_count,
                     "method": "median_same_weekday_hour_iso_week_plus_minus_2",
                 }
             )
@@ -385,26 +398,32 @@ def compute_m1_calm_normal_price(rows: list[dict[str, object]]) -> list[dict[str
 
 
 def compute_m2_climate_normals(rows: list[dict[str, object]]) -> list[dict[str, object]]:
-    signal_values: dict[str, dict[tuple[int, int], list[float]]] = {
+    signal_values: dict[str, dict[tuple[int, int], list[tuple[float, int]]]] = {
         signal: defaultdict(list) for signal in _all_m2_signals()
     }
     for row in rows:
         for signal in _all_m2_signals():
-            signal_values[signal][(int(row["day_of_year"]), int(row["local_hour"]))].append(float(row[signal]))
+            signal_values[signal][(int(row["day_of_year"]), int(row["local_hour"]))].append(
+                (float(row[signal]), date.fromisoformat(str(row["local_date"])).year)
+            )
 
-    normal_by_signal_bucket: dict[tuple[str, int, int], tuple[float, int]] = {}
+    normal_by_signal_bucket: dict[tuple[str, int, int], tuple[float, int, int]] = {}
     for signal in _all_m2_signals():
         for day_of_year, hour in signal_values[signal]:
             values: list[float] = []
-            for (candidate_day, candidate_hour), bucket_values in signal_values[signal].items():
+            years: set[int] = set()
+            for (candidate_day, candidate_hour), bucket_items in signal_values[signal].items():
                 if candidate_hour == hour and _day_distance(candidate_day, day_of_year) <= 7:
-                    values.extend(bucket_values)
-            normal_by_signal_bucket[(signal, day_of_year, hour)] = (float(median(values)), len(values))
+                    values.extend(value for value, _year in bucket_items)
+                    years.update(year for _value, year in bucket_items)
+            normal_by_signal_bucket[(signal, day_of_year, hour)] = (float(median(values)), len(values), len(years))
 
     output: list[dict[str, object]] = []
     for row in rows:
         for signal in _all_m2_signals():
-            normal, sample_count = normal_by_signal_bucket[(signal, int(row["day_of_year"]), int(row["local_hour"]))]
+            normal, sample_count, bucket_year_count = normal_by_signal_bucket[
+                (signal, int(row["day_of_year"]), int(row["local_hour"]))
+            ]
             output.append(
                 {
                     "signal": signal,
@@ -414,6 +433,7 @@ def compute_m2_climate_normals(rows: list[dict[str, object]]) -> list[dict[str, 
                     "day_of_year": row["day_of_year"],
                     "normal_value": normal,
                     "sample_count": sample_count,
+                    "bucket_year_count": bucket_year_count,
                     "method": "median_same_hour_day_of_year_plus_minus_7",
                 }
             )
@@ -758,8 +778,8 @@ def _store_m1(conn: sqlite3.Connection, run_id: int, rows: Iterable[dict[str, ob
     conn.executemany(
         """
         INSERT INTO m1_normal_price_v1
-        (target, utc_hour_start, local_date, local_hour, iso_week, weekday, normal_price, sample_count, method, run_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (target, utc_hour_start, local_date, local_hour, iso_week, weekday, normal_price, sample_count, bucket_year_count, method, run_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         [
             (
@@ -771,6 +791,7 @@ def _store_m1(conn: sqlite3.Connection, run_id: int, rows: Iterable[dict[str, ob
                 row["weekday"],
                 row["normal_price"],
                 row["sample_count"],
+                row["bucket_year_count"],
                 row["method"],
                 run_id,
             )
@@ -783,8 +804,8 @@ def _store_m2_normals(conn: sqlite3.Connection, run_id: int, rows: Iterable[dict
     conn.executemany(
         """
         INSERT INTO m2_climate_normals
-        (signal, utc_hour_start, local_date, local_hour, day_of_year, normal_value, sample_count, method, run_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (signal, utc_hour_start, local_date, local_hour, day_of_year, normal_value, sample_count, bucket_year_count, method, run_id)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """,
         [
             (
@@ -795,6 +816,7 @@ def _store_m2_normals(conn: sqlite3.Connection, run_id: int, rows: Iterable[dict
                 row["day_of_year"],
                 row["normal_value"],
                 row["sample_count"],
+                row["bucket_year_count"],
                 row["method"],
                 run_id,
             )
@@ -926,6 +948,12 @@ def _clear_generated_tables(conn: sqlite3.Connection) -> None:
         "training_foundation_manifest",
     ):
         conn.execute(f"DELETE FROM {table}")
+
+
+def _ensure_column(conn: sqlite3.Connection, table: str, column: str, definition: str) -> None:
+    columns = {str(row["name"]) for row in conn.execute(f"PRAGMA table_info({table})")}
+    if column not in columns:
+        conn.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
 
 
 def _create_run(

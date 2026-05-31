@@ -74,6 +74,14 @@ area_diff_proxy_se3
 
 M1 uses local calendar structure and broad robust medians only. It does not use weather, forecast, wind, cloud, precipitation, lags or rolling current-event price features.
 
+M1 bucket definition:
+
+```text
+target + local_hour + weekday + ISO week distance <= 2
+```
+
+The normal value is the median over all available years in that bucket. Year is not part of the model key. `bucket_year_count` is stored only as diagnostic coverage.
+
 M2 creates normal climate and anomaly rows for:
 
 ```text
@@ -94,6 +102,14 @@ SE1 system climate signals use:
 0.25 * nordic_connected_weather
 0.05 * south_connected_weather
 ```
+
+M2 bucket definition:
+
+```text
+signal + local_hour + day-of-year distance <= 7
+```
+
+The normal value is the median over all available years in that bucket. Year is not part of the model key. `bucket_year_count` is stored only as diagnostic coverage.
 
 M3 creates conservative bucketed temperature deltas from M1 residuals. It writes:
 

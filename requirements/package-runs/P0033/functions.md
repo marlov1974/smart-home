@@ -68,7 +68,7 @@ src.mac.services.spotprice_temperature_normalization
 
 - Purpose: build weather-blind robust calendar medians for SE1 and area-diff targets.
 - Inputs: joined input rows with calendar fields and target prices.
-- Outputs: M1 baseline rows.
+- Outputs: M1 baseline rows, including `sample_count` and diagnostic `bucket_year_count`.
 - Side effects: none.
 - Tests: TC2.
 
@@ -76,7 +76,7 @@ src.mac.services.spotprice_temperature_normalization
 
 - Purpose: compute smoothed climate normals for selected SE1 climate signals and area-diff gradients.
 - Inputs: joined input rows with weather proxy features.
-- Outputs: normal rows.
+- Outputs: normal rows, including `sample_count` and diagnostic `bucket_year_count`.
 - Side effects: none.
 - Tests: TC3.
 

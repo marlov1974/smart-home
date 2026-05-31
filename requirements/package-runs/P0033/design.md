@@ -64,9 +64,13 @@ For every joined input hour, M1 computes a robust baseline from historical price
 - same weekday
 - ISO week circular neighborhood of +/- 2 weeks
 - median value
+- all available years pooled in the bucket
+- `bucket_year_count` stored only as diagnostics
 - fallback to same local hour if the bucket is unexpectedly empty
 
 Allowed M1 inputs are local calendar fields and target price history. M1 does not read weather, temperature, wind, cloud, precipitation, lagged price features or rolling current-event price features.
+
+M1 does not condition on year. Year/regime is not a normal-price key in P0033, which avoids memorizing one year's price shocks.
 
 ## M2 climate normal algorithm
 
@@ -74,9 +78,13 @@ M2 creates normal climate and anomaly rows for all selected signals. For each si
 
 - actual value is read from the selected P0032 proxy composition or gradient.
 - normal value is the median for the same local hour and day-of-year circular neighborhood of +/- 7 days.
+- all available years are pooled in the bucket.
+- `bucket_year_count` is stored only as diagnostics.
 - anomaly is `actual - normal`.
 
 This captures broad climate seasonality while smoothing acute events.
+
+M2 does not condition on year. Year is not a normal-climate key in P0033, which avoids memorizing one year's weather events.
 
 ## M3 statistical delta algorithm
 

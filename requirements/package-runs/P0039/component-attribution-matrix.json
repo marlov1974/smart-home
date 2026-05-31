@@ -1,0 +1,152 @@
+[
+  {
+    "MAE": 0.3713263844178082,
+    "MAE_delta_vs_M1": 0.0,
+    "MAE_delta_vs_previous_variant": 0.0,
+    "RMSE": 0.47410477226068354,
+    "holdout_year": 2025,
+    "signed_error": 0.28687974343607303,
+    "target": "system_proxy_se1",
+    "variant": "M1"
+  },
+  {
+    "MAE": 0.32461998316210045,
+    "MAE_delta_vs_M1": 0.0,
+    "MAE_delta_vs_previous_variant": 0.0,
+    "RMSE": 0.48878592134248944,
+    "holdout_year": 2025,
+    "signed_error": -0.21877376912100457,
+    "target": "area_diff_proxy_se3",
+    "variant": "M1"
+  },
+  {
+    "MAE": 0.38466553652968033,
+    "MAE_delta_vs_M1": 0.0,
+    "MAE_delta_vs_previous_variant": 0.0,
+    "RMSE": 0.5210478535454295,
+    "holdout_year": 2025,
+    "signed_error": 0.0681059743150685,
+    "target": "recomposed_se3",
+    "variant": "M1"
+  },
+  {
+    "MAE": 0.3959906412671233,
+    "MAE_delta_vs_M1": 0.024664256849315114,
+    "MAE_delta_vs_previous_variant": 0.024664256849315114,
+    "RMSE": 0.518788882017367,
+    "holdout_year": 2025,
+    "signed_error": 0.31419932334474887,
+    "target": "system_proxy_se1",
+    "variant": "M1B"
+  },
+  {
+    "MAE": 0.32764664183789954,
+    "MAE_delta_vs_M1": 0.0030266586757990988,
+    "MAE_delta_vs_previous_variant": 0.0030266586757990988,
+    "RMSE": 0.4933476529375078,
+    "holdout_year": 2025,
+    "signed_error": -0.19647589297945206,
+    "target": "area_diff_proxy_se3",
+    "variant": "M1B"
+  },
+  {
+    "MAE": 0.4224234132420091,
+    "MAE_delta_vs_M1": 0.037757876712328775,
+    "MAE_delta_vs_previous_variant": 0.037757876712328775,
+    "RMSE": 0.5870984005616281,
+    "holdout_year": 2025,
+    "signed_error": 0.1177234303652968,
+    "target": "recomposed_se3",
+    "variant": "M1B"
+  },
+  {
+    "MAE": 0.36244831094225644,
+    "MAE_delta_vs_M1": -0.008878073475551751,
+    "MAE_delta_vs_previous_variant": -0.033542330324866865,
+    "RMSE": 0.4617373254662135,
+    "holdout_year": 2025,
+    "signed_error": 0.2750777935018709,
+    "target": "system_proxy_se1",
+    "variant": "M1_existing_M3A_M3B"
+  },
+  {
+    "MAE": 0.3245341127283105,
+    "MAE_delta_vs_M1": -8.587043378993631e-05,
+    "MAE_delta_vs_previous_variant": -0.003112529109589035,
+    "RMSE": 0.48874795293706436,
+    "holdout_year": 2025,
+    "signed_error": -0.21832491038812787,
+    "target": "area_diff_proxy_se3",
+    "variant": "M1_existing_M3A_M3B"
+  },
+  {
+    "MAE": 0.3765487434479642,
+    "MAE_delta_vs_M1": -0.008116793081716145,
+    "MAE_delta_vs_previous_variant": -0.04587466979404492,
+    "RMSE": 0.5120519893546508,
+    "holdout_year": 2025,
+    "signed_error": 0.05675288311374302,
+    "target": "recomposed_se3",
+    "variant": "M1_existing_M3A_M3B"
+  },
+  {
+    "MAE": 0.386268185359589,
+    "MAE_delta_vs_M1": 0.014941800941780825,
+    "MAE_delta_vs_previous_variant": 0.023819874417332576,
+    "RMSE": 0.5029521744349287,
+    "holdout_year": 2025,
+    "signed_error": 0.3009936257134703,
+    "target": "system_proxy_se1",
+    "variant": "M1B_M3A"
+  },
+  {
+    "MAE": 0.32764664183789954,
+    "MAE_delta_vs_M1": 0.0030266586757990988,
+    "MAE_delta_vs_previous_variant": 0.003112529109589035,
+    "RMSE": 0.4933476529375078,
+    "holdout_year": 2025,
+    "signed_error": -0.19647589297945206,
+    "target": "area_diff_proxy_se3",
+    "variant": "M1B_M3A"
+  },
+  {
+    "MAE": 0.4143289801655251,
+    "MAE_delta_vs_M1": 0.029663443635844777,
+    "MAE_delta_vs_previous_variant": 0.03778023671756092,
+    "RMSE": 0.5728595907292489,
+    "holdout_year": 2025,
+    "signed_error": 0.10451773273401826,
+    "target": "recomposed_se3",
+    "variant": "M1B_M3A"
+  },
+  {
+    "MAE": 0.3796185845224505,
+    "MAE_delta_vs_M1": 0.008292200104642322,
+    "MAE_delta_vs_previous_variant": -0.006649600837138503,
+    "RMSE": 0.4953960319411144,
+    "holdout_year": 2025,
+    "signed_error": 0.29216473758561645,
+    "target": "system_proxy_se1",
+    "variant": "M1B_M3A_M3B"
+  },
+  {
+    "MAE": 0.32826935083713854,
+    "MAE_delta_vs_M1": 0.0036493676750380954,
+    "MAE_delta_vs_previous_variant": 0.0006227089992389967,
+    "RMSE": 0.49386329723562844,
+    "holdout_year": 2025,
+    "signed_error": -0.19724350142694064,
+    "target": "area_diff_proxy_se3",
+    "variant": "M1B_M3A_M3B"
+  },
+  {
+    "MAE": 0.4081904888222983,
+    "MAE_delta_vs_M1": 0.023524952292617973,
+    "MAE_delta_vs_previous_variant": -0.006138491343226804,
+    "RMSE": 0.5662713038996199,
+    "holdout_year": 2025,
+    "signed_error": 0.0949212361586758,
+    "target": "recomposed_se3",
+    "variant": "M1B_M3A_M3B"
+  }
+]

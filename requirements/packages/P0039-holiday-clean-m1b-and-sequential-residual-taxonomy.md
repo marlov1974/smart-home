@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+implemented-warn
 
 ## Package order
 
@@ -436,4 +436,15 @@ Required tests:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as Mac-side diagnostics and evidence.
+
+P0039 added a strict train-only M1B/M3A/M3B diagnostic chain and wrote M1B-suffixed local feature DB outputs. It did not promote M1B as production baseline because the 2025 holdout stayed worse than the previous M1-based chain:
+
+```text
+M1 recomposed SE3 MAE = 0.384666
+M1 + existing M3A + M3B recomposed SE3 MAE = 0.376549
+M1B recomposed SE3 MAE = 0.422423
+M1B + M3A_m1b + M3B_m1b recomposed SE3 MAE = 0.408190
+```
+
+P0039 status is `WARN`: M1B improves training cleanliness and the M1B sequential M3A/M3B chain improves over M1B alone, but it does not beat the current M1-based chain. Future M3C/M3D/M4 should keep M1 as the production reference until an M1B-based downstream chain beats the current strict holdout baseline.

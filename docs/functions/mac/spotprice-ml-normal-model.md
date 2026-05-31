@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0036
+Last changed: P0039
 
 ## Module
 
@@ -11,6 +11,20 @@ src.mac.services.spotprice_ml_model
 ## Purpose
 
 Mac-only local M4 normal spot model tooling.
+
+P0039 formalizes the Spotprice V2 component taxonomy:
+
+```text
+M1  = current calm normal price baseline
+M1B = holiday-clean normal price baseline
+
+A = temperature       -> M2A normal, M3A delta
+B = special days      -> no M2B normal, M3B delta
+C = solar potential   -> M2C normal, M3C delta
+D = wind potential    -> M2D normal, M3D delta
+```
+
+No M2B is expected because special days are deterministic calendar features, not a weather-normalized signal.
 
 P0036 consumes the P0035/P0036 M3AB-normalized feature DB and trains separate train-only-M1-anchored residual models for:
 
@@ -70,6 +84,27 @@ python3 -m src.mac.services.spotprice_ml_model validate-m4 --feature-db ~/.smart
 ```
 
 ## Model
+
+P0039 M1B diagnostics define the forward residual contract:
+
+```text
+M1B = holiday-clean baseline
+M3A target = actual - M1B
+M3B target = actual - M1B - M3A
+M3C target = actual - M1B - M3A - M3B
+M3D target = actual - M1B - M3A - M3B - M3C
+M4 target = actual - M1B - M3A - M3B - M3C - M3D
+```
+
+M1B training rows include only:
+
+```text
+normal_weekday
+normal_saturday
+normal_sunday
+```
+
+Rows classified as public holidays, major social holidays, holiday eves, bridge days, holiday period days, pre/post holiday transitions or special weekend days are excluded from M1B fitting. Midsummer Day is not treated as an ordinary Saturday.
 
 P0036 M4 target is residual:
 

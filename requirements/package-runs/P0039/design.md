@@ -14,7 +14,7 @@ Add `src/mac/services/spotprice_model_diagnostics/p0039.py`:
 - fit M2A temperature normals from clean train rows
 - fit M3A_m1b from `actual - M1B` on clean train rows
 - fit M3B_m1b from `actual - M1B - M3A_m1b` on special train rows
-- build full-year 2025 metrics for M1, M1B, M1+M3A+M3B, M1B+M3A_m1b, and M1B+M3A_m1b+M3B_m1b
+- build full-year 2025 metrics for M1, M1B as a training-base-only diagnostic, M1+existing M3A+M3B, M1+M3A_m1b, and M1+M3A_m1b+M3B_m1b
 - write required P0039 evidence files
 - persist optional machine-readable `component-attribution-matrix.json`
 - write diagnostic local feature DB tables with P0039 names
@@ -64,4 +64,5 @@ If the local database command needs access outside the workspace, rerun with exp
 
 - Excluding all special days can make some week/weekday/hour buckets sparse. The existing M1 smoothing window and hourly fallback will handle sparse buckets, and evidence will report included/excluded row counts.
 - P0039 can only evaluate M3C/M3D as future contract unless it reuses P0038 implementation with M1B. This package will document M3C/M3D/M4 sequential target contracts and keep current P0038 table names intact.
+- Operator correction after first implementation: M1B is only the training/normalization surface. M1 remains the price baseplate for evaluation and future forecast chains unless a later package explicitly changes that policy.
 - Full-period existing M1 remains a production-reference diagnostic and is not strict holdout evidence.

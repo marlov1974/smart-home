@@ -9,7 +9,8 @@ P0039 is consistent with the current G2 Mac-side spotprice diagnostics direction
 The package is broad because it asks for taxonomy documentation, M1B implementation, sequential M3A/M3B recomputation, optional downstream M3C/M3D use, strict full-year holdout evidence, and local feature DB outputs. The safe package interpretation is:
 
 - implement strict train-only M1B diagnostics and local feature DB tables for P0039 outputs
-- recompute M3A and M3B on the M1B sequential residual contract
+- recompute M3A and M3B on the M1B sequential residual training contract
+- evaluate M1B-trained deltas on the M1 price baseplate
 - document M3C/M3D/M4 target contracts for future packages
 - do not rename existing M3A/M3B/P0038 tables
 - do not change production model promotion or server/API behavior
@@ -28,6 +29,7 @@ The package is broad because it asks for taxonomy documentation, M1B implementat
 - Midsummer Day is excluded because the Swedish calendar classifies it as `major_social_holiday`, not `normal_saturday`.
 - P0039 strict evidence uses train rows through `2023-12-31`; validation and 2025 holdout are never used to fit M1B/M3A/M3B.
 - P0039 may write diagnostic tables to the local feature database, but generated SQLite databases and prediction dumps are not committed.
+- Operator correction after first implementation: M1B is not intended to replace M1 as the baseplate. It is a clean training surface for deltas.
 
 ## Safety
 

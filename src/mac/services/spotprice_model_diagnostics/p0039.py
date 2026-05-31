@@ -36,10 +36,10 @@ PACKAGE_ID = "P0039"
 CLEAN_M1B_DAY_TYPES = frozenset({"normal_weekday", "normal_saturday", "normal_sunday"})
 M1B_VARIANTS = (
     "M1",
-    "M1B",
+    "M1B_training_base_only",
     "M1_existing_M3A_M3B",
-    "M1B_M3A",
-    "M1B_M3A_M3B",
+    "M1_M3A_m1b",
+    "M1_M3A_m1b_M3B_m1b",
 )
 TAXONOMY = {
     "A": "temperature",
@@ -69,7 +69,7 @@ def run_p0039_analysis(
     matrix = build_p0039_matrix(rows)
     persist_p0039_feature_outputs(rows, feature_db)
     evidence = write_p0039_evidence(Path(evidence_dir), rows, matrix)
-    status = "PASS" if _mae(matrix, "M1B_M3A_M3B", "recomposed_se3") < _mae(matrix, "M1_existing_M3A_M3B", "recomposed_se3") else "WARN"
+    status = "PASS" if _mae(matrix, "M1_M3A_m1b_M3B_m1b", "recomposed_se3") < _mae(matrix, "M1_existing_M3A_M3B", "recomposed_se3") else "WARN"
     return P0039Result(status=status, row_counts=count_splits(rows), evidence=evidence)
 
 
@@ -192,14 +192,14 @@ def series_for_p0039_variant(rows: list[dict[str, object]], variant: str, target
     actual = [float(row[actual_col]) for row in rows]
     if variant == "M1":
         predicted = [float(row[f"m1_raw_{short}"]) for row in rows]
-    elif variant == "M1B":
+    elif variant == "M1B_training_base_only":
         predicted = [float(row[f"m1b_{short}"]) for row in rows]
     elif variant == "M1_existing_M3A_M3B":
-        predicted = [float(row[f"m1_structural_{short}"]) + float(row[f"m3a_{short}"]) + float(row[f"m3b_{short}"]) for row in rows]
-    elif variant == "M1B_M3A":
-        predicted = [float(row[f"m1b_{short}"]) + float(row[f"m3a_m1b_{short}"]) for row in rows]
-    elif variant == "M1B_M3A_M3B":
-        predicted = [float(row[f"m1b_{short}"]) + float(row[f"m3a_m1b_{short}"]) + float(row[f"m3b_m1b_{short}"]) for row in rows]
+        predicted = [float(row[f"m1_raw_{short}"]) + float(row[f"m3a_{short}"]) + float(row[f"m3b_{short}"]) for row in rows]
+    elif variant == "M1_M3A_m1b":
+        predicted = [float(row[f"m1_raw_{short}"]) + float(row[f"m3a_m1b_{short}"]) for row in rows]
+    elif variant == "M1_M3A_m1b_M3B_m1b":
+        predicted = [float(row[f"m1_raw_{short}"]) + float(row[f"m3a_m1b_{short}"]) + float(row[f"m3b_m1b_{short}"]) for row in rows]
     else:
         raise ValueError(f"unknown P0039 variant: {variant}")
     return actual, predicted
@@ -384,7 +384,8 @@ def changelog() -> str:
         [
             "# P0039 changelog",
             "",
-            "- Added holiday-clean M1B diagnostics and strict train-only M1B/M3A/M3B chain.",
+            "- Added holiday-clean M1B diagnostics and strict train-only M1B-trained M3A/M3B chain.",
+            "- Corrected P0039 follow-up: M1B is a training/normalization base only; holdout chains apply M1B-trained deltas on the M1 baseplate.",
             "- Added P0039 taxonomy and sequential residual evidence.",
             "- Added local feature DB output tables with M1B-suffixed names.",
             "- Deferred M3C_m1b, M3D_m1b and M4_m1b implementation to future packages; P0039 documents their target contract.",
@@ -473,7 +474,7 @@ def m3a_report(rows: list[dict[str, object]]) -> str:
 
 def m3b_report(rows: list[dict[str, object]]) -> str:
     holdout = [row for row in rows if row["split"] == "holdout"]
-    lines = ["# P0039 M3B M1B special-day summary", "", "| subset | rows | M1B+M3A MAE | M1B+M3A+M3B MAE | delta |", "|---|---:|---:|---:|---:|"]
+    lines = ["# P0039 M3B M1B special-day summary", "", "| subset | rows | M1+M3A_m1b MAE | M1+M3A_m1b+M3B_m1b MAE | delta |", "|---|---:|---:|---:|---:|"]
     for name, subset in (
         ("special_day_hours", [row for row in holdout if row["is_special_day"]]),
         ("non_special_day_hours", [row for row in holdout if not row["is_special_day"]]),
@@ -482,8 +483,8 @@ def m3b_report(rows: list[dict[str, object]]) -> str:
         if not subset:
             lines.append(f"| {name} | 0 |  |  |  |")
             continue
-        actual, before = series_for_p0039_variant(subset, "M1B_M3A", "recomposed_se3")
-        _actual, after = series_for_p0039_variant(subset, "M1B_M3A_M3B", "recomposed_se3")
+        actual, before = series_for_p0039_variant(subset, "M1_M3A_m1b", "recomposed_se3")
+        _actual, after = series_for_p0039_variant(subset, "M1_M3A_m1b_M3B_m1b", "recomposed_se3")
         b = mae(actual, before)
         a = mae(actual, after)
         lines.append(f"| {name} | {len(subset)} | {fmt(b)} | {fmt(a)} | {fmt(a - b)} |")
@@ -505,7 +506,7 @@ def residual_contract_report() -> str:
             "M4 target = actual - M1B - M3A - M3B - M3C - M3D",
             "```",
             "",
-            "P0039 implements M1B, M3A_m1b and M3B_m1b. M3C_m1b, M3D_m1b and M4_m1b are documented contracts for future packages and are not promoted here.",
+            "P0039 implements M1B, M3A_m1b and M3B_m1b. M1B is a training/normalization base; prediction chains keep M1 as the baseplate and apply M1B-trained deltas on top. M3C_m1b, M3D_m1b and M4_m1b are documented contracts for future packages and are not promoted here.",
             "",
         ]
     )
@@ -520,13 +521,13 @@ def matrix_markdown(matrix: list[dict[str, object]]) -> str:
 
 def summary_report(rows: list[dict[str, object]], matrix: list[dict[str, object]]) -> str:
     m1 = _mae(matrix, "M1", "recomposed_se3")
-    m1b = _mae(matrix, "M1B", "recomposed_se3")
+    m1b = _mae(matrix, "M1B_training_base_only", "recomposed_se3")
     existing = _mae(matrix, "M1_existing_M3A_M3B", "recomposed_se3")
-    m1b_m3a = _mae(matrix, "M1B_M3A", "recomposed_se3")
-    m1b_m3b = _mae(matrix, "M1B_M3A_M3B", "recomposed_se3")
+    m1b_m3a = _mae(matrix, "M1_M3A_m1b", "recomposed_se3")
+    m1b_m3b = _mae(matrix, "M1_M3A_m1b_M3B_m1b", "recomposed_se3")
     clean_train = len([row for row in rows if row["split"] == "train" and is_m1b_clean_training_row(row)])
     all_train = len([row for row in rows if row["split"] == "train"])
-    recommendation = "use M1B for future component experiments" if m1b_m3b <= existing else "keep M1 as production reference until M1B downstream components beat the existing chain"
+    recommendation = "M1 remains the baseplate; M1B-trained deltas are promising enough for downstream experiments" if m1b_m3b <= existing else "M1 remains the baseplate; do not replace existing deltas until the M1B-trained chain beats the current chain"
     return "\n".join(
         [
             "# P0039 component attribution summary",
@@ -536,10 +537,10 @@ def summary_report(rows: list[dict[str, object]], matrix: list[dict[str, object]
             "## Required Answers",
             "",
             f"1. M1B improves training cleanliness versus M1 by excluding {all_train - clean_train} of {all_train} train rows from baseline fitting.",
-            f"2. M1B alone {'improves' if m1b < m1 else 'worsens or does not improve'} full-year holdout recomposed SE3 MAE: M1={fmt(m1)}, M1B={fmt(m1b)}.",
-            f"3. M3A trained on holiday-clean data changes recomposed SE3 MAE from M1B={fmt(m1b)} to M1B+M3A={fmt(m1b_m3a)}.",
-            f"4. M3B trained after M3A changes recomposed SE3 MAE from M1B+M3A={fmt(m1b_m3a)} to M1B+M3A+M3B={fmt(m1b_m3b)}.",
-            f"5. M1B sequential chain {'beats' if m1b_m3b < existing else 'does not beat'} previous M1-based chain: M1B chain={fmt(m1b_m3b)}, existing chain={fmt(existing)}.",
+            f"2. M1B as a standalone prediction base is diagnostic-only and {'improves' if m1b < m1 else 'worsens or does not improve'} full-year holdout recomposed SE3 MAE: M1={fmt(m1)}, M1B_training_base_only={fmt(m1b)}.",
+            f"3. M3A trained on holiday-clean data and applied on M1 changes recomposed SE3 MAE from M1={fmt(m1)} to M1+M3A_m1b={fmt(m1b_m3a)}.",
+            f"4. M3B trained after M3A and applied on M1 changes recomposed SE3 MAE from M1+M3A_m1b={fmt(m1b_m3a)} to M1+M3A_m1b+M3B_m1b={fmt(m1b_m3b)}.",
+            f"5. M1 baseplate plus M1B-trained deltas {'beats' if m1b_m3b < existing else 'does not beat'} previous M1-based chain: corrected chain={fmt(m1b_m3b)}, existing chain={fmt(existing)}.",
             f"6. Recommendation: {recommendation}.",
             "",
             "## Local Diagnostic Tables",

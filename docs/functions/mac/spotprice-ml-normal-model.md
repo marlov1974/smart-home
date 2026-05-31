@@ -96,6 +96,12 @@ M3D target = actual - M1B - M3A - M3B - M3C
 M4 target = actual - M1B - M3A - M3B - M3C - M3D
 ```
 
+M1B is not the forecast baseplate. It is a holiday-clean training and normalization surface used to learn cleaner component deltas. Until a later package explicitly changes production policy, prediction/evaluation chains keep M1 as the base price and apply M1B-trained deltas on top:
+
+```text
+prediction = M1 + M3A_m1b + M3B_m1b + ...
+```
+
 M1B training rows include only:
 
 ```text

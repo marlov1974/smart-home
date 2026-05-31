@@ -438,13 +438,22 @@ Required tests:
 
 Implemented as Mac-side diagnostics and evidence.
 
-P0039 added a strict train-only M1B/M3A/M3B diagnostic chain and wrote M1B-suffixed local feature DB outputs. It did not promote M1B as production baseline because the 2025 holdout stayed worse than the previous M1-based chain:
+P0039 added a strict train-only M1B/M3A/M3B diagnostic chain and wrote M1B-suffixed local feature DB outputs.
+
+Operator correction after first implementation: M1B is only the clean training/normalization surface. M1 remains the price baseplate. The corrected holdout chain is therefore:
+
+```text
+M1 + M3A_m1b + M3B_m1b
+```
+
+Corrected 2025 holdout:
 
 ```text
 M1 recomposed SE3 MAE = 0.384666
-M1 + existing M3A + M3B recomposed SE3 MAE = 0.376549
-M1B recomposed SE3 MAE = 0.422423
-M1B + M3A_m1b + M3B_m1b recomposed SE3 MAE = 0.408190
+M1B training-base-only recomposed SE3 MAE = 0.422423
+M1 + existing M3A + M3B recomposed SE3 MAE = 0.374846
+M1 + M3A_m1b recomposed SE3 MAE = 0.376722
+M1 + M3A_m1b + M3B_m1b recomposed SE3 MAE = 0.372997
 ```
 
-P0039 status is `WARN`: M1B improves training cleanliness and the M1B sequential M3A/M3B chain improves over M1B alone, but it does not beat the current M1-based chain. Future M3C/M3D/M4 should keep M1 as the production reference until an M1B-based downstream chain beats the current strict holdout baseline.
+P0039 status is `PASS` after the correction: M1 remains the production/reference base unless a later package explicitly changes that policy, and M1B-trained M3A/M3B deltas slightly beat the current strict M1-based M3A/M3B chain on 2025 recomposed SE3 holdout.

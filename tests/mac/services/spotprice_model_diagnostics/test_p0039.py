@@ -76,7 +76,7 @@ class P0039DiagnosticsTests(unittest.TestCase):
         self.assertEqual(8760, count_splits(self.rows)["holdout"])
         matrix = build_p0039_matrix(self.rows)
         self.assertEqual(
-            {"M1", "M1B", "M1_existing_M3A_M3B", "M1B_M3A", "M1B_M3A_M3B"},
+            {"M1", "M1B_training_base_only", "M1_existing_M3A_M3B", "M1_M3A_m1b", "M1_M3A_m1b_M3B_m1b"},
             {row["variant"] for row in matrix},
         )
         self.assertEqual(
@@ -86,11 +86,19 @@ class P0039DiagnosticsTests(unittest.TestCase):
 
     def test_recomposed_se3_equals_parts(self):
         holdout = [row for row in self.rows if row["split"] == "holdout"][:24]
-        actual_se1, pred_se1 = series_for_p0039_variant(holdout, "M1B_M3A_M3B", "system_proxy_se1")
-        actual_area, pred_area = series_for_p0039_variant(holdout, "M1B_M3A_M3B", "area_diff_proxy_se3")
-        actual_se3, pred_se3 = series_for_p0039_variant(holdout, "M1B_M3A_M3B", "recomposed_se3")
+        actual_se1, pred_se1 = series_for_p0039_variant(holdout, "M1_M3A_m1b_M3B_m1b", "system_proxy_se1")
+        actual_area, pred_area = series_for_p0039_variant(holdout, "M1_M3A_m1b_M3B_m1b", "area_diff_proxy_se3")
+        actual_se3, pred_se3 = series_for_p0039_variant(holdout, "M1_M3A_m1b_M3B_m1b", "recomposed_se3")
         self.assertEqual(actual_se3, [a + b for a, b in zip(actual_se1, actual_area)])
         self.assertEqual(pred_se3, [a + b for a, b in zip(pred_se1, pred_area)])
+
+    def test_m1b_trained_deltas_are_applied_on_m1_baseplate(self):
+        row = self.rows[0]
+        _actual, pred = series_for_p0039_variant([row], "M1_M3A_m1b_M3B_m1b", "system_proxy_se1")
+        self.assertAlmostEqual(
+            float(row["m1_raw_se1"]) + float(row["m3a_m1b_se1"]) + float(row["m3b_m1b_se1"]),
+            pred[0],
+        )
 
 
 if __name__ == "__main__":

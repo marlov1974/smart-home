@@ -1,15 +1,15 @@
 # P0039 component attribution summary
 
-Status: WARN
+Status: PASS
 
 ## Required Answers
 
 1. M1B improves training cleanliness versus M1 by excluding 1128 of 13945 train rows from baseline fitting.
-2. M1B alone worsens or does not improve full-year holdout recomposed SE3 MAE: M1=0.384666, M1B=0.422423.
-3. M3A trained on holiday-clean data changes recomposed SE3 MAE from M1B=0.422423 to M1B+M3A=0.414329.
-4. M3B trained after M3A changes recomposed SE3 MAE from M1B+M3A=0.414329 to M1B+M3A+M3B=0.408190.
-5. M1B sequential chain does not beat previous M1-based chain: M1B chain=0.408190, existing chain=0.376549.
-6. Recommendation: keep M1 as production reference until M1B downstream components beat the existing chain.
+2. M1B as a standalone prediction base is diagnostic-only and worsens or does not improve full-year holdout recomposed SE3 MAE: M1=0.384666, M1B_training_base_only=0.422423.
+3. M3A trained on holiday-clean data and applied on M1 changes recomposed SE3 MAE from M1=0.384666 to M1+M3A_m1b=0.376722.
+4. M3B trained after M3A and applied on M1 changes recomposed SE3 MAE from M1+M3A_m1b=0.376722 to M1+M3A_m1b+M3B_m1b=0.372997.
+5. M1 baseplate plus M1B-trained deltas beats previous M1-based chain: corrected chain=0.372997, existing chain=0.374846.
+6. Recommendation: M1 remains the baseplate; M1B-trained deltas are promising enough for downstream experiments.
 
 ## Local Diagnostic Tables
 

@@ -44,7 +44,7 @@
 - Inputs: diagnostic rows with P0037 and P0039 components.
 - Outputs: list of metric dictionaries.
 - Side effects: none.
-- Reason: P0039 requires M1/M1B/chain comparisons across SE1, area diff, and recomposed SE3.
+- Reason: P0039 requires M1, M1B training-base-only, and M1 plus M1B-trained delta comparisons across SE1, area diff, and recomposed SE3.
 - Test coverage: variants, targets, and 8760 holdout row count.
 
 ### `persist_p0039_feature_outputs(rows, feature_db)`

@@ -1,6 +1,6 @@
 # Spot Price History
 
-Last changed: P0032
+Last changed: P0033
 
 ## Module
 
@@ -78,6 +78,14 @@ spotprice_system_proxy_hourly
 It exposes `se3_price`, `se1_system_proxy_price`, `area_diff_proxy_se3` and `area_ratio_proxy_se3`. The ratio is `NULL` when `abs(SE1) < 0.000001`.
 
 SE1 is a practical system proxy, not official Nordic SYS. `area_diff_proxy_se3` is a realized SE3-SE1 proxy, not EPAD.
+
+## P0033 Consumer
+
+`src.mac.services.spotprice_temperature_normalization` reads `spotprice_system_proxy_hourly` as the price target contract for the local temperature-normalized training foundation. P0033 preserves the decomposition:
+
+```text
+SE3 = SE1 system proxy + SE3-SE1 area-diff proxy
+```
 
 ## Daily LaunchAgent
 

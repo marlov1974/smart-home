@@ -1,6 +1,6 @@
 # Weather History Dataset
 
-Last changed: P0032
+Last changed: P0033
 
 ## Module
 
@@ -123,6 +123,18 @@ heating_degree_gradient_se3_load_minus_se1_core
 wind_100m_gradient_nordic_connected_minus_se3_load
 south_temp_gradient_minus_se1_core
 ```
+
+## P0033 Consumer
+
+`src.mac.services.spotprice_temperature_normalization` reads the P0032 proxy groups and gradients to create local normal climate, anomaly and conservative temperature-normalization feature rows. P0033 uses the SE1 climate weighting:
+
+```text
+0.70 * se1_core_weather
+0.25 * nordic_connected_weather
+0.05 * south_connected_weather
+```
+
+P0033 uses temperature, apparent temperature and heating/cooling degree signals. Wind, cloud, radiation and precipitation normalization are deferred.
 
 ## LaunchAgent
 

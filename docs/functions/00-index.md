@@ -81,3 +81,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0032` updated `docs/functions/mac/spotprice-history.md` with the SE1 system-proxy view and updated `docs/functions/mac/weather-history-dataset.md` with weather proxy groups and gradients.
 
 `P0033` added `docs/functions/mac/spotprice-temperature-normalization.md` for the local temperature-normalized spotprice V2 training foundation feature-store builder.
+
+`P0034` added `docs/functions/mac/spotprice-ml-normal-model.md` for the local M4 temperature-neutral normal spot model training and backtest tooling.

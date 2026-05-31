@@ -152,6 +152,14 @@ Build:
 python3 -m src.mac.services.spotprice_temperature_normalization build --price-db ~/.smart-home/data/spotprice_history.sqlite3 --weather-db ~/.smart-home/data/weather_history.sqlite3 --feature-db ~/.smart-home/data/spotprice_model_features.sqlite3 --start-date 2022-05-30
 ```
 
+Daily rebuild install:
+
+```bash
+python3 -m src.mac.services.spotprice_temperature_normalization install-daily-job --price-db ~/.smart-home/data/spotprice_history.sqlite3 --weather-db ~/.smart-home/data/weather_history.sqlite3 --feature-db ~/.smart-home/data/spotprice_model_features.sqlite3
+```
+
+The LaunchAgent runs at 16:00 local time, after the P0030 14:00 spotprice ingest and P0031 15:30 weather ingest. The build orchestration is synchronous: M1 computes first, M2 computes second, and M3 starts only after M1/M2 return successfully.
+
 Validate:
 
 ```bash

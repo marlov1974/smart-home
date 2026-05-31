@@ -17,6 +17,7 @@ from src.mac.services.spotprice_temperature_normalization.core import (
     temperature_bucket,
     validate_training_foundation,
 )
+from src.mac.services.spotprice_temperature_normalization.launchd import LABEL, render_launchd_plist
 
 
 def sample_rows():
@@ -157,6 +158,23 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
         self.assertEqual("normal", temperature_bucket(0.0))
         self.assertEqual("warm", temperature_bucket(3.0))
         self.assertEqual("extreme_warm", temperature_bucket(8.0))
+
+    def test_launchd_plist_rebuilds_daily_at_1600(self):
+        plist = render_launchd_plist(
+            price_db="/tmp/spot.sqlite3",
+            weather_db="/tmp/weather.sqlite3",
+            feature_db="/tmp/features.sqlite3",
+            python_executable="/usr/bin/python3",
+        )
+
+        self.assertIn(LABEL, plist)
+        self.assertIn("src.mac.services.spotprice_temperature_normalization", plist)
+        self.assertIn("<string>build</string>", plist)
+        self.assertIn("<integer>16</integer>", plist)
+        self.assertIn("<integer>0</integer>", plist)
+        self.assertIn("/tmp/spot.sqlite3", plist)
+        self.assertIn("/tmp/weather.sqlite3", plist)
+        self.assertIn("/tmp/features.sqlite3", plist)
 
 
 if __name__ == "__main__":

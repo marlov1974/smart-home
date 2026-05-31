@@ -47,6 +47,7 @@ python3 -m src.mac.services.spotprice_temperature_normalization build --price-db
 python3 -m src.mac.services.spotprice_temperature_normalization validate --feature-db ~/.smart-home/data/spotprice_model_features.sqlite3
 python3 -m src.mac.services.spotprice_temperature_normalization diagnostics --feature-db ~/.smart-home/data/spotprice_model_features.sqlite3
 python3 -m src.mac.services.spotprice_temperature_normalization dump-weights --weather-db ~/.smart-home/data/weather_history.sqlite3
+python3 -m src.mac.services.spotprice_temperature_normalization install-daily-job --price-db ~/.smart-home/data/spotprice_history.sqlite3 --weather-db ~/.smart-home/data/weather_history.sqlite3 --feature-db ~/.smart-home/data/spotprice_model_features.sqlite3
 ```
 
 ## Feature DB Tables
@@ -165,6 +166,8 @@ temp_normalized_price_v1_se3 = temp_normalized_price_v1_se1 + temp_normalized_ar
 
 `build_training_foundation(...)` orchestrates the full local feature DB build.
 
+Build sequencing is synchronous in one process: M1 normal prices are computed first, M2 normals/anomalies second, and M3 temperature deltas only after M1/M2 have returned successfully. A failure before M3 exits the build and leaves the daily LaunchAgent run failed in its error log.
+
 `validate_training_foundation(conn)` validates required table presence, row counts and date coverage.
 
 `summarize_temperature_normalization(conn)` reports residual, anomaly, delta and before/after temperature-association diagnostics.
@@ -174,3 +177,30 @@ temp_normalized_price_v1_se3 = temp_normalized_price_v1_se1 + temp_normalized_ar
 This module reads local SQLite source DBs and writes one generated local SQLite feature DB. It does not call Shelly, Home Assistant, KVS writes, scripts, actuators, forecast APIs or external ML dependencies.
 
 P0033 does not implement M4/M5/M6/M7 and does not expose a production forecast service.
+
+## Daily LaunchAgent
+
+Label:
+
+```text
+se.mlovholm.smart-home.spotprice-temperature-normalization-daily
+```
+
+Plist:
+
+```text
+~/Library/LaunchAgents/se.mlovholm.smart-home.spotprice-temperature-normalization-daily.plist
+```
+
+Schedule:
+
+```text
+16:00 local time daily
+```
+
+Logs:
+
+```text
+~/.smart-home/logs/spotprice-temperature-normalization-daily.out.log
+~/.smart-home/logs/spotprice-temperature-normalization-daily.err.log
+```

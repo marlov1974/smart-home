@@ -75,3 +75,17 @@ area_diff_proxy_se3 anomaly_signal = temp_gradient_se3_load_minus_se1_core
 ```
 
 Reason: the area-diff target is a SE3-SE1 spread, so local weather pressure is represented by SE3-load temperature deviating relative to SE1-core temperature.
+
+## Daily rebuild
+
+P0033 now supports a daily rebuild LaunchAgent:
+
+```text
+label = se.mlovholm.smart-home.spotprice-temperature-normalization-daily
+schedule = 16:00 local time daily
+plist = ~/Library/LaunchAgents/se.mlovholm.smart-home.spotprice-temperature-normalization-daily.plist
+stdout = ~/.smart-home/logs/spotprice-temperature-normalization-daily.out.log
+stderr = ~/.smart-home/logs/spotprice-temperature-normalization-daily.err.log
+```
+
+The 16:00 schedule follows the existing P0030 spotprice ingest at 14:00 and P0031/P0032 weather ingest at 15:30. The P0033 build itself is synchronous: M1 writes normal prices, M2 writes climate normals/anomalies, then M3 writes temperature deltas and normalized prices.

@@ -21,6 +21,8 @@ Result:
 - M1 was corrected to use Python ISO week rather than SQLite `%W`; M1/M2 bucket normal calculation was optimized and the feature DB was rebuilt successfully.
 - Added M1/M2 `bucket_year_count` diagnostics and rebuilt the feature DB as schema version 2. Local M1/M2 buckets aggregate across at least 4 years.
 - Added direct `se3_load_temperature` as M2 context, then debugged area-diff M3 and restored the SE3-load minus SE1-core temperature-gradient anomaly as the primary spread signal. M2 now has 9 signals and 17 stored climate-weight rows.
+- Added daily 16:00 LaunchAgent support. The build is one synchronous process, so M3 cannot run before M1 and M2 computation completes successfully.
+- Installed the daily rebuild LaunchAgent locally and verified `launchctl print` shows the 16:00 calendar trigger.
 - Validation and diagnostics passed.
 
 Knowhow promotion: skipped. The SQLite detach behavior and bucket precomputation fix are package-local implementation details, not a durable cross-package rule.

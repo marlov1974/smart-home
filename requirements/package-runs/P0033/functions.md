@@ -135,3 +135,19 @@ src.mac.services.spotprice_temperature_normalization
 - Outputs: process exit code and JSON/text summaries.
 - Side effects: build writes generated DB; other commands read local DBs.
 - Tests: command parser smoke coverage.
+
+`render_launchd_plist(...)`
+
+- Purpose: render the daily 16:00 user LaunchAgent for P0033 rebuild.
+- Inputs: price DB path, weather DB path, feature DB path and Python executable.
+- Outputs: plist XML string.
+- Side effects: none.
+- Tests: launchd plist contract test.
+
+`install_launchd_plist(...)`
+
+- Purpose: write and optionally load the P0033 daily rebuild LaunchAgent.
+- Inputs: price/weather/feature DB paths, plist path, Python executable and launchctl flag.
+- Outputs: `LaunchdInstallResult`.
+- Side effects: writes `~/Library/LaunchAgents/se.mlovholm.smart-home.spotprice-temperature-normalization-daily.plist`, creates log directory and may call launchctl.
+- Tests: covered through rendered plist contract; live loading verified in package evidence.

@@ -10,6 +10,7 @@ from pathlib import Path
 import sys
 
 from .core import (
+    DEFAULT_CALENDAR_CSV_PATH,
     DEFAULT_PRICE_DB_PATH,
     DEFAULT_WEATHER_DB_PATH,
     build_training_foundation,
@@ -33,6 +34,7 @@ def main(argv: list[str] | None = None) -> int:
     build_parser.add_argument("--price-db", default=str(DEFAULT_PRICE_DB_PATH))
     build_parser.add_argument("--weather-db", default=str(DEFAULT_WEATHER_DB_PATH))
     build_parser.add_argument("--feature-db", default=str(default_feature_db_path()))
+    build_parser.add_argument("--calendar-csv", default=str(DEFAULT_CALENDAR_CSV_PATH))
     build_parser.add_argument("--start-date", default=DEFAULT_START_DATE.isoformat())
     build_parser.add_argument("--end-date")
 
@@ -58,6 +60,7 @@ def main(argv: list[str] | None = None) -> int:
                 price_db=Path(args.price_db).expanduser(),
                 weather_db=Path(args.weather_db).expanduser(),
                 feature_db=Path(args.feature_db).expanduser(),
+                calendar_csv=Path(args.calendar_csv),
                 start_date=date.fromisoformat(args.start_date),
                 end_date=date.fromisoformat(args.end_date) if args.end_date else None,
             )

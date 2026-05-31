@@ -12,6 +12,7 @@ from src.mac.services.spotprice_ml_model.core import (
     build_level_targets,
     fit_ridge,
     load_p0033_training_series,
+    load_p0035_training_series,
     recompose_se3_predictions,
     split_for_date,
     train_m4,
@@ -57,6 +58,71 @@ def create_feature_db(path: Path) -> None:
         conn.executemany("INSERT INTO m3_temp_normalized_prices_v1 VALUES (?, ?, ?, ?, ?, ?, ?, ?)", rows)
 
 
+def create_p0035_feature_db(path: Path) -> None:
+    with sqlite3.connect(path) as conn:
+        conn.execute(
+            """
+            CREATE TABLE m3ab_normalized_prices (
+              utc_hour_start TEXT PRIMARY KEY,
+              local_date TEXT NOT NULL,
+              local_hour INTEGER NOT NULL,
+              actual_se1 REAL NOT NULL,
+              actual_area_diff REAL NOT NULL,
+              actual_se3 REAL NOT NULL,
+              normal_price_v1_se1 REAL NOT NULL,
+              normal_price_v1_area_diff REAL NOT NULL,
+              m3a_temperature_delta_se1 REAL NOT NULL,
+              m3a_temperature_delta_area_diff REAL NOT NULL,
+              m3b_special_day_delta_se1 REAL NOT NULL,
+              m3b_special_day_delta_area_diff REAL NOT NULL,
+              m3ab_normalized_price_se1 REAL NOT NULL,
+              m3ab_normalized_area_diff REAL NOT NULL,
+              m3ab_normalized_se3 REAL NOT NULL,
+              special_day_type TEXT NOT NULL,
+              special_day_name TEXT NOT NULL,
+              special_day_group TEXT NOT NULL,
+              is_special_day INTEGER NOT NULL,
+              run_id INTEGER NOT NULL
+            )
+            """
+        )
+        rows = []
+        for year in (2024, 2025, 2026):
+            for day in range(1, 41):
+                local_date = f"{year}-01-{((day - 1) % 31) + 1:02d}" if day <= 31 else f"{year}-02-{day - 31:02d}"
+                for hour in range(24):
+                    baseline = 1.0 + hour / 100.0
+                    area_base = 0.2
+                    residual = (year - 2024) * 0.03
+                    se1 = baseline + residual
+                    area = area_base + residual / 2
+                    rows.append(
+                        (
+                            f"{local_date}T{hour:02d}:00Z",
+                            local_date,
+                            hour,
+                            se1,
+                            area,
+                            se1 + area,
+                            baseline,
+                            area_base,
+                            0,
+                            0,
+                            0,
+                            0,
+                            se1,
+                            area,
+                            se1 + area,
+                            "normal_weekday",
+                            "normal",
+                            "normal",
+                            0,
+                            1,
+                        )
+                    )
+        conn.executemany("INSERT INTO m3ab_normalized_prices VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", rows)
+
+
 class SpotpriceMlModelTests(unittest.TestCase):
     def test_load_p0033_training_series(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -65,6 +131,14 @@ class SpotpriceMlModelTests(unittest.TestCase):
             rows = load_p0033_training_series(db)
         self.assertEqual(3 * 40 * 24, len(rows))
         self.assertAlmostEqual(rows[0].target_se3, rows[0].target_se1 + rows[0].target_area_diff)
+
+    def test_load_p0035_training_series_uses_residual_targets(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "features.sqlite3"
+            create_p0035_feature_db(db)
+            rows = load_p0035_training_series(db)
+        self.assertEqual(3 * 40 * 24, len(rows))
+        self.assertAlmostEqual(rows[0].target_se1, rows[0].target_se3 - rows[0].target_area_diff)
 
     def test_feature_schema_excludes_weather(self):
         row = TrainingRow("u", "2025-01-01", 8, 1.0, 0.2, 1.2, 0.9, 0.1, 1.0)
@@ -108,6 +182,7 @@ class SpotpriceMlModelTests(unittest.TestCase):
             validation = validate_m4_outputs(feature_db=feature_db, model_dir=model_dir)
         self.assertTrue(feature_result["ok"])
         self.assertTrue(train_result["ok"])
+        self.assertTrue(train_result["promotion"]["ok"])
         self.assertTrue(validation["ok"])
         self.assertEqual([], validation["forbidden_features"])
 

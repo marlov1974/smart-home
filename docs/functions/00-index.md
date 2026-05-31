@@ -83,3 +83,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0033` added `docs/functions/mac/spotprice-temperature-normalization.md` for the local temperature-normalized spotprice V2 training foundation feature-store builder.
 
 `P0034` added `docs/functions/mac/spotprice-ml-normal-model.md` for the local M4 temperature-neutral normal spot model training and backtest tooling.
+
+`P0035` added `docs/functions/mac/swedish-special-day-calendar.md` and updated the spotprice ML/normalization docs for M3A/M3B and M1-anchored residual M4.

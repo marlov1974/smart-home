@@ -10,7 +10,9 @@ from src.mac.services.spotprice_temperature_normalization.core import (
     compute_m2_climate_anomalies,
     compute_m2_climate_normals,
     compute_m3_statistical_temperature_delta,
+    compute_m3b_special_day_delta,
     dump_p0032_location_weights,
+    build_m3ab_normalized_training_series,
     initialize_schema,
     open_feature_database,
     select_m2_target_weights,
@@ -83,6 +85,7 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
         self.assertEqual(len(normals), len(anomalies))
         self.assertTrue(any(row["signal"] == "se1_system_temperature" for row in anomalies))
         self.assertTrue(any(row["signal"] == "se3_load_temperature" for row in anomalies))
+        self.assertTrue(all(row["method"] == "smooth_cyclic_robust_same_hour_day_plus_minus_7_21" for row in normals))
 
     def test_m1_m2_buckets_aggregate_across_years(self):
         rows = []
@@ -139,6 +142,40 @@ class TemperatureNormalizationCoreTests(unittest.TestCase):
             first["temp_normalized_price_v1_se3"],
             first["temp_normalized_price_v1_se1"] + first["temp_normalized_area_diff_v1"],
         )
+
+    def test_m3b_special_day_delta_and_m3ab_series(self):
+        rows = sample_rows()
+        for row in rows[:24]:
+            row["local_date"] = "2025-12-24"
+            row["actual_se1"] += 0.4
+            row["actual_area_diff"] += 0.1
+        calendar = {
+            "2025-12-24": {
+                "date": "2025-12-24",
+                "special_day_type": "major_social_holiday",
+                "special_day_name": "christmas_eve",
+                "special_day_group": "christmas_new_year",
+                "bridge_anchor": "",
+                "bridge_strength": "",
+                "holiday_strength": 1.0,
+                "is_public_holiday": False,
+                "is_major_social_holiday": True,
+                "is_holiday_eve": True,
+                "is_bridge_day": False,
+                "is_holiday_period_day": True,
+                "period_name": "christmas_new_year",
+            }
+        }
+        m1 = compute_m1_calm_normal_price(rows)
+        normals = compute_m2_climate_normals(rows)
+        anomalies = compute_m2_climate_anomalies(rows, normals)
+        m3a, _buckets = compute_m3_statistical_temperature_delta(rows, m1, anomalies)
+        m3b, bucket_rows = compute_m3b_special_day_delta(rows, m1, m3a, calendar)
+        m3ab = build_m3ab_normalized_training_series(rows, m1, m3a, m3b, calendar)
+        self.assertTrue(bucket_rows)
+        self.assertEqual(len(rows) * 2, len(m3b))
+        self.assertEqual(len(rows), len(m3ab))
+        self.assertTrue(any(row["special_day_name"] == "christmas_eve" for row in m3ab))
 
     def test_schema_validation_detects_empty_db(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -8,15 +8,17 @@ from datetime import date, datetime, timezone
 from pathlib import Path
 import json
 import math
+import shutil
 import sqlite3
+import time
 from typing import Iterable
 
 
 DEFAULT_FEATURE_DB = Path.home() / ".smart-home" / "data" / "spotprice_model_features.sqlite3"
 DEFAULT_MODEL_DIR = Path.home() / ".smart-home" / "data" / "spotprice_ml_models" / "m4"
 MODEL_DB_NAME = "m4_model.sqlite3"
-PACKAGE_ID = "P0034"
-MODEL_VERSION = "m4_sklearn_polynomial_ridge_v2"
+PACKAGE_ID = "P0035"
+MODEL_VERSION = "m4_residual_m1_anchor_v1"
 RIDGE_LAMBDA = 1.0
 RANDOM_SEED = 34
 
@@ -54,6 +56,11 @@ class TrainingRow:
     baseline_se1: float
     baseline_area_diff: float
     baseline_se3: float
+    m3b_delta_se1: float = 0.0
+    m3b_delta_area_diff: float = 0.0
+    special_day_type: str = "normal"
+    special_day_name: str = "normal"
+    is_special_day: int = 0
 
 
 def default_model_dir() -> Path:
@@ -151,22 +158,50 @@ def initialize_schema(conn: sqlite3.Connection) -> None:
 def load_p0033_training_series(feature_db: Path | str = DEFAULT_FEATURE_DB) -> list[TrainingRow]:
     with sqlite3.connect(Path(feature_db).expanduser()) as conn:
         conn.row_factory = sqlite3.Row
-        rows = conn.execute(
-            """
-            SELECT
-              utc_hour_start,
-              local_date,
-              local_hour,
-              temp_normalized_price_v1_se1 AS target_se1,
-              temp_normalized_area_diff_v1 AS target_area_diff,
-              temp_normalized_price_v1_se3 AS target_se3,
-              normal_price_v1_se1 AS baseline_se1,
-              normal_price_v1_area_diff AS baseline_area_diff,
-              normal_price_v1_se1 + normal_price_v1_area_diff AS baseline_se3
-            FROM m3_temp_normalized_prices_v1
-            ORDER BY utc_hour_start
-            """
-        ).fetchall()
+        if _table_exists(conn, "m3ab_normalized_prices"):
+            rows = conn.execute(
+                """
+                SELECT
+                  utc_hour_start,
+                  local_date,
+                  local_hour,
+                  m3ab_normalized_price_se1 - normal_price_v1_se1 AS target_se1,
+                  m3ab_normalized_area_diff - normal_price_v1_area_diff AS target_area_diff,
+                  m3ab_normalized_se3 - normal_price_v1_se1 - normal_price_v1_area_diff AS target_se3,
+                  normal_price_v1_se1 AS baseline_se1,
+                  normal_price_v1_area_diff AS baseline_area_diff,
+                  normal_price_v1_se1 + normal_price_v1_area_diff AS baseline_se3,
+                  m3b_special_day_delta_se1 AS m3b_delta_se1,
+                  m3b_special_day_delta_area_diff AS m3b_delta_area_diff,
+                  special_day_type,
+                  special_day_name,
+                  is_special_day
+                FROM m3ab_normalized_prices
+                ORDER BY utc_hour_start
+                """
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """
+                SELECT
+                  utc_hour_start,
+                  local_date,
+                  local_hour,
+                  temp_normalized_price_v1_se1 - normal_price_v1_se1 AS target_se1,
+                  temp_normalized_area_diff_v1 - normal_price_v1_area_diff AS target_area_diff,
+                  temp_normalized_price_v1_se3 - normal_price_v1_se1 - normal_price_v1_area_diff AS target_se3,
+                  normal_price_v1_se1 AS baseline_se1,
+                  normal_price_v1_area_diff AS baseline_area_diff,
+                  normal_price_v1_se1 + normal_price_v1_area_diff AS baseline_se3,
+                  0.0 AS m3b_delta_se1,
+                  0.0 AS m3b_delta_area_diff,
+                  'normal' AS special_day_type,
+                  'normal' AS special_day_name,
+                  0 AS is_special_day
+                FROM m3_temp_normalized_prices_v1
+                ORDER BY utc_hour_start
+                """
+            ).fetchall()
     return [
         TrainingRow(
             utc_hour_start=row["utc_hour_start"],
@@ -178,9 +213,18 @@ def load_p0033_training_series(feature_db: Path | str = DEFAULT_FEATURE_DB) -> l
             baseline_se1=float(row["baseline_se1"]),
             baseline_area_diff=float(row["baseline_area_diff"]),
             baseline_se3=float(row["baseline_se3"]),
+            m3b_delta_se1=float(row["m3b_delta_se1"]),
+            m3b_delta_area_diff=float(row["m3b_delta_area_diff"]),
+            special_day_type=str(row["special_day_type"]),
+            special_day_name=str(row["special_day_name"]),
+            is_special_day=int(row["is_special_day"]),
         )
         for row in rows
     ]
+
+
+def load_p0035_training_series(feature_db: Path | str = DEFAULT_FEATURE_DB) -> list[TrainingRow]:
+    return load_p0033_training_series(feature_db)
 
 
 def build_calendar_features(rows: list[TrainingRow]) -> dict[str, list[float]]:
@@ -298,7 +342,8 @@ def train_m4(
         _replace_metrics(conn, predictions)
         _write_artifact_manifest(conn, model_dir, models)
         _finish_run(conn, run_id, "ok", "trained")
-    return {"ok": True, "model_dir": str(Path(model_dir).expanduser()), "targets": sorted(models)}
+    promotion = promote_active_model(Path(model_dir).expanduser())
+    return {"ok": True, "model_dir": str(Path(model_dir).expanduser()), "targets": sorted(models), "promotion": promotion}
 
 
 def backtest_m4(
@@ -352,8 +397,8 @@ def validate_m4_outputs(
         if str(metadata.get("algorithm", "")).startswith("sklearn_"):
             joblib_artifacts.append(metadata_path.with_suffix(".joblib"))
     evidence_paths = [
-        Path("requirements/package-runs/P0034/holdout-results.md"),
-        Path("requirements/package-runs/P0034/baseline-comparison.md"),
+        Path("requirements/package-runs/P0035/holdout-results.md"),
+        Path("requirements/package-runs/P0035/baseline-comparison.md"),
     ]
     evidence_files = {str(path): path.exists() for path in evidence_paths}
     ok = (
@@ -397,6 +442,7 @@ def train_m4_target_model(
     y: list[float],
     ridge_lambda: float = RIDGE_LAMBDA,
 ) -> dict[str, object]:
+    start = time.monotonic()
     try:
         from sklearn.linear_model import Ridge
         from sklearn.pipeline import make_pipeline
@@ -407,6 +453,7 @@ def train_m4_target_model(
             Ridge(alpha=ridge_lambda, fit_intercept=True),
         )
         estimator.fit(x, y)
+        elapsed = time.monotonic() - start
         return {
             "target": target,
             "target_column": target_column,
@@ -420,9 +467,17 @@ def train_m4_target_model(
                 "ridge_alpha": ridge_lambda,
                 "ridge_fit_intercept": True,
             },
+            "timing": {
+                "candidate": "sklearn_polynomial_features_ridge",
+                "elapsed_seconds": elapsed,
+                "row_count": len(x),
+                "feature_count": len(x[0]) if x else 0,
+                "reason_selected_or_rejected": "selected: deterministic residual smoke model",
+            },
             "estimator": estimator,
         }
     except Exception as exc:
+        elapsed = time.monotonic() - start
         coefficients = fit_ridge(x, y, ridge_lambda)
         return {
             "target": target,
@@ -433,6 +488,13 @@ def train_m4_target_model(
             "algorithm": "pure_python_ridge_normal_equation",
             "fallback_reason": f"{type(exc).__name__}: {exc}",
             "model_version": "m4_ridge_calendar_v1",
+            "timing": {
+                "candidate": "pure_python_ridge_normal_equation",
+                "elapsed_seconds": elapsed,
+                "row_count": len(x),
+                "feature_count": len(x[0]) if x else 0,
+                "reason_selected_or_rejected": "selected fallback: sklearn import or fit failed",
+            },
         }
 
 
@@ -459,16 +521,31 @@ def solve_linear_system(a: list[list[float]], b: list[float]) -> list[float]:
 def predict_rows(rows: list[dict[str, object]], models: dict[str, dict[str, object]]) -> list[dict[str, object]]:
     output: list[dict[str, object]] = []
     for row in rows:
-        pred_se1 = predict_m4_target_model(models["system_proxy_se1"], row["features"])
-        pred_area = predict_m4_target_model(models["area_diff_proxy_se3"], row["features"])
+        pred_residual_se1 = predict_m4_target_model(models["system_proxy_se1"], row["features"])
+        pred_residual_area = predict_m4_target_model(models["area_diff_proxy_se3"], row["features"])
+        actual_se1 = float(row["baseline_se1"]) + float(row["target_se1"])
+        actual_area = float(row["baseline_area_diff"]) + float(row["target_area_diff"])
+        pred_se1 = float(row["baseline_se1"]) + pred_residual_se1
+        pred_area = float(row["baseline_area_diff"]) + pred_residual_area
         output.append(
             {
                 **row,
+                "pred_residual_se1": pred_residual_se1,
+                "pred_residual_area_diff": pred_residual_area,
+                "actual_se1": actual_se1,
+                "actual_area_diff": actual_area,
+                "actual_se3": actual_se1 + actual_area,
                 "pred_se1": pred_se1,
                 "pred_area_diff": pred_area,
                 "pred_se3": pred_se1 + pred_area,
+                "eval_actual_se1": actual_se1 + float(row.get("m3b_delta_se1", 0.0)),
+                "eval_actual_area_diff": actual_area + float(row.get("m3b_delta_area_diff", 0.0)),
+                "eval_pred_se1": pred_se1 + float(row.get("m3b_delta_se1", 0.0)),
+                "eval_pred_area_diff": pred_area + float(row.get("m3b_delta_area_diff", 0.0)),
             }
         )
+        output[-1]["eval_actual_se3"] = output[-1]["eval_actual_se1"] + output[-1]["eval_actual_area_diff"]
+        output[-1]["eval_pred_se3"] = output[-1]["eval_pred_se1"] + output[-1]["eval_pred_area_diff"]
     return output
 
 
@@ -600,6 +677,47 @@ def write_model_artifact_manifest(model_dir: Path | str, models: dict[str, dict[
     return manifest
 
 
+def promote_active_model(model_dir: Path | str) -> dict[str, object]:
+    base = Path(model_dir).expanduser()
+    active = base / "active"
+    staging = base / "staging" / datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    staging.mkdir(parents=True, exist_ok=True)
+    files = [
+        base / "system_proxy_se1_model.json",
+        base / "system_proxy_se1_model.joblib",
+        base / "area_diff_proxy_se3_model.json",
+        base / "area_diff_proxy_se3_model.joblib",
+        base / "m4_artifact_manifest.json",
+        base / MODEL_DB_NAME,
+    ]
+    copied: list[str] = []
+    for path in files:
+        if path.exists():
+            shutil.copy2(path, staging / path.name)
+            copied.append(path.name)
+    if not copied:
+        return {"ok": False, "reason": "no artifacts to promote", "active_dir": str(active), "staging_dir": str(staging)}
+    tmp_active = base / "active.tmp"
+    if tmp_active.exists():
+        shutil.rmtree(tmp_active)
+    tmp_active.mkdir(parents=True)
+    for name in copied:
+        shutil.copy2(staging / name, tmp_active / name)
+    if active.exists():
+        shutil.rmtree(active)
+    tmp_active.rename(active)
+    manifest = {
+        "package_id": PACKAGE_ID,
+        "model_version": MODEL_VERSION,
+        "staging_dir": str(staging),
+        "active_dir": str(active),
+        "files": copied,
+        "promoted_at": _now(),
+    }
+    (active / "m4_promotion_manifest.json").write_text(json.dumps(manifest, indent=2, sort_keys=True), encoding="utf-8")
+    return {"ok": True, **manifest}
+
+
 def split_for_date(local_date: str) -> str:
     d = date.fromisoformat(local_date)
     if d <= date(2024, 12, 31):
@@ -643,6 +761,10 @@ def _load_feature_rows(model_dir: Path | str) -> list[dict[str, object]]:
     ]
 
 
+def _table_exists(conn: sqlite3.Connection, table: str) -> bool:
+    return conn.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone() is not None
+
+
 def _replace_predictions(conn: sqlite3.Connection, predictions: list[dict[str, object]]) -> None:
     conn.execute("DELETE FROM m4_hourly_predictions")
     conn.executemany(
@@ -657,13 +779,13 @@ def _replace_predictions(conn: sqlite3.Connection, predictions: list[dict[str, o
                 row["utc_hour_start"],
                 row["local_date"],
                 row["split"],
-                row["target_se1"],
+                row["actual_se1"],
                 row["pred_se1"],
                 row["baseline_se1"],
-                row["target_area_diff"],
+                row["actual_area_diff"],
                 row["pred_area_diff"],
                 row["baseline_area_diff"],
-                row["target_se3"],
+                row["actual_se3"],
                 row["pred_se3"],
                 row["baseline_se3"],
             )
@@ -678,8 +800,8 @@ def _replace_level_and_curve(conn: sqlite3.Connection, predictions: list[dict[st
     level_rows: list[tuple[object, ...]] = []
     curve_rows: list[tuple[object, ...]] = []
     for target, actual_col, pred_col in (
-        ("system_proxy_se1", "target_se1", "pred_se1"),
-        ("area_diff_proxy_se3", "target_area_diff", "pred_area_diff"),
+        ("system_proxy_se1", "actual_se1", "pred_se1"),
+        ("area_diff_proxy_se3", "actual_area_diff", "pred_area_diff"),
     ):
         for period_type in ("week", "month"):
             groups: dict[str, list[dict[str, object]]] = defaultdict(list)
@@ -721,9 +843,9 @@ def _replace_metrics(conn: sqlite3.Connection, predictions: list[dict[str, objec
         if not items:
             continue
         for target, actual_col, pred_col, baseline_col in (
-            ("system_proxy_se1", "target_se1", "pred_se1", "baseline_se1"),
-            ("area_diff_proxy_se3", "target_area_diff", "pred_area_diff", "baseline_area_diff"),
-            ("recomposed_se3", "target_se3", "pred_se3", "baseline_se3"),
+            ("system_proxy_se1", "actual_se1", "pred_se1", "baseline_se1"),
+            ("area_diff_proxy_se3", "actual_area_diff", "pred_area_diff", "baseline_area_diff"),
+            ("recomposed_se3", "actual_se3", "pred_se3", "baseline_se3"),
         ):
             actual = [float(row[actual_col]) for row in items]
             pred = [float(row[pred_col]) for row in items]
@@ -757,8 +879,8 @@ def _extend_baseline_level_and_curve_metrics(
     predictions: list[dict[str, object]],
 ) -> None:
     for target, actual_col, baseline_col in (
-        ("system_proxy_se1", "target_se1", "baseline_se1"),
-        ("area_diff_proxy_se3", "target_area_diff", "baseline_area_diff"),
+        ("system_proxy_se1", "actual_se1", "baseline_se1"),
+        ("area_diff_proxy_se3", "actual_area_diff", "baseline_area_diff"),
     ):
         for period_type in ("week", "month"):
             groups: dict[tuple[str, str], list[dict[str, object]]] = defaultdict(list)

@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0034
+Last changed: P0035
 
 ## Module
 
@@ -12,7 +12,7 @@ src.mac.services.spotprice_ml_model
 
 Mac-only local M4 normal spot model tooling.
 
-P0034 consumes the P0033 temperature-normalized feature DB and trains separate temperature-neutral normal price models for:
+P0035 consumes the P0035 M3AB-normalized feature DB and trains separate M1-anchored residual models for:
 
 ```text
 system_proxy_se1
@@ -22,22 +22,26 @@ area_diff_proxy_se3
 SE3 is recomposed only as:
 
 ```text
-M4_normal_price_se3 = M4_normal_price_se1 + M4_normal_area_diff_proxy
+M4_normalized_price_se3 = M4_normalized_price_se1 + M4_normalized_area_diff_proxy
 ```
 
 ## Inputs
 
 ```text
 ~/.smart-home/data/spotprice_model_features.sqlite3
-m3_temp_normalized_prices_v1
+m3ab_normalized_prices
 ```
 
 Target columns:
 
 ```text
-temp_normalized_price_v1_se1
-temp_normalized_area_diff_v1
-temp_normalized_price_v1_se3
+m3ab_normalized_price_se1
+m3ab_normalized_area_diff
+m3ab_normalized_se3
+normal_price_v1_se1
+normal_price_v1_area_diff
+m3b_special_day_delta_se1
+m3b_special_day_delta_area_diff
 ```
 
 M4 does not use temperature, weather, wind, solar, cloud, radiation or weather-gradient features.
@@ -67,7 +71,15 @@ python3 -m src.mac.services.spotprice_ml_model validate-m4 --feature-db ~/.smart
 
 ## Model
 
-P0034 uses `scikit-learn` when available:
+P0035 M4 target is residual:
+
+```text
+residual = m3ab_normalized_price - M1_normal_price
+prediction = M1_normal_price + residual_prediction
+evaluation_addback = prediction + M3B_special_day_delta
+```
+
+The current implementation uses `scikit-learn`:
 
 ```text
 PolynomialFeatures(degree=2, include_bias=False)
@@ -119,11 +131,11 @@ No random split is used.
 
 `build_clipped_month_curves(rows, level_targets)` builds calendar-month clipped curves and renormalizes each month to mean `1.0`.
 
-`train_m4_target_model(...)` trains the sklearn target model or fallback Ridge model.
+`train_m4_target_model(...)` trains the sklearn residual target model or fallback Ridge model.
 
 `fit_ridge(x, y, ridge_lambda)` is the pure-Python fallback Ridge solver.
 
-`train_m4(...)` builds features, trains separate SE1 and area-diff models, writes artifacts and predictions.
+`train_m4(...)` builds features, trains separate SE1 and area-diff residual models, writes artifacts and predictions, then promotes validated artifacts to `active/`.
 
 `backtest_m4(...)` trains and reports hourly, level, curve-index and M1-baseline metrics.
 

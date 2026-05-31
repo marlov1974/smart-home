@@ -1,6 +1,6 @@
 # Spotprice Temperature Normalization
 
-Last changed: P0033
+Last changed: P0035
 
 ## Module
 
@@ -58,8 +58,14 @@ m1_normal_price_v1
 m2_climate_normals
 m2_climate_anomalies
 m2_climate_weights
+m3a_temperature_delta
+m3a_temperature_delta_buckets
 m3_temperature_delta_v1
 m3_temperature_delta_buckets
+m3b_special_day_delta
+m3b_special_day_delta_buckets
+m3ab_normalized_prices
+calendar_special_days
 m3_temp_normalized_prices_v1
 training_foundation_manifest
 ```
@@ -105,15 +111,16 @@ SE1 system climate signals use:
 0.05 * south_connected_weather
 ```
 
-M2 bucket definition:
+M2 P0035 smooth cyclic normal:
 
 ```text
-signal + local_hour + day-of-year distance <= 7
+normal = 0.70 * median(signal + local_hour + day-of-year distance <= 7)
+       + 0.30 * mean(signal + local_hour + day-of-year distance <= 21)
 ```
 
-The normal value is the median over all available years in that bucket. Year is not part of the model key. `bucket_year_count` is stored only as diagnostic coverage.
+Year is not part of the model key. `bucket_year_count` is stored only as diagnostic coverage.
 
-M3 primary temperature anomaly signals:
+M3A primary temperature anomaly signals:
 
 ```text
 system_proxy_se1      -> se1_system_temperature
@@ -122,7 +129,7 @@ area_diff_proxy_se3   -> temp_gradient_se3_load_minus_se1_core
 
 `se3_load_temperature` remains an M2 normal/anomaly signal for local context. M3 uses the gradient for `area_diff_proxy_se3` because the price target is the SE3-SE1 spread.
 
-M3 creates conservative bucketed temperature deltas from M1 residuals. It writes:
+M3A creates conservative bucketed temperature deltas from M1 residuals. Compatibility tables with old M3 names remain populated. It writes:
 
 ```text
 temp_delta_v1_se1
@@ -130,6 +137,16 @@ temp_delta_v1_area_diff
 temp_normalized_price_v1_se1
 temp_normalized_area_diff_v1
 temp_normalized_price_v1_se3
+```
+
+M3B uses the committed Swedish special-day calendar to estimate conservative holiday/bridge-day deltas from residuals after M1 and M3A. It writes:
+
+```text
+m3b_special_day_delta_se1
+m3b_special_day_delta_area_diff
+m3ab_normalized_price_se1
+m3ab_normalized_area_diff
+m3ab_normalized_se3
 ```
 
 SE3 remains recomposed as:
@@ -156,11 +173,17 @@ temp_normalized_price_v1_se3 = temp_normalized_price_v1_se1 + temp_normalized_ar
 
 `compute_m1_calm_normal_price(rows)` builds weather-blind robust calendar baseline rows.
 
-`compute_m2_climate_normals(rows)` computes smoothed normal climate rows.
+`compute_m2_climate_normals(rows)` computes P0035 smooth cyclic normal climate rows.
 
 `compute_m2_climate_anomalies(rows, normals)` computes `actual - normal` anomaly rows.
 
 `compute_m3_statistical_temperature_delta(rows, m1_rows, anomaly_rows)` computes conservative bucketed deltas.
+
+`compute_m3a_statistical_temperature_delta(rows, m1_rows, anomaly_rows)` is the P0035 name for the temperature-delta model.
+
+`compute_m3b_special_day_delta(rows, m1_rows, m3a_rows, calendar_rows)` computes conservative special-day deltas.
+
+`build_m3ab_normalized_training_series(...)` creates the M3A+M3B normalized series for residual M4.
 
 `build_temp_normalized_training_series(rows, m1_rows, delta_rows)` creates normalized SE1, area-diff and recomposed SE3 rows.
 

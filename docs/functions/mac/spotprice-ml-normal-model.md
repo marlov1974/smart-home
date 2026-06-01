@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0039
+Last changed: P0041
 
 ## Module
 
@@ -203,3 +203,35 @@ weather = actual historical weather labeled as forecast proxy/oracle
 ```
 
 P0040 confirms that M1 remains the baseplate and M1B is only a training/normalization surface for deltas. In the first full weekly anchored backtest, the naive flat anchored week beat component variants on absolute MAE, so the short-term stack still needs level-aware shape work before production API work.
+
+## P0041 Seven-Day Index Dataset
+
+P0041 starts a new seven-day index forecast dataset track. For this track, M1, M1B, M3A, M3B, M3C, M3D and M4 are legacy diagnostic/fallback components, not the primary architecture.
+
+Active foundation for the new track:
+
+```text
+M2A = normal temperature / climate normal
+M2C = normal solar generation potential
+M2D = normal wind generation potential
+SE1 and SE3-SE1 target split
+Swedish special-day calendar
+P0038 weather, solar and wind proxy locations
+```
+
+Local output tables in `~/.smart-home/data/spotprice_model_features.sqlite3`:
+
+```text
+m2a_temperature_normals_hourly
+m2a_temperature_normals_daily
+m2c_solar_normals_hourly
+m2c_solar_normals_daily
+m2d_wind_normals_hourly
+m2d_wind_normals_daily
+ai1_day_to_local_week_training_targets
+ai2_hour_to_day_training_targets
+```
+
+AI-1 rows are `date x target_series` with local window `D-2..D+4`. AI-2 rows are `timestamp x target_series` with fixed local day `00:00..23:00`. Both datasets keep `system_proxy_se1` and `area_diff_proxy_se3` separate; SE3 is recomposed later as `SE1 + (SE3-SE1)`.
+
+P0041 does not train AI models, build an API, or touch optimizer, Shelly, Home Assistant, KVS or device paths.

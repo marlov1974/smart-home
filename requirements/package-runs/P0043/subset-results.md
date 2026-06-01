@@ -8,9 +8,9 @@
 | system_proxy_se1 | high_solar | 0.449702 | 0.620587 | 0.676768 | 0.710438 |
 | system_proxy_se1 | low_wind | 0.650375 | 0.560000 | 0.666667 | 0.733333 |
 | system_proxy_se1 | high_wind | 0.446650 | 0.653359 | 0.429885 | 0.457471 |
-| area_diff_proxy_se3 | special_day | 0.407545 | 0.162846 | 0.242424 | 0.181818 |
-| area_diff_proxy_se3 | normal_day | 0.490024 | 0.332414 | 0.388060 | 0.161692 |
-| area_diff_proxy_se3 | winter | 0.466797 | 0.186942 | 0.338983 | 0.129944 |
-| area_diff_proxy_se3 | high_solar | 0.476895 | 0.608016 | 0.744108 | 0.673401 |
-| area_diff_proxy_se3 | low_wind | 0.297628 | 0.197143 | 0.533333 | 0.533333 |
-| area_diff_proxy_se3 | high_wind | 0.485176 | 0.320113 | 0.377011 | 0.172414 |
+| area_diff_proxy_se3 | special_day | 0.379391 | 0.333281 | 0.303030 | 0.393939 |
+| area_diff_proxy_se3 | normal_day | 0.488846 | 0.324458 | 0.375622 | 0.166667 |
+| area_diff_proxy_se3 | winter | 0.458995 | 0.196153 | 0.355932 | 0.129944 |
+| area_diff_proxy_se3 | high_solar | 0.471895 | 0.591174 | 0.737374 | 0.646465 |
+| area_diff_proxy_se3 | low_wind | 0.266503 | 0.197143 | 0.533333 | 0.533333 |
+| area_diff_proxy_se3 | high_wind | 0.482289 | 0.325458 | 0.370115 | 0.195402 |

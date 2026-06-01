@@ -101,7 +101,7 @@
     "random_state": 43
   },
   "model_class": "HistGradientBoostingRegressor",
-  "selected_by": "validation_hour_shape_MAE_simplest_within_1pct_of_best",
+  "selected_by": "best_validation_hour_shape_MAE_simplest_only_on_exact_tie",
   "selected_feature_group": "F4_full",
   "target_series": "system_proxy_se1"
 }

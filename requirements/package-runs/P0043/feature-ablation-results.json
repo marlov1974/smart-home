@@ -27,7 +27,7 @@
         "top_3h_hit_rate": 0.42557077625570716,
         "top_6h_precision": 0.5543378995433793
       },
-      "wall_clock_seconds": 0.43144541599999897
+      "wall_clock_seconds": 0.4071712499999993
     },
     "F1_time_plus_calendar": {
       "centered_validate_daily_mean_abs_max": 6.013708050052931e-17,
@@ -56,7 +56,7 @@
         "top_3h_hit_rate": 0.4292237442922368,
         "top_6h_precision": 0.5602739726027401
       },
-      "wall_clock_seconds": 0.7400873749999999
+      "wall_clock_seconds": 0.7518764579999999
     },
     "F2_time_calendar_weather_actual": {
       "centered_validate_daily_mean_abs_max": 5.551115123125783e-17,
@@ -85,7 +85,7 @@
         "top_3h_hit_rate": 0.4420091324200908,
         "top_6h_precision": 0.5625570776255711
       },
-      "wall_clock_seconds": 0.8468458330000015
+      "wall_clock_seconds": 0.8478572920000005
     },
     "F3_time_calendar_weather_delta": {
       "centered_validate_daily_mean_abs_max": 1.0177044392397268e-16,
@@ -114,7 +114,7 @@
         "top_3h_hit_rate": 0.438356164383561,
         "top_6h_precision": 0.5598173515981736
       },
-      "wall_clock_seconds": 0.9288770829999997
+      "wall_clock_seconds": 0.9533119580000005
     },
     "F4_full": {
       "centered_validate_daily_mean_abs_max": 8.789265611615822e-17,
@@ -143,7 +143,7 @@
         "top_3h_hit_rate": 0.44383561643835584,
         "top_6h_precision": 0.5593607305936075
       },
-      "wall_clock_seconds": 0.9646247079999988
+      "wall_clock_seconds": 0.9557724580000002
     }
   },
   "system_proxy_se1": {
@@ -174,7 +174,7 @@
         "top_3h_hit_rate": 0.3415525114155251,
         "top_6h_precision": 0.48858447488584433
       },
-      "wall_clock_seconds": 1.3467022080000004
+      "wall_clock_seconds": 1.1030319170000005
     },
     "F1_time_plus_calendar": {
       "centered_validate_daily_mean_abs_max": 1.1102230246251565e-16,
@@ -203,7 +203,7 @@
         "top_3h_hit_rate": 0.3488584474885845,
         "top_6h_precision": 0.49589041095890396
       },
-      "wall_clock_seconds": 0.8554019159999999
+      "wall_clock_seconds": 0.8599372919999997
     },
     "F2_time_calendar_weather_actual": {
       "centered_validate_daily_mean_abs_max": 9.483155002006545e-17,
@@ -232,7 +232,7 @@
         "top_3h_hit_rate": 0.3406392694063928,
         "top_6h_precision": 0.48858447488584456
       },
-      "wall_clock_seconds": 0.8726523750000004
+      "wall_clock_seconds": 0.8901138749999999
     },
     "F3_time_calendar_weather_delta": {
       "centered_validate_daily_mean_abs_max": 1.3415194880887307e-16,
@@ -261,7 +261,7 @@
         "top_3h_hit_rate": 0.33607305936073073,
         "top_6h_precision": 0.48904109589041067
       },
-      "wall_clock_seconds": 0.9406282080000006
+      "wall_clock_seconds": 0.9482430829999995
     },
     "F4_full": {
       "centered_validate_daily_mean_abs_max": 1.4340380734741606e-16,
@@ -290,7 +290,7 @@
         "top_3h_hit_rate": 0.3452054794520548,
         "top_6h_precision": 0.4936073059360729
       },
-      "wall_clock_seconds": 0.9883724160000007
+      "wall_clock_seconds": 0.992408792
     }
   }
 }

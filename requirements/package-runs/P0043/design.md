@@ -39,7 +39,7 @@ The module will:
 
 ## Model selection
 
-For each target series, select the simplest feature group whose validation performance is materially competitive with the best group. Materially competitive means validation MAE within 1% of the best validation MAE; otherwise select the best validation MAE.
+For each target series, select the feature group with the best validation MAE. If validation MAE is exactly tied, choose the simpler feature group.
 
 ## Test strategy
 

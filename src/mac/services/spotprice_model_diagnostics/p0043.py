@@ -149,7 +149,7 @@ def train_evaluate_target(rows: list[dict[str, object]], target: str) -> tuple[d
         "model_class": "HistGradientBoostingRegressor",
         "hyperparameters": hgb_params(),
         "selected_feature_group": selected,
-        "selected_by": "validation_hour_shape_MAE_simplest_within_1pct_of_best",
+        "selected_by": "best_validation_hour_shape_MAE_simplest_only_on_exact_tie",
         "day_centering_applied": True,
         "feature_names": feature_names_for_group(selected),
         "categorical_categories": trained[selected]["encoder"].categories,  # type: ignore[index]
@@ -335,7 +335,7 @@ def select_feature_group(results: dict[str, dict[str, object]]) -> str:
     scores = {group: float(row["validate"]["hour_shape_MAE"]) for group, row in results.items()}  # type: ignore[index]
     best = min(scores.values())
     for group in FEATURE_GROUPS:
-        if scores[group] <= best * 1.01:
+        if abs(scores[group] - best) <= 1e-12:
             return group
     return min(scores, key=scores.get)
 
@@ -478,7 +478,7 @@ def best_worst_report(summary: dict[str, object]) -> str:
 
 
 def next_report(summary: dict[str, object]) -> str:
-    return "# P0043 next model training plan\n\nP0044 should train AI-1 next if ChatGPT accepts P0043 metrics. AI-2 now has trained SE1 and area_diff diagnostics on the corrected P0042 fixed-CET dataset; the next missing piece is day-to-local-week shape/scale.\n"
+    return "# P0043 next model training plan\n\nP0044 should train AI-1 next if ChatGPT accepts P0043 metrics. AI-2 now has trained SE1 and area_diff diagnostics on the corrected P0042 fixed-CET dataset. SE1 selected F4_full; area_diff selected F2_time_calendar_weather_actual because it has the best validation MAE and better holdout MAE/Spearman/bottom3 than F0. The next missing piece is day-to-local-week shape/scale.\n"
 
 
 def component_summary(summary: dict[str, object]) -> str:

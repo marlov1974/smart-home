@@ -1,0 +1,494 @@
+{
+  "area_diff_proxy_se3": {
+    "best_20": [
+      {
+        "MAE": 0.12667458179738286,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-02",
+        "month": 5
+      },
+      {
+        "MAE": 0.14791006434044665,
+        "is_special_day": 1,
+        "model_cet_date": "2026-04-05",
+        "month": 4
+      },
+      {
+        "MAE": 0.17896497368968964,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-04",
+        "month": 1
+      },
+      {
+        "MAE": 0.2007285073696289,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-14",
+        "month": 3
+      },
+      {
+        "MAE": 0.20896873107444172,
+        "is_special_day": 1,
+        "model_cet_date": "2026-05-01",
+        "month": 5
+      },
+      {
+        "MAE": 0.2266556638547408,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-24",
+        "month": 2
+      },
+      {
+        "MAE": 0.22711560597105554,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-07",
+        "month": 5
+      },
+      {
+        "MAE": 0.25105070899848125,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-26",
+        "month": 4
+      },
+      {
+        "MAE": 0.25644690810874327,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-16",
+        "month": 2
+      },
+      {
+        "MAE": 0.2579090380097809,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-20",
+        "month": 1
+      },
+      {
+        "MAE": 0.258510894361802,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-14",
+        "month": 1
+      },
+      {
+        "MAE": 0.26441038333634054,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-12",
+        "month": 3
+      },
+      {
+        "MAE": 0.2658181670973107,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-07",
+        "month": 1
+      },
+      {
+        "MAE": 0.2674941041978261,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-07",
+        "month": 2
+      },
+      {
+        "MAE": 0.2739947783947093,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-12",
+        "month": 1
+      },
+      {
+        "MAE": 0.28176595923995124,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-02",
+        "month": 1
+      },
+      {
+        "MAE": 0.2840088132605683,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-13",
+        "month": 2
+      },
+      {
+        "MAE": 0.2844288538732192,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-08",
+        "month": 1
+      },
+      {
+        "MAE": 0.28540741616987975,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-01",
+        "month": 2
+      },
+      {
+        "MAE": 0.28932176008227634,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-26",
+        "month": 3
+      }
+    ],
+    "worst_20": [
+      {
+        "MAE": 1.268836355910519,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-03",
+        "month": 2
+      },
+      {
+        "MAE": 1.2138649192998374,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-13",
+        "month": 4
+      },
+      {
+        "MAE": 1.074696597442403,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-12",
+        "month": 4
+      },
+      {
+        "MAE": 1.0243215287153062,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-14",
+        "month": 2
+      },
+      {
+        "MAE": 0.9524496445275724,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-27",
+        "month": 3
+      },
+      {
+        "MAE": 0.9035999913595328,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-03",
+        "month": 3
+      },
+      {
+        "MAE": 0.8344603989944991,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-04",
+        "month": 2
+      },
+      {
+        "MAE": 0.819348316188639,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-20",
+        "month": 2
+      },
+      {
+        "MAE": 0.7952827572494701,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-21",
+        "month": 3
+      },
+      {
+        "MAE": 0.7852769579587174,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-31",
+        "month": 3
+      },
+      {
+        "MAE": 0.7723519216968416,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-01",
+        "month": 4
+      },
+      {
+        "MAE": 0.7690969303925725,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-25",
+        "month": 3
+      },
+      {
+        "MAE": 0.7658563145164505,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-09",
+        "month": 3
+      },
+      {
+        "MAE": 0.7204680399607654,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-05",
+        "month": 2
+      },
+      {
+        "MAE": 0.7134354528789922,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-18",
+        "month": 1
+      },
+      {
+        "MAE": 0.7027352267468149,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-30",
+        "month": 1
+      },
+      {
+        "MAE": 0.69158704594199,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-02",
+        "month": 2
+      },
+      {
+        "MAE": 0.6887188375181817,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-29",
+        "month": 1
+      },
+      {
+        "MAE": 0.6878156408014166,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-11",
+        "month": 5
+      },
+      {
+        "MAE": 0.6766838442916336,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-01",
+        "month": 3
+      }
+    ]
+  },
+  "system_proxy_se1": {
+    "best_20": [
+      {
+        "MAE": 0.13686122209313256,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-11",
+        "month": 2
+      },
+      {
+        "MAE": 0.15402601029528223,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-28",
+        "month": 1
+      },
+      {
+        "MAE": 0.16773928405402347,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-02",
+        "month": 2
+      },
+      {
+        "MAE": 0.17189701249467848,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-15",
+        "month": 1
+      },
+      {
+        "MAE": 0.1797572926748777,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-29",
+        "month": 1
+      },
+      {
+        "MAE": 0.1839633942877028,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-13",
+        "month": 2
+      },
+      {
+        "MAE": 0.2003679893323852,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-10",
+        "month": 2
+      },
+      {
+        "MAE": 0.20219817267188556,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-30",
+        "month": 1
+      },
+      {
+        "MAE": 0.2290150202109248,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-05",
+        "month": 2
+      },
+      {
+        "MAE": 0.2339927063085775,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-12",
+        "month": 2
+      },
+      {
+        "MAE": 0.24718090207309282,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-18",
+        "month": 1
+      },
+      {
+        "MAE": 0.25018347416574116,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-03",
+        "month": 1
+      },
+      {
+        "MAE": 0.25573354916135654,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-24",
+        "month": 2
+      },
+      {
+        "MAE": 0.2614770020125067,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-04",
+        "month": 4
+      },
+      {
+        "MAE": 0.26253503110663284,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-05",
+        "month": 3
+      },
+      {
+        "MAE": 0.26385003832197607,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-27",
+        "month": 1
+      },
+      {
+        "MAE": 0.26522376249496016,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-13",
+        "month": 1
+      },
+      {
+        "MAE": 0.26875135299618264,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-26",
+        "month": 3
+      },
+      {
+        "MAE": 0.2689820066122998,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-18",
+        "month": 2
+      },
+      {
+        "MAE": 0.272150930535666,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-17",
+        "month": 5
+      }
+    ],
+    "worst_20": [
+      {
+        "MAE": 0.9415456527206866,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-01",
+        "month": 4
+      },
+      {
+        "MAE": 0.9192691504107203,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-19",
+        "month": 2
+      },
+      {
+        "MAE": 0.904074703282551,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-13",
+        "month": 5
+      },
+      {
+        "MAE": 0.8865993970090473,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-04",
+        "month": 3
+      },
+      {
+        "MAE": 0.8598078132206083,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-22",
+        "month": 5
+      },
+      {
+        "MAE": 0.8451168453255528,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-14",
+        "month": 1
+      },
+      {
+        "MAE": 0.7945599022007347,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-12",
+        "month": 3
+      },
+      {
+        "MAE": 0.7838848939368942,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-11",
+        "month": 3
+      },
+      {
+        "MAE": 0.7755920913129356,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-03",
+        "month": 3
+      },
+      {
+        "MAE": 0.7740773428628976,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-01",
+        "month": 2
+      },
+      {
+        "MAE": 0.7700179462255098,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-25",
+        "month": 2
+      },
+      {
+        "MAE": 0.7352119041290672,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-04",
+        "month": 1
+      },
+      {
+        "MAE": 0.7003740892947671,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-04",
+        "month": 2
+      },
+      {
+        "MAE": 0.6977378802336763,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-03",
+        "month": 5
+      },
+      {
+        "MAE": 0.6743624639313878,
+        "is_special_day": 0,
+        "model_cet_date": "2026-04-08",
+        "month": 4
+      },
+      {
+        "MAE": 0.6652499767477433,
+        "is_special_day": 0,
+        "model_cet_date": "2026-02-28",
+        "month": 2
+      },
+      {
+        "MAE": 0.6488560150555462,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-06",
+        "month": 3
+      },
+      {
+        "MAE": 0.6304520007272142,
+        "is_special_day": 0,
+        "model_cet_date": "2026-01-25",
+        "month": 1
+      },
+      {
+        "MAE": 0.6167561916171156,
+        "is_special_day": 0,
+        "model_cet_date": "2026-05-19",
+        "month": 5
+      },
+      {
+        "MAE": 0.6137252556538687,
+        "is_special_day": 0,
+        "model_cet_date": "2026-03-21",
+        "month": 3
+      }
+    ]
+  }
+}

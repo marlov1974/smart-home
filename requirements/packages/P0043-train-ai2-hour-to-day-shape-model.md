@@ -460,4 +460,6 @@ If applied, report metrics both before and after centering and use centered pred
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in package-run evidence under `requirements/package-runs/P0043/`.
+
+Result: PASS. P0043 trained AI-2 diagnostics from `ai2_hour_to_day_training_targets_v2`, using chronological train/validate/holdout split, separate SE1 and area_diff targets, B0-B3 train-only baselines, F0-F4 feature groups, bounded `HistGradientBoostingRegressor`, and deterministic per-day prediction centering. No binary model artifacts were committed. No AI-1, M5/M6/M7/API/device, Shelly, Home Assistant or KVS action was performed.

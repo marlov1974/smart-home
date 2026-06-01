@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0042
+Last changed: P0043
 
 ## Module
 
@@ -273,3 +273,30 @@ area_diff_proxy_se3: max(generic robust scale, historical median complete fixed-
 ```
 
 The selected area-diff floor is recorded in P0042 evidence. P0042 does not train AI models, build an API, or touch optimizer, Shelly, Home Assistant, KVS or device paths.
+
+## P0043 AI-2 Hour-To-Day Shape Model
+
+P0043 trains AI-2 diagnostics on the corrected P0042 fixed-CET table:
+
+```text
+ai2_hour_to_day_training_targets_v2
+```
+
+AI-2 is trained separately for:
+
+```text
+system_proxy_se1
+area_diff_proxy_se3
+```
+
+The target is `hour_shape`; P0043 does not train on absolute prices or ratio diagnostics. The split is chronological:
+
+```text
+train:    earliest..2024-12-31
+validate: 2025-01-01..2025-12-31
+holdout:  2026-01-01..latest complete fixed-CET model day
+```
+
+P0043 compares train-only baselines B0-B3 and feature groups F0-F4, then trains bounded `HistGradientBoostingRegressor` models. Predictions are day-centered per `model_cet_date` before default evaluation.
+
+P0043 writes model configs and metrics under `requirements/package-runs/P0043/`. It does not commit binary model artifacts, train AI-1, build a production API, or touch optimizer, Shelly, Home Assistant, KVS or device paths.

@@ -1,0 +1,2202 @@
+{
+  "area_diff_proxy_se3": {
+    "day_level_shape": {
+      "best_20": [
+        {
+          "absolute_error": 0.0003317101810899059,
+          "actual": -0.29098595460436305,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-21",
+          "month": 2,
+          "predicted": -0.29131766478545296,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.0012514044910388045,
+          "actual": -0.23519690388355857,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-17",
+          "month": 5,
+          "predicted": -0.23394549939251977,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.001642306068755428,
+          "actual": -0.2446232222730338,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-22",
+          "month": 3,
+          "predicted": -0.24626552834178922,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.003780984737156795,
+          "actual": -0.07714060440225182,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-15",
+          "month": 2,
+          "predicted": -0.07335961966509502,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.005454433529230286,
+          "actual": -0.05270921985815607,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-08",
+          "month": 5,
+          "predicted": -0.058163653387386355,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.006798936013765133,
+          "actual": 0.43550893019795933,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-10",
+          "month": 3,
+          "predicted": 0.4287099941841942,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.010733916008429434,
+          "actual": -0.15983536153325337,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-06",
+          "month": 2,
+          "predicted": -0.1705692775416828,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.014432033362677954,
+          "actual": -0.17463540023132185,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-05",
+          "month": 3,
+          "predicted": -0.1602033668686439,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.018035105080276864,
+          "actual": -0.22232168225929472,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-18",
+          "month": 1,
+          "predicted": -0.24035678733957158,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.018730692692429836,
+          "actual": -0.04257149953871226,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-04",
+          "month": 2,
+          "predicted": -0.0613021922311421,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.02142065276171766,
+          "actual": 0.07131495442080019,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-20",
+          "month": 5,
+          "predicted": 0.09273560718251785,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.023374530774016827,
+          "actual": 0.10665232302762831,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-14",
+          "month": 3,
+          "predicted": 0.13002685380164514,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.025458910316562302,
+          "actual": -0.05169556853720423,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-20",
+          "month": 4,
+          "predicted": -0.026236658220641928,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.02880514064666284,
+          "actual": 0.16746439399530905,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-17",
+          "month": 3,
+          "predicted": 0.1962695346419719,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.0318105758779183,
+          "actual": -0.19960845318826548,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-14",
+          "month": 2,
+          "predicted": -0.16779787731034718,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.04006577542744828,
+          "actual": -0.009413785446384437,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-03",
+          "month": 3,
+          "predicted": -0.04947956087383272,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04186062230437257,
+          "actual": 0.25867144654768254,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-08",
+          "month": 4,
+          "predicted": 0.21681082424330997,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04677481761173323,
+          "actual": -0.16343314938162706,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-05",
+          "month": 2,
+          "predicted": -0.11665833176989383,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04681155882245164,
+          "actual": -0.3038984237096504,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-28",
+          "month": 3,
+          "predicted": -0.2570868648871988,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.057193813222717715,
+          "actual": 0.20361802209122162,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-14",
+          "month": 5,
+          "predicted": 0.1464242088685039,
+          "special_day_type": "movable_public_holiday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 2.6166906613298617,
+          "actual": 2.465334995561095,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-20",
+          "month": 2,
+          "predicted": -0.15135566576876705,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.96354633930166,
+          "actual": 1.9058171281175162,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-25",
+          "month": 2,
+          "predicted": -0.05772921118414372,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.5897062417414438,
+          "actual": 1.4531257835650278,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-26",
+          "month": 1,
+          "predicted": -0.13658045817641606,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.5295805507721512,
+          "actual": 1.3607681111419834,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-08",
+          "month": 1,
+          "predicted": -0.1688124396301677,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.5154715034657222,
+          "actual": 1.3137705381231741,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-17",
+          "month": 1,
+          "predicted": -0.20170096534254822,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.41891361367985,
+          "actual": -0.8421302699572025,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-23",
+          "month": 2,
+          "predicted": 0.5767833437226475,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.342300852654943,
+          "actual": 1.091873780999837,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-31",
+          "month": 1,
+          "predicted": -0.25042707165510597,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.259162491044825,
+          "actual": 1.1830729450038642,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-02",
+          "month": 1,
+          "predicted": -0.07608954604096077,
+          "special_day_type": "post_holiday_recovery_day"
+        },
+        {
+          "absolute_error": 1.1800542556074078,
+          "actual": 0.9485346414658636,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-01",
+          "month": 2,
+          "predicted": -0.2315196141415443,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.9296096479025506,
+          "actual": -1.0961425056858305,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-12",
+          "month": 2,
+          "predicted": -0.16653285778327986,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8700039735943961,
+          "actual": -0.6296964283896503,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-17",
+          "month": 4,
+          "predicted": 0.2403075452047457,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8572873100621446,
+          "actual": 0.9946655861706653,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-07",
+          "month": 1,
+          "predicted": 0.1373782761085206,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8135979765304053,
+          "actual": -0.5645655281477601,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-18",
+          "month": 2,
+          "predicted": 0.24903244838264532,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8009386790678729,
+          "actual": 0.6798622630035281,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-14",
+          "month": 1,
+          "predicted": -0.12107641606434473,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7801755661412677,
+          "actual": 0.4969467170872319,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-08",
+          "month": 2,
+          "predicted": -0.28322884905403584,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.7792620257742167,
+          "actual": 0.6017909744674537,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-16",
+          "month": 2,
+          "predicted": -0.17747105130676302,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.778820823830769,
+          "actual": -0.20282085599049207,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-02",
+          "month": 3,
+          "predicted": 0.575999967840277,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7596295693129873,
+          "actual": -0.7869807646781968,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-24",
+          "month": 2,
+          "predicted": -0.027351195365209413,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7582556507665815,
+          "actual": -0.2199558797942347,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-11",
+          "month": 5,
+          "predicted": 0.5382997709723468,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7524053040962968,
+          "actual": -0.7327140954019085,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-03",
+          "month": 2,
+          "predicted": 0.01969120869438833,
+          "special_day_type": "normal_weekday"
+        }
+      ]
+    },
+    "log_day_scale_index": {
+      "best_20": [
+        {
+          "absolute_error": 0.0036351921680364205,
+          "actual": -0.007774616533626681,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-29",
+          "month": 3,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.010171725218199923,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-03",
+          "month": 1,
+          "predicted": 0.010171725218199923,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.011409808701663101,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-25",
+          "month": 1,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.011409808701663101,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-08",
+          "month": 2,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.011409808701663101,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-15",
+          "month": 2,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.011409808701663101,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-22",
+          "month": 2,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.011409808701663101,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-08",
+          "month": 3,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.011472932694496573,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-07",
+          "month": 2,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.011472932694496573,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-14",
+          "month": 2,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.011472932694496573,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-21",
+          "month": 2,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.011472932694496573,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-28",
+          "month": 2,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.014572919558502158,
+          "actual": 0.003099986864005585,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-28",
+          "month": 3,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.014866011463751539,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-17",
+          "month": 1,
+          "predicted": 0.014866011463751539,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.014866011463751539,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-24",
+          "month": 1,
+          "predicted": 0.014866011463751539,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.016104094947214723,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-11",
+          "month": 1,
+          "predicted": -0.016104094947214723,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.01965325900680176,
+          "actual": 0.22204928138054142,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-23",
+          "month": 3,
+          "predicted": 0.24170254038734318,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.023309052374813788,
+          "actual": 0.06618382299672569,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-12",
+          "month": 3,
+          "predicted": 0.08949287537153948,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.026355120927270215,
+          "actual": 0.08123022502520622,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-09",
+          "month": 3,
+          "predicted": 0.10758534595247643,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.026441383846266306,
+          "actual": 0.0850565793033364,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-20",
+          "month": 3,
+          "predicted": 0.11149796314960271,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.030328049941688945,
+          "actual": 0.25393811974809516,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-26",
+          "month": 3,
+          "predicted": 0.22361006980640621,
+          "special_day_type": "normal_weekday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 1.4854262623606382,
+          "actual": -1.2746764156699362,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-06",
+          "month": 4,
+          "predicted": 0.21074984669070213,
+          "special_day_type": "movable_public_holiday"
+        },
+        {
+          "absolute_error": 1.458627544488318,
+          "actual": -1.3581295670447575,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-01",
+          "month": 5,
+          "predicted": 0.10049797744356068,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 1.3208750441699688,
+          "actual": -1.0972649743635625,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-25",
+          "month": 3,
+          "predicted": 0.22361006980640621,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2492519758365899,
+          "actual": -1.2653560707838045,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-04",
+          "month": 1,
+          "predicted": -0.016104094947214723,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.2056629506491596,
+          "actual": -1.094164987499557,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-27",
+          "month": 3,
+          "predicted": 0.11149796314960271,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1591310204121823,
+          "actual": -1.069638145040643,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-10",
+          "month": 3,
+          "predicted": 0.08949287537153948,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1424957642220017,
+          "actual": 1.3341718375891891,
+          "is_special_day": 1,
+          "model_cet_date": "2026-01-06",
+          "month": 1,
+          "predicted": 0.19167607336718745,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 1.1283312581772653,
+          "actual": -1.139804190871762,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-14",
+          "month": 3,
+          "predicted": -0.011472932694496573,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.1222178697556704,
+          "actual": -0.9444846072332655,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-09",
+          "month": 1,
+          "predicted": 0.1777332625224048,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0876228082613997,
+          "actual": 1.2653560707838045,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-02",
+          "month": 1,
+          "predicted": 0.1777332625224048,
+          "special_day_type": "post_holiday_recovery_day"
+        },
+        {
+          "absolute_error": 1.0862090893983964,
+          "actual": -0.8935517132886313,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-07",
+          "month": 5,
+          "predicted": 0.19265737610976516,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0847638210598307,
+          "actual": 1.276439894427018,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-08",
+          "month": 1,
+          "predicted": 0.19167607336718745,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0801414025327922,
+          "actual": 1.2718174758999796,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-07",
+          "month": 1,
+          "predicted": 0.19167607336718745,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.022964583035412,
+          "actual": -0.8303072069256467,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-12",
+          "month": 5,
+          "predicted": 0.19265737610976516,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0146945143485426,
+          "actual": -1.0261043230502058,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-15",
+          "month": 3,
+          "predicted": -0.011409808701663101,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.0088096063719085,
+          "actual": 1.0940184493637346,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-25",
+          "month": 2,
+          "predicted": 0.08520884299182616,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.9685883518395706,
+          "actual": -0.7733509164123958,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-28",
+          "month": 1,
+          "predicted": 0.1952374354271748,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.9546563324514654,
+          "actual": -0.9444846072332655,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-10",
+          "month": 1,
+          "predicted": 0.010171725218199923,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.8924793047253454,
+          "actual": 1.0851366808351106,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-02",
+          "month": 4,
+          "predicted": 0.19265737610976516,
+          "special_day_type": "holiday_eve"
+        },
+        {
+          "absolute_error": 0.8890768219219585,
+          "actual": -0.6783269752312563,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-13",
+          "month": 4,
+          "predicted": 0.21074984669070213,
+          "special_day_type": "normal_weekday"
+        }
+      ]
+    },
+    "log_local_7d_scale": {
+      "best_20": [
+        {
+          "absolute_error": 0.005350096172525132,
+          "actual": -0.9670183967865384,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-16",
+          "month": 2,
+          "predicted": -0.9616683006140133,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.022232575635257046,
+          "actual": -1.4255992778181912,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-19",
+          "month": 2,
+          "predicted": -1.4033667021829341,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.05116873831797375,
+          "actual": -1.1937914770521847,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-15",
+          "month": 2,
+          "predicted": -1.142622738734211,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.08572472281226817,
+          "actual": -1.7180084357693708,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-14",
+          "month": 4,
+          "predicted": -1.803733158581639,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.08708632927295734,
+          "actual": -1.4495856603621462,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-01",
+          "month": 2,
+          "predicted": -1.3624993310891889,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.09256877894124216,
+          "actual": -1.244508381534213,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-13",
+          "month": 2,
+          "predicted": -1.3370771604754552,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.09301332069780033,
+          "actual": -1.3198607617778633,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-06",
+          "month": 3,
+          "predicted": -1.4128740824756636,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.10207454824816908,
+          "actual": -1.305410468879776,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-05",
+          "month": 3,
+          "predicted": -1.4074850171279452,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.12388495567055191,
+          "actual": -1.8157934862401135,
+          "is_special_day": 1,
+          "model_cet_date": "2026-01-01",
+          "month": 1,
+          "predicted": -1.6919085305695616,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 0.13075567439245694,
+          "actual": -1.8386349051601167,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-24",
+          "month": 2,
+          "predicted": -1.7078792307676598,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.14806064776359618,
+          "actual": -1.050874463727711,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-18",
+          "month": 2,
+          "predicted": -1.1989351114913072,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.15214507583437942,
+          "actual": -1.1681291813587642,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-04",
+          "month": 3,
+          "predicted": -1.3202742571931436,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.15237583173757985,
+          "actual": -1.2463585208223746,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-14",
+          "month": 2,
+          "predicted": -1.0939826890847948,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.15719800850129162,
+          "actual": -1.8442627058268706,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-25",
+          "month": 2,
+          "predicted": -1.687064697325579,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.1662933264973241,
+          "actual": -1.4480102031005444,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-22",
+          "month": 2,
+          "predicted": -1.6143035295978685,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.1732644594892172,
+          "actual": -1.3269529151627548,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-31",
+          "month": 1,
+          "predicted": -1.1536884556735376,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.17852142373192859,
+          "actual": -1.3924558038834698,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-11",
+          "month": 1,
+          "predicted": -1.2139343801515412,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.1900130824088051,
+          "actual": -1.553276175667332,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-13",
+          "month": 4,
+          "predicted": -1.743289258076137,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.20869379427846457,
+          "actual": -1.7382412144017627,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-27",
+          "month": 1,
+          "predicted": -1.5295474201232981,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.21234720159005338,
+          "actual": -1.223238450822116,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-07",
+          "month": 3,
+          "predicted": -1.0108912492320625,
+          "special_day_type": "normal_saturday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 1.3401860932713676,
+          "actual": -0.7923226961587512,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-25",
+          "month": 4,
+          "predicted": -2.1325087894301187,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.31874979153502,
+          "actual": -0.6607259740546991,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-29",
+          "month": 4,
+          "predicted": -1.979475765589719,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2967597192409155,
+          "actual": -0.7707142052670354,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-01",
+          "month": 5,
+          "predicted": -2.0674739245079508,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 1.290806895950603,
+          "actual": -0.6622906770077722,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-21",
+          "month": 5,
+          "predicted": -1.9530975729583753,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.28715060449596,
+          "actual": -0.744149727744876,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-30",
+          "month": 4,
+          "predicted": -2.031300332240836,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2812173844805979,
+          "actual": -0.852282136278575,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-23",
+          "month": 4,
+          "predicted": -2.1334995207591727,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1863530749290647,
+          "actual": -0.8450855177561979,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-02",
+          "month": 5,
+          "predicted": -2.0314385926852627,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.1780408171160843,
+          "actual": -0.8620111976175607,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-22",
+          "month": 3,
+          "predicted": -2.040052014733645,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.1768672541495904,
+          "actual": -0.786488549744447,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-07",
+          "month": 4,
+          "predicted": -1.9633558038940375,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1755973115835685,
+          "actual": -0.660154958866149,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-16",
+          "month": 3,
+          "predicted": -1.8357522704497176,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.16784277804672,
+          "actual": -1.0183701777997884,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-15",
+          "month": 5,
+          "predicted": -2.1862129558465084,
+          "special_day_type": "bridge_day_strong"
+        },
+        {
+          "absolute_error": 1.160467121140336,
+          "actual": -0.9386082375777638,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-07",
+          "month": 5,
+          "predicted": -2.0990753587180997,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1477423870370278,
+          "actual": -0.959620751674635,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-24",
+          "month": 3,
+          "predicted": -2.107363138711663,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.147492218242989,
+          "actual": -0.847511216479329,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-06",
+          "month": 5,
+          "predicted": -1.995003434722318,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1473480147716977,
+          "actual": -0.8533350056646075,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-08",
+          "month": 4,
+          "predicted": -2.000683020436305,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.140707844115552,
+          "actual": -0.514792857842733,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-18",
+          "month": 3,
+          "predicted": -1.655500701958285,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1405897223440686,
+          "actual": -0.8515173750313967,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-24",
+          "month": 4,
+          "predicted": -1.9921070973754653,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.138585542165716,
+          "actual": -0.8344170092244314,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-06",
+          "month": 4,
+          "predicted": -1.9730025513901475,
+          "special_day_type": "movable_public_holiday"
+        },
+        {
+          "absolute_error": 1.1354421208168661,
+          "actual": -0.9770397754931612,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-25",
+          "month": 3,
+          "predicted": -2.1124818963100274,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1326921108911994,
+          "actual": -0.7426250186228789,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-27",
+          "month": 4,
+          "predicted": -1.8753171295140783,
+          "special_day_type": "normal_weekday"
+        }
+      ]
+    }
+  },
+  "system_proxy_se1": {
+    "day_level_shape": {
+      "best_20": [
+        {
+          "absolute_error": 0.0011369515408016784,
+          "actual": -0.3073763366460085,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-09",
+          "month": 4,
+          "predicted": -0.3085132881868102,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.004499572205699132,
+          "actual": -0.32076928833143753,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-05",
+          "month": 5,
+          "predicted": -0.3162697161257384,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.009661898974652305,
+          "actual": 0.44873808505442225,
+          "is_special_day": 1,
+          "model_cet_date": "2026-01-06",
+          "month": 1,
+          "predicted": 0.43907618607976995,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 0.020578616623881718,
+          "actual": 0.7062094221339458,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-03",
+          "month": 2,
+          "predicted": 0.6856308055100641,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.027036843756733764,
+          "actual": 0.5596320189991464,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-27",
+          "month": 1,
+          "predicted": 0.5325951752424126,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.028554135113702916,
+          "actual": -0.48258833685373786,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-21",
+          "month": 2,
+          "predicted": -0.5111424719674408,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.031863998241491,
+          "actual": -0.5920056918377973,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-01",
+          "month": 5,
+          "predicted": -0.6238696900792883,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 0.03267423964871785,
+          "actual": -0.394148953092752,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-17",
+          "month": 5,
+          "predicted": -0.36147471344403415,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.03331337457235242,
+          "actual": -0.1839154760047255,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-07",
+          "month": 4,
+          "predicted": -0.21722885057707791,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.03363962875568288,
+          "actual": -0.31725868717095773,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-21",
+          "month": 3,
+          "predicted": -0.3508983159266406,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.03604155413922072,
+          "actual": -0.3024020403297321,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-30",
+          "month": 3,
+          "predicted": -0.33844359446895284,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.036530908988012485,
+          "actual": -0.0037597277570520444,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-13",
+          "month": 1,
+          "predicted": 0.03277118123096044,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.044077653269295136,
+          "actual": -0.5581606619639033,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-29",
+          "month": 3,
+          "predicted": -0.5140830086946082,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.05339986921697212,
+          "actual": -0.07320106091288782,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-22",
+          "month": 2,
+          "predicted": -0.019801191695915692,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.054098644356384895,
+          "actual": -0.44936652509923325,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-25",
+          "month": 1,
+          "predicted": -0.5034651694556181,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.055758940288238884,
+          "actual": 0.07963418046109771,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-09",
+          "month": 1,
+          "predicted": 0.023875240172858834,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06079566668750125,
+          "actual": 0.5951333055927406,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-13",
+          "month": 2,
+          "predicted": 0.5343376389052393,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06111889118922083,
+          "actual": 0.014734292478279724,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-17",
+          "month": 3,
+          "predicted": -0.046384598710941104,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06619912659472682,
+          "actual": 0.6240272300588054,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-17",
+          "month": 4,
+          "predicted": 0.5578281034640786,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06867051006384937,
+          "actual": -0.09008772772412078,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-18",
+          "month": 1,
+          "predicted": -0.15875823778797016,
+          "special_day_type": "normal_sunday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 1.2840396275430996,
+          "actual": 0.8926927254105677,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-15",
+          "month": 3,
+          "predicted": -0.3913469021325319,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.2407135570885794,
+          "actual": 1.7994329374101008,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-31",
+          "month": 3,
+          "predicted": 0.5587193803215214,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2055592601153058,
+          "actual": -0.5466739800328764,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-22",
+          "month": 1,
+          "predicted": 0.6588852800824294,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1668842486392452,
+          "actual": 1.0806728121431928,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-20",
+          "month": 3,
+          "predicted": -0.08621143649605253,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0551959140068154,
+          "actual": 1.0156418464405907,
+          "is_special_day": 1,
+          "model_cet_date": "2026-01-05",
+          "month": 1,
+          "predicted": -0.039554067566224725,
+          "special_day_type": "bridge_day_strong"
+        },
+        {
+          "absolute_error": 0.9041723400176072,
+          "actual": -0.2668567036005196,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-04",
+          "month": 2,
+          "predicted": 0.6373156364170875,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8669754050163857,
+          "actual": -0.8296678168832479,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-14",
+          "month": 1,
+          "predicted": 0.03730758813313782,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8607904073783288,
+          "actual": -0.7840613921318312,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-20",
+          "month": 2,
+          "predicted": 0.07672901524649761,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8554152751901376,
+          "actual": -1.2285010081836303,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-04",
+          "month": 3,
+          "predicted": -0.37308573299349274,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.8471091869096627,
+          "actual": -0.7001298977717972,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-07",
+          "month": 1,
+          "predicted": 0.1469792891378655,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7623610667334306,
+          "actual": -0.37698788250850324,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-25",
+          "month": 2,
+          "predicted": 0.38537318422492745,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7575621753921834,
+          "actual": -0.15243620848899261,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-23",
+          "month": 1,
+          "predicted": 0.6051259669031908,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7436558312458795,
+          "actual": 1.0671057102766603,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-03",
+          "month": 4,
+          "predicted": 0.3234498790307808,
+          "special_day_type": "movable_public_holiday"
+        },
+        {
+          "absolute_error": 0.7136804173423291,
+          "actual": 0.23255146325060935,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-01",
+          "month": 3,
+          "predicted": -0.4811289540917198,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.7107522456136269,
+          "actual": 0.49284527004061596,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-24",
+          "month": 4,
+          "predicted": -0.21790697557301095,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.7097680717415584,
+          "actual": 0.3510351183616827,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-04",
+          "month": 1,
+          "predicted": -0.35873295337987565,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.6960045719426746,
+          "actual": 0.3504022852090654,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-02",
+          "month": 4,
+          "predicted": -0.3456022867336092,
+          "special_day_type": "holiday_eve"
+        },
+        {
+          "absolute_error": 0.6708053959928043,
+          "actual": 0.7451286580456907,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-12",
+          "month": 1,
+          "predicted": 0.0743232620528864,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.6602354923806913,
+          "actual": -0.05153021640384924,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-05",
+          "month": 2,
+          "predicted": 0.6087052759768421,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.6519246076610387,
+          "actual": 1.315555829369871,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-29",
+          "month": 4,
+          "predicted": 0.6636312217088324,
+          "special_day_type": "normal_weekday"
+        }
+      ]
+    },
+    "log_day_scale_index": {
+      "best_20": [
+        {
+          "absolute_error": 0.0005863637280128925,
+          "actual": 0.1061591199539154,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-18",
+          "month": 1,
+          "predicted": 0.1067454836819283,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.001245314375817976,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-07",
+          "month": 4,
+          "predicted": -0.001245314375817976,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.0036883365296800944,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-26",
+          "month": 1,
+          "predicted": -0.0036883365296800944,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.0036883365296800944,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-30",
+          "month": 3,
+          "predicted": -0.0036883365296800944,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.006306078843739833,
+          "actual": 0.008392831472609278,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-07",
+          "month": 3,
+          "predicted": 0.002086752628869445,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.007363962879024848,
+          "actual": -0.041345088025342695,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-29",
+          "month": 3,
+          "predicted": -0.04870905090436754,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.007927578035190092,
+          "actual": 0.23976824605497807,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-18",
+          "month": 2,
+          "predicted": 0.24769582409016816,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.009845395561311865,
+          "actual": -0.2537440423043827,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-21",
+          "month": 2,
+          "predicted": -0.24389864674307082,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.023642562207158452,
+          "actual": 0.04134508802534265,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-27",
+          "month": 3,
+          "predicted": 0.017702525818184194,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.026009097858295527,
+          "actual": -0.15221335430051755,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-12",
+          "month": 3,
+          "predicted": -0.12620425644222202,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.026869614359424292,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-11",
+          "month": 4,
+          "predicted": 0.026869614359424292,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.029662973841133557,
+          "actual": -0.045878856543185964,
+          "is_special_day": 1,
+          "model_cet_date": "2026-05-14",
+          "month": 5,
+          "predicted": -0.016215882702052407,
+          "special_day_type": "movable_public_holiday"
+        },
+        {
+          "absolute_error": 0.03126389516530558,
+          "actual": -0.01704498278729897,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-15",
+          "month": 3,
+          "predicted": -0.04830887795260455,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.03519621632026724,
+          "actual": -0.039907482647185806,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-26",
+          "month": 3,
+          "predicted": -0.004711266326918569,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.037070135750048944,
+          "actual": 0.12281399056795164,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-20",
+          "month": 4,
+          "predicted": 0.15988412631800059,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.038585016420909,
+          "actual": -0.041265148383529286,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-24",
+          "month": 3,
+          "predicted": -0.0026801319626202852,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04089131422228785,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-07",
+          "month": 5,
+          "predicted": 0.04089131422228785,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.0435626358371508,
+          "actual": 0.04675082712987892,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-15",
+          "month": 1,
+          "predicted": 0.003188191292728122,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.043772788426104624,
+          "actual": 0.0,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-05",
+          "month": 5,
+          "predicted": 0.043772788426104624,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04461874897410446,
+          "actual": 0.03990748264718589,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-25",
+          "month": 3,
+          "predicted": -0.004711266326918569,
+          "special_day_type": "normal_weekday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 1.7727798453311305,
+          "actual": 2.0204756694212986,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-02",
+          "month": 3,
+          "predicted": 0.24769582409016816,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.7641604124188968,
+          "actual": -1.7609722211261687,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-14",
+          "month": 1,
+          "predicted": 0.003188191292728122,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.599856146717676,
+          "actual": -1.6115327456962187,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-07",
+          "month": 1,
+          "predicted": -0.011676598978542733,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.5403700351377148,
+          "actual": -1.536689209182394,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-28",
+          "month": 2,
+          "predicted": 0.003680825955320633,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.433723092740563,
+          "actual": -1.3446155882326514,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-08",
+          "month": 2,
+          "predicted": 0.08910750450791165,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.425058859978885,
+          "actual": -1.517912551932915,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-01",
+          "month": 2,
+          "predicted": -0.09285369195403018,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.3306390102709449,
+          "actual": -1.3206528000224287,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-14",
+          "month": 2,
+          "predicted": 0.009986210248516137,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.303025386522762,
+          "actual": 1.3609892844476263,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-09",
+          "month": 3,
+          "predicted": 0.057963897924864435,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2983540276883871,
+          "actual": -1.3165054205960216,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-01",
+          "month": 4,
+          "predicted": -0.01815139290763449,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2907741060349236,
+          "actual": 1.0468754592918528,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-03",
+          "month": 1,
+          "predicted": -0.24389864674307082,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.2791392077443564,
+          "actual": -1.1908885682479664,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-07",
+          "month": 2,
+          "predicted": 0.08825063949639005,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.1994294510499546,
+          "actual": -1.1894432408014384,
+          "is_special_day": 1,
+          "model_cet_date": "2026-01-01",
+          "month": 1,
+          "predicted": 0.009986210248516137,
+          "special_day_type": "fixed_public_holiday"
+        },
+        {
+          "absolute_error": 1.191284853592291,
+          "actual": -1.1860655279352648,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-03",
+          "month": 3,
+          "predicted": 0.005219325657026406,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1587791670856458,
+          "actual": -1.3474236398414792,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-20",
+          "month": 2,
+          "predicted": -0.1886444727558333,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1585717506357096,
+          "actual": -1.3213537746845534,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-02",
+          "month": 1,
+          "predicted": -0.1627820240488438,
+          "special_day_type": "post_holiday_recovery_day"
+        },
+        {
+          "absolute_error": 1.0789505963544714,
+          "actual": 1.1819922683785473,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-29",
+          "month": 4,
+          "predicted": 0.10304167202407584,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0714346221483035,
+          "actual": -1.2282365538009743,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-25",
+          "month": 4,
+          "predicted": -0.15680193165267067,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.064840455725782,
+          "actual": -0.981128387072433,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-05",
+          "month": 4,
+          "predicted": 0.08371206865334899,
+          "special_day_type": "movable_public_holiday"
+        },
+        {
+          "absolute_error": 1.0528289354752318,
+          "actual": -1.0196066380057445,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-26",
+          "month": 4,
+          "predicted": 0.03322229746948736,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.0316665468723218,
+          "actual": -1.2122434205820518,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-02",
+          "month": 5,
+          "predicted": -0.18057687370973,
+          "special_day_type": "normal_saturday"
+        }
+      ]
+    },
+    "log_local_7d_scale": {
+      "best_20": [
+        {
+          "absolute_error": 0.004064369489825914,
+          "actual": -1.3911285268935896,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-21",
+          "month": 4,
+          "predicted": -1.3870641574037637,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.014756624578847077,
+          "actual": -1.5650652290769016,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-03",
+          "month": 3,
+          "predicted": -1.5503086044980545,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.023025677237143993,
+          "actual": -1.5726721332437772,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-10",
+          "month": 3,
+          "predicted": -1.5496464560066332,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.023966478161151494,
+          "actual": -1.5486574204131158,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-13",
+          "month": 3,
+          "predicted": -1.5246909422519643,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.02667221562022415,
+          "actual": -1.4427218656685374,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-01",
+          "month": 4,
+          "predicted": -1.4693940812887616,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.03343218598750375,
+          "actual": -1.4892078731346652,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-14",
+          "month": 3,
+          "predicted": -1.522640059122169,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.038983204041052266,
+          "actual": -1.4858688702662308,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-30",
+          "month": 3,
+          "predicted": -1.4468856662251786,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.04961238042674054,
+          "actual": -1.527305082895578,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-11",
+          "month": 3,
+          "predicted": -1.4776927024688375,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.05292416170658132,
+          "actual": -0.9632447702547234,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-20",
+          "month": 1,
+          "predicted": -1.0161689319613048,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.0574199997300584,
+          "actual": -1.017558938020118,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-21",
+          "month": 1,
+          "predicted": -0.9601389382900596,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06215912319995054,
+          "actual": -1.6218300032081308,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-09",
+          "month": 3,
+          "predicted": -1.5596708800081802,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.06314468367702952,
+          "actual": -1.4912494034375878,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-15",
+          "month": 3,
+          "predicted": -1.4281047197605583,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 0.0688131425669436,
+          "actual": -1.4412707455537745,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-11",
+          "month": 4,
+          "predicted": -1.5100838881207181,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.06892978961549012,
+          "actual": -0.9682059301301504,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-24",
+          "month": 1,
+          "predicted": -0.8992761405146603,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 0.07343388665117256,
+          "actual": -1.570580847123451,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-12",
+          "month": 3,
+          "predicted": -1.4971469604722785,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.09209492817193721,
+          "actual": -1.3947777434683395,
+          "is_special_day": 1,
+          "model_cet_date": "2026-04-02",
+          "month": 4,
+          "predicted": -1.3026828152964023,
+          "special_day_type": "holiday_eve"
+        },
+        {
+          "absolute_error": 0.09493353978291852,
+          "actual": -1.3230942352337995,
+          "is_special_day": 0,
+          "model_cet_date": "2026-03-02",
+          "month": 3,
+          "predicted": -1.418027775016718,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.10045302271905232,
+          "actual": -1.3239911489249006,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-30",
+          "month": 4,
+          "predicted": -1.4244441716439529,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.10600543974795251,
+          "actual": -0.8621754854413165,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-19",
+          "month": 1,
+          "predicted": -0.968180925189269,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 0.12471007802815082,
+          "actual": -0.9582641051224122,
+          "is_special_day": 0,
+          "model_cet_date": "2026-01-11",
+          "month": 1,
+          "predicted": -1.082974183150563,
+          "special_day_type": "normal_sunday"
+        }
+      ],
+      "worst_20": [
+        {
+          "absolute_error": 1.4158601677036593,
+          "actual": -2.8554595920630446,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-24",
+          "month": 4,
+          "predicted": -1.4395994243593853,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.3065951029042666,
+          "actual": -2.7920162199058796,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-23",
+          "month": 4,
+          "predicted": -1.485421117001613,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2450150117796976,
+          "actual": -0.2604268923853298,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-14",
+          "month": 2,
+          "predicted": -1.5054419041650273,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.2384026892423647,
+          "actual": -0.2596746347664821,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-20",
+          "month": 2,
+          "predicted": -1.4980773240088467,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.2278798273562799,
+          "actual": -0.24487644662960542,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-15",
+          "month": 2,
+          "predicted": -1.4727562739858853,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.222598141775552,
+          "actual": -0.2745684333063981,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-09",
+          "month": 5,
+          "predicted": -1.49716657508195,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.2186140923113409,
+          "actual": -0.2593132984013376,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-05",
+          "month": 5,
+          "predicted": -1.4779273907126784,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1960316410756235,
+          "actual": -0.26011797676183696,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-13",
+          "month": 2,
+          "predicted": -1.4561496178374604,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.195342339944709,
+          "actual": -0.2747444587992919,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-16",
+          "month": 2,
+          "predicted": -1.4700867987440007,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1800076499950745,
+          "actual": -0.17345423792918824,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-07",
+          "month": 5,
+          "predicted": -1.3534618879242626,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1681012540002496,
+          "actual": -0.289986392024689,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-21",
+          "month": 2,
+          "predicted": -1.4580876460249386,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.1641078596250327,
+          "actual": -0.22185843992369583,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-04",
+          "month": 5,
+          "predicted": -1.3859662995487285,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1439618828283706,
+          "actual": -0.5675833825847649,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-20",
+          "month": 5,
+          "predicted": -1.7115452654131356,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1324855467267594,
+          "actual": -0.2688423268781085,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-08",
+          "month": 5,
+          "predicted": -1.4013278736048678,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.1099708858027992,
+          "actual": -0.34005928740236907,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-17",
+          "month": 2,
+          "predicted": -1.4500301732051684,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0626597574612202,
+          "actual": -0.38914740641156115,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-03",
+          "month": 5,
+          "predicted": -1.4518071638727814,
+          "special_day_type": "normal_sunday"
+        },
+        {
+          "absolute_error": 1.0553045076427505,
+          "actual": -2.3346112491513322,
+          "is_special_day": 0,
+          "model_cet_date": "2026-04-25",
+          "month": 4,
+          "predicted": -1.2793067415085817,
+          "special_day_type": "normal_saturday"
+        },
+        {
+          "absolute_error": 1.048298398221228,
+          "actual": -0.2610084964364499,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-06",
+          "month": 5,
+          "predicted": -1.3093068946576778,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0389004734166263,
+          "actual": -0.6148929944148638,
+          "is_special_day": 0,
+          "model_cet_date": "2026-05-21",
+          "month": 5,
+          "predicted": -1.65379346783149,
+          "special_day_type": "normal_weekday"
+        },
+        {
+          "absolute_error": 1.0216202817361637,
+          "actual": -0.36702023670766165,
+          "is_special_day": 0,
+          "model_cet_date": "2026-02-19",
+          "month": 2,
+          "predicted": -1.3886405184438253,
+          "special_day_type": "normal_weekday"
+        }
+      ]
+    }
+  }
+}

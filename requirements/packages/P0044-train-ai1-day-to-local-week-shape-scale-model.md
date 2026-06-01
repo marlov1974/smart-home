@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+implemented-warn
 
 ## Package order
 
@@ -593,4 +593,24 @@ Check that exponentiated scale predictions are finite and positive.
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in P0044 as a Mac-only AI-1 diagnostic/training package.
+
+Result: WARN.
+
+Summary:
+
+- Used corrected P0042 table `ai1_day_to_local_week_training_targets_v2`.
+- Split: train earliest..2024-12-31, validate 2025-01-01..2025-12-31, holdout 2026-01-01..2026-05-21.
+- Trained and evaluated six bounded `HistGradientBoostingRegressor` diagnostics.
+- SE1 selected F5 for all three AI-1 targets and beat the required B0/train-mean baselines on holdout.
+- area_diff `day_level_shape` selected F5 and only slightly beat B0 on holdout.
+- area_diff `log_day_scale_index` selected F0 but did not beat B0 on holdout.
+- area_diff `log_local_7d_scale` selected F5 but did not beat train-mean baseline on holdout.
+- P0045 should use AI-1 for SE1 targets, may use area_diff `day_level_shape` cautiously, and should prefer baseline/API-anchor fallback for area_diff scale targets until improved.
+- No AI-2 retraining, combined 168h forecast, M5/M6/M7/API, Shelly, Home Assistant, KVS or device action was performed.
+
+Evidence:
+
+- `requirements/package-runs/P0044/component-attribution-summary.md`
+- `requirements/package-runs/P0044/metrics-summary.json`
+- `requirements/package-runs/P0044/next-combination-plan.md`

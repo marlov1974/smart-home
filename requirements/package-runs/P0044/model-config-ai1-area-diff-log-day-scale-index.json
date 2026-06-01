@@ -1,0 +1,27 @@
+{
+  "binary_artifact_committed": false,
+  "categorical_categories": {},
+  "feature_names": [
+    "weekday",
+    "weekday_sin",
+    "weekday_cos",
+    "day_of_year",
+    "day_of_year_sin",
+    "day_of_year_cos"
+  ],
+  "hyperparameters": {
+    "early_stopping": true,
+    "l2_regularization": 0.1,
+    "learning_rate": 0.04,
+    "max_iter": 80,
+    "max_leaf_nodes": 7,
+    "min_samples_leaf": 40,
+    "random_state": 44
+  },
+  "model_class": "HistGradientBoostingRegressor",
+  "selected_by": "best_validation_MAE_simplest_within_0.5_percent_of_best",
+  "selected_feature_group": "F0_time_only",
+  "target_name": "log_day_scale_index",
+  "target_series": "area_diff_proxy_se3",
+  "trained_on_split": "train"
+}

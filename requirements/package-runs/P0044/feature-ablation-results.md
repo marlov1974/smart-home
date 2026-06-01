@@ -1,0 +1,40 @@
+# P0044 feature group results
+
+| series | target | group | val_MAE | holdout_MAE | rank_or_corr | top/high | bottom/low |
+|---|---|---|---:|---:|---:|---:|---:|
+| system_proxy_se1 | day_level_shape | F0_time_only | 0.721979 | 0.479558 | 0.215344 | 0.214815 | 0.274074 |
+| system_proxy_se1 | day_level_shape | F1_time_plus_calendar | 0.725379 | 0.485375 | 0.226455 | 0.207407 | 0.140741 |
+| system_proxy_se1 | day_level_shape | F2_time_calendar_weather_actual | 0.665047 | 0.409641 | 0.494444 | 0.407407 | 0.296296 |
+| system_proxy_se1 | day_level_shape | F3_time_calendar_weather_delta | 0.663105 | 0.409667 | 0.508730 | 0.466667 | 0.340741 |
+| system_proxy_se1 | day_level_shape | F4_full | 0.649384 | 0.380163 | 0.558995 | 0.407407 | 0.318519 |
+| system_proxy_se1 | day_level_shape | F5_area_diff_wind_gradient_optional | 0.603145 | 0.355845 | 0.617460 | 0.607407 | 0.414815 |
+| system_proxy_se1 | log_day_scale_index | F0_time_only | 0.689706 | 0.493966 | 0.244974 | 0.311111 | 0.296296 |
+| system_proxy_se1 | log_day_scale_index | F1_time_plus_calendar | 0.689444 | 0.494126 | 0.227513 | 0.303704 | 0.185185 |
+| system_proxy_se1 | log_day_scale_index | F2_time_calendar_weather_actual | 0.675739 | 0.480890 | 0.327513 | 0.385185 | 0.281481 |
+| system_proxy_se1 | log_day_scale_index | F3_time_calendar_weather_delta | 0.676288 | 0.479236 | 0.309788 | 0.377778 | 0.251852 |
+| system_proxy_se1 | log_day_scale_index | F4_full | 0.672676 | 0.476581 | 0.310317 | 0.325926 | 0.274074 |
+| system_proxy_se1 | log_day_scale_index | F5_area_diff_wind_gradient_optional | 0.667823 | 0.464121 | 0.422751 | 0.311111 | 0.333333 |
+| system_proxy_se1 | log_local_7d_scale | F0_time_only | 0.973208 | 0.679166 | -0.037154 | 0.000000 | 0.000000 |
+| system_proxy_se1 | log_local_7d_scale | F1_time_plus_calendar | 0.973208 | 0.679166 | -0.037154 | 0.000000 | 0.000000 |
+| system_proxy_se1 | log_local_7d_scale | F2_time_calendar_weather_actual | 0.990105 | 0.590380 | 0.298186 | 0.000000 | 0.000000 |
+| system_proxy_se1 | log_local_7d_scale | F3_time_calendar_weather_delta | 0.972105 | 0.581104 | 0.350322 | 0.000000 | 0.000000 |
+| system_proxy_se1 | log_local_7d_scale | F4_full | 0.957413 | 0.573025 | 0.392082 | 0.000000 | 0.000000 |
+| system_proxy_se1 | log_local_7d_scale | F5_area_diff_wind_gradient_optional | 0.948935 | 0.564496 | 0.451583 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | day_level_shape | F0_time_only | 0.367324 | 0.406871 | 0.137302 | 0.096296 | 0.162963 |
+| area_diff_proxy_se3 | day_level_shape | F1_time_plus_calendar | 0.367886 | 0.405370 | 0.136243 | 0.096296 | 0.162963 |
+| area_diff_proxy_se3 | day_level_shape | F2_time_calendar_weather_actual | 0.366200 | 0.413031 | 0.155026 | 0.155556 | 0.207407 |
+| area_diff_proxy_se3 | day_level_shape | F3_time_calendar_weather_delta | 0.366862 | 0.426080 | 0.146561 | 0.162963 | 0.207407 |
+| area_diff_proxy_se3 | day_level_shape | F4_full | 0.361918 | 0.455053 | 0.098677 | 0.111111 | 0.185185 |
+| area_diff_proxy_se3 | day_level_shape | F5_area_diff_wind_gradient_optional | 0.354084 | 0.409364 | 0.202910 | 0.170370 | 0.148148 |
+| area_diff_proxy_se3 | log_day_scale_index | F0_time_only | 0.427641 | 0.413623 | 0.154762 | 0.118519 | 0.222222 |
+| area_diff_proxy_se3 | log_day_scale_index | F1_time_plus_calendar | 0.426967 | 0.413684 | 0.134921 | 0.118519 | 0.222222 |
+| area_diff_proxy_se3 | log_day_scale_index | F2_time_calendar_weather_actual | 0.445657 | 0.426774 | 0.113228 | 0.200000 | 0.125926 |
+| area_diff_proxy_se3 | log_day_scale_index | F3_time_calendar_weather_delta | 0.436608 | 0.422616 | 0.070899 | 0.177778 | 0.155556 |
+| area_diff_proxy_se3 | log_day_scale_index | F4_full | 0.434819 | 0.450517 | 0.044709 | 0.148148 | 0.177778 |
+| area_diff_proxy_se3 | log_day_scale_index | F5_area_diff_wind_gradient_optional | 0.439930 | 0.427241 | 0.182540 | 0.207407 | 0.185185 |
+| area_diff_proxy_se3 | log_local_7d_scale | F0_time_only | 0.592894 | 0.730227 | -0.529902 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | log_local_7d_scale | F1_time_plus_calendar | 0.592894 | 0.730227 | -0.529902 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | log_local_7d_scale | F2_time_calendar_weather_actual | 0.585654 | 0.712616 | -0.497795 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | log_local_7d_scale | F3_time_calendar_weather_delta | 0.601103 | 0.714001 | -0.374204 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | log_local_7d_scale | F4_full | 0.590578 | 0.690725 | -0.355565 | 0.000000 | 0.000000 |
+| area_diff_proxy_se3 | log_local_7d_scale | F5_area_diff_wind_gradient_optional | 0.572199 | 0.658178 | -0.232052 | 0.000000 | 0.000000 |

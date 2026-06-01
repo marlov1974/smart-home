@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0043
+Last changed: P0044
 
 ## Module
 
@@ -218,6 +218,47 @@ SE1 and SE3-SE1 target split
 Swedish special-day calendar
 P0038 weather, solar and wind proxy locations
 ```
+
+## P0044 AI-1 Day-To-Local-Week Diagnostics
+
+P0044 trains the AI-1 daily/local-week shape and scale diagnostics on the corrected P0042 fixed-CET table:
+
+```text
+ai1_day_to_local_week_training_targets_v2
+```
+
+The AI-1 targets are:
+
+```text
+day_level_shape
+log_day_scale_index
+log_local_7d_scale
+```
+
+P0044 trains separate bounded `HistGradientBoostingRegressor` diagnostics for:
+
+```text
+system_proxy_se1
+area_diff_proxy_se3
+```
+
+and each target above. The split is chronological:
+
+```text
+train:    earliest..2024-12-31
+validate: 2025-01-01..2025-12-31
+holdout:  2026-01-01..latest
+```
+
+P0044 uses time, calendar and weather-derived AI-1 features only. It does not use absolute day price, diagnostic ratio targets, AI-2 outputs, actual future spot prices, combined 168-hour forecasts or anchored absolute forecast errors as training targets/features.
+
+The P0044 run status is `WARN`: SE1 targets are usable, area-diff `day_level_shape` is weak but trainable, and area-diff scale targets should use baseline/API-anchor fallback until improved. Evidence is stored under:
+
+```text
+requirements/package-runs/P0044/
+```
+
+No AI-2 retraining, combined 168-hour forecast, API, M5/M6/M7, Shelly, Home Assistant, KVS or device action is part of P0044.
 
 Local output tables in `~/.smart-home/data/spotprice_model_features.sqlite3`:
 

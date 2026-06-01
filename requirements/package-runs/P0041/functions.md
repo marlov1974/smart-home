@@ -68,7 +68,23 @@
 - Inputs: Enriched rows and daily weather map.
 - Outputs: Dataset rows and skip summary.
 - Side effects: None.
-- Tests: Hand fixture formula and window behavior.
+- Tests: Hand fixture formula, window behavior and cross-year window behavior.
+
+`classify_skipped_center_dates(rows, daily_weather) -> list[dict]`
+
+- Purpose: Explain each skipped AI-1 center date using package-approved reason categories.
+- Inputs: Enriched hourly rows and daily weather map.
+- Outputs: Skip details with reason, missing price/weather dates and local price-hour counts.
+- Side effects: None.
+- Tests: DST day classification and evidence regeneration.
+
+`skip_reason(day, window, missing_price, missing_weather, by_day, min_day, max_day) -> str`
+
+- Purpose: Map missing-window facts to one reason: `missing_price_hours`, `missing_weather_daily`, `dataset_start_boundary`, `dataset_end_boundary`, `year_boundary_bug`, `dst_or_timezone_issue` or `other`.
+- Inputs: Center date, local window, missing facts, day map and dataset boundaries.
+- Outputs: Reason string.
+- Side effects: None.
+- Tests: DST classifier and cross-year AI-1 fixture.
 
 `build_ai2_rows(rows) -> list[dict]`
 

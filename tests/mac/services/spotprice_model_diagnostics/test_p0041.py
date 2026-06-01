@@ -78,6 +78,21 @@ class P0041DatasetTests(unittest.TestCase):
         )
         self.assertEqual(6, skipped["skipped_center_dates"])
 
+    def test_ai1_window_may_cross_calendar_year(self):
+        start = date(2025, 12, 30)
+        rows = []
+        for offset in range(7):
+            day = start + timedelta(days=offset)
+            for hour in range(24):
+                rows.append(fixture_row(day, hour, se1=float(offset + 1), area=0.1))
+        daily = p0041.build_daily_weather(rows)
+        ai1, skipped = p0041.build_ai1_rows(rows, daily)
+        center_rows = [row for row in ai1 if row["date"] == "2026-01-01" and row["target_series"] == "system_proxy_se1"]
+        self.assertEqual(1, len(center_rows))
+        self.assertEqual("2025-12-30", center_rows[0]["local_7d_start"])
+        self.assertEqual("2026-01-05", center_rows[0]["local_7d_end"])
+        self.assertEqual(6, skipped["skipped_center_dates"])
+
     def test_ai2_formula_and_day_mean_shape(self):
         day = date(2026, 3, 16)
         rows = [fixture_row(day, hour, se1=float(hour), area=1.0) for hour in range(24)]
@@ -109,6 +124,19 @@ class P0041DatasetTests(unittest.TestCase):
 
     def test_package_forbids_production_device_paths(self):
         self.assertEqual(("M5", "M6", "M7", "API", "SHELLY", "DEVICE", "KVS", "HA"), p0041.FORBIDDEN_PRODUCTION_PATHS)
+
+    def test_skip_classifier_marks_dst_day_not_year_boundary(self):
+        start = date(2026, 3, 27)
+        rows = []
+        for offset in range(7):
+            day = start + timedelta(days=offset)
+            hours = 23 if day == date(2026, 3, 29) else 24
+            for hour in range(hours):
+                rows.append(fixture_row(day, hour, se1=float(hour)))
+        daily = p0041.build_daily_weather(rows)
+        details = p0041.classify_skipped_center_dates(rows, daily)
+        by_date = {row["date"]: row for row in details}
+        self.assertEqual("dst_or_timezone_issue", by_date["2026-03-29"]["reason"])
 
 
 if __name__ == "__main__":

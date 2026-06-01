@@ -4,6 +4,7 @@ row_grain = date x target_series
 local_window = D-2..D+4
 incomplete_windows = skipped
 skipped_center_dates = 62
+skipped_reason_counts = {'dataset_end_boundary': 4, 'dataset_start_boundary': 2, 'dst_or_timezone_issue': 56}
 
 | target_series | rows |
 |---|---:|

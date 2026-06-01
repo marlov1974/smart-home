@@ -125,5 +125,944 @@
   },
   "skipped": {
     "skipped_center_dates": 62
+  },
+  "skipped_details": [
+    {
+      "date": "2022-05-30",
+      "local_7d_end": "2022-06-03",
+      "local_7d_start": "2022-05-28",
+      "missing_price_dates": [
+        "2022-05-28",
+        "2022-05-29"
+      ],
+      "missing_weather_dates": [
+        "2022-05-28",
+        "2022-05-29"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_start_boundary"
+    },
+    {
+      "date": "2022-05-31",
+      "local_7d_end": "2022-06-04",
+      "local_7d_start": "2022-05-29",
+      "missing_price_dates": [
+        "2022-05-29"
+      ],
+      "missing_weather_dates": [
+        "2022-05-29"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_start_boundary"
+    },
+    {
+      "date": "2022-10-26",
+      "local_7d_end": "2022-10-30",
+      "local_7d_start": "2022-10-24",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-10-27",
+      "local_7d_end": "2022-10-31",
+      "local_7d_start": "2022-10-25",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-10-28",
+      "local_7d_end": "2022-11-01",
+      "local_7d_start": "2022-10-26",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-10-29",
+      "local_7d_end": "2022-11-02",
+      "local_7d_start": "2022-10-27",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-10-30",
+      "local_7d_end": "2022-11-03",
+      "local_7d_start": "2022-10-28",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-10-31",
+      "local_7d_end": "2022-11-04",
+      "local_7d_start": "2022-10-29",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2022-11-01",
+      "local_7d_end": "2022-11-05",
+      "local_7d_start": "2022-10-30",
+      "missing_price_dates": [
+        "2022-10-30"
+      ],
+      "missing_weather_dates": [
+        "2022-10-30"
+      ],
+      "price_hour_counts": {
+        "2022-10-30": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-22",
+      "local_7d_end": "2023-03-26",
+      "local_7d_start": "2023-03-20",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-23",
+      "local_7d_end": "2023-03-27",
+      "local_7d_start": "2023-03-21",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-24",
+      "local_7d_end": "2023-03-28",
+      "local_7d_start": "2023-03-22",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-25",
+      "local_7d_end": "2023-03-29",
+      "local_7d_start": "2023-03-23",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-26",
+      "local_7d_end": "2023-03-30",
+      "local_7d_start": "2023-03-24",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-27",
+      "local_7d_end": "2023-03-31",
+      "local_7d_start": "2023-03-25",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-03-28",
+      "local_7d_end": "2023-04-01",
+      "local_7d_start": "2023-03-26",
+      "missing_price_dates": [
+        "2023-03-26"
+      ],
+      "missing_weather_dates": [
+        "2023-03-26"
+      ],
+      "price_hour_counts": {
+        "2023-03-26": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-25",
+      "local_7d_end": "2023-10-29",
+      "local_7d_start": "2023-10-23",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-26",
+      "local_7d_end": "2023-10-30",
+      "local_7d_start": "2023-10-24",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-27",
+      "local_7d_end": "2023-10-31",
+      "local_7d_start": "2023-10-25",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-28",
+      "local_7d_end": "2023-11-01",
+      "local_7d_start": "2023-10-26",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-29",
+      "local_7d_end": "2023-11-02",
+      "local_7d_start": "2023-10-27",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-30",
+      "local_7d_end": "2023-11-03",
+      "local_7d_start": "2023-10-28",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2023-10-31",
+      "local_7d_end": "2023-11-04",
+      "local_7d_start": "2023-10-29",
+      "missing_price_dates": [
+        "2023-10-29"
+      ],
+      "missing_weather_dates": [
+        "2023-10-29"
+      ],
+      "price_hour_counts": {
+        "2023-10-29": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-03-27",
+      "local_7d_end": "2024-03-31",
+      "local_7d_start": "2024-03-25",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-03-28",
+      "local_7d_end": "2024-04-01",
+      "local_7d_start": "2024-03-26",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-03-29",
+      "local_7d_end": "2024-04-02",
+      "local_7d_start": "2024-03-27",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-03-30",
+      "local_7d_end": "2024-04-03",
+      "local_7d_start": "2024-03-28",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-03-31",
+      "local_7d_end": "2024-04-04",
+      "local_7d_start": "2024-03-29",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-04-01",
+      "local_7d_end": "2024-04-05",
+      "local_7d_start": "2024-03-30",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-04-02",
+      "local_7d_end": "2024-04-06",
+      "local_7d_start": "2024-03-31",
+      "missing_price_dates": [
+        "2024-03-31"
+      ],
+      "missing_weather_dates": [
+        "2024-03-31"
+      ],
+      "price_hour_counts": {
+        "2024-03-31": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-23",
+      "local_7d_end": "2024-10-27",
+      "local_7d_start": "2024-10-21",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-24",
+      "local_7d_end": "2024-10-28",
+      "local_7d_start": "2024-10-22",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-25",
+      "local_7d_end": "2024-10-29",
+      "local_7d_start": "2024-10-23",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-26",
+      "local_7d_end": "2024-10-30",
+      "local_7d_start": "2024-10-24",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-27",
+      "local_7d_end": "2024-10-31",
+      "local_7d_start": "2024-10-25",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-28",
+      "local_7d_end": "2024-11-01",
+      "local_7d_start": "2024-10-26",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2024-10-29",
+      "local_7d_end": "2024-11-02",
+      "local_7d_start": "2024-10-27",
+      "missing_price_dates": [
+        "2024-10-27"
+      ],
+      "missing_weather_dates": [
+        "2024-10-27"
+      ],
+      "price_hour_counts": {
+        "2024-10-27": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-26",
+      "local_7d_end": "2025-03-30",
+      "local_7d_start": "2025-03-24",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-27",
+      "local_7d_end": "2025-03-31",
+      "local_7d_start": "2025-03-25",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-28",
+      "local_7d_end": "2025-04-01",
+      "local_7d_start": "2025-03-26",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-29",
+      "local_7d_end": "2025-04-02",
+      "local_7d_start": "2025-03-27",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-30",
+      "local_7d_end": "2025-04-03",
+      "local_7d_start": "2025-03-28",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-03-31",
+      "local_7d_end": "2025-04-04",
+      "local_7d_start": "2025-03-29",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-04-01",
+      "local_7d_end": "2025-04-05",
+      "local_7d_start": "2025-03-30",
+      "missing_price_dates": [
+        "2025-03-30"
+      ],
+      "missing_weather_dates": [
+        "2025-03-30"
+      ],
+      "price_hour_counts": {
+        "2025-03-30": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-22",
+      "local_7d_end": "2025-10-26",
+      "local_7d_start": "2025-10-20",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-23",
+      "local_7d_end": "2025-10-27",
+      "local_7d_start": "2025-10-21",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-24",
+      "local_7d_end": "2025-10-28",
+      "local_7d_start": "2025-10-22",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-25",
+      "local_7d_end": "2025-10-29",
+      "local_7d_start": "2025-10-23",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-26",
+      "local_7d_end": "2025-10-30",
+      "local_7d_start": "2025-10-24",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-27",
+      "local_7d_end": "2025-10-31",
+      "local_7d_start": "2025-10-25",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2025-10-28",
+      "local_7d_end": "2025-11-01",
+      "local_7d_start": "2025-10-26",
+      "missing_price_dates": [
+        "2025-10-26"
+      ],
+      "missing_weather_dates": [
+        "2025-10-26"
+      ],
+      "price_hour_counts": {
+        "2025-10-26": 25
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-25",
+      "local_7d_end": "2026-03-29",
+      "local_7d_start": "2026-03-23",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-26",
+      "local_7d_end": "2026-03-30",
+      "local_7d_start": "2026-03-24",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-27",
+      "local_7d_end": "2026-03-31",
+      "local_7d_start": "2026-03-25",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-28",
+      "local_7d_end": "2026-04-01",
+      "local_7d_start": "2026-03-26",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-29",
+      "local_7d_end": "2026-04-02",
+      "local_7d_start": "2026-03-27",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-30",
+      "local_7d_end": "2026-04-03",
+      "local_7d_start": "2026-03-28",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-03-31",
+      "local_7d_end": "2026-04-04",
+      "local_7d_start": "2026-03-29",
+      "missing_price_dates": [
+        "2026-03-29"
+      ],
+      "missing_weather_dates": [
+        "2026-03-29"
+      ],
+      "price_hour_counts": {
+        "2026-03-29": 23
+      },
+      "reason": "dst_or_timezone_issue"
+    },
+    {
+      "date": "2026-05-23",
+      "local_7d_end": "2026-05-27",
+      "local_7d_start": "2026-05-21",
+      "missing_price_dates": [
+        "2026-05-27"
+      ],
+      "missing_weather_dates": [
+        "2026-05-27"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_end_boundary"
+    },
+    {
+      "date": "2026-05-24",
+      "local_7d_end": "2026-05-28",
+      "local_7d_start": "2026-05-22",
+      "missing_price_dates": [
+        "2026-05-27",
+        "2026-05-28"
+      ],
+      "missing_weather_dates": [
+        "2026-05-27",
+        "2026-05-28"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_end_boundary"
+    },
+    {
+      "date": "2026-05-25",
+      "local_7d_end": "2026-05-29",
+      "local_7d_start": "2026-05-23",
+      "missing_price_dates": [
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "missing_weather_dates": [
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_end_boundary"
+    },
+    {
+      "date": "2026-05-26",
+      "local_7d_end": "2026-05-30",
+      "local_7d_start": "2026-05-24",
+      "missing_price_dates": [
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30"
+      ],
+      "missing_weather_dates": [
+        "2026-05-27",
+        "2026-05-28",
+        "2026-05-29",
+        "2026-05-30"
+      ],
+      "price_hour_counts": {},
+      "reason": "dataset_end_boundary"
+    }
+  ],
+  "skipped_reason_counts": {
+    "dataset_end_boundary": 4,
+    "dataset_start_boundary": 2,
+    "dst_or_timezone_issue": 56
   }
 }

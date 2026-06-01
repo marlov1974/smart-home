@@ -288,6 +288,67 @@ def build_ai1_rows(rows: list[dict[str, object]], daily_weather: dict[str, dict[
     return output, {"skipped_center_dates": skipped}
 
 
+def classify_skipped_center_dates(rows: list[dict[str, object]], daily_weather: dict[str, dict[str, object]]) -> list[dict[str, object]]:
+    by_day: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for row in rows:
+        by_day[str(row["local_date"])].append(row)
+    dates = sorted(date.fromisoformat(day) for day in by_day)
+    if not dates:
+        return []
+    complete_price = {day for day in dates if len(by_day[day.isoformat()]) == 24}
+    complete_weather = {date.fromisoformat(day) for day in daily_weather}
+    min_day = dates[0]
+    max_day = dates[-1]
+    output: list[dict[str, object]] = []
+    for day in dates:
+        window = local_window_dates(day)
+        missing_price = [candidate for candidate in window if candidate not in complete_price]
+        missing_weather = [candidate for candidate in window if candidate not in complete_weather]
+        if not missing_price and not missing_weather:
+            continue
+        reason = skip_reason(day, window, missing_price, missing_weather, by_day, min_day, max_day)
+        output.append(
+            {
+                "date": day.isoformat(),
+                "reason": reason,
+                "local_7d_start": window[0].isoformat(),
+                "local_7d_end": window[-1].isoformat(),
+                "missing_price_dates": [candidate.isoformat() for candidate in missing_price],
+                "missing_weather_dates": [candidate.isoformat() for candidate in missing_weather],
+                "price_hour_counts": {
+                    candidate.isoformat(): len(by_day[candidate.isoformat()])
+                    for candidate in missing_price
+                    if candidate.isoformat() in by_day
+                },
+            }
+        )
+    return output
+
+
+def skip_reason(
+    day: date,
+    window: list[date],
+    missing_price: list[date],
+    missing_weather: list[date],
+    by_day: dict[str, list[dict[str, object]]],
+    min_day: date,
+    max_day: date,
+) -> str:
+    if any(candidate < min_day for candidate in window):
+        return "dataset_start_boundary"
+    if any(candidate > max_day for candidate in window):
+        return "dataset_end_boundary"
+    if any(len(by_day[candidate.isoformat()]) in {23, 25} for candidate in missing_price if candidate.isoformat() in by_day):
+        return "dst_or_timezone_issue"
+    if missing_price:
+        return "missing_price_hours"
+    if missing_weather:
+        return "missing_weather_daily"
+    if any(candidate.year != day.year for candidate in window):
+        return "year_boundary_bug"
+    return "other"
+
+
 def build_ai2_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     by_day: dict[str, list[dict[str, object]]] = defaultdict(list)
     for row in rows:
@@ -423,11 +484,15 @@ def sqlite_type(value: object) -> str:
 def summarize_outputs(
     rows: list[dict[str, object]], ai1_rows: list[dict[str, object]], ai2_rows: list[dict[str, object]], skip_summary: dict[str, int]
 ) -> dict[str, object]:
+    daily_weather = build_daily_weather(rows)
+    skipped_details = classify_skipped_center_dates(rows, daily_weather)
     return {
         "row_counts": count_splits(rows),
         "ai1_counts": counts_by_target(ai1_rows),
         "ai2_counts": counts_by_target(ai2_rows),
         "skipped": skip_summary,
+        "skipped_details": skipped_details,
+        "skipped_reason_counts": dict(sorted(counts_by_field(skipped_details, "reason").items())),
         "all_scales_positive": all(float(row["local_7d_level_scale"]) > 0 and float(row["day_intraday_scale"]) > 0 for row in ai1_rows)
         and all(float(row["day_intraday_scale"]) > 0 for row in ai2_rows),
         "ai1_distributions": distributions(ai1_rows, ["day_level_shape", "log_day_scale_index", "log_local_7d_scale"]),
@@ -441,6 +506,13 @@ def counts_by_target(rows: list[dict[str, object]]) -> dict[str, int]:
     for row in rows:
         counts[str(row["target_series"])] += 1
     return dict(sorted(counts.items()))
+
+
+def counts_by_field(rows: list[dict[str, object]], field: str) -> dict[str, int]:
+    counts: dict[str, int] = defaultdict(int)
+    for row in rows:
+        counts[str(row[field])] += 1
+    return dict(counts)
 
 
 def distributions(rows: list[dict[str, object]], fields: list[str]) -> dict[str, dict[str, dict[str, float]]]:
@@ -500,6 +572,7 @@ def write_p0041_evidence(
         "scale": write(evidence_dir / "robust-scale-definitions.md", scale_report()),
         "dist": write(evidence_dir / "target-distributions.md", distribution_report(summary)),
         "examples": write(evidence_dir / "example-rows.md", example_report(ai1_rows, ai2_rows)),
+        "skipped": write(evidence_dir / "skipped-center-dates.md", skipped_dates_report(summary)),
         "leakage": write(evidence_dir / "leakage-and-window-policy.md", leakage_report()),
         "next": write(evidence_dir / "next-model-training-plan.md", next_training_report()),
         "summary": write(evidence_dir / "component-attribution-summary.md", summary_report(rows, summary)),
@@ -565,6 +638,7 @@ def ai1_report(ai1_rows: list[dict[str, object]], summary: dict[str, object]) ->
         "local_window = D-2..D+4",
         "incomplete_windows = skipped",
         f"skipped_center_dates = {summary['skipped']['skipped_center_dates']}",  # type: ignore[index]
+        f"skipped_reason_counts = {summary['skipped_reason_counts']}",
         "",
         "| target_series | rows |",
         "|---|---:|",
@@ -615,6 +689,29 @@ def distribution_report(summary: dict[str, object]) -> str:
     return "\n".join(lines)
 
 
+def skipped_dates_report(summary: dict[str, object]) -> str:
+    details = list(summary["skipped_details"])  # type: ignore[arg-type]
+    year_boundary = [row for row in details if row["reason"] == "year_boundary_bug"]
+    lines = [
+        "# P0041 skipped center dates",
+        "",
+        f"skipped_center_dates = {len(details)}",
+        f"reason_counts = {summary['skipped_reason_counts']}",
+        f"year_boundary_bug_count = {len(year_boundary)}",
+        "",
+        "Verification: `local_window_dates()` uses Python `date + timedelta(days=offset)` for offsets -2..+4, so windows are continuous across calendar years. No center date is skipped only because it is near the beginning or end of a calendar year.",
+        "",
+        "| center_date | reason | local_7d_start | local_7d_end | missing_price_dates | missing_weather_dates | price_hour_counts |",
+        "|---|---|---|---|---|---|---|",
+    ]
+    for row in details:
+        lines.append(
+            f"| {row['date']} | {row['reason']} | {row['local_7d_start']} | {row['local_7d_end']} | {', '.join(row['missing_price_dates'])} | {', '.join(row['missing_weather_dates'])} | {row['price_hour_counts']} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def distribution_table(data: dict[str, dict[str, dict[str, float]]]) -> str:
     lines = ["| target | field | count | mean | std | min | p01 | p05 | p50 | p95 | p99 | max |", "|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"]
     for target, fields in sorted(data.items()):
@@ -635,6 +732,7 @@ def leakage_report() -> str:
             "# P0041 leakage and window policy",
             "",
             "AI-1 window policy: the local seven-day period is exactly D-2..D+4. Rows without all 168 hourly prices and complete daily weather aggregates are skipped.",
+            "Year boundary policy: D-2..D+4 uses continuous date arithmetic and is allowed to cross calendar years. P0041 skipped-center evidence verifies that no rows are skipped solely because a window crosses December/January.",
             "AI-2 window policy: the intraday period is exactly local 00:00..23:00. Only complete 24-hour local days are emitted.",
             "No raw `week_of_year` categorical feature is emitted. Cyclic day and weekday encodings are emitted.",
             "M2 normal weather surfaces aggregate calendar buckets across all available years with +/-14 day smoothing and include `year_count` per bucket. They are climate/signal normals, not price baselines.",

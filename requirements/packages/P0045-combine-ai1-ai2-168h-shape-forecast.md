@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+implemented-pass
 
 ## Package order
 
@@ -468,4 +468,28 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in P0045 as a Mac-only diagnostic/backtest package.
+
+Result: PASS.
+
+Summary:
+
+- Used corrected P0042 tables `ai1_day_to_local_week_training_targets_v2` and `ai2_hour_to_day_training_targets_v2`.
+- Regenerated P0043 AI-2 and P0044 AI-1 predictions from train-period rows and stored selected feature groups because binary artifacts were not committed.
+- Applied P0044 area_diff weak-target fallback policy:
+  - `log_day_scale_index = 0.0`
+  - `log_local_7d_scale = train mean`
+- Evaluated rolling fixed-CET 168h windows:
+  - validation windows: 365 per target series
+  - holdout windows: 135 per target series
+- Selected formula by validation among deployable combination formulas: `combined_scaled` for both `system_proxy_se1` and `area_diff_proxy_se3`.
+- SE1 holdout selected scaled MAE: `0.568437`, B0 flat: `0.639685`, AI2-only: `1.604569`, AI1-only: `0.550570`, Spearman: `0.616628`.
+- area_diff holdout selected scaled MAE: `1.250916`, B0 flat: `0.864943`, AI2-only: `2.515733`, AI1-only: `1.162986`, Spearman: `0.269905`.
+- Recommendation: P0046 may proceed as anchored absolute-price backtest for SE1 first. area_diff should remain diagnostic or fallback-constrained pending review.
+- No new AI hyperparameter search/training, production API, anchored absolute API, M5/M6/M7, Shelly, Home Assistant, KVS or device action was performed.
+
+Evidence:
+
+- `requirements/package-runs/P0045/component-attribution-summary.md`
+- `requirements/package-runs/P0045/shape-metrics-summary.md`
+- `requirements/package-runs/P0045/next-anchoring-plan.md`

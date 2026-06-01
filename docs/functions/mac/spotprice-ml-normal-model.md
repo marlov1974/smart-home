@@ -260,6 +260,36 @@ requirements/package-runs/P0044/
 
 No AI-2 retraining, combined 168-hour forecast, API, M5/M6/M7, Shelly, Home Assistant, KVS or device action is part of P0044.
 
+## P0045 AI-1 + AI-2 168h Shape Combination
+
+P0045 combines regenerated P0043 AI-2 and P0044 AI-1 evaluation predictions into rolling fixed-CET 168-hour pure shape forecasts. It is still a diagnostic/backtest layer, not an anchored absolute-price API.
+
+Primary window:
+
+```text
+origin: model_cet_date D at fixed-CET hour 00
+horizon: D 00:00 .. D+6 23:00
+rows: exactly 168 hourly rows per target series
+```
+
+P0045 evaluates:
+
+```text
+combined_scaled
+combined_dimensionless
+B0_flat_168h
+B1_AI2_only
+B2_AI1_day_only
+B3_time_profile_168h
+B4/B5 oracle diagnostics
+```
+
+The selected formula in the P0045 run is `combined_scaled` for both `system_proxy_se1` and `area_diff_proxy_se3`. SE1 passes the package gate on holdout shape/rank metrics and is the recommended first target for P0046 anchoring. area_diff remains weaker: combined rank improves versus flat baselines, but holdout scaled MAE is worse than B0, so area_diff should stay diagnostic or fallback-constrained until reviewed.
+
+P0045 regenerates predictions from P0043/P0044 train rows because binary model artifacts were not committed. This is documented as deterministic artifact regeneration, not new model development or hyperparameter search.
+
+No production API, anchored absolute forecast, M5/M6/M7, Shelly, Home Assistant, KVS or device action is part of P0045.
+
 Local output tables in `~/.smart-home/data/spotprice_model_features.sqlite3`:
 
 ```text

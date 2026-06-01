@@ -1,6 +1,6 @@
 # Spotprice ML Normal Model
 
-Last changed: P0041
+Last changed: P0042
 
 ## Module
 
@@ -235,3 +235,41 @@ ai2_hour_to_day_training_targets
 AI-1 rows are `date x target_series` with local window `D-2..D+4`. AI-2 rows are `timestamp x target_series` with fixed local day `00:00..23:00`. Both datasets keep `system_proxy_se1` and `area_diff_proxy_se3` separate; SE3 is recomposed later as `SE1 + (SE3-SE1)`.
 
 P0041 does not train AI models, build an API, or touch optimizer, Shelly, Home Assistant, KVS or device paths.
+
+## P0042 Corrected Seven-Day Index Dataset
+
+P0042 corrects the P0041 datasets before AI training.
+
+UTC remains the primary storage and join truth. P0042 adds a fixed-CET model calendar for AI datasets:
+
+```text
+model_cet_timestamp = timestamp_utc + 1 hour
+model_cet_date      = date(model_cet_timestamp)
+model_cet_hour      = hour(model_cet_timestamp)
+```
+
+This is fixed Swedish normal time all year, not Europe/Stockholm civil time. Stockholm-local fields remain diagnostics. The tradeoff is that summer civil-time holiday boundaries differ by one civil hour, while model days are stable 24-hour units.
+
+Corrected local output tables:
+
+```text
+m2a_temperature_normals_hourly_v2
+m2a_temperature_normals_daily_v2
+m2c_solar_normals_hourly_v2
+m2c_solar_normals_daily_v2
+m2d_wind_normals_hourly_v2
+m2d_wind_normals_daily_v2
+ai1_day_to_local_week_training_targets_v2
+ai2_hour_to_day_training_targets_v2
+```
+
+P0042 AI-1 uses `D-2..D+4` over `model_cet_date`. P0042 AI-2 groups by fixed-CET `model_cet_date` so DST transition dates still have 24 model hours.
+
+Scale policy:
+
+```text
+system_proxy_se1: generic P0041 robust scale, floor 0.001
+area_diff_proxy_se3: max(generic robust scale, historical median complete fixed-CET day scale)
+```
+
+The selected area-diff floor is recorded in P0042 evidence. P0042 does not train AI models, build an API, or touch optimizer, Shelly, Home Assistant, KVS or device paths.

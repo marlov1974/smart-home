@@ -372,4 +372,6 @@ P0042 must explicitly answer:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in commit-ready package run evidence under `requirements/package-runs/P0042/`.
+
+Result: PASS. P0042 added fixed-CET v2 datasets, reduced AI-1 skipped center dates from 62 to 6 dataset-edge windows, removed DST-caused skips, verified `calendar_year_boundary_bug = 0`, selected an area-diff median daily scale floor policy, and wrote corrected v2 local SQLite tables for P0043 AI-2 training. No AI training, M5/M6/M7/API/device path, Shelly, Home Assistant or KVS action was performed.

@@ -1,0 +1,32 @@
+{
+  "spread_near_zero": {
+    "spread_near_zero": 1997,
+    "spread_positive": 105,
+    "spread_small_nonzero": 236,
+    "spread_spike_positive": 2
+  },
+  "spread_negative": {
+    "spread_negative": 3,
+    "spread_positive": 1,
+    "spread_small_nonzero": 1
+  },
+  "spread_positive": {
+    "spread_near_zero": 72,
+    "spread_positive": 3669,
+    "spread_small_nonzero": 293,
+    "spread_spike_positive": 172
+  },
+  "spread_small_nonzero": {
+    "spread_near_zero": 267,
+    "spread_negative": 2,
+    "spread_positive": 258,
+    "spread_small_nonzero": 831,
+    "spread_spike_positive": 5
+  },
+  "spread_spike_positive": {
+    "spread_near_zero": 3,
+    "spread_positive": 173,
+    "spread_small_nonzero": 3,
+    "spread_spike_positive": 666
+  }
+}

@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0046
+Last changed: P0047
 
 ## Module
 
@@ -35,3 +35,27 @@ Important functions:
 ## Safety
 
 P0046 is diagnostics-only. It explicitly forbids AI retraining, production API work, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0047 SE3-SE1 Spread Diagnostics
+
+`p0047.run_p0047_analysis(...)` orchestrates the SE3-SE1 spread export and bottleneck/regime diagnostics.
+
+Important functions:
+
+`load_p0047_source_rows(...)` reads corrected P0042 AI2 v2 rows from the local feature DB.
+
+`validate_p0047_contract(...)` verifies required fixed-CET fields and target availability.
+
+`join_spread_rows(...)` joins `system_proxy_se1` and `area_diff_proxy_se3` hourly rows by `timestamp_utc` and reconstructs `se3_price = se1_price + se3_minus_se1`.
+
+`threshold_candidates(...)` computes fixed, quantile and robust-sigma spread threshold candidates.
+
+`assign_spread_regime(...)` assigns near-zero, positive, negative and spike regime labels.
+
+`analyze_persistence(...)` computes regime run lengths and transition counts.
+
+`analyze_signal_attribution(...)` summarizes correlation and regime means for available weather, price and calendar signals.
+
+`write_p0047_evidence(...)` writes package-run CSV, Markdown and JSON evidence under `requirements/package-runs/P0047/`.
+
+P0047 is diagnostics/export-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -444,4 +444,25 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as a Mac-only diagnostic/export package.
+
+Result:
+
+```text
+status: PASS
+export window: 2025-01-01 .. 2025-12-31 fixed-CET model dates
+row count: 8760
+export: requirements/package-runs/P0047/se3-se1-last-year-export.csv
+```
+
+P0047 produced Markdown/CSV/JSON evidence under `requirements/package-runs/P0047/`, including spread distribution, threshold definitions, regime persistence/transitions, weather/calendar attribution, spike review and candidate model design recommendation.
+
+Recommendation:
+
+```text
+Next package should compare a two-stage SE3-SE1 bottleneck classification+severity model against a direct SE3 AI-1/AI-2 target model.
+Do not create a production SE3 API yet.
+Do not anchor SE1 shape to SE3.
+```
+
+Confirmed no SE1-to-SE3 anchoring, no SE3 API, no production model artifact, no M5/M6/M7, no Home Assistant, no Shelly, no KVS and no live device actions.

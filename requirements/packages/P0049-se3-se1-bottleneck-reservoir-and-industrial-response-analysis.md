@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -637,4 +637,49 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0049 PASS.
+
+Implemented `src.mac.services.spotprice_model_diagnostics.p0049` and built the local analysis table:
+
+```text
+se3_se1_bottleneck_reservoir_analysis_v1
+```
+
+from:
+
+```text
+se3_se1_bottleneck_training_dataset_v1
+```
+
+Row counts:
+
+```text
+source_rows = 34968
+persisted_rows = 34968
+train = 22728
+validate = 8760
+holdout = 3480
+```
+
+Main result:
+
+```text
+- Lagged SE3-SE1 remains the strongest Stage-1 classification signal through 168h in this split.
+- Calendar/time baselines beat lagged spread by MAE at some longer horizons, but not by F1.
+- Rolling weather gradients are a mild long-horizon correlation improvement over instantaneous gradients, but not a winning family.
+- Explicit reservoir pressure did not beat rolling features or lagged spread in the deterministic P0049 diagnostic.
+- SE1 price has weak negative future 6h spread correlation; SE3 price has positive future 6h spread correlation.
+- Price/day-type response is suggestive only and does not prove industrial demand response.
+```
+
+Recommendation:
+
+```text
+P0050 should compare direct SE3 AI-1/AI-2 with a non-deployable reservoir/bottleneck prototype under proper forecast-origin validation. Do not build production SE3 API yet.
+```
+
+Confirmed:
+
+```text
+No SE1-to-SE3 anchoring, no SE3 API, no production model artifact, no M5/M6/M7, no Shelly, no Home Assistant, no KVS and no device actions.
+```

@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0048
+Last changed: P0049
 
 ## Module
 
@@ -85,3 +85,33 @@ Important functions:
 `write_p0048_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0048/`.
 
 P0048 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0049 SE3-SE1 Bottleneck Reservoir And Industrial-Response Analysis
+
+`p0049.run_p0049_analysis(...)` orchestrates the P0049 reservoir/memory and industrial-response proxy diagnostics on top of P0048's `se3_se1_bottleneck_training_dataset_v1`.
+
+Important functions:
+
+`load_p0049_source_rows(...)` reads the P0048 bottleneck training dataset from the local feature DB.
+
+`validate_p0049_contract(...)` verifies required fixed-CET fields and reconstructs `se3_minus_se1 = se3_price - se1_price`.
+
+`add_daytype_features(...)` adds deterministic weekday, weekend, holiday, peak-hour and workday proxy fields.
+
+`fit_price_thresholds(...)` fits SE1/SE3 train-only median, p75, p90 and p95 price thresholds.
+
+`add_price_response_features(...)` adds threshold flags, rolling ranks, hours-since-crossing and recent high-price counters.
+
+`add_rolling_features(...)` adds strictly backward-looking rolling mean, max, min, std, trend, binary sum and binary share features.
+
+`add_reservoir_features(...)` builds exploratory weather/price/time pressure signals, reservoir EMA half-lives and day-type interaction fields.
+
+`add_horizon_targets(...)` adds shifted future classification and severity targets for 1h, 3h, 6h, 12h, 24h, 48h, 72h and 168h.
+
+`persist_analysis_dataset(...)` writes the local SQLite table `se3_se1_bottleneck_reservoir_analysis_v1`.
+
+`evaluate_horizon_groups(...)` evaluates deterministic exploratory feature-family groups across all required horizons.
+
+`write_p0049_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0049/`.
+
+P0049 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

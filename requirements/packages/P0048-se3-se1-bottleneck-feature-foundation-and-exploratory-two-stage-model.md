@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -534,4 +534,42 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as a Mac-only exploratory diagnostic/modeling package.
+
+Result:
+
+```text
+status: PASS
+local dataset table: se3_se1_bottleneck_training_dataset_v1
+modeling rows: 34968
+split counts: train=22728, validate=8760, holdout=3480
+```
+
+P0048 derived all requested weather proxy families and gradients from local weather history source rows. No requested P0048 feature remains missing.
+
+Key findings:
+
+```text
+Stage-1 positive bottleneck:
+  gradients alone did not improve over system-weather actuals on validation F1.
+  lagged spread/regime diagnostics improved validation F1 strongly.
+
+Stage-1 positive spike:
+  lagged diagnostics gave useful recall/precision compared with weak weather-only classifiers.
+
+Stage-2 positive severity:
+  lagged diagnostics beat regime-mean and weather-gradient baselines.
+
+Continuous spread:
+  lagged diagnostic continuous regression had the best MAE/RMSE, but remains exploratory and non-deployable.
+```
+
+Recommendation:
+
+```text
+P0049 should compare direct SE3 AI-1/AI-2 modeling against the best P0048 bottleneck path before any deployable SE3 forecast/API package.
+Do not proceed directly to production bottleneck deployment.
+Do not anchor SE1 shape to SE3.
+```
+
+Confirmed no SE1-to-SE3 anchoring, no SE3 API, no production model artifact, no M5/M6/M7, no Home Assistant, no Shelly, no KVS and no live device actions.

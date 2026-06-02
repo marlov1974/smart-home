@@ -87,3 +87,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0035` added `docs/functions/mac/swedish-special-day-calendar.md` and updated the spotprice ML/normalization docs for M3A/M3B and M1-anchored residual M4.
 
 `P0047` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE3-SE1 spread export, regime threshold and bottleneck diagnostics.
+
+`P0048` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE3-SE1 bottleneck feature foundation, local modeling dataset persistence and exploratory two-stage diagnostics.

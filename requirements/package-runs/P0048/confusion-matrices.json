@@ -1,0 +1,608 @@
+{
+  "binary_positive_bottleneck": {
+    "C0_time_calendar_baseline": {
+      "holdout": {
+        "0": {
+          "0": 1966,
+          "1": 0
+        },
+        "1": {
+          "0": 1514,
+          "1": 0
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 3709,
+          "1": 0
+        },
+        "1": {
+          "0": 5051,
+          "1": 0
+        }
+      }
+    },
+    "C1_time_calendar_weather_actual": {
+      "holdout": {
+        "0": {
+          "0": 1875,
+          "1": 91
+        },
+        "1": {
+          "0": 1336,
+          "1": 178
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 3540,
+          "1": 169
+        },
+        "1": {
+          "0": 4156,
+          "1": 895
+        }
+      }
+    },
+    "C2_time_calendar_weather_gradient": {
+      "holdout": {
+        "0": {
+          "0": 1894,
+          "1": 72
+        },
+        "1": {
+          "0": 1370,
+          "1": 144
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 3537,
+          "1": 172
+        },
+        "1": {
+          "0": 4200,
+          "1": 851
+        }
+      }
+    },
+    "C3_time_calendar_weather_anomaly_gradient": {
+      "holdout": {
+        "0": {
+          "0": 1884,
+          "1": 82
+        },
+        "1": {
+          "0": 1381,
+          "1": 133
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 3568,
+          "1": 141
+        },
+        "1": {
+          "0": 4208,
+          "1": 843
+        }
+      }
+    },
+    "C4_with_lagged_spread_features_diagnostic": {
+      "holdout": {
+        "0": {
+          "0": 1855,
+          "1": 111
+        },
+        "1": {
+          "0": 157,
+          "1": 1357
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 3452,
+          "1": 257
+        },
+        "1": {
+          "0": 824,
+          "1": 4227
+        }
+      }
+    }
+  },
+  "binary_positive_spike": {
+    "C0_time_calendar_baseline": {
+      "holdout": {
+        "0": {
+          "0": 3328,
+          "1": 0
+        },
+        "1": {
+          "0": 152,
+          "1": 0
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 7915,
+          "1": 0
+        },
+        "1": {
+          "0": 845,
+          "1": 0
+        }
+      }
+    },
+    "C1_time_calendar_weather_actual": {
+      "holdout": {
+        "0": {
+          "0": 3319,
+          "1": 9
+        },
+        "1": {
+          "0": 151,
+          "1": 1
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 7690,
+          "1": 225
+        },
+        "1": {
+          "0": 797,
+          "1": 48
+        }
+      }
+    },
+    "C2_time_calendar_weather_gradient": {
+      "holdout": {
+        "0": {
+          "0": 3297,
+          "1": 31
+        },
+        "1": {
+          "0": 149,
+          "1": 3
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 7730,
+          "1": 185
+        },
+        "1": {
+          "0": 781,
+          "1": 64
+        }
+      }
+    },
+    "C3_time_calendar_weather_anomaly_gradient": {
+      "holdout": {
+        "0": {
+          "0": 3309,
+          "1": 19
+        },
+        "1": {
+          "0": 148,
+          "1": 4
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 7683,
+          "1": 232
+        },
+        "1": {
+          "0": 787,
+          "1": 58
+        }
+      }
+    },
+    "C4_with_lagged_spread_features_diagnostic": {
+      "holdout": {
+        "0": {
+          "0": 3310,
+          "1": 18
+        },
+        "1": {
+          "0": 67,
+          "1": 85
+        }
+      },
+      "validate": {
+        "0": {
+          "0": 7811,
+          "1": 104
+        },
+        "1": {
+          "0": 201,
+          "1": 644
+        }
+      }
+    }
+  },
+  "multiclass_regime": {
+    "C0_time_calendar_baseline": {
+      "holdout": {
+        "near_zero": {
+          "near_zero": 1142,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 26,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 1362,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "small_nonzero": {
+          "near_zero": 798,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "spike_positive": {
+          "near_zero": 152,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        }
+      },
+      "validate": {
+        "near_zero": {
+          "near_zero": 2340,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 5,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 4206,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "small_nonzero": {
+          "near_zero": 1364,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "spike_positive": {
+          "near_zero": 845,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        }
+      }
+    },
+    "C1_time_calendar_weather_actual": {
+      "holdout": {
+        "near_zero": {
+          "near_zero": 1011,
+          "negative_or_spike_negative": 0,
+          "positive": 4,
+          "small_nonzero": 0,
+          "spike_positive": 127
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 26,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 1263,
+          "negative_or_spike_negative": 0,
+          "positive": 33,
+          "small_nonzero": 0,
+          "spike_positive": 66
+        },
+        "small_nonzero": {
+          "near_zero": 747,
+          "negative_or_spike_negative": 0,
+          "positive": 11,
+          "small_nonzero": 0,
+          "spike_positive": 40
+        },
+        "spike_positive": {
+          "near_zero": 136,
+          "negative_or_spike_negative": 0,
+          "positive": 8,
+          "small_nonzero": 0,
+          "spike_positive": 8
+        }
+      },
+      "validate": {
+        "near_zero": {
+          "near_zero": 2216,
+          "negative_or_spike_negative": 0,
+          "positive": 29,
+          "small_nonzero": 0,
+          "spike_positive": 95
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 0,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 5
+        },
+        "positive": {
+          "near_zero": 3896,
+          "negative_or_spike_negative": 0,
+          "positive": 123,
+          "small_nonzero": 0,
+          "spike_positive": 187
+        },
+        "small_nonzero": {
+          "near_zero": 1270,
+          "negative_or_spike_negative": 0,
+          "positive": 18,
+          "small_nonzero": 0,
+          "spike_positive": 76
+        },
+        "spike_positive": {
+          "near_zero": 654,
+          "negative_or_spike_negative": 0,
+          "positive": 33,
+          "small_nonzero": 0,
+          "spike_positive": 158
+        }
+      }
+    },
+    "C2_time_calendar_weather_gradient": {
+      "holdout": {
+        "near_zero": {
+          "near_zero": 953,
+          "negative_or_spike_negative": 0,
+          "positive": 41,
+          "small_nonzero": 0,
+          "spike_positive": 148
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 24,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 2
+        },
+        "positive": {
+          "near_zero": 1187,
+          "negative_or_spike_negative": 0,
+          "positive": 82,
+          "small_nonzero": 0,
+          "spike_positive": 93
+        },
+        "small_nonzero": {
+          "near_zero": 714,
+          "negative_or_spike_negative": 0,
+          "positive": 36,
+          "small_nonzero": 0,
+          "spike_positive": 48
+        },
+        "spike_positive": {
+          "near_zero": 126,
+          "negative_or_spike_negative": 0,
+          "positive": 13,
+          "small_nonzero": 0,
+          "spike_positive": 13
+        }
+      },
+      "validate": {
+        "near_zero": {
+          "near_zero": 2180,
+          "negative_or_spike_negative": 0,
+          "positive": 68,
+          "small_nonzero": 0,
+          "spike_positive": 92
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 0,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 5
+        },
+        "positive": {
+          "near_zero": 3670,
+          "negative_or_spike_negative": 0,
+          "positive": 334,
+          "small_nonzero": 0,
+          "spike_positive": 202
+        },
+        "small_nonzero": {
+          "near_zero": 1231,
+          "negative_or_spike_negative": 0,
+          "positive": 55,
+          "small_nonzero": 0,
+          "spike_positive": 78
+        },
+        "spike_positive": {
+          "near_zero": 546,
+          "negative_or_spike_negative": 0,
+          "positive": 155,
+          "small_nonzero": 0,
+          "spike_positive": 144
+        }
+      }
+    },
+    "C3_time_calendar_weather_anomaly_gradient": {
+      "holdout": {
+        "near_zero": {
+          "near_zero": 1126,
+          "negative_or_spike_negative": 0,
+          "positive": 12,
+          "small_nonzero": 0,
+          "spike_positive": 4
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 26,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 1326,
+          "negative_or_spike_negative": 0,
+          "positive": 36,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "small_nonzero": {
+          "near_zero": 782,
+          "negative_or_spike_negative": 0,
+          "positive": 16,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        },
+        "spike_positive": {
+          "near_zero": 147,
+          "negative_or_spike_negative": 0,
+          "positive": 5,
+          "small_nonzero": 0,
+          "spike_positive": 0
+        }
+      },
+      "validate": {
+        "near_zero": {
+          "near_zero": 2216,
+          "negative_or_spike_negative": 0,
+          "positive": 53,
+          "small_nonzero": 0,
+          "spike_positive": 71
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 0,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 0,
+          "spike_positive": 5
+        },
+        "positive": {
+          "near_zero": 3762,
+          "negative_or_spike_negative": 0,
+          "positive": 229,
+          "small_nonzero": 0,
+          "spike_positive": 215
+        },
+        "small_nonzero": {
+          "near_zero": 1241,
+          "negative_or_spike_negative": 0,
+          "positive": 45,
+          "small_nonzero": 0,
+          "spike_positive": 78
+        },
+        "spike_positive": {
+          "near_zero": 675,
+          "negative_or_spike_negative": 0,
+          "positive": 77,
+          "small_nonzero": 0,
+          "spike_positive": 93
+        }
+      }
+    },
+    "C4_with_lagged_spread_features_diagnostic": {
+      "holdout": {
+        "near_zero": {
+          "near_zero": 1040,
+          "negative_or_spike_negative": 0,
+          "positive": 13,
+          "small_nonzero": 89,
+          "spike_positive": 0
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 2,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 24,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 28,
+          "negative_or_spike_negative": 0,
+          "positive": 1174,
+          "small_nonzero": 129,
+          "spike_positive": 31
+        },
+        "small_nonzero": {
+          "near_zero": 192,
+          "negative_or_spike_negative": 0,
+          "positive": 95,
+          "small_nonzero": 511,
+          "spike_positive": 0
+        },
+        "spike_positive": {
+          "near_zero": 0,
+          "negative_or_spike_negative": 0,
+          "positive": 60,
+          "small_nonzero": 1,
+          "spike_positive": 91
+        }
+      },
+      "validate": {
+        "near_zero": {
+          "near_zero": 2099,
+          "negative_or_spike_negative": 0,
+          "positive": 58,
+          "small_nonzero": 181,
+          "spike_positive": 2
+        },
+        "negative_or_spike_negative": {
+          "near_zero": 0,
+          "negative_or_spike_negative": 0,
+          "positive": 0,
+          "small_nonzero": 5,
+          "spike_positive": 0
+        },
+        "positive": {
+          "near_zero": 119,
+          "negative_or_spike_negative": 0,
+          "positive": 3598,
+          "small_nonzero": 361,
+          "spike_positive": 128
+        },
+        "small_nonzero": {
+          "near_zero": 334,
+          "negative_or_spike_negative": 0,
+          "positive": 233,
+          "small_nonzero": 794,
+          "spike_positive": 3
+        },
+        "spike_positive": {
+          "near_zero": 2,
+          "negative_or_spike_negative": 0,
+          "positive": 219,
+          "small_nonzero": 5,
+          "spike_positive": 619
+        }
+      }
+    }
+  }
+}

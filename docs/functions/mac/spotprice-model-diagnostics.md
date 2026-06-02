@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0047
+Last changed: P0048
 
 ## Module
 
@@ -59,3 +59,29 @@ Important functions:
 `write_p0047_evidence(...)` writes package-run CSV, Markdown and JSON evidence under `requirements/package-runs/P0047/`.
 
 P0047 is diagnostics/export-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0048 SE3-SE1 Bottleneck Feature And Exploratory Models
+
+`p0048.run_p0048_analysis(...)` orchestrates SE3-SE1 bottleneck feature construction, local dataset persistence and exploratory non-deployable modeling.
+
+Important functions:
+
+`build_base_spread_rows(...)` joins corrected AI2 SE1 and area-diff rows and reconstructs `se3_price` and `se3_minus_se1`.
+
+`load_weather_feature_rows(...)` reads local weather proxy source rows for south, central, north and system-oriented wind, solar and temperature features.
+
+`derive_weather_features(...)` attaches actual weather proxy fields, computes fixed-CET seasonal normals/deltas and derives gradient fields.
+
+`add_regime_labels(...)` applies P0047 robust-sigma thresholds to binary and multiclass regime targets.
+
+`add_lagged_features(...)` adds previous-hour and previous-day spread/regime diagnostics using only earlier timestamps.
+
+`assign_chronological_splits(...)` assigns train/validate/holdout by fixed-CET model date.
+
+`persist_modeling_dataset(...)` writes the local SQLite table `se3_se1_bottleneck_training_dataset_v1`.
+
+`evaluate_stage1_classifiers(...)`, `evaluate_stage2_regressors(...)` and `evaluate_continuous_spread_baselines(...)` run exploratory sklearn diagnostics and return metrics only.
+
+`write_p0048_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0048/`.
+
+P0048 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

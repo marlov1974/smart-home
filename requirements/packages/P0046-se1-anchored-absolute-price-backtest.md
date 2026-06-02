@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -478,4 +478,52 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented and verified by Codex.
+
+Result: PASS.
+
+Primary SE1 shape source:
+
+```text
+P0045 system_proxy_se1 selected formula = combined_scaled
+```
+
+Primary forecast-origin policy:
+
+```text
+Monday 06:00 fixed-CET model time
+168 consecutive hours
+validation = 2025 origins
+holdout = 2026 origins
+```
+
+Window coverage:
+
+```text
+system_proxy_se1 validation windows: 52
+system_proxy_se1 holdout windows: 19
+area_diff_proxy_se3 validation windows: 52
+area_diff_proxy_se3 holdout windows: 19
+```
+
+Selected SE1 anchoring configuration:
+
+```text
+predictor: P0045_combined_scaled
+anchor scenario: A35
+anchor method: L2_level_scale
+selection split: validation only
+```
+
+Primary SE1 result:
+
+```text
+validation selected MAE: 0.153460
+validation B0_anchor_flat MAE: 0.212950
+holdout selected MAE: 0.267128
+holdout B0_anchor_flat MAE: 0.382517
+```
+
+P0047 recommendation: proceed only with an SE1-only, feature-flagged, non-production API prototype. Keep area_diff and recomposed SE3 diagnostic/fallback-constrained until a later package reviews their absolute anchoring behavior.
+
+Confirmed no AI-1/AI-2 retraining, no production API, no M5/M6/M7, no Home Assistant, no Shelly, no KVS and no live device access.

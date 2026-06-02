@@ -1,0 +1,6 @@
+feature,rows,future_6h_residual_mean,lift_vs_all
+is_cold_below_train_p25,3846,0.2826008620969834,0.024921284894106555
+is_cold_below_train_p10,1878,0.26026788471778517,0.00258830751490835
+cold_and_no_cheap_recovery_window,11,-0.004586431818181822,-0.2622660090210586
+se3_top8_day_after_24h_cold_pressure_current,1289,0.2693324867145073,0.011652909511630505
+heat_debt_pressure_ema_24h_corr_future_6h_residual,12234,-0.025547465694770368,0.0

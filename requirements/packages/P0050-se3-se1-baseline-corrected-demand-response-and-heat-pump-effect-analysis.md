@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -651,4 +651,60 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0050 PASS.
+
+Implemented `src.mac.services.spotprice_model_diagnostics.p0050` and built the local analysis table:
+
+```text
+se3_se1_demand_response_analysis_v1
+```
+
+Primary input:
+
+```text
+se3_se1_bottleneck_training_dataset_v1
+```
+
+P0049 reservoir join:
+
+```text
+se3_se1_bottleneck_reservoir_analysis_v1
+```
+
+Row counts:
+
+```text
+source_rows = 34968
+persisted_rows = 34968
+train = 22728
+validate = 8760
+holdout = 3480
+```
+
+Selected baseline:
+
+```text
+B2_smoothed_hour_daytype_dayofyear
+```
+
+Main result:
+
+```text
+- Baseline correction changed the interpretation of day-type effects; weekend residual lift was lower than all validation/holdout rows.
+- SE3 top4/top8 day hours had high same-hour residual lift, negative 6h residual lift and positive 24h residual lift, consistent with short damping plus later rebound as an exploratory diagnostic.
+- Bottom4 recovery after top8 showed positive 6h residual lift, so cheap-hour recovery is not proven as clean relief.
+- Heat-debt pressure was weak in this deterministic diagnostic; 24h heat-debt correlation with future 6h residual was slightly negative.
+- Lagged raw spread residual remained the strongest exploratory MAE group across tested horizons; local SE3 rank/top-N won F1 at 48h only.
+```
+
+Recommendation:
+
+```text
+P0051 should compare direct SE3 AI-1/AI-2 with a bottleneck/demand-response residual model. Carry local SE3 rank/top-N and heat-debt features only as diagnostic candidates until forecast-origin validation confirms usefulness.
+```
+
+Confirmed:
+
+```text
+No SE1-to-SE3 anchoring, no SE3 API, no production model artifact, no M5/M6/M7, no Shelly, no Home Assistant, no KVS and no device actions.
+```

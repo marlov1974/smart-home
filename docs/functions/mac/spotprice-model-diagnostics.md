@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0049
+Last changed: P0050
 
 ## Module
 
@@ -115,3 +115,29 @@ Important functions:
 `write_p0049_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0049/`.
 
 P0049 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0050 SE3-SE1 Baseline-Corrected Demand-Response And Heat-Pump Analysis
+
+`p0050.run_p0050_analysis(...)` orchestrates baseline-corrected SE3-SE1 residual diagnostics, local SE3 price-rank/top-N response analysis and heat-pump pressure proxy analysis.
+
+Important functions:
+
+`load_p0050_source_rows(...)` reads P0048's `se3_se1_bottleneck_training_dataset_v1` as the primary source and joins P0049 reservoir columns when available.
+
+`validate_p0050_contract(...)` verifies fixed-CET fields, source temperature proxy fields, chronological splits and `se3_minus_se1 = se3_price - se1_price`.
+
+`fit_spread_baselines(...)`, `apply_spread_baselines(...)`, `select_spread_baseline(...)` and `apply_selected_residual(...)` build train-only expected-spread baselines and selected residual fields.
+
+`add_local_se3_rank_features(...)` adds deterministic fixed-CET day and trailing-48h SE3 price rank, percentile, top-N and bottom-N features.
+
+`add_consumer_optimizer_response_features(...)` adds backward-looking top/bottom exposure counters and explicitly `_oracle` next-recovery diagnostics.
+
+`add_heat_pump_pressure_features(...)` adds train-only cold thresholds, cold/high-price exposure counters and heat-debt pressure EMA features.
+
+`add_future_targets(...)` adds same-hour and future raw/residual spread targets for response and exploratory model evaluation.
+
+`persist_demand_response_dataset(...)` writes the local SQLite table `se3_se1_demand_response_analysis_v1`.
+
+`write_p0050_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0050/`.
+
+P0050 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0051
+Last changed: P0052
 
 ## Module
 
@@ -167,3 +167,29 @@ Important functions:
 `write_p0051_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0051/`.
 
 P0051 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0052 SE1-SE4 Transfer Flow and Import/Export
+
+`p0052.run_p0052_ingestion(...)` orchestrates SvK Kontrollrummet / Statnett flow-map discovery, partial historical ingestion, validation and initial capacity/flow diagnostics.
+
+Important functions:
+
+`fetch_svk_flow_period(...)` fetches quarter-hour SvK/Statnett flow snapshots for the selected overlap range.
+
+`parse_svk_flow_payload(...)` converts SvK flow-map JSON into normalized border-flow and SE1-SE4 import/export observations.
+
+`directed_border_values(...)` applies the SvK direction convention: positive `A_B` means A to B, negative means B to A.
+
+`aggregate_hourly(...)` converts quarter-hour MW observations into hourly mean-MW canonical rows.
+
+`build_wide_hourly(...)` creates `transfer_capacity_flow_se1_se4_hourly_v1` with internal signed flows, SE1-SE4 import/export/net import, pressure features and P0051 balance residual diagnostics.
+
+`persist_transfer_flow(...)` writes `transfer_capacity_flow_raw_v1`, `transfer_capacity_flow_hourly_v1` and `transfer_capacity_flow_se1_se4_hourly_v1` idempotently.
+
+`validate_transfer_flow(...)` checks duplicates, finite values, capacity absence, expected hours, missingness and joins to P0051 physical balance rows.
+
+`run_initial_diagnostics(...)` joins transfer/import-export rows to SE3 price and SE3-SE1 diagnostics. Capacity/utilization diagnostics remain null in P0052 because no auth-free capacity source was available.
+
+`write_p0052_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0052/`.
+
+P0052 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

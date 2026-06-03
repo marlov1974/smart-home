@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -645,4 +645,89 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented and verified with result status `WARN`.
+
+Selected source:
+
+```text
+Svenska kraftnat Kontrollrummet / Statnett
+```
+
+Selected reason:
+
+```text
+Auth-free machine-readable flow-map endpoint exposes Swedish internal border flows and SE1-SE4 import/export values.
+```
+
+Tables created/rebuilt:
+
+```text
+transfer_capacity_flow_raw_v1
+transfer_capacity_flow_hourly_v1
+transfer_capacity_flow_se1_se4_hourly_v1
+```
+
+Historical range ingested:
+
+```text
+2026-05-01T00:00:00Z .. 2026-05-25T22:00:00Z
+```
+
+Row counts:
+
+```text
+raw quarter-hour rows: 95840
+canonical hourly rows: 24542
+wide hourly rows: 599
+```
+
+Validation summary:
+
+```text
+duplicates: 0
+nonfinite values: 0
+negative capacity values: 0
+wide rows joined to P0051: 599 / 599
+missing signed_flow/import/export/net_import hours: 0
+```
+
+Capacity result:
+
+```text
+No historical capacity values were available from the selected auth-free SvK/Statnett source.
+ENTSO-E Transparency Platform remains the likely capacity source but requires a security token; unauthenticated request returned HTTP 401.
+No capacity values were invented.
+```
+
+Diagnostics summary:
+
+```text
+joined rows: 599
+SE3 price vs net_import_se3_mw: 0.6765189198733116
+SE3 price vs south_import_pressure: 0.7396667513331376
+SE3-SE1 vs net_import_se3_mw: 0.25066644313977
+SE3-SE1 vs south_import_pressure: 0.2660402951401065
+capacity/utilization diagnostics: null because capacity is unavailable
+```
+
+Forecast safety:
+
+```text
+flows and realized import/export: historical_observed_only
+net import and pressure features: require separate forecast model before forecast use
+capacity: not forecast-safe until a source is available
+```
+
+Recommendation:
+
+```text
+P0053 may use P0051 physical balance plus P0052 observed flow/import-export for historical physical-regime diagnostics.
+P0053 must not treat these features as forecast-safe without separate forecasts or forecast-time-known inputs.
+Capacity should be handled by a separate ENTSO-E/token-backed package or another reliable capacity source.
+```
+
+Forbidden work confirmation:
+
+```text
+No continental price levels, no SE1-to-SE3 anchoring, no production API, no production model, no deployable model artifact, no M5/M6/M7, no Shelly, no Home Assistant, no KVS and no device actions.
+```

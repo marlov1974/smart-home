@@ -24,6 +24,8 @@ P0052 verified that Svenska kraftnat Kontrollrummet exposes current/recent Nordi
 
 P0052A verified that token-backed ENTSO-E Transparency API calls can return internal Swedish bidding-zone data for A09 scheduled commercial exchange, A11 physical flow and A61 capacity with contract types A02/A03/A04. Keep `securityToken` out of evidence-safe request records and add it only inside the HTTP fetch. Capacity responses may use `P1M` resolution; parse those from the source period start/end rather than assuming a fixed month length, then filter expanded hourly rows back to the requested UTC interval.
 
+P0052B found two important ENTSO-E backfill robustness rules. First, clip long-period capacity values to the requested UTC chunk before hourly expansion; filtering after expansion can make month/year capacity responses too slow. Second, historical diagnostic tables may store equivalent UTC timestamps as either `...Z` or `...+00:00`; use cheap UTC text normalization for joins instead of rewriting older tables or applying expensive `datetime()` joins over large tables.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

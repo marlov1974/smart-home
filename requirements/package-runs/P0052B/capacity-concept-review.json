@@ -1,0 +1,37 @@
+{
+  "bottleneck_margin_allowed": false,
+  "conclusion": "Store A61 capacity rows with explicit contract labels, but keep utilization and bottleneck margin null until publication timing and compatibility with scheduled exchange/physical flow are proven.",
+  "contract_types": {
+    "A02": {
+      "capacity_horizon": "weekly",
+      "directional": true,
+      "meaning": "Weekly",
+      "use_for_utilization": false
+    },
+    "A03": {
+      "capacity_horizon": "monthly",
+      "directional": true,
+      "meaning": "Monthly",
+      "use_for_utilization": false
+    },
+    "A04": {
+      "capacity_horizon": "yearly",
+      "directional": true,
+      "meaning": "Yearly",
+      "use_for_utilization": false
+    }
+  },
+  "document_type_A61": {
+    "meaning": "Maximum possible",
+    "reason": "A61 is a maximum-possible capacity document/business meaning, but contract type alone does not prove hourly market-capacity compatibility.",
+    "use_for_utilization": false
+  },
+  "official_sources": [
+    "https://transparency.entsoe.eu/content/static_content/Static%20content/web%20api/Guide_prod_backup_06_11_2024.html",
+    "https://transparencyplatform.zendesk.com/hc/en-us/articles/15856778598548-Contract-MarketAgreement-Type",
+    "https://www.entsoe.eu/Documents/EDI/Library/Core/entso-e-code-list-v29r0.pdf"
+  ],
+  "selected_capacity_contract_type": null,
+  "status": "capacity_concept_uncertain",
+  "utilization_allowed": false
+}

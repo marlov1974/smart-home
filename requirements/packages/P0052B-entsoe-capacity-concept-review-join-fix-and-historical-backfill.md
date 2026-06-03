@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified WARN
 
 ## Package order
 
@@ -629,4 +629,60 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0052B completed as `WARN` on 2026-06-03.
+
+Result:
+
+```text
+status = WARN
+raw_rows_fetched = 12689
+hourly_rows_aggregated = 8182
+wide_rows_updated = 528
+normalized_join_rows = 12287
+normalized_join_rows_with_entsoe_signal = 12287
+validation_ok = true
+```
+
+WARN reasons:
+
+```text
+- Full 2022-2026 / full-2025 backfill was not completed in this package because large ENTSO-E responses and idempotent upserts were too slow for bounded package execution.
+- Verified live windows were reduced to representative weeks: 2025-01-01..2025-01-07, 2024-10-27..2024-11-03 and 2026-05-01..2026-05-07.
+- Earlier interrupted live attempts still left useful idempotent DB rows, expanding local P0052B coverage to 2024-09-01..2026-05-25 in existing tables.
+- A61 capacity concept compatibility remains uncertain, so utilization and bottleneck margin remain blocked.
+```
+
+Required answers:
+
+```text
+1. Token safety was re-verified; no token leak was found.
+2. In this ENTSO-E context, A61 is a capacity document/business meaning and A02/A03/A04 are weekly/monthly/yearly contract types.
+3. No A61 contract type was selected for utilization diagnostics because compatibility with hourly market capacity remains unproven.
+4. ENTSO-E internal Swedish capacity exists in representative windows for SE1-SE2, SE2-SE3 and SE3-SE4.
+5. ENTSO-E internal Swedish A09/A11 exists for those borders in representative windows.
+6. Verified live windows are listed above; partial persisted DB coverage from interrupted attempts spans 2024-09-01T00:00:00Z .. 2026-05-25T22:00:00Z for ENTSO-E rows.
+7. P0052A joined zero rows because transfer timestamps used `Z` while the price diagnostic table used `+00:00`; P0052B fixed diagnostics with normalized UTC text joins.
+8. Normalized joined rows with ENTSO-E signal: 12287.
+9. Pre/post 2024-10-29 comparability remains inconclusive for utilization.
+10. Utilization and bottleneck margin cannot be computed safely yet; capacity is stored but concept status is `capacity_concept_uncertain`.
+11. Utilization/margin diagnostics are blocked. Scheduled exchange and physical flow have non-zero initial correlations with SE3 price and SE3-SE1.
+12. Remaining blocker: capacity publication timing and compatibility with scheduled exchange/physical flow.
+13. Scheduled exchange and physical flow are historical-observed-only; A61 capacity, utilization and bottleneck margin are not forecast-safe until concept review is stronger.
+14. P0053 may begin physical-regime modeling with historical exchange/flow diagnostics, but must not use A61 utilization/margin as production-intent features.
+15. Confirmed: no token leak, no continental price levels, no SE1-to-SE3 anchoring, no API, no production model and no device actions.
+```
+
+Tests run:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0052b
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0048 tests.mac.services.spotprice_model_diagnostics.test_p0049 tests.mac.services.spotprice_model_diagnostics.test_p0050 tests.mac.services.spotprice_model_diagnostics.test_p0051 tests.mac.services.spotprice_model_diagnostics.test_p0052 tests.mac.services.spotprice_model_diagnostics.test_p0052a tests.mac.services.spotprice_model_diagnostics.test_p0052b
+```
+
+Evidence:
+
+```text
+requirements/package-runs/P0052B/
+src/mac/services/spotprice_model_diagnostics/p0052b.py
+tests/mac/services/spotprice_model_diagnostics/test_p0052b.py
+```

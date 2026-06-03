@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0052A
+Last changed: P0052B
 
 ## Module
 
@@ -219,3 +219,29 @@ Important functions:
 `write_p0052a_evidence(...)` writes sanitized package-run Markdown and JSON evidence under `requirements/package-runs/P0052A/`.
 
 P0052A is diagnostics/data-ingestion only. It explicitly forbids external price-level ingestion, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0052B ENTSO-E Capacity Concept Review And Backfill
+
+`p0052b.run_p0052b_ingestion(...)` orchestrates token safety recheck, P0052 metadata schema migration, ENTSO-E representative historical backfill, timestamp-normalized join diagnostics, conservative A61 concept review and sanitized evidence writing.
+
+Important functions:
+
+`capacity_concept_review(...)` documents A61 plus A02/A03/A04 as weekly/monthly/yearly capacity contract types and returns `capacity_concept_uncertain` so utilization/margin remain blocked.
+
+`ensure_p0052b_schema(...)` additively migrates P0052 raw/hourly tables with ENTSO-E metadata columns and extends the wide table with P0052B diagnostic columns.
+
+`fetch_entsoe_rows_for_windows(...)` performs bounded, parallel, token-backed ENTSO-E fetches over representative windows without putting the token into request evidence.
+
+`parse_entsoe_document_clipped(...)`, `parse_entsoe_period_points_clipped(...)` and `expand_entsoe_value_clipped(...)` parse ENTSO-E XML while clipping long capacity periods to the requested chunk before hourly expansion.
+
+`update_wide_entsoe_features_p0052b(...)` inserts missing wide timestamp rows and updates scheduled exchange, physical flow and directional capacity fields.
+
+`normalize_timestamp_sql(...)` normalizes `Z` and `+00:00` UTC timestamp text for diagnostics joins without rewriting source tables.
+
+`run_join_fix_analysis(...)` explains the P0052A zero-row join and reports exact versus normalized join counts.
+
+`run_p0052b_diagnostics(...)` computes SE3 price / SE3-SE1 correlations for scheduled exchange and physical flow, while leaving capacity utilization/margin blocked when concept status is uncertain.
+
+`write_p0052b_evidence(...)` writes P0052B Markdown and JSON evidence under `requirements/package-runs/P0052B/`.
+
+P0052B is diagnostics/data-ingestion only. It explicitly forbids external price-level ingestion, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

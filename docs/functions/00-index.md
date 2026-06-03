@@ -93,3 +93,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0049` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE3-SE1 reservoir/memory features, price-response proxies, day-type interaction diagnostics and horizon-by-horizon evidence.
 
 `P0050` updated `docs/functions/mac/spotprice-model-diagnostics.md` with baseline-corrected SE3-SE1 residuals, local SE3 price-rank/top-N diagnostics and heat-pump pressure proxy analysis.
+
+`P0051` updated `docs/functions/mac/spotprice-model-diagnostics.md` with eSett SE1-SE4 production/consumption ingestion, physical balance tables, net-load features and initial physical-signal diagnostics.

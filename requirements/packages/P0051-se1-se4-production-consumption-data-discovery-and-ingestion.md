@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified
 
 ## Package order
 
@@ -474,4 +474,64 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0051 PASS.
+
+Selected source:
+
+```text
+eSett Open Data
+```
+
+Created/rebuilt local SQLite tables:
+
+```text
+physical_balance_hourly_raw_v1
+physical_balance_hourly_v1
+physical_balance_se1_se4_hourly_v1
+```
+
+Ingested range:
+
+```text
+2022-05-29T23:00:00Z through 2026-05-25T22:00:00Z
+```
+
+Row counts:
+
+```text
+first live fetch observations = 4450240 quarter-hour source observations
+canonical hourly rows = 1350313
+wide hourly rows = 34968
+```
+
+Validation:
+
+```text
+duplicates = 0
+nonfinite_values = 0
+negative_values_after_normalization = 0
+missing required consumption_total/production_total hours = 0 for SE1-SE4
+```
+
+Main initial diagnostics:
+
+```text
+SE3 price vs net_load_se3 correlation = 0.602094
+SE3 price vs net_load_south_minus_north correlation = 0.562751
+SE3-SE1 vs net_load_south_minus_north correlation = 0.342777
+SE3-SE1 vs production_south_minus_north correlation = -0.360256
+SE3 top8 day consumption_se3 lift = 350.553 MW
+SE3 bottom8 day consumption_se3 lift = -441.039 MW
+```
+
+Recommendation:
+
+```text
+P0052 should evaluate physical-balance historical features and decide whether separate production/consumption forecasts are needed before forecast-safe SE3 model use.
+```
+
+Confirmed:
+
+```text
+No continental price pressure work, no SE1-to-SE3 anchoring, no SE3 API, no production model artifact, no M5/M6/M7, no Shelly, no Home Assistant, no KVS and no device actions.
+```

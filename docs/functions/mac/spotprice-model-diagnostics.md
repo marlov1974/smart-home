@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0050
+Last changed: P0051
 
 ## Module
 
@@ -141,3 +141,29 @@ Important functions:
 `write_p0050_evidence(...)` writes package-run Markdown, CSV and JSON evidence under `requirements/package-runs/P0050/`.
 
 P0050 is diagnostics-only. It explicitly forbids SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0051 SE1-SE4 Physical Balance Ingestion
+
+`p0051.run_p0051_ingestion(...)` orchestrates eSett Open Data discovery, SE1-SE4 production/consumption ingestion, hourly aggregation, validation and initial physical-signal diagnostics.
+
+Important functions:
+
+`load_existing_ranges(...)` inspects the current modeling range used for overlap selection.
+
+`fetch_esett_period(...)` fetches eSett consumption and production data for SE1-SE4 in chunks.
+
+`parse_esett_consumption(...)` and `parse_esett_production(...)` convert eSett JSON responses into canonical source observations. Consumption source values are normalized to positive MW demand.
+
+`aggregate_hourly(...)` converts quarter-hour source observations into hourly mean-MW canonical rows.
+
+`build_wide_hourly(...)` creates SE1-SE4 wide rows with production, consumption, net load, north/south aggregates and south-minus-north balance fields.
+
+`persist_physical_balance(...)` writes `physical_balance_hourly_raw_v1`, `physical_balance_hourly_v1` and `physical_balance_se1_se4_hourly_v1`.
+
+`validate_physical_balance(...)` checks duplicates, finite values, negative values after normalization and missing required zone/measure hours.
+
+`run_initial_diagnostics(...)` joins physical balance rows to SE3 price/SE3-SE1 diagnostics and computes explanatory correlations and top/bottom price event lifts.
+
+`write_p0051_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0051/`.
+
+P0051 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

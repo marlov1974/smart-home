@@ -18,6 +18,8 @@ Quarter-hour rows should be aggregated to hourly means before storing hourly his
 
 Elprisetjustnu may reject default Python urllib requests with HTTP 403. Use a clear project User-Agent for read-only source fetches.
 
+P0051 verified that eSett Open Data endpoints are public and useful for SE1-SE4 physical balance history. The API returns quarter-hour `timestampUTC` rows. On the local Mac Python 3.9 runtime, `urllib` can fail the eSett TLS handshake while `curl` succeeds, so ingestion tooling may need a `curl` fallback. eSett consumption values are negative in source payloads and should be sign-normalized to positive demand before feature storage.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

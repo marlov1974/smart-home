@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified PASS
 
 ## Package order
 
@@ -434,4 +434,73 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0052C completed as `PASS` on 2026-06-03.
+
+Result:
+
+```text
+source_rows = 8190
+ratio_observations = 5492
+metric_rows = 144
+worst_examples = 10
+```
+
+Checked windows:
+
+```text
+2025-01-01T00:00:00Z .. 2025-01-07T23:00:00Z
+2024-10-27T00:00:00Z .. 2024-11-03T23:00:00Z
+2026-05-01T00:00:00Z .. 2026-05-07T23:00:00Z
+```
+
+Contract classification:
+
+```text
+A02 = keep_blocked
+A03 = keep_blocked
+A04 = keep_blocked
+```
+
+Key findings:
+
+```text
+- A09 scheduled exchange materially exceeded all A61 contract types in post-flow-based data.
+- A11 physical flow materially exceeded all A61 contract types in post-flow-based data.
+- A02 scheduled_exchange max ratio = 1.1414; physical_flow max ratio = 1.3079.
+- A03 scheduled_exchange max ratio = 1.1414; physical_flow max ratio = 1.3079.
+- A04 scheduled_exchange max ratio = 1.2977; physical_flow max ratio = 1.3582.
+- Pre-flow-based sample did not exceed 1.05, but overlap is smaller and does not override post-flow-based violations.
+```
+
+Required answers:
+
+```text
+1. Token safety was re-verified and no token leak was found.
+2. Checked the three required representative windows listed above.
+3. Overlap counts: A02 scheduled 580 / physical 479; A03 scheduled 464 / physical 407; A04 scheduled 1932 / physical 1630.
+4. A09 scheduled exchange exceeds A61 A02 capacity.
+5. A09 scheduled exchange exceeds A61 A03 capacity.
+6. A09 scheduled exchange exceeds A61 A04 capacity.
+7. A11 physical flow exceeds A61 A02/A03/A04 capacity.
+8. Violations are material in post-flow-based data, including ratios above 1.10.
+9. No A61 contract type is a candidate market-capacity proxy.
+10. No A61 contract type is a candidate physical-capacity proxy.
+11. Behavior differs: pre-flow-based sample had no >1.05 violations, while post-flow-based sample had material violations.
+12. A61 should remain blocked for utilization and bottleneck margin. Do not allow it as experimental proxy without a different source/concept.
+13. Confirmed: no token leak, no continental price levels, no SE1-to-SE3 anchoring, no API, no production model and no device actions.
+```
+
+Tests run:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0052c
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0048 tests.mac.services.spotprice_model_diagnostics.test_p0049 tests.mac.services.spotprice_model_diagnostics.test_p0050 tests.mac.services.spotprice_model_diagnostics.test_p0051 tests.mac.services.spotprice_model_diagnostics.test_p0052 tests.mac.services.spotprice_model_diagnostics.test_p0052a tests.mac.services.spotprice_model_diagnostics.test_p0052b tests.mac.services.spotprice_model_diagnostics.test_p0052c
+```
+
+Evidence:
+
+```text
+requirements/package-runs/P0052C/
+src/mac/services/spotprice_model_diagnostics/p0052c.py
+tests/mac/services/spotprice_model_diagnostics/test_p0052c.py
+```

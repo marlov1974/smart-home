@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0052B
+Last changed: P0052C
 
 ## Module
 
@@ -245,3 +245,25 @@ Important functions:
 `write_p0052b_evidence(...)` writes P0052B Markdown and JSON evidence under `requirements/package-runs/P0052B/`.
 
 P0052B is diagnostics/data-ingestion only. It explicitly forbids external price-level ingestion, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0052C A61 Capacity Sanity Check
+
+`p0052c.run_p0052c_analysis(...)` orchestrates token safety recheck, local P0052B row loading, A61 capacity versus A09/A11 ratio analysis, contract classification and evidence writing.
+
+Important functions:
+
+`load_entsoe_hourly_rows(...)` reads local ENTSO-E A09/A11/A61 hourly rows for the required representative windows.
+
+`build_ratio_observations(...)` joins capacity to scheduled exchange and physical flow by normalized UTC timestamp, directed border and A61 contract type.
+
+`safe_ratio(...)` computes `abs(flow_or_exchange) / capacity` and returns explicit null reasons for missing or invalid capacity.
+
+`ratio_metrics(...)` computes overlap counts, missing counts, percentiles and violation counts above 1.00/1.02/1.05/1.10.
+
+`classify_contract_types(...)` classifies A02/A03/A04 as candidate or blocked capacity proxies.
+
+`worst_ratio_examples(...)` emits sanitized worst-ratio examples without request or token fields.
+
+`write_p0052c_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0052C/`.
+
+P0052C concluded that A61 A02/A03/A04 remain blocked for utilization and bottleneck margin because A09 scheduled exchange and A11 physical flow materially exceed all three variants in post-flow-based data.

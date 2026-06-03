@@ -101,3 +101,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0052A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with token-safe ENTSO-E A09/A11/A61 ingestion, internal Swedish capacity/exchange/flow amendment, period-bound `P1M` parsing and sanitized evidence handling.
 
 `P0052B` updated `docs/functions/mac/spotprice-model-diagnostics.md` with A61 capacity concept review, clipped long-period capacity expansion, metadata schema migration, representative ENTSO-E backfill and timestamp-normalized joins.
+
+`P0052C` updated `docs/functions/mac/spotprice-model-diagnostics.md` with A61 capacity ceiling sanity checks against A09 scheduled exchange and A11 physical flow, contract classifications and worst-ratio evidence.

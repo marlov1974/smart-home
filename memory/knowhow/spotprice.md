@@ -26,6 +26,8 @@ P0052A verified that token-backed ENTSO-E Transparency API calls can return inte
 
 P0052B found two important ENTSO-E backfill robustness rules. First, clip long-period capacity values to the requested UTC chunk before hourly expansion; filtering after expansion can make month/year capacity responses too slow. Second, historical diagnostic tables may store equivalent UTC timestamps as either `...Z` or `...+00:00`; use cheap UTC text normalization for joins instead of rewriting older tables or applying expensive `datetime()` joins over large tables.
 
+P0052C showed that ENTSO-E A61 A02/A03/A04 should remain blocked as internal Swedish capacity ceilings for utilization and bottleneck margin: in post-flow-based data, A09 scheduled exchange and A11 physical flow materially exceeded all three variants. A61 rows may stay as labeled evidence, but do not use them as capacity denominators without a different source/concept.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

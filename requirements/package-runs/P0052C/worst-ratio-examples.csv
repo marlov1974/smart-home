@@ -1,0 +1,11 @@
+timestamp_utc,from_area,to_area,contract_type,comparison_type,capacity_mw,flow_or_exchange_mw,ratio,capacity_source_dataset,flow_source_dataset,window_id,era
+2026-05-05T19:00:00Z,SE2,SE3,A04,physical_flow,5200.0,7062.68969725,1.3582095571634616,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-05T04:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6943.22009275,1.3352346332211538,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-05T18:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6865.484009000001,1.3202853863461539,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-02T06:00:00Z,SE1,SE2,A02,physical_flow,1800.0,2354.30065925,1.3079448106944445,A61 forecasted transfer capacity explicit A02,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-02T06:00:00Z,SE1,SE2,A03,physical_flow,1800.0,2354.30065925,1.3079448106944445,A61 forecasted transfer capacity explicit A03,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-06T05:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6780.057251,1.3038571636538463,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-06T05:00:00Z,SE2,SE3,A04,scheduled_exchange,5200.0,6747.785000000001,1.2976509615384617,A61 forecasted transfer capacity explicit A04,A09 scheduled commercial exchange,p0052a_overlap_week,post_flow_based
+2026-05-06T04:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6740.92919925,1.2963325383173077,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-05T17:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6713.126708999999,1.2909859055769228,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based
+2026-05-05T20:00:00Z,SE2,SE3,A04,physical_flow,5200.0,6702.626464999999,1.2889666278846152,A61 forecasted transfer capacity explicit A04,A11 physical flow,p0052a_overlap_week,post_flow_based

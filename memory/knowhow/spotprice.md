@@ -22,6 +22,8 @@ P0051 verified that eSett Open Data endpoints are public and useful for SE1-SE4 
 
 P0052 verified that Svenska kraftnat Kontrollrummet exposes current/recent Nordic flow-map data through `/services/controlroom/v2/map/flow?ticks=<epoch_ms>`, with Statnett named as data source in the page component. Reliable access needs browser-like `User-Agent` and `Referer` headers. The endpoint provides signed border flows plus SE area import/export values, but no capacity values. ENTSO-E Transparency API remains the likely capacity source and requires a security token.
 
+P0052A verified that token-backed ENTSO-E Transparency API calls can return internal Swedish bidding-zone data for A09 scheduled commercial exchange, A11 physical flow and A61 capacity with contract types A02/A03/A04. Keep `securityToken` out of evidence-safe request records and add it only inside the HTTP fetch. Capacity responses may use `P1M` resolution; parse those from the source period start/end rather than assuming a fixed month length, then filter expanded hourly rows back to the requested UTC interval.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

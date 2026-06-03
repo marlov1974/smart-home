@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0052
+Last changed: P0052A
 
 ## Module
 
@@ -193,3 +193,29 @@ Important functions:
 `write_p0052_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0052/`.
 
 P0052 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0052A ENTSO-E Token Capacity And Exchange Amendment
+
+`p0052a.run_p0052a_ingestion(...)` orchestrates token-safe ENTSO-E Transparency API discovery, internal Swedish border ingestion, P0052 table extension, wide-feature amendment, validation and evidence writing.
+
+Important functions:
+
+`load_entsoe_token(...)` reads a token from `ENTSOE_SECURITY_TOKEN` or the local user secret file without printing or writing the token value.
+
+`verify_secret_safety(...)` records sanitized secret handling evidence, including outside-repository storage and owner-only permissions.
+
+`build_entsoe_params(...)` builds evidence-safe A09/A11/A61 ENTSO-E request parameters while keeping `securityToken` out of sanitized records.
+
+`fetch_entsoe_rows(...)` queries internal Swedish borders in both directions for scheduled exchange, physical flow and explicit A61 capacity contracts, then filters expanded rows to the requested UTC range.
+
+`parse_entsoe_document(...)`, `parse_entsoe_period_points(...)` and `resolution_to_timedelta(...)` parse ENTSO-E XML, including PT15M/PT30M/PT60M/P1D and period-bound `P1M` capacity periods.
+
+`persist_entsoe_rows(...)` inserts ENTSO-E source rows into the P0052 raw and hourly long tables without replacing SvK/Statnett source identity.
+
+`update_wide_entsoe_features(...)` adds scheduled exchange, physical flow and flow-or-exchange wide fields, and fills compatible directional capacity fields where A61 A02 capacity is available.
+
+`run_p0052a_diagnostics(...)` joins amended transfer/capacity features to the local SE3-SE1 diagnostic table when overlapping price rows exist.
+
+`write_p0052a_evidence(...)` writes sanitized package-run Markdown and JSON evidence under `requirements/package-runs/P0052A/`.
+
+P0052A is diagnostics/data-ingestion only. It explicitly forbids external price-level ingestion, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

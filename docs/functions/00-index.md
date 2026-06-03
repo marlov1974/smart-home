@@ -97,3 +97,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0051` updated `docs/functions/mac/spotprice-model-diagnostics.md` with eSett SE1-SE4 production/consumption ingestion, physical balance tables, net-load features and initial physical-signal diagnostics.
 
 `P0052` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SvK/Statnett SE1-SE4 transfer flow and import/export ingestion, capacity-source blocker handling, balance residual features and initial capacity/flow diagnostics.
+
+`P0052A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with token-safe ENTSO-E A09/A11/A61 ingestion, internal Swedish capacity/exchange/flow amendment, period-bound `P1M` parsing and sanitized evidence handling.

@@ -1,0 +1,15 @@
+{
+  "duplicates": 0,
+  "negative_capacity_values": 0,
+  "nonfinite_values": 0,
+  "ok": true,
+  "row_counts_by_measure": {
+    "capacity_mw": 4050,
+    "physical_flow_mw": 1845,
+    "scheduled_exchange_mw": 1900
+  },
+  "secret_checked": true,
+  "secret_safe": true,
+  "token_leak_scan_required": true,
+  "wide_rows_joined": 599
+}

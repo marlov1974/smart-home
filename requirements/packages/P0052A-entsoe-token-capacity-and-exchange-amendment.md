@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+verified WARN
 
 ## Package order
 
@@ -566,4 +566,65 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+P0052A completed as `WARN` on 2026-06-03.
+
+Result:
+
+```text
+requested_range = 2026-05-01T00:00:00Z .. 2026-05-25T22:00:00Z
+raw_rows = 20334
+hourly_rows = 7795
+wide_rows_updated = 599
+validation_ok = true
+```
+
+WARN reasons:
+
+```text
+- Ingestion intentionally used the bounded P0052 recent overlap period, not the full P0051 historical range.
+- Initial SE3/SE3-SE1 diagnostics had zero joined rows in the local price diagnostic table for the amended range.
+- Forecast use remains conservative: actual exchange/flow is historical-observed-only; capacity publication timing still needs a separate forecast-safety package before production modeling.
+```
+
+Required answers:
+
+```text
+1. Token was read from a local user secret file outside the repository, or from ENTSOE_SECURITY_TOKEN if set. The token value was not printed or written to evidence.
+2. The token file is outside the repository, so it is not committable; directory mode was 0700 and token file mode was 0600.
+3. ENTSO-E A09, A11 and A61 were used. Discovery also found A26/A31 invalid or not allowed for tested parameters; A61 required contract_MarketAgreement.Type and A02/A03/A04 returned internal Swedish data.
+4. EIC/domain codes for SE1-SE4 and relevant neighbours were documented in `requirements/package-runs/P0052A/eic-domain-mapping.md` and `.json`.
+5. ENTSO-E returned internal Swedish A61 capacity for SE1-SE2, SE2-SE3 and SE3-SE4 in both directions for the tested period.
+6. ENTSO-E returned internal Swedish A09 scheduled exchange and A11 physical flow for those borders.
+7. No internal-border blocker remains for the tested period; remaining blocker is historical-period completeness and conservative forecast-safety classification.
+8. Ingested range was 2026-05-01T00:00:00Z .. 2026-05-25T22:00:00Z.
+9. Existing P0052 tables were amended: transfer_capacity_flow_raw_v1, transfer_capacity_flow_hourly_v1 and transfer_capacity_flow_se1_se4_hourly_v1.
+10. Stored concepts: scheduled_exchange_mw, physical_flow_mw and capacity_mw with explicit A61 A02/A03/A04 capacity labels; A02 capacity was used for compatible wide capacity fields.
+11. Pre/post 2024-10-29 comparability was not proven across full history because this package only ingested the recent post-flow-based overlap.
+12. Utilization can be computed safely only when compatible A02 capacity and flow-or-exchange exist; null/zero capacity is handled as null.
+13. Initial diagnostics did not improve SE3/SE3-SE1 evidence because joined diagnostic rows were zero for the amended range.
+14. Actual flow/exchange is historical_observed_only; capacity is conservatively not production forecast-safe until publication timing and forecast availability are verified.
+15. Next package should extend P0052A chunked historical backfill and publication-timing validation before using capacity in any forecast model.
+16. Confirmed: no token leak found, no continental price levels ingested, no SE1-to-SE3 anchoring, no API, no production model and no device actions.
+```
+
+Live/debug attempts:
+
+```text
+attempt_1 = failed on ENTSO-E capacity resolution P1M
+attempt_2 = passed after period-bound P1M handling and requested-range filtering
+```
+
+Automated tests:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0052a
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0048 tests.mac.services.spotprice_model_diagnostics.test_p0049 tests.mac.services.spotprice_model_diagnostics.test_p0050 tests.mac.services.spotprice_model_diagnostics.test_p0051 tests.mac.services.spotprice_model_diagnostics.test_p0052 tests.mac.services.spotprice_model_diagnostics.test_p0052a
+```
+
+Evidence:
+
+```text
+requirements/package-runs/P0052A/
+docs/functions/mac/spotprice-model-diagnostics.md
+memory/knowhow/spotprice.md
+```

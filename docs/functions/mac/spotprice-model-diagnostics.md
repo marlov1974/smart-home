@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0052C
+Last changed: P0053A
 
 ## Module
 
@@ -267,3 +267,31 @@ Important functions:
 `write_p0052c_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0052C/`.
 
 P0052C concluded that A61 A02/A03/A04 remain blocked for utilization and bottleneck margin because A09 scheduled exchange and A11 physical flow materially exceed all three variants in post-flow-based data.
+
+## P0053A ENTSO-E A09/A11 Internal Swedish Flow/Exchange Backfill
+
+`p0053a.run_p0053a_backfill(...)` orchestrates token-safe ENTSO-E A09/A11 historical backfill for internal Swedish borders, wide-table net/pressure feature derivation, normalized joins to price and physical balance data, validation and evidence writing.
+
+Important functions:
+
+`a09_a11_configs(...)` filters the shared P0052A ENTSO-E document configuration down to A09 scheduled exchange and A11 physical flow only.
+
+`monthly_chunks(...)` creates restart-safe UTC monthly request windows clipped to the requested target range.
+
+`plan_missing_fetch_tasks(...)` inspects existing canonical transfer rows and skips already-complete border/direction/month tasks.
+
+`fetch_missing_entsoe_rows(...)` and `fetch_task(...)` perform parallel token-backed ENTSO-E requests while storing only sanitized request metadata in evidence.
+
+`ensure_p0053a_schema(...)` additively ensures P0052B metadata columns, A09/A11 directional columns and P0053A net/pressure wide columns exist.
+
+`derive_flow_exchange_features(...)` computes net scheduled exchange, net physical flow, SE3/SE4 import aliases and southward pressure features without capacity.
+
+`update_wide_flow_exchange_features(...)` inserts missing wide timestamp rows and updates A09/A11 directional plus derived fields.
+
+`create_joined_analysis_dataset(...)` creates `physical_balance_flow_exchange_analysis_v1` by normalized UTC timestamp matching between the transfer wide table, `se3_se1_demand_response_analysis_v1` and `physical_balance_se1_se4_hourly_v1`.
+
+`directional_coverage_summary(...)` reports raw border/direction/measure missingness; `net_feature_coverage_summary(...)` reports effective net-feature completeness for modeling diagnostics.
+
+`run_p0053a_diagnostics(...)` computes exploratory SE3 price and SE3-SE1 spread correlations plus pre/post Nordic flow-based transition summaries.
+
+P0053A is diagnostics/data-ingestion only. It explicitly excludes A61 requests, utilization, bottleneck-margin derivation, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

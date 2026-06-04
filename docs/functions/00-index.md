@@ -103,3 +103,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0052B` updated `docs/functions/mac/spotprice-model-diagnostics.md` with A61 capacity concept review, clipped long-period capacity expansion, metadata schema migration, representative ENTSO-E backfill and timestamp-normalized joins.
 
 `P0052C` updated `docs/functions/mac/spotprice-model-diagnostics.md` with A61 capacity ceiling sanity checks against A09 scheduled exchange and A11 physical flow, contract classifications and worst-ratio evidence.
+
+`P0053A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with ENTSO-E A09/A11 internal Swedish historical backfill, net flow/exchange feature derivation and `physical_balance_flow_exchange_analysis_v1`.

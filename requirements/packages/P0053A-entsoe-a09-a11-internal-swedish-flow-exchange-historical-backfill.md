@@ -637,4 +637,42 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Completed with status: WARN.
+
+Summary:
+
+- Implemented `src/mac/services/spotprice_model_diagnostics/p0053a.py`.
+- Added focused tests in `tests/mac/services/spotprice_model_diagnostics/test_p0053a.py`.
+- Added P0053A package-run evidence under `requirements/package-runs/P0053A/`.
+- Updated durable function catalog in `docs/functions/mac/spotprice-model-diagnostics.md`.
+- Re-verified token safety without printing or storing the token value.
+- Backfilled ENTSO-E A09/A11 rows over the full requested target range where the source returned data.
+- Created/updated `physical_balance_flow_exchange_analysis_v1`.
+
+Live result:
+
+```text
+status = WARN
+requested_range = 2022-05-29T23:00:00Z .. 2026-05-25T22:00:00Z
+analysis_rows = 34968
+analysis_range = 2022-05-29T23:00:00Z .. 2026-05-25T22:00:00Z
+canonical_a09_a11_rows_in_range = 231649
+failed_chunks = 0
+A61 requested = false
+```
+
+WARN reason:
+
+- Directional raw coverage is intentionally sparse for low-use reverse directions.
+- Full-range net feature coverage is not complete, mainly for older A09 scheduled exchange on SE2-SE3/SE3-SE4.
+- WARN-minimum net feature coverage from `2024-01-01T00:00:00Z` through `2026-05-25T22:00:00Z` is substantial: minimum net-feature completion is `95.624%`; A11 net physical flow coverage is at least `99.8%`.
+
+Verification:
+
+```text
+PYTHONPYCACHEPREFIX=/private/tmp/p0053a-pycache python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0052 tests.mac.services.spotprice_model_diagnostics.test_p0052a tests.mac.services.spotprice_model_diagnostics.test_p0052b tests.mac.services.spotprice_model_diagnostics.test_p0052c tests.mac.services.spotprice_model_diagnostics.test_p0053a
+git diff --check
+repo token leak scan: 0 matches
+```
+
+No Shelly, Home Assistant, KVS, device, production API, deployable model, continental price-level ingestion, A61 request, utilization derivation or bottleneck-margin derivation was performed.

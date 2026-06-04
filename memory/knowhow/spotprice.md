@@ -28,6 +28,8 @@ P0052B found two important ENTSO-E backfill robustness rules. First, clip long-p
 
 P0052C showed that ENTSO-E A61 A02/A03/A04 should remain blocked as internal Swedish capacity ceilings for utilization and bottleneck margin: in post-flow-based data, A09 scheduled exchange and A11 physical flow materially exceeded all three variants. A61 rows may stay as labeled evidence, but do not use them as capacity denominators without a different source/concept.
 
+P0053A showed that ENTSO-E A09/A11 internal Swedish border directions can be naturally sparse by direction. For modeling diagnostics, validate raw border/direction missingness separately from derived net-feature completeness. Net features may safely treat the missing opposite direction as zero when the source only publishes the active direction, but evidence must still report directional missingness and never relabel sparse reverse-direction rows as complete source coverage.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

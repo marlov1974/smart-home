@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -527,4 +527,64 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Completed with status: PASS.
+
+Implemented:
+
+- `src/mac/services/spotprice_model_diagnostics/p0053b.py`
+- `tests/mac/services/spotprice_model_diagnostics/test_p0053b.py`
+- P0053B evidence under `requirements/package-runs/P0053B/`
+- Durable function documentation update under `docs/functions/`
+
+Source and target:
+
+```text
+source_table = physical_balance_se1_se4_hourly_v1
+target = consumption_se1
+unit = MW hourly mean
+source_range = 2022-05-29T23:00:00Z .. 2026-05-25T22:00:00Z
+source_rows = 34968
+missing/nonfinite/nonpositive target values = 0
+```
+
+Modeling output:
+
+```text
+dataset_table = se1_consumption_forecast_warmup_v1
+direct_horizon_rows = 382106
+train rows = 247466
+validate rows = 96360
+holdout rows = 38280
+path metric rows = 1006
+```
+
+Best results:
+
+```text
+best baseline = pred_B0_same_hour_previous_day, horizon 1h, holdout MAE 13.390 MW
+best forecast-safe model = M4_Ridge_G4_calendar_load_lags_weather, horizon 1h, holdout MAE 6.935 MW
+relative improvement vs best baseline = 48.21%
+168h best holdout path baseline = B4_recent_24h_adjusted_path, full-path MAE 24.285 MW, bias 4.705 MW
+```
+
+Forecast-safety result:
+
+- Forecast-safe groups use target calendar, Swedish special-day fields, origin-safe load lags/rollups and train-only weather normals.
+- Actual realized weather is limited to `G6_diagnostic_historical_only_non_deployable`.
+- No future actual consumption, price, production, A09/A11 flow/exchange or A61 capacity is used in forecast-safe groups.
+
+Recommendation:
+
+```text
+SE1 consumption is good enough to become a physical intermediate signal for later SE1 price modeling.
+Forecast SE2/SE3/SE4 consumption next before SE1 production or export/import.
+```
+
+Verification:
+
+```text
+PYTHONPYCACHEPREFIX=/private/tmp/p0053b-pycache python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0051 tests.mac.services.spotprice_model_diagnostics.test_p0053a tests.mac.services.spotprice_model_diagnostics.test_p0053b
+git diff --check
+```
+
+No SE1 price model, SE3 model, SE3-SE1 model, production forecast, export/import forecast, A61 utilization, production API, deployable model artifact, M5/M6/M7, Shelly, Home Assistant, KVS or device action was performed.

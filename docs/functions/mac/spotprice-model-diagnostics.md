@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0053A
+Last changed: P0053B
 
 ## Module
 
@@ -295,3 +295,33 @@ Important functions:
 `run_p0053a_diagnostics(...)` computes exploratory SE3 price and SE3-SE1 spread correlations plus pre/post Nordic flow-based transition summaries.
 
 P0053A is diagnostics/data-ingestion only. It explicitly excludes A61 requests, utilization, bottleneck-margin derivation, continental price-pressure modeling, SE1-to-SE3 anchoring, production forecast APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0053B SE1 Consumption Forecast Warmup
+
+`p0053b.run_p0053b_analysis(...)` orchestrates the SE1 consumption forecast warmup: target loading, forecast-safe feature construction, direct-horizon dataset persistence, baseline/model evaluation, 168h path diagnostics and evidence writing.
+
+Important functions:
+
+`load_consumption_source_rows(...)` reads `physical_balance_se1_se4_hourly_v1` and normalizes the hourly `consumption_se1` target.
+
+`validate_target_contract(...)` verifies unique normalized UTC timestamps, finite positive target values, fixed-CET fields, source range and unit semantics.
+
+`load_weather_rows(...)` reads `weather_proxy_se1_core_hourly` when available and labels realized weather as historical-only, while later train-only weather normals may be forecast-safe.
+
+`build_direct_horizon_rows(...)` creates origin/target examples for the required horizons using target-calendar features, origin-safe load lags, origin-safe rollups and optional weather context.
+
+`lag_features_at_origin(...)` and `rolling_features_at_origin(...)` enforce the leakage boundary: lag and rolling features end before the forecast origin.
+
+`assign_chronological_splits(...)` uses target fixed-CET date to assign train, validation and holdout splits.
+
+`fit_train_profiles(...)`, `apply_profile_features(...)` and `apply_baseline_predictions(...)` fit train-only calendar/weather profiles and required baselines.
+
+`feature_group_contract(...)` classifies G0-G5 as forecast-safe and G6 actual-weather features as historical-only diagnostic.
+
+`evaluate_baselines(...)` and `evaluate_models(...)` report direct-horizon metrics for required baselines and lightweight Ridge/HGB models. No model binary is persisted.
+
+`evaluate_168h_paths(...)` evaluates daily-origin exact 168-hour path baselines and reports path MAE, bias, peak-hour error and daily-energy error proxy.
+
+`write_p0053b_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0053B/`.
+
+P0053B is diagnostics/model-warmup only. It explicitly forbids SE1 price modeling, SE3 price modeling, SE3-SE1 modeling, production forecasting, export/import forecasting, future actual A09/A11 leakage, A61 utilization, production APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.

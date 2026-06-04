@@ -1,0 +1,94 @@
+# P0053B forecast readiness assessment
+
+```json
+{
+  "best_baseline": {
+    "baseline": "pred_B0_same_hour_previous_day",
+    "holdout_MAE": 13.39025614446841,
+    "horizon_h": 1
+  },
+  "best_forecast_safe_model": {
+    "holdout_MAE": 6.934850646869796,
+    "horizon_h": 1,
+    "model": "M4_Ridge_G4_calendar_load_lags_weather"
+  },
+  "forecast_safe_intermediate_signal": true,
+  "non_deployable_groups": [
+    "G6_diagnostic_historical_only_non_deployable"
+  ],
+  "path_168h_summary": {
+    "B1_same_hour_previous_week_path": {
+      "holdout": {
+        "MAE_0_24h": 29.13947639424817,
+        "MAE_24_48h": 28.837499902928737,
+        "MAE_48_72h": 28.385941671950476,
+        "MAE_72_168h": 27.26253056359451,
+        "MAE_full_168h": 27.91614860335792,
+        "bias_full_168h": 6.759065883313923,
+        "daily_energy_error_proxy": 633.5358607140267,
+        "origin_count": 138,
+        "peak_hour_error": 60.14896411956522
+      },
+      "validate": {
+        "MAE_0_24h": 20.29067764626142,
+        "MAE_24_48h": 20.327487406307082,
+        "MAE_48_72h": 20.4319710466895,
+        "MAE_72_168h": 20.537123116952063,
+        "MAE_full_168h": 20.456946938152303,
+        "bias_full_168h": -0.027111789636333018,
+        "daily_energy_error_proxy": 451.4888826718201,
+        "origin_count": 365,
+        "peak_hour_error": 55.29243343972601
+      }
+    },
+    "B4_recent_24h_adjusted_path": {
+      "holdout": {
+        "MAE_0_24h": 18.541506147503643,
+        "MAE_24_48h": 21.145354927247972,
+        "MAE_48_72h": 22.85632815032133,
+        "MAE_72_168h": 26.863217765955024,
+        "MAE_full_168h": 24.285151469841857,
+        "bias_full_168h": 4.705175674986432,
+        "daily_energy_error_proxy": 450.45267468126434,
+        "origin_count": 138,
+        "peak_hour_error": 60.71305251282238
+      },
+      "validate": {
+        "MAE_0_24h": 17.392788706973082,
+        "MAE_24_48h": 19.548097038550196,
+        "MAE_48_72h": 20.703992994758153,
+        "MAE_72_168h": 22.875362873668802,
+        "MAE_full_168h": 21.30661860499382,
+        "bias_full_168h": -0.08945028305113882,
+        "daily_energy_error_proxy": 379.6110666106506,
+        "origin_count": 365,
+        "peak_hour_error": 56.84247301360841
+      }
+    }
+  },
+  "recommendation": "Forecast SE2/SE3/SE4 consumption next before production/export-import; consumption is the cleanest physical intermediate.",
+  "relative_improvement_vs_best_baseline": 0.482097237569677,
+  "weather_improvement_summary": {
+    "1": {
+      "actual_weather_diagnostic_MAE": 7.180224488107476,
+      "diagnostic_minus_safe": 0.24537384123768025,
+      "forecast_safe_weather_MAE": 6.934850646869796
+    },
+    "168": {
+      "actual_weather_diagnostic_MAE": 45.52161622534973,
+      "diagnostic_minus_safe": 4.656518927924196,
+      "forecast_safe_weather_MAE": 40.865097297425535
+    },
+    "24": {
+      "actual_weather_diagnostic_MAE": 18.551028427838098,
+      "diagnostic_minus_safe": 2.9496315501946917,
+      "forecast_safe_weather_MAE": 15.601396877643406
+    },
+    "48": {
+      "actual_weather_diagnostic_MAE": 26.68999326731495,
+      "diagnostic_minus_safe": 5.186021886584847,
+      "forecast_safe_weather_MAE": 21.503971380730103
+    }
+  }
+}
+```

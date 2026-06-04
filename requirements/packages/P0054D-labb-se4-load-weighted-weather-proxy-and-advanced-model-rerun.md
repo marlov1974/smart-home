@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -508,4 +508,43 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented and verified by Codex.
+
+Result summary:
+
+```text
+status: PASS
+label: LABB
+weather proxy: se4_load_weather
+weather proxy rows: 35064
+weather proxy coverage: 2022-05-29T22:00:00Z .. 2026-05-29T21:00:00Z
+direct rows: 382106
+weekly 168h holdout origins: 51
+HGB holdout MAE: 21.821 MW
+MLP holdout MAE: 21.651 MW
+ExtraTrees holdout MAE: 18.611 MW
+best direct holdout model: ExtraTrees_G4_se4_load_weather
+best weekly 168h model: ExtraTrees_G4_se4_load_weather
+```
+
+P0054D answer:
+
+```text
+The broad P0054C weather proxy was a material factor for MLP. With se4_load_weather,
+MLP no longer has the broad-weather penalty and slightly beats HGB on direct holdout,
+while ExtraTrees beats HGB clearly. The corrected weather changes the P0054C MLP-vs-HGB
+picture, but model family still matters because ExtraTrees is the strongest corrected-proxy model.
+```
+
+Verification completed:
+
+```text
+python3 -m unittest tests.mac.services.weather_history.test_proxy_groups tests.mac.services.spotprice_model_diagnostics.test_p0054d
+PYTHONPYCACHEPREFIX=/private/tmp/p0054d-pycache python3 -m py_compile src/mac/services/weather_history/storage.py src/mac/services/spotprice_model_diagnostics/p0054d.py tests/mac/services/weather_history/test_proxy_groups.py tests/mac/services/spotprice_model_diagnostics/test_p0054d.py
+PYTHONDONTWRITEBYTECODE=1 python3 -B -m src.mac.services.weather_history backfill --start-date 2022-05-30 --end-date 2026-05-29
+PYTHONDONTWRITEBYTECODE=1 python3 -B -m src.mac.services.weather_history validate-proxy-groups --start-date 2022-05-30 --end-date 2026-05-29
+PYTHONPYCACHEPREFIX=/private/tmp/p0054d-pycache python3 -m src.mac.services.spotprice_model_diagnostics.p0054d
+git diff --check --cached
+```
+
+No Shelly, Home Assistant, device, runtime, KVS, price-feature, production, export/import, future A09/A11 or A61 utilization work was performed.

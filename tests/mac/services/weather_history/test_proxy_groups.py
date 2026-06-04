@@ -44,13 +44,15 @@ class WeatherProxyGroupTests(unittest.TestCase):
                 proxies = all_area_proxies(conn)
                 self.assertIn("se1_core_weather", proxies)
                 self.assertIn("se3_load_weather", proxies)
+                self.assertIn("se4_load_weather", proxies)
+                self.assertAlmostEqual(1.0, sum(loc.weight for loc in configured_locations(conn, "se4_load_weather")))
                 self.assertLess(
                     sum(loc.weight for loc in configured_locations(conn, "south_connected_weather")),
                     sum(loc.weight for loc in configured_locations(conn, "se1_core_weather")) + 0.001,
                 )
                 hours = expected_utc_hours_for_local_date(date(2025, 1, 2))
                 rows = []
-                for area_proxy in ("se1_core_weather", "nordic_connected_weather", "south_connected_weather", "se3_load_weather"):
+                for area_proxy in ("se1_core_weather", "nordic_connected_weather", "south_connected_weather", "se3_load_weather", "se4_load_weather"):
                     for location in configured_locations(conn, area_proxy):
                         for hour in hours:
                             rows.append(observation(location.location_id, hour, 10.0))

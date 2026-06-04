@@ -1,6 +1,6 @@
 # Weather History Dataset
 
-Last changed: P0033
+Last changed: P0054D
 
 ## Module
 
@@ -123,6 +123,32 @@ heating_degree_gradient_se3_load_minus_se1_core
 wind_100m_gradient_nordic_connected_minus_se3_load
 south_temp_gradient_minus_se1_core
 ```
+
+## P0054D SE4 Load Weather Proxy
+
+P0054D adds a load-weighted SE4 weather proxy group:
+
+```text
+se4_load_weather                 weather_proxy_se4_load_hourly
+```
+
+Locations and weights:
+
+```text
+se4_load_malmo        Malmo        55.6050  13.0038  0.6010230179028133
+se4_load_helsingborg  Helsingborg  56.0465  12.6945  0.23785166240409208
+se4_load_kristianstad Kristianstad 56.0294  14.1567  0.16112531969309463
+```
+
+The weights come from operator-provided SE4 household representation:
+
+```text
+Malmo + Lund + Trelleborg = 235000 / 391000
+Helsingborg + Landskrona = 93000 / 391000
+Kristianstad + Hassleholm = 63000 / 391000
+```
+
+`se4_load_weather` is a LABB weather proxy for SE4 load experiments. It is based on realized/archive Open-Meteo weather unless a separate forecast source is added by a future package.
 
 ## P0033 Consumer
 

@@ -77,6 +77,12 @@ P0038_WIND_SOLAR_LOCATIONS = (
     WeatherLocation("p0038_solar_north_pitea", "Pitea P0038 solar", 65.3172, 21.4794, 0.45, "p0038_north_solar_proxy", SOURCE),
 )
 
+P0054D_SE4_LOAD_LOCATIONS = (
+    WeatherLocation("se4_load_malmo", "Malmo SE4 load", 55.6050, 13.0038, 235000 / 391000, "se4_load_weather", SOURCE),
+    WeatherLocation("se4_load_helsingborg", "Helsingborg SE4 load", 56.0465, 12.6945, 93000 / 391000, "se4_load_weather", SOURCE),
+    WeatherLocation("se4_load_kristianstad", "Kristianstad SE4 load", 56.0294, 14.1567, 63000 / 391000, "se4_load_weather", SOURCE),
+)
+
 
 def default_db_path() -> Path:
     return DEFAULT_DB_PATH
@@ -209,10 +215,12 @@ def initialize_schema(path: Path | str) -> None:
               SELECT * FROM weather_area_hourly WHERE area_proxy='south_connected_weather';
             CREATE VIEW IF NOT EXISTS weather_proxy_se3_load_hourly AS
               SELECT * FROM weather_area_hourly WHERE area_proxy='se3_load_weather';
+            CREATE VIEW IF NOT EXISTS weather_proxy_se4_load_hourly AS
+              SELECT * FROM weather_area_hourly WHERE area_proxy='se4_load_weather';
             """
         )
         conn.execute("INSERT OR REPLACE INTO schema_meta(key, value) VALUES('schema_version', ?)", (SCHEMA_VERSION,))
-        for location in DEFAULT_LOCATIONS + P0032_PROXY_LOCATIONS + P0038_WIND_SOLAR_LOCATIONS:
+        for location in DEFAULT_LOCATIONS + P0032_PROXY_LOCATIONS + P0038_WIND_SOLAR_LOCATIONS + P0054D_SE4_LOAD_LOCATIONS:
             conn.execute(
                 """
                 INSERT OR REPLACE INTO weather_locations
@@ -603,9 +611,11 @@ def validate_proxy_groups(
     end_date: date,
     db_path: str = "",
 ) -> dict[str, object]:
+    proxy_area_set = {"se1_core_weather", "nordic_connected_weather", "south_connected_weather", "se3_load_weather", "se4_load_weather"}
     reports = {
         area_proxy: validate_weather_continuity(conn, start_date, end_date, area_proxy=area_proxy, db_path=db_path)
-        for area_proxy in ("se1_core_weather", "nordic_connected_weather", "south_connected_weather", "se3_load_weather")
+        for area_proxy in all_area_proxies(conn)
+        if area_proxy in proxy_area_set
     }
     expected = len(expected_utc_hours_for_range(start_date, end_date))
     gradient_rows = conn.execute(

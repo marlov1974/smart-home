@@ -1,0 +1,21 @@
+# P0053C-B G7 Readiness For Consumption Response
+
+Status: ready_for_offline_consumption_response_backtest
+
+The anchored log can support forecast-path-only G7 features because every rank, top/bottom flag, relative value, spread and volatility can be computed from predictions available at each forecast origin.
+
+```json
+{
+  "feature_construction_rule": "derive only from rows sharing the same forecast_origin_timestamp_utc",
+  "forecast_se1_price_bottom4_forecast_day_flag": "ready_compute_within_origin_day_path",
+  "forecast_se1_price_daily_spread_forecast": "ready_compute_by_forecast_day",
+  "forecast_se1_price_rank_in_168h": "ready_compute_within_origin_168h_path",
+  "forecast_se1_price_rank_in_forecast_day": "ready_compute_within_origin_day_path",
+  "forecast_se1_price_relative_to_forecast_168h_mean": "ready_compute_from_origin_168h_path",
+  "forecast_se1_price_relative_to_forecast_24h_mean": "ready_compute_from_first_24h_path_or_day_path",
+  "forecast_se1_price_target_hour": "ready_from_predicted_price",
+  "forecast_se1_price_top4_forecast_day_flag": "ready_compute_within_origin_day_path",
+  "forecast_se1_price_top8_forecast_day_flag": "ready_compute_within_origin_day_path",
+  "forecast_se1_price_volatility_next_24h_forecast": "ready_compute_from_first_24h_path"
+}
+```

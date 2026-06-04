@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -504,4 +504,85 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054J completed with PASS.
+
+Summary:
+
+```text
+label: LABB, not G2-KANDIDAT
+target: physical_balance_se1_se4_hourly_v1.consumption_se1, MW hourly mean
+split: train_fit target_timestamp_utc 2022-06-01T00:00:00Z..<2025-06-01T00:00:00Z; holdout >=2025-06-01T00:00:00Z
+direct rows: 15730
+weekly 168h path rows: 8568
+weekly complete origins: 51
+price source rows: 240912
+```
+
+Price forecast source:
+
+```text
+anchored_absolute_price_forecast_log_p0054h_se1_v1
+area=SE1
+prediction_kind=anchored_absolute_price
+quality_flag=forecast_safe_origin_local_baseline_not_m4
+training_protocol=origin_local_no_fit_pre_origin_history
+```
+
+This input was kept clearly labeled as a P0054H origin-local forecast-safe baseline, not M4.
+
+Models run:
+
+```text
+HGB no_price / with_p0054h_price_forecast
+ExtraTrees no_price / with_p0054h_price_forecast
+LightGBM no_price / with_p0054h_price_forecast
+XGBoost no_price / with_p0054h_price_forecast
+```
+
+MLP was intentionally skipped because it was optional and the required tree/boosted family set was complete.
+
+Best models:
+
+```text
+best holdout no_price: XGBoost_no_price, MAE 12.60041062463637
+best holdout with_price: XGBoost_with_p0054h_price_forecast, MAE 12.585281377945856
+best weekly no_price: XGBoost_no_price, MAE_full_168h 13.831126605961474
+best weekly with_price: XGBoost_with_p0054h_price_forecast, MAE_full_168h 13.650342019254719
+```
+
+Price forecast ablation:
+
+```text
+HGB: holdout worsened 0.8927455419055711%, weekly improved 2.224575014299145%
+ExtraTrees: holdout worsened 0.09963703752656679%, weekly improved 0.4845746426637863%
+LightGBM: holdout improved 1.029787203889473%, weekly improved 0.8106449555549822%
+XGBoost: holdout improved 0.12006947345773429%, weekly improved 1.3070850398320675%
+```
+
+Interpretation:
+
+```text
+status: supports_hypothesis
+decision: keep P0054H price forecast features for future SE1 LABB experiments
+reason: weekly-path metrics improved for all four required families, LightGBM/XGBoost improved direct holdout, and conditional regimes showed >=3% improvements in multiple important cold/peak/price/load regimes.
+```
+
+Safety and leakage result:
+
+```text
+P0054I split applied.
+P0054H source contract verified.
+No-price and with-price matrices used identical target rows per family.
+With-price features used only forecast-origin-safe P0054H price forecast columns.
+Feature matrix contained no actual future spot price, production, flow/export/import, A61, utilization, continental price, device, API or runtime feature.
+No live API, device, Shelly, Home Assistant, KVS, A61 utilization or production-runtime action was performed.
+No model binaries, virtualenvs, wheels, caches or large raw datasets were committed.
+```
+
+Verification commands run:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0054j
+python3 -m src.mac.services.spotprice_model_diagnostics.p0054j
+git diff --check
+```

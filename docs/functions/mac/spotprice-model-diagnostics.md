@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054H
+Last changed: P0054J
 
 ## Module
 
@@ -215,6 +215,34 @@ Important functions:
 `coverage_by_split(...)`, `evaluate_price_metrics(...)` and `compare_to_p0053cb(...)` produce coverage, price-quality and P0053C-B comparison evidence.
 
 P0054H is not M4. It is an origin-local historical baseline intended to unblock downstream forecast-safe price-feature ablations while avoiding train-period future leakage. It does not call live APIs, devices, KVS, Shelly, Home Assistant or production runtime paths.
+
+## P0054J SE1 Consumption LABB Price Forecast Ablation
+
+`p0054j.run_p0054j_experiment(...)` orchestrates paired SE1 consumption LABB models with and without P0054H forecast-safe price forecast features under the P0054I train-through-May-2025 policy.
+
+Important functions:
+
+`load_consumption_rows(...)` reads `physical_balance_se1_se4_hourly_v1.consumption_se1` and normalizes SE1 hourly mean-MW target rows.
+
+`load_price_forecast_rows(...)` reads `anchored_absolute_price_forecast_log_p0054h_se1_v1` with the required SE1 anchored absolute price, quality flag and origin-local training protocol filters.
+
+`load_weather_rows(...)` reads `se1_core_weather` weather proxy rows and keeps them labeled as LABB actual-as-forecast proxy inputs.
+
+`build_modeling_rows(...)` joins target, weather proxy and P0054H forecast-origin rows, derives direct-horizon or complete weekly-path examples, and enforces target timestamps at or after `2022-06-01T00:00:00Z`.
+
+`consumption_history_features(...)` builds lag and rolling consumption features strictly before `forecast_origin_timestamp_utc`.
+
+`price_path_features(...)` derives with-price features only from the P0054H forecast path visible at the same forecast origin.
+
+`validate_matrix_safety(...)` and `validate_feature_contract(...)` reject forbidden actual-price, production, flow/export/import, A61, utilization, continental-price and future-leakage feature names.
+
+`model_specs(...)`, `fit_model(...)` and `score_models(...)` run bounded HGB, ExtraTrees, LightGBM and XGBoost pairs without persisting model binaries.
+
+`evaluate_direct_horizons(...)`, `evaluate_weekly_paths(...)` and `evaluate_conditional_regimes(...)` compute holdout direct, full 168h path and conditional-regime metrics for paired ablation interpretation.
+
+`write_evidence(...)` writes Markdown, JSON and compact CSV evidence under `requirements/package-runs/P0054J/`.
+
+P0054J is LABB diagnostics/modeling only. It is not G2-KANDIDAT and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization or future actual price features.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

@@ -9,6 +9,12 @@ P____
 ## Primary area
 G2 / Mac / Home Assistant / Shelly / tooling / documentation
 
+## Label
+
+Use `LABB` for energy-market, AI, spot-price, physical-balance and simulator experiments unless the human operator explicitly requests `G2-KANDIDAT` evaluation.
+
+Use `G2-KANDIDAT` only when the package evaluates a lab result for possible future G2 runtime/control use and the human operator explicitly asked for that evaluation.
+
 ## Linked requirements
 
 Epic:

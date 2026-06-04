@@ -29,8 +29,18 @@ Memory is not a backlog and not a task list. It describes the decided system mod
 device-management/  Shelly device identity, installer, deploy and build model
 infrastructure/     network, NAT and device reachability facts
 physical/           physical hardware, sensors and domain facts
+planning/           planning notes and future-domain structure
 knowhow/            reusable lessons from packages and debugging
 ```
+
+## Energy-Market AI Lab
+
+Energy-market, spot-price, physical-balance, simulator and AI experiments default to `LABB` unless the human operator explicitly asks for `G2-KANDIDAT` evaluation.
+
+Read:
+
+- `energy-market-ai-lab.md`
+- `energy-market-simulator-ambition.md`
 
 ## Boundary
 

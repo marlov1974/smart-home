@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -489,4 +489,74 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in P0054E.
+
+Result:
+
+```text
+status: PASS
+LightGBM import/train/evaluate: PASS
+XGBoost import/train/evaluate: PASS
+same-run direct rows: 382106
+weekly complete 168h origins: 51
+```
+
+Dependency setup:
+
+```text
+python3 -m pip install --user lightgbm xgboost
+brew install libomp
+lightgbm: 4.6.0
+xgboost: 2.1.4
+libomp: 22.1.7
+```
+
+Best direct holdout MAE:
+
+```text
+LightGBM_G4_se4_load_weather: 17.70265003542135
+ExtraTrees_G4_se4_load_weather: 18.61057286241044
+XGBoost_G4_se4_load_weather: 18.130349153087128
+```
+
+Best weekly 168h MAE:
+
+```text
+XGBoost_G4_se4_load_weather: 18.251117862247646
+LightGBM_G4_se4_load_weather: 18.472268705116658
+ExtraTrees_G4_se4_load_weather: 19.605137961494318
+```
+
+Both LightGBM and XGBoost beat P0054D ExtraTrees by the LABB learning threshold:
+
+```text
+LightGBM vs P0054D ExtraTrees:
+  holdout MAE: -4.878532400380407%
+  weekly MAE_full_168h: -5.778430422691697%
+
+XGBoost vs P0054D ExtraTrees:
+  holdout MAE: -2.5803811246094015%
+  weekly MAE_full_168h: -6.906455348113622%
+```
+
+Interpretation:
+
+```text
+candidate_for_followup
+```
+
+Recommended next package:
+
+```text
+P0054F bounded tuned boosting on validation only, still LABB, with no runtime promotion.
+```
+
+Verification run:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0054e
+PYTHONPYCACHEPREFIX=/private/tmp/p0054e-pycache python3 -m py_compile src/mac/services/spotprice_model_diagnostics/p0054e.py tests/mac/services/spotprice_model_diagnostics/test_p0054e.py
+PYTHONPYCACHEPREFIX=/private/tmp/p0054e-pycache python3 -m src.mac.services.spotprice_model_diagnostics.p0054e
+```
+
+No runtime, device, Shelly, Home Assistant, KVS, deploy, production model, price, production, flow/export/import, A61 or future-leakage inputs were used. No model binaries, virtualenvs, wheels, caches or large raw datasets were committed.

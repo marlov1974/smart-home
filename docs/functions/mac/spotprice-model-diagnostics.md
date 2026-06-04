@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0053C-A
+Last changed: P0054E
 
 ## Module
 
@@ -351,3 +351,23 @@ Important functions:
 P0053C-A output is `prediction_kind=shape_index` and `prediction_unit=centered_shape_index`; it is not absolute price. It may support future rank/top-bottom relative price-shape features, but absolute price-response features require a later safe anchoring package.
 
 P0053C-A is diagnostics/rebuild-only. It does not create a production API, deployable model artifact, A61 utilization, future actual price feature, Shelly, Home Assistant, KVS or device path.
+
+## P0054E SE4 LightGBM/XGBoost LABB Comparison
+
+`p0054e.run_p0054e_analysis(...)` orchestrates the Mac-local LABB comparison of ExtraTrees, LightGBM and XGBoost on the corrected P0054D SE4 consumption setup.
+
+Important functions:
+
+`capture_environment_status(...)` records Python, pip, platform, package version and optional LightGBM/XGBoost import status.
+
+`optional_model_specs(...)` builds the same-run model list, always including ExtraTrees and adding LightGBM/XGBoost only when importable.
+
+`fit_p0054e_model(...)` trains one bounded first-pass model on train rows and evaluates validation/holdout rows without persisting model artifacts.
+
+`attach_named_predictions(...)` and `attach_weekly_predictions(...)` add dynamic model prediction columns for direct and weekly 168h path evaluation.
+
+`compare_p0054e_models(...)` identifies the best direct/weekly model and compares boosted models to same-run and P0054D ExtraTrees baselines.
+
+`write_p0054e_evidence(...)` writes LABB-only Markdown, JSON and CSV evidence under `requirements/package-runs/P0054E/`.
+
+P0054E is diagnostics-only. It explicitly forbids runtime, device, Shelly, Home Assistant, KVS, deploy, production model, price, production, flow/export/import, A61 and future-leakage inputs.

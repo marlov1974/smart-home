@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -417,4 +417,33 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Completed 2026-06-04 with status `PASS`.
+
+Created canonical policy:
+
+```text
+memory/spotprice-forecast-period-policy.md
+src/mac/services/spotprice_model_diagnostics/forecast_period_policy.py
+```
+
+Canonical split:
+
+```text
+train:      2022-06-01T00:00:00Z .. 2024-12-31T23:00:00Z
+validation: 2025-01-01T00:00:00Z .. 2025-05-31T23:00:00Z
+holdout:    2025-06-01T00:00:00Z .. latest
+```
+
+Boundary identity is `timestamp_utc`; fixed-CET fields are calendar/features.
+
+P0053B SE1 consumption was rebuilt under the new policy:
+
+```text
+requirements/package-runs/P0053C/p0053b-rebuild/
+```
+
+Rebuild status `PASS`; best 1h forecast-safe model remains `M4_Ridge_G4_calendar_load_lags_weather` with holdout MAE `6.431734387224803` MW, `2.08%` of holdout mean and `2.20%` of holdout median.
+
+Old P0043/P0044/P0045/P0053B metrics were classified as stale or diagnostic-only when split-incompatible. P0053B-A STOP evidence remains valid because it concerns missing price forecast-origin provenance.
+
+No production API, deployable model artifact, device path, A61 utilization, future actual price feature, SE3 production model, Shelly, Home Assistant or KVS action was performed.

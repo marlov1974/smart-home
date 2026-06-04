@@ -45,12 +45,21 @@ class P0053BTests(unittest.TestCase):
 
     def test_chronological_splits_use_target_date(self):
         rows = [
-            {"target_model_cet_date": "2024-12-31"},
-            {"target_model_cet_date": "2025-01-01"},
-            {"target_model_cet_date": "2026-01-01"},
+            {"target_timestamp_utc": "2024-12-31T23:00:00Z"},
+            {"target_timestamp_utc": "2025-01-01T00:00:00Z"},
+            {"target_timestamp_utc": "2025-06-01T00:00:00Z"},
         ]
         counts = p0053b.assign_chronological_splits(rows)
         self.assertEqual(counts, {"train": 1, "validate": 1, "holdout": 1})
+
+    def test_direct_rows_filter_scored_targets_but_allow_context_lag_warmup(self):
+        rows = source_rows(240, datetime(2022, 5, 24, tzinfo=timezone.utc))
+        direct = p0053b.build_direct_horizon_rows(rows, {}, (1,))
+        self.assertTrue(direct)
+        self.assertGreaterEqual(min(row["target_timestamp_utc"] for row in direct), "2022-06-01T00:00:00Z")
+        first = direct[0]
+        self.assertLess(first["origin_timestamp_utc"], "2022-06-01T00:00:00Z")
+        self.assertIn("consumption_se1_lag_168h", first)
 
     def test_train_profiles_are_train_only(self):
         train = [
@@ -92,6 +101,9 @@ class P0053BTests(unittest.TestCase):
         second = p0053b.regression_metric_from_predictions(rows, [9.0, 16.0])
         self.assertEqual(first, second)
         self.assertEqual(first["MAE"], 1.5)
+        self.assertEqual(first["mean_actual_mw"], 12.0)
+        self.assertEqual(first["median_actual_mw"], 12.0)
+        self.assertAlmostEqual(first["MAE_percent_of_mean"], 12.5)
 
 
 if __name__ == "__main__":

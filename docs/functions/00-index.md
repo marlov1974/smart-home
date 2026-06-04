@@ -107,3 +107,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0053A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with ENTSO-E A09/A11 internal Swedish historical backfill, net flow/exchange feature derivation and `physical_balance_flow_exchange_analysis_v1`.
 
 `P0053B` updated `docs/functions/mac/spotprice-model-diagnostics.md` with forecast-safe SE1 consumption warmup diagnostics, direct-horizon modeling and 168h path metrics.
+
+`P0053C` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the shared forecast period policy and timestamp-UTC split boundary for SE1 consumption rebuilds.

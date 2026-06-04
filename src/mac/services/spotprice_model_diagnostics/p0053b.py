@@ -17,6 +17,11 @@ import numpy as np
 
 from src.mac.services.spotprice_ml_model.core import DEFAULT_FEATURE_DB, mae, rmse
 from src.mac.services.spotprice_model_diagnostics import p0052
+from src.mac.services.spotprice_model_diagnostics.forecast_period_policy import (
+    canonical_split_for_timestamp,
+    is_modeling_target_timestamp,
+    policy_summary,
+)
 from src.mac.services.spotprice_model_diagnostics.p0041 import percentile, persist_rows, write
 from src.mac.services.spotprice_temperature_normalization.core import DEFAULT_WEATHER_DB_PATH
 from src.mac.services.swedish_calendar.core import classify_special_day
@@ -34,8 +39,6 @@ HORIZONS = (1, 3, 6, 12, 24, 48, 72, 96, 120, 144, 168)
 LAGS = (1, 2, 3, 6, 12, 24, 48, 72, 168)
 ROLL_WINDOWS = (6, 12, 24, 48, 168)
 ROLL_EXTRA_WINDOWS = (24,)
-TRAIN_END = date(2024, 12, 31)
-VALIDATE_END = date(2025, 12, 31)
 FORBIDDEN_PRODUCTION_PATHS = (
     "SE1_PRICE_MODEL",
     "SE3_PRICE_MODEL",
@@ -140,6 +143,7 @@ def run_p0053b_analysis(
     status = "PASS" if validation["ok"] and readiness["forecast_safe_intermediate_signal"] else "WARN" if validation["ok"] else "STOP"
     summary = {
         "status": status,
+        "split_policy": policy_summary(),
         "source_table": SOURCE_TABLE,
         "dataset_table": DATASET_TABLE,
         "target_contract": target_contract,
@@ -267,6 +271,8 @@ def build_direct_horizon_rows(source_rows: list[dict[str, object]], weather_rows
             if target_index >= len(source_rows):
                 continue
             target = source_rows[target_index]
+            if not is_modeling_target_timestamp(str(target["timestamp_utc"])):
+                continue
             row = {
                 "origin_timestamp_utc": origin["timestamp_utc"],
                 "target_timestamp_utc": target["timestamp_utc"],
@@ -330,13 +336,7 @@ def rolling_features_at_origin(values: list[float], origin_index: int) -> dict[s
 def assign_chronological_splits(rows: list[dict[str, object]]) -> dict[str, int]:
     counts: Counter[str] = Counter()
     for row in rows:
-        target_day = date.fromisoformat(str(row["target_model_cet_date"]))
-        if target_day <= TRAIN_END:
-            split = "train"
-        elif target_day <= VALIDATE_END:
-            split = "validate"
-        else:
-            split = "holdout"
+        split = canonical_split_for_timestamp(str(row["target_timestamp_utc"]))
         row["split"] = split
         counts[split] += 1
     return dict(counts)
@@ -554,11 +554,13 @@ def regression_metric_from_predictions(rows: list[dict[str, object]], pred: list
     denom = [(abs(a) + abs(p)) / 2 for a, p in zip(actual, pred)]
     smape_values = [err / den for err, den in zip(abs_errors, denom) if den > 1e-9]
     mean_actual = sum(actual) / len(actual)
+    median_actual = percentile(actual, 0.5)
     ss_tot = sum((a - mean_actual) ** 2 for a in actual)
     ss_res = sum((a - p) ** 2 for a, p in zip(actual, pred))
+    mae_value = mae(actual, pred)
     return {
         "row_count": len(actual),
-        "MAE": mae(actual, pred),
+        "MAE": mae_value,
         "RMSE": rmse(actual, pred),
         "median_absolute_error": percentile(abs_errors, 0.5),
         "p90_absolute_error": percentile(abs_errors, 0.9),
@@ -566,11 +568,33 @@ def regression_metric_from_predictions(rows: list[dict[str, object]], pred: list
         "bias": sum(p - a for a, p in zip(actual, pred)) / len(actual),
         "sMAPE": sum(smape_values) / len(smape_values) if smape_values else None,
         "R2": 1 - ss_res / ss_tot if ss_tot > 0 else None,
+        "mean_actual_mw": mean_actual,
+        "median_actual_mw": median_actual,
+        "p10_actual_mw": percentile(actual, 0.1),
+        "p90_actual_mw": percentile(actual, 0.9),
+        "MAE_percent_of_mean": mae_value / mean_actual * 100 if abs(mean_actual) > 1e-9 else None,
+        "MAE_percent_of_median": mae_value / median_actual * 100 if abs(median_actual) > 1e-9 else None,
     }
 
 
 def empty_metrics() -> dict[str, object]:
-    return {"row_count": 0, "MAE": None, "RMSE": None, "median_absolute_error": None, "p90_absolute_error": None, "p95_absolute_error": None, "bias": None, "sMAPE": None, "R2": None}
+    return {
+        "row_count": 0,
+        "MAE": None,
+        "RMSE": None,
+        "median_absolute_error": None,
+        "p90_absolute_error": None,
+        "p95_absolute_error": None,
+        "bias": None,
+        "sMAPE": None,
+        "R2": None,
+        "mean_actual_mw": None,
+        "median_actual_mw": None,
+        "p10_actual_mw": None,
+        "p90_actual_mw": None,
+        "MAE_percent_of_mean": None,
+        "MAE_percent_of_median": None,
+    }
 
 
 def build_path_origins(source_rows: list[dict[str, object]]) -> list[int]:
@@ -606,7 +630,7 @@ def evaluate_168h_paths(source_rows: list[dict[str, object]], profiles: dict[str
             profile_value = profile_predict(profiles["calendar_hour_weekday"], temp_row, ("target_model_cet_weekday", "target_model_cet_hour"))
             global_mean = float(profiles["calendar_hour_weekday"]["global"])  # type: ignore[index]
             pred_adjusted.append(sum(values[origin_index - 24 : origin_index]) / 24 + profile_value - global_mean)
-        split = split_for_date(date.fromisoformat(str(source_rows[origin_index + 1]["model_cet_date"])))
+        split = canonical_split_for_timestamp(str(source_rows[origin_index + 1]["timestamp_utc"]))
         rows.append(path_metric_row(str(origin["timestamp_utc"]), split, "B1_same_hour_previous_week_path", actual, pred_week))
         rows.append(path_metric_row(str(origin["timestamp_utc"]), split, "B4_recent_24h_adjusted_path", actual, pred_adjusted))
     summary: dict[str, object] = {}
@@ -759,14 +783,6 @@ def validate_p0053b(rows: list[dict[str, object]], target_contract: dict[str, ob
     }
 
 
-def split_for_date(day: date) -> str:
-    if day <= TRAIN_END:
-        return "train"
-    if day <= VALIDATE_END:
-        return "validate"
-    return "holdout"
-
-
 def table_exists(conn: sqlite3.Connection, table: str) -> bool:
     return bool(conn.execute("SELECT 1 FROM sqlite_master WHERE type IN ('table','view') AND name=?", (table,)).fetchone())
 
@@ -797,7 +813,7 @@ def write_p0053b_evidence(evidence_dir: Path, rows: list[dict[str, object]], pat
     evidence_dir.mkdir(parents=True, exist_ok=True)
     files = {
         "CHANGELOG.md": changelog_text(summary),
-        "dataset-contract.md": json_md("P0053B dataset contract", {"source": summary["target_contract"], "dataset_table": DATASET_TABLE, "row_counts": summary["row_counts"], "split_counts": summary["split_counts"]}),
+        "dataset-contract.md": json_md("P0053B dataset contract", {"source": summary["target_contract"], "dataset_table": DATASET_TABLE, "split_policy": summary["split_policy"], "row_counts": summary["row_counts"], "split_counts": summary["split_counts"]}),
         "forecast-safety-review.md": json_md("P0053B forecast safety review", {"feature_contract": summary["feature_contract"], "validation": summary["validation"]}),
         "feature-groups.md": feature_groups_text(summary["feature_contract"]),
         "baseline-results.md": horizon_table_text("P0053B baseline results", summary["baseline_results"]),
@@ -817,7 +833,7 @@ def write_p0053b_evidence(evidence_dir: Path, rows: list[dict[str, object]], pat
     }
     for name, payload in json_files.items():
         (evidence_dir / name).write_text(json.dumps(json_safe(payload), indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    write_csv(evidence_dir / "horizon-metrics.csv", flatten_horizon_metrics(summary), ("family", "name", "horizon_h", "split", "row_count", "MAE", "RMSE", "median_absolute_error", "p90_absolute_error", "p95_absolute_error", "bias", "sMAPE", "R2"))
+    write_csv(evidence_dir / "horizon-metrics.csv", flatten_horizon_metrics(summary), ("family", "name", "horizon_h", "split", "row_count", "MAE", "RMSE", "median_absolute_error", "p90_absolute_error", "p95_absolute_error", "bias", "sMAPE", "R2", "mean_actual_mw", "median_actual_mw", "p10_actual_mw", "p90_actual_mw", "MAE_percent_of_mean", "MAE_percent_of_median"))
     write_csv(evidence_dir / "path-metrics.csv", path_rows, ("origin_timestamp_utc", "split", "model", "path_hours", "MAE_0_24h", "MAE_24_48h", "MAE_48_72h", "MAE_72_168h", "MAE_full_168h", "bias_full_168h", "peak_hour_error", "daily_energy_error_proxy"))
     write_csv(evidence_dir / "top-error-days.csv", summary["error_review"].get("top_error_days", []), ("date", "MAE", "hours"))
     write_csv(evidence_dir / "modeling-dataset-sample.csv", [{column: row.get(column) for column in DIRECT_DATASET_COLUMNS} for row in rows[:200]], DIRECT_DATASET_COLUMNS)
@@ -881,6 +897,7 @@ Actual A09/A11 flow/exchange, production, price and A61 capacity were not used a
 def compact_metrics_summary(summary: dict[str, object]) -> dict[str, object]:
     return {
         "status": summary["status"],
+        "split_policy": summary["split_policy"],
         "row_counts": summary["row_counts"],
         "split_counts": summary["split_counts"],
         "target_contract": summary["target_contract"],

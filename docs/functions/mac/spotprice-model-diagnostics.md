@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0053B
+Last changed: P0053C
 
 ## Module
 
@@ -312,13 +312,17 @@ Important functions:
 
 `lag_features_at_origin(...)` and `rolling_features_at_origin(...)` enforce the leakage boundary: lag and rolling features end before the forecast origin.
 
-`assign_chronological_splits(...)` uses target fixed-CET date to assign train, validation and holdout splits.
+`forecast_period_policy.canonical_split_for_timestamp(...)` assigns the canonical P0053C train, validation and holdout split from `timestamp_utc`.
+
+`forecast_period_policy.is_modeling_target_timestamp(...)` enforces the canonical modeling start and allows pre-start rows only as context-only lag warmup.
+
+`assign_chronological_splits(...)` uses target `timestamp_utc` through the shared forecast period policy; fixed-CET fields are calendar/features only.
 
 `fit_train_profiles(...)`, `apply_profile_features(...)` and `apply_baseline_predictions(...)` fit train-only calendar/weather profiles and required baselines.
 
 `feature_group_contract(...)` classifies G0-G5 as forecast-safe and G6 actual-weather features as historical-only diagnostic.
 
-`evaluate_baselines(...)` and `evaluate_models(...)` report direct-horizon metrics for required baselines and lightweight Ridge/HGB models. No model binary is persisted.
+`evaluate_baselines(...)` and `evaluate_models(...)` report direct-horizon metrics for required baselines and lightweight Ridge/HGB models. Metrics include absolute errors, bias, sMAPE and P0053C relative error fields. No model binary is persisted.
 
 `evaluate_168h_paths(...)` evaluates daily-origin exact 168-hour path baselines and reports path MAE, bias, peak-hour error and daily-energy error proxy.
 

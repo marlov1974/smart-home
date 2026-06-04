@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+warn
 
 ## Package order
 
@@ -392,4 +392,37 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054H completed with WARN.
+
+Created local SQLite forecast-origin log:
+
+```text
+anchored_absolute_price_forecast_log_p0054h_se1_v1
+```
+
+Rows persisted:
+
+```text
+240912
+```
+
+Coverage:
+
+```text
+train target rows      157584
+validation target rows 24192
+holdout target rows    59136
+complete origins       1434
+```
+
+Training protocol:
+
+```text
+origin_local_no_fit_pre_origin_history
+```
+
+This is not M4. It is a forecast-safe origin-local historical baseline using previous-week same-hour price when available, otherwise prior-48h same-hour mean, otherwise prior-48h median.
+
+Leakage review passed: no cutoff/origin/history/training/source timestamp violations, horizons 0..167, no target-window actual price used as input, no holdout fitting/selection, no API/device/A61/runtime work.
+
+Validation/holdout comparison to P0053C-B shows the expected quality cost of the simpler source: P0054H MAE_full_168h is worse by about 0.0659 on validation and 0.0457 on holdout, but P0054H has the train coverage needed for a downstream P0054I/P0054F retry.

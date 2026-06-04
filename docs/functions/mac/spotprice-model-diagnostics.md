@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054E
+Last changed: P0054H
 
 ## Module
 
@@ -193,6 +193,28 @@ Important functions:
 `write_p0052_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0052/`.
 
 P0052 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0054H Origin-Local SE1 Price Forecast Log
+
+`p0054h.run_p0054h_generation(...)` creates a forecast-origin-safe SE1 anchored absolute price forecast log with train, validation and holdout coverage.
+
+Important functions:
+
+`load_price_rows(...)` reads local SE1 hourly source prices from `ai2_hour_to_day_training_targets_v2`.
+
+`build_daily_windows(...)` creates complete daily 168h forecast-origin windows under the P0053C global split.
+
+`build_anchor_state(...)` computes the strict 48h pre-origin anchor/history state.
+
+`predict_price(...)` predicts each target hour using previous-week same-hour price when available, otherwise prior-48h same-hour mean, otherwise prior-48h median.
+
+`build_forecast_rows(...)` writes forecast-origin rows for `anchored_absolute_price_forecast_log_p0054h_se1_v1` without persisting target-window actual prices.
+
+`validate_leakage(...)` verifies cutoff, origin, anchor, training cutoff, source timestamp and horizon ordering.
+
+`coverage_by_split(...)`, `evaluate_price_metrics(...)` and `compare_to_p0053cb(...)` produce coverage, price-quality and P0053C-B comparison evidence.
+
+P0054H is not M4. It is an origin-local historical baseline intended to unblock downstream forecast-safe price-feature ablations while avoiding train-period future leakage. It does not call live APIs, devices, KVS, Shelly, Home Assistant or production runtime paths.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

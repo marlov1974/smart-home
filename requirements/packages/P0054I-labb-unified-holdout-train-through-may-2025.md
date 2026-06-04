@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -313,4 +313,39 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054I completed as a policy and coverage-confirmation package.
+
+Result:
+
+```text
+PASS
+```
+
+Defined named LABB policy:
+
+```text
+LABB_P0054_TRAIN_THROUGH_MAY_2025
+train_fit: target_timestamp_utc >= 2022-06-01T00:00:00Z and target_timestamp_utc < 2025-06-01T00:00:00Z
+holdout:   target_timestamp_utc >= 2025-06-01T00:00:00Z
+```
+
+Confirmed P0054H source coverage with required filters:
+
+```text
+anchored_absolute_price_forecast_log_p0054h_se1_v1
+area = SE1
+prediction_kind = anchored_absolute_price
+quality_flag = forecast_safe_origin_local_baseline_not_m4
+training_protocol = origin_local_no_fit_pre_origin_history
+```
+
+Coverage by target timestamp under the new split:
+
+```text
+train_fit rows = 181776, origins = 1082, range = 2022-06-01T23:00:00Z .. 2025-05-31T22:00:00Z
+holdout rows   = 59136, origins = 352, range = 2025-06-01T23:00:00Z .. 2026-05-25T22:00:00Z
+```
+
+Warmup/hour-boundary caveat: first covered train_fit target hour is `2022-06-01T23:00:00Z`, not midnight. This is documented and acceptable for P0054J.
+
+No model training, downstream ablation, live API, device, runtime, A61, production deployment or historical evidence rewrite was performed.

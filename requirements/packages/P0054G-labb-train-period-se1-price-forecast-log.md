@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+stopped
 
 ## Package order
 
@@ -342,4 +342,16 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054G stopped with evidence.
+
+Result:
+
+```text
+STOP
+```
+
+The package confirmed P0054F's stop cause and resolved the apparent prior-use contradiction. P0053B-A2 previously used P0053C-B price forecasts only as an offline diagnostic, fitting downstream comparisons on validation-origin rows because no canonical train-period price forecast rows existed.
+
+No new forecast log table was created. Existing P0053C-B/P0045 M4 logic is forecast-origin-safe for validation and holdout, but cannot be extended into train origins without a new rolling-origin, expanding-origin or blocked out-of-fold upstream shape-training protocol. Reusing the globally trained train-split M4 model for train-origin forecasts would use future train-period target data relative to early origins, violating the per-origin cutoff rule.
+
+No API, device, runtime, A61, production deployment, SQLite write, model training, large artifact or P0054F rerun was performed.

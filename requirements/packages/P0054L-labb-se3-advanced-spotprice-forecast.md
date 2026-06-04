@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+stopped
 
 ## Package order
 
@@ -516,4 +516,45 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054L stopped during implementation after three bounded-runtime attempts.
+
+What completed:
+
+```text
+review.md
+design.md
+functions.md
+attempts.md
+```
+
+Stop reason:
+
+```text
+The candidate implementation over the full direct/168h-expanded SE3 price row set did not complete within a practical package-run window, even after reducing model sizes twice.
+```
+
+Attempts:
+
+```text
+Attempt 1: initial bounded candidates stopped at PID 79358.
+Attempt 2: reduced candidates stopped at PID 79706.
+Attempt 3: further-reduced XGBoost candidate stopped at PID 80208.
+```
+
+No accepted P0054L model metrics, advanced forecast log, downstream contract or forecast-log coverage evidence was produced.
+
+Safety result:
+
+```text
+No live API calls.
+No devices, Shelly, Home Assistant, KVS or runtime writes.
+No downstream SE3 consumption model rerun.
+No production/export/import/A61/future-flow feature work.
+No accepted generated model artifact.
+```
+
+Recommended recovery:
+
+```text
+Create a follow-up package that screens candidates on a smaller origin subset or evaluates/persists one model family at a time before full holdout scoring. Alternatively, explicitly skip XGBoost with WARN evidence if HGB/ExtraTrees/LightGBM complete and answer the package questions.
+```

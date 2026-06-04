@@ -32,6 +32,8 @@ P0053A showed that ENTSO-E A09/A11 internal Swedish border directions can be nat
 
 P0053B showed that SE1 consumption is a practical first physical forecast target. For forecast-safe consumption modeling, calendar, Swedish special-day features, origin-safe load lags/rollups and train-only weather normals are safe; realized weather belongs in a separate diagnostic-only group unless a future package supplies true forecast-time weather features. In the first P0053B split, bridge days, weekends and January cold/high-load periods dominated transparent baseline errors.
 
+P0053B-A showed that old price-prediction artifacts without forecast-origin timestamps must not be used as forecast-safe consumption features. Even when prediction tables contain target timestamps and predicted SE1 prices, they are not safe for response testing unless each row can prove `forecast_origin_timestamp_utc <= example_origin_timestamp_utc`. Actual spot history and regenerated evaluation diagnostics are not substitutes for an immutable historical forecast archive.
+
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.

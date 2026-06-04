@@ -109,3 +109,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0053B` updated `docs/functions/mac/spotprice-model-diagnostics.md` with forecast-safe SE1 consumption warmup diagnostics, direct-horizon modeling and 168h path metrics.
 
 `P0053C` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the shared forecast period policy and timestamp-UTC split boundary for SE1 consumption rebuilds.
+
+`P0053C-A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the M4/P0045 global-split price-shape rebuild and local forecast-origin log contract.

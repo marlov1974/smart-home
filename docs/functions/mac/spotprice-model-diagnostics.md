@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0053C
+Last changed: P0053C-A
 
 ## Module
 
@@ -329,3 +329,25 @@ Important functions:
 `write_p0053b_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0053B/`.
 
 P0053B is diagnostics/model-warmup only. It explicitly forbids SE1 price modeling, SE3 price modeling, SE3-SE1 modeling, production forecasting, export/import forecasting, future actual A09/A11 leakage, A61 utilization, production APIs, deployable model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0053C-A M4/P0045 Price-Shape Rebuild
+
+`p0053ca.run_p0053ca_rebuild(...)` orchestrates the P0053C-A M4/P0045 price-shape rebuild under the global forecast period policy.
+
+Important functions:
+
+`filter_ai2_policy_rows(...)` removes scored AI-2 target rows before `2022-06-01T00:00:00Z`.
+
+`assign_policy_splits(...)` applies canonical P0053C train, validation and holdout splits from `timestamp_utc`.
+
+`assign_ai1_policy_splits(...)` classifies AI-1 daily rows by the UTC start represented by the fixed-CET model date.
+
+`build_policy_forecast_windows(...)` builds exact 168h windows and keeps only windows whose hourly targets all belong to one canonical split.
+
+`build_forecast_origin_log_rows(...)` emits holdout selected-formula shape/index predictions with `forecast_origin_timestamp_utc`, `input_data_cutoff_utc`, `target_timestamp_utc`, `horizon_hours`, `area_or_target`, `predicted_price_or_index`, `prediction_unit` and `prediction_kind`.
+
+`persist_forecast_origin_log(...)` writes the local SQLite table `m4_price_shape_forecast_origin_log_p0053ca_v1`.
+
+P0053C-A output is `prediction_kind=shape_index` and `prediction_unit=centered_shape_index`; it is not absolute price. It may support future rank/top-bottom relative price-shape features, but absolute price-response features require a later safe anchoring package.
+
+P0053C-A is diagnostics/rebuild-only. It does not create a production API, deployable model artifact, A61 utilization, future actual price feature, Shelly, Home Assistant, KVS or device path.

@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -337,4 +337,43 @@ STOP if:
 
 ## Completion notes
 
-To be filled after implementation.
+Completed 2026-06-04 with status `PASS`.
+
+Used regeneration path:
+
+```text
+src/mac/services/spotprice_model_diagnostics/p0053ca.py
+src/mac/services/spotprice_model_diagnostics/p0043.py
+src/mac/services/spotprice_model_diagnostics/p0044.py
+src/mac/services/spotprice_model_diagnostics/p0045.py
+```
+
+P0053C-A reused the old P0043/P0044/P0045 model functions and selected feature policies where possible, but applied the P0053C global split policy. Scored AI-2 target rows start at `2022-06-01T00:00:00Z`; train/validation/holdout boundaries are canonical P0053C boundaries. 168h windows that crossed split boundaries were skipped.
+
+Selected formula for both `system_proxy_se1` and `area_diff_proxy_se3`:
+
+```text
+combined_scaled
+```
+
+New holdout metrics from `2025-06-01` onward:
+
+```text
+system_proxy_se1: windows=348, shape_MAE_scaled=1.077082, shape_MAE_centered=0.164976, spearman_168h=0.612268
+area_diff_proxy_se3: windows=348, shape_MAE_scaled=0.829498, shape_MAE_centered=0.193085, spearman_168h=0.344933
+```
+
+Created local forecast-origin log table:
+
+```text
+m4_price_shape_forecast_origin_log_p0053ca_v1
+rows=116928
+prediction_kind=shape_index
+prediction_unit=centered_shape_index
+```
+
+The log is not an absolute price forecast. It is suitable for a P0053B-A retry only for shape/index rank, top/bottom and relative-shape features. Absolute price-response features require a later safe anchoring package.
+
+Old P0043/P0044/P0045/M4 metrics are stale for canonical comparison under the P0053C policy.
+
+No production API, deployable model, Shelly, Home Assistant, KVS, device, A61 utilization, future actual price feature or SE3 production model work was performed.

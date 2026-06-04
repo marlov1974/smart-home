@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -560,4 +560,98 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054K completed with PASS.
+
+Summary:
+
+```text
+label: LABB, not G2-KANDIDAT
+phase A table: anchored_absolute_price_forecast_log_p0054k_se3_v1
+SE3 price source: system_proxy_se1.hour_price + area_diff_proxy_se3.hour_price
+target: physical_balance_se1_se4_hourly_v1.consumption_se3, MW hourly mean
+weather proxy: weather_area_hourly area_proxy=se3_load_weather
+split: train_fit target_timestamp_utc 2022-06-01T00:00:00Z..<2025-06-01T00:00:00Z; holdout >=2025-06-01T00:00:00Z
+SE3 price source rows: 34968
+SE3 price forecast log rows: 242088
+direct rows: 15807
+weekly 168h path rows: 8568
+weekly complete origins: 51
+```
+
+Phase A passed:
+
+```text
+train_fit price forecast rows: 182952
+holdout price forecast rows: 59136
+complete 168h price forecast origins: 1441
+leakage review: ok
+input cutoff/order/source timestamp checks: ok
+```
+
+Models run:
+
+```text
+HGB no_price / with_p0054k_se3_price_forecast
+ExtraTrees no_price / with_p0054k_se3_price_forecast
+LightGBM no_price / with_p0054k_se3_price_forecast
+XGBoost no_price / with_p0054k_se3_price_forecast
+```
+
+MLP was intentionally skipped because it was optional and the required tree/boosted family set was complete.
+
+Best models:
+
+```text
+best holdout no_price: XGBoost_no_price, MAE 48.01602472809628
+best holdout with_price: LightGBM_with_p0054k_se3_price_forecast, MAE 48.3202873218118
+best weekly no_price: XGBoost_no_price, MAE_full_168h 108.51610764072525
+best weekly with_price: XGBoost_with_p0054k_se3_price_forecast, MAE_full_168h 109.81910335762592
+```
+
+Price forecast ablation:
+
+```text
+HGB: holdout improved 1.1179262213917436%, weekly worsened 0.22516658818363802%
+ExtraTrees: holdout worsened 1.5239614324194488%, weekly worsened 1.7556715090603827%
+LightGBM: holdout improved 3.7345143360319315%, weekly improved 2.8855438081588725%
+XGBoost: holdout worsened 0.9894110529944057%, weekly worsened 1.2007394526300386%
+```
+
+SE3 vs SE1/P0054J:
+
+```text
+P0054J XGBoost holdout improvement: 0.12006947345773429%
+P0054J XGBoost weekly improvement: 1.3070850398320675%
+P0054K XGBoost holdout effect: -0.9894110529944057% improvement, meaning worse with price
+P0054K XGBoost weekly effect: -1.2007394526300386% improvement, meaning worse with price
+SE3 is not stronger than SE1 on the XGBoost broad comparison.
+```
+
+Interpretation:
+
+```text
+status: supports_hypothesis
+decision: keep SE3 price forecast features for future SE3 LABB experiments, but primarily as a model-family/regime feature rather than a universal feature
+reason: LightGBM crosses the LABB broad learning threshold on both holdout and weekly path, and conditional regimes show >=3% improvements in multiple important regimes. The best overall no-price XGBoost remains stronger than the best broad with-price result.
+```
+
+Safety and leakage result:
+
+```text
+P0054I/P0054J split applied.
+SE3 price forecast source contract verified.
+SE3 consumption target source verified.
+No-price and with-price matrices used identical target rows per family.
+With-price features used only forecast-origin-safe P0054K SE3 price forecast columns.
+Feature matrix contained no actual future spot price, production, flow/export/import, A61, utilization, continental price, device, API or runtime feature.
+No live API, device, Shelly, Home Assistant, KVS, A61 utilization or production-runtime action was performed.
+No model binaries, virtualenvs, wheels, caches or large raw datasets were committed.
+```
+
+Verification commands run:
+
+```text
+python3 -m unittest tests.mac.services.spotprice_model_diagnostics.test_p0054k
+python3 -m src.mac.services.spotprice_model_diagnostics.p0054k
+git diff --check
+```

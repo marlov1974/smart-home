@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054J
+Last changed: P0054K
 
 ## Module
 
@@ -243,6 +243,34 @@ Important functions:
 `write_evidence(...)` writes Markdown, JSON and compact CSV evidence under `requirements/package-runs/P0054J/`.
 
 P0054J is LABB diagnostics/modeling only. It is not G2-KANDIDAT and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization or future actual price features.
+
+## P0054K SE3 Consumption LABB Price Forecast Ablation
+
+`p0054k.run_p0054k_analysis(...)` orchestrates a two-phase LABB experiment: a reconstructed SE3 forecast-origin-safe anchored absolute price forecast log, followed by paired SE3 consumption models with and without that price forecast feature.
+
+Important functions:
+
+`load_se3_price_source_rows(...)` reconstructs SE3 absolute hourly prices from `ai2_hour_to_day_training_targets_v2` as `system_proxy_se1.hour_price + area_diff_proxy_se3.hour_price`.
+
+`build_se3_price_windows(...)` creates complete daily 168h SE3 price forecast windows under the P0054 train-through-May-2025 policy.
+
+`build_se3_price_forecast_rows(...)` emits `anchored_absolute_price_forecast_log_p0054k_se3_v1` rows using the P0054H-style origin-local baseline: previous-week same-hour, otherwise prior-48h same-hour mean, otherwise prior-48h median.
+
+`validate_se3_price_leakage(...)` enforces input cutoff, anchor-window, source-timestamp and horizon ordering for the reconstructed SE3 price forecast log.
+
+`load_se3_consumption_rows(...)` reads `physical_balance_se1_se4_hourly_v1.consumption_se3` as the MW hourly mean target.
+
+`load_se3_weather_proxy_rows(...)` is implemented as `load_weather_proxy_rows(...)` for `weather_area_hourly` `area_proxy=se3_load_weather`, labeled as LABB actual-as-forecast proxy.
+
+`load_se3_price_forecast_rows(...)` reads P0054K forecast-safe SE3 price forecast rows for Phase B with `area=SE3`, `prediction_kind=anchored_absolute_price`, `quality_flag=forecast_safe_origin_local_baseline_not_m4` and `training_protocol=origin_local_no_fit_pre_origin_history`.
+
+`build_modeling_rows(...)`, `feature_group_contract(...)`, `fit_variant_model(...)`, `evaluate_direct_horizons(...)`, `evaluate_weekly_paths(...)` and `evaluate_conditional_regimes(...)` adapt the P0054J paired ablation workflow for SE3.
+
+`se3_vs_se1_price_effect_comparison(...)` compares P0054K XGBoost broad price-effect deltas to P0054J's SE1 XGBoost reference deltas.
+
+`write_p0054k_evidence(...)` writes required Markdown, JSON and compact CSV evidence under `requirements/package-runs/P0054K/`.
+
+P0054K is LABB diagnostics/modeling only. It is not G2-KANDIDAT and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future actual price features or M4 output.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

@@ -1,0 +1,99 @@
+{
+  "coverage": {
+    "by_forecast_origin": {
+      "holdout": {
+        "max_timestamp_utc": "2026-05-18T23:00:00Z",
+        "min_timestamp_utc": "2025-06-01T23:00:00Z",
+        "origins": 352,
+        "rows": 59136
+      },
+      "train_fit": {
+        "max_timestamp_utc": "2025-05-24T23:00:00Z",
+        "min_timestamp_utc": "2022-06-01T23:00:00Z",
+        "origins": 1089,
+        "rows": 182952
+      }
+    },
+    "by_target_timestamp": {
+      "holdout": {
+        "max_timestamp_utc": "2026-05-25T22:00:00Z",
+        "min_timestamp_utc": "2025-06-01T23:00:00Z",
+        "origins": 352,
+        "rows": 59136
+      },
+      "train_fit": {
+        "max_timestamp_utc": "2025-05-31T22:00:00Z",
+        "min_timestamp_utc": "2022-06-01T23:00:00Z",
+        "origins": 1089,
+        "rows": 182952
+      }
+    },
+    "complete_168h_origins": 1441,
+    "phase_a_ok": true
+  },
+  "leakage": {
+    "a61_used": false,
+    "all_model_fitting_rows_before_origin": true,
+    "anchor_error_count": 0,
+    "anchor_price_timestamps_strictly_before_origin": true,
+    "api_or_device_path_touched": false,
+    "cutoff_error_count": 0,
+    "forecast_origin_not_after_target": true,
+    "holdout_used_for_selection_or_fitting": false,
+    "horizon_error_count": 0,
+    "horizons_0_to_167": true,
+    "input_cutoff_not_after_origin": true,
+    "no_target_window_actual_price_used_as_input": true,
+    "no_validation_holdout_leakage_into_train_origin_models": true,
+    "ok": true,
+    "prediction_source_after_origin_error_count": 0,
+    "prediction_source_timestamp_before_origin": true,
+    "target_order_error_count": 0,
+    "training_cutoff_error_count": 0,
+    "training_cutoff_not_after_input_cutoff": true
+  },
+  "schema": {
+    "area": "SE3",
+    "method_name": "previous_week_same_hour_else_hist48_same_hour_else_hist48_median",
+    "not_m4": true,
+    "prediction_kind": "anchored_absolute_price",
+    "prediction_unit": "reconstructed_se3_hour_price_unit",
+    "quality_flag": "forecast_safe_origin_local_baseline_not_m4",
+    "required_semantics": [
+      "forecast_origin_timestamp_utc",
+      "input_data_cutoff_utc",
+      "target_timestamp_utc",
+      "horizon_hours",
+      "predicted_price",
+      "anchor_window_start_utc",
+      "anchor_window_end_utc",
+      "source_model_family",
+      "package_id"
+    ],
+    "source_reconstruction": "system_proxy_se1 + area_diff_proxy_se3",
+    "table": "anchored_absolute_price_forecast_log_p0054k_se3_v1",
+    "training_protocol": "origin_local_no_fit_pre_origin_history"
+  },
+  "skipped_windows": {
+    "cross_split_path": 7,
+    "incomplete_168h_path": 6,
+    "pre_policy_origin": 3
+  },
+  "source": {
+    "duplicates": 0,
+    "end": "2026-05-25T22:00:00Z",
+    "holdout_rows": 8615,
+    "label": "reconstructed SE3 absolute spot price source for LABB forecast-safe baseline",
+    "nonfinite_values": 0,
+    "ok": true,
+    "reconstruction": "se3_absolute_price = system_proxy_se1.hour_price + area_diff_proxy_se3.hour_price",
+    "rows": 34968,
+    "source_series": [
+      "system_proxy_se1",
+      "area_diff_proxy_se3"
+    ],
+    "source_table": "ai2_hour_to_day_training_targets_v2",
+    "start": "2022-05-29T23:00:00Z",
+    "train_fit_rows": 26304
+  }
+}

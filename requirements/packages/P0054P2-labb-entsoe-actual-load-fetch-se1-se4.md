@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -405,4 +405,53 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054P2 completed with PASS.
+
+Implemented a package-scoped ENTSO-E Actual Total Load ingestion module and tests:
+
+```text
+src/mac/services/spotprice_model_diagnostics/p0054p2.py
+tests/mac/services/spotprice_model_diagnostics/test_p0054p2.py
+```
+
+Canonical local table built:
+
+```text
+entsoe_consumption_area_hourly_v1
+```
+
+Loaded row counts:
+
+```text
+raw_rows = 192905
+hourly_rows = 140175
+```
+
+Loaded area coverage:
+
+```text
+SE1 35001 rows, 2022-06-01T00:00:00Z..2026-06-05T10:00:00Z
+SE2 35026 rows, 2022-06-01T00:00:00Z..2026-06-05T10:00:00Z
+SE3 35125 rows, 2022-06-01T00:00:00Z..2026-06-05T10:00:00Z
+SE4 35023 rows, 2022-06-01T00:00:00Z..2026-06-05T10:00:00Z
+```
+
+Source contract:
+
+```text
+documentType = A65
+processType = A16
+source_type = actual_total_load
+area_scope = bidding_zone_internal_consumption_or_load
+usable_for_consumption_target = true
+```
+
+Cross-border flow data was not used as consumption target. The named cross-border physical flow export was classified as not usable for `entsoe_consumption_area_hourly_v1`.
+
+Old-source comparison found the old physical-balance source is not equivalent to ENTSO-E Actual Total Load. For SE3, ENTSO-E overlap mean was 9501.266 MW versus old-source mean 3933.028 MW, ratio 2.415764 and correlation 0.232260. P0054K-P0054O should be interpreted as proxy-target methodology experiments until rerun against the ENTSO-E actual-load target.
+
+Recommended follow-up remains:
+
+```text
+P0054Q LABB SE3 DayAhead full_36h rerun with ENTSO-E actual load target
+```

@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054O
+Last changed: P0054P2
 
 ## Module
 
@@ -369,6 +369,30 @@ Important functions:
 `write_p0054m_evidence(...)` writes package-run Markdown, JSON and CSV evidence under `requirements/package-runs/P0054M/`.
 
 P0054M is LABB diagnostics/modeling only. Its train-side advanced price coverage is intentionally partial inside train_fit, not a full 2022-06 through 2025-05 rolling forecast source. It creates no deployable model artifact, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future-flow features or actual future price inputs.
+
+## P0054P2 ENTSO-E Actual Load Target Ingestion LABB
+
+`p0054p2.run_p0054p2_ingestion(...)` orchestrates token-safe ENTSO-E Actual Total Load ingestion for SE1-SE4, hourly target-table persistence, target coverage review and package-run evidence.
+
+Important functions:
+
+`build_actual_load_params(...)` builds A65/A16 `outBiddingZone_Domain` request parameters for a Swedish bidding zone and deliberately excludes A09/A11/A61 flow, exchange and capacity request shapes.
+
+`fetch_actual_load_rows(...)` fetches yearly Actual Total Load XML chunks for SE1-SE4 using the already configured local ENTSO-E token path without writing the token to evidence.
+
+`parse_actual_load_document(...)` and `parse_actual_load_period(...)` parse ENTSO-E XML actual-load points and normalize unit metadata to MW.
+
+`aggregate_hourly_load(...)` converts subhourly actual-load values into hourly mean MW target rows.
+
+`persist_actual_load_rows(...)` writes the canonical local target table `entsoe_consumption_area_hourly_v1` idempotently for `package_id=P0054P2`.
+
+`coverage_by_area(...)`, `volume_sanity_by_area_season(...)`, `se3_volume_check(...)`, `old_source_comparison(...)` and `data_quality_review(...)` validate train/holdout coverage, SE3 magnitude and differences from the old physical-balance consumption source.
+
+`classify_cross_border_flow_file(...)` documents that operator-provided net cross-border physical flow exports are not usable consumption/load targets.
+
+`write_p0054p2_evidence(...)` writes sanitized package-run Markdown, JSON and CSV evidence under `requirements/package-runs/P0054P2/`.
+
+P0054P2 is LABB data-ingestion only. It calls only the ENTSO-E actual-load API contract, creates no model artifacts, touches no devices or runtime state, and does not use A61 utilization, production, price, cross-border flow or future actual price leakage inputs.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

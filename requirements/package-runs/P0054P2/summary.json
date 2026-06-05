@@ -1,0 +1,628 @@
+{
+  "area_code_mapping": {
+    "SE1": {
+      "eic": "10Y1001A1001A44P",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE2": {
+      "eic": "10Y1001A1001A45N",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE3": {
+      "eic": "10Y1001A1001A46L",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE4": {
+      "eic": "10Y1001A1001A47J",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    }
+  },
+  "coverage_by_area": {
+    "SE1": {
+      "first_timestamp_utc": "2022-06-01T00:00:00Z",
+      "holdout_expected_hours": 8868,
+      "holdout_missing_hours": 45,
+      "holdout_rows": 8823,
+      "last_timestamp_utc": "2026-06-05T10:00:00Z",
+      "missing_examples": [
+        "2022-06-15T12:00:00Z",
+        "2022-06-19T06:00:00Z",
+        "2022-06-22T08:00:00Z",
+        "2022-06-24T14:00:00Z",
+        "2022-07-11T05:00:00Z",
+        "2022-07-12T05:00:00Z",
+        "2022-07-12T17:00:00Z",
+        "2022-07-12T18:00:00Z",
+        "2022-07-17T04:00:00Z",
+        "2022-07-30T11:00:00Z",
+        "2022-07-31T13:00:00Z",
+        "2022-08-13T02:00:00Z"
+      ],
+      "rows": 35001,
+      "train_fit_expected_hours": 26304,
+      "train_fit_missing_hours": 126,
+      "train_fit_rows": 26178
+    },
+    "SE2": {
+      "first_timestamp_utc": "2022-06-01T00:00:00Z",
+      "holdout_expected_hours": 8868,
+      "holdout_missing_hours": 45,
+      "holdout_rows": 8823,
+      "last_timestamp_utc": "2026-06-05T10:00:00Z",
+      "missing_examples": [
+        "2022-06-09T00:00:00Z",
+        "2022-06-09T02:00:00Z",
+        "2022-06-10T08:00:00Z",
+        "2022-06-10T15:00:00Z",
+        "2022-06-17T11:00:00Z",
+        "2022-06-19T01:00:00Z",
+        "2022-06-20T07:00:00Z",
+        "2022-06-24T17:00:00Z",
+        "2022-08-06T19:00:00Z",
+        "2022-08-25T02:00:00Z",
+        "2022-08-30T00:00:00Z",
+        "2022-09-01T13:00:00Z"
+      ],
+      "rows": 35026,
+      "train_fit_expected_hours": 26304,
+      "train_fit_missing_hours": 101,
+      "train_fit_rows": 26203
+    },
+    "SE3": {
+      "first_timestamp_utc": "2022-06-01T00:00:00Z",
+      "holdout_expected_hours": 8868,
+      "holdout_missing_hours": 9,
+      "holdout_rows": 8859,
+      "last_timestamp_utc": "2026-06-05T10:00:00Z",
+      "missing_examples": [
+        "2022-06-15T11:00:00Z",
+        "2022-07-02T18:00:00Z",
+        "2022-09-14T08:00:00Z",
+        "2022-10-24T14:00:00Z",
+        "2022-11-13T12:00:00Z",
+        "2022-12-14T12:00:00Z",
+        "2023-01-14T23:00:00Z",
+        "2023-02-16T09:00:00Z",
+        "2023-03-27T01:00:00Z",
+        "2023-04-24T18:00:00Z",
+        "2023-07-17T03:00:00Z",
+        "2023-08-23T07:00:00Z"
+      ],
+      "rows": 35125,
+      "train_fit_expected_hours": 26304,
+      "train_fit_missing_hours": 38,
+      "train_fit_rows": 26266
+    },
+    "SE4": {
+      "first_timestamp_utc": "2022-06-01T00:00:00Z",
+      "holdout_expected_hours": 8868,
+      "holdout_missing_hours": 23,
+      "holdout_rows": 8845,
+      "last_timestamp_utc": "2026-06-05T10:00:00Z",
+      "missing_examples": [
+        "2022-06-01T07:00:00Z",
+        "2022-06-07T00:00:00Z",
+        "2022-06-08T20:00:00Z",
+        "2022-07-02T16:00:00Z",
+        "2022-07-07T01:00:00Z",
+        "2022-07-08T23:00:00Z",
+        "2022-07-12T15:00:00Z",
+        "2022-08-13T02:00:00Z",
+        "2022-08-17T12:00:00Z",
+        "2022-08-22T10:00:00Z",
+        "2022-09-16T08:00:00Z",
+        "2022-09-22T00:00:00Z"
+      ],
+      "rows": 35023,
+      "train_fit_expected_hours": 26304,
+      "train_fit_missing_hours": 126,
+      "train_fit_rows": 26178
+    }
+  },
+  "cross_border_flow_file_classification": {
+    "classification": "net_cross_border_physical_flows",
+    "filename": "GUI_NET_CROSS_BORDER_PHYSICAL_FLOWS_202512312300-202612312300.csv",
+    "paths_checked": [
+      "repository",
+      "~/.smart-home"
+    ],
+    "present": false,
+    "reason": "Physical cross-border flow/exchange files describe border transfer, not internal area load or consumption.",
+    "usable_for_consumption_target": false
+  },
+  "data_quality_review": {
+    "all_areas_have_train_fit_and_holdout": true,
+    "duplicates_by_timestamp_area": 0,
+    "negative_values": 0,
+    "nonfinite_values": 0,
+    "ok": true,
+    "rows": 140175,
+    "token_leak_scan_required": true
+  },
+  "downstream_contract": {
+    "forecast_safety_class": "historical_observed_only_target",
+    "join_key": [
+      "timestamp_utc",
+      "area"
+    ],
+    "source_type": "actual_total_load",
+    "table": "entsoe_consumption_area_hourly_v1",
+    "target_column": "consumption_mw",
+    "usage": "Use as historical target only; any future use requires a separate forecast model."
+  },
+  "impact_on_p0054k_through_p0054o": {
+    "p0054k": "May replace old SE3 physical-balance consumption target after a follow-up package updates loaders and metrics.",
+    "p0054l2": "No direct change; price-origin logic remains separate.",
+    "p0054m": "No retraining in P0054P2; future LABB packages can use this table as target source.",
+    "p0054n": "Full 36h SE3 target should be rerun only in a later package.",
+    "p0054o": "No model rerun in P0054P2; downstream metrics remain stale until rerun."
+  },
+  "label": "LABB",
+  "next_package_recommendation": "P0054Q should rerun SE3 LABB consumption modeling against entsoe_consumption_area_hourly_v1 and compare against P0054K-P0054O stale metrics.",
+  "no_a61_utilization": true,
+  "no_api_beyond_entsoe_actual_load": true,
+  "no_devices": true,
+  "no_future_actual_price_leakage": true,
+  "old_source_comparison": {
+    "areas": {
+      "SE1": {
+        "correlation": 0.11414,
+        "entsoe_div_old_ratio": 2.275001,
+        "entsoe_mean_mw": 1249.554,
+        "mean_difference_mw": 700.3,
+        "old_mean_mw": 549.254,
+        "overlap_rows": 34773
+      },
+      "SE2": {
+        "correlation": 0.17388,
+        "entsoe_div_old_ratio": 2.291547,
+        "entsoe_mean_mw": 1723.928,
+        "mean_difference_mw": 971.629,
+        "old_mean_mw": 752.299,
+        "overlap_rows": 34798
+      },
+      "SE3": {
+        "correlation": 0.23226,
+        "entsoe_div_old_ratio": 2.415764,
+        "entsoe_mean_mw": 9501.266,
+        "mean_difference_mw": 5568.238,
+        "old_mean_mw": 3933.028,
+        "overlap_rows": 34873
+      },
+      "SE4": {
+        "correlation": 0.254001,
+        "entsoe_div_old_ratio": 2.355651,
+        "entsoe_mean_mw": 2477.917,
+        "mean_difference_mw": 1426.013,
+        "old_mean_mw": 1051.903,
+        "overlap_rows": 34771
+      }
+    },
+    "available": true,
+    "old_table": "physical_balance_se1_se4_hourly_v1"
+  },
+  "package_id": "P0054P2",
+  "raw_entsoe_exports_committed": false,
+  "request_range": {
+    "end": "2026-06-05T12:00:00Z",
+    "start": "2022-06-01T00:00:00Z"
+  },
+  "row_counts": {
+    "hourly_rows": 140175,
+    "raw_rows": 192905
+  },
+  "runtime_seconds": 87.807,
+  "se3_volume_check": {
+    "area_scope": "bidding_zone_internal_consumption_or_load",
+    "interpretation": "SE3 actual-load magnitude is compatible with internal consumption/load, not line flow.",
+    "ok": true,
+    "source_type": "actual_total_load",
+    "summer_mean_mw": 8030.544,
+    "usable_for_consumption_target": true,
+    "winter_mean_mw": 10967.24
+  },
+  "secret_safety": {
+    "directory_mode": "0o700",
+    "file_mode": "0o600",
+    "secret_checked": true,
+    "secret_gitignored": "outside_repo_not_committable",
+    "secret_location_class": "outside_repository_user_secret_dir",
+    "secret_safe": true,
+    "token_source": "local_secret_file_outside_repo"
+  },
+  "source_contract": {
+    "area_scope": "bidding_zone_internal_consumption_or_load",
+    "document_type": "A65",
+    "forbidden_source_classes": [
+      "net_cross_border_physical_flows",
+      "A09",
+      "A11",
+      "A61",
+      "production",
+      "price"
+    ],
+    "forbidden_sources_used": false,
+    "ok": true,
+    "points_by_area": {
+      "SE1": 48123,
+      "SE2": 48183,
+      "SE3": 48397,
+      "SE4": 48202
+    },
+    "process_type": "A16",
+    "source_system": "ENTSO-E",
+    "source_type": "actual_total_load",
+    "usable_for_consumption_target": true
+  },
+  "source_discovery": {
+    "attempts": [
+      {
+        "area": "SE1",
+        "document_type": "A65",
+        "points": 5105,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE1",
+        "document_type": "A65",
+        "points": 8714,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE1",
+        "document_type": "A65",
+        "points": 8756,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE1",
+        "document_type": "A65",
+        "points": 10857,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE1",
+        "document_type": "A65",
+        "points": 14691,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE2",
+        "document_type": "A65",
+        "points": 5112,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE2",
+        "document_type": "A65",
+        "points": 8730,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE2",
+        "document_type": "A65",
+        "points": 8749,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE2",
+        "document_type": "A65",
+        "points": 10869,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE2",
+        "document_type": "A65",
+        "points": 14723,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE3",
+        "document_type": "A65",
+        "points": 5130,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE3",
+        "document_type": "A65",
+        "points": 8748,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE3",
+        "document_type": "A65",
+        "points": 8766,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE3",
+        "document_type": "A65",
+        "points": 10893,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE3",
+        "document_type": "A65",
+        "points": 14860,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE4",
+        "document_type": "A65",
+        "points": 5112,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE4",
+        "document_type": "A65",
+        "points": 8709,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE4",
+        "document_type": "A65",
+        "points": 8747,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE4",
+        "document_type": "A65",
+        "points": 10863,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area": "SE4",
+        "document_type": "A65",
+        "points": 14771,
+        "process_type": "A16",
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      }
+    ],
+    "selected_contract": "ENTSO-E Actual Total Load / Total Load - Actual by Swedish bidding zone",
+    "selected_document_type": "A65",
+    "selected_process_type": "A16",
+    "token_included_in_evidence": false
+  },
+  "status": "PASS",
+  "table_schema": {
+    "columns": {
+      "area": "SE1-SE4 bidding zone",
+      "consumption_mw": "hourly mean MW",
+      "package_id": "P0054P2",
+      "resolution": "source resolution, with ->hourly_mean for aggregated subhourly data",
+      "source_area_code": "ENTSO-E EIC bidding zone code",
+      "source_measure": "actual_total_load",
+      "source_system": "ENTSO-E",
+      "timestamp_utc": "UTC hourly target timestamp",
+      "timezone_handling": "source period timestamps normalized to UTC",
+      "unit": "MW"
+    },
+    "primary_key": [
+      "timestamp_utc",
+      "area",
+      "source_system",
+      "source_measure",
+      "package_id"
+    ],
+    "table": "entsoe_consumption_area_hourly_v1"
+  },
+  "token_included_in_evidence": false,
+  "volume_sanity_by_area_season": {
+    "SE1": {
+      "summer_half_year": {
+        "daily_energy_gwh_mean": 25.435,
+        "daily_energy_gwh_median": 25.312,
+        "max_mw": 1910.0,
+        "mean_mw": 1066.041,
+        "median_mw": 1063.0,
+        "min_mw": 161.0,
+        "p05_mw": 791.113,
+        "p25_mw": 961.0,
+        "p75_mw": 1169.0,
+        "p95_mw": 1346.0,
+        "rows": 17584
+      },
+      "winter_half_year": {
+        "daily_energy_gwh_mean": 34.181,
+        "daily_energy_gwh_median": 34.152,
+        "max_mw": 4428.25,
+        "mean_mw": 1430.687,
+        "median_mw": 1423.0,
+        "min_mw": 538.0,
+        "p05_mw": 1068.0,
+        "p25_mw": 1274.0,
+        "p75_mw": 1574.0,
+        "p95_mw": 1817.0,
+        "rows": 17417
+      }
+    },
+    "SE2": {
+      "summer_half_year": {
+        "daily_energy_gwh_mean": 34.455,
+        "daily_energy_gwh_median": 34.11,
+        "max_mw": 2594.0,
+        "mean_mw": 1444.296,
+        "median_mw": 1448.0,
+        "min_mw": 166.0,
+        "p05_mw": 1008.05,
+        "p25_mw": 1278.0,
+        "p75_mw": 1612.375,
+        "p95_mw": 1874.0,
+        "rows": 17582
+      },
+      "winter_half_year": {
+        "daily_energy_gwh_mean": 47.865,
+        "daily_energy_gwh_median": 47.728,
+        "max_mw": 7279.0,
+        "mean_mw": 2000.315,
+        "median_mw": 1999.0,
+        "min_mw": 176.0,
+        "p05_mw": 1291.15,
+        "p25_mw": 1718.0,
+        "p75_mw": 2286.0,
+        "p95_mw": 2695.0,
+        "rows": 17444
+      }
+    },
+    "SE3": {
+      "summer_half_year": {
+        "daily_energy_gwh_mean": 192.297,
+        "daily_energy_gwh_median": 192.308,
+        "max_mw": 13194.0,
+        "mean_mw": 8030.544,
+        "median_mw": 7995.0,
+        "min_mw": 5198.0,
+        "p05_mw": 6258.0,
+        "p25_mw": 7141.75,
+        "p75_mw": 8839.0,
+        "p95_mw": 9942.65,
+        "rows": 17648
+      },
+      "winter_half_year": {
+        "daily_energy_gwh_mean": 262.928,
+        "daily_energy_gwh_median": 261.928,
+        "max_mw": 16747.0,
+        "mean_mw": 10967.24,
+        "median_mw": 10924.0,
+        "min_mw": 6228.0,
+        "p05_mw": 8061.8,
+        "p25_mw": 9716.5,
+        "p75_mw": 12202.0,
+        "p95_mw": 13959.2,
+        "rows": 17477
+      }
+    },
+    "SE4": {
+      "summer_half_year": {
+        "daily_energy_gwh_mean": 49.653,
+        "daily_energy_gwh_median": 49.992,
+        "max_mw": 3875.0,
+        "mean_mw": 2080.537,
+        "median_mw": 2061.0,
+        "min_mw": 1174.0,
+        "p05_mw": 1581.4,
+        "p25_mw": 1823.0,
+        "p75_mw": 2322.0,
+        "p95_mw": 2627.0,
+        "rows": 17589
+      },
+      "winter_half_year": {
+        "daily_energy_gwh_mean": 68.684,
+        "daily_energy_gwh_median": 68.398,
+        "max_mw": 4696.0,
+        "mean_mw": 2872.023,
+        "median_mw": 2846.0,
+        "min_mw": 667.75,
+        "p05_mw": 2043.0,
+        "p25_mw": 2510.25,
+        "p75_mw": 3234.375,
+        "p95_mw": 3750.0,
+        "rows": 17434
+      }
+    }
+  },
+  "what_we_learned": [
+    "P0054P2 must distinguish actual total load from A09/A11 physical exchange and A61 capacity.",
+    "The package status is PASS; downstream model metrics should not be interpreted as refreshed by this ingestion package.",
+    "Old physical-balance consumption and ENTSO-E actual total load are compared by overlap to quantify target-source differences."
+  ]
+}

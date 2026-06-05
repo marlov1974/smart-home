@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -514,4 +514,72 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054M completed with `PASS`.
+
+Selected price feature protocol:
+
+```text
+price_feature_protocol = rolling_oof_train_plus_holdout
+```
+
+Implemented a safe partial train-side advanced price source:
+
+```text
+advanced_spotprice_forecast_log_p0054m_se3_train_blocked_oof_v1
+target range: 2025-03-01T00:00:00Z .. 2025-05-31T22:00:00Z
+rows: 14945
+forecast origins: 92
+training cutoff: 2025-02-28T23:00:00Z
+```
+
+Used existing P0054L2 Ensemble holdout source for holdout evaluation:
+
+```text
+advanced_spotprice_forecast_log_p0054l2_se3_v1
+model_name = Ensemble
+```
+
+Consumption model rows:
+
+```text
+train_fit paired direct rows: 966
+holdout paired direct rows: 3872
+weekly path rows: 8568
+```
+
+Best no-price holdout model:
+
+```text
+ExtraTrees_no_price
+MAE = 144.69949632494485
+```
+
+Best with-advanced-price holdout model:
+
+```text
+ExtraTrees_with_p0054l2_ensemble_price_forecast
+MAE = 140.54830097681355
+```
+
+Best weekly with-advanced-price model:
+
+```text
+XGBoost_with_p0054l2_ensemble_price_forecast
+MAE_full_168h = 206.2574365420684
+```
+
+The advanced price feature helped XGBoost in this safe protocol:
+
+```text
+XGBoost direct MAE: 154.77299216360825 -> 148.0499748921278
+XGBoost weekly MAE_full_168h: 213.72331614362525 -> 206.2574365420684
+```
+
+Important limitation:
+
+```text
+The train-side advanced price source is partial 2025-03..2025-05 blocked OOF coverage, not a full train_fit rolling forecast source.
+P0054K comparison is therefore an evidence-summary comparison, not an identical-row rerun.
+```
+
+No actual future spot price, P0054L2 holdout-as-train feature, live API, device, Shelly, Home Assistant, runtime, A61, production/export/import/future-flow or deployable model artifact was used.

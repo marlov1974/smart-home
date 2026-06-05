@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054L2
+Last changed: P0054M
 
 ## Module
 
@@ -297,6 +297,30 @@ Important functions:
 `write_p0054l2_evidence(...)` writes the package-run summaries under `requirements/package-runs/P0054L2/`.
 
 P0054L2 is LABB diagnostics/modeling only. It does not rerun SE3 consumption models and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future-flow features or actual future price inputs. Its recommended holdout-safe forecast log is not automatically a train-period downstream consumption feature source; a later P0054M must use holdout-only evaluation or create rolling/out-of-fold train forecasts.
+
+## P0054M SE3 Consumption With Advanced SE3 Price Forecast
+
+`p0054m.run_p0054m_analysis(...)` orchestrates the LABB SE3 consumption experiment using a P0054L2-compatible advanced SE3 price forecast feature.
+
+Important functions:
+
+`build_blocked_oof_price_rows(...)` creates train-side safe advanced SE3 price rows for 2025-03-01 through 2025-05-31. It trains P0054L2-compatible HGB, ExtraTrees, LightGBM and XGBoost price models only on reconstructed SE3 price rows before 2025-03-01 and averages completed predictions into an Ensemble row.
+
+`persist_p0054m_price_rows(...)` writes the package-scoped local SQLite table `advanced_spotprice_forecast_log_p0054m_se3_train_blocked_oof_v1`.
+
+`load_p0054l2_holdout_price_rows(...)` reads P0054L2 Ensemble holdout rows from `advanced_spotprice_forecast_log_p0054l2_se3_v1`.
+
+`build_p0054m_modeling_rows(...)` builds P0054K-compatible SE3 consumption modeling rows and labels train rows as blocked OOF price features and holdout rows as P0054L2 holdout-safe features.
+
+`p0054m_feature_contract(...)` defines paired no-price and with-P0054L2-advanced-price feature groups.
+
+`validate_p0054m_matrix_safety(...)` verifies cutoff ordering, forbidden feature names and that P0054L2 holdout-only rows are not used as train_fit features.
+
+`compare_advanced_price_ablation(...)`, `model_comparison(...)` and `compare_to_p0054k_evidence(...)` summarize advanced-price deltas and compare them to P0054K simple-price evidence.
+
+`write_p0054m_evidence(...)` writes package-run Markdown, JSON and CSV evidence under `requirements/package-runs/P0054M/`.
+
+P0054M is LABB diagnostics/modeling only. Its train-side advanced price coverage is intentionally partial inside train_fit, not a full 2022-06 through 2025-05 rolling forecast source. It creates no deployable model artifact, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future-flow features or actual future price inputs.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

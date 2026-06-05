@@ -1,0 +1,480 @@
+# P0054M LABB
+
+Status: `PASS`
+
+```json
+{
+  "advanced_price_should_be_kept_for_future_se3_experiments": true,
+  "conditional_price_help_summary": {
+    "by_regime": {
+      "cold_hours": {
+        "ExtraTrees": {
+          "no_price_MAE": 396.73189629029866,
+          "relative_change_percent": -2.058931542304953,
+          "with_advanced_price_MAE": 388.56345813919313
+        },
+        "HGB": {
+          "no_price_MAE": 476.9353193934377,
+          "relative_change_percent": -0.5875650909949606,
+          "with_advanced_price_MAE": 474.1330139500565
+        },
+        "LightGBM": {
+          "no_price_MAE": 484.44033698843515,
+          "relative_change_percent": 0.7665419849645739,
+          "with_advanced_price_MAE": 488.15377556355537
+        },
+        "XGBoost": {
+          "no_price_MAE": 381.1674432487222,
+          "relative_change_percent": -4.71671715763421,
+          "with_advanced_price_MAE": 363.18885305369406
+        }
+      },
+      "evening_peak": {
+        "ExtraTrees": {
+          "no_price_MAE": 329.9120364677782,
+          "relative_change_percent": -4.426367534825629,
+          "with_advanced_price_MAE": 315.30891719208637
+        },
+        "HGB": {
+          "no_price_MAE": 343.66011338474453,
+          "relative_change_percent": -2.8395778472027464,
+          "with_advanced_price_MAE": 333.9016169353995
+        },
+        "LightGBM": {
+          "no_price_MAE": 328.0537817425135,
+          "relative_change_percent": -1.5453696899590073,
+          "with_advanced_price_MAE": 322.9841380327004
+        },
+        "XGBoost": {
+          "no_price_MAE": 298.9557597975662,
+          "relative_change_percent": -4.669452446780924,
+          "with_advanced_price_MAE": 284.99616275690624
+        }
+      },
+      "forecast_price_spike": {
+        "ExtraTrees": {
+          "no_price_MAE": 354.73957428982806,
+          "relative_change_percent": -3.4208659816574767,
+          "with_advanced_price_MAE": 342.6044088694708
+        },
+        "HGB": {
+          "no_price_MAE": 353.97585212199135,
+          "relative_change_percent": -1.123796956610369,
+          "with_advanced_price_MAE": 349.9978822687088
+        },
+        "LightGBM": {
+          "no_price_MAE": 356.9833040953563,
+          "relative_change_percent": -1.0401723742902673,
+          "with_advanced_price_MAE": 353.2700623853278
+        },
+        "XGBoost": {
+          "no_price_MAE": 278.18769255097516,
+          "relative_change_percent": -4.779557559831525,
+          "with_advanced_price_MAE": 264.89155166113414
+        }
+      },
+      "high_forecast_price": {
+        "ExtraTrees": {
+          "no_price_MAE": 423.94733319521526,
+          "relative_change_percent": -3.662188388470252,
+          "with_advanced_price_MAE": 408.4215831857108
+        },
+        "HGB": {
+          "no_price_MAE": 456.0120099274152,
+          "relative_change_percent": -1.9959491126224664,
+          "with_advanced_price_MAE": 446.9102422618171
+        },
+        "LightGBM": {
+          "no_price_MAE": 461.90727301215253,
+          "relative_change_percent": -0.6961338547826907,
+          "with_advanced_price_MAE": 458.6917801070114
+        },
+        "XGBoost": {
+          "no_price_MAE": 355.56373676074446,
+          "relative_change_percent": -5.2187552960923105,
+          "with_advanced_price_MAE": 337.0077354175594
+        }
+      },
+      "holiday": {
+        "ExtraTrees": {
+          "no_price_MAE": 189.32189099389802,
+          "relative_change_percent": -5.558432323368777,
+          "with_advanced_price_MAE": 178.7985618096802
+        },
+        "HGB": {
+          "no_price_MAE": 239.87095098568534,
+          "relative_change_percent": -0.036882521288436595,
+          "with_advanced_price_MAE": 239.78248053112327
+        },
+        "LightGBM": {
+          "no_price_MAE": 245.298097711943,
+          "relative_change_percent": -5.20130815202464,
+          "with_advanced_price_MAE": 232.53938775889034
+        },
+        "XGBoost": {
+          "no_price_MAE": 200.5723988170978,
+          "relative_change_percent": -2.7690528362001277,
+          "with_advanced_price_MAE": 195.01844311901831
+        }
+      },
+      "large_forecast_price_ramp": {
+        "ExtraTrees": {
+          "no_price_MAE": 294.06461472288595,
+          "relative_change_percent": -5.705210794439152,
+          "with_advanced_price_MAE": 277.28760858108996
+        },
+        "HGB": {
+          "no_price_MAE": 332.87809338497897,
+          "relative_change_percent": -2.8025607402461636,
+          "with_advanced_price_MAE": 323.5489826268916
+        },
+        "LightGBM": {
+          "no_price_MAE": 310.71084893958556,
+          "relative_change_percent": -3.04821929169491,
+          "with_advanced_price_MAE": 301.2397009008201
+        },
+        "XGBoost": {
+          "no_price_MAE": 262.93174136088817,
+          "relative_change_percent": -6.129408286843841,
+          "with_advanced_price_MAE": 246.81558141717107
+        }
+      },
+      "low_forecast_price": {
+        "ExtraTrees": {
+          "no_price_MAE": 124.12388226499908,
+          "relative_change_percent": -1.684840893958464,
+          "with_advanced_price_MAE": 122.03259233742952
+        },
+        "HGB": {
+          "no_price_MAE": 155.16695527961656,
+          "relative_change_percent": -6.091369797077753,
+          "with_advanced_price_MAE": 145.71516223066885
+        },
+        "LightGBM": {
+          "no_price_MAE": 149.57532907644935,
+          "relative_change_percent": -5.5300960779810655,
+          "with_advanced_price_MAE": 141.30366966956535
+        },
+        "XGBoost": {
+          "no_price_MAE": 119.46538792878665,
+          "relative_change_percent": -2.6368030595733676,
+          "with_advanced_price_MAE": 116.31532092474922
+        }
+      },
+      "morning_ramp": {
+        "ExtraTrees": {
+          "no_price_MAE": 266.34189069333655,
+          "relative_change_percent": -3.3960000721159225,
+          "with_advanced_price_MAE": 257.29691989331593
+        },
+        "HGB": {
+          "no_price_MAE": 297.990104406775,
+          "relative_change_percent": -2.3141801522730456,
+          "with_advanced_price_MAE": 291.0940765548557
+        },
+        "LightGBM": {
+          "no_price_MAE": 306.75297298831265,
+          "relative_change_percent": -2.6811345066045096,
+          "with_advanced_price_MAE": 298.5285131794878
+        },
+        "XGBoost": {
+          "no_price_MAE": 228.5806721801251,
+          "relative_change_percent": -3.310572466523559,
+          "with_advanced_price_MAE": 221.0133433831354
+        }
+      },
+      "summer_low_load": {
+        "ExtraTrees": {
+          "no_price_MAE": 140.5101245040688,
+          "relative_change_percent": -1.421468466763778,
+          "with_advanced_price_MAE": 138.51281739163295
+        },
+        "HGB": {
+          "no_price_MAE": 169.99063494510352,
+          "relative_change_percent": -8.587024238352345,
+          "with_advanced_price_MAE": 155.39349791943843
+        },
+        "LightGBM": {
+          "no_price_MAE": 155.64763874733939,
+          "relative_change_percent": -0.2810890882291473,
+          "with_advanced_price_MAE": 155.2101302187343
+        },
+        "XGBoost": {
+          "no_price_MAE": 135.55299525214252,
+          "relative_change_percent": -1.4627670566530304,
+          "with_advanced_price_MAE": 133.57017069328774
+        }
+      },
+      "very_cold_hours": {
+        "ExtraTrees": {
+          "no_price_MAE": 504.302710633492,
+          "relative_change_percent": -0.11561211347354329,
+          "with_advanced_price_MAE": 503.71967561142424
+        },
+        "HGB": {
+          "no_price_MAE": 610.9690792747792,
+          "relative_change_percent": -1.572216004512456,
+          "with_advanced_price_MAE": 601.3633256277988
+        },
+        "LightGBM": {
+          "no_price_MAE": 609.1465780696084,
+          "relative_change_percent": 4.3451450720621,
+          "with_advanced_price_MAE": 635.6148805882349
+        },
+        "XGBoost": {
+          "no_price_MAE": 439.4945451788039,
+          "relative_change_percent": -4.066870020476014,
+          "with_advanced_price_MAE": 421.6208732792997
+        }
+      },
+      "weekday": {
+        "ExtraTrees": {
+          "no_price_MAE": 245.22783155640576,
+          "relative_change_percent": -3.6708918584827437,
+          "with_advanced_price_MAE": 236.2257830530679
+        },
+        "HGB": {
+          "no_price_MAE": 268.63164966598396,
+          "relative_change_percent": -2.1080774760590884,
+          "with_advanced_price_MAE": 262.9686863658094
+        },
+        "LightGBM": {
+          "no_price_MAE": 274.5602756101234,
+          "relative_change_percent": -2.9194248232829656,
+          "with_advanced_price_MAE": 266.54469476908736
+        },
+        "XGBoost": {
+          "no_price_MAE": 218.81734815694395,
+          "relative_change_percent": -3.0437841187760286,
+          "with_advanced_price_MAE": 212.15702046461604
+        }
+      },
+      "weekend": {
+        "ExtraTrees": {
+          "no_price_MAE": 195.33907966079093,
+          "relative_change_percent": -1.963382295225193,
+          "with_advanced_price_MAE": 191.50382675507512
+        },
+        "HGB": {
+          "no_price_MAE": 239.58850424042097,
+          "relative_change_percent": -3.2875570353942534,
+          "with_advanced_price_MAE": 231.71189551326916
+        },
+        "LightGBM": {
+          "no_price_MAE": 237.07104961525266,
+          "relative_change_percent": -3.6103888963978115,
+          "with_advanced_price_MAE": 228.51186276336983
+        },
+        "XGBoost": {
+          "no_price_MAE": 200.98823611032924,
+          "relative_change_percent": -4.716574242397923,
+          "with_advanced_price_MAE": 191.50847673569953
+        }
+      },
+      "winter_high_load": {
+        "ExtraTrees": {
+          "no_price_MAE": 403.60105719601233,
+          "relative_change_percent": -2.8560414508516456,
+          "with_advanced_price_MAE": 392.07404370641876
+        },
+        "HGB": {
+          "no_price_MAE": 485.5504980483599,
+          "relative_change_percent": -0.3952294789131613,
+          "with_advanced_price_MAE": 483.6314593450631
+        },
+        "LightGBM": {
+          "no_price_MAE": 491.3299959027685,
+          "relative_change_percent": 1.4943532362228669,
+          "with_advanced_price_MAE": 498.6722015970752
+        },
+        "XGBoost": {
+          "no_price_MAE": 380.8763759434198,
+          "relative_change_percent": -3.874166167748573,
+          "with_advanced_price_MAE": 366.120592245673
+        }
+      }
+    },
+    "count": 24,
+    "improvements_at_least_3_percent": [
+      {
+        "family": "XGBoost",
+        "regime": "cold_hours",
+        "relative_change_percent": -4.71671715763421
+      },
+      {
+        "family": "XGBoost",
+        "regime": "very_cold_hours",
+        "relative_change_percent": -4.066870020476014
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "weekday",
+        "relative_change_percent": -3.6708918584827437
+      },
+      {
+        "family": "XGBoost",
+        "regime": "weekday",
+        "relative_change_percent": -3.0437841187760286
+      },
+      {
+        "family": "HGB",
+        "regime": "weekend",
+        "relative_change_percent": -3.2875570353942534
+      },
+      {
+        "family": "LightGBM",
+        "regime": "weekend",
+        "relative_change_percent": -3.6103888963978115
+      },
+      {
+        "family": "XGBoost",
+        "regime": "weekend",
+        "relative_change_percent": -4.716574242397923
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "holiday",
+        "relative_change_percent": -5.558432323368777
+      },
+      {
+        "family": "LightGBM",
+        "regime": "holiday",
+        "relative_change_percent": -5.20130815202464
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "morning_ramp",
+        "relative_change_percent": -3.3960000721159225
+      },
+      {
+        "family": "XGBoost",
+        "regime": "morning_ramp",
+        "relative_change_percent": -3.310572466523559
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "evening_peak",
+        "relative_change_percent": -4.426367534825629
+      },
+      {
+        "family": "XGBoost",
+        "regime": "evening_peak",
+        "relative_change_percent": -4.669452446780924
+      },
+      {
+        "family": "HGB",
+        "regime": "summer_low_load",
+        "relative_change_percent": -8.587024238352345
+      },
+      {
+        "family": "XGBoost",
+        "regime": "winter_high_load",
+        "relative_change_percent": -3.874166167748573
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "high_forecast_price",
+        "relative_change_percent": -3.662188388470252
+      },
+      {
+        "family": "XGBoost",
+        "regime": "high_forecast_price",
+        "relative_change_percent": -5.2187552960923105
+      },
+      {
+        "family": "HGB",
+        "regime": "low_forecast_price",
+        "relative_change_percent": -6.091369797077753
+      },
+      {
+        "family": "LightGBM",
+        "regime": "low_forecast_price",
+        "relative_change_percent": -5.5300960779810655
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "large_forecast_price_ramp",
+        "relative_change_percent": -5.705210794439152
+      },
+      {
+        "family": "LightGBM",
+        "regime": "large_forecast_price_ramp",
+        "relative_change_percent": -3.04821929169491
+      },
+      {
+        "family": "XGBoost",
+        "regime": "large_forecast_price_ramp",
+        "relative_change_percent": -6.129408286843841
+      },
+      {
+        "family": "ExtraTrees",
+        "regime": "forecast_price_spike",
+        "relative_change_percent": -3.4208659816574767
+      },
+      {
+        "family": "XGBoost",
+        "regime": "forecast_price_spike",
+        "relative_change_percent": -4.779557559831525
+      }
+    ]
+  },
+  "interpretation_category": "supports_hypothesis",
+  "learning_threshold": "useful if holdout or weekly improves by >=2%, or >=3% in at least two important regimes without broad worsening",
+  "per_model_family": [
+    {
+      "advanced_price_helped_holdout": false,
+      "advanced_price_helped_weekly": true,
+      "family": "HGB",
+      "holdout_no_price_MAE": 183.5473101816055,
+      "holdout_relative_change_percent": 0.13366749025281732,
+      "holdout_with_advanced_price_MAE": 183.7926532645518,
+      "holdout_with_minus_no_MAE": 0.2453430829463059,
+      "weekly_no_price_MAE_full_168h": 260.3336081158239,
+      "weekly_relative_change_percent": -2.418217712162579,
+      "weekly_with_advanced_price_MAE_full_168h": 254.03817469365512,
+      "weekly_with_minus_no_MAE_full_168h": -6.29543342216877
+    },
+    {
+      "advanced_price_helped_holdout": true,
+      "advanced_price_helped_weekly": true,
+      "family": "ExtraTrees",
+      "holdout_no_price_MAE": 144.69949632494485,
+      "holdout_relative_change_percent": -2.8688388374270164,
+      "holdout_with_advanced_price_MAE": 140.54830097681355,
+      "holdout_with_minus_no_MAE": -4.151195348131296,
+      "weekly_no_price_MAE_full_168h": 230.9739024433725,
+      "weekly_relative_change_percent": -3.258299362014154,
+      "weekly_with_advanced_price_MAE_full_168h": 223.4480812536409,
+      "weekly_with_minus_no_MAE_full_168h": -7.525821189731602
+    },
+    {
+      "advanced_price_helped_holdout": true,
+      "advanced_price_helped_weekly": true,
+      "family": "LightGBM",
+      "holdout_no_price_MAE": 187.22555827648063,
+      "holdout_relative_change_percent": -5.365947080280402,
+      "holdout_with_advanced_price_MAE": 177.17913389860513,
+      "holdout_with_minus_no_MAE": -10.046424377875496,
+      "weekly_no_price_MAE_full_168h": 263.84906818301783,
+      "weekly_relative_change_percent": -3.0968071634304093,
+      "weekly_with_advanced_price_MAE_full_168h": 255.67817133888175,
+      "weekly_with_minus_no_MAE_full_168h": -8.170896844136081
+    },
+    {
+      "advanced_price_helped_holdout": true,
+      "advanced_price_helped_weekly": true,
+      "family": "XGBoost",
+      "holdout_no_price_MAE": 154.77299216360825,
+      "holdout_relative_change_percent": -4.343792271182327,
+      "holdout_with_advanced_price_MAE": 148.0499748921278,
+      "holdout_with_minus_no_MAE": -6.723017271480444,
+      "weekly_no_price_MAE_full_168h": 213.72331614362525,
+      "weekly_relative_change_percent": -3.493245255721031,
+      "weekly_with_advanced_price_MAE_full_168h": 206.2574365420684,
+      "weekly_with_minus_no_MAE_full_168h": -7.46587960155685
+    }
+  ],
+  "required_model_pairs_complete": true,
+  "xgboost_benefits_from_advanced_price": true
+}
+```

@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054M
+Last changed: P0054N
 
 ## Module
 
@@ -215,6 +215,30 @@ Important functions:
 `coverage_by_split(...)`, `evaluate_price_metrics(...)` and `compare_to_p0053cb(...)` produce coverage, price-quality and P0053C-B comparison evidence.
 
 P0054H is not M4. It is an origin-local historical baseline intended to unblock downstream forecast-safe price-feature ablations while avoiding train-period future leakage. It does not call live APIs, devices, KVS, Shelly, Home Assistant or production runtime paths.
+
+## P0054N SE3 Consumption Full 36h DayAhead LABB
+
+`p0054n.run_p0054n_analysis(...)` orchestrates the LABB-only SE3 consumption `full_36h` and DayAhead delivery-day evaluation.
+
+Important functions:
+
+`dayahead_origin_utc_for_delivery_day(...)` converts the Swedish DayAhead decision time, `12:00 Europe/Stockholm` on delivery day D-1, to UTC.
+
+`delivery_day_target_utc_hours(...)` converts delivery day D local hours `00:00..23:00 Europe/Stockholm` to UTC target timestamps.
+
+`build_p0054n_exact_origin_price_rows(...)` creates in-memory exact-origin advanced SE3 price forecasts using P0054L2/P0054M-style safe historical price features and blocked train/holdout cutoffs. It exists because persisted P0054M/P0054L2 forecast logs use `23:00Z` origins and cannot represent exact DayAhead 12:00-local timing.
+
+`build_exact_origin_price_examples(...)` creates P0054L2-compatible price examples for caller-provided exact origins and horizons.
+
+`evaluate_full_36h_paths(...)` evaluates complete holdout origins with `horizon_h 1..36`, equivalent to target hours `origin..origin+35h`.
+
+`evaluate_dayahead_delivery_days(...)` evaluates complete local delivery-day 24h slices from exact DayAhead origins.
+
+`compare_advanced_price_ablation_36h(...)` compares paired no-price and with-advanced-price model families for full_36h and DayAhead metrics.
+
+`write_p0054n_evidence(...)` writes compact package-run evidence under `requirements/package-runs/P0054N/`.
+
+P0054N is LABB only. It does not persist model artifacts, call APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use A61/future-flow/actual future price leakage features.
 
 ## P0054J SE1 Consumption LABB Price Forecast Ablation
 

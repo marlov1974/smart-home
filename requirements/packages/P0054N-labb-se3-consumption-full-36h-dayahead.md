@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -452,4 +452,23 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Completed in G2 `smart-home` as LABB-only diagnostics.
+
+Result status: `PASS`.
+
+Summary:
+
+```text
+full_36h complete holdout origins: 357
+DayAhead delivery days: 356
+best full_36h model: HGB_no_price, MAE 150.423 MW
+best with-advanced-price full_36h model: HGB_with_p0054n_exact_dayahead_advanced_price, MAE 153.694 MW
+best DayAhead hourly model: HGB_no_price, MAE 149.037 MW
+best DayAhead daily energy model: HGB_no_price, absolute daily energy error 3088.678 MWh
+```
+
+Advanced exact-origin price features helped ExtraTrees and LightGBM over full_36h, but not HGB or XGBoost, and did not beat the best no-price model. The effect is therefore useful LABB evidence for some model families but not sufficient by itself for promotion.
+
+P0054N generated package-local in-memory exact 12:00 Europe/Stockholm D-1 advanced price forecasts because persisted P0054M/P0054L2 logs only contain `23:00Z` origins and cannot safely represent the stated DayAhead timing.
+
+No API, devices, Shelly, Home Assistant, runtime, Nord Pool, workplace integration, A61/utilization, future-flow or actual future spot price leakage was used.

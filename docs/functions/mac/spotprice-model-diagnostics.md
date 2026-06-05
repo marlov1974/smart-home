@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054K
+Last changed: P0054L2
 
 ## Module
 
@@ -271,6 +271,32 @@ Important functions:
 `write_p0054k_evidence(...)` writes required Markdown, JSON and compact CSV evidence under `requirements/package-runs/P0054K/`.
 
 P0054K is LABB diagnostics/modeling only. It is not G2-KANDIDAT and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future actual price features or M4 output.
+
+## P0054L2 SE3 Advanced Price Forecast Serial Long-Run
+
+`p0054l2.run_p0054l2_analysis(...)` orchestrates the serial LABB retry of the P0054L SE3 spot-price forecast experiment.
+
+Important functions:
+
+`load_se3_price_rows(...)` reads the P0054K canonical reconstructed SE3 price source from `ai2_hour_to_day_training_targets_v2`.
+
+`build_price_forecast_examples(...)` creates complete 168h direct forecast-origin rows with target-calendar, horizon and strict pre-origin SE3 price history features.
+
+`price_history_features_at_origin(...)` derives historical lag, rolling, previous-week and recent-ramp features while recording source timestamp audit data.
+
+`validate_feature_matrix_safety(...)` rejects forbidden feature names and verifies all audited feature source timestamps are strictly before `forecast_origin_timestamp_utc`.
+
+`fit_serial_model(...)` trains one model family at a time and scores holdout/internal-validation rows without persisting model binaries.
+
+`write_model_checkpoint(...)` writes immediate per-family Markdown and JSON checkpoints under `requirements/package-runs/P0054L2/model-checkpoints/`.
+
+`evaluate_direct_metrics(...)`, `evaluate_weekly_path_metrics(...)` and `evaluate_ranking_spike_ramp_metrics(...)` compute broad MAE/RMSE/bias, full 168h path and ranking/spike/ramp summaries.
+
+`persist_advanced_forecast_log(...)` writes `advanced_spotprice_forecast_log_p0054l2_se3_v1` only when a completed model meets the package learning threshold.
+
+`write_p0054l2_evidence(...)` writes the package-run summaries under `requirements/package-runs/P0054L2/`.
+
+P0054L2 is LABB diagnostics/modeling only. It does not rerun SE3 consumption models and does not create deployable model artifacts, production runtime, live API calls, device/Shelly/Home Assistant/KVS paths, A61 utilization, future-flow features or actual future price inputs. Its recommended holdout-safe forecast log is not automatically a train-period downstream consumption feature source; a later P0054M must use holdout-only evaluation or create rolling/out-of-fold train forecasts.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

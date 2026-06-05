@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+done
 
 ## Package order
 
@@ -510,4 +510,39 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054L2 completed with `PASS`.
+
+Implemented `src/mac/services/spotprice_model_diagnostics/p0054l2.py` and `tests/mac/services/spotprice_model_diagnostics/test_p0054l2.py`.
+
+Serial model completion:
+
+```text
+HGB completed
+ExtraTrees completed
+LightGBM completed
+XGBoost completed
+Ensemble completed
+```
+
+Best completed model: `Ensemble`.
+
+Key holdout comparison against P0054K baseline:
+
+```text
+P0054K baseline MAE: 0.34918660925661843
+Ensemble MAE:        0.3033978235888772
+Improvement:         13.112984419769349%
+```
+
+Created holdout-safe advanced forecast log:
+
+```text
+advanced_spotprice_forecast_log_p0054l2_se3_v1
+rows: 59136
+forecast origins: 352
+target range: 2025-06-01T23:00:00Z .. 2026-05-25T22:00:00Z
+```
+
+P0054M may use this only under the downstream contract in `requirements/package-runs/P0054L2/downstream-contract-for-p0054m.md`: a global train_fit price model is holdout-safe for evaluation but not automatically a train-period consumption training feature source.
+
+No SE3 consumption model, live API, device, Shelly, Home Assistant, runtime, A61, future-flow or actual future price feature work was performed.

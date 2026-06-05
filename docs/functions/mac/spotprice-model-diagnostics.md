@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054N
+Last changed: P0054O
 
 ## Module
 
@@ -239,6 +239,30 @@ Important functions:
 `write_p0054n_evidence(...)` writes compact package-run evidence under `requirements/package-runs/P0054N/`.
 
 P0054N is LABB only. It does not persist model artifacts, call APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use A61/future-flow/actual future price leakage features.
+
+## P0054O SE3 DayAhead Weather Noise LABB
+
+`p0054o.run_p0054o_analysis(...)` orchestrates the LABB-only weather-noise ablation for P0054N exact DayAhead/full_36h rows.
+
+Important functions:
+
+`build_base_rows(...)` builds P0054N-compatible exact-origin rows and safe exact-origin advanced price rows before profile features are applied.
+
+`temperature_feature_columns(...)` discovers temperature-like P0054N weather features and selects source temperature proxy columns for synthetic perturbation.
+
+`apply_temperature_noise(...)` deterministically applies uniform temperature noise to selected columns using a seeded NumPy RNG.
+
+`prepare_rows_for_training(...)` applies optional train_fit+holdout noise, assigns P0054 split labels and recomputes train-fit weather profile features.
+
+`fit_selected_models(...)` trains the selected package-scoped model variants and attaches holdout/path predictions.
+
+`evaluate_weather_noise_run(...)` computes full_36h, DayAhead, percent-of-load, daily-energy, peak and ramp metrics for one baseline or noisy seed run.
+
+`summarize_seed_metrics(...)` aggregates mean/std/min/max and deltas versus the no-noise baseline.
+
+`write_p0054o_evidence(...)` writes compact package-run Markdown, JSON and CSV evidence under `requirements/package-runs/P0054O/`.
+
+P0054O is LABB only. It uses synthetic weather perturbation and does not call live weather/market APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use A61/future-flow/actual future price/load leakage features.
 
 ## P0054J SE1 Consumption LABB Price Forecast Ablation
 

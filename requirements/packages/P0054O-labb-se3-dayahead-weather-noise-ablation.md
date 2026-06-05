@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -435,4 +435,62 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Completed in G2 `smart-home` as LABB-only diagnostics.
+
+Result status: `PASS`.
+
+Weather-noise protocol:
+
+```text
+primary analysis: train_fit + holdout noise
+scenario: uniform ±2°C
+seeds: 1000..1009
+perturbed columns:
+  weather_proxy_temperature_2m_se3
+  weather_proxy_apparent_temperature_se3
+```
+
+Model variants run:
+
+```text
+HGB_no_price
+LightGBM_no_price
+LightGBM_with_p0054n_exact_dayahead_advanced_price
+XGBoost_no_price
+```
+
+Key result for the P0054N winner:
+
+```text
+HGB_no_price DayAhead hourly MAE:
+  baseline: 149.037 MW
+  ±2°C mean over seeds: 155.041 MW
+  delta: +6.003 MW / +4.028%
+
+HGB_no_price full_36h MAE:
+  baseline: 150.423 MW
+  ±2°C mean over seeds: 155.896 MW
+  delta: +5.473 MW / +3.639%
+
+HGB_no_price DayAhead hourly MAE percent of mean actual load:
+  baseline: 6.411%
+  ±2°C mean over seeds: 6.670%
+
+HGB_no_price daily energy error percent:
+  baseline: 5.301%
+  ±2°C mean over seeds: 5.699%
+```
+
+Advanced price under noisy weather did not help in the LightGBM pair:
+
+```text
+LightGBM DayAhead noisy mean MAE:
+  no price: 161.941 MW
+  with advanced price: 167.145 MW
+
+LightGBM full_36h noisy mean MAE:
+  no price: 165.101 MW
+  with advanced price: 168.555 MW
+```
+
+The noisy HGB result remains above the operator-provided 3-4% workplace reference range, so this is not workplace-grade evidence. No live API, devices, Shelly, Home Assistant, runtime, Nord Pool, workplace integration, A61/future-flow or actual future price/load leakage was used.

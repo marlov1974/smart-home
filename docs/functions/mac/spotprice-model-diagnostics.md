@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054P2
+Last changed: P0054Q
 
 ## Module
 
@@ -393,6 +393,28 @@ Important functions:
 `write_p0054p2_evidence(...)` writes sanitized package-run Markdown, JSON and CSV evidence under `requirements/package-runs/P0054P2/`.
 
 P0054P2 is LABB data-ingestion only. It calls only the ENTSO-E actual-load API contract, creates no model artifacts, touches no devices or runtime state, and does not use A61 utilization, production, price, cross-border flow or future actual price leakage inputs.
+
+## P0054Q ENTSO-E Target SE3 DayAhead Full 36h LABB
+
+`p0054q.run_p0054q_analysis(...)` orchestrates the corrected-target SE3 DayAhead/full_36h LABB rerun against P0054P2 ENTSO-E Actual Total Load rows.
+
+Important functions:
+
+`load_entsoe_se3_target_rows(...)` reads `entsoe_consumption_area_hourly_v1` for `area=SE3` and normalizes rows to the existing P0054K/P0054N in-memory target contract while preserving source metadata.
+
+`validate_entsoe_target_contract(...)` verifies the target source is `entsoe_consumption_area_hourly_v1.consumption_mw`, source measure `actual_total_load`, and not the old physical-balance proxy target.
+
+`p0054q_feature_contract(...)` reuses the P0054N no-price and exact-origin advanced-price feature groups.
+
+`add_percent_metrics(...)` adds MAE percent of corrected ENTSO-E mean/median actual to full_36h and DayAhead summaries.
+
+`daily_energy_error_summary(...)` computes DayAhead daily energy absolute/signed MWh error and percent of actual energy.
+
+`validate_p0054q_leakage(...)` combines matrix, fairness, price and target-contract checks and rejects old target, future actual price/load, flow, import/export, A61, capacity and utilization fields.
+
+`write_p0054q_evidence(...)` writes corrected-target Markdown, JSON and CSV evidence under `requirements/package-runs/P0054Q/`.
+
+P0054Q is LABB modeling/evaluation only. It reads local historical target/weather/price data, creates no deployable model artifact, calls no live API, touches no devices or runtime state, and does not use A61 utilization, production, flow, cross-border exchange, old physical-balance target, future actual load or future actual price inputs.
 
 ## P0052A ENTSO-E Token Capacity And Exchange Amendment
 

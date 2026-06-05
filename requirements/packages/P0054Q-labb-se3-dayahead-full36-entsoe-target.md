@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -450,4 +450,65 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+P0054Q completed with PASS.
+
+Implemented corrected-target SE3 DayAhead/full_36h LABB evaluation:
+
+```text
+src/mac/services/spotprice_model_diagnostics/p0054q.py
+tests/mac/services/spotprice_model_diagnostics/test_p0054q.py
+```
+
+Target source used:
+
+```text
+entsoe_consumption_area_hourly_v1.consumption_mw
+area = SE3
+source_type = actual_total_load
+area_scope = bidding_zone_internal_consumption_or_load
+```
+
+The old physical-balance target was not used as target.
+
+Run result:
+
+```text
+status = PASS
+source_rows = 35125
+train_fit_rows = 3310
+holdout_rows = 12792
+full36_complete_origin_rows = 345
+dayahead_delivery_days = 347
+```
+
+Best corrected-target full_36h model:
+
+```text
+LightGBM_no_price
+MAE_full_36h = 644.987 MW
+MAE_percent_of_mean_actual = 6.586%
+```
+
+Best corrected-target DayAhead hourly MAE model:
+
+```text
+LightGBM_no_price
+hourly_MAE_delivery_day = 632.787 MW
+MAE_percent_of_mean_actual = 6.550%
+```
+
+Best DayAhead daily-energy model:
+
+```text
+HGB_no_price
+absolute_daily_energy_error_MWh = 12862.666
+daily_energy_error_percent_of_actual = 5.283%
+```
+
+Advanced price did not help on the corrected target overall; it worsened HGB, LightGBM and XGBoost for both full_36h and DayAhead hourly MAE, with only a tiny ExtraTrees full_36h improvement.
+
+P0054Q remains LABB-only. The weather input is still `weather_actual_as_forecast_proxy`, so the results are not production DayAhead or G2-KANDIDAT evidence. Recommended follow-up:
+
+```text
+P0054R LABB SE3 DayAhead weather realism on ENTSO-E target
+```

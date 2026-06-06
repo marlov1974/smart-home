@@ -703,3 +703,27 @@ Important functions:
 `write_p0054t3_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0054T3/`.
 
 P0054T3 is LABB diagnostics/model evaluation only. It preserves P0 full coverage and computes P1 deltas only on matched safe price coverage when P1 is narrower.
+
+## P0054T4 SE3 Consumption Inference-Only Weather Noise
+
+`p0054t4.run_p0054t4_analysis(...)` runs the LABB-only weather-error realism check for the selected P0054R/P0054T3 no-price M1 consumption candidate.
+
+Important functions:
+
+`run_baseline_gate(...)` reproduces the P0054R no-price baseline in a temporary evidence directory and enforces the DayAhead MAE tolerance before any inference-noise result is accepted.
+
+`temperature_feature_columns(...)` selects final model-input SE3 temperature columns and excludes calendar, target, lag/load, price and derived non-temperature fields.
+
+`fit_clean_m1(...)` fits HGB, ExtraTrees, LightGBM and XGBoost base models on clean train_fit weather, learns ensemble weights on internal validation, refits fixed train models and fits fixed horizon-bias correction without using holdout rows.
+
+`apply_inference_temperature_noise(...)` applies deterministic bounded temperature noise only to holdout/inference rows and returns evidence about touched columns, touched splits and noise bounds.
+
+`apply_fixed_horizon_bias(...)` applies the already learned horizon-bias correction to a prediction branch without refitting per noisy seed.
+
+`score_prediction_branch(...)` evaluates one W0/W1 prediction branch for DayAhead, full_36h and daily-energy metrics.
+
+`summarize_seed_results(...)` computes mean, standard deviation, min, max, best seed and worst seed across W1 deterministic seeds.
+
+`write_p0054t4_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0054T4/`.
+
+P0054T4 distinguishes P0054T3 train+holdout noise from inference-only weather error. Its W1 path keeps training clean, keeps the fitted model fixed, perturbs only final holdout/inference temperature model-input columns, and is therefore a limited forecast-weather-error approximation rather than a raw-weather recomputation. It is diagnostics only and does not use spot-price features, old physical-balance targets, flow/export/import/A61 inputs, live APIs, devices, runtime writes, Nord Pool/workplace integration or holdout fitting/selection.

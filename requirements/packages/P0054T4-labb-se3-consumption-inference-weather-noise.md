@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -427,4 +427,86 @@ confirmation no large artifacts committed
 
 ## Completion notes
 
-To be filled after implementation.
+Completed as `WARN`.
+
+WARN reason:
+
+```text
+P0054T4 applies deterministic +/-2 C noise to the final model-input
+temperature columns because the available P0054R/P0054Q path exposes the
+already-derived model matrix, not a raw-weather recomputation hook.
+```
+
+Baseline reproduction gate passed:
+
+```text
+model: HorizonBiasCorrected_WeightedEnsemble_no_price
+target DayAhead MAE: 253.70062353819162 MW
+reproduced DayAhead MAE: 253.70062353819182 MW
+absolute delta: 1.9895196601282805e-13 MW
+tolerance: 1.0 MW
+```
+
+P0054T4 used corrected ENTSO-E SE3 actual total load from
+`entsoe_consumption_area_hourly_v1` as target and kept the P0054R split
+semantics. Primary W1 fitted M1 once on clean train_fit weather, kept the
+trained model, ensemble weights and horizon-bias correction fixed per seed,
+and applied noise only to holdout/inference rows.
+
+Temperature model-input columns noised:
+
+```text
+weather_proxy_apparent_temperature_se3
+weather_proxy_temperature_2m_se3
+```
+
+Seeds:
+
+```text
+1000..1009
+```
+
+Result:
+
+```text
+W0 clean DayAhead MAE: 253.70062353819173 MW
+W0 clean DayAhead MAE percent of mean actual: 2.638782944935854%
+W0 clean full_36h MAE: 243.67666893537262 MW
+W0 clean daily absolute energy error: 4381.407120292003 MWh
+
+W1 inference-only noisy DayAhead MAE mean: 258.9097276451904 MW
+W1 inference-only noisy DayAhead MAE std: 0.5364553349088972 MW
+W1 inference-only noisy DayAhead MAE min: 257.77387412076644 MW
+W1 inference-only noisy DayAhead MAE max: 259.791251709251 MW
+W1 inference-only noisy DayAhead MAE percent of mean actual: 2.692963714711827%
+W1 inference-only noisy full_36h MAE mean: 248.4812084287683 MW
+W1 inference-only noisy daily absolute energy error mean: 4394.273511199443 MWh
+
+W1-W0 DayAhead MAE delta: +5.209104106998666 MW
+W1-W0 DayAhead MAE relative delta: +2.0532484447025783%
+W1 remains <=3% DayAhead MAE: true
+W1 remains <=4% DayAhead MAE: true
+```
+
+Interpretation:
+
+```text
+P0054T3 W1 tested train+holdout noise and should be read as
+regularization-style robustness, not production weather-error realism.
+
+P0054T4 W1 tests clean training plus noisy inference and is the weather-error
+realism result for this candidate.
+```
+
+Leakage and forbidden-action review passed. P0054T4 did not use old
+`physical_balance` targets, flow/exchange/capacity/A61 inputs, spot-price
+features, live APIs, devices, runtime writes, Nord Pool/workplace integration,
+or holdout fitting/selection. No large raw datasets, model binaries or full
+prediction dumps were created.
+
+Recommended next package:
+
+```text
+Proceed to rolling/expanding retrain for the no-price M1 path, and separately
+add real historical weather forecast ingestion.
+```

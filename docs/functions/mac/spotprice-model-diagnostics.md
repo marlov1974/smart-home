@@ -286,6 +286,28 @@ Important functions:
 
 P0054S is LABB only. It does not persist model binaries, call live APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use future actual price/load/flow/A61 leakage features.
 
+## P0054T SE3 Consumption Weather/Price Matrix LABB
+
+`p0054t.run_p0054t_analysis(...)` orchestrates the P0054T corrected-target consumption matrix: three P0054R-derived model variants, two weather modes and two price modes.
+
+Important functions:
+
+`build_p0054t_rows(...)` builds corrected ENTSO-E SE3 target rows and attaches P0054L2-compatible exact-origin price forecast path features using P0054N/P0054Q semantics.
+
+`temperature_noise_columns(...)` and `apply_temperature_noise(...)` implement deterministic uniform +/-2C perturbation for temperature-like weather proxy columns.
+
+`prepare_matrix_rows(...)` copies base rows, applies weather mode, assigns P0054 split/internal split and recomputes train-fit weather profile features.
+
+`fit_base_models_for_matrix(...)` trains scenario-local HGB, LightGBM and XGBoost base models. The price branch uses a train_fit-only fallback when the exact-origin price row coverage lacks a pre-March internal-train subset.
+
+`score_matrix_variant(...)` evaluates one model/weather/price/seed result for DayAhead, full_36h and daily-energy metrics.
+
+`aggregate_matrix_results(...)`, `price_delta_summary(...)`, `weather_delta_summary(...)` and `robustness_ranking(...)` produce the 12-row matrix summary, price ablations, weather-noise deltas and robust-combination ordering.
+
+`validate_p0054t_leakage(...)` confirms corrected target use, P0054L2-compatible forecast-safe price alignment, deterministic weather-noise bounds, no holdout tuning and no future actual load/price/flow/A61 features.
+
+P0054T is LABB only. It does not call live APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use old physical-balance target/future actual leakage features.
+
 ## P0054O SE3 DayAhead Weather Noise LABB
 
 `p0054o.run_p0054o_analysis(...)` orchestrates the LABB-only weather-noise ablation for P0054N exact DayAhead/full_36h rows.

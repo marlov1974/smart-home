@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -515,4 +515,86 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Completed with `PASS`.
+
+Implemented `src/mac/services/spotprice_model_diagnostics/p0054t.py` and wrote evidence under `requirements/package-runs/P0054T/`.
+
+P0054T evaluated all required 12 summarized matrix combinations:
+
+```text
+3 model variants x 2 weather modes x 2 price modes = 12
+W1 used 5 deterministic seeds: 1000..1004
+seed/scenario result rows = 36
+```
+
+Target source:
+
+```text
+entsoe_consumption_area_hourly_v1.consumption_mw
+area=SE3
+source_type=actual_total_load
+area_scope=bidding_zone_internal_consumption_or_load
+```
+
+Price source:
+
+```text
+P0054L2-compatible exact-origin package-local reconstruction
+protocol=p0054n_exact_origin_blocked_train_plus_trainfit_holdout
+rows=16187
+```
+
+Important comparability note:
+
+```text
+P0054T P0/P1 results are comparable inside the 12-test matrix because both branches use the P0054L2-compatible exact-origin price-row coverage. They are not a direct rerun of P0054R's broader no-price origin skeleton, so absolute MAE values differ from P0054R's best 253.70 MW DayAhead result.
+```
+
+Best clean-weather matrix result:
+
+```text
+M1_HorizonBiasCorrectedWeightedEnsemble / W0_weatherProxy / P0_noPrice
+DayAhead hourly MAE=624.3881907571396 MW
+DayAhead hourly percent=6.462887993090327%
+full_36h MAE=639.3018518489251 MW
+daily energy error=12819.954733521994 MWh
+```
+
+Best noisy-weather robust result:
+
+```text
+M1_HorizonBiasCorrectedWeightedEnsemble / W1_tempNoise2C / P0_noPrice
+noisy mean DayAhead hourly MAE=657.9873224754929 MW
+noisy mean DayAhead percent=6.810664309451293%
+noisy std DayAhead hourly MAE=4.891424487743269 MW
+```
+
+Price conclusion:
+
+```text
+P0054L2-compatible price features did not help any selected model/weather mode by the package threshold.
+All price deltas worsened DayAhead hourly MAE by about 4.15%..5.63%.
+price_useful_by_threshold=false
+```
+
+Weather-noise conclusion:
+
+```text
+No noisy-weather combination remained <=4% DayAhead hourly error.
+The best noisy no-price combination remained the most robust within this matrix.
+```
+
+Leakage review passed:
+
+```text
+ok=true
+old_physical_balance_target_used=false
+actual_future_load_or_price_feature_used=false
+flow_export_import_a61_used=false
+holdout_used_for_fitting_or_selection=false
+holdout_used_for_ensemble_weights_or_correction=false
+weather_noise_bounds_ok=true
+api_device_runtime_nordpool_workplace_used=false
+```
+
+No API, device, runtime, A61, flow, Nord Pool, workplace, old-target, future actual leakage, model binary, venv, wheel or raw dataset actions were performed.

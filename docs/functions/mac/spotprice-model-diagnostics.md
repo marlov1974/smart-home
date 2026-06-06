@@ -661,3 +661,23 @@ Important functions:
 `write_p0054e_evidence(...)` writes LABB-only Markdown, JSON and CSV evidence under `requirements/package-runs/P0054E/`.
 
 P0054E is diagnostics-only. It explicitly forbids runtime, device, Shelly, Home Assistant, KVS, deploy, production model, price, production, flow/export/import, A61 and future-leakage inputs.
+
+## P0054T2 SE3 Consumption P0054R/P0054T Reproduction Debug
+
+`p0054t2.run_p0054t2_analysis(...)` orchestrates the LABB-only reproduction/debug comparison between P0054R and P0054T.
+
+Important functions:
+
+`rowset_summary(...)` compares P0054R no-price origin rows with P0054T exact-origin matrix rows by `(forecast_origin_timestamp_utc, target_timestamp_utc, horizon_h)`.
+
+`run_r_like_reproduction(...)` runs P0054R into a temporary evidence directory and extracts compact metrics without rewriting historical P0054R evidence.
+
+`run_t_like_w0_p0(...)` executes only the P0054T W0/P0 no-price path, avoiding the full 12-combination matrix.
+
+`model_alias_summary(...)` proves whether P0054T M1 and M2 are identical by comparing the weighted and horizon-bias-corrected prediction columns and non-zero horizon-bias count.
+
+`prediction_diff_summary(...)` creates compact prediction-difference metrics and top discrepancy rows for overlapping in-memory prediction rows.
+
+`write_p0054t2_evidence(...)` writes P0054T2 Markdown/JSON/CSV evidence under `requirements/package-runs/P0054T2/`.
+
+P0054T2 is diagnostic only. It does not create deployable models, call live APIs, use devices, use runtime paths, use A61, use Nord Pool/workplace integration, use old physical-balance targets or persist large model/prediction artifacts.

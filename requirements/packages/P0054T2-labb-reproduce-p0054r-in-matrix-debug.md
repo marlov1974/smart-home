@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+ completed
 
 ## Package order
 
@@ -427,4 +427,38 @@ confirmation no large artifacts committed
 
 ## Completion notes
 
-To be filled after implementation.
+Completed by Codex on 2026-06-06.
+
+Result: `PASS`.
+
+P0054R was reproduced near-exactly/current-deterministically:
+
+```text
+historic P0054R DayAhead MAE:    253.70062353819162 MW
+reproduced R-like DayAhead MAE:  253.70062353819173 MW
+absolute delta:                  ~1.1e-13 MW
+```
+
+P0054T W0/P0 was not a faithful P0054R reproduction. It used the P0054N exact-origin price-coverage skeleton even for no-price, so P0054T's no-price baseline was restricted to:
+
+```text
+P0054R row/origin skeleton: 52 173 rows, 1 451 origins
+P0054T row/origin skeleton: 16 102 rows,   448 origins
+intersection:               16 102 rows,   448 origins
+R-only:                     36 071 rows, 1 003 origins
+T-only:                          0 rows,     0 origins
+```
+
+The restricted P0054T W0/P0 rowset had only March-May 2025 train_fit coverage and no internal-validation rows. That forced equal ensemble weights and zero horizon-bias correction.
+
+P0054T M1 equaled M2 because all horizon-bias values were zero:
+
+```text
+compared rows: 16 102
+max abs M1-M2 prediction difference: 0.0 MW
+nonzero horizon-bias count: 0
+```
+
+P0054T conclusions should therefore be superseded for weather/price ablation. P0054R remains valid/reproducible. Recommended next package: P0054U corrected matrix, using the P0054R no-price origin skeleton for P0 and a separate aligned price-coverage comparison for P1.
+
+No API, devices, runtime, A61, Nord Pool, workplace integration, old physical-balance target, flow/exchange/capacity target, future actual load/price leakage or large model artifacts were used.

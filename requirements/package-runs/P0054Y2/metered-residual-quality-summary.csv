@@ -1,0 +1,2 @@
+profiled_cluster_sum_mean_mw,entsoe_se3_mean_mw,profiled_share_mean,residual_share_mean,residual_mean_mw,residual_min_mw,residual_p05_mw,residual_p95_mw,residual_max_mw,negative_residual_hours_count,negative_residual_hours_examples,missing_profiled_hours_count,missing_entsoe_hours_count,joined_hours
+2345.31913091039,9807.542648289227,0.232195464720034,0.7678045352799661,7462.223517378818,4348.202091,5409.7417144,9835.051692,12093.384786,0,[],0,44,22709

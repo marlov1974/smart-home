@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+stopped
 
 ## Package order
 
@@ -488,4 +488,45 @@ confirmation no large artifacts committed
 
 ## Completion notes
 
-To be filled after implementation.
+Stopped as `STOP`.
+
+Required baseline gate failed before a valid P0054V price-family result could be accepted:
+
+```text
+required baseline: HorizonBiasCorrected_WeightedEnsemble_no_price
+package target DayAhead MAE: approx 253.70062353819162 MW
+package tolerance: <= 1.0 MW
+current repeated reproduction DayAhead MAE: 252.4272878651775 MW
+absolute delta: 1.2733356730141168 MW
+```
+
+Repeated gate checks:
+
+```text
+run 0: passed=false, DayAhead MAE=252.42728786517762, absolute_delta_MW=1.273335673014003
+run 1: passed=false, DayAhead MAE=252.42728786517756, absolute_delta_MW=1.27333567301406
+run 2: passed=false, DayAhead MAE=252.4272878651774, absolute_delta_MW=1.2733356730142305
+```
+
+The row contract still matched prior P0054T4 shape:
+
+```text
+source_rows=35125
+direct_rows=52173
+path_rows=52173
+train_fit_rows=38985
+holdout_rows=13188
+internal_train_rows=35675
+internal_validation_rows=3310
+```
+
+No P0054V price-family ablation is reported as valid. A draft local implementation proved that full holdout price forecast coverage can be built without actual holdout target-window spot (`13188/13188` holdout rows), but it was removed from final commit scope because the package STOP gate occurred before a verified package result.
+
+No external API, Shelly, Home Assistant, device/runtime write, production deployment, old target, flow target, A61 input, Nord Pool/workplace integration or large artifact was used.
+
+Recommended follow-up:
+
+```text
+Create P0054W to investigate the P0054R/P0054T4 baseline reproducibility drift
+or explicitly update the P0054V baseline gate before rerunning the full price-value test.
+```

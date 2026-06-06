@@ -11,3 +11,4 @@
 6. P0054W `EXP18/LoadProfile` matches SE3/MBA `EXP15.profiled`, not `EXP15.metered` or `EXP15.total`.
 7. Public eSett Open Data exposes `EXP15.metered` at SE3/MBA level, but no public per-MGA `metered/non_profiled` source was found in this package pass.
 8. Full SE3 per-MGA bottom-up modeling must wait for that source or explicitly model a SE3 residual.
+9. Testing all public SE3 `mgaType` objects in `EXP18/Aggregate` did not reveal separate monthly-settled/metered MGA objects; only `DISTRIBUTION` returned January 2025 load-profile rows and the sum still matched `EXP15.profiled`.

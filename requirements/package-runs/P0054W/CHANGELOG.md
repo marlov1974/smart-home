@@ -17,3 +17,11 @@
   - `profiled-monthly-source-search.md`
   - `coverage-vs-entsoe-by-settlement-class.md`
   - `missing-load-residual-plan.md`
+
+## 2026-06-06 MGA type hypothesis test
+
+- Tested the operator hypothesis that monthly-settled series may be represented as separate MGA objects.
+- Public `EXP18/Aggregate` was queried for all SE3 `mgaType` groups for January 2025.
+- Only `DISTRIBUTION` returned January load-profile rows; `REGIONAL`, `NONCON`, `PRODUCTION`, `TRANSMISSION` and `BORDER` returned no January `EXP18` volume.
+- All `EXP18/Aggregate` rows across all SE3 MGA types still match `EXP15.profiled`, not `EXP15.metered` or `EXP15.total`.
+- Added `mga-type-monthly-settlement-hypothesis.md`.

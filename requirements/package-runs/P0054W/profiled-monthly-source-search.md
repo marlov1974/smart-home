@@ -46,6 +46,8 @@ For Jan-Apr 2025, the local P0054W per-MGA sum matches `EXP15/Consumption.profil
 
 No inspected public eSett Open Data endpoint exposes `metered/non_profiled` consumption per MGA.
 
+An additional test checked whether the missing monthly-settled/metered component is represented as separate public MGA objects by `mgaType`. For January 2025, `EXP18/Aggregate` returned load-profile volume only for `DISTRIBUTION` MGAs and no volume for `REGIONAL`, `NONCON`, `PRODUCTION`, `TRANSMISSION` or `BORDER`. The all-type `EXP18` sum still matched `EXP15.profiled`.
+
 ## Interpretation
 
 The loaded P0054W source is a valid per-MGA source for the `profiled/load_profile` component. It is not complete SE3 MGA consumption.

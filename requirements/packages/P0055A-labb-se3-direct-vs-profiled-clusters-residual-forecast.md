@@ -554,4 +554,18 @@ confirmation no spot price/no old target/no flow/A61/no external integration/no 
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in P0055A.
+
+Result: `PASS`.
+
+Summary:
+
+- Created `src/mac/services/spotprice_model_diagnostics/p0055a.py`.
+- Created `tests/mac/services/spotprice_model_diagnostics/test_p0055a.py`.
+- Wrote required evidence under `requirements/package-runs/P0055A/`.
+- Forecasted direct SE3, all non-zero profiled/load-profile clusters and the calculated residual.
+- Zero-volume clusters `C14`, `C23`, `C24`, `C34`, `C41` used explicit zero forecast.
+- Aggregated decomposition total was computed as sum(cluster forecasts) + residual forecast.
+- Optional reconciliation was run with weights learned only from internal validation.
+- Decomposition did not beat direct SE3 under package thresholds.
+- No API, devices, runtime writes, spot-price features, old physical_balance target, flow/A61/capacity features, model binaries or large raw prediction dumps were used.

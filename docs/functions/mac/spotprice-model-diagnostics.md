@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054W
+Last changed: P0055A
 
 ## Module
 
@@ -167,6 +167,32 @@ Important functions:
 `write_p0051_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0051/`.
 
 P0051 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0055A SE3 Direct Vs Profiled-Cluster Decomposition
+
+`p0055a.run_p0055a_analysis(...)` orchestrates the LABB comparison between the direct corrected ENTSO-E SE3 consumption forecast and a decomposition forecast built from P0054Y2 profiled/load-profile clusters plus the calculated metered/non_profiled residual.
+
+Important functions:
+
+`load_direct_target_rows(...)` reads corrected ENTSO-E SE3 total load from `entsoe_consumption_area_hourly_v1`.
+
+`load_component_target_rows(...)` reads P0054Y2 cluster and residual targets while retaining zero-volume cluster contract slots.
+
+`load_climate_zone_weather_rows(...)` reads P0054Z climate-zone weather proxy rows and derives the P0055A feature contract.
+
+`build_component_modeling_rows(...)` creates 36h origin/target rows with calendar, historical component lags/rollups and mapped climate-zone weather.
+
+`fit_component_forecast(...)` applies the P0054R-style no-price horizon-bias-corrected weighted ensemble when safe, or package-defined zero/same-week fallback.
+
+`aggregate_decomposition_rows(...)` sums all cluster forecasts plus residual forecast into the decomposition total.
+
+`learn_reconciliation_weights(...)` learns optional direct/decomposition weights from internal validation rows only.
+
+`validate_p0055a_leakage(...)` verifies that spot price, old physical_balance, flow/exchange/A61/capacity and future-actual target leakage are absent.
+
+`write_p0055a_evidence(...)` writes compact package evidence under `requirements/package-runs/P0055A/`.
+
+P0055A is LABB-only. It uses actual weather as a proxy, writes no model binaries, does not call APIs or devices, and does not change runtime behavior.
 
 ## P0054W eSett MGA Consumption Discovery
 

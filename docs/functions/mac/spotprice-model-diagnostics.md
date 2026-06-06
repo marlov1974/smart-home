@@ -681,3 +681,25 @@ Important functions:
 `write_p0054t2_evidence(...)` writes P0054T2 Markdown/JSON/CSV evidence under `requirements/package-runs/P0054T2/`.
 
 P0054T2 is diagnostic only. It does not create deployable models, call live APIs, use devices, use runtime paths, use A61, use Nord Pool/workplace integration, use old physical-balance targets or persist large model/prediction artifacts.
+
+## P0054T3 Corrected SE3 Consumption Weather/Price Matrix
+
+`p0054t3.run_p0054t3_analysis(...)` runs the corrected LABB matrix that supersedes P0054T for weather/price conclusions.
+
+Important functions:
+
+`run_baseline_gate(...)` reproduces P0054R into a temporary directory and enforces the DayAhead MAE gate before any matrix result is treated as usable.
+
+`build_p0_full_rows(...)` builds the full P0054R no-price origin skeleton for primary P0 evaluation.
+
+`build_p1_price_rows(...)` builds safe P0054N exact-origin P0054L2-compatible price rows for P1 evaluation.
+
+`run_matrix_branch(...)` retrains/evaluates M1, M2 and M3 for one weather/price/seed branch.
+
+`m1_m2_diagnostic(...)` reports horizon-bias and prediction-difference diagnostics between M1 and M2.
+
+`aggregate_matrix_results(...)`, `price_delta_summary(...)`, `weather_delta_summary(...)` and `robustness_ranking(...)` create compact matrix summaries.
+
+`write_p0054t3_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0054T3/`.
+
+P0054T3 is LABB diagnostics/model evaluation only. It preserves P0 full coverage and computes P1 deltas only on matched safe price coverage when P1 is narrower.

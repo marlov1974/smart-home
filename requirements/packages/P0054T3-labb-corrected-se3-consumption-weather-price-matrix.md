@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -555,4 +555,80 @@ confirmation no large artifacts committed
 
 ## Completion notes
 
-To be filled after implementation.
+Completed by Codex on 2026-06-06.
+
+Result: `WARN`.
+
+The P0054R baseline reproduction gate passed:
+
+```text
+target DayAhead MAE:      253.70062353819162 MW
+reproduced DayAhead MAE:  253.70062353819182 MW
+absolute delta:           ~2.0e-13 MW
+tolerance:                <= 1.0 MW
+```
+
+The corrected P0/no-price branch used full P0054R coverage:
+
+```text
+source rows:    35 125
+P0 full rows:   52 173
+P1 price rows:  16 102
+matched P0:     16 102
+matrix rows:        12
+seed rows:          54
+```
+
+`WARN` is due to P1 coverage: the safe P0054N/P0054L2-compatible price forecast rows remain narrower than the P0054R no-price origin skeleton. P0 full coverage was preserved, and price deltas were computed only on matched coverage.
+
+Best primary result by DayAhead hourly MAE:
+
+```text
+M1_HorizonBiasCorrectedWeightedEnsemble
+W1_tempNoise2C
+P0_noPrice_fullCoverage
+mean DayAhead MAE: 249.7844 MW
+mean DayAhead percent: 2.5980%
+mean full36 MAE: 239.3034 MW
+mean daily energy error: 4 284.819 MWh
+```
+
+Clean-weather no-price P0054R-equivalent result:
+
+```text
+M1_HorizonBiasCorrectedWeightedEnsemble
+W0_weatherProxy
+P0_noPrice_fullCoverage
+DayAhead MAE: 253.7006 MW
+DayAhead percent: 2.6388%
+full36 MAE: 243.6767 MW
+daily energy error: 4 381.407 MWh
+```
+
+Matched-coverage price result:
+
+```text
+P1 worsened DayAhead MAE for all model/weather groups.
+M1 W0 price delta: +21.2971 MW (+3.3717%)
+M1 W1 price delta: +32.1428 MW (+4.8425%)
+M3 W0 price delta: +31.7149 MW (+5.0017%)
+M3 W1 price delta: +34.1263 MW (+5.0731%)
+```
+
+Weather-noise result:
+
+```text
+P0 full coverage did not degrade under deterministic +/-2C retraining sensitivity.
+P1 matched coverage degraded by about +6.16% to +6.58% depending on model.
+```
+
+Noisy-weather combinations below 4% DayAhead hourly MAE:
+
+```text
+3 combinations, all P0 full coverage:
+M1, M2 and M3 under W1_tempNoise2C / P0_noPrice_fullCoverage
+```
+
+Price should not be kept for the next stage under current safe matched-coverage evidence. Recommended next step is a rolling/expanding retrain package for the P0 full-coverage M1 path, plus a separate package if broader safe price-origin coverage is needed.
+
+No API, devices, runtime, A61, Nord Pool, workplace integration, old physical-balance target, flow/exchange/capacity target, future actual load/price leakage or large model artifacts were used.

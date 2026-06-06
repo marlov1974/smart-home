@@ -1,5 +1,11 @@
 # P0054Y2 profiled 16-cluster assignment
 
+Cluster segment definitions are documented in:
+
+```text
+requirements/package-runs/P0054Y2/cluster-segment-dictionary.md
+```
+
 Cluster volume summary:
 
 - `C11`: 3 MGAs, 5532939.368 MWh

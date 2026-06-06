@@ -9,3 +9,9 @@ Recommended next package: LABB forecasting experiment with separate targets:
 ```
 
 No future actual residual may be used as an input feature.
+
+Before using cluster ids in modeling reports, read:
+
+```text
+requirements/package-runs/P0054Y2/cluster-segment-dictionary.md
+```

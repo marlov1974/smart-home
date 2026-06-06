@@ -1,0 +1,75 @@
+{
+  "leakage_status": "ok",
+  "metrics": {
+    "holdout": {
+      "MAE": 0.3108840573473515,
+      "R2": 0.2837334371332636,
+      "RMSE": 0.41881128340145735,
+      "bias": -0.06374145146439095,
+      "median_absolute_error": 0.2436785725547517,
+      "p90_absolute_error": 0.6436259160152307,
+      "p95_absolute_error": 0.7904553899697859,
+      "rows": 59136,
+      "sMAPE": 0.6366305098051416
+    },
+    "ranking_spike_ramp": {
+      "bottom20_168h_precision": 0.35383522727272704,
+      "forecast_price_spike_MAE": 0.7776974738907879,
+      "high_price_regime_MAE": 1.1782063053898828,
+      "large_price_ramp_MAE": 1.0336659222478095,
+      "low_price_detection": {
+        "f1": 0.0605102731993678,
+        "fn": 4146,
+        "fp": 15,
+        "precision": 0.8993288590604027,
+        "recall": 0.03130841121495327,
+        "tp": 134
+      },
+      "low_price_regime_MAE": 0.2965371436964556,
+      "ramp_detection": {
+        "f1": 0.284496537027171,
+        "fn": 1190,
+        "fp": 153,
+        "precision": 0.6357142857142857,
+        "recall": 0.1832532601235415,
+        "tp": 267
+      },
+      "rows": 59136,
+      "spearman": 0.5834937574594922,
+      "spike_detection": {
+        "f1": 0.03510696653867252,
+        "fn": 1555,
+        "fp": 204,
+        "precision": 0.13559322033898305,
+        "recall": 0.020163831127914304,
+        "tp": 32
+      },
+      "top20_168h_precision": 0.36761363636363636
+    },
+    "weekly": {
+      "MAE": 0.3108840573473515,
+      "MAE_full_168h": 0.3108840573473515,
+      "R2": 0.2837334371332636,
+      "RMSE": 0.41881128340145735,
+      "bias": -0.06374145146439095,
+      "bias_full_168h": -0.06374145146439095,
+      "complete_origins": 352,
+      "median_absolute_error": 0.2436785725547517,
+      "p90_absolute_error": 0.6436259160152307,
+      "p90_full_path_absolute_error": 0.6436259160152307,
+      "p95_absolute_error": 0.7904553899697859,
+      "p95_full_path_absolute_error": 0.7904553899697859,
+      "rows": 59136,
+      "sMAPE": 0.6366305098051416
+    }
+  },
+  "model_name": "HorizonBucket_HGB",
+  "prediction_column": "predicted_price_horizonbucket_hgb",
+  "status": "completed",
+  "training": {
+    "feature_count": 3,
+    "method": "horizon_bucket_specialized",
+    "model_artifact_persisted": false,
+    "model_family": "HorizonBucket_HGB"
+  }
+}

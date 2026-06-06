@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -509,4 +509,59 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Completed with `PASS`.
+
+Implemented LABB-only advanced SE3 spot-price forecast evaluation in `src/mac/services/spotprice_model_diagnostics/p0054s.py`, with package evidence under `requirements/package-runs/P0054S/`.
+
+Target source used:
+
+```text
+spot_price_se3 = system_proxy_se1.hour_price + area_diff_proxy_se3.hour_price
+source table = ai2_hour_to_day_training_targets_v2
+unit = repository hour_price convention
+timestamp_utc = target hour start in UTC
+```
+
+Final row counts:
+
+```text
+source_rows=34968
+model_examples=242088
+train_fit_rows=182952
+internal_train_rows=168007
+internal_validation_rows=14945
+holdout_rows=59136
+holdout_origin_count=352
+feature_count=41
+```
+
+Best P0054S broad-MAE model:
+
+```text
+WeightedEnsemble
+direct holdout MAE=0.3033346421182687
+weekly/full_168h MAE=0.3033346421182687
+direct improvement vs P0054L2 Ensemble=0.020824628819381102%
+weekly improvement vs P0054L2 Ensemble=0.020824628819381102%
+```
+
+This does not clear the P0054S learning threshold of at least 5% improvement vs P0054L2 Ensemble. Forecast log decision:
+
+```text
+no_p0054s_advanced_source_recommended
+```
+
+DayAhead-specific exact 12:00 Europe/Stockholm D-1 evaluation was WARN/skipped because the P0054L2-compatible origin cadence does not provide complete exact DayAhead delivery-day rows. Direct, full_168h and ranking/spike/ramp evidence completed.
+
+Leakage review passed:
+
+```text
+ok=true
+holdout_used_for_fitting_or_selection=false
+holdout_used_for_ensemble_weights_or_correction=false
+actual_future_spot_price_feature_used=false
+actual_future_load_production_flow_a61_feature_used=false
+api_device_runtime_a61_nordpool_workplace_used=false
+```
+
+No API, device, runtime, A61, flow, Nord Pool, workplace, future actual spot/load/production/flow leakage, model binaries, venvs, wheels or raw datasets were used/committed.

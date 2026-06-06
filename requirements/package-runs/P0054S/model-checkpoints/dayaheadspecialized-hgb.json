@@ -1,0 +1,24 @@
+{
+  "leakage_status": "ok",
+  "metrics": {
+    "holdout": {
+      "rows": 0
+    },
+    "ranking_spike_ramp": {
+      "rows": 0
+    },
+    "weekly": {
+      "complete_origins": 0,
+      "rows": 0
+    }
+  },
+  "model_name": "DayAheadSpecialized_HGB",
+  "prediction_column": "predicted_price_dayaheadspecialized_hgb",
+  "status": "completed",
+  "training": {
+    "feature_count": 6,
+    "method": "dayahead_specialized",
+    "model_artifact_persisted": false,
+    "model_family": "DayAheadSpecialized_HGB"
+  }
+}

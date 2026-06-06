@@ -1,0 +1,75 @@
+{
+  "leakage_status": "ok",
+  "metrics": {
+    "holdout": {
+      "MAE": 0.3033346421182687,
+      "R2": 0.3077349435122011,
+      "RMSE": 0.41173448211316,
+      "bias": -0.06066363278415794,
+      "median_absolute_error": 0.23771853153366357,
+      "p90_absolute_error": 0.6300442094038514,
+      "p95_absolute_error": 0.7868352093856261,
+      "rows": 59136,
+      "sMAPE": 0.6197767205616681
+    },
+    "ranking_spike_ramp": {
+      "bottom20_168h_precision": 0.409801136363636,
+      "forecast_price_spike_MAE": 0.9725461600669896,
+      "high_price_regime_MAE": 1.200093808420272,
+      "large_price_ramp_MAE": 1.0623525564859857,
+      "low_price_detection": {
+        "f1": 0.05143243852921272,
+        "fn": 4166,
+        "fp": 39,
+        "precision": 0.7450980392156863,
+        "recall": 0.02663551401869159,
+        "tp": 114
+      },
+      "low_price_regime_MAE": 0.29758879617044276,
+      "ramp_detection": {
+        "f1": 0.23751387347391786,
+        "fn": 1243,
+        "fp": 131,
+        "precision": 0.6202898550724638,
+        "recall": 0.14687714481811942,
+        "tp": 214
+      },
+      "rows": 59136,
+      "spearman": 0.6115767115662537,
+      "spike_detection": {
+        "f1": 0.003484320557491289,
+        "fn": 1584,
+        "fp": 132,
+        "precision": 0.022222222222222223,
+        "recall": 0.001890359168241966,
+        "tp": 3
+      },
+      "top20_168h_precision": 0.39744318181818206
+    },
+    "weekly": {
+      "MAE": 0.3033346421182687,
+      "MAE_full_168h": 0.3033346421182687,
+      "R2": 0.3077349435122011,
+      "RMSE": 0.41173448211316,
+      "bias": -0.06066363278415794,
+      "bias_full_168h": -0.06066363278415794,
+      "complete_origins": 352,
+      "median_absolute_error": 0.23771853153366357,
+      "p90_absolute_error": 0.6300442094038514,
+      "p90_full_path_absolute_error": 0.6300442094038514,
+      "p95_absolute_error": 0.7868352093856261,
+      "p95_full_path_absolute_error": 0.7868352093856261,
+      "rows": 59136,
+      "sMAPE": 0.6197767205616681
+    }
+  },
+  "model_name": "WeightedEnsemble",
+  "prediction_column": "predicted_price_weightedensemble",
+  "status": "completed",
+  "training": {
+    "feature_count": 4,
+    "method": "inverse_internal_validation_mae",
+    "model_artifact_persisted": false,
+    "model_family": "WeightedEnsemble"
+  }
+}

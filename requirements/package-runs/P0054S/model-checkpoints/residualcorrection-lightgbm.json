@@ -1,0 +1,75 @@
+{
+  "leakage_status": "ok",
+  "metrics": {
+    "holdout": {
+      "MAE": 0.4096278779271312,
+      "R2": -0.23421939013956194,
+      "RMSE": 0.5497651642688741,
+      "bias": -0.2209254152757477,
+      "median_absolute_error": 0.3199012577848863,
+      "p90_absolute_error": 0.862459372625252,
+      "p95_absolute_error": 1.070305826434487,
+      "rows": 59136,
+      "sMAPE": 0.9210641745824544
+    },
+    "ranking_spike_ramp": {
+      "bottom20_168h_precision": 0.32769886363636314,
+      "forecast_price_spike_MAE": 0.5826512903348186,
+      "high_price_regime_MAE": 1.4726506793383487,
+      "large_price_ramp_MAE": 1.0271729996052146,
+      "low_price_detection": {
+        "f1": 0.27002103219543766,
+        "fn": 2611,
+        "fp": 6413,
+        "precision": 0.206508290027221,
+        "recall": 0.3899532710280374,
+        "tp": 1669
+      },
+      "low_price_regime_MAE": 0.2517271325440101,
+      "ramp_detection": {
+        "f1": 0.28226319135410044,
+        "fn": 1013,
+        "fp": 1245,
+        "precision": 0.26287744227353466,
+        "recall": 0.304735758407687,
+        "tp": 444
+      },
+      "rows": 59136,
+      "spearman": 0.35974344790753376,
+      "spike_detection": {
+        "f1": 0.0221316249271986,
+        "fn": 1568,
+        "fp": 111,
+        "precision": 0.14615384615384616,
+        "recall": 0.011972274732199117,
+        "tp": 19
+      },
+      "top20_168h_precision": 0.3642045454545457
+    },
+    "weekly": {
+      "MAE": 0.4096278779271312,
+      "MAE_full_168h": 0.4096278779271312,
+      "R2": -0.23421939013956194,
+      "RMSE": 0.5497651642688741,
+      "bias": -0.2209254152757477,
+      "bias_full_168h": -0.2209254152757477,
+      "complete_origins": 352,
+      "median_absolute_error": 0.3199012577848863,
+      "p90_absolute_error": 0.862459372625252,
+      "p90_full_path_absolute_error": 0.862459372625252,
+      "p95_absolute_error": 1.070305826434487,
+      "p95_full_path_absolute_error": 1.070305826434487,
+      "rows": 59136,
+      "sMAPE": 0.9210641745824544
+    }
+  },
+  "model_name": "ResidualCorrection_LightGBM",
+  "prediction_column": "predicted_price_residualcorrection_lightgbm",
+  "status": "completed",
+  "training": {
+    "feature_count": 5,
+    "method": "residual_correction",
+    "model_artifact_persisted": false,
+    "model_family": "ResidualCorrection_LightGBM"
+  }
+}

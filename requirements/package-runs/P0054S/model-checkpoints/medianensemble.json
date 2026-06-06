@@ -1,0 +1,75 @@
+{
+  "leakage_status": "ok",
+  "metrics": {
+    "holdout": {
+      "MAE": 0.30450421011874484,
+      "R2": 0.30300970708675945,
+      "RMSE": 0.4131372931346524,
+      "bias": -0.06375390992179851,
+      "median_absolute_error": 0.238917811427027,
+      "p90_absolute_error": 0.6320968577036699,
+      "p95_absolute_error": 0.790545868399326,
+      "rows": 59136,
+      "sMAPE": 0.6224100387097766
+    },
+    "ranking_spike_ramp": {
+      "bottom20_168h_precision": 0.4082386363636358,
+      "forecast_price_spike_MAE": 0.994181927098709,
+      "high_price_regime_MAE": 1.202194766427793,
+      "large_price_ramp_MAE": 1.06409596067083,
+      "low_price_detection": {
+        "f1": 0.05038236617183986,
+        "fn": 4168,
+        "fp": 54,
+        "precision": 0.6746987951807228,
+        "recall": 0.026168224299065422,
+        "tp": 112
+      },
+      "low_price_regime_MAE": 0.29567209764423735,
+      "ramp_detection": {
+        "f1": 0.2448753462603878,
+        "fn": 1236,
+        "fp": 127,
+        "precision": 0.6350574712643678,
+        "recall": 0.151681537405628,
+        "tp": 221
+      },
+      "rows": 59136,
+      "spearman": 0.6107262317760902,
+      "spike_detection": {
+        "f1": 0.0034602076124567475,
+        "fn": 1584,
+        "fp": 144,
+        "precision": 0.02040816326530612,
+        "recall": 0.001890359168241966,
+        "tp": 3
+      },
+      "top20_168h_precision": 0.3975852272727274
+    },
+    "weekly": {
+      "MAE": 0.30450421011874484,
+      "MAE_full_168h": 0.30450421011874484,
+      "R2": 0.30300970708675945,
+      "RMSE": 0.4131372931346524,
+      "bias": -0.06375390992179851,
+      "bias_full_168h": -0.06375390992179851,
+      "complete_origins": 352,
+      "median_absolute_error": 0.238917811427027,
+      "p90_absolute_error": 0.6320968577036699,
+      "p90_full_path_absolute_error": 0.6320968577036699,
+      "p95_absolute_error": 0.790545868399326,
+      "p95_full_path_absolute_error": 0.790545868399326,
+      "rows": 59136,
+      "sMAPE": 0.6224100387097766
+    }
+  },
+  "model_name": "MedianEnsemble",
+  "prediction_column": "predicted_price_medianensemble",
+  "status": "completed",
+  "training": {
+    "feature_count": 1,
+    "method": "median_completed_base_models",
+    "model_artifact_persisted": false,
+    "model_family": "MedianEnsemble"
+  }
+}

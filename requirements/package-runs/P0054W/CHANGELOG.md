@@ -6,3 +6,14 @@
 - Loaded rows: `14875628`.
 - Completed periods: `10550`.
 - No credentials, devices, runtime changes, A61 utilization, model training or raw data commits.
+
+## 2026-06-06 clarification correction
+
+- Added operator clarification evidence that monthly-settled and metered/profiled class must not be confused with monthly resolution.
+- Confirmed P0054W local per-MGA `EXP18/LoadProfile` sum matches SE3/MBA `EXP15.profiled`.
+- Confirmed `EXP15.metered` is the large missing component, but was found only at SE3/MBA level in public eSett Open Data, not per MGA.
+- P0054W is therefore `STOP` for complete SE3 bottom-up per-MGA consumption until a per-MGA `metered/non_profiled` source or explicit residual model is approved.
+- Added:
+  - `profiled-monthly-source-search.md`
+  - `coverage-vs-entsoe-by-settlement-class.md`
+  - `missing-load-residual-plan.md`

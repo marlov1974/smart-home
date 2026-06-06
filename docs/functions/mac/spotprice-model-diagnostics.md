@@ -240,6 +240,30 @@ Important functions:
 
 P0054N is LABB only. It does not persist model artifacts, call APIs, touch devices, write runtime state, submit Nord Pool bids, integrate workplace systems or use A61/future-flow/actual future price leakage features.
 
+## P0054R Corrected-Target Advanced AI LABB
+
+`p0054r.run_p0054r_analysis(...)` orchestrates the P0054R corrected ENTSO-E SE3 advanced-AI LABB experiment. It reuses the P0054Q target contract, P0054N DayAhead origin semantics, and P0054K model/evaluation helpers. It writes compact package-run evidence only and does not persist production model binaries.
+
+Important functions:
+
+`build_p0054r_modeling_rows(...)` loads `entsoe_consumption_area_hourly_v1.consumption_mw` for SE3 through the P0054Q target loader and builds DayAhead/full_36h rows with weather proxy features labeled as `weather_actual_as_forecast_proxy`.
+
+`assign_internal_validation_splits(...)` annotates train_fit rows as internal train or internal validation, using `2025-03-01T00:00:00Z` as the validation boundary. Holdout rows are marked outside the internal split and are not used for tuning.
+
+`fit_model_on_rows(...)` trains a cloned model spec on an explicit row subset and predicts another explicit subset, which is used for internal-validation-only ensemble weighting.
+
+`learn_inverse_mae_weights(...)`, `apply_weighted_ensemble(...)` and `apply_median_ensemble(...)` build no-price ensemble predictions without using holdout for weights.
+
+`fit_and_apply_residual_correction(...)` fits a residual correction model on internal-validation residuals and applies it to final predictions without fitting on holdout rows.
+
+`fit_and_apply_horizon_specialized(...)` trains one no-price model per 1..36h horizon using train_fit rows only.
+
+`fit_and_apply_dayahead_specialized(...)` trains a DayAhead-only no-price model for the 12:00 Europe/Stockholm D-1 delivery-day task.
+
+`validate_p0054r_leakage(...)` extends the P0054Q leakage review with P0054R advanced-method evidence, forbidden feature checks, internal-validation-only weighting evidence, and no API/device/A61/NordPool/workplace confirmation.
+
+P0054R is LABB only. It explicitly excludes the old physical-balance target, flow/exchange/capacity/A61 data, future actual load/price leakage, live API calls, devices, runtime changes, Nord Pool integration, and workplace integration.
+
 ## P0054O SE3 DayAhead Weather Noise LABB
 
 `p0054o.run_p0054o_analysis(...)` orchestrates the LABB-only weather-noise ablation for P0054N exact DayAhead/full_36h rows.

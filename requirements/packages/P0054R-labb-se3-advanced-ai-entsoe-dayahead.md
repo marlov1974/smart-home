@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -454,4 +454,61 @@ commit SHA after push
 
 ## Completion notes
 
-To be filled after implementation.
+Completed with `PASS`.
+
+Implemented a LABB-only corrected-target advanced-AI experiment in `src/mac/services/spotprice_model_diagnostics/p0054r.py`, with package evidence under `requirements/package-runs/P0054R/`.
+
+Target source used:
+
+```text
+entsoe_consumption_area_hourly_v1.consumption_mw
+area=SE3
+source_type=actual_total_load
+area_scope=bidding_zone_internal_consumption_or_load
+```
+
+No old `physical_balance_se1_se4_hourly_v1.consumption_se3` target, flow/exchange/capacity/A61 data, API calls, device writes, runtime changes, Nord Pool integration or workplace integration were used.
+
+Final row counts:
+
+```text
+source_rows=35125
+direct_rows=52173
+train_fit_rows=38985
+internal_train_rows=35675
+internal_validation_rows=3310
+holdout_rows=13188
+full36_complete_origins=356
+dayahead_delivery_days=358
+```
+
+Best advanced method:
+
+```text
+HorizonBiasCorrected_WeightedEnsemble_no_price
+full_36h MAE=243.67666893537265 MW, 2.500614436538169% of mean actual
+DayAhead hourly MAE=253.70062353819162 MW, 2.6387829449358526% of mean actual
+daily energy absolute error=4381.407120291999 MWh, 1.9333789651384488% of actual
+```
+
+Relative improvement vs P0054Q corrected-target baseline:
+
+```text
+full_36h=62.21992990470855%
+DayAhead hourly=59.9074154345852%
+daily energy=65.93702154219062%
+```
+
+Leakage review passed:
+
+```text
+ok=true
+holdout_used_for_model_fitting_or_selection=false
+holdout_used_for_ensemble_weights_or_correction=false
+old_physical_balance_target_used=false
+actual_future_load_feature_used=false
+actual_future_spot_price_feature_used=false
+flow_export_import_a61_used=false
+```
+
+Optional neural sequence models were skipped with WARN evidence after Tier 1 advanced tabular methods completed. Weather remains `weather_actual_as_forecast_proxy`, so the result remains LABB-only and is not production-ready or G2-KANDIDAT.

@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -506,4 +506,92 @@ confirmation no large artifacts committed
 
 ## Completion notes
 
-To be filled after implementation.
+Completed as `PASS`.
+
+Relaxed baseline gate passed:
+
+```text
+model: HorizonBiasCorrected_WeightedEnsemble_no_price
+reference DayAhead MAE: 253.70062353819162 MW
+reproduced DayAhead MAE: 252.4272878651774 MW
+absolute delta: 1.2733356730142305 MW
+relative delta: 0.501904825954259%
+gate: absolute_delta <= 2.0 MW OR relative_delta <= 1.0%
+```
+
+Full row/origin contract:
+
+```text
+source_rows: 35125
+direct_rows: 52173
+path_rows: 52173
+origins: 1451
+train_fit_rows: 38985
+holdout_rows: 13188
+internal_validation_rows: 3310
+DayAhead delivery days: 358
+full36 complete origins: 356
+```
+
+Full forecast-safe holdout price coverage was created locally without live API calls:
+
+```text
+required_holdout_rows: 13188
+price_forecast_rows: 13188
+missing_required_holdout_rows: 0
+```
+
+P0054V2 followed the operator stitching policy:
+
+```text
+train_fit target-window price values: actual historical SE3 spot
+holdout future target-window price values: forecast SE3 spot
+actual spot anchor: strictly before forecast_origin_timestamp_utc
+```
+
+M1 price-family results on identical full coverage:
+
+```text
+P0 no price:
+  DayAhead MAE: 252.4272878651775 MW
+  full36 MAE: 242.5642604364506 MW
+  daily energy error: 4346.592563127953 MWh
+
+P1 raw stitched price:
+  DayAhead delta vs P0: +3.6193472393223374 MW / +1.4338177421037959%
+  full36 delta vs P0: +1.3517865494121513%
+  daily energy delta vs P0: +2.3848392500110194%
+
+P2 path shape:
+  DayAhead delta vs P0: +7.440069694042791 MW / +2.9474110176299813%
+
+P3 price regime:
+  DayAhead delta vs P0: +9.307249298514535 MW / +3.6871010964098208%
+
+P4 spike/ramp:
+  DayAhead delta vs P0: +8.434365970096906 MW / +3.341305150258452%
+```
+
+Best broad, daily-energy and full36 result was `P0_no_price`.
+
+Best high-risk/regime result:
+
+```text
+regime: low_price
+family: P4_spike_ramp
+regime MAE delta: -0.6998468530605615%
+```
+
+This is far below the `>= 10%` conditional threshold, while broad P4 DayAhead MAE worsened by `+3.341305150258452%`.
+
+Decision:
+
+```text
+generic SE3 consumption model price feature: excluded
+conditional price branch: not supported by P0054V2 evidence
+market-emulator layers: keep price as an emulator/cost/regime input
+```
+
+Leakage review passed. P0054V2 did not use old target, flow target, future actual holdout spot, future actual load/production/flow/A61 features, holdout fitting/selection, external live data calls, device/runtime writes, Shelly, Home Assistant, Nord Pool/workplace integration or large artifacts.
+
+Optional P5/P6/M2/M3/P0054T4 weather-noise repeats were skipped after complete required M1 P0-P4 evidence.

@@ -1,0 +1,14 @@
+# P0054V2 LABB
+
+Status: `PASS`
+
+```json
+{
+  "forecast_rows": 13188,
+  "full_contract_covered_by_stitched_source": true,
+  "full_p0054r_path_rows": 52173,
+  "missing_required_holdout_rows": 0,
+  "ok": true,
+  "required_holdout_rows": 13188
+}
+```

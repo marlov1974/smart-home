@@ -727,3 +727,31 @@ Important functions:
 `write_p0054t4_evidence(...)` writes Markdown, JSON and CSV evidence under `requirements/package-runs/P0054T4/`.
 
 P0054T4 distinguishes P0054T3 train+holdout noise from inference-only weather error. Its W1 path keeps training clean, keeps the fitted model fixed, perturbs only final holdout/inference temperature model-input columns, and is therefore a limited forecast-weather-error approximation rather than a raw-weather recomputation. It is diagnostics only and does not use spot-price features, old physical-balance targets, flow/export/import/A61 inputs, live APIs, devices, runtime writes, Nord Pool/workplace integration or holdout fitting/selection.
+
+## P0054V2 Complete SE3 Consumption Spotprice Value Test
+
+`p0054v2.run_p0054v2_analysis(...)` runs the LABB-only full-coverage spotprice feature-value test for the corrected SE3 consumption model after P0054V's strict baseline gate STOP.
+
+Important functions:
+
+`run_baseline_gate(...)` reproduces P0054R and applies P0054V2's relaxed gate: absolute DayAhead MAE delta <= 2 MW or relative delta <= 1%.
+
+`build_full_contract_rows(...)` builds the full corrected ENTSO-E SE3 P0054R direct/path row contract and applies splits, internal validation and train-fit profile features.
+
+`build_price_forecast_rows(...)` creates a package-local P0054L2/P0054N-compatible holdout price forecast mapping for every P0054R holdout origin/target row.
+
+`price_history_features_at_origin(...)` builds price-model features from timestamps strictly before the forecast origin, without requiring holdout target-window actual spot.
+
+`attach_basic_stitched_prices(...)` applies the operator stitching policy: actual target-hour SE3 spot in train_fit and forecasted target-hour SE3 spot in holdout.
+
+`build_anchor_features(...)` creates required actual 48h spot-history anchor features from timestamps strictly before origin.
+
+`attach_price_feature_families(...)` adds P1 raw, P2 path-shape, P3 regime and P4 spike/ramp price feature columns on identical full coverage.
+
+`fit_m1_for_family(...)` fits HGB, ExtraTrees, LightGBM and XGBoost base models, inverse-MAE weighted ensemble and horizon-bias correction for one feature family.
+
+`compare_price_families(...)` computes DayAhead, full36 and daily-energy deltas versus P0 no-price.
+
+`decision_summary(...)` classifies generic SE3 consumption price features as default, conditional-only or excluded using P0054V2 thresholds.
+
+P0054V2 concluded that generic SE3 consumption price features should be excluded: P0 no-price was best on broad DayAhead MAE, full36 MAE and daily-energy error, and the best regime improvement was below the conditional threshold. Price remains recommended for later market-emulator/cost/regime layers.

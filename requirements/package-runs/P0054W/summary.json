@@ -1,0 +1,153 @@
+{
+  "bidding_zone": "SE3",
+  "database_tables": [
+    "esett_mga_masterdata_v1",
+    "esett_mga_consumption_native_v1",
+    "esett_mga_consumption_ingestion_checkpoint_v1"
+  ],
+  "direction": "consumption_load_source_negative",
+  "feature_db": "/Users/marcus.lovenstad/.smart-home/data/spotprice_model_features.sqlite3",
+  "generated_at_utc": "2026-06-06T15:31:36Z",
+  "mba_eic": "10Y1001A1001A46L",
+  "mga_masterdata_count": 211,
+  "mga_type_counts": {
+    "BORDER": 1,
+    "DISTRIBUTION": 179,
+    "NONCON": 4,
+    "PRODUCTION": 4,
+    "REGIONAL": 21,
+    "TRANSMISSION": 2
+  },
+  "no_a61": true,
+  "no_credentials": true,
+  "no_devices_or_runtime": true,
+  "package_id": "P0054W",
+  "preflight": {
+    "errors": [],
+    "fallback_sample_periods": [
+      {
+        "end": "2025-02-01T00:00:00Z",
+        "start": "2025-01-01T00:00:00Z"
+      },
+      {
+        "end": "2025-03-01T00:00:00Z",
+        "start": "2025-02-01T00:00:00Z"
+      }
+    ],
+    "loaded_rows": 16992,
+    "ok": true,
+    "resolution_summary_from_sample": {
+      "first_timestamp": "2025-01-01T00:00:00Z",
+      "last_timestamp": "2025-01-01T01:00:00Z",
+      "mixed_resolution_periods": false,
+      "observed_time_deltas_minutes": {
+        "15": 4
+      },
+      "share_15m": 1.0,
+      "share_60m": 0.0
+    },
+    "sample_rows": [
+      {
+        "mba": "SE3",
+        "mgaCode": "AKB",
+        "mgaName": "\u00c5kersberga",
+        "quantity": -10.065032,
+        "timestamp": "2025-01-01T01:00:00",
+        "timestampUTC": "2025-01-01T00:00:00Z"
+      },
+      {
+        "mba": "SE3",
+        "mgaCode": "AKB",
+        "mgaName": "\u00c5kersberga",
+        "quantity": -10.130737,
+        "timestamp": "2025-01-01T01:15:00",
+        "timestampUTC": "2025-01-01T00:15:00Z"
+      },
+      {
+        "mba": "SE3",
+        "mgaCode": "AKB",
+        "mgaName": "\u00c5kersberga",
+        "quantity": -10.190158,
+        "timestamp": "2025-01-01T01:30:00",
+        "timestampUTC": "2025-01-01T00:30:00Z"
+      },
+      {
+        "mba": "SE3",
+        "mgaCode": "AKB",
+        "mgaName": "\u00c5kersberga",
+        "quantity": -10.266909,
+        "timestamp": "2025-01-01T01:45:00",
+        "timestampUTC": "2025-01-01T00:45:00Z"
+      },
+      {
+        "mba": "SE3",
+        "mgaCode": "AKB",
+        "mgaName": "\u00c5kersberga",
+        "quantity": -9.611207,
+        "timestamp": "2025-01-01T02:00:00",
+        "timestampUTC": "2025-01-01T01:00:00Z"
+      }
+    ],
+    "selected_mgas": [
+      "AKB",
+      "ALS",
+      "AML"
+    ],
+    "selected_periods": [
+      {
+        "end": "2022-07-01T00:00:00Z",
+        "start": "2022-06-01T00:00:00Z"
+      },
+      {
+        "end": "2022-08-01T00:00:00Z",
+        "start": "2022-07-01T00:00:00Z"
+      }
+    ]
+  },
+  "progress": {
+    "checkpoint_location": "esett_mga_consumption_ingestion_checkpoint_v1",
+    "checkpoint_status_counts": {
+      "done": 10550
+    },
+    "completed_period_count": 10550,
+    "loaded_max_timestamp": "2026-06-05T23:45:00Z",
+    "loaded_mga_count": 170,
+    "loaded_min_timestamp": "2023-10-31T23:00:00Z",
+    "loaded_row_count": 14875628,
+    "remaining_mga_count": 0,
+    "remaining_period_count": 0,
+    "resume_command": "PYTHONPYCACHEPREFIX=/private/tmp/p0054w-pycache python3 -m src.mac.services.spotprice_model_diagnostics.p0054w_esett_fetch --mode full"
+  },
+  "raw_data_committed": false,
+  "requested_end_utc": "2026-06-06T15:00:00Z",
+  "requested_start_utc": "2022-06-01T00:00:00Z",
+  "result_kind": "full_fetch_complete",
+  "se3_volume_sanity": {
+    "aggregation_method": "15m source MWh summed to hourly MWh; numeric value is comparable to average MW over one hour",
+    "avg_entsoe_mw": 9807.542648289225,
+    "avg_mga_hour_mwh": 2345.319130910388,
+    "avg_ratio": 0.23219546472003358,
+    "comparison": "sum(-eSett_MGA_LoadProfile_MWh_per_hour) versus ENTSO-E SE3 actual_total_load MW",
+    "interpretation": "EXP18 LoadProfile is materially below ENTSO-E SE3 actual total load; treat it as profiled/load-profile component, not total SE3 consumption.",
+    "joined_hours": 22709,
+    "max_mga_count_per_hour": 170,
+    "max_ratio": 0.39485972977851835,
+    "max_timestamp": "2026-06-05T10:00:00Z",
+    "min_mga_count_per_hour": 132,
+    "min_ratio": 0.0,
+    "min_timestamp": "2023-10-31T23:00:00Z"
+  },
+  "settlement_class": "profiled_load_profile",
+  "source_base_url": "https://api.opendata.esett.com",
+  "source_endpoints": [
+    "/EXP03/MeteringGridAreas",
+    "/EXP18/LoadProfile"
+  ],
+  "source_license": "eSett Open Data states CC0 on opendata.esett.com",
+  "source_name": "EXP18/LoadProfile",
+  "source_system": "eSett Open Data",
+  "started_at_utc": "2026-06-06T15:30:57Z",
+  "status": "PASS",
+  "unit": "MWh",
+  "value_kind": "energy"
+}

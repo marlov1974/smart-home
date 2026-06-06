@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0054Q
+Last changed: P0054W
 
 ## Module
 
@@ -167,6 +167,46 @@ Important functions:
 `write_p0051_evidence(...)` writes package-run Markdown and JSON evidence under `requirements/package-runs/P0051/`.
 
 P0051 is diagnostics/data-ingestion only. It explicitly forbids continental price pressure work, SE1-to-SE3 anchoring, SE3 API work, production model artifacts, M5/M6/M7 work, Shelly, device, KVS and Home Assistant paths.
+
+## P0054W eSett MGA Consumption Discovery
+
+`p0054w.run_p0054w_discovery(...)` orchestrates local-only discovery for Swedish MGA / metering grid area consumption sources.
+
+Important functions:
+
+`sqlite_table_inventory(...)` inspects local SQLite tables, columns, row counts and timestamp ranges for eSett/NBS/MGA/consumption candidates.
+
+`classify_table_candidate(...)` classifies table names and columns for MGA, eSett, NBS, consumption, ENTSO-E and physical-balance relevance.
+
+`summarize_physical_balance(...)` summarizes the existing P0051 eSett Open Data physical-balance rows and labels them as SE1-SE4 bidding-zone/MBA-level, not MGA.
+
+`summarize_entsoe_consumption(...)` summarizes the existing ENTSO-E area-level consumption table when present and labels it as non-MGA.
+
+`settlement_class_from_measure(...)` maps existing eSett consumption measures such as profiled, metered, flex and total into conservative settlement-class labels.
+
+`resolution_transition_summary(...)` detects observed timestamp deltas and mixed 15-minute/60-minute transition candidates without resampling.
+
+`find_local_candidate_files(...)` searches local repository and `.smart-home` file names for existing eSett/NBS/MGA/export candidates.
+
+`write_p0054w_evidence(...)` writes the package-run discovery, terminology, masterdata, mapping, settlement, resolution and ingestion-contract evidence under `requirements/package-runs/P0054W/`.
+
+`p0054w_esett_fetch.run_p0054w_esett_fetch(...)` orchestrates public eSett Open Data SE3 MGA masterdata discovery, preflight, checkpoint creation, native load-profile ingestion and evidence writing.
+
+Important fetch functions:
+
+`p0054w_esett_fetch.create_schema(...)` creates `esett_mga_masterdata_v1`, `esett_mga_consumption_native_v1` and `esett_mga_consumption_ingestion_checkpoint_v1`.
+
+`p0054w_esett_fetch.fetch_se3_masterdata(...)` reads public eSett `EXP03/MeteringGridAreas` for the SE3 MBA.
+
+`p0054w_esett_fetch.run_preflight(...)` loads a small sample before full fetch and verifies source shape, sign, settlement label and native resolution.
+
+`p0054w_esett_fetch.ensure_full_checkpoint_manifest(...)` creates per-MGA/per-month checkpoint rows from 2022-06-01 through latest requested time.
+
+`p0054w_esett_fetch.process_checkpoint(...)` fetches pending chunks from eSett `EXP18/LoadProfile`, persists native rows incrementally and marks checkpoint status.
+
+`p0054w_esett_fetch.native_rows_from_payload(...)` converts `LoadProfileDTO` rows into the native table contract while preserving source sign, unit, value kind, settlement class and inferred native resolution.
+
+P0054W uses only public eSett Open Data calls and local SQLite writes. It does not use credentials, train models, write devices, write runtime state or use A61 utilization.
 
 ## P0052 SE1-SE4 Transfer Flow and Import/Export
 

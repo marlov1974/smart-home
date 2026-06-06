@@ -1,4 +1,4 @@
-# Package P0054W: LABB eSett MGA consumption discovery
+# Package P0054W: LABB eSett MGA consumption discovery and ingestion
 
 ## Status
 
@@ -20,6 +20,8 @@ This package is local research/discovery work under P0054A. It is not a G2-KANDI
 
 Investigate whether consumption/load can be obtained per Swedish MGA / metering grid area / nätavräkningsområde from eSett/NBS or related local/exported data sources.
 
+If a credible and legally/locally accessible MGA consumption source is found, P0054W must also load the data from 2022-06-01 onward into the local database, preserving native resolution and settlement class.
+
 The goal is to determine whether SE3 consumption forecasting can later be improved by geographic granularity:
 
 ```text
@@ -29,7 +31,7 @@ vs individual MGA bottom-up model
 vs reconciled hierarchical ensemble
 ```
 
-P0054W is a discovery and data-contract package only. It must not build the final hierarchical forecast model.
+P0054W is a discovery, ingestion and data-contract package only. It must not build the final hierarchical forecast model.
 
 ## Operator context
 
@@ -41,6 +43,7 @@ Important expectations to verify:
 3. Later series may switch to 15-minute resolution.
 4. The resolution switch must not be hidden by naive aggregation.
 5. Monthly-settled and hourly/15-minute-settled consumption must not be mixed without clear classification.
+6. If usable data is found, it must be downloaded/loaded into the database from 2022-06-01 onward.
 ```
 
 ## Definitions to resolve
@@ -79,7 +82,9 @@ operator-provided files
 manual/downloaded files if already local
 ```
 
-External live API calls are not allowed in this package unless explicitly approved later. If public web documentation needs to be referenced, document URLs and required manual download steps, but do not build a live integration.
+External live API calls are not allowed unless an existing project-approved fetch mechanism already exists for the source. If a new authenticated eSett/NBS integration would be required, STOP or WARN and document the needed manual/source steps instead of adding credentials or a live integration.
+
+If the data is already available through an approved local file/export/process, Codex may ingest it into the local database.
 
 ## Required discovery tasks
 
@@ -198,7 +203,102 @@ If separate series exist, report whether total MGA consumption requires summing 
 
 If only one aggregated series exists, document whether it appears to include both settlement classes.
 
-### 6. Compare to ENTSO-E SE area totals
+### 6. Load found MGA consumption data into the database
+
+If a credible MGA consumption source is found and can be accessed through approved local/source mechanisms, load data from:
+
+```text
+2022-06-01T00:00:00Z onward
+```
+
+Required local database tables, unless an equivalent existing schema is found and documented:
+
+```text
+esett_mga_consumption_native_v1
+esett_mga_masterdata_v1
+```
+
+Native consumption table minimum schema:
+
+```text
+source_system                  -- e.g. esett/nbs/export/local
+source_name                    -- source table/file/feed name
+country
+mga_id
+mga_name nullable
+bidding_zone nullable
+settlement_class               -- monthly_settled/hourly_settled/15m_settled/profiled/unknown
+resolution_minutes             -- 15/60/monthly/etc as numeric or canonical enum
+interval_start_utc
+interval_end_utc
+value
+unit                           -- MWh/MW/kWh/etc
+value_kind                     -- energy/power/unknown
+direction                      -- consumption/load/import/export/unknown, as source defines
+quality_status nullable
+version_or_publication_time_utc nullable
+ingested_at_utc
+generated_by_package = P0054W
+```
+
+Masterdata table minimum schema:
+
+```text
+source_system
+mga_id
+mga_name nullable
+country
+bidding_zone nullable
+DSO_or_grid_owner nullable
+valid_from nullable
+valid_to nullable
+ingested_at_utc
+generated_by_package = P0054W
+```
+
+Ingestion requirements:
+
+```text
+preserve native 15m/60m/monthly resolution
+preserve settlement class
+preserve original unit and value kind
+do not silently convert energy to power or power to energy
+do not merge monthly/profiled and measured series into one row set without settlement_class
+be idempotent/upsert-safe if rerun
+document primary key/uniqueness strategy
+```
+
+Suggested native table uniqueness key:
+
+```text
+source_system, source_name, country, mga_id, settlement_class, interval_start_utc, interval_end_utc, resolution_minutes, version_or_publication_time_utc
+```
+
+If version/publication time is unavailable, document how duplicate revisions are handled.
+
+### 7. Optional hourly derived view/table for sanity checks
+
+If native data is loaded, Codex may create a derived hourly table/view only for sanity checks and later modeling exploration.
+
+Suggested name:
+
+```text
+esett_mga_consumption_hourly_v1
+```
+
+Rules:
+
+```text
+15m energy -> hourly energy by sum; hourly average MW only if unit/time basis is clear
+60m rows -> hourly as-is after unit check
+monthly/profiled -> do not allocate to hourly unless source already provides hourly profile allocation
+keep settlement_class in output
+include aggregation_method
+```
+
+Do not let the hourly view replace the native table as source of truth.
+
+### 8. Compare to ENTSO-E SE area totals
 
 If SE3 MGA data can be mapped and loaded, perform a rough volume sanity check against the corrected ENTSO-E area target:
 
@@ -222,7 +322,7 @@ known_unmapped_mga_count
 
 Do not require exact equality. The goal is to determine whether MGA data is plausible and usable.
 
-### 7. Recommend next modeling granularity
+### 9. Recommend next modeling granularity
 
 Based on data availability and quality, recommend one of:
 
@@ -236,7 +336,7 @@ E. STOP because MGA consumption source is not available or not trustworthy
 
 ## Time period of interest
 
-Primary desired coverage:
+Primary required load period if data is found:
 
 ```text
 2022-06-01T00:00:00Z onward
@@ -244,11 +344,11 @@ Primary desired coverage:
 
 This aligns with P0054 train/holdout policy.
 
-If MGA data starts later, document exact start and whether it can still support a post-2025 or future-only test.
+If MGA data starts later, load the maximum available overlap and document exact start/end and whether it can support post-2025 or future-only tests.
 
 ## Resolution handling policy
 
-Native resolution must be preserved in discovery evidence.
+Native resolution must be preserved in database and evidence.
 
 Allowed derived views for sanity checks:
 
@@ -266,6 +366,7 @@ silently averaging energy values as power values
 silently treating monthly-settled/profiled load as hourly measured load
 silently filling missing MGA intervals
 assuming all MGA are in SE3 without mapping evidence
+loading only hourly aggregates while discarding native 15m/60m/monthly records
 ```
 
 ## Expected evidence files
@@ -286,6 +387,8 @@ requirements/package-runs/P0054W/consumption-series-inventory.md
 requirements/package-runs/P0054W/settlement-classification.md
 requirements/package-runs/P0054W/resolution-transition-analysis.md
 requirements/package-runs/P0054W/native-resolution-contract.md
+requirements/package-runs/P0054W/database-ingestion-contract.md
+requirements/package-runs/P0054W/database-load-evidence.md if data is loaded
 requirements/package-runs/P0054W/hourly-aggregation-contract.md if hourly aggregation is tested
 requirements/package-runs/P0054W/se3-volume-sanity-check.md if feasible
 requirements/package-runs/P0054W/data-quality-review.md
@@ -302,6 +405,7 @@ mga-masterdata-summary.csv
 mga-price-area-counts.csv
 resolution-transition-summary.csv
 settlement-classification-summary.csv
+database-load-summary.json
 se3-volume-sanity-check.csv
 ```
 
@@ -332,9 +436,10 @@ Also inspect any local database/table list commands already used by earlier P005
 ```text
 requirements/packages/P0054W-labb-esett-mga-consumption-discovery.md
 requirements/package-runs/P0054W/**
-src/mac/** narrowly scoped discovery/introspection scripts if needed
-tests/mac/** narrowly scoped tests for resolution/aggregation helpers if code is added
+src/mac/** narrowly scoped discovery/introspection/ingestion scripts if needed
+tests/mac/** narrowly scoped tests for resolution/aggregation/ingestion helpers if code is added
 docs/functions/mac/** if durable data-source docs need updating
+local database schema/migration files if this repo owns them and only for P0054W tables
 ```
 
 ## Forbidden changes
@@ -345,12 +450,13 @@ No Home Assistant changes.
 No device/runtime writes.
 No production deployment.
 No G2-KANDIDAT promotion.
-No external live API integration.
+No new external live API integration without explicit approval.
 No credentials or tokens.
 No large raw data commits.
 No final forecasting model training in this package.
 No old physical_balance target as ground truth for SE3 consumption.
 No silent conversion between 15m/60m/monthly series.
+No database table that discards native resolution or settlement class.
 ```
 
 ## Verification commands
@@ -365,6 +471,10 @@ settlement class classification attempted
 native resolution analysis completed
 60m/15m transition search completed
 SE3 mapping attempted
+database schema created or existing equivalent documented if data found
+data from 2022-06-01 onward loaded if approved source found
+load row counts and min/max timestamps documented
+native resolution and settlement class preserved in DB
 SE3 volume sanity check completed or reason documented
 no large raw datasets staged
 no credentials staged
@@ -376,10 +486,11 @@ git diff --check
 PASS requires:
 
 ```text
-- credible MGA consumption source is found or a strong negative result is documented.
+- credible MGA consumption source is found and loaded to local DB from 2022-06-01 onward, or a strong negative result is documented.
 - settlement/monthly vs hourly/15m classification is addressed.
 - native resolution and 60m/15m transition are addressed.
 - MGA-to-price-area mapping is found or the missing mapping is documented.
+- if data is loaded, database schema preserves native resolution and settlement class.
 - next package recommendation is clear.
 ```
 
@@ -390,15 +501,17 @@ WARN is acceptable if:
 - data exists only for part of the desired 2022-06 onward period.
 - monthly-settled and measured series cannot yet be separated but evidence is clear.
 - SE3 volume sanity check cannot be completed due to missing mapping.
+- source can be identified but download requires a manually provided export rather than local automation.
 ```
 
 STOP if:
 
 ```text
 - no local/source path exists to inspect eSett/MGA data at all.
-- candidate source appears to require credentials/live integration not approved for this package.
+- candidate source requires credentials/live integration not approved for this package.
 - data cannot be classified enough to avoid mixing settlement classes or resolutions.
 - large raw/private data would need to be committed to proceed.
+- ingestion would discard native 15m/60m/monthly resolution or settlement class.
 ```
 
 ## Expected Codex output
@@ -408,6 +521,9 @@ PASS/WARN/STOP status
 commit SHA
 whether eSett/MGA consumption data was found
 candidate source/table/file names
+whether data was loaded into DB
+DB table names and row counts
+loaded min/max timestamps
 MGA count by price area if available
 whether SE3 MGA coverage exists
 settlement classes found: monthly/profiled/hourly/15m/unknown
@@ -417,7 +533,7 @@ whether data is usable for grouped/MGA forecasting
 recommended next package
 tests/commands run
 files changed
-confirmation no credentials, no external live API integration, no large raw data committed
+confirmation no credentials, no unauthorized external live API integration, no large raw data committed
 ```
 
 ## Completion notes

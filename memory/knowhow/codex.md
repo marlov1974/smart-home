@@ -94,3 +94,15 @@ If either diff is non-empty, do not reset; report the differing files and wait f
 ## Future promoted lessons
 
 Promote improvements to prompt/package-writing style here when repeated package reviews show the same weakness.
+
+## Escalated Python interpreter drift
+
+P0055B2 exposed that an escalated `/bin/zsh -lc "python3 ..."` command may resolve a different `python3` than a normal sandboxed shell. In this case, normal `python3` was `/usr/bin/python3` with user-site `numpy 2.0.2` and `scikit-learn 1.6.1`, while escalated `zsh` resolved Homebrew Python 3.12 and could not import the Python 3.9 user-site packages.
+
+For LABB model packages that need the existing user-installed ML stack, prefer an explicit interpreter in escalated commands:
+
+```bash
+PYTHONPYCACHEPREFIX=/private/tmp/<package>-pycache /usr/bin/python3 -m <module>
+```
+
+If imports fail only under escalation, verify both `which python3` and `python3 -c "import site, sys; ..."` in the same execution mode before installing or changing dependencies.

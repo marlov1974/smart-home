@@ -845,3 +845,23 @@ Important functions:
 `decision_summary(...)` classifies generic SE3 consumption price features as default, conditional-only or excluded using P0054V2 thresholds.
 
 P0054V2 concluded that generic SE3 consumption price features should be excluded: P0 no-price was best on broad DayAhead MAE, full36 MAE and daily-energy error, and the best regime improvement was below the conditional threshold. Price remains recommended for later market-emulator/cost/regime layers.
+
+## P0055B2 Nonlinear Monotone Settlement-Migration Redo
+
+`p0055b2.run_p0055b2_analysis(...)` orchestrates the forward-moving redo of P0055B under the operator clarification requiring cluster-specific nonlinear monotone migration evaluation.
+
+Important functions:
+
+`fit_cluster_specific_monotone_model(...)` builds the train-fit-only allocation model. It fits each required non-zero profiled cluster separately, forces zero clusters to zero, derives residual as remaining share and uses the latest stable train-fit reference window for holdout-safe normalization.
+
+`pava_non_decreasing(...)` implements a pure-Python weighted pool-adjacent-violators fit for non-decreasing monthly shares. It allows flat stretches and jumps; it is used as a diagnostic monotone allocation curve, not as proof that observed migration is readable.
+
+`cluster_delta_metrics(...)` emits the operator-required monthly share and delta fields: start/end shares, delta series, positive/negative sums, max positive/negative deltas, negative/flat month counts, one-way score and monotone-enough flag.
+
+`reference_allocation_review(...)`, `monthly_delta_analysis(...)`, `nonlinear_monotone_fit_review(...)` and `cluster_specific_review(...)` produce the main interpretation evidence for whether the cluster-specific migration signal is readable without holdout leakage.
+
+`restamp_generated_package(...)` ensures reused P0055B normalization helpers write P0055B2 generated-package metadata before local SQLite persistence.
+
+`write_p0055b2_evidence(...)` writes compact Markdown, JSON and CSV evidence under `requirements/package-runs/P0055B2/`.
+
+P0055B2 supersedes P0055B for the updated clarification. P0055B remains a historical simple-linear baseline. P0055B2 is LABB diagnostics/model evaluation only: no API, no devices, no runtime writes, no A61/flow/capacity/spot-price features, no future target leakage and no deployable model artifact.

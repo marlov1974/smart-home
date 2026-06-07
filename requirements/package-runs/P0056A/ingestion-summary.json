@@ -1,0 +1,1899 @@
+{
+  "area_code_mapping": {
+    "DE_LU": {
+      "eic": "10Y1001A1001A82H",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "DK1": {
+      "eic": "10YDK-1--------W",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "DK2": {
+      "eic": "10YDK-2--------M",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "EE": {
+      "eic": "10Y1001A1001A39I",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "FI": {
+      "eic": "10YFI-1--------U",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "LT": {
+      "eic": "10YLT-1001A0008Q",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "LV": {
+      "eic": "10YLV-1001A00074",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NL": {
+      "eic": "10YNL----------L",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NO1": {
+      "eic": "10YNO-1--------2",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NO2": {
+      "eic": "10YNO-2--------T",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NO3": {
+      "eic": "10YNO-3--------J",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NO4": {
+      "eic": "10YNO-4--------9",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "NO5": {
+      "eic": "10Y1001A1001A48H",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "PL": {
+      "eic": "10YPL-AREA-----S",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE1": {
+      "eic": "10Y1001A1001A44P",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE2": {
+      "eic": "10Y1001A1001A45N",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE3": {
+      "eic": "10Y1001A1001A46L",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    },
+    "SE4": {
+      "eic": "10Y1001A1001A47J",
+      "scope": "bidding_zone_internal_consumption_or_load"
+    }
+  },
+  "area_scope": {
+    "area_count": 18,
+    "label": "LABB",
+    "primary_areas": [
+      "SE1",
+      "SE2",
+      "SE3",
+      "SE4",
+      "NO1",
+      "NO2",
+      "NO3",
+      "NO4",
+      "NO5",
+      "DK1",
+      "DK2",
+      "FI",
+      "EE",
+      "LV",
+      "LT",
+      "DE_LU",
+      "PL",
+      "NL"
+    ]
+  },
+  "coverage_and_missingness": {
+    "DE_LU": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "DK1": {
+      "coverage_ratio_since_2022_06_01": 0.9984098588749751,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T07:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2025-01-07T18:00:00Z",
+        "2025-02-28T20:00:00Z",
+        "2025-05-08T07:00:00Z",
+        "2025-05-08T08:00:00Z",
+        "2025-05-08T09:00:00Z",
+        "2025-05-08T10:00:00Z",
+        "2025-05-08T11:00:00Z",
+        "2025-10-25T23:00:00Z",
+        "2025-10-26T00:00:00Z",
+        "2025-10-26T01:00:00Z",
+        "2025-10-26T02:00:00Z",
+        "2026-03-09T14:00:00Z"
+      ],
+      "missing_intervals": 56,
+      "row_count": 35161
+    },
+    "DK2": {
+      "coverage_ratio_since_2022_06_01": 0.9982962773660448,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T07:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-11-10T14:00:00Z",
+        "2022-11-10T15:00:00Z",
+        "2022-11-10T16:00:00Z",
+        "2023-06-19T13:00:00Z",
+        "2025-01-07T18:00:00Z",
+        "2025-02-28T20:00:00Z",
+        "2025-05-08T07:00:00Z",
+        "2025-05-08T08:00:00Z",
+        "2025-05-08T09:00:00Z",
+        "2025-05-08T10:00:00Z",
+        "2025-05-08T11:00:00Z",
+        "2025-10-25T23:00:00Z"
+      ],
+      "missing_intervals": 60,
+      "row_count": 35157
+    },
+    "EE": {
+      "coverage_ratio_since_2022_06_01": 0.9986086265156032,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-05T10:00:00Z",
+        "2022-07-16T13:00:00Z",
+        "2022-07-23T17:00:00Z",
+        "2022-08-04T16:00:00Z",
+        "2022-08-28T01:00:00Z",
+        "2022-09-13T11:00:00Z",
+        "2022-11-18T09:00:00Z",
+        "2023-02-21T15:00:00Z",
+        "2023-02-23T15:00:00Z",
+        "2023-02-26T14:00:00Z",
+        "2023-03-04T10:00:00Z",
+        "2023-03-11T14:00:00Z"
+      ],
+      "missing_intervals": 49,
+      "row_count": 35168
+    },
+    "FI": {
+      "coverage_ratio_since_2022_06_01": 0.9992049294374876,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-18T17:00:00Z",
+        "2022-06-18T18:00:00Z",
+        "2022-06-18T19:00:00Z",
+        "2022-06-18T20:00:00Z",
+        "2022-06-18T21:00:00Z",
+        "2022-06-18T22:00:00Z",
+        "2022-06-18T23:00:00Z",
+        "2022-06-19T00:00:00Z",
+        "2022-06-19T01:00:00Z",
+        "2022-06-19T02:00:00Z",
+        "2022-06-19T03:00:00Z",
+        "2022-06-19T04:00:00Z"
+      ],
+      "missing_intervals": 28,
+      "row_count": 35189
+    },
+    "LT": {
+      "coverage_ratio_since_2022_06_01": 0.998835789533464,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-10-19T11:00:00Z",
+        "2022-10-19T12:00:00Z",
+        "2022-10-30T00:00:00Z",
+        "2022-10-30T02:00:00Z",
+        "2022-11-13T13:00:00Z",
+        "2022-11-15T07:00:00Z",
+        "2022-12-11T13:00:00Z",
+        "2022-12-16T20:00:00Z",
+        "2023-01-15T13:00:00Z",
+        "2023-02-17T05:00:00Z",
+        "2023-05-14T12:00:00Z",
+        "2023-05-18T01:00:00Z"
+      ],
+      "missing_intervals": 41,
+      "row_count": 35176
+    },
+    "LV": {
+      "coverage_ratio_since_2022_06_01": 0.991822131357015,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-01T07:00:00Z",
+        "2022-06-09T11:00:00Z",
+        "2022-06-12T14:00:00Z",
+        "2022-06-13T07:00:00Z",
+        "2022-06-28T11:00:00Z",
+        "2022-07-03T02:00:00Z",
+        "2022-07-03T12:00:00Z",
+        "2022-07-07T11:00:00Z",
+        "2022-07-10T09:00:00Z",
+        "2022-07-10T10:00:00Z",
+        "2022-07-16T02:00:00Z",
+        "2022-07-17T02:00:00Z"
+      ],
+      "missing_intervals": 288,
+      "row_count": 34929
+    },
+    "NL": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "NO1": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "NO2": {
+      "coverage_ratio_since_2022_06_01": 0.9999716046227675,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2025-01-19T03:00:00Z"
+      ],
+      "missing_intervals": 1,
+      "row_count": 35216
+    },
+    "NO3": {
+      "coverage_ratio_since_2022_06_01": 0.9999148138683023,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-08-30T19:00:00Z",
+        "2023-08-17T19:00:00Z",
+        "2025-02-02T12:00:00Z"
+      ],
+      "missing_intervals": 3,
+      "row_count": 35214
+    },
+    "NO4": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "NO5": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "PL": {
+      "coverage_ratio_since_2022_06_01": 1.0,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [],
+      "missing_intervals": 0,
+      "row_count": 35217
+    },
+    "SE1": {
+      "coverage_ratio_since_2022_06_01": 0.9951727858704603,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-15T12:00:00Z",
+        "2022-06-19T06:00:00Z",
+        "2022-06-22T08:00:00Z",
+        "2022-06-24T14:00:00Z",
+        "2022-07-11T05:00:00Z",
+        "2022-07-12T05:00:00Z",
+        "2022-07-12T17:00:00Z",
+        "2022-07-12T18:00:00Z",
+        "2022-07-17T04:00:00Z",
+        "2022-07-30T11:00:00Z",
+        "2022-07-31T13:00:00Z",
+        "2022-08-13T02:00:00Z"
+      ],
+      "missing_intervals": 170,
+      "row_count": 35047
+    },
+    "SE2": {
+      "coverage_ratio_since_2022_06_01": 0.995882670301275,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-09T00:00:00Z",
+        "2022-06-09T02:00:00Z",
+        "2022-06-10T08:00:00Z",
+        "2022-06-10T15:00:00Z",
+        "2022-06-17T11:00:00Z",
+        "2022-06-19T01:00:00Z",
+        "2022-06-20T07:00:00Z",
+        "2022-06-24T17:00:00Z",
+        "2022-08-06T19:00:00Z",
+        "2022-08-25T02:00:00Z",
+        "2022-08-30T00:00:00Z",
+        "2022-09-01T13:00:00Z"
+      ],
+      "missing_intervals": 145,
+      "row_count": 35072
+    },
+    "SE3": {
+      "coverage_ratio_since_2022_06_01": 0.9986938126473011,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-15T11:00:00Z",
+        "2022-07-02T18:00:00Z",
+        "2022-09-14T08:00:00Z",
+        "2022-10-24T14:00:00Z",
+        "2022-11-13T12:00:00Z",
+        "2022-12-14T12:00:00Z",
+        "2023-01-14T23:00:00Z",
+        "2023-02-16T09:00:00Z",
+        "2023-03-27T01:00:00Z",
+        "2023-04-24T18:00:00Z",
+        "2023-07-17T03:00:00Z",
+        "2023-08-23T07:00:00Z"
+      ],
+      "missing_intervals": 46,
+      "row_count": 35171
+    },
+    "SE4": {
+      "coverage_ratio_since_2022_06_01": 0.9957974841695771,
+      "duplicate_intervals": 0,
+      "max_timestamp_utc": "2026-06-07T08:00:00Z",
+      "min_timestamp_utc": "2022-06-01T00:00:00Z",
+      "missing_examples": [
+        "2022-06-01T07:00:00Z",
+        "2022-06-07T00:00:00Z",
+        "2022-06-08T20:00:00Z",
+        "2022-07-02T16:00:00Z",
+        "2022-07-07T01:00:00Z",
+        "2022-07-08T23:00:00Z",
+        "2022-07-12T15:00:00Z",
+        "2022-08-13T02:00:00Z",
+        "2022-08-17T12:00:00Z",
+        "2022-08-22T10:00:00Z",
+        "2022-09-16T08:00:00Z",
+        "2022-09-22T00:00:00Z"
+      ],
+      "missing_intervals": 148,
+      "row_count": 35069
+    }
+  },
+  "data_quality_review": {
+    "areas_with_rows": [
+      "SE1",
+      "SE2",
+      "SE3",
+      "SE4",
+      "NO1",
+      "NO2",
+      "NO3",
+      "NO4",
+      "NO5",
+      "DK1",
+      "DK2",
+      "FI",
+      "EE",
+      "LV",
+      "LT",
+      "DE_LU",
+      "PL",
+      "NL"
+    ],
+    "duplicate_hourly_intervals": 0,
+    "duplicate_native_intervals": 0,
+    "hourly_rows": 632871,
+    "missing_primary_areas": [],
+    "native_rows": 1244180,
+    "negative_hours_count": 0,
+    "nonfinite_hourly_values": 0,
+    "ok": true,
+    "se3_consistency_ok": true
+  },
+  "database_load_evidence": {
+    "area_consumption_area_catalog_v1": 18,
+    "area_consumption_hourly_v1": 632871,
+    "area_consumption_native_v1": 1244180
+  },
+  "database_schema_contract": {
+    "catalog_table": "area_consumption_area_catalog_v1",
+    "generated_by_package": "P0056A",
+    "hourly_primary_key": [
+      "timestamp_utc",
+      "area_code",
+      "source_system",
+      "generated_by_package"
+    ],
+    "hourly_table": "area_consumption_hourly_v1",
+    "native_primary_key": [
+      "area_code",
+      "interval_start_utc",
+      "interval_end_utc",
+      "value_kind",
+      "source_system",
+      "generated_by_package"
+    ],
+    "native_table": "area_consumption_native_v1"
+  },
+  "hourly_aggregation_contract": {
+    "aggregation_method": "time-weighted hourly average MW",
+    "mixed_resolution_policy": "native_resolution_mix records all contributing native interval lengths",
+    "native_value_semantics": "average MW over native interval",
+    "unit_policy": "MAW and MW normalized to MW; unknown units preserved and visible",
+    "value_kind": "actual_total_load"
+  },
+  "ingestion_progress": {
+    "completed_areas": [
+      "DE_LU",
+      "DK1",
+      "DK2",
+      "EE",
+      "FI",
+      "LT",
+      "LV",
+      "NL",
+      "NO1",
+      "NO2",
+      "NO3",
+      "NO4",
+      "NO5",
+      "PL",
+      "SE1",
+      "SE2",
+      "SE3",
+      "SE4"
+    ],
+    "db_counts": {
+      "area_consumption_area_catalog_v1": 18,
+      "area_consumption_hourly_v1": 632871,
+      "area_consumption_native_v1": 1244180
+    },
+    "missing_areas": []
+  },
+  "label": "LABB",
+  "modeling_readiness_review": {
+    "forecast_model_trained": false,
+    "label": "LABB",
+    "not_g2_candidate": true,
+    "ready_for_next_labb_forecast_package": true,
+    "status": "PASS",
+    "target_usage": "historical_observed_only target rows; future use requires separate forecast model"
+  },
+  "native_resolution_review": {
+    "DE_LU": {
+      "native_resolution": "15m",
+      "native_resolution_minutes": [
+        15
+      ],
+      "native_rows": 140861
+    },
+    "DK1": {
+      "native_resolution": "60m",
+      "native_resolution_minutes": [
+        60
+      ],
+      "native_rows": 35161
+    },
+    "DK2": {
+      "native_resolution": "60m",
+      "native_resolution_minutes": [
+        60
+      ],
+      "native_rows": 35157
+    },
+    "EE": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 48952
+    },
+    "FI": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 115027
+    },
+    "LT": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 75917
+    },
+    "LV": {
+      "native_resolution": "60m",
+      "native_resolution_minutes": [
+        60
+      ],
+      "native_rows": 34929
+    },
+    "NL": {
+      "native_resolution": "15m",
+      "native_resolution_minutes": [
+        15
+      ],
+      "native_rows": 140863
+    },
+    "NO1": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 67277
+    },
+    "NO2": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 67278
+    },
+    "NO3": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 67269
+    },
+    "NO4": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 67276
+    },
+    "NO5": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 67269
+    },
+    "PL": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 87305
+    },
+    "SE1": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 48306
+    },
+    "SE2": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 48367
+    },
+    "SE3": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 48581
+    },
+    "SE4": {
+      "native_resolution": "mixed",
+      "native_resolution_minutes": [
+        15,
+        60
+      ],
+      "native_rows": 48385
+    }
+  },
+  "next_package_recommendation": "Build P0056B as multi-area consumption forecast lab using these measured targets and forecast-safe features.",
+  "no_devices": true,
+  "no_flow_exchange_a61_capacity_features": true,
+  "no_model_training": true,
+  "no_old_physical_balance_target": true,
+  "no_runtime_change": true,
+  "no_spot_price_features": true,
+  "package_id": "P0056A",
+  "raw_exports_committed": false,
+  "request_range": {
+    "end": "2026-06-07T09:00:00Z",
+    "start": "2022-06-01T00:00:00Z"
+  },
+  "row_counts": {
+    "area_catalog_rows": 18,
+    "area_consumption_area_catalog_v1": 18,
+    "area_consumption_hourly_v1": 632871,
+    "area_consumption_native_v1": 1244180,
+    "hourly_rows": 632871,
+    "native_rows": 1244180
+  },
+  "runtime_seconds": 602.922,
+  "se3_target_consistency_check": {
+    "max_abs_delta_mw": 0.0,
+    "mean_abs_delta_mw": 0.0,
+    "ok": true,
+    "overlap_rows": 35125,
+    "reference_package": "P0054P2",
+    "reference_table": "entsoe_consumption_area_hourly_v1"
+  },
+  "source_access_review": {
+    "attempts": [
+      {
+        "area_code": "SE1",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5105,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE1",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8714,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE1",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8756,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE1",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 10857,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE1",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 14874,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A44P",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE2",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5112,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE2",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8730,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE2",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8749,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE2",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 10869,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE2",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 14907,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A45N",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE3",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5130,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE3",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8748,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE3",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8766,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE3",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 10893,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE3",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15044,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A46L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE4",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5112,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE4",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8709,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE4",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8747,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE4",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 10863,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "SE4",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 14954,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A47J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO1",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-1--------2",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO1",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-1--------2",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO1",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-1--------2",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO1",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 29496,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-1--------2",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO1",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15101,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-1--------2",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO2",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-2--------T",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO2",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-2--------T",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO2",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-2--------T",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO2",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 29496,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-2--------T",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO2",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15102,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-2--------T",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO3",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5135,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-3--------J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO3",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8759,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-3--------J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO3",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-3--------J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO3",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 29491,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-3--------J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO3",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15100,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-3--------J",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO4",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-4--------9",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO4",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-4--------9",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO4",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-4--------9",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO4",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 29493,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-4--------9",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO4",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15103,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNO-4--------9",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO5",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A48H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO5",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A48H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO5",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A48H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO5",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 29490,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A48H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NO5",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15099,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A48H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK1",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-1--------W",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK1",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-1--------W",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK1",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-1--------W",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK1",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 8749,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-1--------W",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK1",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 3732,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-1--------W",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK2",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5133,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-2--------M",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK2",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8759,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-2--------M",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK2",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8784,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-2--------M",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK2",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 8749,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-2--------M",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DK2",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 3732,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YDK-2--------M",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "FI",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5110,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YFI-1--------U",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "FI",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 24859,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YFI-1--------U",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "FI",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 35050,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YFI-1--------U",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "FI",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 34952,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YFI-1--------U",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "FI",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15056,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YFI-1--------U",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "EE",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5129,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A39I",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "EE",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8743,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A39I",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "EE",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8775,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A39I",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "EE",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 11227,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A39I",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "EE",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15078,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A39I",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LV",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5079,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLV-1001A00074",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LV",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8637,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLV-1001A00074",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LV",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 8688,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLV-1001A00074",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LV",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 8759,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLV-1001A00074",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LV",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 3766,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLV-1001A00074",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LT",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5128,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLT-1001A0008Q",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LT",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8744,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLT-1001A0008Q",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LT",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 11943,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLT-1001A0008Q",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LT",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 35001,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLT-1001A0008Q",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "LT",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15101,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YLT-1001A0008Q",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DE_LU",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 20544,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A82H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DE_LU",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 35040,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A82H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DE_LU",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 35136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A82H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DE_LU",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 35040,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A82H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "DE_LU",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15101,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10Y1001A1001A82H",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "PL",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 5136,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YPL-AREA-----S",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "PL",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 8760,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YPL-AREA-----S",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "PL",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 23262,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YPL-AREA-----S",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "PL",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 35039,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YPL-AREA-----S",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "PL",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15108,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YPL-AREA-----S",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NL",
+        "period_end": "2023-01-01T00:00:00Z",
+        "period_start": "2022-06-01T00:00:00Z",
+        "points": 20544,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNL----------L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NL",
+        "period_end": "2024-01-01T00:00:00Z",
+        "period_start": "2023-01-01T00:00:00Z",
+        "points": 35038,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNL----------L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NL",
+        "period_end": "2025-01-01T00:00:00Z",
+        "period_start": "2024-01-01T00:00:00Z",
+        "points": 35134,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNL----------L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NL",
+        "period_end": "2026-01-01T00:00:00Z",
+        "period_start": "2025-01-01T00:00:00Z",
+        "points": 35039,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNL----------L",
+        "status": 200,
+        "timeseries": 1
+      },
+      {
+        "area_code": "NL",
+        "period_end": "2026-06-07T09:00:00Z",
+        "period_start": "2026-01-01T00:00:00Z",
+        "points": 15108,
+        "reason": "",
+        "root": "GL_MarketDocument",
+        "source_area_code": "10YNL----------L",
+        "status": 200,
+        "timeseries": 1
+      }
+    ],
+    "document_type": "A65",
+    "ok": true,
+    "points_by_area": {
+      "DE_LU": 140861,
+      "DK1": 35161,
+      "DK2": 35157,
+      "EE": 48952,
+      "FI": 115027,
+      "LT": 75917,
+      "LV": 34929,
+      "NL": 140863,
+      "NO1": 67277,
+      "NO2": 67278,
+      "NO3": 67269,
+      "NO4": 67276,
+      "NO5": 67269,
+      "PL": 87305,
+      "SE1": 48306,
+      "SE2": 48367,
+      "SE3": 48581,
+      "SE4": 48385
+    },
+    "process_type": "A16",
+    "source_system": "ENTSO-E",
+    "token_included_in_evidence": false,
+    "token_source": "local_secret_file_outside_repo"
+  },
+  "status": "PASS",
+  "token_included_in_evidence": false,
+  "volume_sanity_check": {
+    "DE_LU": {
+      "max_mw": 79007.64,
+      "mean_mw": 53582.001,
+      "median_mw": 53572.309,
+      "min_mw": 31278.373,
+      "negative_hours_count": 0,
+      "p05_mw": 39346.653,
+      "p95_mw": 68980.788,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "DK1": {
+      "max_mw": 4356.927,
+      "mean_mw": 2570.463,
+      "median_mw": 2567.25,
+      "min_mw": 1317.86,
+      "negative_hours_count": 0,
+      "p05_mw": 1810.48,
+      "p95_mw": 3379.85,
+      "row_count": 35161,
+      "zero_hours_count": 0
+    },
+    "DK2": {
+      "max_mw": 5968.37,
+      "mean_mw": 1608.919,
+      "median_mw": 1597.73,
+      "min_mw": 425.18,
+      "negative_hours_count": 0,
+      "p05_mw": 1099.364,
+      "p95_mw": 2155.7,
+      "row_count": 35157,
+      "zero_hours_count": 0
+    },
+    "EE": {
+      "max_mw": 1656.25,
+      "mean_mw": 919.608,
+      "median_mw": 896.4,
+      "min_mw": 354.15,
+      "negative_hours_count": 0,
+      "p05_mw": 621.835,
+      "p95_mw": 1282.0,
+      "row_count": 35168,
+      "zero_hours_count": 0
+    },
+    "FI": {
+      "max_mw": 15458.75,
+      "mean_mw": 9392.049,
+      "median_mw": 9129.9,
+      "min_mw": 5273.15,
+      "negative_hours_count": 0,
+      "p05_mw": 6990.91,
+      "p95_mw": 12525.05,
+      "row_count": 35189,
+      "zero_hours_count": 0
+    },
+    "LT": {
+      "max_mw": 2674.634,
+      "mean_mw": 1367.101,
+      "median_mw": 1344.91,
+      "min_mw": 285.749,
+      "negative_hours_count": 0,
+      "p05_mw": 973.236,
+      "p95_mw": 1862.696,
+      "row_count": 35176,
+      "zero_hours_count": 0
+    },
+    "LV": {
+      "max_mw": 1720.0,
+      "mean_mw": 791.7,
+      "median_mw": 786.0,
+      "min_mw": 423.0,
+      "negative_hours_count": 0,
+      "p05_mw": 537.0,
+      "p95_mw": 1072.0,
+      "row_count": 34929,
+      "zero_hours_count": 0
+    },
+    "NL": {
+      "max_mw": 20499.268,
+      "mean_mw": 12734.585,
+      "median_mw": 12648.85,
+      "min_mw": 205.251,
+      "negative_hours_count": 0,
+      "p05_mw": 9748.764,
+      "p95_mw": 16828.358,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "NO1": {
+      "max_mw": 8165.99,
+      "mean_mw": 3933.44,
+      "median_mw": 3661.205,
+      "min_mw": 1692.97,
+      "negative_hours_count": 0,
+      "p05_mw": 2198.648,
+      "p95_mw": 6328.257,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "NO2": {
+      "max_mw": 6769.295,
+      "mean_mw": 4099.989,
+      "median_mw": 3984.404,
+      "min_mw": 1594.76,
+      "negative_hours_count": 0,
+      "p05_mw": 3124.834,
+      "p95_mw": 5439.483,
+      "row_count": 35216,
+      "zero_hours_count": 0
+    },
+    "NO3": {
+      "max_mw": 4845.222,
+      "mean_mw": 3242.356,
+      "median_mw": 3182.62,
+      "min_mw": 2009.57,
+      "negative_hours_count": 0,
+      "p05_mw": 2515.516,
+      "p95_mw": 4124.168,
+      "row_count": 35214,
+      "zero_hours_count": 0
+    },
+    "NO4": {
+      "max_mw": 3457.682,
+      "mean_mw": 2316.959,
+      "median_mw": 2313.22,
+      "min_mw": 1430.04,
+      "negative_hours_count": 0,
+      "p05_mw": 1726.272,
+      "p95_mw": 2949.638,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "NO5": {
+      "max_mw": 4325.65,
+      "mean_mw": 1925.424,
+      "median_mw": 1881.82,
+      "min_mw": 847.07,
+      "negative_hours_count": 0,
+      "p05_mw": 1412.83,
+      "p95_mw": 2552.023,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "PL": {
+      "max_mw": 28303.88,
+      "mean_mw": 18725.359,
+      "median_mw": 18790.101,
+      "min_mw": 10595.8,
+      "negative_hours_count": 0,
+      "p05_mw": 13742.837,
+      "p95_mw": 24124.854,
+      "row_count": 35217,
+      "zero_hours_count": 0
+    },
+    "SE1": {
+      "max_mw": 4428.25,
+      "mean_mw": 1247.121,
+      "median_mw": 1213.0,
+      "min_mw": 161.0,
+      "negative_hours_count": 0,
+      "p05_mw": 852.0,
+      "p95_mw": 1727.175,
+      "row_count": 35047,
+      "zero_hours_count": 0
+    },
+    "SE2": {
+      "max_mw": 7279.0,
+      "mean_mw": 1720.689,
+      "median_mw": 1649.0,
+      "min_mw": 166.0,
+      "negative_hours_count": 0,
+      "p05_mw": 1077.0,
+      "p95_mw": 2535.475,
+      "row_count": 35072,
+      "zero_hours_count": 0
+    },
+    "SE3": {
+      "max_mw": 16747.0,
+      "mean_mw": 9488.861,
+      "median_mw": 9124.0,
+      "min_mw": 5198.0,
+      "negative_hours_count": 0,
+      "p05_mw": 6563.0,
+      "p95_mw": 13307.5,
+      "row_count": 35171,
+      "zero_hours_count": 0
+    },
+    "SE4": {
+      "max_mw": 4696.0,
+      "mean_mw": 2473.552,
+      "median_mw": 2390.0,
+      "min_mw": 667.75,
+      "negative_hours_count": 0,
+      "p05_mw": 1655.0,
+      "p95_mw": 3553.0,
+      "row_count": 35069,
+      "zero_hours_count": 0
+    }
+  },
+  "what_we_learned": [
+    "P0056A status is PASS.",
+    "Areas with rows: ['SE1', 'SE2', 'SE3', 'SE4', 'NO1', 'NO2', 'NO3', 'NO4', 'NO5', 'DK1', 'DK2', 'FI', 'EE', 'LV', 'LT', 'DE_LU', 'PL', 'NL'].",
+    "Missing primary areas: [].",
+    "SE3 consistency ok: True."
+  ]
+}

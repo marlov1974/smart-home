@@ -117,3 +117,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0053C-A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the M4/P0045 global-split price-shape rebuild and local forecast-origin log contract.
 
 `P0055B2` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the P0055B redo functions for cluster-specific nonlinear monotone settlement-migration normalization and stale handling for the original linear P0055B run.
+
+`P0056A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with northern Europe ENTSO-E A65/A16 actual-load measurement ingestion, native-to-hourly aggregation and area-consumption table contracts.

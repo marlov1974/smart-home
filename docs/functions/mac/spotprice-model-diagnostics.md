@@ -865,3 +865,21 @@ Important functions:
 `write_p0055b2_evidence(...)` writes compact Markdown, JSON and CSV evidence under `requirements/package-runs/P0055B2/`.
 
 P0055B2 supersedes P0055B for the updated clarification. P0055B remains a historical simple-linear baseline. P0055B2 is LABB diagnostics/model evaluation only: no API, no devices, no runtime writes, no A61/flow/capacity/spot-price features, no future target leakage and no deployable model artifact.
+
+## P0056A Northern Europe Area Consumption Measurements
+
+`p0056a.run_p0056a_ingestion(...)` loads ENTSO-E `A65` / `A16` actual total load for northern European bidding zones into the local feature DB.
+
+Important functions:
+
+`area_catalog(...)` defines the explicit primary area scope and ENTSO-E EIC mapping for SE1-SE4, NO1-NO5, DK1-DK2, FI, EE, LV, LT, DE_LU, PL and NL.
+
+`fetch_actual_load_native_rows(...)`, `parse_actual_load_document(...)` and `parse_actual_load_period(...)` request and parse ENTSO-E XML into native interval rows for `area_consumption_native_v1`.
+
+`aggregate_native_to_hourly(...)` converts native average-MW interval rows to `area_consumption_hourly_v1` using time-weighted hourly averages. It preserves `native_resolution_mix`, `input_row_count` and partial-hour coverage flags.
+
+`persist_p0056a_tables(...)` creates and reruns only P0056A rows in `area_consumption_area_catalog_v1`, `area_consumption_native_v1` and `area_consumption_hourly_v1`.
+
+`validation_summary(...)` builds coverage/missingness, native-resolution, volume-sanity, data-quality and SE3 consistency evidence. SE3 is compared against the corrected P0054P2 target in `entsoe_consumption_area_hourly_v1`.
+
+P0056A is LABB data preparation only. It does not train forecast models, use spot-price features, use flow/exchange/A61/capacity as a target, touch devices/runtime paths, or commit raw ENTSO-E exports.

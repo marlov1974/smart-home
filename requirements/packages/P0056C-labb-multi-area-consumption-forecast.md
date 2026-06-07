@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -406,4 +406,72 @@ confirmation no spot price/no old target/no flow/A61/no external integration/no 
 
 ## Completion notes
 
-To be filled after implementation.
+Completed by package run P0056C.
+
+Result:
+
+```text
+WARN
+```
+
+Reason for WARN:
+
+```text
+All 18 areas trained and evaluated with the default HorizonBiasCorrected_WeightedEnsemble_no_price method and no model fallback was needed, but seven areas inherit P0056B fallback weather proxies and the weather actual-proxy source ends before the latest P0056A consumption rows.
+```
+
+Completed jobs:
+
+```text
+36/36
+```
+
+Output tables:
+
+```text
+area_consumption_forecast_log_p0056c_v1
+area_consumption_forecast_metrics_p0056c_v1
+```
+
+Rows:
+
+```text
+forecast log rows: 231720
+metrics rows: 918
+areas: 18
+forecast target range: 2025-06-01T10:00:00Z..2026-05-31T21:00:00Z
+```
+
+Cross-area summary:
+
+```text
+best_area_by_percent_MAE: NO3
+worst_area_by_percent_MAE: SE2
+weighted_mean_MAE_percent_by_mean_load: 3.359509223946815
+weather_fallback_area_count: 7
+```
+
+Aggregate summary:
+
+```text
+aggregate_rows: 6719
+aggregate_MAE: 2597.326335139334
+aggregate_RMSE: 3606.5503721780306
+aggregate_bias: -1153.2008671952567
+aggregate_forecast_equals_sum_of_area_forecasts: true
+```
+
+Leakage review:
+
+```text
+ok: true
+forbidden_features: []
+forbidden_columns: []
+spot_price_feature_used: false
+old_physical_balance_target_used: false
+flow_exchange_a61_capacity_feature_used: false
+future_actual_load_feature_used: false
+holdout_used_for_model_fitting_or_selection: false
+```
+
+No API, devices, runtime changes, production deployment, spot price features, old physical_balance target, flow/exchange/A61/capacity features, model binaries or large committed artifacts were used.

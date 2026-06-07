@@ -565,4 +565,22 @@ confirmation no spot price/no old target/no flow/A61/no external integration/no 
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented in P0055B.
+
+Result: `WARN`.
+
+Summary:
+
+- Created `src/mac/services/spotprice_model_diagnostics/p0055b.py`.
+- Created `tests/mac/services/spotprice_model_diagnostics/test_p0055b.py`.
+- Wrote local P0055B DB tables:
+  - `se3_component_monthly_allocation_v1`
+  - `se3_profiled_cluster_normalized_hourly_v1`
+  - `se3_residual_normalized_hourly_v1`
+  - `se3_normalized_decomposition_hourly_v1`
+- Wrote compact evidence under `requirements/package-runs/P0055B/`.
+- Normalized component series preserve `sum(components) = ENTSO-E SE3 total`.
+- Leakage review passed: no holdout-derived migration reference/share model/reconciliation weights.
+- Monotonicity review did not support safe one-way settlement migration readability.
+- Normalized decomposition improved raw decomposition but did not beat direct SE3.
+- No API, devices, runtime writes, spot-price features, old physical_balance target, flow/A61/capacity features, model binaries or large raw prediction dumps were used.

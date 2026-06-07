@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0055A
+Last changed: P0055B
 
 ## Module
 
@@ -193,6 +193,30 @@ Important functions:
 `write_p0055a_evidence(...)` writes compact package evidence under `requirements/package-runs/P0055A/`.
 
 P0055A is LABB-only. It uses actual weather as a proxy, writes no model binaries, does not call APIs or devices, and does not change runtime behavior.
+
+## P0055B Settlement-Migration Normalized Decomposition
+
+`p0055b.run_p0055b_analysis(...)` orchestrates the LABB test of settlement/product migration normalization for the SE3 profiled-cluster plus residual decomposition.
+
+Important functions:
+
+`load_aligned_decomposition_rows(...)` loads direct SE3, P0054Y2 clusters and residual on common timestamps.
+
+`monthly_allocation_rows(...)` computes monthly observed component allocation shares.
+
+`monotonicity_metrics(...)` evaluates one-way migration readability for components and aggregate profiled/residual shares.
+
+`fit_train_share_models(...)` fits simple train-fit-only monthly linear share models and selects the latest train-fit reference allocation.
+
+`normalize_hourly_components(...)` creates normalized hourly component rows while preserving exact SE3 total load.
+
+`persist_p0055b_tables(...)` writes P0055B local DB tables for monthly allocation and normalized hourly series.
+
+`forecast_normalized_components(...)` reuses P0055A/P0054R no-price modeling for normalized clusters, normalized residual and total decomposition.
+
+`validate_p0055b_leakage(...)` verifies no holdout-derived migration reference/share model/reconciliation weights and no forbidden features.
+
+P0055B is LABB-only. It uses actual weather as a proxy, writes local research tables, writes no model binaries, does not call APIs or devices, and does not change runtime behavior.
 
 ## P0054W eSett MGA Consumption Discovery
 

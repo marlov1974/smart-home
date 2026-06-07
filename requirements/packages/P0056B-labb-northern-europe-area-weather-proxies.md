@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -214,7 +214,6 @@ SE3 proxy should be consistent with previous SE3 broad proxy
 If all area weather proxies are identical, WARN unless that is explicitly intended for a fallback.
 
 ## Forecast-safety note
-n
 These series may be actual-weather proxies for LABB training/evaluation, consistent with earlier P0054 work.
 
 Later production-like packages must distinguish:
@@ -329,6 +328,43 @@ no local weather source exists
 temperature proxy cannot be built for many primary areas
 SE3 consistency cannot be checked
 ```
+
+## Completion notes
+
+Completed by package run P0056B.
+
+Result:
+
+```text
+WARN
+```
+
+Reason for WARN:
+
+```text
+All 18 P0056A primary areas have deterministic LABB weather actual-proxy rows, but DK1, EE, LV, LT, DE_LU, PL and NL use documented fallback composites from existing local weather stations/proxies. The local source also has no snow_depth field, so snow_depth is nullable and written as null.
+```
+
+Output:
+
+```text
+area_weather_features_hourly_v1
+631116 rows
+18 areas
+2022-06-01T00:00Z..2026-05-31T21:00Z
+generated_by_package = P0056B
+```
+
+SE3 consistency:
+
+```text
+Compared P0056B SE3 temperature_2m with P0054Z SE3_BROAD_PROXY temperature_2m.
+Overlap rows: 35062
+Max abs delta: 0.0
+Mean abs delta: 0.0
+```
+
+No API, no devices, no runtime change, no model training and no spot price features were used.
 
 ## Expected Codex output
 

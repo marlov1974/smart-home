@@ -1,0 +1,50 @@
+source_kind,source_id,weight,reason,fallback_proxy,area_code,source_name,country_region,latitude,longitude,coverage_start,coverage_end,missingness
+area_proxy,se1_core_weather,1.0,Northern Sweden load-weighted weather proxy.,False,SE1,se1_core_weather,Sweden north,,,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+area_proxy,se1_core_weather,0.65,Cold northern Swedish component.,False,SE2,se1_core_weather,Sweden north/central,,,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+area_proxy,se3_load_weather,0.35,Southern transition component for SE2 load geography.,False,SE2,se3_load_weather,Sweden north/central,,,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+area_proxy,se3_load_weather,1.0,Existing SE3 broad load weather proxy.,False,SE3,se3_load_weather,Sweden central/south,,,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+area_proxy,se4_load_weather,1.0,Existing SE4 load weather proxy.,False,SE4,se4_load_weather,Sweden south,,,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_oslo,0.8,Oslo/East Norway load centre.,False,NO1,Oslo,Norway east,59.9139,10.7522,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_bergen,0.2,Western Norwegian weather influence.,False,NO1,Bergen,Norway east,60.3913,5.3221,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_bergen,0.55,South-west Norway load and coast component.,False,NO2,Bergen,Norway south-west,60.3913,5.3221,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_oslo,0.25,South Norway inland/east component.,False,NO2,Oslo,Norway south-west,59.9139,10.7522,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_goteborg,0.2,Nearby southern Nordic fallback component.,False,NO2,Goteborg,Norway south-west,57.7089,11.9746,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_trondheim,0.8,Central Norway load centre.,False,NO3,Trondheim,Norway central,63.4305,10.3951,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_bergen,0.2,Coastal Norway moderation.,False,NO3,Bergen,Norway central,60.3913,5.3221,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se1_core_tromso,0.35,Northern Norway coastal component.,False,NO4,Tromso,Norway north,69.6492,18.9553,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se1_core_bodo,0.25,Nordland coastal component.,False,NO4,Bodo,Norway north,67.2804,14.4049,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se1_core_narvik,0.25,Northern inland/coastal transition.,False,NO4,Narvik,Norway north,68.4385,17.4273,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_trondheim,0.15,Southern NO4 transition component.,False,NO4,Trondheim,Norway north,63.4305,10.3951,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_bergen,0.75,West Norway load centre.,False,NO5,Bergen,Norway west,60.3913,5.3221,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_oslo,0.25,Inland/east transition component.,False,NO5,Oslo,Norway west,59.9139,10.7522,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.45,"Available Denmark station, fallback for Jutland.",True,DK1,Copenhagen,Denmark west,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.3,Nearby southern Scandinavia fallback.,True,DK1,Malmo,Denmark west,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_goteborg,0.25,Western Scandinavia fallback.,True,DK1,Goteborg,Denmark west,57.7089,11.9746,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.8,Zealand/Copenhagen load centre.,False,DK2,Copenhagen,Denmark east,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.2,Oresund regional component.,False,DK2,Malmo,Denmark east,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_helsinki,0.35,Southern Finland load centre.,False,FI,Helsinki,Finland,60.1699,24.9384,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_tampere,0.25,Inland Finland load centre.,False,FI,Tampere,Finland,61.4978,23.761,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_turku,0.2,South-west Finland component.,False,FI,Turku,Finland,60.4518,22.2666,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se1_core_oulu,0.1,Northern Finland component.,False,FI,Oulu,Finland,65.0121,25.4651,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se1_core_rovaniemi,0.1,Lapland component.,False,FI,Rovaniemi,Finland,66.5039,25.7294,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_helsinki,0.45,Nearest configured Baltic-adjacent station.,True,EE,Helsinki,Estonia fallback,60.1699,24.9384,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_stockholm,0.3,Baltic Sea regional fallback.,True,EE,Stockholm,Estonia fallback,59.3293,18.0686,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_turku,0.25,South Finland fallback.,True,EE,Turku,Estonia fallback,60.4518,22.2666,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_helsinki,0.3,Baltic north fallback.,True,LV,Helsinki,Latvia fallback,60.1699,24.9384,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_stockholm,0.3,Baltic Sea regional fallback.,True,LV,Stockholm,Latvia fallback,59.3293,18.0686,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.2,Southern Baltic fallback.,True,LV,Copenhagen,Latvia fallback,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.2,Southern Baltic fallback.,True,LV,Malmo,Latvia fallback,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.3,Southern Baltic fallback.,True,LT,Copenhagen,Lithuania fallback,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.25,Southern Baltic fallback.,True,LT,Malmo,Lithuania fallback,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_stockholm,0.25,Baltic Sea regional fallback.,True,LT,Stockholm,Lithuania fallback,59.3293,18.0686,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,nordic_connected_helsinki,0.2,Northern Baltic fallback.,True,LT,Helsinki,Lithuania fallback,60.1699,24.9384,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.45,Closest configured continental-adjacent station.,True,DE_LU,Copenhagen,Germany/Luxembourg fallback,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.35,Southern Baltic/North Germany fallback.,True,DE_LU,Malmo,Germany/Luxembourg fallback,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_goteborg,0.2,Western Scandinavian fallback.,True,DE_LU,Goteborg,Germany/Luxembourg fallback,57.7089,11.9746,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.4,Southern Baltic fallback.,True,PL,Malmo,Poland fallback,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,se3_load_kalmar,0.3,South-east Sweden/Baltic fallback.,True,PL,Kalmar,Poland fallback,56.6634,16.3568,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.2,Western Baltic fallback.,True,PL,Copenhagen,Poland fallback,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_stockholm,0.1,Baltic regional fallback.,True,PL,Stockholm,Poland fallback,59.3293,18.0686,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_copenhagen,0.45,Closest configured North Sea-adjacent fallback.,True,NL,Copenhagen,Netherlands fallback,55.6761,12.5683,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_malmo,0.3,Southern Scandinavia fallback.,True,NL,Malmo,Netherlands fallback,55.605,13.0038,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows
+location,south_connected_goteborg,0.25,Western Scandinavia fallback.,True,NL,Goteborg,Netherlands fallback,57.7089,11.9746,2022-05-29T22:00Z,2026-05-31T21:00Z,complete_source_rows

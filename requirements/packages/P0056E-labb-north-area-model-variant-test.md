@@ -462,4 +462,11 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+Completed as `WARN` on 2026-06-08.
+
+- Ran 18 primary SE1/SE2 variants: V0..V8 for both areas.
+- Failed/skipped variants: 0.
+- Best SE1 variant by DayAhead MAE: V2 `WeightedEnsemble_no_price` with P0056D weather, 125.220 MW DayAhead MAE. It improved current P0056D baseline by about 0.64%, below the 2% candidate threshold.
+- Best SE2 variant by DayAhead MAE: V8 regime-corrected current model with P0056D weather, 206.521 MW DayAhead MAE. It improved current P0056D baseline by about 0.04%, below the 2% candidate threshold.
+- Decision: keep current default for SE1 and SE2. P0056D remains the current best LABB baseline for both, and SE2 remains the earlier P0056D candidate vs P0056C.
+- No devices, runtime changes, production activation, external live data, spot price, flow/exchange/A61/capacity or future actual load leakage.

@@ -422,4 +422,11 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+Completed as `WARN` on 2026-06-08.
+
+- Ran W0-W12 for SE1 and SE2 with `HorizonBiasCorrected_WeightedEnsemble_no_price`; 26 stack results completed and 0 stacks failed.
+- Result is LABB exploratory holdout ablation. It is not production selection and must not be promoted without nested/rolling validation.
+- SE1 best holdout stack: W10, DayAhead MAE 125.804 MW, full36 MAE 124.166 MW. It does not beat P0056E V2 current best, but W7 is the smallest stack within 0.5% of the P0056F best.
+- SE2 best holdout stack: W12, DayAhead MAE 206.179 MW, full36 MAE 197.547 MW. It is only about 0.17% better than P0056E V8 DayAhead, below candidate-default threshold; W9 is the smallest stack within 0.5% of the P0056F best.
+- Decision: keep current weather feature set/default evidence for now; use P0056F as evidence that temperature/heating features matter strongly and late weather features have area-specific marginal value.
+- No devices, runtime changes, production activation, external live data, spot price, flow/exchange/A61/capacity or future actual load leakage.

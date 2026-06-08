@@ -1,0 +1,2744 @@
+{
+  "area_model_results": [
+    {
+      "DayAhead_RMSE": 255.23087520361096,
+      "DayAhead_bias": 14.544167238225874,
+      "DayAhead_hourly_MAE": 210.77059042066747,
+      "MAE_percent_of_mean_actual": 16.38546613090602,
+      "MAE_percent_of_median_actual": 16.377894915369517,
+      "absolute_daily_energy_error_MWh": 3252.4790809327824,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 10.279181355902212,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 8.23045267489712e-06,
+      "model_id": "M0",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 258.08579749103944,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 180.86309523809524,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 223.53125000000003,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 239.01180555555555,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 204.77901785714286,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 251.4275313620072,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 207.81956018518522,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 198.73067129629632,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 126.83333333333336,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 102.24166666666666,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 158.95238095238096,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 168.14861111111108,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 391.80569272976646,
+      "p95_absolute_error": 444.7561042524007,
+      "signed_daily_energy_error_MWh": 349.06001371742104,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 191.9033365261814,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 258.3488828502415,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 168.9643569795981,
+      "DayAhead_bias": 4.257332681809584,
+      "DayAhead_hourly_MAE": 136.09728672449836,
+      "MAE_percent_of_mean_actual": 10.49373709352738,
+      "MAE_percent_of_median_actual": 10.487706792072082,
+      "absolute_daily_energy_error_MWh": 1976.7832895410577,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.139027007530558,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 0.33820576131687274,
+      "model_id": "M1",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 120.200654697191,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 119.14864695707884,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 107.18670782071888,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 160.22778933262057,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 151.9873912990713,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 198.23154826732457,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 109.38839091065259,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 131.99095814770232,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 91.46296429847678,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 81.06617574516291,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 110.00450779626104,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 113.79370110995151,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 265.76069340674223,
+      "p95_absolute_error": 305.3776581792732,
+      "signed_daily_energy_error_MWh": 102.17598436342988,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 124.64534030942833,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 164.97610811902283,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 170.92444763459036,
+      "DayAhead_bias": 8.756602937318316,
+      "DayAhead_hourly_MAE": 137.72279970697008,
+      "MAE_percent_of_mean_actual": 10.635273024644858,
+      "MAE_percent_of_median_actual": 10.628812589575096,
+      "absolute_daily_energy_error_MWh": 2061.7127546434963,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.450360957656883,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 1.0033621399176953,
+      "model_id": "M2",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 117.61267331902611,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 116.84657218946266,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 120.17587908322429,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 162.67128923362722,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 150.72418752162528,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 202.84946492891632,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 118.27013092762498,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 133.10349008603632,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 96.19715800795946,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 70.13189821102523,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 112.56168426320505,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 112.56484728867741,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 270.231736359377,
+      "p95_absolute_error": 308.0536065662598,
+      "signed_daily_energy_error_MWh": 210.15847049563953,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 126.89636927858231,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 165.02423296116518,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 166.07132393703094,
+      "DayAhead_bias": 5.315158392201877,
+      "DayAhead_hourly_MAE": 133.58783257025758,
+      "MAE_percent_of_mean_actual": 10.327792572574658,
+      "MAE_percent_of_median_actual": 10.320137164285631,
+      "absolute_daily_energy_error_MWh": 1894.0800068913068,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 5.921786491353584,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 0.6752674897119341,
+      "model_id": "M3",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 114.81292270822806,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 118.14259982106911,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 113.47504945244287,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 154.69349740790406,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 150.43876299929806,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 193.0636739231615,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 106.17554423875421,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 133.7271779846268,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 96.13610752811819,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 72.66566824310738,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 110.20919403858151,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 113.06443630611088,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 262.1444246677669,
+      "p95_absolute_error": 301.2901767258602,
+      "signed_daily_energy_error_MWh": 127.56380141284507,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 122.35385009448505,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 161.9170057700317,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 168.15382585595128,
+      "DayAhead_bias": 7.8957644989356215,
+      "DayAhead_hourly_MAE": 135.32140873312517,
+      "MAE_percent_of_mean_actual": 10.463946799908651,
+      "MAE_percent_of_median_actual": 10.457768920533066,
+      "absolute_daily_energy_error_MWh": 1999.7034648231138,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.265119514344804,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 2.4173991769547336,
+      "model_id": "M4",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 116.860059600481,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 122.66048975206652,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 127.27422544944793,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 159.52791747732272,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 151.71862482341058,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 191.8739440875002,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 106.75240208458852,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 134.41280379734297,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 91.63609885275424,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 74.8685995856723,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 111.31331131661274,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 115.60250096691492,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 264.8955487066932,
+      "p95_absolute_error": 303.9998697447891,
+      "signed_daily_energy_error_MWh": 189.4983479744549,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 123.78809922448963,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 164.4054066244673,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 170.50452563468002,
+      "DayAhead_bias": 8.451409652563438,
+      "DayAhead_hourly_MAE": 137.05396308776827,
+      "MAE_percent_of_mean_actual": 10.626330348986409,
+      "MAE_percent_of_median_actual": 10.618788861681205,
+      "absolute_daily_energy_error_MWh": 1995.554757493678,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.260060008309852,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 0.9249135802469131,
+      "model_id": "M5",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 116.49070400661893,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 116.96628752208893,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 131.2247250874837,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 156.69516861527052,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 146.21920643155536,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 206.13550739903602,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 113.8915752552174,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 136.38277155558268,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 103.30418226453992,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 72.18387807210286,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 111.27606709798177,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 114.23724814520942,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 268.51019331483366,
+      "p95_absolute_error": 308.5924348556457,
+      "signed_daily_energy_error_MWh": 202.83383166152257,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 127.21417057529405,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 161.86735290183344,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 166.1995236594834,
+      "DayAhead_bias": 6.93542605178544,
+      "DayAhead_hourly_MAE": 133.47055155456061,
+      "MAE_percent_of_mean_actual": 10.315408444198356,
+      "MAE_percent_of_median_actual": 10.308870447826319,
+      "absolute_daily_energy_error_MWh": 1924.0669222051422,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.008834276090972,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 8.23045267489712e-06,
+      "model_id": "M6",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 113.8406631166712,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 116.48151946317793,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 118.39774768799072,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 155.44492271590298,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 148.01677090904164,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 195.95093449644273,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 108.37181619265847,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 132.27594699105668,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 92.4743135704607,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 70.69880530226915,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 109.40311539189864,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 111.70107098688224,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 262.43010913561847,
+      "p95_absolute_error": 301.5113166942356,
+      "signed_daily_energy_error_MWh": 166.45022524285056,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 122.54837771223772,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 161.01342472215748,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 167.8896404841598,
+      "DayAhead_bias": 12.078532468275691,
+      "DayAhead_hourly_MAE": 135.02514123854567,
+      "MAE_percent_of_mean_actual": 10.456376075897165,
+      "MAE_percent_of_median_actual": 10.448559153365192,
+      "absolute_daily_energy_error_MWh": 1938.661992948777,
+      "area_code": "SE1",
+      "daily_energy_error_percent_of_actual": 6.069964759682665,
+      "delivery_day_count": 243,
+      "mean_seconds_per_origin": 0.000263374485596708,
+      "model_id": "M7",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 115.23668747122062,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 119.12568003935517,
+          "count": 7
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 120.76802398467956,
+          "count": 4
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 155.3028949747326,
+          "count": 30
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 148.96412449269727,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 196.3259341318769,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 108.76311220822542,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 132.07089157979468,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 114.87349194621413,
+          "count": 3
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 80.8295063922755,
+          "count": 5
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 111.83512561855335,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 115.53846599728344,
+          "count": 30
+        }
+      },
+      "origin_count": 243,
+      "p90_absolute_error": 264.93286714362284,
+      "p95_absolute_error": 304.8185409239418,
+      "signed_daily_energy_error_MWh": 289.8847792386165,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 124.11927631733553,
+          "count": 174
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 162.5268875615975,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 406.84924353328,
+      "DayAhead_bias": 26.740624999999998,
+      "DayAhead_hourly_MAE": 344.4907696759261,
+      "MAE_percent_of_mean_actual": 19.21943768475988,
+      "MAE_percent_of_median_actual": 19.0940496511237,
+      "absolute_daily_energy_error_MWh": 5586.841666666666,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 12.623593129891935,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 8.333333333333334e-06,
+      "model_id": "M0",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 368.7448476702509,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 250.725,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 279.7976190476191,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 482.58188657407413,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 399.00086805555554,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 445.99103942652334,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 429.8815972222221,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 281.8886574074075,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 189.89692982456143,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 181.00724637681165,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 185.54166666666666,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 194.99242424242422,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 615.9215625,
+      "p95_absolute_error": 684.3582638888892,
+      "signed_daily_energy_error_MWh": 641.7750000000001,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 302.4795118583496,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 448.6056260064413,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 293.6878684313687,
+      "DayAhead_bias": -10.299745872296144,
+      "DayAhead_hourly_MAE": 246.79751337870496,
+      "MAE_percent_of_mean_actual": 13.693900713616303,
+      "MAE_percent_of_median_actual": 13.596125859835363,
+      "absolute_daily_energy_error_MWh": 4057.983508725418,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 9.104422519730916,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 0.3713583333333333,
+      "model_id": "M1",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 250.50812201999472,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 228.77905205003873,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 251.22916742971026,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 331.693287526676,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 264.0723177579981,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 368.7511868846558,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 231.71230732328792,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 216.21777798847862,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 158.7430728887713,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 146.34279824669494,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 178.85215660571575,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 161.67672220030462,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 448.8880864904728,
+      "p95_absolute_error": 506.5445897793337,
+      "signed_daily_energy_error_MWh": -247.19390093510762,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 229.29959667203252,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 290.1619156517629,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 285.1667762060293,
+      "DayAhead_bias": -14.467654243694195,
+      "DayAhead_hourly_MAE": 239.17283012877266,
+      "MAE_percent_of_mean_actual": 13.178554378971642,
+      "MAE_percent_of_median_actual": 13.07602471042183,
+      "absolute_daily_energy_error_MWh": 3896.8840391593953,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.648569790996506,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 1.0612166666666674,
+      "model_id": "M2",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 255.17715922490967,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 214.81911926752872,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 228.31507223694607,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 335.8188072827141,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 264.73315134847684,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 350.4446058752146,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 219.80078071004797,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 201.32222979596008,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 148.56552192422708,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 130.84895527789777,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 186.76589234022995,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 166.36333661731157,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 436.7898760582135,
+      "p95_absolute_error": 492.41502088494747,
+      "signed_daily_energy_error_MWh": -347.2237018486611,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 224.26541853844483,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 276.1172849395855,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 278.04515819732643,
+      "DayAhead_bias": -19.102501605448296,
+      "DayAhead_hourly_MAE": 233.09245936856348,
+      "MAE_percent_of_mean_actual": 12.87590966065606,
+      "MAE_percent_of_median_actual": 12.78393661426759,
+      "absolute_daily_energy_error_MWh": 3745.2404319812335,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.324765424717166,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 0.7381749999999998,
+      "model_id": "M3",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 239.00128957896473,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 215.94193417038846,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 227.86502962283885,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 319.7324038235811,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 257.5279166822361,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 339.5620566091442,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 217.3965818603559,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 200.50463067927146,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 149.6072290503488,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 133.31144082661763,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 144.23722124091077,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 168.87529010408346,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 426.6963901771496,
+      "p95_absolute_error": 481.43602077910316,
+      "signed_daily_energy_error_MWh": -458.46003853075797,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 215.3451669733463,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 277.0748796523625,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 279.4900127355453,
+      "DayAhead_bias": -12.204514765583474,
+      "DayAhead_hourly_MAE": 233.75305382282218,
+      "MAE_percent_of_mean_actual": 12.886913882353019,
+      "MAE_percent_of_median_actual": 12.791420659318074,
+      "absolute_daily_energy_error_MWh": 3800.3132341913815,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.467827003418781,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 2.4820666666666664,
+      "model_id": "M4",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 252.73908093052603,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 198.1531587926284,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 220.49804651721578,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 320.82868529099767,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 258.2566284445728,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 342.3436513729728,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 213.0242814789525,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 200.38577066043533,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 148.66989616378555,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 126.19924824784691,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 168.4057775938843,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 171.80217949685095,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 428.1410281212008,
+      "p95_absolute_error": 480.99601625493705,
+      "signed_daily_energy_error_MWh": -292.9083543740038,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 217.5620885707676,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 273.87848944747964,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 282.4930778253444,
+      "DayAhead_bias": -19.00560351477728,
+      "DayAhead_hourly_MAE": 235.2599148432414,
+      "MAE_percent_of_mean_actual": 12.955879923530974,
+      "MAE_percent_of_median_actual": 12.859149440841732,
+      "absolute_daily_energy_error_MWh": 3905.871254645453,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.662812287509961,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 0.9799458333333332,
+      "model_id": "M5",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 260.0970638917766,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 214.50893859863282,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 223.53167797270277,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 316.91962461118345,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 266.08374859037855,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 336.0061428931451,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 216.43579152425133,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 201.33618994818792,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 146.8923034667969,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 127.70213583241336,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 175.29987080891928,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 168.44868700432056,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 435.43038810729985,
+      "p95_absolute_error": 489.7364525265163,
+      "signed_daily_energy_error_MWh": -456.1344843546551,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 218.35979580151096,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 277.1428185553559,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 278.162473838302,
+      "DayAhead_bias": -15.020016041180005,
+      "DayAhead_hourly_MAE": 232.69280738198043,
+      "MAE_percent_of_mean_actual": 12.832408927934823,
+      "MAE_percent_of_median_actual": 12.73708992483235,
+      "absolute_daily_energy_error_MWh": 3775.9028425116517,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.39254525423038,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 4.166666666666667e-06,
+      "model_id": "M6",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 245.9494934370623,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 211.93871020477098,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 227.69560867639478,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 320.175462989551,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 257.7995183594344,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 341.3950702454978,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 213.1710771690279,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 199.7537422811944,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 145.58341779311465,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 127.7076100430625,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 169.58438105050027,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 165.61299330246788,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 427.0318904374095,
+      "p95_absolute_error": 480.80424523512636,
+      "signed_daily_energy_error_MWh": -360.48038498832017,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 216.11670526280292,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 273.77271263385495,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 279.71172931710294,
+      "DayAhead_bias": 4.838889684750582,
+      "DayAhead_hourly_MAE": 233.9480432393704,
+      "MAE_percent_of_mean_actual": 12.957669101084063,
+      "MAE_percent_of_median_actual": 12.861975152134884,
+      "absolute_daily_energy_error_MWh": 3817.100428994171,
+      "area_code": "SE2",
+      "daily_energy_error_percent_of_actual": 8.569091448973127,
+      "delivery_day_count": 240,
+      "mean_seconds_per_origin": 0.0002375000000000002,
+      "model_id": "M7",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 243.01258231360669,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 227.69461994158615,
+          "count": 5
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 235.39834643383165,
+          "count": 7
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 322.40434963731917,
+          "count": 24
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 259.45066709447497,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 341.32749662222926,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 214.11804402802184,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 201.49607597450043,
+          "count": 30
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 159.73841440688457,
+          "count": 19
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 120.37227241626806,
+          "count": 23
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 136.66558867785452,
+          "count": 1
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 166.88381888125411,
+          "count": 11
+        }
+      },
+      "origin_count": 240,
+      "p90_absolute_error": 428.922079703638,
+      "p95_absolute_error": 484.02551605224176,
+      "signed_daily_energy_error_MWh": 116.13335243401394,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 217.58156622651143,
+          "count": 171
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 274.50844279297775,
+          "count": 69
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 735.4254966568225,
+      "DayAhead_bias": 37.50782930107527,
+      "DayAhead_hourly_MAE": 661.896583781362,
+      "MAE_percent_of_mean_actual": 6.61981517987298,
+      "MAE_percent_of_median_actual": 6.4827417223418875,
+      "absolute_daily_energy_error_MWh": 13849.638978494622,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 5.72141543552369,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 9.67741935483871e-06,
+      "model_id": "M0",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 1183.0619399641578,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 649.4485294117649,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 914.4402777777779,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 552.9229390681004,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 831.1654265873016,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 743.5658602150538,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 607.1430555555556,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 565.7724014336917,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 444.0319444444445,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 346.2680555555556,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 352.4732142857142,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 311.2202380952381,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 1055.646102150538,
+      "p95_absolute_error": 1127.9730510752688,
+      "signed_daily_energy_error_MWh": 900.1879032258065,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 653.2065579436902,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 683.4751872659178,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 424.85394023805753,
+      "DayAhead_bias": -55.34914062784905,
+      "DayAhead_hourly_MAE": 360.8930621735057,
+      "MAE_percent_of_mean_actual": 3.7989328546964347,
+      "MAE_percent_of_median_actual": 3.717298030778816,
+      "absolute_daily_energy_error_MWh": 6212.243319047544,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.706990225809329,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 0.6113774193548385,
+      "model_id": "M1",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 398.9460762937924,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 459.2027014879627,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 345.26902180136824,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 372.01470454822874,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 329.7090406818532,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 430.4208248045839,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 340.5564452884947,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 355.2656146316438,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 347.04433988020367,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 333.23163666039625,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 278.4541617050952,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 243.01211542695063,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 659.2859964956168,
+      "p95_absolute_error": 725.7320971650989,
+      "signed_daily_energy_error_MWh": -1328.3793750683772,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 365.45100002141896,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 349.5750367309345,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 339.56643678143223,
+      "DayAhead_bias": -52.64238252242862,
+      "DayAhead_hourly_MAE": 286.97931214713947,
+      "MAE_percent_of_mean_actual": 2.9822484100962208,
+      "MAE_percent_of_median_actual": 2.9221861297386127,
+      "absolute_daily_energy_error_MWh": 5015.504724931763,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.172006634873114,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 1.4761709677419352,
+      "model_id": "M2",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 328.3649321637503,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 390.3650471731998,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 278.7237879076292,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 315.3773299549803,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 287.1364622003616,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 353.26171092179334,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 301.1624630701383,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 263.16608907378395,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 247.40003053979413,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 206.52998427031307,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 187.967616935645,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 225.1790693971266,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 520.7400529905777,
+      "p95_absolute_error": 580.3186456435491,
+      "signed_daily_energy_error_MWh": -1263.417180538287,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 288.8285095837282,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 282.3874848045991,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 330.8927744356763,
+      "DayAhead_bias": -57.028453120059474,
+      "DayAhead_hourly_MAE": 279.8103887648366,
+      "MAE_percent_of_mean_actual": 2.893020417743502,
+      "MAE_percent_of_median_actual": 2.8357995387441086,
+      "absolute_daily_energy_error_MWh": 4783.20080832924,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.057292546027456,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 1.1711032258064513,
+      "model_id": "M3",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 348.4342457070109,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 362.6383202166122,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 282.6551892651392,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 279.5582558660884,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 278.26548077403555,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 369.82419409569917,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 306.37862904482495,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 248.35704320803669,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 237.9234575280358,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 193.9932305352193,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 156.3724110081375,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 190.8315373216566,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 513.1376889523152,
+      "p95_absolute_error": 565.4346507644618,
+      "signed_daily_energy_error_MWh": -1368.682874881428,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 280.54856419233346,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 277.9773913549851,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 321.67527034813907,
+      "DayAhead_bias": -43.3835906358055,
+      "DayAhead_hourly_MAE": 272.1031070270599,
+      "MAE_percent_of_mean_actual": 2.8214148164203,
+      "MAE_percent_of_median_actual": 2.7660880779532864,
+      "absolute_daily_energy_error_MWh": 4745.0399328019475,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.0420496164313775,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 2.9088903225806475,
+      "model_id": "M4",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 324.1296007093886,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 367.71629051849374,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 270.396708708698,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 276.80421564921943,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 263.2856057248247,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 356.95309717580693,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 293.5048039545139,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 244.79175468299024,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 234.0186758142036,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 196.08268185103935,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 157.0486550522164,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 203.8547548506912,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 493.58010473803967,
+      "p95_absolute_error": 549.541194201323,
+      "signed_daily_energy_error_MWh": -1041.2061752593324,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 275.01867656757787,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 264.86332198824533,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 321.1922135580788,
+      "DayAhead_bias": -49.68817523696515,
+      "DayAhead_hourly_MAE": 271.78420615794414,
+      "MAE_percent_of_mean_actual": 2.8159662505847582,
+      "MAE_percent_of_median_actual": 2.7590052024218656,
+      "absolute_daily_energy_error_MWh": 4774.659010626679,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.0556112569109604,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 1.321009677419356,
+      "model_id": "M5",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 322.02234324246746,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 380.56954537185965,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 262.01656561957464,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 286.5051470794131,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 265.71498229011655,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 348.88750017501116,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 301.2075753671151,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 240.82341435476866,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 233.57650689019096,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 192.42192247178818,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 158.625492640904,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 185.79679652622767,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 495.26324833039354,
+      "p95_absolute_error": 550.7583346196659,
+      "signed_daily_energy_error_MWh": -1192.5162056871638,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 275.8454687426353,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 261.6994979420256,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 314.13287749933363,
+      "DayAhead_bias": -51.0666877465082,
+      "DayAhead_hourly_MAE": 266.6123012860769,
+      "MAE_percent_of_mean_actual": 2.767420283019955,
+      "MAE_percent_of_median_actual": 2.7117686731099644,
+      "absolute_daily_energy_error_MWh": 4664.5791505085435,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 2.0101849442767454,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 6.451612903225806e-06,
+      "model_id": "M6",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 313.3655958424975,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 371.4414573134874,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 261.1167886444725,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 274.51077645577544,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 257.83894390818375,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 347.5928530486513,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 282.9031800166303,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 237.8147388194693,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 229.98664837796164,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 194.83626415949354,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 168.99540713279546,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 187.5418814216095,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 484.235818917347,
+      "p95_absolute_error": 532.0131766526699,
+      "signed_daily_energy_error_MWh": -1225.600505916197,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 269.93015800701767,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 258.37357841722326,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 309.3992258971394,
+      "DayAhead_bias": -10.982810330171278,
+      "DayAhead_hourly_MAE": 262.4263438563162,
+      "MAE_percent_of_mean_actual": 2.7311463943971876,
+      "MAE_percent_of_median_actual": 2.6766935791076847,
+      "absolute_daily_energy_error_MWh": 4563.963738762048,
+      "area_code": "SE3",
+      "daily_energy_error_percent_of_actual": 1.97487130906352,
+      "delivery_day_count": 310,
+      "mean_seconds_per_origin": 0.00046129032258064546,
+      "model_id": "M7",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 302.2524172065781,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 375.1254573109148,
+          "count": 17
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 261.6588244060659,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 269.6813843530177,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 261.3589599147414,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 331.5979187474005,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 280.15525718892997,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 218.38373348785873,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 225.4007897778305,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 203.62048622962362,
+          "count": 30
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 170.93523325996247,
+          "count": 14
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 194.20712602945966,
+          "count": 7
+        }
+      },
+      "origin_count": 310,
+      "p90_absolute_error": 476.61838278107473,
+      "p95_absolute_error": 525.8807128863812,
+      "signed_daily_energy_error_MWh": -263.5874479241108,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 266.8381850078744,
+          "count": 221
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 251.47109785076145,
+          "count": 89
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 695.0527920619,
+      "DayAhead_bias": -9.761547754946704,
+      "DayAhead_hourly_MAE": 643.7711862633182,
+      "MAE_percent_of_mean_actual": 6.218665219783599,
+      "MAE_percent_of_median_actual": 6.153106314544071,
+      "absolute_daily_energy_error_MWh": 14167.696872146127,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 5.6539545514465255,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 4.109589041095892e-05,
+      "model_id": "M0",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 1384.4039874551968,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 547.2805107526882,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 590.1417592592592,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 860.0154009856631,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 965.7962549603175,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 606.96001344086,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 797.438877314815,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 626.9497199820789,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 446.6254282407408,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 251.41672267025095,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 287.27815860215054,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 380.48553240740733,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 941.9568721461188,
+      "p95_absolute_error": 996.0245456621004,
+      "signed_daily_energy_error_MWh": -234.27714611872128,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 634.130846688034,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 667.6425033068782,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 396.5632389960737,
+      "DayAhead_bias": -122.63211883764873,
+      "DayAhead_hourly_MAE": 350.10869202147273,
+      "MAE_percent_of_mean_actual": 3.446469044678722,
+      "MAE_percent_of_median_actual": 3.4085190244615884,
+      "absolute_daily_energy_error_MWh": 7046.26373534258,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.8531851598434117,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 0.7949671232876709,
+      "model_id": "M1",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 403.22336834555784,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 337.6953364110156,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 473.2011859478942,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 464.4728849273737,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 413.59618765525494,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 468.2857523530849,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 390.2345109701498,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 315.4943165671031,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 268.2948225733213,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 170.5999396753043,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 246.7944508332314,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 255.1172075418884,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 582.0827721950918,
+      "p95_absolute_error": 632.2324807084598,
+      "signed_daily_energy_error_MWh": -2943.170852103571,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 348.0986359079967,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 355.0859738262706,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 369.06532737277047,
+      "DayAhead_bias": -140.5410457822023,
+      "DayAhead_hourly_MAE": 326.01136204440985,
+      "MAE_percent_of_mean_actual": 3.1972146745131247,
+      "MAE_percent_of_median_actual": 3.1611706043699836,
+      "absolute_daily_energy_error_MWh": 6483.9031027053925,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.6165011317646263,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 1.6920054794520538,
+      "model_id": "M2",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 405.8014657846319,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 313.5952474878482,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 438.201693445503,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 449.4497324555956,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 365.53463118743826,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 418.15380217196366,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 350.796689326914,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 270.49502775411406,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 260.5196974657459,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 181.96674300341385,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 217.08553911786987,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 244.02202582593083,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 540.8982701652071,
+      "p95_absolute_error": 586.4457040459406,
+      "signed_daily_energy_error_MWh": -3372.985098772858,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 327.71750916008455,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 321.7866168055968,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 384.944571479074,
+      "DayAhead_bias": -147.0587416390916,
+      "DayAhead_hourly_MAE": 341.3508455617051,
+      "MAE_percent_of_mean_actual": 3.349780697128005,
+      "MAE_percent_of_median_actual": 3.3117376345672747,
+      "absolute_daily_energy_error_MWh": 7086.490600829032,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.868437945440623,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 1.5263808219178079,
+      "model_id": "M3",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 442.8604402815941,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 332.3951415795857,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 433.05774857340964,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 467.1619906171183,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 361.25236976721146,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 452.87749793019486,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 368.34651391945994,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 301.32005511170314,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 273.6598716556946,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 191.17689029476935,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 221.88334185074896,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 250.87107214820827,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 563.705541803517,
+      "p95_absolute_error": 607.4819098488681,
+      "signed_daily_energy_error_MWh": -3529.409799338194,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 344.8908870740395,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 332.58502848354317,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 358.90644912977086,
+      "DayAhead_bias": -151.26578174502063,
+      "DayAhead_hourly_MAE": 318.8710326636499,
+      "MAE_percent_of_mean_actual": 3.1198757421585346,
+      "MAE_percent_of_median_actual": 3.08468298691448,
+      "absolute_daily_energy_error_MWh": 6454.861415305953,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.598371144378937,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 3.128164383561644,
+      "model_id": "M4",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 409.6201779889778,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 304.7846978360299,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 433.79035385881093,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 413.8648061913355,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 352.28342056721897,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 443.0381800553949,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 342.3032074100421,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 262.63345433636056,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 253.2120651222263,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 171.3803439250247,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 201.7560281121007,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 240.84713376052773,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 521.9737979047582,
+      "p95_absolute_error": 567.9391955483055,
+      "signed_daily_energy_error_MWh": -3630.378761880499,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 321.7662431497689,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 311.7019400313561,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 363.3495314851557,
+      "DayAhead_bias": -135.16926087076095,
+      "DayAhead_hourly_MAE": 323.03528013743215,
+      "MAE_percent_of_mean_actual": 3.160215072583059,
+      "MAE_percent_of_median_actual": 3.1248994688849145,
+      "absolute_daily_energy_error_MWh": 6564.554408265554,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.646556007335311,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 1.527021917808219,
+      "model_id": "M5",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 424.51898994035616,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 299.2123653726339,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 436.82328911675353,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 428.3117695907537,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 376.2109607514881,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 432.44023656264,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 347.0461276584202,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 267.68627050256214,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 262.8263972077546,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 166.58692793213766,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 208.85072148367493,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 230.57567355685765,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 530.1939548819203,
+      "p95_absolute_error": 573.4618008481377,
+      "signed_daily_energy_error_MWh": -3244.062260898258,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 326.57673939240266,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 314.2659524584573,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 355.0733409274115,
+      "DayAhead_bias": -139.33423044147463,
+      "DayAhead_hourly_MAE": 315.2979006583077,
+      "MAE_percent_of_mean_actual": 3.089737595748693,
+      "MAE_percent_of_median_actual": 3.0550317615828457,
+      "absolute_daily_energy_error_MWh": 6447.211262435078,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.6016423778170883,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 2.7397260273972607e-05,
+      "model_id": "M6",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 383.253163943089,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 306.7848125413927,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 429.29089949604696,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 429.09799393972486,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 344.9173352087059,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 429.4551716870392,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 347.025098992353,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 264.46659593371527,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 252.0279079342811,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 159.0505085012225,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 207.7354106178801,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 233.3525929890737,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 517.061466606915,
+      "p95_absolute_error": 560.4574069445137,
+      "signed_daily_energy_error_MWh": -3344.021530595388,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 317.6209735909427,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 309.54552958702163,
+          "count": 105
+        }
+      }
+    },
+    {
+      "DayAhead_RMSE": 341.20720417442493,
+      "DayAhead_bias": -29.883574846409783,
+      "DayAhead_hourly_MAE": 301.5663743519908,
+      "MAE_percent_of_mean_actual": 2.985623336049999,
+      "MAE_percent_of_median_actual": 2.95360817965106,
+      "absolute_daily_energy_error_MWh": 6053.87528631304,
+      "area_code": "FI",
+      "daily_energy_error_percent_of_actual": 2.4813984105335525,
+      "delivery_day_count": 365,
+      "mean_seconds_per_origin": 0.0005342465753424661,
+      "model_id": "M7",
+      "monthly_split": {
+        "1": {
+          "DayAhead_hourly_MAE": 342.2360380327671,
+          "count": 31
+        },
+        "10": {
+          "DayAhead_hourly_MAE": 293.2796366342458,
+          "count": 31
+        },
+        "11": {
+          "DayAhead_hourly_MAE": 391.66168429184717,
+          "count": 30
+        },
+        "12": {
+          "DayAhead_hourly_MAE": 381.42401158609994,
+          "count": 31
+        },
+        "2": {
+          "DayAhead_hourly_MAE": 379.2591602166179,
+          "count": 28
+        },
+        "3": {
+          "DayAhead_hourly_MAE": 367.73894556064744,
+          "count": 31
+        },
+        "4": {
+          "DayAhead_hourly_MAE": 337.08981755127866,
+          "count": 30
+        },
+        "5": {
+          "DayAhead_hourly_MAE": 279.30055102797945,
+          "count": 31
+        },
+        "6": {
+          "DayAhead_hourly_MAE": 254.12414252868376,
+          "count": 30
+        },
+        "7": {
+          "DayAhead_hourly_MAE": 158.65483159349878,
+          "count": 31
+        },
+        "8": {
+          "DayAhead_hourly_MAE": 207.56328887014422,
+          "count": 31
+        },
+        "9": {
+          "DayAhead_hourly_MAE": 234.3361472930037,
+          "count": 30
+        }
+      },
+      "origin_count": 365,
+      "p90_absolute_error": 501.67472143668766,
+      "p95_absolute_error": 544.5305769572175,
+      "signed_daily_energy_error_MWh": -717.2057963138352,
+      "weekday_weekend_split": {
+        "weekday": {
+          "DayAhead_hourly_MAE": 302.8398880102135,
+          "count": 260
+        },
+        "weekend": {
+          "DayAhead_hourly_MAE": 298.41291196020086,
+          "count": 105
+        }
+      }
+    }
+  ],
+  "decision": {
+    "production_ready": false,
+    "reason": "lowest mean realistic DayAhead MAE across scoped areas",
+    "recommended_new_baseline_for_emulator_consumption_input": "M7"
+  },
+  "failures": [],
+  "leakage_review": {
+    "flow_exchange_a61_capacity_feature_used": false,
+    "forbidden_features": [],
+    "future_actual_load_feature_used": false,
+    "ok": true,
+    "old_physical_balance_target_used": false,
+    "spot_price_feature_used": false
+  },
+  "model_ranking": [
+    {
+      "DayAhead_hourly_MAE": 133.47055155456061,
+      "area_code": "SE1",
+      "model_id": "M6",
+      "rank": 1
+    },
+    {
+      "DayAhead_hourly_MAE": 133.58783257025758,
+      "area_code": "SE1",
+      "model_id": "M3",
+      "rank": 2
+    },
+    {
+      "DayAhead_hourly_MAE": 135.02514123854567,
+      "area_code": "SE1",
+      "model_id": "M7",
+      "rank": 3
+    },
+    {
+      "DayAhead_hourly_MAE": 135.32140873312517,
+      "area_code": "SE1",
+      "model_id": "M4",
+      "rank": 4
+    },
+    {
+      "DayAhead_hourly_MAE": 136.09728672449836,
+      "area_code": "SE1",
+      "model_id": "M1",
+      "rank": 5
+    },
+    {
+      "DayAhead_hourly_MAE": 137.05396308776827,
+      "area_code": "SE1",
+      "model_id": "M5",
+      "rank": 6
+    },
+    {
+      "DayAhead_hourly_MAE": 137.72279970697008,
+      "area_code": "SE1",
+      "model_id": "M2",
+      "rank": 7
+    },
+    {
+      "DayAhead_hourly_MAE": 210.77059042066747,
+      "area_code": "SE1",
+      "model_id": "M0",
+      "rank": 8
+    },
+    {
+      "DayAhead_hourly_MAE": 232.69280738198043,
+      "area_code": "SE2",
+      "model_id": "M6",
+      "rank": 1
+    },
+    {
+      "DayAhead_hourly_MAE": 233.09245936856348,
+      "area_code": "SE2",
+      "model_id": "M3",
+      "rank": 2
+    },
+    {
+      "DayAhead_hourly_MAE": 233.75305382282218,
+      "area_code": "SE2",
+      "model_id": "M4",
+      "rank": 3
+    },
+    {
+      "DayAhead_hourly_MAE": 233.9480432393704,
+      "area_code": "SE2",
+      "model_id": "M7",
+      "rank": 4
+    },
+    {
+      "DayAhead_hourly_MAE": 235.2599148432414,
+      "area_code": "SE2",
+      "model_id": "M5",
+      "rank": 5
+    },
+    {
+      "DayAhead_hourly_MAE": 239.17283012877266,
+      "area_code": "SE2",
+      "model_id": "M2",
+      "rank": 6
+    },
+    {
+      "DayAhead_hourly_MAE": 246.79751337870496,
+      "area_code": "SE2",
+      "model_id": "M1",
+      "rank": 7
+    },
+    {
+      "DayAhead_hourly_MAE": 344.4907696759261,
+      "area_code": "SE2",
+      "model_id": "M0",
+      "rank": 8
+    },
+    {
+      "DayAhead_hourly_MAE": 262.4263438563162,
+      "area_code": "SE3",
+      "model_id": "M7",
+      "rank": 1
+    },
+    {
+      "DayAhead_hourly_MAE": 266.6123012860769,
+      "area_code": "SE3",
+      "model_id": "M6",
+      "rank": 2
+    },
+    {
+      "DayAhead_hourly_MAE": 271.78420615794414,
+      "area_code": "SE3",
+      "model_id": "M5",
+      "rank": 3
+    },
+    {
+      "DayAhead_hourly_MAE": 272.1031070270599,
+      "area_code": "SE3",
+      "model_id": "M4",
+      "rank": 4
+    },
+    {
+      "DayAhead_hourly_MAE": 279.8103887648366,
+      "area_code": "SE3",
+      "model_id": "M3",
+      "rank": 5
+    },
+    {
+      "DayAhead_hourly_MAE": 286.97931214713947,
+      "area_code": "SE3",
+      "model_id": "M2",
+      "rank": 6
+    },
+    {
+      "DayAhead_hourly_MAE": 360.8930621735057,
+      "area_code": "SE3",
+      "model_id": "M1",
+      "rank": 7
+    },
+    {
+      "DayAhead_hourly_MAE": 661.896583781362,
+      "area_code": "SE3",
+      "model_id": "M0",
+      "rank": 8
+    },
+    {
+      "DayAhead_hourly_MAE": 301.5663743519908,
+      "area_code": "FI",
+      "model_id": "M7",
+      "rank": 1
+    },
+    {
+      "DayAhead_hourly_MAE": 315.2979006583077,
+      "area_code": "FI",
+      "model_id": "M6",
+      "rank": 2
+    },
+    {
+      "DayAhead_hourly_MAE": 318.8710326636499,
+      "area_code": "FI",
+      "model_id": "M4",
+      "rank": 3
+    },
+    {
+      "DayAhead_hourly_MAE": 323.03528013743215,
+      "area_code": "FI",
+      "model_id": "M5",
+      "rank": 4
+    },
+    {
+      "DayAhead_hourly_MAE": 326.01136204440985,
+      "area_code": "FI",
+      "model_id": "M2",
+      "rank": 5
+    },
+    {
+      "DayAhead_hourly_MAE": 341.3508455617051,
+      "area_code": "FI",
+      "model_id": "M3",
+      "rank": 6
+    },
+    {
+      "DayAhead_hourly_MAE": 350.10869202147273,
+      "area_code": "FI",
+      "model_id": "M1",
+      "rank": 7
+    },
+    {
+      "DayAhead_hourly_MAE": 643.7711862633182,
+      "area_code": "FI",
+      "model_id": "M0",
+      "rank": 8
+    },
+    {
+      "DayAhead_hourly_MAE": 233.24147567155578,
+      "area_code": "ALL",
+      "model_id": "M7",
+      "rank": 1
+    },
+    {
+      "DayAhead_hourly_MAE": 237.01839022023142,
+      "area_code": "ALL",
+      "model_id": "M6",
+      "rank": 2
+    },
+    {
+      "DayAhead_hourly_MAE": 240.01215056166427,
+      "area_code": "ALL",
+      "model_id": "M4",
+      "rank": 3
+    },
+    {
+      "DayAhead_hourly_MAE": 241.7833410565965,
+      "area_code": "ALL",
+      "model_id": "M5",
+      "rank": 4
+    },
+    {
+      "DayAhead_hourly_MAE": 246.9603815663407,
+      "area_code": "ALL",
+      "model_id": "M3",
+      "rank": 5
+    },
+    {
+      "DayAhead_hourly_MAE": 247.471576006823,
+      "area_code": "ALL",
+      "model_id": "M2",
+      "rank": 6
+    },
+    {
+      "DayAhead_hourly_MAE": 273.47413857454546,
+      "area_code": "ALL",
+      "model_id": "M1",
+      "rank": 7
+    },
+    {
+      "DayAhead_hourly_MAE": 465.2322825353184,
+      "area_code": "ALL",
+      "model_id": "M0",
+      "rank": 8
+    }
+  ],
+  "package_id": "P0056K",
+  "row_counts": {
+    "area_model_results": 32,
+    "completed_jobs": 9264,
+    "failures": 0,
+    "origin_results": 9264,
+    "planned_jobs": 9264
+  },
+  "runtime_seconds": 8202.477,
+  "skipped_models": [
+    {
+      "model_id": "M8",
+      "reason": "optional neural smoke test skipped by runtime scope"
+    },
+    {
+      "model_id": "M9",
+      "reason": "optional sequence model skipped by runtime scope"
+    }
+  ],
+  "status": "WARN"
+}

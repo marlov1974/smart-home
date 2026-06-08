@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed_WARN
 
 ## Package order
 
@@ -391,4 +391,70 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+Completed in `requirements/package-runs/P0056K/` with status `WARN`.
+
+WARN reasons:
+
+```text
+actual_weather_proxy_LABB is used and clearly labeled
+DA-L3 seasonal_safe is the only lag protocol evaluated
+optional neural models M8/M9 were skipped
+no production weather forecast model is included
+```
+
+Runtime summary:
+
+```text
+areas evaluated: SE1, SE2, SE3, FI
+models evaluated: M0, M1, M2, M3, M4, M5, M6, M7
+origin counts: SE1=243, SE2=240, SE3=310, FI=365
+origin/model rows: 9264
+failures: 0
+lag protocol: DA-L3 seasonal_safe
+weather protocol: actual_weather_proxy_LABB
+```
+
+Best model per area by DayAhead hourly MAE:
+
+```text
+SE1: M6, 133.471 MW
+SE2: M6, 232.693 MW
+SE3: M7, 262.426 MW
+FI: M7, 301.566 MW
+overall: M7, 233.241 MW mean across scoped areas
+```
+
+SE1/SE2 realistic DayAhead performance:
+
+```text
+SE1 best: 133.471 MW MAE (M6)
+SE2 best: 232.693 MW MAE (M6)
+```
+
+Decision:
+
+```text
+recommended_new_baseline_for_emulator_consumption_input: M7
+production_ready: false
+```
+
+Leakage review passed for the implemented feature list:
+
+```text
+no spot price features
+no flow/exchange/A61/capacity features
+no old physical_balance target
+no future actual load features
+no holdout-wide hindsight bias correction
+no API, devices, runtime changes or production activation
+```
+
+Primary evidence:
+
+```text
+requirements/package-runs/P0056K/area-model-results.md
+requirements/package-runs/P0056K/model-ranking.md
+requirements/package-runs/P0056K/leakage-review.md
+requirements/package-runs/P0056K/decision.md
+requirements/package-runs/P0056K/metrics-summary.json
+```

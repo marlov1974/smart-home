@@ -1,0 +1,9 @@
+area_code,baseline_DayAhead_hourly_MAE,baseline_model,comparison_scope,delta_MW,model_id,neural_subset_DayAhead_hourly_MAE,relative_improvement_percent
+SE2,232.69280738198043,P0056K_M6,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,76.64916769374318,N1_TabularMLP,309.3419750757236,-32.940067446055
+SE2,233.9480432393704,P0056K_M7,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,75.3939318363532,N1_TabularMLP,309.3419750757236,-32.22678454258829
+SE2,233.75305382282218,P0056K_M4,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,75.58892125290143,N1_TabularMLP,309.3419750757236,-32.33708395108094
+SE2,233.09245936856348,P0056K_M3,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,76.24951570716013,N1_TabularMLP,309.3419750757236,-32.71213316540418
+SE2,232.69280738198043,P0056K_M6,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,141.96151186429702,N2_SequenceMLP_168h,374.65431924627745,-61.008122022120745
+SE2,233.9480432393704,P0056K_M7,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,140.70627600690705,N2_SequenceMLP_168h,374.65431924627745,-60.144241455757566
+SE2,233.75305382282218,P0056K_M4,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,140.90126542345527,N2_SequenceMLP_168h,374.65431924627745,-60.277828725289815
+SE2,233.09245936856348,P0056K_M3,P0056K full SE2 aggregate baseline vs P0056L reduced representative subset,141.56185987771397,N2_SequenceMLP_168h,374.65431924627745,-60.73206325987481

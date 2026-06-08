@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed - WARN
 
 ## Package order
 
@@ -351,4 +351,70 @@ confirmation no device/runtime/no large artifacts/no result rewriting
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as SE2-only LABB row-level audit.
+
+Result summary:
+
+```text
+status = WARN
+persisted_static_rows = 12240
+persisted_rolling_rows = 2556
+exact_origin_target_intersection_rows = 0
+target_aligned_reconstructed_rows = 2556
+sampled_origins = 12
+sampled_row_diff_rows = 432
+feature_pairs = 432
+```
+
+Key metric reconstruction:
+
+```text
+alignment_mode = target_timestamp_closest_static_horizon
+static_MAE_on_aligned_intersection = 213.229 MW
+rolling_MAE_on_aligned_intersection = 228.549 MW
+rolling_minus_static_delta = 15.320 MW
+static_original_MAE = 197.547 MW
+rolling_original_MAE = 228.549 MW
+```
+
+Main finding:
+
+```text
+The persisted static and rolling evaluations have zero exact origin+target row intersection.
+The old static metric is not the same 06:00 every-fifth-day origin-realistic 36h grid as P0056I.
+When the static W12 method is reconstructed and aligned by target timestamp to P0056I TWX rows, static remains better by 15.320 MW, but it is worse than its original static metric by 15.682 MW.
+```
+
+Largest sampled feature mismatches:
+
+```text
+horizon_h mismatch on 432/432 sampled rows
+area_consumption_lag_1h mismatch on 432/432 sampled rows, max_abs_delta 5235.000 MW
+area_consumption_lag_2h mismatch on 432/432 sampled rows, max_abs_delta 4734.000 MW
+area_consumption_lag_3h mismatch on 432/432 sampled rows, max_abs_delta 4909.500 MW
+area_consumption_lag_6h mismatch on 432/432 sampled rows, max_abs_delta 5051.667 MW
+weather actual features mostly match; train-normal and delta features differ because training/profile context differs.
+```
+
+Hypothesis review:
+
+```text
+H1 supported: static and rolling evaluate different target rows / horizon mix.
+H2 supported in target-aligned audit: lag features differ because static and rolling are not on the same origin/horizon row.
+H3 supported: weather normal/delta features differ by training/profile construction, though raw weather values match.
+H4 supported: static W12 uses horizon-bias correction; P0056I TWX does not.
+H5 supported: static uses global train/internal-validation/holdout; rolling uses per-origin train ending at forecast origin.
+H6 supported: old static test is row-wise holdout/path evaluation, not the rolling-origin production-realistic grid.
+H7 rejected: rolling rows map cleanly to targets; no target/horizon alignment bug was found in P0056I.
+H8 inconclusive: exact model artifacts and full missing-value objects are not persisted.
+```
+
+Decision:
+
+```text
+The best explanation is combined row-selection/horizon-mix plus model-method/protocol differences.
+The audit narrows the next diagnostic to an exact static weighted-ensemble+bias method rerun on the P0056I origin grid.
+Recommended next package: P0056K.
+```
+
+No API, devices, runtime changes, production activation, result rewriting, spot price features, flow/exchange/A61/capacity features, old physical_balance target or large artifacts.

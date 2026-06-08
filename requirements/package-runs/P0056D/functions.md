@@ -40,11 +40,35 @@
 
 `fetch_and_store_openmeteo(conn, start_date, end_date)`
 
-- Purpose: fetch archive weather one location at a time and upsert location-hour rows.
+- Purpose: fetch archive weather one location-period chunk at a time and upsert location-hour rows.
 - Inputs: SQLite connection, date range.
-- Outputs: fetch evidence summary.
+- Outputs: fetch evidence summary with completion/rate-limit status.
 - Side effects: network calls to Open-Meteo and local SQLite writes.
 - Test coverage: not unit-tested with live network; evidence validates live run.
+
+`fetch_chunks(start_date, end_date)`
+
+- Purpose: split the required Open-Meteo period into resumable quarterly chunks.
+- Inputs: start and end dates.
+- Outputs: ordered `(period_start, period_end)` tuples.
+- Side effects: none.
+- Test coverage: chunk coverage test.
+
+`location_period_row_count(conn, location_id, period_start, period_end)`
+
+- Purpose: count already loaded rows for one location-period chunk.
+- Inputs: SQLite connection, location id, period range.
+- Outputs: row count.
+- Side effects: none.
+- Test coverage: package runner integration.
+
+`write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, summary)`
+
+- Purpose: persist checkpoint/progress/resume evidence after completed or failed chunks.
+- Inputs: evidence path, checkpoint rows, fetch summary.
+- Outputs: evidence file paths.
+- Side effects: writes package-run markdown files.
+- Test coverage: filesystem evidence in live run.
 
 `upsert_location_observations(conn, location, observations, fetched_at_utc)`
 
@@ -105,4 +129,3 @@ None planned.
 ## Durable Function Catalog
 
 No cross-package durable function catalog update is planned because P0056D is package-scoped LABB code.
-

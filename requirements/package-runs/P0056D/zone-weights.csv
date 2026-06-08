@@ -1,0 +1,15 @@
+area_code,zone_id,zone_weight,confidence,rationale,source,generated_by_package
+SE1,SE1_LULEA_PITEA_BODEN,0.45,medium,Largest SE1 coastal population and industrial/electrification load centre.,manual_deterministic_load_centre_approximation,P0056D
+SE1,SE1_KIRUNA_GALLIVARE,0.2,medium,Important mining and inland cold-weather demand.,manual_deterministic_load_centre_approximation,P0056D
+SE1,SE1_SKELLEFTEA,0.25,medium,Large coastal municipality and industrial load growth.,manual_deterministic_load_centre_approximation,P0056D
+SE1,SE1_HAPARANDA,0.1,low,Small but distinct far-eastern coastal climate.,manual_deterministic_load_centre_approximation,P0056D
+SE2,SE2_SUNDSVALL_HARNOSAND_ORNSKOLDSVIK,0.3,medium,Large SE2 coastal population and industry corridor.,manual_deterministic_load_centre_approximation,P0056D
+SE2,SE2_UMEA,0.25,medium,Large municipality and important northern coastal load centre.,manual_deterministic_load_centre_approximation,P0056D
+SE2,SE2_HUDIKSVALL,0.12,low,Southern coastal climate and load representation.,manual_deterministic_load_centre_approximation,P0056D
+SE2,SE2_SOLLEFTEA_KRAMFORS,0.13,low,Middle-Angermanland load and inland/coastal transition.,manual_deterministic_load_centre_approximation,P0056D
+SE2,SE2_OSTERSUND_ARE,0.2,medium,Large inland centre plus mountain/tourism cold-load regime.,manual_deterministic_load_centre_approximation,P0056D
+FI,FI_HELSINKI_ESPOO_VANTAA_RING,0.45,medium,Dominant Finnish population and load concentration.,manual_deterministic_load_centre_approximation,P0056D
+FI,FI_TURKU_PORI,0.15,medium,Major southwest and west-coast load centres.,manual_deterministic_load_centre_approximation,P0056D
+FI,FI_TAMPERE_LAHTI_HAMEENLINNA_KOUVOLA,0.2,medium,Large southern inland population/load belt.,manual_deterministic_load_centre_approximation,P0056D
+FI,FI_JYVASKYLA_KUOPIO_MIKKELI_JOENSUU,0.1,low,Broad central/eastern inland load and colder regime.,manual_deterministic_load_centre_approximation,P0056D
+FI,FI_OULU_VAASA,0.1,low,Northern and western coastal load representation.,manual_deterministic_load_centre_approximation,P0056D

@@ -1,0 +1,81 @@
+{
+  "comparison": {
+    "candidate_default_areas": [
+      "SE2"
+    ],
+    "keep_p0056b_default_areas": [
+      "SE1",
+      "FI"
+    ],
+    "rows": [
+      {
+        "P0056C_DayAhead_MAE": 126.49750824599175,
+        "P0056C_daily_energy_percent": 5.571184151084964,
+        "P0056C_full36_MAE": 124.60891100032913,
+        "P0056D_DayAhead_MAE": 126.02800737136319,
+        "P0056D_daily_energy_percent": 5.562939888268305,
+        "P0056D_full36_MAE": 124.3606101853504,
+        "area_code": "SE1",
+        "candidate_default": false,
+        "daily_energy_improvement_percent": 0.14798043994027807,
+        "dayahead_improvement_percent": 0.37115424733549396,
+        "decision": "keep_P0056B_default",
+        "delta_vs_P0056C_DayAhead_MW": -0.46950087462856516,
+        "delta_vs_P0056C_DayAhead_percent": -0.37115424733549396,
+        "delta_vs_P0056C_daily_energy_percent": -0.008244262816658576,
+        "delta_vs_P0056C_full36_MW": -0.2483008149787338,
+        "delta_vs_P0056C_full36_percent": -0.19926409193807815,
+        "full36_improvement_percent": 0.19926409193807815
+      },
+      {
+        "P0056C_DayAhead_MAE": 209.51872783683092,
+        "P0056C_daily_energy_percent": 7.891348406364274,
+        "P0056C_full36_MAE": 201.82678388544215,
+        "P0056D_DayAhead_MAE": 206.5984947980714,
+        "P0056D_daily_energy_percent": 7.83635998604847,
+        "P0056D_full36_MAE": 197.77528776378924,
+        "area_code": "SE2",
+        "candidate_default": true,
+        "daily_energy_improvement_percent": 0.696819066706722,
+        "dayahead_improvement_percent": 1.3937813907660443,
+        "decision": "candidate_default",
+        "delta_vs_P0056C_DayAhead_MW": -2.9202330387595055,
+        "delta_vs_P0056C_DayAhead_percent": -1.3937813907660443,
+        "delta_vs_P0056C_daily_energy_percent": -0.05498842031580331,
+        "delta_vs_P0056C_full36_MW": -4.051496121652917,
+        "delta_vs_P0056C_full36_percent": -2.007412516642274,
+        "full36_improvement_percent": 2.007412516642274
+      },
+      {
+        "P0056C_DayAhead_MAE": 332.71687299343574,
+        "P0056C_daily_energy_percent": 2.792956028408213,
+        "P0056C_full36_MAE": 311.18944499763626,
+        "P0056D_DayAhead_MAE": 334.39532415572035,
+        "P0056D_daily_energy_percent": 2.8115573382146395,
+        "P0056D_full36_MAE": 314.2059442511082,
+        "area_code": "FI",
+        "candidate_default": false,
+        "daily_energy_improvement_percent": -0.666007972099297,
+        "dayahead_improvement_percent": -0.5044683027895964,
+        "decision": "keep_P0056B_default",
+        "delta_vs_P0056C_DayAhead_MW": 1.6784511622846026,
+        "delta_vs_P0056C_DayAhead_percent": 0.5044683027895964,
+        "delta_vs_P0056C_daily_energy_percent": 0.018601309806426602,
+        "delta_vs_P0056C_full36_MW": 3.0164992534719204,
+        "delta_vs_P0056C_full36_percent": 0.9693449768178458,
+        "full36_improvement_percent": -0.9693449768178458
+      }
+    ]
+  },
+  "leakage_ok": true,
+  "row_counts": {
+    "feature_rows": 105192,
+    "forecast_log_rows": 37560,
+    "location_weather_rows": 1157112,
+    "metrics_rows": 153,
+    "proxy_rows": 105192,
+    "weight_rows": 14
+  },
+  "runtime_seconds": 179.516,
+  "status": "WARN"
+}

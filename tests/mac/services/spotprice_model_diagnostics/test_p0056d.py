@@ -46,6 +46,21 @@ class P0056DTests(unittest.TestCase):
         contract = p0056d.openmeteo_contract(p0056d.START_DATE, p0056d.END_DATE)
 
         self.assertFalse([variable for variable in contract["variables"] if any(term in str(variable).lower() for term in forbidden)])
+        self.assertIn("chunks", str(contract["batching"]))
+
+    def test_fetch_chunks_cover_required_period_without_overlap(self) -> None:
+        chunks = p0056d.fetch_chunks(p0056d.START_DATE, p0056d.END_DATE)
+
+        self.assertEqual(p0056d.START_DATE, chunks[0][0])
+        self.assertEqual(p0056d.END_DATE, chunks[-1][1])
+        for index in range(1, len(chunks)):
+            self.assertEqual(chunks[index - 1][1] + p0056d.timedelta(days=1), chunks[index][0])
+        self.assertEqual(16, len(chunks))
+
+    def test_compact_hour_z_matches_stored_openmeteo_timestamp_shape(self) -> None:
+        value = p0056d.datetime(2022, 8, 31, 23, tzinfo=p0056d.timezone.utc)
+
+        self.assertEqual("2022-08-31T23:00Z", p0056d.compact_hour_z(value))
 
 
 def p00556_baseline_like(area: str, *, dayahead: float, full36: float, daily: float) -> dict[str, float | str]:
@@ -59,4 +74,3 @@ def p00556_baseline_like(area: str, *, dayahead: float, full36: float, daily: fl
 
 if __name__ == "__main__":
     unittest.main()
-

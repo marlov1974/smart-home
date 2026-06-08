@@ -1,14 +1,16 @@
 # P0056D Decision
 
-## Status
-
-`STOP`
-
-P0056D is not complete and no candidate-default proxy decision can be made.
-
-Reason: Open-Meteo archive access returned persistent `HTTP 429 Too Many Requests` before any FI representative location could be fetched. The package requires Open-Meteo data for every selected representative location and retest of SE1, SE2 and FI.
-
-## Current Default
-
-Keep P0056B as default. P0056D remains partial LABB evidence only.
-
+```json
+{
+  "candidate_default_areas": [
+    "SE2"
+  ],
+  "keep_p0056b_default_areas": [
+    "SE1",
+    "FI"
+  ],
+  "production_activation": false,
+  "rule": "candidate if DayAhead improves >=2%, or full36 improves >=2% without DayAhead worsening, or daily energy improves >=5% without DayAhead worsening >1%",
+  "status": "WARN"
+}
+```

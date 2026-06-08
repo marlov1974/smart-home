@@ -25,7 +25,8 @@ EVIDENCE_DIR = Path("requirements/package-runs/P0056D")
 SCOPED_AREAS = ("SE1", "SE2", "FI")
 START_DATE = date(2022, 6, 1)
 END_DATE = date(2026, 5, 31)
-REQUEST_SPACING_SECONDS = 15.0
+REQUEST_SPACING_SECONDS = 5.0
+FETCH_CHUNK_MONTHS = 3
 
 ZONE_TABLE = "area_weather_zone_openmeteo_hourly_p0056d_v1"
 PROXY_TABLE = "area_weather_proxy_hourly_p0056d_v1"
@@ -168,6 +169,24 @@ def run_p0056d_retest(
         create_schema(conn)
         reset_package_tables(conn)
         fetch_summary = fetch_and_store_openmeteo(conn, start_date, end_date, evidence_path)
+        if fetch_summary.get("status") != "PASS":
+            summary = {
+                "package_id": PACKAGE_ID,
+                "label": LABEL,
+                "status": "WARN",
+                "runtime_seconds": round(time.monotonic() - started, 3),
+                "feature_db": str(feature_path),
+                "date_range": {"start_date": start_date.isoformat(), "end_date": end_date.isoformat()},
+                "openmeteo_contract": openmeteo_contract(start_date, end_date),
+                "fetch_summary": fetch_summary,
+                "row_counts": row_counts(conn),
+                "reason": "Open-Meteo fetch incomplete; checkpoint written for later resume.",
+                "no_devices": True,
+                "no_runtime_change": True,
+                "no_production_activation": True,
+            }
+            evidence = write_fetch_incomplete_evidence(evidence_path, summary)
+            return P0056DResult(status="WARN", row_counts=summary["row_counts"], evidence=evidence)  # type: ignore[arg-type]
         weights_summary = persist_weights(conn)
         proxy_summary = build_area_weather_features(conn)
         retest_summary = run_forecast_retest(conn, evidence_path)
@@ -332,18 +351,27 @@ def reset_package_tables(conn: sqlite3.Connection) -> None:
 
 
 def fetch_and_store_openmeteo(conn: sqlite3.Connection, start_date: date, end_date: date, evidence_dir: Path) -> dict[str, object]:
-    expected_hours = expected_utc_hours(start_date, end_date)
+    chunks = fetch_chunks(start_date, end_date)
+    expected_total_hours = len(expected_utc_hours(start_date, end_date))
     fetched_at = utc_now()
     location_summaries = []
+    checkpoint_rows: list[dict[str, object]] = []
     total_rows = 0
-    for index, location in enumerate(representative_locations(), start=1):
-        existing_rows = location_row_count(conn, location.location_id)
-        if existing_rows == len(expected_hours):
-            location_summaries.append({"area_code": location.area_code, "zone_id": location.zone_id, "location_id": location.location_id, "rows": existing_rows, "fetch_status": "cached_complete"})
-            total_rows += existing_rows
-            progress(evidence_dir, "fetch", location.location_id, index, len(representative_locations()), "cached", extra={"rows": existing_rows})
+    total_jobs = len(representative_locations()) * len(chunks)
+    job_index = 0
+    for location in representative_locations():
+        location_rows_before = location_row_count(conn, location.location_id)
+        if location_rows_before == expected_total_hours:
+            for period_start, period_end in chunks:
+                job_index += 1
+                expected_rows = len(expected_utc_hours(period_start, period_end))
+                row = checkpoint_row(location, period_start, period_end, "done", 0, expected_rows, "", utc_now(), "")
+                checkpoint_rows.append(row)
+                progress(evidence_dir, "fetch", location.location_id, job_index, total_jobs, "cached", extra={"period": f"{period_start}..{period_end}", "rows": expected_rows})
+            location_summaries.append({"area_code": location.area_code, "zone_id": location.zone_id, "location_id": location.location_id, "rows": location_rows_before, "fetch_status": "cached_complete"})
+            total_rows += location_rows_before
+            write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, fetch_checkpoint_summary(checkpoint_rows, "RUNNING"))
             continue
-        progress(evidence_dir, "fetch", location.location_id, index, len(representative_locations()), "start", extra={"existing_rows": existing_rows})
         weather_location = WeatherLocation(
             location_id=location.location_id,
             name=location.name,
@@ -353,26 +381,79 @@ def fetch_and_store_openmeteo(conn: sqlite3.Connection, start_date: date, end_da
             area_proxy=location.area_code,
             source="openmeteo_archive",
         )
-        if existing_rows:
-            conn.execute(f"DELETE FROM {ZONE_TABLE} WHERE generated_by_package=? AND location_id=?", (PACKAGE_ID, location.location_id))
-            conn.commit()
-        payload = fetch_open_meteo_payload_with_backoff(weather_location, start_date, end_date, evidence_dir, index)
-        observations = parse_open_meteo_response(payload, weather_location, expected_hours)
-        written = upsert_location_observations(conn, location, observations, fetched_at)
-        conn.commit()
-        total_rows += written
-        summary = {"area_code": location.area_code, "zone_id": location.zone_id, "location_id": location.location_id, "rows": written, "fetch_status": "fetched"}
+        for period_start, period_end in chunks:
+            job_index += 1
+            expected_hours = expected_utc_hours(period_start, period_end)
+            existing_rows = location_period_row_count(conn, location.location_id, period_start, period_end)
+            if existing_rows == len(expected_hours):
+                row = checkpoint_row(location, period_start, period_end, "done", 0, existing_rows, "", utc_now(), "")
+                checkpoint_rows.append(row)
+                progress(evidence_dir, "fetch", location.location_id, job_index, total_jobs, "cached", extra={"period": f"{period_start}..{period_end}", "rows": existing_rows})
+                write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, fetch_checkpoint_summary(checkpoint_rows, "RUNNING"))
+                continue
+            progress(evidence_dir, "fetch", location.location_id, job_index, total_jobs, "start", extra={"period": f"{period_start}..{period_end}", "existing_rows": existing_rows})
+            attempts = 0
+            try:
+                payload, attempts = fetch_open_meteo_payload_with_backoff(weather_location, period_start, period_end, evidence_dir, job_index)
+                observations = parse_open_meteo_response(payload, weather_location, expected_hours)
+                upsert_location_observations(conn, location, observations, fetched_at)
+                conn.commit()
+                loaded_rows = location_period_row_count(conn, location.location_id, period_start, period_end)
+                row = checkpoint_row(location, period_start, period_end, "done", attempts, loaded_rows, "", utc_now(), "")
+                checkpoint_rows.append(row)
+                progress(evidence_dir, "fetch", location.location_id, job_index, total_jobs, "done", extra={"period": f"{period_start}..{period_end}", "rows": loaded_rows})
+                write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, fetch_checkpoint_summary(checkpoint_rows, "RUNNING"))
+                time.sleep(REQUEST_SPACING_SECONDS)
+            except Exception as exc:  # pragma: no cover - live Open-Meteo rate-limit path.
+                row = checkpoint_row(location, period_start, period_end, "rate_limited", attempts, existing_rows, str(exc)[:240], utc_now(), "")
+                checkpoint_rows.append(row)
+                summary = fetch_checkpoint_summary(checkpoint_rows, "WARN")
+                summary["blocking_location_id"] = location.location_id
+                summary["blocking_period_start"] = period_start.isoformat()
+                summary["blocking_period_end"] = period_end.isoformat()
+                summary["last_error"] = str(exc)[:400]
+                write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, summary)
+                return summary
+        final_location_rows = location_row_count(conn, location.location_id)
+        total_rows += final_location_rows
+        summary = {"area_code": location.area_code, "zone_id": location.zone_id, "location_id": location.location_id, "rows": final_location_rows, "fetch_status": "complete_or_partial"}
         location_summaries.append(summary)
-        progress(evidence_dir, "fetch", location.location_id, index, len(representative_locations()), "done", extra={"rows": written})
-        time.sleep(REQUEST_SPACING_SECONDS)
     conn.commit()
-    return {
-        "status": "PASS",
+    summary = fetch_checkpoint_summary(checkpoint_rows, "PASS")
+    summary.update({
         "locations": len(location_summaries),
         "rows": total_rows,
-        "expected_hours_per_location": len(expected_hours),
+        "expected_hours_per_location": expected_total_hours,
+        "chunks_per_location": len(chunks),
         "location_summaries": location_summaries,
-    }
+    })
+    write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, summary)
+    return summary
+
+
+def fetch_chunks(start_date: date, end_date: date) -> list[tuple[date, date]]:
+    chunks = []
+    current = start_date
+    while current <= end_date:
+        next_start = add_months(current, FETCH_CHUNK_MONTHS)
+        chunk_end = min(end_date, next_start - timedelta(days=1))
+        chunks.append((current, chunk_end))
+        current = chunk_end + timedelta(days=1)
+    return chunks
+
+
+def add_months(value: date, months: int) -> date:
+    month_index = value.month - 1 + months
+    year = value.year + month_index // 12
+    month = month_index % 12 + 1
+    day = min(value.day, days_in_month(year, month))
+    return date(year, month, day)
+
+
+def days_in_month(year: int, month: int) -> int:
+    if month == 12:
+        return 31
+    return (date(year, month + 1, 1) - timedelta(days=1)).day
 
 
 def location_row_count(conn: sqlite3.Connection, location_id: str) -> int:
@@ -384,13 +465,32 @@ def location_row_count(conn: sqlite3.Connection, location_id: str) -> int:
     )
 
 
+def location_period_row_count(conn: sqlite3.Connection, location_id: str, period_start: date, period_end: date) -> int:
+    start_ts = compact_hour_z(datetime(period_start.year, period_start.month, period_start.day, tzinfo=timezone.utc))
+    end_ts = compact_hour_z(datetime(period_end.year, period_end.month, period_end.day, 23, tzinfo=timezone.utc))
+    return int(
+        conn.execute(
+            f"""
+            SELECT COUNT(*) FROM {ZONE_TABLE}
+            WHERE generated_by_package=? AND location_id=?
+              AND timestamp_utc >= ? AND timestamp_utc <= ?
+            """,
+            (PACKAGE_ID, location_id, start_ts, end_ts),
+        ).fetchone()[0]
+    )
+
+
+def compact_hour_z(value: datetime) -> str:
+    return value.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
+
+
 def fetch_open_meteo_payload_with_backoff(
     location: WeatherLocation,
     start_date: date,
     end_date: date,
     evidence_dir: Path,
     job_index: int,
-) -> bytes:
+) -> tuple[bytes, int]:
     delays = (0.0, 60.0, 180.0, 420.0, 900.0)
     last_error: Exception | None = None
     for attempt, delay in enumerate(delays, start=1):
@@ -398,11 +498,49 @@ def fetch_open_meteo_payload_with_backoff(
             progress(evidence_dir, "fetch-backoff", location.location_id, job_index, len(representative_locations()), "sleep", extra={"attempt": attempt, "delay_seconds": delay})
             time.sleep(delay)
         try:
-            return fetch_open_meteo_range(location, start_date, end_date, timeout=90.0)
+            return fetch_open_meteo_range(location, start_date, end_date, timeout=90.0), attempt
         except Exception as exc:  # pragma: no cover - live network failure path.
             last_error = exc
             progress(evidence_dir, "fetch-backoff", location.location_id, job_index, len(representative_locations()), "retry", extra={"attempt": attempt, "error": str(exc)[:160]})
     raise RuntimeError(f"open-meteo fetch failed for {location.location_id} {start_date}..{end_date}: {last_error}") from last_error
+
+
+def checkpoint_row(
+    location: RepresentativeLocation,
+    period_start: date,
+    period_end: date,
+    status: str,
+    attempt_count: int,
+    row_count_loaded: int,
+    last_error: str,
+    last_attempt_at: str,
+    next_retry_after_if_known: str,
+) -> dict[str, object]:
+    return {
+        "location_id": location.location_id,
+        "zone_id": location.zone_id,
+        "area_code": location.area_code,
+        "period_start": period_start.isoformat(),
+        "period_end": period_end.isoformat(),
+        "status": status,
+        "attempt_count": attempt_count,
+        "row_count_loaded": row_count_loaded,
+        "last_error": last_error,
+        "last_attempt_at": last_attempt_at,
+        "next_retry_after_if_known": next_retry_after_if_known,
+    }
+
+
+def fetch_checkpoint_summary(checkpoint_rows: list[dict[str, object]], status: str) -> dict[str, object]:
+    return {
+        "status": status,
+        "checkpoint_rows": checkpoint_rows,
+        "done_chunks": sum(1 for row in checkpoint_rows if row["status"] == "done"),
+        "rate_limited_chunks": sum(1 for row in checkpoint_rows if row["status"] == "rate_limited"),
+        "pending_or_unvisited_chunks": len(representative_locations()) * len(fetch_chunks(START_DATE, END_DATE)) - len(checkpoint_rows),
+        "expected_chunks": len(representative_locations()) * len(fetch_chunks(START_DATE, END_DATE)),
+        "resume_command": "python3 -B -m src.mac.services.spotprice_model_diagnostics.p0056d",
+    }
 
 
 def upsert_location_observations(
@@ -998,7 +1136,7 @@ def openmeteo_contract(start_date: date, end_date: date) -> dict[str, object]:
         "minimum_required_variables": ["temperature_2m"],
         "preferred_variables_present": ["apparent_temperature", "wind_speed_10m", "cloud_cover", "relative_humidity_2m", "precipitation"],
         "preferred_variables_missing": ["snow_depth"],
-        "batching": "one representative location per request across the full overlap range; upserted incrementally by location",
+        "batching": f"one representative location-period per request; {FETCH_CHUNK_MONTHS}-month chunks; upserted incrementally by chunk",
         "utc_handling": "Open-Meteo GMT hourly timestamps parsed as UTC and stored with Z suffix",
     }
 
@@ -1018,7 +1156,7 @@ def write_evidence(evidence_dir: Path, summary: dict[str, object]) -> dict[str, 
         "weather-zone-design.md": write(evidence_dir / "weather-zone-design.md", weather_zone_design_md(summary)),
         "zone-weighting-method.md": write(evidence_dir / "zone-weighting-method.md", zone_weighting_method_md(summary)),
         "openmeteo-fetch-contract.md": write(evidence_dir / "openmeteo-fetch-contract.md", json_report("P0056D Open-Meteo Fetch Contract", summary["openmeteo_contract"])),
-        "openmeteo-fetch-evidence.md": write(evidence_dir / "openmeteo-fetch-evidence.md", json_report("P0056D Open-Meteo Fetch Evidence", summary["fetch_summary"])),
+        "openmeteo-fetch-evidence.md": write(evidence_dir / "openmeteo-fetch-evidence.md", json_report("P0056D Open-Meteo Fetch Evidence", compact_fetch_summary(summary["fetch_summary"]))),
         "output-table-schema.md": write(evidence_dir / "output-table-schema.md", output_table_schema_md()),
         "weather-feature-contract.md": write(evidence_dir / "weather-feature-contract.md", weather_feature_contract_md(summary)),
         "coverage-and-missingness.md": write(evidence_dir / "coverage-and-missingness.md", json_report("P0056D Coverage And Missingness", summary["proxy_summary"])),
@@ -1038,6 +1176,157 @@ def write_evidence(evidence_dir: Path, summary: dict[str, object]) -> dict[str, 
         "metrics-summary.json": write(evidence_dir / "metrics-summary.json", json.dumps(json_safe(compact_summary(summary)), indent=2, sort_keys=True) + "\n"),
     }
     return evidence
+
+
+def write_fetch_checkpoint_evidence(
+    evidence_dir: Path,
+    checkpoint_rows: list[dict[str, object]],
+    summary: dict[str, object],
+) -> dict[str, str]:
+    evidence_dir.mkdir(parents=True, exist_ok=True)
+    return {
+        "openmeteo-fetch-checkpoint.md": write(evidence_dir / "openmeteo-fetch-checkpoint.md", fetch_checkpoint_md(checkpoint_rows, summary)),
+        "openmeteo-fetch-progress.md": write(evidence_dir / "openmeteo-fetch-progress.md", fetch_progress_md(checkpoint_rows, summary)),
+        "openmeteo-resume-instructions.md": write(evidence_dir / "openmeteo-resume-instructions.md", fetch_resume_instructions_md(summary)),
+    }
+
+
+def write_fetch_incomplete_evidence(evidence_dir: Path, summary: dict[str, object]) -> dict[str, str]:
+    fetch_summary = summary["fetch_summary"]  # type: ignore[index]
+    checkpoint_rows = fetch_summary.get("checkpoint_rows", []) if isinstance(fetch_summary, dict) else []
+    evidence = write_fetch_checkpoint_evidence(evidence_dir, checkpoint_rows, fetch_summary if isinstance(fetch_summary, dict) else {})
+    evidence.update(
+        {
+            "CHANGELOG.md": write(evidence_dir / "CHANGELOG.md", fetch_incomplete_changelog_md(summary)),
+            "openmeteo-fetch-evidence.md": write(evidence_dir / "openmeteo-fetch-evidence.md", json_report("P0056D Open-Meteo Fetch Evidence", compact_fetch_summary(fetch_summary))),
+            "coverage-and-missingness.md": write(evidence_dir / "coverage-and-missingness.md", fetch_incomplete_coverage_md(summary)),
+            "decision.md": write(evidence_dir / "decision.md", fetch_incomplete_decision_md(summary)),
+            "next-package-recommendation.md": write(evidence_dir / "next-package-recommendation.md", fetch_incomplete_next_package_md(summary)),
+        }
+    )
+    return evidence
+
+
+def fetch_checkpoint_md(checkpoint_rows: list[dict[str, object]], summary: dict[str, object]) -> str:
+    lines = [
+        "# P0056D Open-Meteo Fetch Checkpoint",
+        "",
+        f"- Status: `{summary.get('status', 'UNKNOWN')}`",
+        f"- Done chunks: `{summary.get('done_chunks', 0)}`",
+        f"- Rate-limited chunks: `{summary.get('rate_limited_chunks', 0)}`",
+        f"- Pending/unvisited chunks: `{summary.get('pending_or_unvisited_chunks', 0)}`",
+        "",
+        "| location_id | zone_id | period_start | period_end | status | attempts | rows | last_error | last_attempt_at | next_retry_after |",
+        "| --- | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |",
+    ]
+    for row in checkpoint_rows:
+        lines.append(
+            f"| {row.get('location_id')} | {row.get('zone_id')} | {row.get('period_start')} | {row.get('period_end')} | {row.get('status')} | {row.get('attempt_count')} | {row.get('row_count_loaded')} | {str(row.get('last_error', '')).replace('|', '/')} | {row.get('last_attempt_at')} | {row.get('next_retry_after_if_known')} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
+def fetch_progress_md(checkpoint_rows: list[dict[str, object]], summary: dict[str, object]) -> str:
+    by_status: dict[str, int] = defaultdict(int)
+    by_area_done: dict[str, int] = defaultdict(int)
+    for row in checkpoint_rows:
+        by_status[str(row.get("status"))] += 1
+        if row.get("status") == "done":
+            by_area_done[str(row.get("area_code"))] += 1
+    return json_report(
+        "P0056D Open-Meteo Fetch Progress",
+        {
+            "summary": compact_fetch_summary(summary),
+            "checkpoint_status_counts": dict(sorted(by_status.items())),
+            "done_chunks_by_area": dict(sorted(by_area_done.items())),
+        },
+    )
+
+
+def compact_fetch_summary(fetch_summary: object) -> object:
+    if not isinstance(fetch_summary, dict):
+        return fetch_summary
+    return {key: value for key, value in fetch_summary.items() if key != "checkpoint_rows"}
+
+
+def fetch_resume_instructions_md(summary: dict[str, object]) -> str:
+    return "\n".join(
+        [
+            "# P0056D Open-Meteo Resume Instructions",
+            "",
+            "Resume command:",
+            "",
+            "```bash",
+            str(summary.get("resume_command", "python3 -B -m src.mac.services.spotprice_model_diagnostics.p0056d")),
+            "```",
+            "",
+            "The runner skips chunks whose expected row count is already present in `area_weather_zone_openmeteo_hourly_p0056d_v1` and fetches only missing location-period chunks.",
+            "",
+            f"Current blocking location: `{summary.get('blocking_location_id', '')}`",
+            f"Current blocking period: `{summary.get('blocking_period_start', '')}..{summary.get('blocking_period_end', '')}`",
+            f"Last error: `{summary.get('last_error', '')}`",
+            "",
+        ]
+    )
+
+
+def fetch_incomplete_changelog_md(summary: dict[str, object]) -> str:
+    fetch_summary = summary["fetch_summary"]  # type: ignore[index]
+    return "\n".join(
+        [
+            "# P0056D Changelog",
+            "",
+            "- Status: `WARN`",
+            "- P0056D Open-Meteo fetch is incomplete but resumable.",
+            f"- Done chunks: `{fetch_summary.get('done_chunks', 0)}`",
+            f"- Pending/unvisited chunks: `{fetch_summary.get('pending_or_unvisited_chunks', 0)}`",
+            f"- Blocking location: `{fetch_summary.get('blocking_location_id', '')}`",
+            f"- Blocking period: `{fetch_summary.get('blocking_period_start', '')}..{fetch_summary.get('blocking_period_end', '')}`",
+            "- No proxy build, model retest, devices, runtime changes or production activation were performed.",
+            "",
+        ]
+    )
+
+
+def fetch_incomplete_coverage_md(summary: dict[str, object]) -> str:
+    row_counts = summary.get("row_counts", {})
+    return json_report(
+        "P0056D Coverage And Missingness",
+        {
+            "status": "WARN",
+            "reason": summary.get("reason"),
+            "row_counts": row_counts,
+            "fetch_summary": summary.get("fetch_summary"),
+            "forecast_retest_run": False,
+        },
+    )
+
+
+def fetch_incomplete_decision_md(summary: dict[str, object]) -> str:
+    return "\n".join(
+        [
+            "# P0056D Decision",
+            "",
+            "`WARN`",
+            "",
+            "Open-Meteo fetch is incomplete and checkpointed for resume. No candidate-default decision can be made until all SE1/SE2/FI weather chunks are complete and the forecast retest has run.",
+            "",
+            "Keep P0056B as default.",
+            "",
+        ]
+    )
+
+
+def fetch_incomplete_next_package_md(summary: dict[str, object]) -> str:
+    return "\n".join(
+        [
+            "# P0056D Next Package Recommendation",
+            "",
+            "Continue P0056D with the same resume command after Open-Meteo rate-limit cooldown. The runner will fetch only missing location-period chunks.",
+            "",
+        ]
+    )
 
 
 def changelog_md(summary: dict[str, object]) -> str:
@@ -1263,7 +1552,7 @@ def write_csv(path: Path, rows: object) -> str:
                 if key not in keys:
                     keys.append(key)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=keys)
+        writer = csv.DictWriter(handle, fieldnames=keys, lineterminator="\n")
         writer.writeheader()
         for row in typed_rows:
             writer.writerow({key: json_safe(row.get(key)) if isinstance(row, dict) else "" for key in keys})

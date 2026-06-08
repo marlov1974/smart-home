@@ -1,12 +1,39 @@
 # P0056D Open-Meteo Fetch Contract
 
-- Endpoint: `https://archive-api.open-meteo.com/v1/archive`
-- Period: `2022-06-01..2026-05-31`
-- Timezone: `GMT`
-- Model: `best_match`
-- Fetch cadence: one representative location per request.
-- Storage: location-hour rows in `area_weather_zone_openmeteo_hourly_p0056d_v1`.
-- Required variable: `temperature_2m`.
-- Preferred variables requested by existing helper: `apparent_temperature`, `wind_speed_10m`, `cloud_cover`, `relative_humidity_2m`, `precipitation`.
-- Optional missing variable: `snow_depth`.
-
+```json
+{
+  "batching": "one representative location-period per request; 3-month chunks; upserted incrementally by chunk",
+  "end_date": "2026-05-31",
+  "endpoint": "https://archive-api.open-meteo.com/v1/archive",
+  "minimum_required_variables": [
+    "temperature_2m"
+  ],
+  "models": "best_match",
+  "preferred_variables_missing": [
+    "snow_depth"
+  ],
+  "preferred_variables_present": [
+    "apparent_temperature",
+    "wind_speed_10m",
+    "cloud_cover",
+    "relative_humidity_2m",
+    "precipitation"
+  ],
+  "start_date": "2022-06-01",
+  "timezone": "GMT",
+  "utc_handling": "Open-Meteo GMT hourly timestamps parsed as UTC and stored with Z suffix",
+  "variables": [
+    "temperature_2m",
+    "apparent_temperature",
+    "wind_speed_10m",
+    "wind_speed_100m",
+    "wind_gusts_10m",
+    "cloud_cover",
+    "shortwave_radiation",
+    "precipitation",
+    "snowfall",
+    "relative_humidity_2m",
+    "pressure_msl"
+  ]
+}
+```

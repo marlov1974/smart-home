@@ -22,9 +22,16 @@
 
 ## Current State
 
-- Local P0056D location rows committed in SQLite:
+Superseded by the operator clarification resume run below.
+
+## Attempt 4
+
+- Command: `python3 -B -m src.mac.services.spotprice_model_diagnostics.p0056d`
+- Change before rerun: implemented quarter-sized Open-Meteo chunk checkpointing, exact row-count inspection per location-period, commit-after-chunk behavior, and WARN/resume handling for future rate limits.
+- Result: completed all required Open-Meteo chunks and reran the SE1/SE2/FI forecast retest.
+- Open-Meteo checkpoint: 528 of 528 chunks done, 0 rate-limited, 0 pending.
+- Local P0056D location rows in SQLite:
   - `SE1`: 7 locations, 245448 rows.
   - `SE2`: 9 locations, 315576 rows.
-  - `FI`: 0 P0056D locations.
-- P0056D cannot complete under package rules until Open-Meteo archive access is available again for FI representative locations.
-
+  - `FI`: 17 locations, 596088 rows.
+- Package outcome: `WARN`, because weights remain deterministic first-pass assumptions and only SE2 meets the P0056D candidate-default rule.

@@ -8,6 +8,8 @@
 
 P0056D is consistent with current repository direction: it is LABB-only, scoped to SE1, SE2 and FI, uses P0056A consumption targets, and compares against the committed P0056C baseline without changing P0056B/P0056C default proxy tables.
 
+The operator clarification `requirements/packages/P0056D-operator-clarification-openmeteo-rate-limit-resume.md` amends the previous STOP evidence: Open-Meteo `429` is a resumable data-fetch runtime condition, not a forecast-method failure.
+
 The package is implementable with these assumptions:
 
 - No local population/load-distribution source was found during bootstrap; P0056D will use deterministic manual load-centre weights with documented confidence.
@@ -30,9 +32,11 @@ The local committed P0056C evidence in `requirements/package-runs/P0056C/area-re
 - No Shelly, Home Assistant, device, runtime or production activation is in scope.
 - No spot price, flow, exchange, A61, capacity, physical balance or future actual load features are in scope.
 - Open-Meteo network access and local SQLite writes are required by package text.
+- P0056D must identify and fetch only missing location-period chunks.
+- P0056D must not delete already fetched weather rows because a later chunk fails.
+- P0056D must write checkpoint/progress/resume evidence for Open-Meteo fetch state.
 - Large raw weather payloads must not be committed; only compact evidence should be stored in git.
 
 ## Result
 
-Proceed with implementation under `WARN` due manual weighting assumptions and optional `snow_depth` absence.
-
+Proceed with implementation under `WARN` due manual weighting assumptions, optional `snow_depth` absence and possible Open-Meteo rate-limit waits.

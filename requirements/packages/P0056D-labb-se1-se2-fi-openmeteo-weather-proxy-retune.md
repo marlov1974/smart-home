@@ -455,4 +455,10 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+Completed as `WARN` on 2026-06-08.
+
+- Open-Meteo coverage completed for SE1, SE2 and FI using checkpointed quarter-sized chunks.
+- Local P0056D weather rows: SE1 245448, SE2 315576, FI 596088.
+- Forecast retest completed for SE1, SE2 and FI with no spot price, flow/exchange/A61/capacity, device, runtime or production activation changes.
+- Decision: SE2 is a P0056D candidate default by full36 MAE improvement; SE1 and FI keep P0056B default.
+- Main evidence lives under `requirements/package-runs/P0056D/`, including checkpoint, progress, metrics, comparison and leakage review files.

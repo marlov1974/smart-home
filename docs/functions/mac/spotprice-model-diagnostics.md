@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0055B
+Last changed: P0056M
 
 ## Module
 
@@ -883,3 +883,23 @@ Important functions:
 `validation_summary(...)` builds coverage/missingness, native-resolution, volume-sanity, data-quality and SE3 consistency evidence. SE3 is compared against the corrected P0054P2 target in `entsoe_consumption_area_hourly_v1`.
 
 P0056A is LABB data preparation only. It does not train forecast models, use spot-price features, use flow/exchange/A61/capacity as a target, touch devices/runtime paths, or commit raw ENTSO-E exports.
+
+## P0056M SE2 M6 DayAhead Error Slice Analysis
+
+`p0056m.run_p0056m_error_slice_analysis(...)` reconstructs the P0056K SE2 `M6` realistic DayAhead predictions and writes slice-analysis evidence.
+
+Important functions:
+
+`reconstruct_se2_m6_predictions(...)` reuses P0056K DayAhead origins, forecast-safe rows, model specs and weighted-ensemble logic to rebuild hour-level SE2 M6 predictions because P0056K did not persist a prediction dump.
+
+`build_hour_rows(...)` creates compact target-hour rows with actual load, forecast load, signed/absolute error, horizon, local hour and LABB weather context.
+
+`build_day_metrics(...)` aggregates each 24-hour delivery day into MAE, RMSE, bias, daily-energy error, temperature context, heating-degree context, ramp score and largest-error metadata.
+
+`build_all_slices(...)`, `slice_summary(...)` and `hour_slice_summary(...)` produce weekday, month, season, half-year, temperature, heating-degree, load, ramp, horizon, local-hour and holiday/workday/weekend summaries.
+
+`top_bottom_tests(...)` ranks the five best and five worst DayAhead tests by daily hourly MAE and absolute daily-energy error.
+
+`interpret_patterns(...)` answers the package-required pattern questions and classifies the dominant error mode.
+
+P0056M is LABB diagnostics only. It does not call APIs, use devices, change runtime behavior, deploy models, use spot-price features, use flow/exchange/A61/capacity inputs, use old physical-balance targets or use future actual load as a prediction feature.

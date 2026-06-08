@@ -119,3 +119,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0055B2` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the P0055B redo functions for cluster-specific nonlinear monotone settlement-migration normalization and stale handling for the original linear P0055B run.
 
 `P0056A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with northern Europe ENTSO-E A65/A16 actual-load measurement ingestion, native-to-hourly aggregation and area-consumption table contracts.
+
+`P0056M` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the SE2 M6 realistic DayAhead reconstruction and error-slice diagnostics functions.

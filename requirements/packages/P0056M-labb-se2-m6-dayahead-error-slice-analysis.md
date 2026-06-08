@@ -360,4 +360,61 @@ confirmation no forbidden features/no device/runtime/no production/no large arti
 
 ## Completion notes
 
-To be filled after implementation.
+Completed by Codex in package-run evidence:
+
+```text
+requirements/package-runs/P0056M/
+```
+
+Result:
+
+```text
+PASS
+```
+
+Summary:
+
+```text
+area = SE2
+model = M6 WeightedEnsemble_no_price
+delivery_days_analyzed = 240
+hour_rows_analyzed = 5760
+failures = 0
+```
+
+P0056K baseline confirmation:
+
+```text
+expected_DayAhead_hourly_MAE = 232.69280738198043 MW
+reconstructed_DayAhead_hourly_MAE = 232.69280738198046 MW
+delta_MW = 2.842170943040401e-14
+matches_within_tolerance = true
+```
+
+Key findings:
+
+```text
+worst_weekday = Saturday, 315.61303173687025 MW
+best_weekday = Tuesday, 193.08046986119035 MW
+worst_month = March, 341.3950702454978 MW
+best_month = July, 127.70761004306254 MW
+worst_season = winter, 271.4100231609917 MW
+best_season = summer, 136.58010116535152 MW
+error_mode = isolated hourly spikes
+cold_vs_warm_hot = cold 109.249 MW higher MAE
+mild_vs_cold_warm_average = mild 50.551 MW higher MAE
+winter_half_vs_summer_half = winter_half 107.678 MW higher MAE
+high_load_vs_low_load = high-load 134.490 MW higher MAE
+high_ramp_vs_low_ramp = high-ramp 162.673 MW higher MAE
+```
+
+Safety:
+
+```text
+No API.
+No devices.
+No runtime changes.
+No production activation.
+No spot-price, flow/exchange/A61/capacity or old physical_balance features.
+No future actual load used as a prediction feature.
+```

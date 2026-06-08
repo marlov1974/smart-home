@@ -1,0 +1,1149 @@
+area_code,available_forecast_rows,elapsed_seconds,expected_forecast_rows,forecast_origin_utc,forecast_rows,mode,note,origin,phase,reason,shared_model,status,timestamp
+SE1,35,,36,2025-06-01T04:00:00Z,,L1_origin_known_fallback,,2025-06-01T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:37Z
+SE1,35,,36,2025-06-01T04:00:00Z,,L2_recursive_lags,,2025-06-01T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:37Z
+SE1,35,,36,2025-06-06T04:00:00Z,,L1_origin_known_fallback,,2025-06-06T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:37Z
+SE1,35,,36,2025-06-06T04:00:00Z,,L2_recursive_lags,,2025-06-06T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:37Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:38Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:47:38Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:38Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:47:38Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:39Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:47:39Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:39Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:47:40Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:41Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:47:41Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:41Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:47:41Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:42Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:47:42Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:42Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:47:42Z
+SE1,35,,36,2025-07-01T04:00:00Z,,L1_origin_known_fallback,,2025-07-01T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:42Z
+SE1,35,,36,2025-07-01T04:00:00Z,,L2_recursive_lags,,2025-07-01T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:42Z
+SE1,35,,36,2025-07-06T04:00:00Z,,L1_origin_known_fallback,,2025-07-06T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:42Z
+SE1,35,,36,2025-07-06T04:00:00Z,,L2_recursive_lags,,2025-07-06T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:42Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:43Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:47:43Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:43Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:47:43Z
+SE1,35,,36,2025-07-16T04:00:00Z,,L1_origin_known_fallback,,2025-07-16T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:43Z
+SE1,35,,36,2025-07-16T04:00:00Z,,L2_recursive_lags,,2025-07-16T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:47:43Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:44Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:47:44Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:44Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:47:45Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:46Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:47:46Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:46Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:47:46Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:47Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:47:47Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:47Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:47:48Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:49Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:47:49Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:49Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:47:49Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:50Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:47:50Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:50Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:47:50Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:51Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:47:51Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:51Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:47:52Z
+SE1,,0.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:52Z
+SE1,,1.0,,,36,L1_origin_known_fallback,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:47:53Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:53Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:47:53Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:54Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:47:54Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:54Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:47:54Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:55Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:47:55Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:55Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:47:56Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:57Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:47:57Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:57Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:47:57Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:58Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:47:58Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:58Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:47:58Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:59Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:47:59Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:47:59Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:48:00Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:01Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:48:01Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:01Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:48:01Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:02Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:48:02Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:02Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:48:02Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:03Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:48:03Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:03Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:48:04Z
+SE1,35,,36,2025-10-04T04:00:00Z,,L1_origin_known_fallback,,2025-10-04T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:48:04Z
+SE1,35,,36,2025-10-04T04:00:00Z,,L2_recursive_lags,,2025-10-04T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:48:04Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:05Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:48:05Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:05Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:48:05Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:06Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:48:06Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:06Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:48:06Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:07Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:48:07Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:07Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:48:08Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:09Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:48:09Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:09Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:48:09Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:10Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:48:10Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:10Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:48:10Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:11Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:11Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:11Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:12Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:13Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:13Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:13Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:13Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:14Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:14Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:14Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:14Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:15Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:15Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:15Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:16Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:17Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:17Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:17Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:17Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:18Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:18Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:18Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:18Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:19Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:19Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:19Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:20Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:21Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:21Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:21Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:21Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:22Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:22Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:22Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:22Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:23Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:23Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:23Z
+SE1,,1.0,,,36,L2_recursive_lags,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:24Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:25Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:25Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:25Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:25Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:26Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:26Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:26Z
+SE1,,0.0,,,36,L2_recursive_lags,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:26Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:28Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:48:28Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:28Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:48:28Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:29Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:48:29Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:29Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:48:29Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:30Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:48:30Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:30Z
+SE1,,1.0,,,36,L2_recursive_lags,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:48:31Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:32Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:48:32Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:32Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:48:32Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:33Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:48:33Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:33Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:48:33Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:35Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:48:35Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:35Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:48:35Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:36Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:48:36Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:36Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:48:36Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:37Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:48:37Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:37Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:48:37Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:39Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:48:39Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:39Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:48:39Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:40Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:48:40Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:40Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:48:40Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:41Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:48:41Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:41Z
+SE1,,1.0,,,36,L2_recursive_lags,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:48:42Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:43Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:48:43Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:43Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:48:43Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:44Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:44Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:44Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:48:44Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:45Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:45Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:45Z
+SE1,,1.0,,,36,L2_recursive_lags,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:48:46Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:47Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:47Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:47Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:48:47Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:49Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:49Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:49Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:48:49Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:50Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:50Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:50Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:48:50Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:51Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:51Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:48:51Z
+SE1,,1.0,,,36,L2_recursive_lags,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:48:52Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:53Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:48:53Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:53Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:48:53Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:54Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:48:54Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:54Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:48:54Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:56Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:48:56Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:56Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:48:56Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:57Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:48:57Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:57Z
+SE1,,1.0,,,36,L2_recursive_lags,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:48:58Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:59Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:48:59Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:48:59Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:48:59Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:00Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:49:00Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:00Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:49:00Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:01Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:49:01Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:01Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:49:01Z
+SE1,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:03Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:49:03Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:03Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:49:03Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:04Z
+SE1,,1.0,,,36,L1_origin_known_fallback,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:49:05Z
+SE1,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:05Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:49:05Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:06Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:49:06Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:06Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:49:06Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:07Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:49:07Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:07Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:49:07Z
+SE1,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:08Z
+SE1,,0.0,,,36,L1_origin_known_fallback,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:49:08Z
+SE1,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:08Z
+SE1,,0.0,,,36,L2_recursive_lags,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:49:08Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:16Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:49:16Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:16Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:49:17Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:18Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:49:18Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:18Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:49:18Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:19Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:49:19Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:19Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:49:19Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:20Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:49:20Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:20Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:49:20Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:21Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:49:21Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:21Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:49:22Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:23Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:49:23Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:23Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:49:23Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:24Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:49:24Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:24Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:49:25Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:26Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:49:26Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:26Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:49:26Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:27Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:49:27Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:27Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:49:27Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:28Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:49:28Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:28Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:49:28Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:30Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:49:30Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:30Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:49:30Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:31Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:49:31Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:31Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:49:31Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:32Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:49:32Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:32Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:49:33Z
+SE2,35,,36,2025-08-05T04:00:00Z,,L1_origin_known_fallback,,2025-08-05T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:49:33Z
+SE2,35,,36,2025-08-05T04:00:00Z,,L2_recursive_lags,,2025-08-05T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:49:33Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:34Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:49:34Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:34Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:49:34Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:35Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:49:35Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:35Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:49:35Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:36Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:49:36Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:36Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:49:37Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:38Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:49:38Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:38Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:49:38Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:39Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:49:39Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:39Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:49:39Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:40Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:49:40Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:40Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:49:41Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:42Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:49:42Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:42Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:49:42Z
+SE2,35,,36,2025-09-14T04:00:00Z,,L1_origin_known_fallback,,2025-09-14T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:49:42Z
+SE2,35,,36,2025-09-14T04:00:00Z,,L2_recursive_lags,,2025-09-14T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:49:42Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:43Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:49:43Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:43Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:49:43Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:45Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:49:45Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:45Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:49:45Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:46Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:49:46Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:46Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:49:46Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:47Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:49:47Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:47Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:49:47Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:48Z
+SE2,,1.0,,,36,L1_origin_known_fallback,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:49:49Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:49Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:49:49Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:50Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:49:50Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:50Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:49:50Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:51Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:49:51Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:51Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:49:52Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:53Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:49:53Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:49:53Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:49:53Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:54Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:49:54Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:54Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:49:54Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:55Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:49:55Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:55Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:49:56Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:57Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:49:57Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:57Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:49:57Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:58Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:49:58Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:49:58Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:49:59Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:00Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:00Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:00Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:00Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:01Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:01Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:01Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:01Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:02Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:02Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:02Z
+SE2,,1.0,,,36,L2_recursive_lags,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:03Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:04Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:50:04Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:04Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:50:04Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:05Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:50:05Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:05Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:50:05Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:07Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:50:07Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:07Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:50:07Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:08Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:08Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:08Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:08Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:09Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:09Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:09Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:09Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:11Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:11Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:11Z
+SE2,,0.0,,,36,L2_recursive_lags,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:11Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:12Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:50:12Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:12Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:50:12Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:13Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:50:13Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:13Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:50:14Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:15Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:50:15Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:15Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:50:15Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:16Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:50:16Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:16Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:50:16Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:17Z
+SE2,,1.0,,,36,L1_origin_known_fallback,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:50:18Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:18Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:50:18Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:19Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:50:19Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:19Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:50:20Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:21Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:50:21Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:21Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:50:21Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:22Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:50:22Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:22Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:50:22Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:23Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:50:23Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:23Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:50:24Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:25Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:50:25Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:25Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:50:25Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:26Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:50:26Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:26Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:50:27Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:28Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:50:28Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:28Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:50:28Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:29Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:50:29Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:29Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:50:29Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:30Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:50:30Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:30Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:50:31Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:32Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:50:32Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:32Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:50:32Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:33Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:33Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:33Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:50:34Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:35Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:35Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:35Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:50:35Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:36Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:36Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:50:36Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:50:36Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:37Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:50:37Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:37Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:50:38Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:39Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:50:39Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:39Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:50:39Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:41Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:50:41Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:41Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:50:41Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:42Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:50:42Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:42Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:50:42Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:43Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:50:43Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:43Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:50:44Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:45Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:50:45Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:45Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:50:45Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:46Z
+SE2,,1.0,,,36,L1_origin_known_fallback,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:50:47Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:47Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:50:47Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:48Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:50:48Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:48Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:50:48Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:49Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:50:49Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:49Z
+SE2,,1.0,,,36,L2_recursive_lags,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:50:50Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:51Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:50:51Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:51Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:50:51Z
+SE2,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:52Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:50:52Z
+SE2,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:52Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:50:52Z
+SE2,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:54Z
+SE2,,0.0,,,36,L1_origin_known_fallback,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:50:54Z
+SE2,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:50:54Z
+SE2,,0.0,,,36,L2_recursive_lags,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:50:54Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:02Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:51:02Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:02Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:51:02Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:03Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:51:03Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:03Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:51:03Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:04Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:51:04Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:04Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:51:05Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:06Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:51:06Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:06Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:51:06Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:07Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:51:07Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:07Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:51:07Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:08Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:51:08Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:08Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:51:09Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:10Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:51:10Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:10Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:51:10Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:11Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:51:11Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:11Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:51:11Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:12Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:51:12Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:12Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:51:13Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:14Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:51:14Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:14Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:51:14Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:15Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:51:15Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:15Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:51:16Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:17Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:51:17Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:17Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:51:17Z
+SE3,35,,36,2025-07-31T04:00:00Z,,L1_origin_known_fallback,,2025-07-31T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:51:17Z
+SE3,35,,36,2025-07-31T04:00:00Z,,L2_recursive_lags,,2025-07-31T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:51:17Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:18Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:51:18Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:18Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:51:18Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:19Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:51:19Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:19Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:51:20Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:21Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:51:21Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:21Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:51:21Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:22Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:51:22Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:22Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:51:23Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:24Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:51:24Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:24Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:51:24Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:25Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:51:25Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:25Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:51:25Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:26Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:51:26Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:26Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:51:27Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:28Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:51:28Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:28Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:51:28Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:30Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:51:30Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:30Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:51:30Z
+SE3,35,,36,2025-09-19T04:00:00Z,,L1_origin_known_fallback,,2025-09-19T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:51:30Z
+SE3,35,,36,2025-09-19T04:00:00Z,,L2_recursive_lags,,2025-09-19T06:00:00+02:00,test,incomplete target/weather coverage for strict 36h origin window,,skipped,2026-06-08T10:51:30Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:31Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:51:31Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:31Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:51:31Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:32Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:51:32Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:32Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:51:32Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:34Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:51:34Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:34Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:51:34Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:35Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:51:35Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:35Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:51:35Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:37Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:51:37Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:37Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:51:37Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:38Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:51:38Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:38Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:51:38Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:39Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:51:39Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:51:39Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:51:40Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:41Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:51:41Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:41Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:51:41Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:42Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:51:42Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:42Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:51:42Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:44Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:51:44Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:44Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:51:44Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:45Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:51:45Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:45Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:51:45Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:46Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:51:46Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:46Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:51:47Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:48Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:51:48Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:48Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:51:48Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:49Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:51:49Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:49Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:51:49Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:51Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:51:51Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:51Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:51:51Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:52Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:51:52Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:52Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:51:52Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:53Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:51:53Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:53Z
+SE3,,1.0,,,36,L2_recursive_lags,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:51:54Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:55Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:51:55Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:55Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:51:55Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:56Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:51:56Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:56Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:51:56Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:58Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:51:58Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:58Z
+SE3,,0.0,,,36,L2_recursive_lags,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:51:58Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:59Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:51:59Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:51:59Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:51:59Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:00Z
+SE3,,1.0,,,36,L1_origin_known_fallback,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:52:01Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:01Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:52:01Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:02Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:52:02Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:02Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:52:02Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:03Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:52:03Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:03Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:52:04Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:05Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:52:05Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:05Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:52:05Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:06Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:52:06Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:06Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:52:07Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:08Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:52:08Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:08Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:52:08Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:09Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:52:09Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:09Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:52:09Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:10Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:52:10Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:10Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:52:11Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:12Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:52:12Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:12Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:52:12Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:13Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:52:13Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:13Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:52:14Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:15Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:52:15Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:15Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:52:15Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:16Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:52:16Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:16Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:52:16Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:18Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:52:18Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:18Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:52:18Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:20Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:52:20Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:20Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:52:20Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:21Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:52:21Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:21Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:52:21Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:22Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:52:22Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:22Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:52:23Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:24Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:52:24Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:52:24Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:52:24Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:26Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:52:26Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:26Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:52:26Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:27Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:52:27Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:27Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:52:27Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:28Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:52:28Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:28Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:52:29Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:30Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:52:30Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:30Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:52:30Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:31Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:52:31Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:31Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:52:31Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:33Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:52:33Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:33Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:52:33Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:34Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:52:34Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:34Z
+SE3,,1.0,,,36,L2_recursive_lags,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:52:35Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:36Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:52:36Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:36Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:52:36Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:37Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:52:37Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:37Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:52:37Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:39Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:52:39Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:39Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:52:39Z
+SE3,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:40Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:52:40Z
+SE3,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:40Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:52:40Z
+SE3,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:42Z
+SE3,,0.0,,,36,L1_origin_known_fallback,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:52:42Z
+SE3,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:42Z
+SE3,,0.0,,,36,L2_recursive_lags,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:52:42Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:50Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:52:50Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:50Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-06-01T06:00:00+02:00,test,,,done,2026-06-08T10:52:50Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:51Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:52:51Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:51Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-06-06T06:00:00+02:00,test,,,done,2026-06-08T10:52:51Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:52Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:52:52Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:52Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-06-11T06:00:00+02:00,test,,,done,2026-06-08T10:52:52Z
+FI,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:54Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:52:54Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-06-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:54Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-06-16T06:00:00+02:00,test,,,done,2026-06-08T10:52:54Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:55Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:52:55Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:55Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-06-21T06:00:00+02:00,test,,,done,2026-06-08T10:52:55Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:56Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:52:56Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-06-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:56Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-06-26T06:00:00+02:00,test,,,done,2026-06-08T10:52:57Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:58Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:52:58Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-01T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:58Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-01T06:00:00+02:00,test,,,done,2026-06-08T10:52:58Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:59Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:52:59Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-06T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:52:59Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-06T06:00:00+02:00,test,,,done,2026-06-08T10:52:59Z
+FI,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:01Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:53:01Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-07-11T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:01Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-11T06:00:00+02:00,test,,,done,2026-06-08T10:53:01Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:02Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:53:02Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-16T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:02Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-16T06:00:00+02:00,test,,,done,2026-06-08T10:53:02Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:03Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:53:03Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-21T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:03Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-07-21T06:00:00+02:00,test,,,done,2026-06-08T10:53:04Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:05Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:53:05Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-26T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:05Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-26T06:00:00+02:00,test,,,done,2026-06-08T10:53:05Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:06Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:53:06Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-07-31T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:06Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-07-31T06:00:00+02:00,test,,,done,2026-06-08T10:53:06Z
+FI,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:08Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:53:08Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-08-05T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:08Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-08-05T06:00:00+02:00,test,,,done,2026-06-08T10:53:08Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:09Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:53:09Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-10T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:09Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-08-10T06:00:00+02:00,test,,,done,2026-06-08T10:53:09Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:10Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:53:10Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-15T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:10Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-08-15T06:00:00+02:00,test,,,done,2026-06-08T10:53:11Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:12Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:53:12Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-20T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:12Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-08-20T06:00:00+02:00,test,,,done,2026-06-08T10:53:12Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:13Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:53:13Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-25T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:13Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-08-25T06:00:00+02:00,test,,,done,2026-06-08T10:53:13Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:14Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:53:14Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-08-30T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:14Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-08-30T06:00:00+02:00,test,,,done,2026-06-08T10:53:15Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:16Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:53:16Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:16Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-09-04T06:00:00+02:00,test,,,done,2026-06-08T10:53:16Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:17Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:53:17Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:17Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-09-09T06:00:00+02:00,test,,,done,2026-06-08T10:53:17Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:18Z
+FI,,1.0,,,36,L1_origin_known_fallback,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:53:19Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-09-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:19Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-09-14T06:00:00+02:00,test,,,done,2026-06-08T10:53:19Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:20Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:53:20Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:20Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-09-19T06:00:00+02:00,test,,,done,2026-06-08T10:53:20Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:21Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:53:21Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:21Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-09-24T06:00:00+02:00,test,,,done,2026-06-08T10:53:21Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:22Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:53:22Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-09-29T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:22Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-09-29T06:00:00+02:00,test,,,done,2026-06-08T10:53:23Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:24Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:53:24Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-04T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:24Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-10-04T06:00:00+02:00,test,,,done,2026-06-08T10:53:24Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:25Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:53:25Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-09T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:25Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-10-09T06:00:00+02:00,test,,,done,2026-06-08T10:53:25Z
+FI,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:27Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:53:27Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-10-14T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:27Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-10-14T06:00:00+02:00,test,,,done,2026-06-08T10:53:27Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:28Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:53:28Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-19T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:28Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-10-19T06:00:00+02:00,test,,,done,2026-06-08T10:53:28Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:29Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:53:29Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-24T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:53:29Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-10-24T06:00:00+02:00,test,,,done,2026-06-08T10:53:30Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:31Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:53:31Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-10-29T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:31Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-10-29T06:00:00+01:00,test,,,done,2026-06-08T10:53:31Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:32Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:53:32Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:32Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-11-03T06:00:00+01:00,test,,,done,2026-06-08T10:53:32Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:33Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:53:33Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:33Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-11-08T06:00:00+01:00,test,,,done,2026-06-08T10:53:34Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:35Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:53:35Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:35Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-11-13T06:00:00+01:00,test,,,done,2026-06-08T10:53:36Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:37Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:53:37Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:37Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-11-18T06:00:00+01:00,test,,,done,2026-06-08T10:53:37Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:38Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:53:38Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:38Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-11-23T06:00:00+01:00,test,,,done,2026-06-08T10:53:38Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:39Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:53:39Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-11-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:39Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-11-28T06:00:00+01:00,test,,,done,2026-06-08T10:53:40Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:41Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:53:41Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:41Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-12-03T06:00:00+01:00,test,,,done,2026-06-08T10:53:41Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:42Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:53:42Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:42Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-12-08T06:00:00+01:00,test,,,done,2026-06-08T10:53:42Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:43Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:53:43Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:43Z
+FI,,1.0,,,36,L2_recursive_lags,,2025-12-13T06:00:00+01:00,test,,,done,2026-06-08T10:53:44Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:45Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:53:45Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:45Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-12-18T06:00:00+01:00,test,,,done,2026-06-08T10:53:45Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:46Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:53:46Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2025-12-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:46Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-12-23T06:00:00+01:00,test,,,done,2026-06-08T10:53:46Z
+FI,,2.0,,,,L1_origin_known_fallback,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:48Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:53:48Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2025-12-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:48Z
+FI,,0.0,,,36,L2_recursive_lags,,2025-12-28T06:00:00+01:00,test,,,done,2026-06-08T10:53:48Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:49Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:53:49Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-02T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:49Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-01-02T06:00:00+01:00,test,,,done,2026-06-08T10:53:49Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:50Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:53:50Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-07T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:50Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-01-07T06:00:00+01:00,test,,,done,2026-06-08T10:53:51Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:52Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:53:52Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-12T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:52Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-01-12T06:00:00+01:00,test,,,done,2026-06-08T10:53:52Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:53Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:53:53Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-17T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:53Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-01-17T06:00:00+01:00,test,,,done,2026-06-08T10:53:53Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:54Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:53:54Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-22T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:54Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-01-22T06:00:00+01:00,test,,,done,2026-06-08T10:53:55Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:56Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:53:56Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-01-27T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:56Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-01-27T06:00:00+01:00,test,,,done,2026-06-08T10:53:56Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:57Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:53:57Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-01T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:57Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-02-01T06:00:00+01:00,test,,,done,2026-06-08T10:53:57Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:58Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:53:58Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-06T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:53:58Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-02-06T06:00:00+01:00,test,,,done,2026-06-08T10:53:59Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:00Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:54:00Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-11T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:00Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-02-11T06:00:00+01:00,test,,,done,2026-06-08T10:54:00Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:01Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:54:01Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-16T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:01Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-02-16T06:00:00+01:00,test,,,done,2026-06-08T10:54:02Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:03Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:54:03Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-21T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:03Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-02-21T06:00:00+01:00,test,,,done,2026-06-08T10:54:03Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:04Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:54:04Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-02-26T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:04Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-02-26T06:00:00+01:00,test,,,done,2026-06-08T10:54:04Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:05Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:54:05Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-03T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:05Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-03-03T06:00:00+01:00,test,,,done,2026-06-08T10:54:06Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:07Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:54:07Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-08T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:07Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-03-08T06:00:00+01:00,test,,,done,2026-06-08T10:54:07Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:08Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:54:08Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-13T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:08Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-03-13T06:00:00+01:00,test,,,done,2026-06-08T10:54:08Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:09Z
+FI,,1.0,,,36,L1_origin_known_fallback,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:54:10Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-03-18T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:10Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-03-18T06:00:00+01:00,test,,,done,2026-06-08T10:54:10Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:11Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:54:11Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-23T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:11Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-03-23T06:00:00+01:00,test,,,done,2026-06-08T10:54:11Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:12Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:54:12Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-03-28T06:00:00+01:00,train,,HGB_no_price,done,2026-06-08T10:54:12Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-03-28T06:00:00+01:00,test,,,done,2026-06-08T10:54:13Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:14Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:54:14Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:14Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-04-02T06:00:00+02:00,test,,,done,2026-06-08T10:54:14Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:15Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:54:15Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:15Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-04-07T06:00:00+02:00,test,,,done,2026-06-08T10:54:15Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:16Z
+FI,,1.0,,,36,L1_origin_known_fallback,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:54:17Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-04-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:17Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-04-12T06:00:00+02:00,test,,,done,2026-06-08T10:54:17Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:18Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:54:18Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:18Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-04-17T06:00:00+02:00,test,,,done,2026-06-08T10:54:18Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:19Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:54:19Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:19Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-04-22T06:00:00+02:00,test,,,done,2026-06-08T10:54:20Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:21Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:54:21Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-04-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:21Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-04-27T06:00:00+02:00,test,,,done,2026-06-08T10:54:21Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:22Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:54:22Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-02T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:22Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-05-02T06:00:00+02:00,test,,,done,2026-06-08T10:54:22Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:23Z
+FI,,1.0,,,36,L1_origin_known_fallback,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:54:24Z
+FI,,2.0,,,,L2_recursive_lags,shared model fit reused,2026-05-07T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:24Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-05-07T06:00:00+02:00,test,,,done,2026-06-08T10:54:24Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:25Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:54:25Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-12T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:25Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-05-12T06:00:00+02:00,test,,,done,2026-06-08T10:54:25Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:26Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:54:26Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-17T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:26Z
+FI,,1.0,,,36,L2_recursive_lags,,2026-05-17T06:00:00+02:00,test,,,done,2026-06-08T10:54:27Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:28Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:54:28Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-22T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:28Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-05-22T06:00:00+02:00,test,,,done,2026-06-08T10:54:28Z
+FI,,1.0,,,,L1_origin_known_fallback,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:29Z
+FI,,0.0,,,36,L1_origin_known_fallback,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:54:29Z
+FI,,1.0,,,,L2_recursive_lags,shared model fit reused,2026-05-27T06:00:00+02:00,train,,HGB_no_price,done,2026-06-08T10:54:29Z
+FI,,0.0,,,36,L2_recursive_lags,,2026-05-27T06:00:00+02:00,test,,,done,2026-06-08T10:54:29Z

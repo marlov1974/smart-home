@@ -1,0 +1,562 @@
+{
+  "area_summary_results": [
+    {
+      "area_code": "SE1",
+      "bias_over_period": -8.619173925855248,
+      "mean_MAE_0_24h": 177.8997624634655,
+      "mean_MAE_0_36h": 172.75419862899201,
+      "mean_MAE_24_36h": 162.46307096004512,
+      "mean_energy_error_percent": 6.67015162670468,
+      "median_MAE_0_36h": 146.72015943163169,
+      "mode": "L1_origin_known_fallback",
+      "monthly_split": {
+        "1": 228.99120868485866,
+        "10": 174.30486583382802,
+        "11": 152.82385644398997,
+        "12": 189.94636480361467,
+        "2": 169.57478641134006,
+        "3": 352.76524887358727,
+        "4": 140.75167377359173,
+        "5": 147.3447649104298,
+        "6": 115.33852805775922,
+        "7": 88.42966089385644,
+        "8": 133.011199063214,
+        "9": 132.77993422985088
+      },
+      "origin_count": 67,
+      "weekday_split": {
+        "0": 129.76244178734382,
+        "1": 161.17957752434515,
+        "2": 157.99063369435822,
+        "3": 149.0169830977414,
+        "4": 163.7939013331555,
+        "5": 315.63870149220094,
+        "6": 141.947466429729
+      },
+      "weighted_MAE_percent_of_mean_load": 13.427241338623599
+    },
+    {
+      "area_code": "SE1",
+      "bias_over_period": 4.214366472341823,
+      "mean_MAE_0_24h": 140.82233270880076,
+      "mean_MAE_0_36h": 138.317281995335,
+      "mean_MAE_24_36h": 133.30718056840348,
+      "mean_energy_error_percent": 5.531111419801137,
+      "median_MAE_0_36h": 121.1805936575803,
+      "mode": "L2_recursive_lags",
+      "monthly_split": {
+        "1": 115.66984308694339,
+        "10": 136.7732593833474,
+        "11": 110.16840088093922,
+        "12": 170.09237291269378,
+        "2": 144.2826326190411,
+        "3": 314.3593918734358,
+        "4": 112.037104251671,
+        "5": 114.7617707527213,
+        "6": 99.37631782526023,
+        "7": 69.44571495745194,
+        "8": 119.17248581190336,
+        "9": 117.47324208396113
+      },
+      "origin_count": 67,
+      "weekday_split": {
+        "0": 105.6016670077754,
+        "1": 122.83247018998844,
+        "2": 132.5625469242259,
+        "3": 110.63496808405459,
+        "4": 135.6955259820862,
+        "5": 237.83521011178613,
+        "6": 130.70018788778373
+      },
+      "weighted_MAE_percent_of_mean_load": 10.75064769130385
+    },
+    {
+      "area_code": "SE2",
+      "bias_over_period": -21.633017082977272,
+      "mean_MAE_0_24h": 324.65915563679937,
+      "mean_MAE_0_36h": 307.0441368329448,
+      "mean_MAE_24_36h": 271.814099225236,
+      "mean_energy_error_percent": 10.577783249514612,
+      "median_MAE_0_36h": 239.10248016338767,
+      "mode": "L1_origin_known_fallback",
+      "monthly_split": {
+        "1": 414.2550499599826,
+        "10": 267.8074688694981,
+        "11": 355.3211129294655,
+        "12": 420.51688140831965,
+        "2": 343.621390092364,
+        "3": 663.3827973114243,
+        "4": 253.98875711601514,
+        "5": 221.97167764875533,
+        "6": 183.9714293553444,
+        "7": 176.46429041897832,
+        "8": 183.54943499716853,
+        "9": 179.6234238146773
+      },
+      "origin_count": 71,
+      "weekday_split": {
+        "0": 249.25604337042486,
+        "1": 358.1642539357542,
+        "2": 231.3425481188462,
+        "3": 310.0041631452187,
+        "4": 273.3316617029927,
+        "5": 481.2510438817685,
+        "6": 262.01266177029555
+      },
+      "weighted_MAE_percent_of_mean_load": 17.37028838463725
+    },
+    {
+      "area_code": "SE2",
+      "bias_over_period": 3.114713564966274,
+      "mean_MAE_0_24h": 249.28335329568583,
+      "mean_MAE_0_36h": 242.5785670243301,
+      "mean_MAE_24_36h": 229.16899448161845,
+      "mean_energy_error_percent": 7.9330224768251805,
+      "median_MAE_0_36h": 182.19671341147003,
+      "mode": "L2_recursive_lags",
+      "monthly_split": {
+        "1": 259.0289016521599,
+        "10": 194.89650711130685,
+        "11": 269.4207521161903,
+        "12": 359.4992710889121,
+        "2": 303.62290077138135,
+        "3": 491.37548797371636,
+        "4": 174.6083630940094,
+        "5": 202.76339928333923,
+        "6": 174.19444292810726,
+        "7": 145.56903167849393,
+        "8": 154.91395575668403,
+        "9": 170.6130204159636
+      },
+      "origin_count": 71,
+      "weekday_split": {
+        "0": 237.91627878976186,
+        "1": 266.4491237717757,
+        "2": 183.1422242330363,
+        "3": 190.83837224605483,
+        "4": 208.02026230783002,
+        "5": 455.0450387774764,
+        "6": 168.425189469899
+      },
+      "weighted_MAE_percent_of_mean_load": 13.723302807886592
+    },
+    {
+      "area_code": "SE3",
+      "bias_over_period": 44.63411189522638,
+      "mean_MAE_0_24h": 610.6276165426102,
+      "mean_MAE_0_36h": 638.0395556830188,
+      "mean_MAE_24_36h": 692.8634339638354,
+      "mean_energy_error_percent": 5.0223788348930425,
+      "median_MAE_0_36h": 436.76703206163006,
+      "mode": "L1_origin_known_fallback",
+      "monthly_split": {
+        "1": 1383.91206650192,
+        "10": 561.9906393314568,
+        "11": 966.0539659224345,
+        "12": 500.1292061058598,
+        "2": 897.2164282134627,
+        "3": 851.4620496840868,
+        "4": 552.4340841764282,
+        "5": 607.9089530740483,
+        "6": 369.45496075858546,
+        "7": 346.0575917428212,
+        "8": 259.9442135991289,
+        "9": 304.2846997665876
+      },
+      "origin_count": 71,
+      "weekday_split": {
+        "0": 384.88920995109004,
+        "1": 755.5211814688467,
+        "2": 586.1551375899608,
+        "3": 773.7372957862661,
+        "4": 794.6625818512057,
+        "5": 785.2514932564014,
+        "6": 426.02014660481166
+      },
+      "weighted_MAE_percent_of_mean_load": 6.540923755536081
+    },
+    {
+      "area_code": "SE3",
+      "bias_over_period": -13.24651938657543,
+      "mean_MAE_0_24h": 342.78247365781453,
+      "mean_MAE_0_36h": 361.88118385472995,
+      "mean_MAE_24_36h": 400.07860424856057,
+      "mean_energy_error_percent": 2.490329352765914,
+      "median_MAE_0_36h": 325.15404208209327,
+      "mode": "L2_recursive_lags",
+      "monthly_split": {
+        "1": 451.7098616595205,
+        "10": 407.57354808242644,
+        "11": 409.9536332225855,
+        "12": 304.90437680994376,
+        "2": 683.3750051956803,
+        "3": 437.2928971753973,
+        "4": 412.0512747233482,
+        "5": 345.3660610973449,
+        "6": 258.0697520850593,
+        "7": 210.29045418446188,
+        "8": 186.40490380567223,
+        "9": 210.32268908743563
+      },
+      "origin_count": 71,
+      "weekday_split": {
+        "0": 367.46513782122815,
+        "1": 305.4566009948533,
+        "2": 291.17496900499737,
+        "3": 380.0649460195574,
+        "4": 367.3724315907897,
+        "5": 471.5547019259625,
+        "6": 359.23328701149956
+      },
+      "weighted_MAE_percent_of_mean_load": 3.7098596961171433
+    },
+    {
+      "area_code": "FI",
+      "bias_over_period": -37.01217282696396,
+      "mean_MAE_0_24h": 585.9348639682786,
+      "mean_MAE_0_36h": 612.8301801395332,
+      "mean_MAE_24_36h": 666.6208124820424,
+      "mean_energy_error_percent": 5.020387087596089,
+      "median_MAE_0_36h": 434.7133612162145,
+      "mode": "L1_origin_known_fallback",
+      "monthly_split": {
+        "1": 1167.2135739992962,
+        "10": 487.6111635291406,
+        "11": 587.6935246293665,
+        "12": 864.7917223746718,
+        "2": 1032.790980089175,
+        "3": 368.5705811114342,
+        "4": 883.9895522060536,
+        "5": 715.0248595226434,
+        "6": 350.1858579668967,
+        "7": 241.9539963190169,
+        "8": 333.7407540124328,
+        "9": 382.20829321769025
+      },
+      "origin_count": 73,
+      "weekday_split": {
+        "0": 498.2391198610523,
+        "1": 556.5722783478773,
+        "2": 709.8128856616448,
+        "3": 533.5663432996741,
+        "4": 620.2134338589055,
+        "5": 859.5331614195908,
+        "6": 511.5640551070844
+      },
+      "weighted_MAE_percent_of_mean_load": 6.081668743389359
+    },
+    {
+      "area_code": "FI",
+      "bias_over_period": -134.7313592717054,
+      "mean_MAE_0_24h": 323.6608254475365,
+      "mean_MAE_0_36h": 367.0571499818521,
+      "mean_MAE_24_36h": 453.8497990504832,
+      "mean_energy_error_percent": 2.770416920116401,
+      "median_MAE_0_36h": 297.5325323562431,
+      "mode": "L2_recursive_lags",
+      "monthly_split": {
+        "1": 766.5089204867401,
+        "10": 288.6189480137379,
+        "11": 348.753669016189,
+        "12": 505.712556420784,
+        "2": 538.3320889004181,
+        "3": 367.58554226691905,
+        "4": 358.29602644014244,
+        "5": 313.0269682056051,
+        "6": 221.84577831432912,
+        "7": 214.535177793753,
+        "8": 246.07573425042196,
+        "9": 260.81471837120165
+      },
+      "origin_count": 73,
+      "weekday_split": {
+        "0": 361.84716464452765,
+        "1": 316.3841621222683,
+        "2": 473.395576033547,
+        "3": 330.98693627501973,
+        "4": 357.407774887278,
+        "5": 372.4408353641967,
+        "6": 349.0676458623638
+      },
+      "weighted_MAE_percent_of_mean_load": 3.642640438455463
+    }
+  ],
+  "areas": [
+    "SE1",
+    "SE2",
+    "SE3",
+    "FI"
+  ],
+  "comparison_vs_p0056g_weekly": [
+    {
+      "area_code": "SE1",
+      "delta_vs_p0056g_MW": 41.50119862899203,
+      "delta_vs_p0056g_percent": 31.61923813474133,
+      "materially_better_than_p0056g": false,
+      "mode": "L1_origin_known_fallback",
+      "p0056g_weekly_MAE_162h": 131.253,
+      "rolling_36h_MAE": 172.75419862899201
+    },
+    {
+      "area_code": "SE1",
+      "delta_vs_p0056g_MW": 7.064281995335023,
+      "delta_vs_p0056g_percent": 5.382187070265078,
+      "materially_better_than_p0056g": false,
+      "mode": "L2_recursive_lags",
+      "p0056g_weekly_MAE_162h": 131.253,
+      "rolling_36h_MAE": 138.317281995335
+    },
+    {
+      "area_code": "SE2",
+      "delta_vs_p0056g_MW": 99.28713683294478,
+      "delta_vs_p0056g_percent": 47.79003202440581,
+      "materially_better_than_p0056g": false,
+      "mode": "L1_origin_known_fallback",
+      "p0056g_weekly_MAE_162h": 207.757,
+      "rolling_36h_MAE": 307.0441368329448
+    },
+    {
+      "area_code": "SE2",
+      "delta_vs_p0056g_MW": 34.82156702433011,
+      "delta_vs_p0056g_percent": 16.760719024788624,
+      "materially_better_than_p0056g": false,
+      "mode": "L2_recursive_lags",
+      "p0056g_weekly_MAE_162h": 207.757,
+      "rolling_36h_MAE": 242.5785670243301
+    },
+    {
+      "area_code": "SE3",
+      "delta_vs_p0056g_MW": 355.67455568301875,
+      "delta_vs_p0056g_percent": 125.96269214775866,
+      "materially_better_than_p0056g": false,
+      "mode": "L1_origin_known_fallback",
+      "p0056g_weekly_MAE_162h": 282.365,
+      "rolling_36h_MAE": 638.0395556830188
+    },
+    {
+      "area_code": "SE3",
+      "delta_vs_p0056g_MW": 79.51618385472995,
+      "delta_vs_p0056g_percent": 28.160779081943566,
+      "materially_better_than_p0056g": false,
+      "mode": "L2_recursive_lags",
+      "p0056g_weekly_MAE_162h": 282.365,
+      "rolling_36h_MAE": 361.88118385472995
+    },
+    {
+      "area_code": "FI",
+      "delta_vs_p0056g_MW": 190.50618013953323,
+      "delta_vs_p0056g_percent": 45.10901112405007,
+      "materially_better_than_p0056g": false,
+      "mode": "L1_origin_known_fallback",
+      "p0056g_weekly_MAE_162h": 422.324,
+      "rolling_36h_MAE": 612.8301801395332
+    },
+    {
+      "area_code": "FI",
+      "delta_vs_p0056g_MW": -55.26685001814792,
+      "delta_vs_p0056g_percent": -13.086362607417035,
+      "materially_better_than_p0056g": true,
+      "mode": "L2_recursive_lags",
+      "p0056g_weekly_MAE_162h": 422.324,
+      "rolling_36h_MAE": 367.0571499818521
+    }
+  ],
+  "comparison_vs_static_baseline": [
+    {
+      "area_code": "SE1",
+      "baseline_name": "P0056E_V2_static",
+      "delta_vs_static_MW": 49.245198628992014,
+      "delta_vs_static_percent": 39.871749126777814,
+      "mode": "L1_origin_known_fallback",
+      "rolling_36h_MAE": 172.75419862899201,
+      "static_full36_MAE": 123.509,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "SE1",
+      "baseline_name": "P0056E_V2_static",
+      "delta_vs_static_MW": 14.808281995335008,
+      "delta_vs_static_percent": 11.98963799831187,
+      "mode": "L2_recursive_lags",
+      "rolling_36h_MAE": 138.317281995335,
+      "static_full36_MAE": 123.509,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "SE2",
+      "baseline_name": "P0056F_W12_static",
+      "delta_vs_static_MW": 109.49713683294479,
+      "delta_vs_static_percent": 55.42839771444,
+      "mode": "L1_origin_known_fallback",
+      "rolling_36h_MAE": 307.0441368329448,
+      "static_full36_MAE": 197.547,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "SE2",
+      "baseline_name": "P0056F_W12_static",
+      "delta_vs_static_MW": 45.031567024330116,
+      "delta_vs_static_percent": 22.795368709385674,
+      "mode": "L2_recursive_lags",
+      "rolling_36h_MAE": 242.5785670243301,
+      "static_full36_MAE": 197.547,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "SE3",
+      "baseline_name": "P0056C_static",
+      "delta_vs_static_MW": 387.11155568301876,
+      "delta_vs_static_percent": 154.27196474009227,
+      "mode": "L1_origin_known_fallback",
+      "rolling_36h_MAE": 638.0395556830188,
+      "static_full36_MAE": 250.928,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "SE3",
+      "baseline_name": "P0056C_static",
+      "delta_vs_static_MW": 110.95318385472996,
+      "delta_vs_static_percent": 44.217139519993765,
+      "mode": "L2_recursive_lags",
+      "rolling_36h_MAE": 361.88118385472995,
+      "static_full36_MAE": 250.928,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "FI",
+      "baseline_name": "P0056C_static",
+      "delta_vs_static_MW": 301.6411801395332,
+      "delta_vs_static_percent": 96.93182604125892,
+      "mode": "L1_origin_known_fallback",
+      "rolling_36h_MAE": 612.8301801395332,
+      "static_full36_MAE": 311.189,
+      "within_1_percent_or_better": false
+    },
+    {
+      "area_code": "FI",
+      "baseline_name": "P0056C_static",
+      "delta_vs_static_MW": 55.86814998185207,
+      "delta_vs_static_percent": 17.95312494395755,
+      "mode": "L2_recursive_lags",
+      "rolling_36h_MAE": 367.0571499818521,
+      "static_full36_MAE": 311.189,
+      "within_1_percent_or_better": false
+    }
+  ],
+  "leakage_review": {
+    "flow_exchange_a61_capacity_feature_used": false,
+    "forbidden_features": [],
+    "forbidden_future_actual_lag_count": 0,
+    "forecast_rows_complete": true,
+    "future_actual_load_feature_used": false,
+    "ok": true,
+    "old_physical_balance_target_used": false,
+    "oracle_mode_run": false,
+    "primary_modes": [
+      "L1_origin_known_fallback",
+      "L2_recursive_lags"
+    ],
+    "spot_price_feature_used": false,
+    "target_order_ok": true
+  },
+  "modes": [
+    "L1_origin_known_fallback",
+    "L2_recursive_lags"
+  ],
+  "package_id": "P0056H",
+  "row_counts": {
+    "expected_origin_results": 564,
+    "failed_jobs": 0,
+    "forecast_log_rows": 20304,
+    "metrics_rows": 12488,
+    "origin_results": 564,
+    "origins": 73,
+    "scheduled_origin_mode_jobs": 584,
+    "skipped_incomplete_origin_mode_jobs": 20,
+    "skipped_incomplete_origin_windows": 10
+  },
+  "runtime_seconds": 430.644,
+  "skipped_incomplete_origin_windows": [
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-06-01T04:00:00Z",
+      "origin": "2025-06-01T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-06-06T04:00:00Z",
+      "origin": "2025-06-06T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-07-01T04:00:00Z",
+      "origin": "2025-07-01T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-07-06T04:00:00Z",
+      "origin": "2025-07-06T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-07-16T04:00:00Z",
+      "origin": "2025-07-16T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE1",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-10-04T04:00:00Z",
+      "origin": "2025-10-04T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE2",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-08-05T04:00:00Z",
+      "origin": "2025-08-05T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE2",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-09-14T04:00:00Z",
+      "origin": "2025-09-14T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE3",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-07-31T04:00:00Z",
+      "origin": "2025-07-31T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    },
+    {
+      "area_code": "SE3",
+      "available_forecast_rows": 35,
+      "expected_forecast_rows": 36,
+      "forecast_origin_utc": "2025-09-19T04:00:00Z",
+      "origin": "2025-09-19T06:00:00+02:00",
+      "reason": "incomplete target/weather coverage for strict 36h origin window"
+    }
+  ],
+  "status": "WARN"
+}

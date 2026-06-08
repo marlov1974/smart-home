@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed_warn
 
 ## Package order
 
@@ -470,4 +470,60 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+P0056H completed as `WARN` on 2026-06-08.
+
+Implemented deterministic LABB-only 36h rolling-origin walk-forward evidence for SE1, SE2, SE3 and FI using strict forecast origins every fifth day at 06:00 Europe/Stockholm from 2025-06-01 through 2026-05-27.
+
+Evaluated modes:
+
+```text
+L1_origin_known_fallback
+L2_recursive_lags
+```
+
+Skipped:
+
+```text
+L3 oracle actual-lag sensitivity
+NO3/NO4 optional controls
+```
+
+Row counts:
+
+```text
+scheduled_origin_mode_jobs = 584
+expected_origin_results = 564
+origin_results = 564
+skipped_incomplete_origin_windows = 10
+skipped_incomplete_origin_mode_jobs = 20
+forecast_log_rows = 20304
+metrics_rows = 12488
+failed_jobs = 0
+```
+
+Ten strict 36h area-origin windows were skipped because existing local target/weather coverage had only 35 of 36 required rows. This is documented in `requirements/package-runs/P0056H/coverage-gaps.md`.
+
+Aggregate mean MAE 0-36h:
+
+```text
+SE1 L1 = 172.754 MW, L2 = 138.317 MW
+SE2 L1 = 307.044 MW, L2 = 242.579 MW
+SE3 L1 = 638.040 MW, L2 = 361.881 MW
+FI  L1 = 612.830 MW, L2 = 367.057 MW
+```
+
+Conclusion:
+
+```text
+L2 recursive lags materially improve over L1 fallback for every scoped area.
+L2 does not recover old static full36 performance for SE1/SE2/SE3/FI.
+FI L2 improves over P0056G weekly, but SE1/SE2/SE3 remain worse than P0056G.
+```
+
+Leakage and scope:
+
+```text
+No future actual load lag leakage found in primary modes.
+No spot price, flow/exchange/A61/capacity, old physical_balance, API, device, runtime or production activation changes.
+Weather protocol is actual_weather_proxy_LABB and not production forecast weather.
+```

@@ -1,0 +1,146 @@
+{
+  "area_summary_results": [
+    {
+      "area_code": "SE1",
+      "best_week": "2025-W26",
+      "best_week_MAE_162h": 72.5244541521161,
+      "bias_over_period_162h": 7.764847023945142,
+      "mean_weekly_MAE_162h": 131.25327435301628,
+      "mean_weekly_MAE_168h": 130.1416471407281,
+      "mean_weekly_energy_error_percent": 4.884586056040546,
+      "median_weekly_MAE_162h": 124.24514289405863,
+      "model_id": "B_weekly_HGB_no_price",
+      "p90_weekly_MAE_162h": 179.88198107628665,
+      "trend_in_error_over_time": 34.82602123059965,
+      "weeks": 52,
+      "weighted_MAE_percent_of_mean_load": 10.4532031978439,
+      "worst_week": "2026-W13",
+      "worst_week_MAE_162h": 380.7258948410817
+    },
+    {
+      "area_code": "SE2",
+      "best_week": "2025-W28",
+      "best_week_MAE_162h": 103.61261566534898,
+      "bias_over_period_162h": 1.2261956865479837,
+      "mean_weekly_MAE_162h": 207.75664058517265,
+      "mean_weekly_MAE_168h": 205.92163403861912,
+      "mean_weekly_energy_error_percent": 4.405444022348161,
+      "median_weekly_MAE_162h": 182.8782659055496,
+      "model_id": "B_weekly_HGB_no_price",
+      "p90_weekly_MAE_162h": 311.1253777008904,
+      "trend_in_error_over_time": 93.9755721888753,
+      "weeks": 52,
+      "weighted_MAE_percent_of_mean_load": 12.037771392088255,
+      "worst_week": "2026-W13",
+      "worst_week_MAE_162h": 788.2376255978564
+    },
+    {
+      "area_code": "SE3",
+      "best_week": "2025-W37",
+      "best_week_MAE_162h": 133.9524490713739,
+      "bias_over_period_162h": -76.8284046686445,
+      "mean_weekly_MAE_162h": 282.3645136524908,
+      "mean_weekly_MAE_168h": 280.0449768687176,
+      "mean_weekly_energy_error_percent": 1.5701761915676598,
+      "median_weekly_MAE_162h": 266.4208402700606,
+      "model_id": "B_weekly_HGB_no_price",
+      "p90_weekly_MAE_162h": 429.6399119197399,
+      "trend_in_error_over_time": 95.97661923255959,
+      "weeks": 52,
+      "weighted_MAE_percent_of_mean_load": 2.93676333514397,
+      "worst_week": "2026-W22",
+      "worst_week_MAE_162h": 621.7930629984406
+    },
+    {
+      "area_code": "FI",
+      "best_week": "2025-W29",
+      "best_week_MAE_162h": 147.49014261119433,
+      "bias_over_period_162h": -256.3926624673366,
+      "mean_weekly_MAE_162h": 422.32387456048735,
+      "mean_weekly_MAE_168h": 417.2078185076984,
+      "mean_weekly_energy_error_percent": 3.085209721630635,
+      "median_weekly_MAE_162h": 341.5051507965238,
+      "model_id": "B_weekly_HGB_no_price",
+      "p90_weekly_MAE_162h": 742.1790248143785,
+      "trend_in_error_over_time": 134.2714179893253,
+      "weeks": 52,
+      "weighted_MAE_percent_of_mean_load": 4.225441708531526,
+      "worst_week": "2026-W12",
+      "worst_week_MAE_162h": 1332.536861326474
+    }
+  ],
+  "areas": [
+    "SE1",
+    "SE2",
+    "SE3",
+    "FI"
+  ],
+  "comparison_vs_static_baseline": [
+    {
+      "area_code": "SE1",
+      "baseline_name": "P0056E_V2_static",
+      "baseline_static_DayAhead_MAE": 125.21953299342522,
+      "delta_vs_static_MW": 6.033741359591062,
+      "delta_vs_static_percent": 4.818530476317836,
+      "source": "P0056E area-variant-results",
+      "weekly_retrain_improves_by_2_percent": false,
+      "weekly_retrain_mean_MAE_162h": 131.25327435301628
+    },
+    {
+      "area_code": "SE2",
+      "baseline_name": "P0056F_W12_static",
+      "baseline_static_DayAhead_MAE": 206.179,
+      "delta_vs_static_MW": 1.5776405851726452,
+      "delta_vs_static_percent": 0.7651800547934781,
+      "source": "P0056F area-results",
+      "weekly_retrain_improves_by_2_percent": false,
+      "weekly_retrain_mean_MAE_162h": 207.75664058517265
+    },
+    {
+      "area_code": "SE3",
+      "baseline_name": "P0056C_static",
+      "baseline_static_DayAhead_MAE": 258.869,
+      "delta_vs_static_MW": 23.495513652490786,
+      "delta_vs_static_percent": 9.076217566603487,
+      "source": "P0056C area-results",
+      "weekly_retrain_improves_by_2_percent": false,
+      "weekly_retrain_mean_MAE_162h": 282.3645136524908
+    },
+    {
+      "area_code": "FI",
+      "baseline_name": "P0056C_static",
+      "baseline_static_DayAhead_MAE": 332.717,
+      "delta_vs_static_MW": 89.60687456048737,
+      "delta_vs_static_percent": 26.93185937613268,
+      "source": "P0056C area-results",
+      "weekly_retrain_improves_by_2_percent": false,
+      "weekly_retrain_mean_MAE_162h": 422.32387456048735
+    }
+  ],
+  "leakage_review": {
+    "flow_exchange_a61_capacity_feature_used": false,
+    "forbidden_features": [],
+    "forecast_coverage_note": "Metrics use available area-week rows; local source gaps are reported through forecast_rows_168h/162h.",
+    "forecast_coverage_ok": true,
+    "forecast_rows_complete": false,
+    "future_actual_load_feature_used": false,
+    "holdout_or_future_weeks_used_for_fit_or_selection": false,
+    "ok": true,
+    "old_physical_balance_target_used": false,
+    "spot_price_feature_used": false,
+    "target_order_ok": true,
+    "training_cutoff_rule": "weekly train rows target_timestamp_utc < training_cutoff_utc",
+    "weather_protocol": "actual_weather_proxy LABB sensitivity"
+  },
+  "package_id": "P0056G",
+  "row_counts": {
+    "expected_weekly_results": 208,
+    "failed_jobs": 0,
+    "forecast_log_rows": 34844,
+    "metrics_rows": 6504,
+    "weekly_results": 208,
+    "weeks": 52
+  },
+  "runtime_seconds": 508.854,
+  "status": "WARN"
+}

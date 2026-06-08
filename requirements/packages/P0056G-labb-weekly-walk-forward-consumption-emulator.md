@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -450,4 +450,33 @@ confirmation no forbidden features/no large artifacts/no device runtime changes
 
 ## Completion notes
 
-To be filled after implementation.
+P0056G completed with `WARN` status on 2026-06-08.
+
+Summary:
+
+```text
+areas evaluated: SE1, SE2, SE3, FI
+weeks evaluated: 52, 2025-W23..2026-W22
+area-week jobs: 208/208 completed, 0 failed
+weather protocol: actual_weather_proxy, LABB only
+model variant: B_weekly_HGB_no_price
+forecast log rows: 34844
+metrics rows: 6504
+```
+
+Weekly retrain did not beat the selected static baselines:
+
+```text
+SE1: +4.819 percent MAE vs P0056E_V2_static
+SE2: +0.765 percent MAE vs P0056F_W12_static
+SE3: +9.076 percent MAE vs P0056C_static
+FI:  +26.932 percent MAE vs P0056C_static
+```
+
+Decision:
+
+```text
+Do not promote weekly retrain as default from P0056G.
+Keep result LABB-only.
+Next package should replace actual-weather proxy with production-like weather forecast/noise protocol before any G2-KANDIDAT evaluation.
+```

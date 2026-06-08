@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed - WARN
 
 ## Package order
 
@@ -304,4 +304,47 @@ confirmation diagnostic only and no large artifacts
 
 ## Completion notes
 
-To be filled after implementation.
+Implemented as LABB-only SE2 train-window diagnostic.
+
+Result summary:
+
+```text
+status = WARN
+area = SE2
+scheduled_origins = 73
+complete_origins = 71
+skipped_incomplete_origin_windows = 2
+variant_results = 213
+failed_jobs = 0
+forecast_log_rows = 7668
+metrics_rows = 4932
+```
+
+Train-window results:
+
+```text
+TW2 mean_MAE_0_36h = 242.238 MW
+TW3 mean_MAE_0_36h = 229.147 MW
+TWX mean_MAE_0_36h = 228.549 MW
+```
+
+Required question answers:
+
+```text
+1. Rolling 2.0 years is not better than rolling 3.0 years; TW2 is 5.713% worse than TW3.
+2. Expanding 3.X is slightly better than exact rolling 3.0 years; TWX is 0.261% better than TW3.
+3. Shorter training does not reduce bias; TW2 bias is -29.897 MW vs TW3 -22.223 MW and TWX -23.253 MW.
+4. The best train window does not explain the static-baseline gap; TWX still trails P0056F W12 static full36 by 31.002 MW / 15.693%.
+5. Use TWX in the next emulator consumption protocol test because it is raw-best, nearly equal to TW3 and operationally simpler.
+```
+
+Comparison highlights:
+
+```text
+TWX vs P0056H2 static-style 36h = -0.000 MW / -0.000%
+TWX vs P0056H L2 recursive 36h = -14.030 MW / -5.784%
+TWX vs P0056G weekly = +20.792 MW / +10.008%
+TWX vs P0056F W12 static full36 = +31.002 MW / +15.693%
+```
+
+The package remains diagnostic only: no API, no devices, no runtime changes, no production activation, no G2-KANDIDAT promotion and no large artifacts.

@@ -418,3 +418,17 @@ No production activation.
 No spot-price, flow/exchange/A61/capacity or old physical_balance features.
 No future actual load used as a prediction feature.
 ```
+
+Post-run interpretation:
+
+```text
+requirements/package-runs/P0056M/forecast-error-interpretation.md
+```
+
+Interpretation summary:
+
+```text
+The primary issue appears to be missing regime/target-quality understanding, not simply weak regressor capacity.
+The most suspicious case is 2026-03-28, where SE2 mean actual load jumps to 5487.607639 MW while neighboring days are near 1800..2200 MW.
+Next step should audit target anomaly, native/source rows, DST/local-day handling and high-ramp/high-load regimes before model changes.
+```

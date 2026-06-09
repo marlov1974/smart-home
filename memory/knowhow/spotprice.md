@@ -37,3 +37,9 @@ P0053B-A showed that old price-prediction artifacts without forecast-origin time
 ## Backfill robustness
 
 Long historical backfills should commit per source day and be safe to rerun. A single transient timeout must not discard already validated days. Error messages should include the area and local date that failed.
+
+## DayAhead local days and DST
+
+P0056O fixed a DayAhead row-generation bug where Europe/Stockholm delivery days were forced into 24 local positions. Do not create canonical hourly delivery rows by assigning a timezone to `range(24)` local hours. On spring-forward days this can create nonexistent local times and duplicate UTC targets; on fall-back days it omits one repeated local hour.
+
+For canonical DayAhead evaluation rows, iterate UTC hours between local midnight and next local midnight, then convert each UTC target back to local metadata. The canonical row count is 23, 24 or 25 depending on the true local day. If a downstream market emulator needs a fixed 24-position display or contract, build a separate adapter instead of corrupting the canonical target/evaluation rows.

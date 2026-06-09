@@ -14,7 +14,7 @@ import sys
 from zoneinfo import ZoneInfo
 
 from src.mac.services.spotprice_ml_model.core import DEFAULT_FEATURE_DB
-from src.mac.services.spotprice_model_diagnostics import p0052, p0054k, p0056k
+from src.mac.services.spotprice_model_diagnostics import p0052, p0054k
 from src.mac.services.spotprice_model_diagnostics.p0041 import percentile, write
 
 
@@ -206,8 +206,13 @@ def expected_local_hours_for_day(local_day: date) -> list[dict[str, object]]:
     return rows
 
 
+def legacy_fixed_24_delivery_day_target_utc_hours(local_day: date) -> list[str]:
+    return [p0052.format_utc(datetime.combine(local_day, dt_time(hour, 0), tzinfo=STOCKHOLM)) for hour in range(24)]
+
+
 def p0056k_delivery_day_mapping(local_day: date) -> list[dict[str, object]]:
-    targets = p0056k.delivery_day_target_utc_hours(local_day)
+    # P0056N is historical pre-P0056O evidence, so keep the old fixed-24 mapping here.
+    targets = legacy_fixed_24_delivery_day_target_utc_hours(local_day)
     utc_counts = Counter(targets)
     converted_keys = []
     rows = []

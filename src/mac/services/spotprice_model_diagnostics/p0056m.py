@@ -156,8 +156,9 @@ def reconstruct_se2_m6_predictions(
     for origin_index, origin in enumerate(origins, start=1):
         started = time.monotonic()
         forecast_rows = [dict(row) for row in rows_by_origin.get(origin.origin_utc, [])]
-        if len(forecast_rows) != 24:
-            failures.append({"origin_utc": origin.origin_utc, "delivery_day": origin.delivery_day.isoformat(), "error": f"incomplete forecast rows {len(forecast_rows)}"})
+        expected_forecast_rows = len(p0056k.delivery_day_target_rows(origin.delivery_day))
+        if len(forecast_rows) != expected_forecast_rows:
+            failures.append({"origin_utc": origin.origin_utc, "delivery_day": origin.delivery_day.isoformat(), "error": f"incomplete forecast rows {len(forecast_rows)} expected {expected_forecast_rows}"})
             continue
         train_rows = [dict(row) for row in base_rows if p0056k.EXPANDING_TRAIN_START_UTC <= str(row["target_timestamp_utc"]) < origin.origin_utc]
         if len(train_rows) < 1000:

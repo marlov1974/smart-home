@@ -123,3 +123,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0056M` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the SE2 M6 realistic DayAhead reconstruction and error-slice diagnostics functions.
 
 `P0056N` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE2 target-anomaly, DST local-day and DayAhead row-alignment audit functions.
+
+`P0056O` updated `docs/functions/mac/spotprice-model-diagnostics.md` with canonical Europe/Stockholm DayAhead DST delivery-day generation, 23/24/25-row target contracts and compact verification functions.

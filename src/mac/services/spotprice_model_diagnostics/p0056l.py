@@ -94,8 +94,9 @@ def run_p0056l_neural_dayahead_smoke(
             forecast_rows = [dict(row) for row in source_by_origin.get(origin.origin_utc, [])]
             train_rows = [dict(row) for row in source_rows if p0056k.EXPANDING_TRAIN_START_UTC <= str(row["target_timestamp_utc"]) < origin.origin_utc]
             try:
-                if len(forecast_rows) != 24:
-                    raise RuntimeError(f"incomplete forecast rows: {len(forecast_rows)}")
+                expected_forecast_rows = len(p0056k.delivery_day_target_rows(origin.delivery_day))
+                if len(forecast_rows) != expected_forecast_rows:
+                    raise RuntimeError(f"incomplete forecast rows: {len(forecast_rows)} expected {expected_forecast_rows}")
                 predictions, training = fit_predict_mlp(model_id, train_rows, forecast_rows, list(spec["features"]))
                 stability[model_id]["nan_predictions"] = int(stability[model_id]["nan_predictions"]) + sum(1 for value in predictions if not math.isfinite(value))
                 stability[model_id]["negative_predictions"] = int(stability[model_id]["negative_predictions"]) + sum(1 for value in predictions if value < 0.0)

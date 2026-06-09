@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0056N
+Last changed: P0056O
 
 ## Module
 
@@ -916,7 +916,7 @@ Important functions:
 
 `expected_local_hours_for_day(...)` derives valid Europe/Stockholm local-hour mappings by iterating UTC hours between local midnights, so spring-forward days have 23 valid local hours and no local `02:00`.
 
-`p0056k_delivery_day_mapping(...)` describes the current P0056K fixed-24-position DayAhead mapping and flags duplicate UTC targets or shifted/nonexistent local positions.
+`p0056k_delivery_day_mapping(...)` preserves the historical pre-P0056O fixed-24-position DayAhead mapping and flags duplicate UTC targets or shifted/nonexistent local positions.
 
 `native_day_audits(...)` and `hourly_day_audits(...)` summarize source/target row counts, duplicate/missing timestamps, resolution/coverage distributions and load statistics by local and UTC day.
 
@@ -927,3 +927,23 @@ Important functions:
 P0056N concluded that `2026-03-28` is a `probable_target_source_anomaly`: the extreme is already present in P0056A native source rows, hourly UTC timestamps are normal, but source coverage has two partial hourly rows and only 94 native 15-minute rows instead of an expected 96. P0056N also confirmed a separate P0056K/P0056M DayAhead DST bug for `2026-03-29`: Europe/Stockholm has 23 valid local hours, while P0056K emits 24 positions with one duplicate UTC target.
 
 P0056N is LABB diagnostics only. It does not call APIs, use devices, change runtime behavior, train models, deploy models, use spot-price features, use flow/exchange/A61/capacity inputs, use old physical-balance targets or rewrite results to hide bad rows.
+
+## P0056O DayAhead DST Delivery-Day Generation Fix
+
+`p0056k.delivery_day_target_rows(...)` generates canonical Europe/Stockholm DayAhead target rows by iterating UTC hours between local midnight and next local midnight, then converting each target back to local metadata.
+
+Important functions:
+
+`p0056k.validate_delivery_day_target_rows(...)` enforces unique and monotonic UTC target timestamps, true local-day row count, no spring-forward local `02:00`, and fall-back local `02:00` disambiguation by different UTC offsets.
+
+`p0056k.delivery_day_target_utc_hours(...)` now delegates to the canonical target rows, preserving the old caller contract while returning 23, 24 or 25 timestamps depending on the local delivery day.
+
+`p0056k.build_dayahead_rows(...)` adds the durable DST row schema: `forecast_origin_utc`, `delivery_date_local`, `target_timestamp_local`, `local_date`, `local_hour`, `utc_offset_minutes`, DST transition flags and `local_hour_occurrence_index`.
+
+`p0056o.run_p0056o_dst_fix_verification(...)` writes compact P0056O evidence comparing legacy fixed-24 generation with canonical true-local-day generation and verifying SE2 2026-03-25..2026-03-31 row alignment without model training.
+
+`p0056m.reconstruct_se2_m6_predictions(...)` and `p0056l.run_p0056l_neural_dayahead_smoke(...)` now compare forecast rows to the same canonical P0056K delivery-day row count instead of retaining a hard 24-row gate.
+
+P0056O fixed the `2026-03-29` spring-forward duplicate UTC target: legacy generation had 24 rows, 23 unique UTC timestamps and one duplicate; canonical generation has 23 rows, 23 unique UTC timestamps and no local `02:00`. It also supports 25-row fall-back days with two local `02:00` rows disambiguated by UTC offsets `120` and `60`.
+
+P0056O is a FIX package in the LABB line. It does not call APIs, use devices, change runtime behavior, activate production, train models, use spot-price features, use flow/exchange/A61/capacity inputs or use old physical-balance targets.

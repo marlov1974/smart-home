@@ -92,6 +92,19 @@ class Origin:
 
 
 @dataclass(frozen=True)
+class DeliveryDayTarget:
+    target_timestamp_utc: str
+    target_timestamp_local: str
+    local_date: str
+    local_hour: int
+    utc_offset_minutes: int
+    is_dst_transition_day: bool
+    is_spring_forward_day: bool
+    is_fall_back_day: bool
+    local_hour_occurrence_index: int
+
+
+@dataclass(frozen=True)
 class P0056KResult:
     status: str
     row_counts: dict[str, int]
@@ -146,8 +159,9 @@ def run_p0056k_realistic_dayahead_restart(
         prior_m6_residual_by_horizon: dict[int, list[float]] = defaultdict(list)
         for origin_index, origin in enumerate(origins, start=1):
             forecast_rows_source = rows_by_origin.get(origin.origin_utc, [])
-            if len(forecast_rows_source) != 24:
-                failures.append({"area": area, "origin_utc": origin.origin_utc, "error": f"incomplete forecast rows {len(forecast_rows_source)}"})
+            expected_forecast_rows = len(delivery_day_target_rows(origin.delivery_day))
+            if len(forecast_rows_source) != expected_forecast_rows:
+                failures.append({"area": area, "origin_utc": origin.origin_utc, "error": f"incomplete forecast rows {len(forecast_rows_source)} expected {expected_forecast_rows}"})
                 continue
             train_rows = [dict(row) for row in base_rows if EXPANDING_TRAIN_START_UTC <= str(row["target_timestamp_utc"]) < origin.origin_utc]
             if len(train_rows) < 1000:
@@ -281,7 +295,61 @@ def dayahead_origins(target_rows: list[dict[str, object]], weather_rows: dict[st
 
 
 def delivery_day_target_utc_hours(day: date) -> list[str]:
-    return [p0052.format_utc(datetime.combine(day, dt_time(hour, 0), tzinfo=STOCKHOLM)) for hour in range(24)]
+    return [row.target_timestamp_utc for row in delivery_day_target_rows(day)]
+
+
+def delivery_day_target_rows(day: date) -> list[DeliveryDayTarget]:
+    start_local = datetime.combine(day, dt_time(0, 0), tzinfo=STOCKHOLM)
+    end_local = datetime.combine(day + timedelta(days=1), dt_time(0, 0), tzinfo=STOCKHOLM)
+    current_utc = start_local.astimezone(timezone.utc)
+    end_utc = end_local.astimezone(timezone.utc)
+    local_rows: list[tuple[datetime, datetime]] = []
+    while current_utc < end_utc:
+        local_rows.append((current_utc, current_utc.astimezone(STOCKHOLM)))
+        current_utc += timedelta(hours=1)
+
+    is_spring_forward_day = len(local_rows) == 23
+    is_fall_back_day = len(local_rows) == 25
+    is_dst_transition_day = is_spring_forward_day or is_fall_back_day
+    occurrence_by_hour: dict[tuple[str, int], int] = defaultdict(int)
+    rows = []
+    for target_utc, local in local_rows:
+        key = (local.date().isoformat(), local.hour)
+        occurrence_index = occurrence_by_hour[key]
+        occurrence_by_hour[key] += 1
+        offset = local.utcoffset()
+        rows.append(DeliveryDayTarget(
+            target_timestamp_utc=p0052.format_utc(target_utc),
+            target_timestamp_local=local.isoformat(),
+            local_date=local.date().isoformat(),
+            local_hour=local.hour,
+            utc_offset_minutes=int(offset.total_seconds() // 60) if offset else 0,
+            is_dst_transition_day=is_dst_transition_day,
+            is_spring_forward_day=is_spring_forward_day,
+            is_fall_back_day=is_fall_back_day,
+            local_hour_occurrence_index=occurrence_index,
+        ))
+    validate_delivery_day_target_rows(day, rows)
+    return rows
+
+
+def validate_delivery_day_target_rows(day: date, rows: list[DeliveryDayTarget]) -> None:
+    timestamps = [row.target_timestamp_utc for row in rows]
+    if len(timestamps) != len(set(timestamps)):
+        raise ValueError(f"duplicate DayAhead UTC targets for {day.isoformat()}")
+    if timestamps != sorted(timestamps):
+        raise ValueError(f"non-monotonic DayAhead UTC targets for {day.isoformat()}")
+    start_local = datetime.combine(day, dt_time(0, 0), tzinfo=STOCKHOLM)
+    end_local = datetime.combine(day + timedelta(days=1), dt_time(0, 0), tzinfo=STOCKHOLM)
+    expected_count = int((end_local.astimezone(timezone.utc) - start_local.astimezone(timezone.utc)).total_seconds() // 3600)
+    if len(rows) != expected_count:
+        raise ValueError(f"wrong DayAhead row count for {day.isoformat()}: {len(rows)} != {expected_count}")
+    if expected_count == 23 and any(row.local_hour == 2 for row in rows):
+        raise ValueError(f"spring-forward DayAhead rows include nonexistent local 02:00 for {day.isoformat()}")
+    if expected_count == 25:
+        repeated = [row for row in rows if row.local_hour == 2]
+        if len(repeated) != 2 or len({row.utc_offset_minutes for row in repeated}) != 2:
+            raise ValueError(f"fall-back DayAhead rows do not disambiguate local 02:00 for {day.isoformat()}")
 
 
 def build_dayahead_rows(area: str, target_rows: list[dict[str, object]], weather_rows: dict[str, dict[str, object]], origins: list[Origin]) -> list[dict[str, object]]:
@@ -291,14 +359,25 @@ def build_dayahead_rows(area: str, target_rows: list[dict[str, object]], weather
     for origin in origins:
         origin_dt = p0052.parse_utc(origin.origin_utc)
         history = origin_history_features(values_by_ts, origin_dt)
-        for target_ts in delivery_day_target_utc_hours(origin.delivery_day):
+        for target_info in delivery_day_target_rows(origin.delivery_day):
+            target_ts = target_info.target_timestamp_utc
             target_dt = p0052.parse_utc(target_ts)
             target = target_by_ts[target_ts]
             row = {
                 "forecast_origin_timestamp_utc": origin.origin_utc,
+                "forecast_origin_utc": origin.origin_utc,
                 "forecast_origin_local": origin.origin_local.isoformat(),
                 "delivery_day_local": origin.delivery_day.isoformat(),
+                "delivery_date_local": origin.delivery_day.isoformat(),
                 "target_timestamp_utc": target_ts,
+                "target_timestamp_local": target_info.target_timestamp_local,
+                "local_date": target_info.local_date,
+                "local_hour": target_info.local_hour,
+                "utc_offset_minutes": target_info.utc_offset_minutes,
+                "is_dst_transition_day": target_info.is_dst_transition_day,
+                "is_spring_forward_day": target_info.is_spring_forward_day,
+                "is_fall_back_day": target_info.is_fall_back_day,
+                "local_hour_occurrence_index": target_info.local_hour_occurrence_index,
                 "horizon_h": int((target_dt - origin_dt).total_seconds() // 3600) + 1,
                 TARGET: float(target["consumption_mw"]),
                 "area_code": area,
@@ -541,11 +620,11 @@ def bias_correction_contract() -> dict[str, object]:
 
 
 def forecast_taxonomy() -> dict[str, object]:
-    return {"primary_result": "realistic_DayAhead_delivery_day_24h", "old_static_label": "old_static_not_representative_DA"}
+    return {"primary_result": "realistic_DayAhead_true_local_delivery_day_23_24_25h", "old_static_label": "old_static_not_representative_DA"}
 
 
 def dayahead_protocol() -> dict[str, object]:
-    return {"forecast_origin": "D-1 12:00 Europe/Stockholm", "delivery_day": "D 00:00..23:00 Europe/Stockholm", "horizon_hours": "target - origin", "train_end": "strictly before forecast_origin"}
+    return {"forecast_origin": "D-1 12:00 Europe/Stockholm", "delivery_day": "true Europe/Stockholm local day from local midnight to next local midnight; 23/24/25 canonical rows", "horizon_hours": "target - origin", "train_end": "strictly before forecast_origin"}
 
 
 def leakage_review() -> dict[str, object]:

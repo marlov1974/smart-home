@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0056M
+Last changed: P0056N
 
 ## Module
 
@@ -903,3 +903,27 @@ Important functions:
 `interpret_patterns(...)` answers the package-required pattern questions and classifies the dominant error mode.
 
 P0056M is LABB diagnostics only. It does not call APIs, use devices, change runtime behavior, deploy models, use spot-price features, use flow/exchange/A61/capacity inputs, use old physical-balance targets or use future actual load as a prediction feature.
+
+## P0056N SE2 DST And Target Anomaly Audit
+
+`p0056n.run_p0056n_dst_target_anomaly_audit(...)` audits SE2 target/source rows, hourly aggregation, DST local-day behavior and P0056M forecast-row alignment around the suspicious `2026-03-28` load spike and the `2026-03-29` Europe/Stockholm spring-forward day.
+
+Important functions:
+
+`load_native_rows(...)` reads compact P0056A `area_consumption_native_v1` SE2 source intervals for the package audit dates.
+
+`load_hourly_rows(...)` reads P0056A `area_consumption_hourly_v1` SE2 hourly target rows and attaches UTC/local timestamp metadata.
+
+`expected_local_hours_for_day(...)` derives valid Europe/Stockholm local-hour mappings by iterating UTC hours between local midnights, so spring-forward days have 23 valid local hours and no local `02:00`.
+
+`p0056k_delivery_day_mapping(...)` describes the current P0056K fixed-24-position DayAhead mapping and flags duplicate UTC targets or shifted/nonexistent local positions.
+
+`native_day_audits(...)` and `hourly_day_audits(...)` summarize source/target row counts, duplicate/missing timestamps, resolution/coverage distributions and load statistics by local and UTC day.
+
+`forecast_row_alignment_audit(...)` joins P0056M forecast rows to P0056K delivery-day mapping flags and exposes the duplicated `2026-03-29T01:00:00Z` target caused by fixed-24 local positions on a 23-hour spring-forward day.
+
+`target_anomaly_classification(...)` classifies `2026-03-28` from native, hourly, neighbor-day and alignment evidence.
+
+P0056N concluded that `2026-03-28` is a `probable_target_source_anomaly`: the extreme is already present in P0056A native source rows, hourly UTC timestamps are normal, but source coverage has two partial hourly rows and only 94 native 15-minute rows instead of an expected 96. P0056N also confirmed a separate P0056K/P0056M DayAhead DST bug for `2026-03-29`: Europe/Stockholm has 23 valid local hours, while P0056K emits 24 positions with one duplicate UTC target.
+
+P0056N is LABB diagnostics only. It does not call APIs, use devices, change runtime behavior, train models, deploy models, use spot-price features, use flow/exchange/A61/capacity inputs, use old physical-balance targets or rewrite results to hide bad rows.

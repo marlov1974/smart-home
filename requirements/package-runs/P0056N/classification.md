@@ -1,0 +1,20 @@
+# P0056N Classification
+
+```json
+{
+  "anomaly_date": "2026-03-28",
+  "anomaly_hourly_mean_actual_mw": 5487.60763888889,
+  "anomaly_native_mean_mw": 5505.787234042553,
+  "classification": "probable_target_source_anomaly",
+  "hourly_coverage_complete_for_day": false,
+  "hourly_timestamp_shape_normal_for_day": true,
+  "interpretation": "The 2026-03-28 extreme is already present in P0056A native source rows. Hourly UTC timestamps have normal shape, but the local day has partial source coverage on two hourly rows and only 94 native 15-minute rows instead of an expected 96. The anomaly is not explained by the separate 2026-03-29 DayAhead DST duplicate. Without an independent source it should be treated as a probable target/source anomaly or target-definition/coverage issue, not as a confirmed real load regime.",
+  "neighbor_mean_actual_mw": 1933.189059983897,
+  "same_weekday_next_mean_mw": 1613.0520833333333,
+  "same_weekday_prior_mean_mw": 1681.2916666666667,
+  "same_weekday_prior_next_not_repeated": true,
+  "separate_dst_bug_confirmed_for_2026_03_29": true,
+  "source_observed_in_native_rows": true,
+  "top_spike_actual_mw": 7279.0
+}
+```

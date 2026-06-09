@@ -2,7 +2,7 @@
 
 ## Status
 
-planned
+completed
 
 ## Package order
 
@@ -305,4 +305,64 @@ confirmation no runtime/device/model/production changes
 
 ## Completion notes
 
-To be filled after implementation.
+Completed by Codex in package-run evidence:
+
+```text
+requirements/package-runs/P0056N/
+```
+
+Result:
+
+```text
+PASS
+```
+
+Rows audited:
+
+```text
+native_rows = 1235
+hourly_rows = 311
+p0056m_hour_rows = 168
+forecast_alignment_rows = 168
+```
+
+DST result:
+
+```text
+Europe/Stockholm 2026-03-29 has 23 valid local hours.
+Local 02:00 does not exist.
+P0056K currently emits 24 delivery positions.
+P0056K/P0056M duplicate one UTC target on 2026-03-29.
+```
+
+2026-03-28 anomaly classification:
+
+```text
+classification = probable_target_source_anomaly
+source_observed_in_native_rows = true
+hourly_timestamp_shape_normal_for_day = true
+hourly_coverage_complete_for_day = false
+top_spike_actual_mw = 7279.0
+native_mean_mw = 5505.787234042553
+hourly_mean_actual_mw = 5487.60763888889
+```
+
+Decision:
+
+```text
+Flag 2026-03-28 as probable source anomaly and exclude it from model selection until independently verified.
+Fix or special-case DayAhead delivery-day generation for 23h/25h local days before future realistic DayAhead comparisons.
+No model changes are authorized by P0056N.
+```
+
+Safety:
+
+```text
+No API.
+No devices.
+No runtime changes.
+No model retraining.
+No production activation.
+No spot-price, flow/exchange/A61/capacity or old physical_balance features.
+No result rewriting to hide bad rows.
+```

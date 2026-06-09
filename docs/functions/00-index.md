@@ -121,3 +121,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0056A` updated `docs/functions/mac/spotprice-model-diagnostics.md` with northern Europe ENTSO-E A65/A16 actual-load measurement ingestion, native-to-hourly aggregation and area-consumption table contracts.
 
 `P0056M` updated `docs/functions/mac/spotprice-model-diagnostics.md` with the SE2 M6 realistic DayAhead reconstruction and error-slice diagnostics functions.
+
+`P0056N` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE2 target-anomaly, DST local-day and DayAhead row-alignment audit functions.

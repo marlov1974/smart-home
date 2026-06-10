@@ -1,6 +1,6 @@
 # Spotprice Model Diagnostics
 
-Last changed: P0056O
+Last changed: P0056P
 
 ## Module
 
@@ -947,3 +947,27 @@ Important functions:
 P0056O fixed the `2026-03-29` spring-forward duplicate UTC target: legacy generation had 24 rows, 23 unique UTC timestamps and one duplicate; canonical generation has 23 rows, 23 unique UTC timestamps and no local `02:00`. It also supports 25-row fall-back days with two local `02:00` rows disambiguated by UTC offsets `120` and `60`.
 
 P0056O is a FIX package in the LABB line. It does not call APIs, use devices, change runtime behavior, activate production, train models, use spot-price features, use flow/exchange/A61/capacity inputs or use old physical-balance targets.
+
+## P0056P SE2 ENTSO-E Source Verification
+
+`p0056p.run_p0056p_source_verification(...)` performs a narrow LABB source audit for the SE2 `2026-03-28` target anomaly by fetching ENTSO-E Actual Total Load and comparing it with local P0056A native/hourly rows.
+
+Important functions:
+
+`build_p0056p_entsoe_request(...)` builds the allowed ENTSO-E contract: `documentType=A65`, `processType=A16`, `outBiddingZone_Domain=<area EIC>`.
+
+`parse_entsoe_actual_load_xml(...)` and `parse_actual_load_period(...)` parse the fresh ENTSO-E XML response into package-local native interval rows without writing raw XML evidence.
+
+`load_local_native_area_rows(...)`, `load_local_hourly_area_rows(...)` and `load_reference_hourly_area_rows(...)` read local SQLite source/target rows read-only for comparison.
+
+`aggregate_native_to_hourly_for_audit(...)` recomputes time-weighted hourly mean MW from native intervals for audit comparison.
+
+`summarize_native_rows(...)`, `compare_native_rows(...)` and `compare_hourly_rows(...)` produce row-count, missingness, spike and exact-delta diagnostics.
+
+`classify_2026_03_28_anomaly(...)` emits the package decision class: local bug, source-observed anomaly, independently plausible real regime, or unresolved exclusion.
+
+`write_p0056p_evidence(...)` writes compact Markdown/CSV/JSON package evidence under `requirements/package-runs/P0056P/`.
+
+P0056P concluded that the SE2 `2026-03-28` spike is `source_observed_anomaly`: fresh ENTSO-E Actual Total Load and local P0056A rows match where both exist, including a native max of 7306 MW and hourly max of 7279 MW. The model-selection action remains `exclude_until_independently_verified` because this package verifies the ENTSO-E source path only, not independent physical plausibility.
+
+P0056P is LABB source-audit only. It does not train models, call devices, change runtime behavior, write canonical DB tables, use spot-price features, use flow/exchange/A61/capacity inputs, commit raw XML or store token values.

@@ -8,7 +8,7 @@ P0057 imported the current G1 FTX Shelly runtime into G2 under:
 src/shelly/ftx/
 ```
 
-This catalog records the durable high-level entry points and safety-relevant functions for future G2 packages. P0057 did not change runtime behavior.
+This catalog records the durable high-level entry points and safety-relevant functions for future G2 packages.
 
 ## Source Baseline
 
@@ -122,10 +122,27 @@ Purpose:
 - Calculates raw VVX efficiency from four temperatures, clips supply/extract side values and averages them.
 
 Known limitation:
-- The imported baseline does not gate efficiency on VVX run state. During active cooling with VVX off, the formula can produce a misleading nonzero value.
+- The raw formula is only meaningful when VVX is running. P0058 gates the feature-level output to `0` when `ctx.run.vvx` is false.
 
 Last changed:
-- Imported by P0057 from G1.
+- P0058 gated reported VVX efficiency by run state.
+
+### calcVvxEfficiencyFeature()
+
+Status: active
+
+Source:
+- `src/shelly/ftx/state/perf-vvx.js`
+
+Purpose:
+- Calculates and stores reported VVX efficiency on the state context.
+
+Contract:
+- If `ctx.run.vvx` is false, reported VVX efficiency is `0` and smoothing history is reset to zero.
+- If `ctx.run.vvx` is true, uses the existing four-temperature efficiency calculation and smoothing history.
+
+Last changed:
+- P0058
 
 ## Local Device Telemetry
 

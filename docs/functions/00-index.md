@@ -127,3 +127,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0056O` updated `docs/functions/mac/spotprice-model-diagnostics.md` with canonical Europe/Stockholm DayAhead DST delivery-day generation, 23/24/25-row target contracts and compact verification functions.
 
 `P0057` added `docs/functions/shelly/ftx-runtime-baseline.md` for the imported FTX Shelly runtime baseline from G1.
+
+`P0058` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the VVX efficiency run-state gate.

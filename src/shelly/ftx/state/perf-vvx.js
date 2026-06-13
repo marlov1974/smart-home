@@ -34,6 +34,11 @@ function readVvxEfficiencyHist(cb) {
 }
 
 function calcVvxEfficiencyFeature(ctx, hist) {
+  if (!ctx.run || !ctx.run.vvx) {
+    ctx.vvx_eff_pct = 0;
+    ctx.vvx_eff_hist = { r0: 0, r1: 0, r2: 0 };
+    return;
+  }
   var eff = calcVvxEfficiency(ctx.telM || {}, hist || {});
   ctx.vvx_eff_pct = eff.pct;
   ctx.vvx_eff_hist = eff.hist;

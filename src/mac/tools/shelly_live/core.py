@@ -19,6 +19,7 @@ WEATHER_SCRIPT_NAME = "weather_v0_9_0"
 SUPPLY_UNI_PUB_SCRIPT_NAME = "supply_uni_pub"
 SUPPLY_UNI_REFRESH_SCRIPT_NAME = "supply_uni_refresh"
 FTX_STATE_SCRIPT_NAME = "state_v1_8_0"
+FTX_BRAIN_SCRIPT_NAME = "brain_v2_13_0"
 ALLOWED_SCRIPT_NAME = HELLO_SCRIPT_NAME
 ALLOWED_SCRIPT_NAMES = frozenset(
     {
@@ -28,6 +29,7 @@ ALLOWED_SCRIPT_NAMES = frozenset(
         SUPPLY_UNI_PUB_SCRIPT_NAME,
         SUPPLY_UNI_REFRESH_SCRIPT_NAME,
         FTX_STATE_SCRIPT_NAME,
+        FTX_BRAIN_SCRIPT_NAME,
     }
 )
 SPOTPRICE_KVS_KEYS = (
@@ -42,6 +44,8 @@ SUPPLY_UNI_KVS_KEY = "tele.supply_uni"
 FTX_STATE_RUN_KVS_KEY = "ftx.state.run"
 FTX_STATE_HIST_KVS_KEY = "ftx.state.hist"
 FTX_STATE_VVX_EFFICIENCY_ID = 202
+FTX_BRAIN_DAMPERS_INTENT_KVS_KEY = "ftx.intent.dev.dmp"
+FTX_BRAIN_TARGET_TO_HOUSE_ID = 204
 TARGET_DAMPERS_PHYSICAL_ID = "8813bfd99f54"
 DEFAULT_UPLOAD_CHUNK_BYTES = 1500
 DEFAULT_HTTP_TIMEOUT_SECONDS = 5.0
@@ -135,6 +139,24 @@ class FtxStateDeployResult:
     upload_chunk_count: int
     log_excerpt: str
     zero_vvx_summary: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class FtxBrainDeployResult:
+    """Evidence returned by one P0065 FTX brain deploy/run."""
+
+    base_url: str
+    live_device_id: str
+    script_name: str
+    script_id: int
+    before_scripts: tuple[dict[str, Any], ...]
+    after_scripts: tuple[dict[str, Any], ...]
+    upload_chunk_bytes: int
+    upload_chunk_count: int
+    log_excerpt: str
+    code_summary: dict[str, Any]
+    intent_value: dict[str, Any]
+    target_to_house_c: float | None
 
 
 OpenUrl = Callable[..., Any]
@@ -464,6 +486,26 @@ def put_script_code_chunked(
     return len(chunks)
 
 
+def get_script_code(
+    base_url: str,
+    script_id: int,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> str:
+    """Read live Shelly script code."""
+
+    result = rpc_call(
+        base_url,
+        "Script.GetCode",
+        {"id": script_id},
+        timeout=timeout,
+        opener=opener,
+    )
+    if not isinstance(result, dict) or not isinstance(result.get("data"), str):
+        raise ShellyLiveError("Script.GetCode returned no code data")
+    return result["data"]
+
+
 def start_script(
     base_url: str,
     script_id: int,
@@ -729,6 +771,65 @@ def verify_ftx_state_zero_vvx(
         "number_202": efficiency,
         "hist": hist_summary,
     }
+
+
+def verify_ftx_brain_target_floor_code(code: str) -> dict[str, Any]:
+    """Verify P0059/P0060 brain target-floor behavior in script code."""
+
+    if "TARGET_TO_HOUSE_MIN_C = 12.0" not in code:
+        raise ShellyLiveError("FTX brain script is missing TARGET_TO_HOUSE_MIN_C = 12.0")
+    if "DEWPOINT_SUPPLY_MARGIN_C" in code:
+        raise ShellyLiveError("FTX brain script still contains DEWPOINT_SUPPLY_MARGIN_C")
+    if "dewPointHouseC +" in code:
+        raise ShellyLiveError("FTX brain script still adds to dewPointHouseC")
+    return {
+        "target_to_house_min_c": 12.0,
+        "dewpoint_margin_removed": True,
+    }
+
+
+def ftx_brain_intent_get(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> dict[str, Any]:
+    """Read local dampers brain intent."""
+
+    result = rpc_call(
+        base_url,
+        "KVS.Get",
+        {"key": FTX_BRAIN_DAMPERS_INTENT_KVS_KEY},
+        timeout=timeout,
+        opener=opener,
+    )
+    value = result.get("value") if isinstance(result, dict) else None
+    if not isinstance(value, dict):
+        raise ShellyLiveError("ftx.intent.dev.dmp is missing or not an object")
+    return value
+
+
+def ftx_brain_target_to_house_get(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> float | None:
+    """Read the brain target-to-house virtual number when present."""
+
+    try:
+        result = rpc_call(
+            base_url,
+            "Number.GetStatus",
+            {"id": FTX_BRAIN_TARGET_TO_HOUSE_ID},
+            timeout=timeout,
+            opener=opener,
+        )
+    except ShellyLiveError as exc:
+        if "not found" in str(exc) and "Number.GetStatus" in str(exc):
+            return None
+        raise
+    if not isinstance(result, dict) or not isinstance(result.get("value"), (int, float)):
+        raise ShellyLiveError("Number.GetStatus returned no numeric value for target-to-house")
+    return float(result["value"])
 
 
 def read_spotprice_kvs(
@@ -1162,6 +1263,80 @@ def deploy_ftx_state(
     )
 
 
+def deploy_ftx_brain(
+    base_url: str,
+    recipe_path: str | Path,
+    expected_text: str = "brain DON",
+    upload_chunk_bytes: int = DEFAULT_UPLOAD_CHUNK_BYTES,
+    log_timeout: float = DEFAULT_LOG_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> FtxBrainDeployResult:
+    """Deploy, start and verify the P0065 FTX brain script on dampers."""
+
+    if upload_chunk_bytes < 1:
+        raise ShellyLiveError("upload chunk bytes must be positive")
+
+    script_name = FTX_BRAIN_SCRIPT_NAME
+    code = build_ftx_recipe_script(recipe_path)
+    verify_ftx_brain_target_floor_code(code)
+
+    device_info = get_device_info(base_url, timeout=http_timeout, opener=opener)
+    live_device_id = verify_dampers_identity(device_info)
+    get_status(base_url, timeout=http_timeout, opener=opener)
+    before_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+    existing = find_script(list(before_scripts), script_name)
+    if existing is not None and existing.get("running") is True:
+        stop_script(base_url, _script_id(existing), script_name, timeout=http_timeout, opener=opener)
+
+    script_id = ensure_script(base_url, script_name, timeout=http_timeout, opener=opener)
+    upload_chunk_count = put_script_code_chunked(
+        base_url,
+        script_id,
+        script_name,
+        code,
+        upload_chunk_bytes=upload_chunk_bytes,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        log_future = executor.submit(
+            capture_debug_log,
+            base_url,
+            expected_text,
+            log_timeout,
+            http_timeout,
+            opener,
+        )
+        time.sleep(0.05)
+        start_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
+        try:
+            log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            _ensure_no_memory_pressure(log_excerpt)
+            live_code = get_script_code(base_url, script_id, timeout=http_timeout, opener=opener)
+            code_summary = verify_ftx_brain_target_floor_code(live_code)
+            intent_value = ftx_brain_intent_get(base_url, timeout=http_timeout, opener=opener)
+            target_to_house_c = ftx_brain_target_to_house_get(base_url, timeout=http_timeout, opener=opener)
+        except concurrent.futures.TimeoutError as exc:
+            raise ShellyLiveError("debug log capture timed out") from exc
+    after_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+
+    return FtxBrainDeployResult(
+        base_url=normalize_base_url(base_url),
+        live_device_id=live_device_id,
+        script_name=script_name,
+        script_id=script_id,
+        before_scripts=before_scripts,
+        after_scripts=after_scripts,
+        upload_chunk_bytes=upload_chunk_bytes,
+        upload_chunk_count=upload_chunk_count,
+        log_excerpt=log_excerpt,
+        code_summary=code_summary,
+        intent_value=intent_value,
+        target_to_house_c=target_to_house_c,
+    )
+
+
 def deploy_supply_uni(
     supply_base_url: str,
     dampers_base_url: str,
@@ -1341,6 +1516,14 @@ def main(argv: list[str] | None = None) -> int:
     ftx_state_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
     ftx_state_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
 
+    ftx_brain_parser = subparsers.add_parser("deploy-ftx-brain")
+    ftx_brain_parser.add_argument("--base-url", required=True)
+    ftx_brain_parser.add_argument("--recipe", required=True)
+    ftx_brain_parser.add_argument("--expect", default="brain DON")
+    ftx_brain_parser.add_argument("--upload-chunk-bytes", type=int, default=DEFAULT_UPLOAD_CHUNK_BYTES)
+    ftx_brain_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
+    ftx_brain_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
+
     args = parser.parse_args(argv)
     try:
         if args.command == "deploy-hello":
@@ -1464,6 +1647,31 @@ def main(argv: list[str] | None = None) -> int:
             print(f"before_scripts={json.dumps(result.before_scripts, separators=(',', ':'))}")
             print(f"after_scripts={json.dumps(result.after_scripts, separators=(',', ':'))}")
             print(f"zero_vvx_summary={json.dumps(result.zero_vvx_summary, separators=(',', ':'), sort_keys=True)}")
+            print("log_excerpt_begin")
+            print(result.log_excerpt.rstrip("\n"))
+            print("log_excerpt_end")
+            return 0
+        if args.command == "deploy-ftx-brain":
+            result = deploy_ftx_brain(
+                args.base_url,
+                args.recipe,
+                expected_text=args.expect,
+                upload_chunk_bytes=args.upload_chunk_bytes,
+                log_timeout=args.log_timeout,
+                http_timeout=args.http_timeout,
+            )
+            print(f"target={result.base_url}")
+            print(f"live_device_id={result.live_device_id}")
+            print(f"script={result.script_name} id={result.script_id}")
+            print(f"upload_chunk_bytes={result.upload_chunk_bytes}")
+            print(f"upload_chunk_count={result.upload_chunk_count}")
+            print(f"before_scripts={json.dumps(result.before_scripts, separators=(',', ':'))}")
+            print(f"after_scripts={json.dumps(result.after_scripts, separators=(',', ':'))}")
+            print(f"code_summary={json.dumps(result.code_summary, separators=(',', ':'), sort_keys=True)}")
+            print(f"target_to_house_c={json.dumps(result.target_to_house_c, separators=(',', ':'))}")
+            print("intent_value_begin")
+            print(json.dumps(result.intent_value, separators=(",", ":"), sort_keys=True))
+            print("intent_value_end")
             print("log_excerpt_begin")
             print(result.log_excerpt.rstrip("\n"))
             print("log_excerpt_end")

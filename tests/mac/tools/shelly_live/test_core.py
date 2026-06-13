@@ -7,6 +7,8 @@ from pathlib import Path
 
 from src.mac.tools.shelly_live.core import (
     ALLOWED_SCRIPT_NAME,
+    FTX_BRAIN_DAMPERS_INTENT_KVS_KEY,
+    FTX_BRAIN_SCRIPT_NAME,
     FTX_STATE_HIST_KVS_KEY,
     FTX_STATE_RUN_KVS_KEY,
     FTX_STATE_SCRIPT_NAME,
@@ -21,6 +23,7 @@ from src.mac.tools.shelly_live.core import (
     ShellyLiveError,
     build_ftx_recipe_script,
     capture_debug_log,
+    deploy_ftx_brain,
     deploy_ftx_state,
     deploy_hello,
     deploy_spotprice,
@@ -36,6 +39,7 @@ from src.mac.tools.shelly_live.core import (
     rpc_call,
     split_rpc_upload_chunks,
     supply_snapshot_changed,
+    verify_ftx_brain_target_floor_code,
     verify_supply_snapshot,
     verify_spotprice_kvs,
     verify_weather_kvs,
@@ -124,6 +128,7 @@ class ShellyLiveTests(unittest.TestCase):
         ensure_allowed_script_name(SUPPLY_UNI_PUB_SCRIPT_NAME)
         ensure_allowed_script_name(SUPPLY_UNI_REFRESH_SCRIPT_NAME)
         ensure_allowed_script_name(FTX_STATE_SCRIPT_NAME)
+        ensure_allowed_script_name(FTX_BRAIN_SCRIPT_NAME)
 
         with self.assertRaisesRegex(ShellyLiveError, "forbidden script name"):
             ensure_allowed_script_name("g2-hello")
@@ -200,6 +205,29 @@ class ShellyLiveTests(unittest.TestCase):
         built = build_ftx_recipe_script(ftx_root / "recipes" / "state.json")
 
         self.assertEqual("(function () {\nprint('state DON');\n", built)
+
+    def test_verify_ftx_brain_target_floor_code_rejects_stale_source(self):
+        with self.assertRaisesRegex(ShellyLiveError, "TARGET_TO_HOUSE_MIN_C"):
+            verify_ftx_brain_target_floor_code("var TARGET_TO_HOUSE_MIN_C = 14.0;")
+
+        with self.assertRaisesRegex(ShellyLiveError, "DEWPOINT_SUPPLY_MARGIN_C"):
+            verify_ftx_brain_target_floor_code(
+                "var TARGET_TO_HOUSE_MIN_C = 12.0;\nvar DEWPOINT_SUPPLY_MARGIN_C = 1.0;"
+            )
+
+        with self.assertRaisesRegex(ShellyLiveError, "adds to dewPointHouseC"):
+            verify_ftx_brain_target_floor_code(
+                "var TARGET_TO_HOUSE_MIN_C = 12.0;\n"
+                "ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC + 1, TARGET_TO_HOUSE_MIN_C));"
+            )
+
+        self.assertEqual(
+            {"target_to_house_min_c": 12.0, "dewpoint_margin_removed": True},
+            verify_ftx_brain_target_floor_code(
+                "var TARGET_TO_HOUSE_MIN_C = 12.0;\n"
+                "ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC, TARGET_TO_HOUSE_MIN_C));"
+            ),
+        )
 
     def test_verify_spotprice_kvs_accepts_valid_price_series(self):
         values = {
@@ -594,6 +622,82 @@ class ShellyLiveTests(unittest.TestCase):
             if request.get_method() == "POST" and json.loads(request.data.decode("utf-8"))["method"] == "KVS.Get"
         ]
         self.assertEqual([{"key": FTX_STATE_RUN_KVS_KEY}, {"key": FTX_STATE_HIST_KVS_KEY}], kvs_params)
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.")
+        self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
+
+    def test_deploy_ftx_brain_uploads_runs_and_verifies_live_code(self):
+        ftx_root = self.tmp / "ftx"
+        (ftx_root / "recipes").mkdir(parents=True)
+        (ftx_root / "common").mkdir()
+        (ftx_root / "brain").mkdir()
+        (ftx_root / "common" / "wrapper.start.js").write_text("(function () {\n", encoding="utf-8")
+        brain_code = (
+            "var TARGET_TO_HOUSE_MIN_C = 12.0;\n"
+            "ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC, TARGET_TO_HOUSE_MIN_C));\n"
+            "print('brain DON');\n"
+        )
+        (ftx_root / "brain" / "main.js").write_text(brain_code, encoding="utf-8")
+        recipe_path = ftx_root / "recipes" / "brain.json"
+        recipe_path.write_text(
+            json.dumps({"chunks": ["rt/common/wrapper.start.js", "rt/brain/main.js"]}),
+            encoding="utf-8",
+        )
+        intent_value = {"device": "dmp", "source": "brain", "act": {"on": 1}}
+        opener = FakeOpener(
+            [
+                rpc_response({"id": "shellypro1pm-8813bfd99f54", "model": "SPSW-201PE15UL"}),
+                rpc_response({"online": True}),
+                rpc_response({"scripts": [{"id": 7, "name": FTX_BRAIN_SCRIPT_NAME, "running": False}]}),
+                rpc_response({"scripts": [{"id": 7, "name": FTX_BRAIN_SCRIPT_NAME, "running": False}]}),
+                rpc_response({}),
+                FakeResponse(lines=[b"brain BOT\n", b"brain DON\n"]),
+                rpc_response({}),
+                rpc_response({"data": "(function () {\n" + brain_code}),
+                rpc_response({"value": intent_value}),
+                rpc_response({"value": 12.0}),
+                rpc_response({"scripts": [{"id": 7, "name": FTX_BRAIN_SCRIPT_NAME, "running": False}]}),
+            ]
+        )
+
+        result = deploy_ftx_brain(
+            "http://device",
+            recipe_path,
+            upload_chunk_bytes=1000,
+            opener=opener,
+        )
+
+        self.assertEqual(FTX_BRAIN_SCRIPT_NAME, result.script_name)
+        self.assertEqual("shellypro1pm-8813bfd99f54", result.live_device_id)
+        self.assertEqual(1, result.upload_chunk_count)
+        self.assertEqual({"target_to_house_min_c": 12.0, "dewpoint_margin_removed": True}, result.code_summary)
+        self.assertEqual(intent_value, result.intent_value)
+        self.assertEqual(12.0, result.target_to_house_c)
+        methods = [
+            json.loads(request.data.decode("utf-8"))["method"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST"
+        ]
+        self.assertEqual(
+            [
+                "Shelly.GetDeviceInfo",
+                "Shelly.GetStatus",
+                "Script.List",
+                "Script.List",
+                "Script.PutCode",
+                "Script.Start",
+                "Script.GetCode",
+                "KVS.Get",
+                "Number.GetStatus",
+                "Script.List",
+            ],
+            methods,
+        )
+        kvs_requests = [
+            json.loads(request.data.decode("utf-8"))["params"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST" and json.loads(request.data.decode("utf-8"))["method"] == "KVS.Get"
+        ]
+        self.assertEqual([{"key": FTX_BRAIN_DAMPERS_INTENT_KVS_KEY}], kvs_requests)
         forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.")
         self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
 

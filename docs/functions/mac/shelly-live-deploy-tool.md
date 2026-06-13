@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015/P0016/P0063.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015/P0016/P0063/P0065.
 
 ## Safety Contract
 
@@ -15,9 +15,10 @@ weather_v0_9_0
 supply_uni_pub
 supply_uni_refresh
 state_v1_8_0
+brain_v2_13_0
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification. `supply_uni_pub` and `supply_uni_refresh` are used for P0016 supply UNI publisher/refresher verification. `state_v1_8_0` is used for P0063 FTX state deploy to the verified dampers endpoint.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification. `supply_uni_pub` and `supply_uni_refresh` are used for P0016 supply UNI publisher/refresher verification. `state_v1_8_0` is used for P0063 FTX state deploy to the verified dampers endpoint. `brain_v2_13_0` is used for P0065 FTX brain deploy to the verified dampers endpoint.
 
 The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys, P0015 `g2.weather.act`, P0016 `tele.supply_uni`, and P0063 FTX state verification keys `ftx.state.run`/`ftx.state.hist`.
 
@@ -29,7 +30,7 @@ It does not read `dep/s/ch/**` as its direct-deploy source. Repo deploy chunks a
 
 The live deploy tool may split the complete built script into bounded in-memory RPC upload chunks for `Script.PutCode` transport. Those RPC upload chunks are temporary Mac memory chunks, not repository source architecture and not the same as `dep/s/ch/**` chunks.
 
-P0063 is the FTX imported-runtime exception: `deploy-ftx-state` builds `state_v1_8_0` directly from `src/shelly/ftx/recipes/state.json` by mapping imported `rt/...` recipe chunks to `src/shelly/ftx/...`. It still uploads one complete generated script through bounded in-memory RPC upload chunks and still does not read `dep/s/ch/**`.
+P0063/P0065 are FTX imported-runtime exceptions: `deploy-ftx-state` and `deploy-ftx-brain` build their scripts directly from `src/shelly/ftx/recipes/*.json` by mapping imported `rt/...` recipe chunks to `src/shelly/ftx/...`. They still upload one complete generated script through bounded in-memory RPC upload chunks and still do not read `dep/s/ch/**`.
 
 Packages that change Mac live deploy must preserve this distinction unless the package explicitly changes the deployment model.
 
@@ -160,7 +161,7 @@ Introduced:
 - P0010
 
 Last changed:
-- P0063
+- P0065
 
 ### build_ftx_recipe_script()
 
@@ -195,7 +196,38 @@ Introduced:
 - P0063
 
 Last changed:
-- P0063
+- P0065
+
+### get_script_code()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Read live Shelly script code for post-upload verification.
+
+Inputs:
+- Base URL, script id, timeout and optional opener.
+
+Outputs:
+- JavaScript source text.
+
+Side effects:
+- Performs read-only `Script.GetCode`.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0065
+
+Last changed:
+- P0065
 
 ### ensure_script()
 
@@ -432,6 +464,41 @@ Introduced:
 Last changed:
 - P0015
 
+### verify_ftx_brain_target_floor_code()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Verify that an FTX brain script contains the P0059/P0060 target-floor behavior.
+
+Inputs:
+- JavaScript source text.
+
+Outputs:
+- Summary containing `target_to_house_min_c` and `dewpoint_margin_removed`.
+
+Side effects:
+- None.
+
+Contract notes:
+- Rejects code that lacks `TARGET_TO_HOUSE_MIN_C = 12.0`.
+- Rejects code that contains `DEWPOINT_SUPPLY_MARGIN_C` or `dewPointHouseC +`.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0065
+
+Last changed:
+- P0065
+
 ### verify_ftx_state_zero_vvx()
 
 Status: active
@@ -502,6 +569,45 @@ Introduced:
 
 Last changed:
 - P0063
+
+### deploy_ftx_brain()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Deploy, start, log-watch and verify `brain_v2_13_0` on the dampers Shelly.
+
+Inputs:
+- Runtime base URL, FTX brain recipe path, expected log text, upload chunk size and timeouts.
+
+Outputs:
+- `FtxBrainDeployResult` with live device id, script id/status evidence, upload chunk count, log excerpt, live-code summary, local dampers intent and target-to-house number.
+
+Side effects:
+- Verifies dampers identity with `Shelly.GetDeviceInfo`.
+- May update/start only `brain_v2_13_0`.
+- The started brain script itself writes number `204`, local dampers intent KVS, remote FTX device intent KVS values and forced-mode state.
+- Reads live code with `Script.GetCode`, local `ftx.intent.dev.dmp`, and number `204` for verification.
+
+Contract notes:
+- Rejects target identity mismatch before writes.
+- Rejects built and live-read code that does not have the P0059/P0060 target-floor behavior.
+- Does not expose direct actuator, device-config, network, MQTT, Bluetooth, cloud or component writes from the Mac tool.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0065
+
+Last changed:
+- P0065
 
 ### parse_supply_status()
 

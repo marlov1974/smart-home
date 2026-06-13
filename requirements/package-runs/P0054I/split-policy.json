@@ -1,7 +1,0 @@
-{
-  "holdout_start_utc": "2025-06-01T00:00:00Z",
-  "policy_name": "LABB_P0054_TRAIN_THROUGH_MAY_2025",
-  "scope": "P0054 LABB experiment chain",
-  "train_fit_end_exclusive_utc": "2025-06-01T00:00:00Z",
-  "train_fit_start_utc": "2022-06-01T00:00:00Z"
-}

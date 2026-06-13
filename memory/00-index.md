@@ -33,14 +33,11 @@ planning/           planning notes and future-domain structure
 knowhow/            reusable lessons from packages and debugging
 ```
 
-## Energy-Market AI Lab
+## Market Simulator Boundary
 
-Energy-market, spot-price, physical-balance, simulator and AI experiments default to `LABB` unless the human operator explicitly asks for `G2-KANDIDAT` evaluation.
+Energy-market, spot-price forecasting, consumption-forecasting and simulator lab work moved to `marlov74/Market-Simulator` in `P0061`.
 
-Read:
-
-- `energy-market-ai-lab.md`
-- `energy-market-simulator-ambition.md`
+G2 may still contain historical Shelly spot-price runtime/deploy artifacts until a later package explicitly removes or migrates them.
 
 ## Boundary
 

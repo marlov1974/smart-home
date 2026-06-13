@@ -1,4 +1,0 @@
-area_code,rows,min_timestamp_utc,max_timestamp_utc,missingness_flags
-FI,35064,2022-06-01T00:00Z,2026-05-31T23:00Z,['snow_depth_unavailable;no_missing_required_variables']
-SE1,35064,2022-06-01T00:00Z,2026-05-31T23:00Z,['snow_depth_unavailable;no_missing_required_variables']
-SE2,35064,2022-06-01T00:00Z,2026-05-31T23:00Z,['snow_depth_unavailable;no_missing_required_variables']

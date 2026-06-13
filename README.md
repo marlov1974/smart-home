@@ -18,7 +18,9 @@ For every new AI/chat/Codex session working on G2:
 
 `marlov1974/shelly` owns G1: current running Shelly/FTX runtime maintenance.
 
-`marlov1974/smart-home` owns G2: whole-house control across FTX, VP1/VP2, floor heating/cooling, VVB, VVC, spot-price/forecast optimization, Mac, Home Assistant and Shelly.
+`marlov1974/smart-home` owns G2: whole-house control across FTX, VP1/VP2, floor heating/cooling, VVB, VVC, Mac, Home Assistant and Shelly.
+
+Market simulation, spot-price forecasting labs and consumption-forecast experiments live in `marlov74/Market-Simulator` after `P0061`.
 
 Do not treat G2 design or code as current G1 runtime behavior.
 

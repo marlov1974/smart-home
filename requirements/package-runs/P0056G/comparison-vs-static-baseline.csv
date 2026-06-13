@@ -1,5 +1,0 @@
-area_code,baseline_name,baseline_static_DayAhead_MAE,delta_vs_static_MW,delta_vs_static_percent,source,weekly_retrain_improves_by_2_percent,weekly_retrain_mean_MAE_162h
-SE1,P0056E_V2_static,125.21953299342522,6.033741359591062,4.818530476317836,P0056E area-variant-results,False,131.25327435301628
-SE2,P0056F_W12_static,206.179,1.5776405851726452,0.7651800547934781,P0056F area-results,False,207.75664058517265
-SE3,P0056C_static,258.869,23.495513652490786,9.076217566603487,P0056C area-results,False,282.3645136524908
-FI,P0056C_static,332.717,89.60687456048737,26.93185937613268,P0056C area-results,False,422.32387456048735

@@ -71,3 +71,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0061` moved Mac market-simulator function docs and package history to `marlov74/Market-Simulator`.
 
 `P0062` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the legacy VVX efficiency source-path guard.
+
+`P0063` updated `docs/functions/mac/shelly-live-deploy-tool.md` with the live FTX state deploy and zero-VVX verification contract.

@@ -7,6 +7,9 @@ from pathlib import Path
 
 from src.mac.tools.shelly_live.core import (
     ALLOWED_SCRIPT_NAME,
+    FTX_STATE_HIST_KVS_KEY,
+    FTX_STATE_RUN_KVS_KEY,
+    FTX_STATE_SCRIPT_NAME,
     HELLO_SCRIPT_NAME,
     SPOTPRICE_KVS_KEYS,
     SPOTPRICE_SCRIPT_NAME,
@@ -16,7 +19,9 @@ from src.mac.tools.shelly_live.core import (
     WEATHER_KVS_KEY,
     WEATHER_SCRIPT_NAME,
     ShellyLiveError,
+    build_ftx_recipe_script,
     capture_debug_log,
+    deploy_ftx_state,
     deploy_hello,
     deploy_spotprice,
     deploy_supply_uni,
@@ -118,6 +123,7 @@ class ShellyLiveTests(unittest.TestCase):
         ensure_allowed_script_name(WEATHER_SCRIPT_NAME)
         ensure_allowed_script_name(SUPPLY_UNI_PUB_SCRIPT_NAME)
         ensure_allowed_script_name(SUPPLY_UNI_REFRESH_SCRIPT_NAME)
+        ensure_allowed_script_name(FTX_STATE_SCRIPT_NAME)
 
         with self.assertRaisesRegex(ShellyLiveError, "forbidden script name"):
             ensure_allowed_script_name("g2-hello")
@@ -178,6 +184,22 @@ class ShellyLiveTests(unittest.TestCase):
             ],
             params,
         )
+
+    def test_build_ftx_recipe_script_maps_rt_chunks_to_ftx_root(self):
+        ftx_root = self.tmp / "ftx"
+        (ftx_root / "recipes").mkdir(parents=True)
+        (ftx_root / "common").mkdir()
+        (ftx_root / "state").mkdir()
+        (ftx_root / "common" / "wrapper.start.js").write_text("(function () {\n", encoding="utf-8")
+        (ftx_root / "state" / "main.js").write_text("print('state DON');\n", encoding="utf-8")
+        (ftx_root / "recipes" / "state.json").write_text(
+            json.dumps({"chunks": ["rt/common/wrapper.start.js", "rt/state/main.js"]}),
+            encoding="utf-8",
+        )
+
+        built = build_ftx_recipe_script(ftx_root / "recipes" / "state.json")
+
+        self.assertEqual("(function () {\nprint('state DON');\n", built)
 
     def test_verify_spotprice_kvs_accepts_valid_price_series(self):
         values = {
@@ -500,6 +522,80 @@ class ShellyLiveTests(unittest.TestCase):
         self.assertNotIn("ftx.weather.act", source)
         forbidden_fragments = ("Switch.", "Relay.", "Cover.", "MQTT.", "Wifi.", "Bluetooth.")
         self.assertFalse(any(fragment in source for fragment in forbidden_fragments))
+
+    def test_deploy_ftx_state_uploads_runs_and_verifies_zero_vvx(self):
+        ftx_root = self.tmp / "ftx"
+        (ftx_root / "recipes").mkdir(parents=True)
+        (ftx_root / "common").mkdir()
+        (ftx_root / "state").mkdir()
+        (ftx_root / "common" / "wrapper.start.js").write_text("(function () {\n", encoding="utf-8")
+        (ftx_root / "state" / "main.js").write_text(
+            "if (!ctx.run || !ctx.run.vvx) { print('guard'); }\nprint('state DON');\n",
+            encoding="utf-8",
+        )
+        recipe_path = ftx_root / "recipes" / "state.json"
+        recipe_path.write_text(
+            json.dumps({"chunks": ["rt/common/wrapper.start.js", "rt/state/main.js"]}),
+            encoding="utf-8",
+        )
+        opener = FakeOpener(
+            [
+                rpc_response({"id": "shellypro1pm-8813bfd99f54", "model": "SPSW-201PE15UL"}),
+                rpc_response({"online": True}),
+                rpc_response({"scripts": [{"id": 5, "name": FTX_STATE_SCRIPT_NAME, "running": False}]}),
+                rpc_response({"scripts": [{"id": 5, "name": FTX_STATE_SCRIPT_NAME, "running": False}]}),
+                rpc_response({}),
+                FakeResponse(lines=[b"state BOT\n", b"state DON\n"]),
+                rpc_response({}),
+                rpc_response({"value": {"vvx": 0}}),
+                rpc_response({"value": 0}),
+                rpc_response({"value": {"r0": 0, "r1": 0, "r2": 0}}),
+                rpc_response({"scripts": [{"id": 5, "name": FTX_STATE_SCRIPT_NAME, "running": False}]}),
+            ]
+        )
+
+        result = deploy_ftx_state(
+            "http://device",
+            recipe_path,
+            upload_chunk_bytes=1000,
+            opener=opener,
+        )
+
+        self.assertEqual(FTX_STATE_SCRIPT_NAME, result.script_name)
+        self.assertEqual("shellypro1pm-8813bfd99f54", result.live_device_id)
+        self.assertEqual(1, result.upload_chunk_count)
+        self.assertEqual(
+            {"run_vvx": 0, "number_202": 0.0, "hist": {"r0": 0.0, "r1": 0.0, "r2": 0.0}},
+            result.zero_vvx_summary,
+        )
+        methods = [
+            json.loads(request.data.decode("utf-8"))["method"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST"
+        ]
+        self.assertEqual(
+            [
+                "Shelly.GetDeviceInfo",
+                "Shelly.GetStatus",
+                "Script.List",
+                "Script.List",
+                "Script.PutCode",
+                "Script.Start",
+                "KVS.Get",
+                "Number.GetStatus",
+                "KVS.Get",
+                "Script.List",
+            ],
+            methods,
+        )
+        kvs_params = [
+            json.loads(request.data.decode("utf-8"))["params"]
+            for request, _timeout in opener.requests
+            if request.get_method() == "POST" and json.loads(request.data.decode("utf-8"))["method"] == "KVS.Get"
+        ]
+        self.assertEqual([{"key": FTX_STATE_RUN_KVS_KEY}, {"key": FTX_STATE_HIST_KVS_KEY}], kvs_params)
+        forbidden_fragments = ("Switch.", "Relay.", "Cover.", "Wifi.", "Mqtt.", "Bluetooth.")
+        self.assertFalse(any(any(fragment in method for fragment in forbidden_fragments) for method in methods))
 
     def test_parse_supply_status_accepts_expected_component_keys(self):
         status = {

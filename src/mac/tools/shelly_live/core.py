@@ -18,6 +18,7 @@ SPOTPRICE_SCRIPT_NAME = "spotprice_v0_9_0"
 WEATHER_SCRIPT_NAME = "weather_v0_9_0"
 SUPPLY_UNI_PUB_SCRIPT_NAME = "supply_uni_pub"
 SUPPLY_UNI_REFRESH_SCRIPT_NAME = "supply_uni_refresh"
+FTX_STATE_SCRIPT_NAME = "state_v1_8_0"
 ALLOWED_SCRIPT_NAME = HELLO_SCRIPT_NAME
 ALLOWED_SCRIPT_NAMES = frozenset(
     {
@@ -26,6 +27,7 @@ ALLOWED_SCRIPT_NAMES = frozenset(
         WEATHER_SCRIPT_NAME,
         SUPPLY_UNI_PUB_SCRIPT_NAME,
         SUPPLY_UNI_REFRESH_SCRIPT_NAME,
+        FTX_STATE_SCRIPT_NAME,
     }
 )
 SPOTPRICE_KVS_KEYS = (
@@ -37,6 +39,9 @@ SPOTPRICE_KVS_KEYS = (
 )
 WEATHER_KVS_KEY = "g2.weather.act"
 SUPPLY_UNI_KVS_KEY = "tele.supply_uni"
+FTX_STATE_RUN_KVS_KEY = "ftx.state.run"
+FTX_STATE_HIST_KVS_KEY = "ftx.state.hist"
+FTX_STATE_VVX_EFFICIENCY_ID = 202
 TARGET_DAMPERS_PHYSICAL_ID = "8813bfd99f54"
 DEFAULT_UPLOAD_CHUNK_BYTES = 1500
 DEFAULT_HTTP_TIMEOUT_SECONDS = 5.0
@@ -114,6 +119,22 @@ class SupplyUniDeployResult:
     refresher_log_excerpt: str
     kvs_value: dict[str, Any]
     kvs_summary: dict[str, Any]
+
+
+@dataclass(frozen=True)
+class FtxStateDeployResult:
+    """Evidence returned by one P0063 FTX state deploy/run."""
+
+    base_url: str
+    live_device_id: str
+    script_name: str
+    script_id: int
+    before_scripts: tuple[dict[str, Any], ...]
+    after_scripts: tuple[dict[str, Any], ...]
+    upload_chunk_bytes: int
+    upload_chunk_count: int
+    log_excerpt: str
+    zero_vvx_summary: dict[str, Any]
 
 
 OpenUrl = Callable[..., Any]
@@ -518,6 +539,30 @@ def cleanup_hello_residue(
     return True
 
 
+def _ftx_recipe_chunk_path(recipe_path: Path, chunk: str) -> Path:
+    if not chunk.startswith("rt/"):
+        raise ShellyLiveError(f"unsupported FTX recipe chunk path: {chunk}")
+    return recipe_path.parent.parent / chunk[3:]
+
+
+def build_ftx_recipe_script(recipe_path: str | Path) -> str:
+    """Build one complete FTX runtime script from an imported G1-style recipe."""
+
+    path = Path(recipe_path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    chunks = data.get("chunks") if isinstance(data, dict) else None
+    if not isinstance(chunks, list) or not all(isinstance(chunk, str) for chunk in chunks):
+        raise ShellyLiveError("FTX recipe has no string chunks list")
+
+    parts: list[str] = []
+    for chunk in chunks:
+        chunk_path = _ftx_recipe_chunk_path(path, chunk)
+        if not chunk_path.is_file():
+            raise ShellyLiveError(f"FTX recipe chunk missing: {chunk}")
+        parts.append(chunk_path.read_text(encoding="utf-8").rstrip("\n"))
+    return "\n".join(parts) + "\n"
+
+
 def capture_debug_log(
     base_url: str,
     expected_text: str,
@@ -609,6 +654,81 @@ def supply_uni_kvs_get(
     if isinstance(result, dict):
         return result.get("value")
     return None
+
+
+def ftx_state_kvs_get(
+    base_url: str,
+    key: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> Any:
+    """Read one P0063-allowed FTX state KVS key."""
+
+    if key not in (FTX_STATE_RUN_KVS_KEY, FTX_STATE_HIST_KVS_KEY):
+        raise ShellyLiveError(f"forbidden FTX state KVS key: {key}")
+    try:
+        result = rpc_call(base_url, "KVS.Get", {"key": key}, timeout=timeout, opener=opener)
+    except ShellyLiveError as exc:
+        message = str(exc)
+        if "not found" in message and "KVS.Get" in message:
+            return None
+        raise
+    if isinstance(result, dict):
+        return result.get("value")
+    return None
+
+
+def ftx_state_number_get(
+    base_url: str,
+    number_id: int,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> float:
+    """Read one P0063-allowed FTX state virtual number."""
+
+    if number_id != FTX_STATE_VVX_EFFICIENCY_ID:
+        raise ShellyLiveError(f"forbidden FTX state number id: {number_id}")
+    result = rpc_call(base_url, "Number.GetStatus", {"id": number_id}, timeout=timeout, opener=opener)
+    if not isinstance(result, dict) or not isinstance(result.get("value"), (int, float)):
+        raise ShellyLiveError(f"Number.GetStatus returned no numeric value for id {number_id}")
+    return float(result["value"])
+
+
+def verify_ftx_state_zero_vvx(
+    base_url: str,
+    timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> dict[str, Any]:
+    """Verify that stopped VVX reports zero efficiency and zero history."""
+
+    run = ftx_state_kvs_get(base_url, FTX_STATE_RUN_KVS_KEY, timeout=timeout, opener=opener)
+    if not isinstance(run, dict):
+        raise ShellyLiveError("ftx.state.run is missing or not an object")
+    vvx_run = int(run.get("vvx") or 0)
+    if vvx_run != 0:
+        raise ShellyLiveError(f"ftx.state.run.vvx is not 0: {vvx_run}")
+
+    efficiency = ftx_state_number_get(
+        base_url,
+        FTX_STATE_VVX_EFFICIENCY_ID,
+        timeout=timeout,
+        opener=opener,
+    )
+    if efficiency != 0:
+        raise ShellyLiveError(f"VVX efficiency is not zero: {efficiency}")
+
+    hist = ftx_state_kvs_get(base_url, FTX_STATE_HIST_KVS_KEY, timeout=timeout, opener=opener)
+    if not isinstance(hist, dict):
+        raise ShellyLiveError("ftx.state.hist is missing or not an object")
+    hist_summary = {name: float(hist.get(name) or 0) for name in ("r0", "r1", "r2")}
+    if any(value != 0 for value in hist_summary.values()):
+        raise ShellyLiveError(f"ftx.state.hist is not zeroed: {hist_summary}")
+
+    return {
+        "run_vvx": vvx_run,
+        "number_202": efficiency,
+        "hist": hist_summary,
+    }
 
 
 def read_spotprice_kvs(
@@ -968,6 +1088,80 @@ def deploy_weather(
     )
 
 
+def deploy_ftx_state(
+    base_url: str,
+    recipe_path: str | Path,
+    expected_text: str = "state DON",
+    upload_chunk_bytes: int = DEFAULT_UPLOAD_CHUNK_BYTES,
+    log_timeout: float = DEFAULT_LOG_TIMEOUT_SECONDS,
+    http_timeout: float = DEFAULT_HTTP_TIMEOUT_SECONDS,
+    opener: OpenUrl | None = None,
+) -> FtxStateDeployResult:
+    """Deploy, start and verify the P0063 FTX state script on dampers."""
+
+    if upload_chunk_bytes < 1:
+        raise ShellyLiveError("upload chunk bytes must be positive")
+
+    script_name = FTX_STATE_SCRIPT_NAME
+    code = build_ftx_recipe_script(recipe_path)
+    if "!ctx.run || !ctx.run.vvx" not in code:
+        raise ShellyLiveError("FTX state script is missing VVX run guard")
+
+    device_info = get_device_info(base_url, timeout=http_timeout, opener=opener)
+    live_device_id = verify_dampers_identity(device_info)
+    get_status(base_url, timeout=http_timeout, opener=opener)
+    before_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+    existing = find_script(list(before_scripts), script_name)
+    if existing is not None and existing.get("running") is True:
+        stop_script(base_url, _script_id(existing), script_name, timeout=http_timeout, opener=opener)
+
+    script_id = ensure_script(base_url, script_name, timeout=http_timeout, opener=opener)
+    upload_chunk_count = put_script_code_chunked(
+        base_url,
+        script_id,
+        script_name,
+        code,
+        upload_chunk_bytes=upload_chunk_bytes,
+        timeout=http_timeout,
+        opener=opener,
+    )
+    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+        log_future = executor.submit(
+            capture_debug_log,
+            base_url,
+            expected_text,
+            log_timeout,
+            http_timeout,
+            opener,
+        )
+        time.sleep(0.05)
+        start_script(base_url, script_id, script_name, timeout=http_timeout, opener=opener)
+        try:
+            log_excerpt = log_future.result(timeout=log_timeout + http_timeout + 1.0)
+            _ensure_no_memory_pressure(log_excerpt)
+            zero_vvx_summary = verify_ftx_state_zero_vvx(
+                base_url,
+                timeout=http_timeout,
+                opener=opener,
+            )
+        except concurrent.futures.TimeoutError as exc:
+            raise ShellyLiveError("debug log capture timed out") from exc
+    after_scripts = tuple(list_scripts(base_url, timeout=http_timeout, opener=opener))
+
+    return FtxStateDeployResult(
+        base_url=normalize_base_url(base_url),
+        live_device_id=live_device_id,
+        script_name=script_name,
+        script_id=script_id,
+        before_scripts=before_scripts,
+        after_scripts=after_scripts,
+        upload_chunk_bytes=upload_chunk_bytes,
+        upload_chunk_count=upload_chunk_count,
+        log_excerpt=log_excerpt,
+        zero_vvx_summary=zero_vvx_summary,
+    )
+
+
 def deploy_supply_uni(
     supply_base_url: str,
     dampers_base_url: str,
@@ -1139,6 +1333,14 @@ def main(argv: list[str] | None = None) -> int:
     supply_parser.add_argument("--kvs-timeout", type=float, default=DEFAULT_KVS_TIMEOUT_SECONDS)
     supply_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
 
+    ftx_state_parser = subparsers.add_parser("deploy-ftx-state")
+    ftx_state_parser.add_argument("--base-url", required=True)
+    ftx_state_parser.add_argument("--recipe", required=True)
+    ftx_state_parser.add_argument("--expect", default="state DON")
+    ftx_state_parser.add_argument("--upload-chunk-bytes", type=int, default=DEFAULT_UPLOAD_CHUNK_BYTES)
+    ftx_state_parser.add_argument("--log-timeout", type=float, default=DEFAULT_LOG_TIMEOUT_SECONDS)
+    ftx_state_parser.add_argument("--http-timeout", type=float, default=DEFAULT_HTTP_TIMEOUT_SECONDS)
+
     args = parser.parse_args(argv)
     try:
         if args.command == "deploy-hello":
@@ -1244,6 +1446,27 @@ def main(argv: list[str] | None = None) -> int:
             print("refresher_log_excerpt_begin")
             print(result.refresher_log_excerpt.rstrip("\n"))
             print("refresher_log_excerpt_end")
+            return 0
+        if args.command == "deploy-ftx-state":
+            result = deploy_ftx_state(
+                args.base_url,
+                args.recipe,
+                expected_text=args.expect,
+                upload_chunk_bytes=args.upload_chunk_bytes,
+                log_timeout=args.log_timeout,
+                http_timeout=args.http_timeout,
+            )
+            print(f"target={result.base_url}")
+            print(f"live_device_id={result.live_device_id}")
+            print(f"script={result.script_name} id={result.script_id}")
+            print(f"upload_chunk_bytes={result.upload_chunk_bytes}")
+            print(f"upload_chunk_count={result.upload_chunk_count}")
+            print(f"before_scripts={json.dumps(result.before_scripts, separators=(',', ':'))}")
+            print(f"after_scripts={json.dumps(result.after_scripts, separators=(',', ':'))}")
+            print(f"zero_vvx_summary={json.dumps(result.zero_vvx_summary, separators=(',', ':'), sort_keys=True)}")
+            print("log_excerpt_begin")
+            print(result.log_excerpt.rstrip("\n"))
+            print("log_excerpt_end")
             return 0
     except (OSError, ShellyLiveError) as exc:
         print(f"error: {exc}")

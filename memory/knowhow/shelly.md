@@ -80,6 +80,14 @@ Mac direct deploy uses temporary in-memory RPC upload chunks to send one complet
 
 Repo deploy chunks under `dep/s/ch/**` are generated artifacts for a possible Shelly-side pull/install model. They must not be treated as the source for Mac direct deploy unless a future package explicitly changes that model.
 
+### Compare live script state before and after verification
+
+Shelly devices can have long-running master scripts that start or stop other scripts while a package verification is running.
+
+When a live package touches scripts, capture `Script.List` before and after the action and report meaningful changes even if the package tool did not directly perform those extra start/stop actions.
+
+Do not infer that every script-state change was caused by the tool's RPC sequence. Use debug-log evidence where available to distinguish direct tool actions from device-local master-script behavior.
+
 ### Shelly-to-Shelly KVS publish can use HTTP.POST JSON-RPC
 
 P0016 verified a Shelly Plus UNI script can publish a compact telemetry object to another Shelly on the local Shelly network by calling:

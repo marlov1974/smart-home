@@ -2,7 +2,7 @@
 
 ## Scope
 
-Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015/P0016.
+Mac-side bounded live deploy/start/log/KVS verification for Shelly test scripts introduced by P0010 and extended by P0011/P0013/P0015/P0016/P0063.
 
 ## Safety Contract
 
@@ -14,11 +14,12 @@ spotprice_v0_9_0
 weather_v0_9_0
 supply_uni_pub
 supply_uni_refresh
+state_v1_8_0
 ```
 
-The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification. `supply_uni_pub` and `supply_uni_refresh` are used for P0016 supply UNI publisher/refresher verification.
+The tool must reject any other script name for create, code upload, start, stop or delete operations. `hello_v1_0_0` is used for P0010 and cleanup residue. `spotprice_v0_9_0` is used for P0011/P0013 upload/log/KVS verification. `weather_v0_9_0` is used for P0015 dampers-only weather upload/log/KVS verification. `supply_uni_pub` and `supply_uni_refresh` are used for P0016 supply UNI publisher/refresher verification. `state_v1_8_0` is used for P0063 FTX state deploy to the verified dampers endpoint.
 
-The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys, P0015 `g2.weather.act`, and P0016 `tele.supply_uni`.
+The tool does not expose switch, relay, cover, component, network, MQTT, Bluetooth, cloud or actuator operations. KVS access is read-only and limited to the documented spotprice keys, P0015 `g2.weather.act`, P0016 `tele.supply_uni`, and P0063 FTX state verification keys `ftx.state.run`/`ftx.state.hist`.
 
 ## Build/deploy source contract
 
@@ -27,6 +28,8 @@ Mac direct deploy reads one complete built Shelly script from `build/shelly/**`.
 It does not read `dep/s/ch/**` as its direct-deploy source. Repo deploy chunks are generated artifacts for a possible future Shelly-side pull/install model.
 
 The live deploy tool may split the complete built script into bounded in-memory RPC upload chunks for `Script.PutCode` transport. Those RPC upload chunks are temporary Mac memory chunks, not repository source architecture and not the same as `dep/s/ch/**` chunks.
+
+P0063 is the FTX imported-runtime exception: `deploy-ftx-state` builds `state_v1_8_0` directly from `src/shelly/ftx/recipes/state.json` by mapping imported `rt/...` recipe chunks to `src/shelly/ftx/...`. It still uploads one complete generated script through bounded in-memory RPC upload chunks and still does not read `dep/s/ch/**`.
 
 Packages that change Mac live deploy must preserve this distinction unless the package explicitly changes the deployment model.
 
@@ -157,7 +160,42 @@ Introduced:
 - P0010
 
 Last changed:
-- P0016
+- P0063
+
+### build_ftx_recipe_script()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Build one complete FTX runtime script from an imported G1-style recipe.
+
+Inputs:
+- FTX recipe JSON path.
+
+Outputs:
+- Complete JavaScript source text.
+
+Side effects:
+- Reads the recipe file and referenced source chunks.
+
+Contract notes:
+- Recipe chunks must use `rt/...` paths that map to `src/shelly/ftx/...` relative to the recipe root.
+- The output is used as a complete script for in-memory RPC upload chunks.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0063
+
+Last changed:
+- P0063
 
 ### ensure_script()
 
@@ -393,6 +431,77 @@ Introduced:
 
 Last changed:
 - P0015
+
+### verify_ftx_state_zero_vvx()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Verify that the HA-facing FTX state output reports zero VVX efficiency when `ftx.state.run.vvx` is `0`.
+
+Inputs:
+- Base URL, timeout and optional opener.
+
+Outputs:
+- Summary with `run_vvx`, `number_202` and zeroed history.
+
+Side effects:
+- Performs read-only `KVS.Get` for `ftx.state.run` and `ftx.state.hist`.
+- Performs read-only `Number.GetStatus` for number id `202`.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0063
+
+Last changed:
+- P0063
+
+### deploy_ftx_state()
+
+Status: active
+
+Owner/runtime:
+- Mac
+
+Source:
+- `src/mac/tools/shelly_live/core.py`
+
+Purpose:
+- Deploy, start, log-watch and verify `state_v1_8_0` on the dampers Shelly.
+
+Inputs:
+- Runtime base URL, FTX state recipe path, expected log text, upload chunk size and timeouts.
+
+Outputs:
+- `FtxStateDeployResult` with live device id, script id/status evidence, upload chunk count, log excerpt and zero-VVX summary.
+
+Side effects:
+- Verifies dampers identity with `Shelly.GetDeviceInfo`.
+- May create/update/start only `state_v1_8_0`.
+- The started state script itself writes FTX aggregate KVS state and virtual numbers `201`, `202`, `203`.
+- Reads only `ftx.state.run`, `ftx.state.hist` and number `202` for verification.
+
+Contract notes:
+- Rejects target identity mismatch before writes.
+- Rejects a built state script that lacks the `!ctx.run || !ctx.run.vvx` guard.
+- Does not expose actuator, device-config, network, MQTT, Bluetooth, cloud or component writes from the Mac tool.
+
+Tests:
+- `tests/mac/tools/shelly_live/test_core.py`
+
+Introduced:
+- P0063
+
+Last changed:
+- P0063
 
 ### parse_supply_status()
 

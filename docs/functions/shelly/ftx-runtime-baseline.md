@@ -159,6 +159,7 @@ Purpose:
 Contract:
 - If `ctx.run.vvx` is false, reported VVX efficiency is `0` and smoothing history is reset to zero.
 - If `ctx.run.vvx` is true, uses the existing four-temperature efficiency calculation and smoothing history.
+- P0062 applies the same stopped-VVX zero guard to the legacy duplicate `feature-vvx-efficiency.js` path so source-level behavior is unambiguous even outside the current recipe path.
 
 Last changed:
 - P0058

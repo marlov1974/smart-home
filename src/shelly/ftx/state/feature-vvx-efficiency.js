@@ -34,6 +34,13 @@ function calcVvxEfficiency(telM, hist) {
 }
 
 function applyVvxEfficiencyFeature(ctx, cb) {
+  if (!ctx.run || !ctx.run.vvx) {
+    kvsSet(KEY_STATE_HIST, { r0: 0, r1: 0, r2: 0 }, function () {
+      numberSet(VVX_EFFICIENCY_ID, 0, cb);
+    });
+    return;
+  }
+
   kvsGet(KEY_STATE_HIST, function (hist) {
     var eff = calcVvxEfficiency(ctx.telM || {}, hist || {});
     kvsSet(KEY_STATE_HIST, eff.hist, function () {

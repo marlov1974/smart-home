@@ -69,3 +69,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0060` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the 12.0 C absolute minimum supply floor.
 
 `P0061` moved Mac market-simulator function docs and package history to `marlov74/Market-Simulator`.
+
+`P0062` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the legacy VVX efficiency source-path guard.

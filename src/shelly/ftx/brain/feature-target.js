@@ -4,7 +4,6 @@ var DP_B = 243.12;
 
 var TARGET_TO_HOUSE_MIN_C = 14.0;
 var TARGET_TO_HOUSE_MAX_C = 30.0;
-var DEWPOINT_SUPPLY_MARGIN_C = 1.0;
 
 function calcDewPointC(tempC, rhPct) {
   var rh = clip(rhPct, 1, 100);
@@ -22,7 +21,7 @@ function calcTarget(ctx) {
   dewPointHouseC = calcDewPointC(ctx.inp.t_house_c, ctx.inp.rh_house_pct);
   ctx.sig.house_target_c = d1(targetC);
   ctx.sig.dewpoint_house_c = d1(dewPointHouseC);
-  ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC + DEWPOINT_SUPPLY_MARGIN_C, TARGET_TO_HOUSE_MIN_C));
+  ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC, TARGET_TO_HOUSE_MIN_C));
   ctx.sig.target_to_house_c = clip(targetC, TARGET_TO_HOUSE_MIN_C, TARGET_TO_HOUSE_MAX_C);
   ctx.sig.supply_delta_post_c = ctx.sig.target_to_house_c - ctx.inp.t_post_vvx_c;
   ctx.sig.delta_to_house_c = ctx.sig.target_to_house_c - ctx.inp.t_to_house_c;

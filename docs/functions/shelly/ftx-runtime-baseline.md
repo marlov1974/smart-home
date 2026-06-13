@@ -36,6 +36,24 @@ Side effects:
 Last changed:
 - Imported by P0057 from G1.
 
+### calcTarget()
+
+Status: active
+
+Source:
+- `src/shelly/ftx/brain/feature-target.js`
+
+Purpose:
+- Calculates house target, house dewpoint, minimum supply temperature and initial target-to-house signals.
+
+Contract:
+- `dewpoint_house_c` is calculated from house temperature and RH.
+- `min_supply_temp_c` uses calculated dewpoint directly against the absolute `TARGET_TO_HOUSE_MIN_C` floor.
+- P0059 removed the previous extra dewpoint safety margin.
+
+Last changed:
+- P0059 removed the added dewpoint supply safety margin.
+
 ### calcVvx()
 
 Status: imported baseline

@@ -129,3 +129,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0057` added `docs/functions/shelly/ftx-runtime-baseline.md` for the imported FTX Shelly runtime baseline from G1.
 
 `P0058` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the VVX efficiency run-state gate.
+
+`P0059` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the no-extra-margin dewpoint minimum supply contract.

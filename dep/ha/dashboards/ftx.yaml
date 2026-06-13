@@ -1,0 +1,58 @@
+title: FTX
+views:
+  - title: FTX
+    path: ftx
+    icon: mdi:air-filter
+    cards:
+      - type: entities
+        title: FTX styrning
+        entities:
+          - entity: input_select.ftx_mode
+            name: Mode
+          - entity: input_number.ftx_house_target_temperature
+            name: Önskad temp på hus
+
+      - type: entities
+        title: FTX livevärden
+        entities:
+          - sensor.ftx_total_effekt_2
+          - sensor.ftx_vvx_effektivitet_2
+          - sensor.ftx_hus_ppm_2
+          - sensor.ftx_hus_temp_2
+          - sensor.ftx_hus_rh_2
+
+      - type: gauge
+        name: VVX effektivitet
+        entity: sensor.ftx_vvx_effektivitet_2
+        min: 0
+        max: 100
+        severity:
+          red: 0
+          yellow: 50
+          green: 70
+
+      - type: gauge
+        name: Total effekt
+        entity: sensor.ftx_total_effekt_2
+        min: 0
+        max: 450
+        severity:
+          green: 0
+          yellow: 300
+          red: 400
+
+      - type: history-graph
+        title: FTX grafer 24h
+        hours_to_show: 24
+        refresh_interval: 60
+        entities:
+          - entity: sensor.ftx_vvx_effektivitet_2
+            name: VVX effektivitet
+          - entity: sensor.ftx_total_effekt_2
+            name: Total effekt
+          - entity: sensor.ftx_hus_ppm_2
+            name: Hus PPM
+          - entity: sensor.ftx_hus_temp_2
+            name: Hus temp
+          - entity: sensor.ftx_hus_rh_2
+            name: Hus RH

@@ -14,7 +14,15 @@ cooling-risk.md  cooling and condensate constraints
 
 ## Boundary
 
-Current G1 runtime behavior still belongs in `marlov1974/shelly` until explicit migration.
+P0057 imported the current G1 FTX runtime as the first G2 FTX runtime baseline.
+
+Runtime source inspection for FTX should now start in:
+
+```text
+src/shelly/ftx/
+```
+
+The G1 repository remains historical provenance or an explicit maintenance target, not the default place to inspect post-P0057 FTX behavior.
 
 This folder contains physical facts that G2 can use when designing future control.
 

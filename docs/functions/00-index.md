@@ -125,3 +125,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0056N` updated `docs/functions/mac/spotprice-model-diagnostics.md` with SE2 target-anomaly, DST local-day and DayAhead row-alignment audit functions.
 
 `P0056O` updated `docs/functions/mac/spotprice-model-diagnostics.md` with canonical Europe/Stockholm DayAhead DST delivery-day generation, 23/24/25-row target contracts and compact verification functions.
+
+`P0057` added `docs/functions/shelly/ftx-runtime-baseline.md` for the imported FTX Shelly runtime baseline from G1.

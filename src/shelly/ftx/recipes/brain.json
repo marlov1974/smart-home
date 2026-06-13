@@ -1,0 +1,32 @@
+{
+  "boot": false,
+  "components": [
+    { "type": "boolean", "id": 200, "name": "On", "persisted": true, "default": true },
+    { "type": "boolean", "id": 201, "name": "Nightmode", "persisted": true, "default": false },
+    { "type": "enum", "id": 200, "name": "Mode", "persisted": true, "default": "STD", "options": ["STD", "BST", "FIRE", "MAN"] },
+    { "type": "number", "id": 200, "name": "Temp", "persisted": true, "default": 19, "min": 15, "max": 25, "step": 0.5, "unit": "C" },
+    { "type": "number", "id": 204, "name": "Target to house", "persisted": false, "default": 0, "min": -20, "max": 50, "step": 0.1, "unit": "C" }
+  ],
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/brain/base.js",
+    "rt/common/script.js",
+    "rt/brain/modes.js",
+    "rt/common/helpers.js",
+    "rt/common/kvs.js",
+    "rt/brain/io-commands.js",
+    "rt/brain/io-inputs.js",
+    "rt/brain/io-weather.js",
+    "rt/brain/io-forced-mode.js",
+    "rt/brain/feature-forced-mode.js",
+    "rt/brain/feature-target.js",
+    "rt/brain/feature-ventilation.js",
+    "rt/brain/feature-failsafe.js",
+    "rt/brain/feature-thermal.js",
+    "rt/brain/feature-vvx.js",
+    "rt/brain/intent.js",
+    "rt/brain/output.js",
+    "rt/brain/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

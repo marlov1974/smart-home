@@ -1,0 +1,21 @@
+{
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/poll/base.js",
+    "rt/common/script.js",
+    "rt/common/helpers.js",
+    "rt/poll/numbers.js",
+    "rt/common/kvs.js",
+    "rt/common/shelly.js",
+    "rt/poll/feature-supply.js",
+    "rt/poll/feature-extract.js",
+    "rt/poll/feature-process.js",
+    "rt/poll/feature-heat.js",
+    "rt/poll/feature-cool.js",
+    "rt/poll/feature-vvx.js",
+    "rt/poll/feature-dampers.js",
+    "rt/poll/output.js",
+    "rt/poll/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

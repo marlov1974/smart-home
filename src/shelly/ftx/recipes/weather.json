@@ -1,0 +1,17 @@
+{
+  "boot": false,
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/weather/base.js",
+    "rt/common/script.js",
+    "rt/common/helpers.js",
+    "rt/common/kvs.js",
+    "rt/weather/url.js",
+    "rt/weather/http.js",
+    "rt/weather/parse.js",
+    "rt/weather/fetch.js",
+    "rt/weather/output.js",
+    "rt/weather/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

@@ -95,6 +95,19 @@ If either diff is non-empty, do not reset; report the differing files and wait f
 
 Promote improvements to prompt/package-writing style here when repeated package reviews show the same weakness.
 
+## Baseline import changes source-of-truth
+
+P0057 promoted a reusable workflow lesson: when a package imports a mature runtime baseline from another repository and explicitly changes source-of-truth, future follow-up work must inspect the imported G2 tree first rather than continuing to read the old repository by habit.
+
+For FTX after P0057:
+
+```text
+primary inspection path: src/shelly/ftx/
+old G1 repo: historical provenance or explicit comparison target
+```
+
+Keep import, deploy and production activation separate. A source baseline import does not imply live deployment or production activation.
+
 ## Escalated Python interpreter drift
 
 P0055B2 exposed that an escalated `/bin/zsh -lc "python3 ..."` command may resolve a different `python3` than a normal sandboxed shell. In this case, normal `python3` was `/usr/bin/python3` with user-site `numpy 2.0.2` and `scikit-learn 1.6.1`, while escalated `zsh` resolved Homebrew Python 3.12 and could not import the Python 3.9 user-site packages.

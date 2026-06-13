@@ -1,0 +1,11 @@
+{
+  "boot": true,
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/master/base.js",
+    "rt/common/script.js",
+    "rt/master/run.js",
+    "rt/master/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

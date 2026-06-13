@@ -1,0 +1,24 @@
+{
+  "boot": false,
+  "components": [
+    { "type": "number", "id": 201, "name": "Base power", "persisted": false, "default": 0, "min": 0, "max": 9999, "step": 1, "unit": "W" },
+    { "type": "number", "id": 202, "name": "VVX efficiency", "persisted": false, "default": 0, "min": 0, "max": 100, "step": 1, "unit": "%" },
+    { "type": "number", "id": 203, "name": "Fan avg pct", "persisted": false, "default": 0, "min": 0, "max": 100, "step": 1, "unit": "%" }
+  ],
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/state/base.js",
+    "rt/common/script.js",
+    "rt/common/helpers.js",
+    "rt/common/kvs.js",
+    "rt/state/input-devices.js",
+    "rt/state/run-air.js",
+    "rt/state/run-process.js",
+    "rt/state/perf-power.js",
+    "rt/state/perf-vvx.js",
+    "rt/state/perf-fan.js",
+    "rt/state/output.js",
+    "rt/state/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

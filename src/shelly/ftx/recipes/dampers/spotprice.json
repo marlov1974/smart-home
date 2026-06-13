@@ -1,0 +1,20 @@
+{
+  "boot": false,
+  "components": [],
+  "chunks": [
+    "rt/common/wrapper.start.js",
+    "rt/spotprice-dampers/base.js",
+    "rt/common/script.js",
+    "rt/common/helpers.js",
+    "rt/common/kvs.js",
+    "rt/spotprice-dampers/config.js",
+    "rt/spotprice-dampers/auth.js",
+    "rt/spotprice-dampers/tibber-query.js",
+    "rt/spotprice-dampers/http.js",
+    "rt/spotprice-dampers/price-model.js",
+    "rt/spotprice-dampers/parse.js",
+    "rt/spotprice-dampers/output.js",
+    "rt/spotprice-dampers/main.js",
+    "rt/common/wrapper.end.js"
+  ]
+}

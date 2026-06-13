@@ -2,7 +2,7 @@
 var DP_A = 17.62;
 var DP_B = 243.12;
 
-var TARGET_TO_HOUSE_MIN_C = 14.0;
+var TARGET_TO_HOUSE_MIN_C = 12.0;
 var TARGET_TO_HOUSE_MAX_C = 30.0;
 
 function calcDewPointC(tempC, rhPct) {

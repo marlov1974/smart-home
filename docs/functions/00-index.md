@@ -131,3 +131,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0058` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the VVX efficiency run-state gate.
 
 `P0059` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the no-extra-margin dewpoint minimum supply contract.
+
+`P0060` updated `docs/functions/shelly/ftx-runtime-baseline.md` with the 12.0 C absolute minimum supply floor.

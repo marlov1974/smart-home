@@ -12,7 +12,8 @@ class DewpointMarginSourceTests(unittest.TestCase):
 
         self.assertNotIn("DEWPOINT_SUPPLY_MARGIN_C", source)
         self.assertNotIn("dewPointHouseC +", source)
-        self.assertIn("var TARGET_TO_HOUSE_MIN_C = 14.0;", source)
+        self.assertIn("var TARGET_TO_HOUSE_MIN_C = 12.0;", source)
+        self.assertNotIn("var TARGET_TO_HOUSE_MIN_C = 14.0;", source)
         self.assertIn(
             "ctx.sig.min_supply_temp_c = d1(max2(dewPointHouseC, TARGET_TO_HOUSE_MIN_C));",
             source,

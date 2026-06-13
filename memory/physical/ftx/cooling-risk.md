@@ -24,7 +24,7 @@ Cooling should require:
 
 P0059 records an operator-tested physical observation: the ventilation pipe surface is a few degrees warmer than the air inside the pipe. In the current installation, no condensation occurs on the pipe even when the air in the pipe is a couple of degrees colder than calculated dewpoint.
 
-Control implication: G2 FTX should not add an extra generic safety margin on top of calculated dewpoint for the supply-air minimum. The absolute minimum supply target still remains a separate control floor.
+Control implication: G2 FTX should not add an extra generic safety margin on top of calculated dewpoint for the supply-air minimum. The absolute minimum supply target still remains a separate control floor, lowered to 12.0 C by P0060.
 
 ## Safety principle
 

@@ -50,9 +50,10 @@ Contract:
 - `dewpoint_house_c` is calculated from house temperature and RH.
 - `min_supply_temp_c` uses calculated dewpoint directly against the absolute `TARGET_TO_HOUSE_MIN_C` floor.
 - P0059 removed the previous extra dewpoint safety margin.
+- P0060 lowered `TARGET_TO_HOUSE_MIN_C` from `14.0 C` to `12.0 C`.
 
 Last changed:
-- P0059 removed the added dewpoint supply safety margin.
+- P0060 lowered the absolute minimum supply floor to `12.0 C`.
 
 ### calcVvx()
 

@@ -82,8 +82,11 @@ Codex must read:
 2. `AGENTS.md`
 3. `memory/bootstrap-manifest.json`
 4. every file in manifest `read_order`
-5. the active package file
-6. relevant source/deploy files listed by the package
+5. `REPOSITORY_FILES.md` when path discovery is needed, when selecting relevant package/source/deploy/test/docs files, or when the package may add, remove or move tracked files
+6. the active package file
+7. relevant source/deploy/test/docs files listed by the package or discovered from package-run evidence
+
+`REPOSITORY_FILES.md` is a tracked path catalog, not a command to read every tracked file. Codex should use it to discover candidate paths and then read only the files required by the manifest, active package, package-run evidence, or current task.
 
 Codex must not edit before producing:
 
@@ -99,6 +102,7 @@ Review sources may include:
 
 ```text
 requirements/packages/Pxxxx-<name>.md
+requirements/package-runs/Pxxxx/CHANGELOG.md
 requirements/package-runs/Pxxxx/review.md
 requirements/package-runs/Pxxxx/design.md
 requirements/package-runs/Pxxxx/functions.md
@@ -109,8 +113,11 @@ docs/functions/
 memory/knowhow/
 changed memory files
 changed source/deploy/test files
+REPOSITORY_FILES.md when tracked file paths changed
 commit/diff history when available
 ```
+
+Use `REPOSITORY_FILES.md` for path discovery during repository-first review when the tool context cannot enumerate files directly. Do not expand the review into all tracked files just because they appear in the index.
 
 If repository access is unavailable, pasted Codex output may be used as fallback.
 
@@ -282,21 +289,9 @@ A finding can be both package evidence and promoted knowhow: keep the package ev
 
 When live Shelly testing is explicitly allowed, Codex should observe execution as well as final output.
 
-Useful read-only diagnostics include:
+Use only read-only diagnostics by default. Exact commands and target endpoints must come from the active package, `AGENTS.md`, package-run evidence, or operator-provided execution context.
 
-```bash
-curl -N http://192.168.86.240:8040/debug/log
-curl -s http://192.168.86.240:8040/rpc/Shelly.GetStatus
-curl -s 'http://192.168.86.240:8040/rpc/KVS.Get?key=<key>'
-```
-
-Use bounded log capture so commands do not hang. On macOS:
-
-```bash
-perl -e 'alarm shift; exec @ARGV' 60 curl -N http://192.168.86.240:8040/debug/log
-```
-
-Log capture itself is read-only. Starting/stopping scripts, writing KVS, uploading scripts, changing components or changing actuators are live actions and require explicit package permission.
+Use bounded log capture so commands do not hang. Log capture itself is read-only. Script lifecycle actions, KVS writes, component/config changes, actuator operations and other live writes require explicit package permission.
 
 ## Runtime health checks
 
@@ -304,10 +299,8 @@ Live verification should check more than expected output.
 
 Look for:
 
-- missing expected KVS/output
-- HTTP errors
-- KVS errors
-- JSON parse errors
+- missing expected output
+- HTTP, KVS or parse errors
 - script errors
 - unexpected restarts
 - repeated start/stop loops
@@ -326,9 +319,9 @@ Codex must not write to live devices unless the active package explicitly permit
 
 Forbidden by default:
 
-- actuator-changing RPC calls
-- `KVS.Set` against live devices
-- script upload/start/stop against live devices
+- actuator-changing operations
+- live KVS writes
+- script upload/start/stop actions
 - Home Assistant config changes outside package scope
 
 ## Package output expectation
@@ -349,3 +342,4 @@ Codex must report:
 - uncertainty / skipped checks
 - whether deploy artifacts changed
 - rollback implications
+- `REPOSITORY_FILES.md` status when tracked file paths changed, or that no tracked files were added, removed or moved

@@ -11,8 +11,10 @@ For a new AI, ChatGPT or Codex session that has no reliable conversation context
 1. read `README.md`
 2. read `memory/bootstrap-manifest.json`
 3. read every file in `read_order`, in order
-4. if the task touches current Gen1 runtime behavior, also bootstrap `marlov1974/shelly`
+4. inspect `marlov1974/shelly` only when the task explicitly asks for historical Gen1 behavior, pre-G2 comparison or retired G1 provenance
 5. stop with `BOOTSTRAP FAILED` if a mandatory step fails
+
+G2 production/current runtime work starts from `marlov1974/smart-home`; do not bootstrap G1 merely because the task touches Shelly runtime behavior.
 
 ### Follow-up fix or next package in an active work thread: package bootstrap
 
@@ -23,9 +25,18 @@ When the active chat already has project context and the task is to create a new
 3. read the current or latest relevant package file under `requirements/packages/`
 4. read `requirements/package-runs/<Pxxxx>/CHANGELOG.md` when it exists
 5. read `review.md`, `design.md`, `functions.md`, `attempts.md` and `findings.md` only when the current task needs that evidence
-6. read only explicitly relevant source, deploy, test or docs files named by the package/evidence or required by the current fix
+6. read `REPOSITORY_FILES.md` when file discovery is needed or when the task may add, remove or move tracked files
+7. read only explicitly relevant source, deploy, test or docs files named by the package/evidence or required by the current fix
 
 Package bootstrap is a delta-bootstrap. It is not a replacement for full bootstrap when context is absent.
+
+## Repository file index rule
+
+`REPOSITORY_FILES.md` exists so GitHub/chat review contexts that cannot enumerate files can still discover tracked repository paths.
+
+Do not read broad source trees just to discover filenames when `REPOSITORY_FILES.md` answers the path-discovery question.
+
+When a package or direct documentation update adds, removes or moves tracked files, update `REPOSITORY_FILES.md` in the same change and mention the file-index status in the package-run changelog or final report.
 
 ## Large data and fixture rule
 
@@ -57,6 +68,7 @@ A package changelog should include:
 - verification performed
 - known limitations and follow-up
 - bootstrap for next package, including what to read first and what not to read
+- `REPOSITORY_FILES.md` status: updated for tracked file path changes, or explicitly unchanged because no tracked files were added, removed or moved
 
 ## Source of truth
 

@@ -82,6 +82,8 @@ When a tracked file is added, removed or moved, update `REPOSITORY_FILES.md` in 
 
 `memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.
 
+Final workflow update commit: `0be3a0ea784abbb834daa21078f850e982639719`.
+
 ## Why this exists
 
 Older project instructions treated `marlov1974/shelly` as the current runtime source of truth. That is no longer correct.

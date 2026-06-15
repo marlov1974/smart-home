@@ -85,6 +85,8 @@ A package changelog should include:
 
 `memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.
 
+Final workflow update commit: `0be3a0ea784abbb834daa21078f850e982639719`.
+
 ## Source of truth
 
 For completed packages, implementation and deploy artifacts remain the strongest truth. Package-run changelogs summarize the delta and help navigate to the relevant truth without broad scanning.

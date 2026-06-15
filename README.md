@@ -11,8 +11,9 @@ For every new AI/chat/Codex session working on G2:
 1. Read this `README.md`.
 2. Read `memory/bootstrap-manifest.json`.
 3. Read every file listed in the manifest `read_order`, in order.
-4. If the task explicitly needs historical Gen1 behavior, archived G1 provenance, or a pre-G2 comparison, also inspect `marlov1974/shelly` for that narrow historical purpose.
-5. If any mandatory read fails, stop and report `BOOTSTRAP FAILED` with the missing file/step.
+4. Do not bootstrap or read `market-simulator` during Smart Home startup; it is a separate lab project.
+5. If the task explicitly needs historical Gen1 behavior, archived G1 provenance, or a pre-G2 comparison, also inspect `marlov1974/shelly` for that narrow historical purpose.
+6. If any mandatory read fails, stop and report `BOOTSTRAP FAILED` with the missing file/step.
 
 ## G1/G2 boundary
 
@@ -20,9 +21,15 @@ For every new AI/chat/Codex session working on G2:
 
 `marlov1974/shelly` is retired Gen1 history/provenance. It is no longer the source of truth for current production runtime behavior.
 
-Market simulation, spot-price forecasting labs and consumption-forecast experiments live in `marlov74/Market-Simulator` after `P0061`.
+## Market Simulator boundary
 
-Do not treat historical G1 code or notes as current runtime truth unless a task explicitly asks for historical comparison.
+`market-simulator` is a separate lab project that was previously part of G2 but has moved out of this repository.
+
+It is used for experiments with AI/ML-based consumption forecasts and spot-price forecasts.
+
+Do not load or bootstrap `market-simulator` during Smart Home startup. Only inspect it when the user explicitly asks for Market Simulator work, lab forecast experiments, or cross-repo comparison involving that project.
+
+Do not treat Market Simulator lab results as G2 production runtime truth until a future G2 package explicitly promotes a result into Smart Home production design or implementation.
 
 ## Layout
 

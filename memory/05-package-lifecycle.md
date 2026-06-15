@@ -14,28 +14,11 @@ If a package fails verification, the lifecycle is:
 package attempt -> evidence -> cleanup -> evidence commit/push -> follow-up package
 ```
 
-## Current phase: pre-production G2
+## Current phase: production G2
 
-G2 is currently a pre-production system. It may run controlled live tests on selected physical devices, but it is not yet the production owner of the house control runtime.
+G2 is now the production owner of the house control runtime.
 
-In pre-production, committing/pushing verified G2 package results is considered documentation and source-of-truth hygiene, not production activation.
-
-Therefore, a quick package command authorizes Codex to commit and push verified package results, including live-write packages, when all of these are true:
-
-- the active package explicitly allowed the live writes that were performed
-- live actions stayed inside the package allowlist
-- no actuator/output actions occurred unless the package explicitly allowed them
-- tests and required verification commands passed
-- live verification passed when required
-- package-run evidence and completion notes were updated
-- `git diff --check` passed
-- the diff is inside package scope
-
-This does not authorize production activation, broad rollout, G1 runtime migration, Home Assistant production changes, secrets, destructive actions or live actions outside the package allowlist.
-
-## Future phase: production G2
-
-When G2 becomes production control, packages must distinguish:
+Production work must distinguish:
 
 ```text
 commit/push:
@@ -58,7 +41,21 @@ commit/push plus production activation
 
 Production activation always requires explicit package permission and operator approval.
 
-## Future production rollback requirement
+A quick package command authorizes Codex to run the package workflow for the named package. It does not by itself authorize live writes, actuator/output actions, broad rollout, destructive actions, secret changes or production activation outside the package allowlist.
+
+Codex may commit and push verified package results when all of these are true:
+
+- the active package explicitly allowed the live writes that were performed
+- live actions stayed inside the package allowlist
+- no actuator/output actions occurred unless the package explicitly allowed them
+- tests and required verification commands passed
+- live verification passed when required
+- package-run evidence and completion notes were updated
+- `REPOSITORY_FILES.md` was updated if tracked files were added, removed or moved
+- `git diff --check` passed
+- the diff is inside package scope
+
+## Production rollback requirement
 
 Production G2 must support simple operator rollback by target version/package.
 
@@ -76,7 +73,7 @@ Restore the relevant production devices/services to the desired known-good targe
 
 Rollback remains a forward-moving controlled operation. It should not require ad-hoc manual editing or hidden history rewriting.
 
-A future rollback implementation must define:
+A rollback implementation must define:
 
 - what target version means per logical device/service
 - which deploy artifacts/config/scripts belong to that target
@@ -85,7 +82,7 @@ A future rollback implementation must define:
 - how to verify success and runtime health after rollback
 - how to record rollback evidence in the repo
 
-## Future production pre-live test levels
+## Production pre-live test levels
 
 Production G2 should reduce risk before central devices receive new runtime behavior.
 
@@ -139,6 +136,21 @@ Examples:
 - verify API parsing without changing outputs
 - verify computed intent without applying it to actuators
 
+## Repository file index rule
+
+`REPOSITORY_FILES.md` is the tracked repository file index for contexts that cannot enumerate Git files directly.
+
+When a package, direct documentation update or ChatGPT edit adds, removes or moves tracked files, the same change must update `REPOSITORY_FILES.md` so it matches the tracked Git file list.
+
+Package-run changelogs must state one of:
+
+```text
+REPOSITORY_FILES.md updated for tracked file path changes.
+No tracked files were added, removed or moved, so REPOSITORY_FILES.md did not change.
+```
+
+A package with tracked file path changes is incomplete if it leaves the file index stale.
+
 ## Roles
 
 Human operator:
@@ -164,6 +176,7 @@ Codex:
 - promotes reusable lessons into knowhow when appropriate
 - commits and pushes verified package results when verification passes and the diff is inside package scope
 - commits and pushes evidence-only failed-package records when implementation/live verification fails and the package evidence is useful
+- keeps `REPOSITORY_FILES.md` synchronized when tracked file paths change
 - reports a short result to the human operator, including commit SHA when pushed
 
 ## Process
@@ -179,7 +192,7 @@ Human and ChatGPT discuss:
 - target behavior
 - solution model
 - constraints and safety
-- G1/G2 boundary
+- G1/G2 boundary when historical provenance matters
 - tests and verification
 - rollback
 - what is decided vs temporary discussion
@@ -214,7 +227,7 @@ For code packages, Codex normally updates documentation as part of the package s
 
 A package is not required for documentation-only fact capture that is independent of an active package. Examples include documenting hardware brand/model/properties or correcting a physical inventory note.
 
-A documentation change should be linked to a package when it was discovered during that package, explains that package's implementation or verification, records package evidence, or changes understanding that the package relies on. Example: if P0014 discovers that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, the finding belongs in P0014 evidence/logs and the memory update should reference the package context.
+A documentation change should be linked to a package when it was discovered during that package, explains that package's implementation or verification, records package evidence, or changes understanding that the package relies on. Example: if P0014 discovers that `ftx-dampers` is now a Shelly Pro 1PM rather than a Shelly Pro 2, the finding belongs in P0014 evidence/logs and the memory update should reference the P0014 context.
 
 ### 5. Codex execution
 
@@ -233,15 +246,14 @@ Codex must:
 - test and debug
 - store package-run evidence under `requirements/package-runs/<Pxxxx>/`
 - promote durable lessons into `memory/knowhow/` when appropriate
+- keep `REPOSITORY_FILES.md` synchronized when tracked file paths change
 - check `git status` and confirm the diff is inside package scope
 - run required verification commands and `git diff --check`
-- commit and push verified package results when verification passes
+- commit and push verified package results when verification passes and package permissions allow it
 - if verification fails after allowed attempts, run the failed-package cleanup process before stopping
-- give the human operator a short result including commit SHA, files changed, tests run and uncertainty
+- give the human operator a short result including commit SHA, files changed, tests run, file-index status and uncertainty
 
-Quick package commands do not grant extra permission for live writes, actuator changes, device writes, Home Assistant writes, secrets or destructive actions. Those still require explicit package permission.
-
-In pre-production G2, quick package commands do authorize commit/push after verified success, including for live-write packages, under the pre-production conditions defined above.
+Quick package commands do not grant extra permission for live writes, actuator changes, device writes, Home Assistant writes, secrets, destructive actions or production activation. Those still require explicit package permission.
 
 ### 6. Failed package cleanup
 
@@ -272,6 +284,7 @@ Review sources may include:
 
 ```text
 requirements/packages/Pxxxx-<name>.md
+requirements/package-runs/Pxxxx/CHANGELOG.md
 requirements/package-runs/Pxxxx/review.md
 requirements/package-runs/Pxxxx/design.md
 requirements/package-runs/Pxxxx/functions.md
@@ -281,6 +294,7 @@ requirements/package-runs/Pxxxx/logs/
 memory/knowhow/
 changed memory files
 changed source/deploy/test files
+REPOSITORY_FILES.md when tracked file paths changed
 commit/diff history when available
 ```
 
@@ -329,7 +343,7 @@ superseded
 
 ChatGPT may update documentation directly for small, pure design/memory changes.
 
-Documentation-only physical facts and inventory corrections do not need package traceability unless they were discovered during package work or affect package implementation/verification.
+Documentation-only physical facts, production-status corrections and inventory corrections do not need package traceability unless they were discovered during package work or affect package implementation/verification.
 
 Codex should update documentation as part of the package when:
 
@@ -342,7 +356,7 @@ Codex should update documentation as part of the package when:
 
 ## Repository-first review rule
 
-Codex output should be stored in the repository and pushed when verification passes and the diff is inside package scope, under the current phase rules above.
+Codex output should be stored in the repository and pushed when verification passes and the diff is inside package scope, under the current production rules above.
 
 For failed packages, useful evidence should also be stored in the repository and pushed after unverified implementation changes are reverted.
 
@@ -359,3 +373,5 @@ Updated after the stopped P0012 spotprice attempt to require failed-package clea
 Updated by direct documentation correction to clarify that pure documentation and hardware fact updates do not require package traceability unless tied to package work.
 
 Updated by direct documentation correction to define pre-production G2 commit/push policy and future production rollback/pre-live test requirements.
+
+Updated by direct documentation correction after G2 production activation to replace pre-production rules with production-mode package, rollback, activation and repository file-index requirements.

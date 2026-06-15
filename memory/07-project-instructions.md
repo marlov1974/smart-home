@@ -4,31 +4,29 @@ This file contains the intended ChatGPT project-instruction model for the Smart 
 
 ## Repository roles
 
-This project has two repositories with different roles.
-
-Primary source of truth for G2 Smart Home work:
+Primary source of truth for current production Smart Home work:
 
 ```text
 marlov1974/smart-home
 ```
 
-Source of truth for current Gen1 Shelly/FTX runtime behavior:
+Historical Gen1 provenance repository:
 
 ```text
 marlov1974/shelly
 ```
+
+G1 is retired. Do not use `marlov1974/shelly` as the source of truth for current production runtime behavior.
 
 ## Recommended project instruction text
 
 Use this as the project-level instruction for future ChatGPT sessions:
 
 ```text
-This project has two repositories with different roles.
-
-Primary source of truth for G2 Smart Home work:
+Primary source of truth for current production Smart Home work:
 - marlov1974/smart-home
 
-Source of truth for current Gen1 Shelly/FTX runtime behavior:
+Historical Gen1 provenance repository:
 - marlov1974/shelly
 
 Before producing any user-facing answer in a new chat:
@@ -36,27 +34,27 @@ Before producing any user-facing answer in a new chat:
    - read README.md
    - read memory/bootstrap-manifest.json
    - read every mandatory file listed in read_order, in order
-2. Also bootstrap marlov1974/shelly if the task touches:
-   - current Gen1 runtime behavior
-   - existing Shelly scripts
-   - G1 KVS contracts
-   - physical/runtime truth currently running in G1
-   - migration from G1 to G2
+2. Also inspect marlov1974/shelly only when the task explicitly asks for:
+   - historical Gen1 behavior
+   - pre-G2 comparison
+   - provenance for old Shelly scripts or G1 KVS contracts
+   - analysis of why retired G1 behavior differed from current G2 behavior
 3. If any mandatory bootstrap step fails, report BOOTSTRAP FAILED and include the missing step/file.
 4. After bootstrap, use:
-   - smart-home as source of truth for G2 architecture, packages, Mac tooling, Home Assistant/Shelly future implementation
-   - shelly as source of truth for current G1 runtime implementation
+   - smart-home as source of truth for G2 production architecture, packages, Mac tooling, Home Assistant/Shelly implementation, deploy artifacts and current runtime behavior
+   - shelly only as historical Gen1 provenance, not as production truth
 5. For requirements-analysis continuity, read smart-home/memory/06-chatgpt-requirements-analyst.md after the normal smart-home bootstrap.
+6. Use REPOSITORY_FILES.md to discover tracked paths when the tooling cannot enumerate files directly. If ChatGPT or Codex adds, removes or moves tracked files, update REPOSITORY_FILES.md in the same change.
 ```
 
 ## Operating rule
 
-If the task is clearly G2 work, bootstrap `marlov1974/smart-home` first.
+If the task is G2 work, current runtime behavior, production operation, Home Assistant, Mac tooling, Shelly deploy/runtime or package review, bootstrap `marlov1974/smart-home` first and treat it as the current source of truth.
 
-If the task needs facts about currently running G1 code or existing Shelly implementation, bootstrap `marlov1974/shelly` too and ground runtime claims in implementation files.
+If the task needs historical G1 facts, inspect `marlov1974/shelly` only for that historical/provenance purpose and keep those claims separate from current G2 production claims.
 
 ## Why this exists
 
-Older project instructions treated `marlov1974/shelly` as the only primary source of truth. That is no longer correct for G2 development.
+Older project instructions treated `marlov1974/shelly` as the current runtime source of truth. That is no longer correct.
 
-G2 package workflow, Mac tooling, future Home Assistant/Shelly design and requirements-analysis continuity now belong in `marlov1974/smart-home`.
+G2 package workflow, Mac tooling, Home Assistant/Shelly implementation, requirements-analysis continuity and current production runtime truth now belong in `marlov1974/smart-home`.

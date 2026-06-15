@@ -37,6 +37,7 @@ Package delta-bootstrap and completion summary:
 - verification performed
 - known limitations and follow-up
 - bootstrap for next package
+- `REPOSITORY_FILES.md` status when tracked files are added, removed or moved
 
 Keep the changelog concise, factual and grounded in the final repository state.
 
@@ -109,9 +110,23 @@ For follow-up fixes or next packages in an already active work thread, prefer pa
 3. read the current or latest relevant package file
 4. read `requirements/package-runs/<Pxxxx>/CHANGELOG.md`
 5. read other package-run evidence only as needed
-6. read only explicitly relevant source, deploy, test or docs files
+6. read `REPOSITORY_FILES.md` when file discovery is needed or when the task may add, remove or move tracked files
+7. read only explicitly relevant source, deploy, test or docs files
 
 Spot-price fixture files are excluded from ordinary package bootstrap unless the package explicitly requires them.
+
+## Repository file index rule
+
+`REPOSITORY_FILES.md` is a tracked index of Git files for contexts that cannot enumerate repository files directly.
+
+When a package adds, removes or moves tracked files, Codex must update `REPOSITORY_FILES.md` in the same package result.
+
+The package changelog must state one of:
+
+```text
+REPOSITORY_FILES.md updated for tracked file path changes.
+No tracked files were added, removed or moved, so REPOSITORY_FILES.md did not change.
+```
 
 ## Templates
 

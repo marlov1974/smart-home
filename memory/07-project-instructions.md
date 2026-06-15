@@ -16,7 +16,15 @@ Historical Gen1 provenance repository:
 marlov1974/shelly
 ```
 
+Separate forecast/simulation lab repository:
+
+```text
+market-simulator
+```
+
 G1 is retired. Do not use `marlov1974/shelly` as the source of truth for current production runtime behavior.
+
+`market-simulator` is a separate lab for AI/ML-based consumption forecasts, spot-price forecasts and market simulation. Do not load it during Smart Home startup.
 
 ## Recommended project instruction text
 
@@ -29,22 +37,27 @@ Primary source of truth for current production Smart Home work:
 Historical Gen1 provenance repository:
 - marlov1974/shelly
 
+Separate forecast/simulation lab repository:
+- market-simulator
+
 Before producing any user-facing answer in a new chat:
 1. Bootstrap marlov1974/smart-home:
    - read README.md
    - read memory/bootstrap-manifest.json
    - read every mandatory file listed in read_order, in order
-2. Also inspect marlov1974/shelly only when the task explicitly asks for:
+2. Do not bootstrap or read market-simulator during Smart Home startup. Inspect it only when the user explicitly asks for Market Simulator work, lab forecast experiments, model work or cross-repo comparison involving that project.
+3. Also inspect marlov1974/shelly only when the task explicitly asks for:
    - historical Gen1 behavior
    - pre-G2 comparison
    - provenance for old Shelly scripts or G1 KVS contracts
    - analysis of why retired G1 behavior differed from current G2 behavior
-3. If any mandatory bootstrap step fails, report BOOTSTRAP FAILED and include the missing step/file.
-4. After bootstrap, use:
+4. If any mandatory bootstrap step fails, report BOOTSTRAP FAILED and include the missing step/file.
+5. After bootstrap, use:
    - smart-home as source of truth for G2 production architecture, packages, Mac tooling, Home Assistant/Shelly implementation, deploy artifacts and current runtime behavior
    - shelly only as historical Gen1 provenance, not as production truth
-5. For requirements-analysis continuity, read smart-home/memory/06-chatgpt-requirements-analyst.md after the normal smart-home bootstrap.
-6. Use REPOSITORY_FILES.md to discover tracked paths when the tooling cannot enumerate files directly. If ChatGPT or Codex adds, removes or moves tracked files, update REPOSITORY_FILES.md in the same change.
+   - market-simulator only as a separate lab project, not as Smart Home startup context or G2 production truth
+6. For requirements-analysis continuity, read smart-home/memory/06-chatgpt-requirements-analyst.md after the normal smart-home bootstrap.
+7. Use REPOSITORY_FILES.md to discover tracked paths when the tooling cannot enumerate files directly. If ChatGPT or Codex adds, removes or moves tracked files, update REPOSITORY_FILES.md in the same change.
 ```
 
 ## Operating rule
@@ -53,8 +66,12 @@ If the task is G2 work, current runtime behavior, production operation, Home Ass
 
 If the task needs historical G1 facts, inspect `marlov1974/shelly` only for that historical/provenance purpose and keep those claims separate from current G2 production claims.
 
+If the task is about AI/ML consumption forecasts, spot-price forecasts, market simulation or lab/model experimentation, use `market-simulator` only when explicitly asked and keep it separate from Smart Home production truth.
+
 ## Why this exists
 
 Older project instructions treated `marlov1974/shelly` as the current runtime source of truth. That is no longer correct.
 
 G2 package workflow, Mac tooling, Home Assistant/Shelly implementation, requirements-analysis continuity and current production runtime truth now belong in `marlov1974/smart-home`.
+
+Forecast/simulation lab work that previously lived in G2 now belongs in `market-simulator` and should not consume Smart Home bootstrap context.

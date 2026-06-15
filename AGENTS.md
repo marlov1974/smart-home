@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository is the G2 Smart Home source of truth.
+This repository is the G2 Smart Home production source of truth.
 
 Before coding:
 
@@ -20,8 +20,9 @@ Before coding:
 
 Rules:
 
-- Keep G1 (`marlov1974/shelly`) and G2 (`marlov1974/smart-home`) separate.
-- Do not treat G2 design as current G1 runtime behavior.
+- G2 (`marlov1974/smart-home`) is current production truth.
+- G1 (`marlov1974/shelly`) is retired historical provenance. Use it only for explicitly historical/pre-G2 comparison tasks.
+- Do not treat historical G1 code or notes as current runtime behavior.
 - Every code change must reference exactly one package id.
 - A package is an ordered whole-solution version: `P0001`, `P0002`, ...
 - Rollback is also a new forward-moving package.
@@ -32,6 +33,7 @@ Rules:
 - Do not write to live devices unless the package explicitly allows it.
 - Run package test cases and verification commands before reporting done.
 - Report diff, tests run, results and uncertainty before commit unless the package explicitly allows committing.
+- Keep `REPOSITORY_FILES.md` synchronized whenever tracked files are added, removed or moved.
 
 ## Repository synchronization
 
@@ -62,6 +64,23 @@ SYNC BLOCKED
 
 Codex must not spend time reconstructing or guessing a missing package from stale local files. If a package is absent locally after successful sync, then report it missing.
 
+## Repository file index
+
+`REPOSITORY_FILES.md` is a tracked file index for GitHub/chat review contexts that cannot enumerate repository files directly.
+
+When a package or direct documentation update adds, removes or moves any tracked file, Codex/ChatGPT must update `REPOSITORY_FILES.md` in the same change so the index matches `git ls-files`.
+
+For packages, the package-run changelog must mention whether the file index changed or state that no tracked files were added, removed or moved.
+
+Recommended verification when file paths change:
+
+```bash
+git ls-files > /tmp/g2-files.txt
+# compare /tmp/g2-files.txt with the Files section in REPOSITORY_FILES.md
+```
+
+A package that changes tracked file paths but leaves `REPOSITORY_FILES.md` stale is incomplete.
+
 ## Quick package command
 
 If the human says a short command such as `build package 9`, `bygg paket 9`, or `kör P0009`, Codex should treat it as authorization to run the full package workflow for that package in `marlov1974/smart-home`.
@@ -70,17 +89,7 @@ A quick package command starts with repository synchronization. Codex must fetch
 
 Codex must still perform the full workflow: repository synchronization, bootstrap, package consistency review, package-run evidence, implementation design, function design, implementation, build/generation, tests, verification and final report.
 
-For pre-production G2 packages, the quick command authorizes Codex to commit and push the package result when verification passes and the diff is inside package scope, including packages that performed live writes, if all of these are true:
-
-- the package explicitly allowed the live writes that were performed
-- live actions stayed inside the package allowlist
-- no actuator/output actions were performed unless the package explicitly allowed them
-- tests and required verification commands passed
-- live verification passed when required
-- package-run evidence and completion notes were updated
-- `git diff --check` passed
-
-This pre-production commit/push permission does not authorize production activation, broad rollout, G1 runtime migration, Home Assistant production changes, secrets, destructive actions, or live actions outside the package allowlist.
+Because G2 is production, quick package commands authorize commit/push of verified package results only when the active package explicitly allows the performed live actions and clearly states the permitted completion level.
 
 For production-critical G2 runtime packages, the active package must explicitly state what successful verification authorizes:
 
@@ -94,7 +103,7 @@ Production activation means making G2 code/config the active controller for prod
 
 Before committing and pushing, Codex must run `git status`, confirm the diff is inside package scope, run required verification commands and `git diff --check`.
 
-After pushing, Codex must report commit SHA, files changed, tests run, verification result, live actions performed if any, final live state and uncertainty.
+After pushing, Codex must report commit SHA, files changed, tests run, verification result, live actions performed if any, final live state, `REPOSITORY_FILES.md` status and uncertainty.
 
 ## Package consistency review
 
@@ -174,7 +183,7 @@ Live Shelly log streaming is read-only and may be used when live testing is allo
 
 ## Production-mode rollback and pre-live testing
 
-Future production G2 must support simple operator rollback by version/package, for example:
+Production G2 should support simple operator rollback by version/package, for example:
 
 ```text
 backa till 27
@@ -182,14 +191,12 @@ backa till 27
 
 Rollback must be implemented as a safe forward-moving operation that restores the selected target version/config/runtime state without relying on ad-hoc manual edits.
 
-Future production G2 must also support test levels that reduce risk before production activation:
+Production G2 must use test levels that reduce risk before production activation when the change type allows it:
 
 - Mac/Codex tests of external APIs and data contracts before Shelly runtime deploy
 - non-production or low-criticality Shelly device tests before central production devices receive a script
 - staged rollout where a less central device may validate a new runtime behavior before a central device such as dampers receives it
 - live verification that is read-only or non-actuating whenever possible before production activation
-
-These production-mode capabilities are future work. They do not change the current pre-production G2 rule that successful, package-scoped, verified package results may be committed and pushed.
 
 ## Learning and evidence storage
 

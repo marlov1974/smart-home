@@ -11,9 +11,11 @@ For every new AI/chat/Codex session working on G2:
 1. Read this `README.md`.
 2. Read `memory/bootstrap-manifest.json`.
 3. Read every file listed in the manifest `read_order`, in order.
-4. Do not bootstrap or read `market-simulator` during Smart Home startup; it is a separate lab project.
-5. If the task explicitly needs historical Gen1 behavior, archived G1 provenance, or a pre-G2 comparison, also inspect `marlov1974/shelly` for that narrow historical purpose.
-6. If any mandatory read fails, stop and report `BOOTSTRAP FAILED` with the missing file/step.
+4. Read `REPOSITORY_FILES.md` as the tracked path index when the tool context cannot enumerate repository files directly, when planning source/package inspection, or when a task may add, remove or move tracked files.
+5. Do not treat `REPOSITORY_FILES.md` as a command to read every tracked file during ordinary bootstrap. It is a catalog for path discovery; read only the files required by the manifest, the active package, package-run evidence, or the current task.
+6. Do not bootstrap or read `market-simulator` during Smart Home startup; it is a separate lab project.
+7. If the task explicitly needs historical Gen1 behavior, archived G1 provenance, or a pre-G2 comparison, also inspect `marlov1974/shelly` for that narrow historical purpose.
+8. If any mandatory read fails, stop and report `BOOTSTRAP FAILED` with the missing file/step.
 
 ## G1/G2 boundary
 

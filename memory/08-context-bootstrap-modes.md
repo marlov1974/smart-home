@@ -81,6 +81,10 @@ A package changelog should include:
 - bootstrap for next package, including what to read first and what not to read
 - `REPOSITORY_FILES.md` status: updated for tracked file path changes, or explicitly unchanged because no tracked files were added, removed or moved
 
+## Latest documentation-only bootstrap update
+
+`memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.
+
 ## Source of truth
 
 For completed packages, implementation and deploy artifacts remain the strongest truth. Package-run changelogs summarize the delta and help navigate to the relevant truth without broad scanning.

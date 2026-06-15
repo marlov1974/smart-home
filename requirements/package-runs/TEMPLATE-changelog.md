@@ -12,6 +12,13 @@
 
 - `path/file`: one-line purpose and effect
 
+## Repository file index
+
+State one of:
+
+- `REPOSITORY_FILES.md updated for tracked file path changes.`
+- `No tracked files were added, removed or moved, so REPOSITORY_FILES.md did not change.`
+
 ## Contracts changed
 
 Document any changed external or cross-module contract:
@@ -47,6 +54,7 @@ Read first:
 - `requirements/packages/P____-<name>.md`
 - relevant package-run evidence listed here
 - relevant implementation files listed here
+- `REPOSITORY_FILES.md` when file discovery is needed or when tracked file paths changed
 
 Do not read by default:
 

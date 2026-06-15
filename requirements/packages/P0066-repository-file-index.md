@@ -21,11 +21,13 @@ Create a tracked repository file index for `smart-home` so external GitHub/chat 
 
 - The index lists tracked Git files only.
 - The index excludes untracked local files, ignored build products and `.git` internals.
-- The file should be regenerated when future packages add, remove or move many files.
+- The file must be regenerated when future packages or direct documentation updates add, remove or move tracked files.
+- ChatGPT and Codex must keep `REPOSITORY_FILES.md` synchronized as part of the same change that alters tracked file paths.
+- Package-run changelogs must state whether `REPOSITORY_FILES.md` was updated or did not need changes because no tracked files were added, removed or moved.
 
 ## Verification
 
-- Confirm the index matches `git ls-files`.
+- Confirm the index matches `git ls-files` whenever tracked file paths change.
 - Run `git diff --check`.
 
 ## Commit and Push Authorization

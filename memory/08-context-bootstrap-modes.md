@@ -45,6 +45,8 @@ Do not treat `REPOSITORY_FILES.md` as a command to read every listed file. The i
 
 When a package or direct documentation update adds, removes or moves tracked files, update `REPOSITORY_FILES.md` in the same change and mention the file-index status in the package-run changelog or final report.
 
+This documentation update changed existing tracked files only. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` did not need to change.
+
 ## Large data, generated artifact and fixture rule
 
 Do not read large data files, raw logs, generated build/deploy artifacts or fixtures during bootstrap unless the package explicitly requires inspecting that data for verification.

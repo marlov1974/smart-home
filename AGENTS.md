@@ -12,11 +12,13 @@ Before coding:
 1. Read `README.md`.
 2. Read `memory/bootstrap-manifest.json`.
 3. Read every file in the manifest `read_order`, in order.
-4. Read the active package in `requirements/packages/`.
-5. Perform package consistency review before editing.
-6. For code packages, create package-scoped implementation design before editing.
-7. For code packages, create package-scoped function design before editing.
-8. Summarize understanding, consistency result, design and plan before editing.
+4. Read `REPOSITORY_FILES.md` as the tracked path index when file discovery is needed, when planning package/source inspection, or when the package may add, remove or move tracked files.
+5. Treat `REPOSITORY_FILES.md` as a catalog, not as an instruction to read every tracked file. Read only the active package, package-run evidence, and relevant source/deploy/test/docs files required by the package or task.
+6. Read the active package in `requirements/packages/`.
+7. Perform package consistency review before editing.
+8. For code packages, create package-scoped implementation design before editing.
+9. For code packages, create package-scoped function design before editing.
+10. Summarize understanding, consistency result, design and plan before editing.
 
 Rules:
 
@@ -67,6 +69,10 @@ Codex must not spend time reconstructing or guessing a missing package from stal
 ## Repository file index
 
 `REPOSITORY_FILES.md` is a tracked file index for GitHub/chat review contexts that cannot enumerate repository files directly.
+
+Read `REPOSITORY_FILES.md` when path discovery is needed, when selecting relevant files for a package, or when a change may add, remove or move tracked files. Reading the index is not the same as reading the whole repository.
+
+Do not read every file listed in `REPOSITORY_FILES.md` during ordinary bootstrap. The index includes generated build/deploy artifacts, package-run logs, tests and source files that are not all useful context for every task. Use the index to find candidate paths, then read only files required by the manifest, the active package, package-run changelog/evidence, or the current task.
 
 When a package or direct documentation update adds, removes or moves any tracked file, Codex/ChatGPT must update `REPOSITORY_FILES.md` in the same change so the index matches `git ls-files`.
 

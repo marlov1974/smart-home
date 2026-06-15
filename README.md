@@ -26,6 +26,8 @@ Do not treat G2 design or code as current G1 runtime behavior.
 
 ## Layout
 
+Tracked repository paths are listed in [REPOSITORY_FILES.md](REPOSITORY_FILES.md) for GitHub/chat review flows that cannot enumerate files directly.
+
 ```text
 memory/        durable solution understanding
 requirements/ epics, features, stories and ordered packages

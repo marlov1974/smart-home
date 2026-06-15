@@ -78,6 +78,10 @@ Use it to discover paths and avoid broad tree reads. It is not ordinary bootstra
 
 When a tracked file is added, removed or moved, update `REPOSITORY_FILES.md` in the same change and mention whether it changed in the final report or package-run changelog.
 
+## Latest documentation-only bootstrap update
+
+`memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.
+
 ## Why this exists
 
 Older project instructions treated `marlov1974/shelly` as the current runtime source of truth. That is no longer correct.

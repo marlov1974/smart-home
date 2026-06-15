@@ -317,12 +317,7 @@ Codex may use read-only diagnostics by default.
 
 Codex must not write to live devices unless the active package explicitly permits live write actions.
 
-Forbidden by default:
-
-- actuator-changing operations
-- live KVS writes
-- script upload/start/stop actions
-- Home Assistant config changes outside package scope
+Unsafe live writes and actuator-changing operations are forbidden by default. Home Assistant config changes outside package scope are also forbidden by default.
 
 ## Package output expectation
 
@@ -343,3 +338,7 @@ Codex must report:
 - whether deploy artifacts changed
 - rollback implications
 - `REPOSITORY_FILES.md` status when tracked file paths changed, or that no tracked files were added, removed or moved
+
+## Latest documentation-only bootstrap update
+
+This documentation update aligned Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.

@@ -231,3 +231,7 @@ Promote a package observation to knowhow when it becomes a general rule or durab
 Codex must explicitly consider knowhow promotion at the end of every package that includes live debugging, runtime anomalies, tool/API discoveries, memory-pressure findings, deploy/rollback lessons or repeated workflow problems. The final report must say whether a knowhow promotion was created, updated or intentionally skipped.
 
 Do not store large raw logs by default. Prefer concise excerpts or summaries unless the package explicitly requires full logs.
+
+## Latest documentation-only bootstrap update
+
+`memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.

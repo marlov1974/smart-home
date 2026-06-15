@@ -76,6 +76,8 @@ Do not read every file listed in `REPOSITORY_FILES.md` during ordinary bootstrap
 
 When a package or direct documentation update adds, removes or moves any tracked file, Codex/ChatGPT must update `REPOSITORY_FILES.md` in the same change so the index matches `git ls-files`.
 
+This documentation update changed existing tracked files only. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` did not need to change.
+
 For packages, the package-run changelog must mention whether the file index changed or state that no tracked files were added, removed or moved.
 
 Recommended verification when file paths change:

@@ -79,3 +79,7 @@ Current bootstrap package:
 ```text
 requirements/packages/P0001-bootstrap-smart-home-repo.md
 ```
+
+## Latest documentation-only bootstrap update
+
+`memory/04-codex-workflow.md` was updated in the same documentation-only pass to align Codex workflow with the repository file index rule. No tracked files were added, removed or moved, so `REPOSITORY_FILES.md` remained unchanged.

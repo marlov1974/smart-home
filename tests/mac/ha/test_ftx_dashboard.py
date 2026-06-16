@@ -1,10 +1,13 @@
 import unittest
 from pathlib import Path
+from xml.etree import ElementTree
 
 
 ROOT = Path(__file__).resolve().parents[3]
 SRC = ROOT / "src" / "ha" / "dashboards" / "ftx.yaml"
 DEP = ROOT / "dep" / "ha" / "dashboards" / "ftx.yaml"
+SRC_FTX_SVG = ROOT / "src" / "ha" / "assets" / "ftx-industrial.svg"
+DEP_FTX_SVG = ROOT / "dep" / "ha" / "assets" / "ftx-industrial.svg"
 
 
 def _total_power_gauge_block(text):
@@ -34,6 +37,25 @@ class FtxDashboardTests(unittest.TestCase):
         self.assertIn("yellow: 300", block)
         self.assertIn("red: 400", block)
         self.assertNotIn("max: 5000", block)
+
+    def test_ftx_svg_deploy_asset_matches_source(self):
+        self.assertEqual(SRC_FTX_SVG.read_text(encoding="utf-8"), DEP_FTX_SVG.read_text(encoding="utf-8"))
+
+    def test_ftx_svg_is_valid_svg_asset(self):
+        root = ElementTree.fromstring(DEP_FTX_SVG.read_text(encoding="utf-8"))
+
+        self.assertEqual(root.tag, "{http://www.w3.org/2000/svg}svg")
+        self.assertEqual(root.attrib["viewBox"], "0 0 1280 720")
+
+    def test_ftx_svg_keeps_industrial_dark_contract(self):
+        text = DEP_FTX_SVG.read_text(encoding="utf-8")
+
+        self.assertIn('fill="#000000"', text)
+        self.assertIn(">FTX<", text)
+        self.assertIn(">VVX<", text)
+        self.assertIn(">TILLUFT HUS<", text)
+        self.assertIn(">FRANLUFT HUS<", text)
+        self.assertIn(">MAX 450 W<", text)
 
 
 if __name__ == "__main__":

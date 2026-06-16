@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 392
+Tracked file count: 400
 
 ## Files
 
@@ -19,6 +19,7 @@ Tracked file count: 392
 - `build/shelly/supply_uni/supply_uni_pub.js`
 - `build/shelly/supply_uni/supply_uni_refresh.js`
 - `build/shelly/weather/weather_v0_9_0.js`
+- `dep/ha/assets/ftx-industrial.svg`
 - `dep/ha/dashboards/ftx.yaml`
 - `dep/s/ch/hello_v1_0_0/01.js`
 - `dep/s/ch/spotprice_v0_9_0/01.js`
@@ -211,6 +212,11 @@ Tracked file count: 392
 - `requirements/package-runs/P0066/design.md`
 - `requirements/package-runs/P0066/functions.md`
 - `requirements/package-runs/P0066/review.md`
+- `requirements/package-runs/P0067/CHANGELOG.md`
+- `requirements/package-runs/P0067/attempts.md`
+- `requirements/package-runs/P0067/design.md`
+- `requirements/package-runs/P0067/functions.md`
+- `requirements/package-runs/P0067/review.md`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -249,7 +255,9 @@ Tracked file count: 392
 - `requirements/packages/P0064-ftx-total-power-gauge-max.md`
 - `requirements/packages/P0065-live-deploy-ftx-brain-target-floor.md`
 - `requirements/packages/P0066-repository-file-index.md`
+- `requirements/packages/P0067-ha-ftx-industrial-svg.md`
 - `requirements/packages/TEMPLATE.md`
+- `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`
 - `src/mac/labs/__init__.py`
 - `src/mac/services/chatgpt_mcp_access/__init__.py`

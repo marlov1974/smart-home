@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-labelledby="title desc">
+  <title id="title">FTX ventilation industrial view</title>
+  <desc id="desc">Classic industrial FTX ventilation unit on a black background with ducts, fans, VVX core and airflow labels.</desc>
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a3f42"/>
+      <stop offset="0.48" stop-color="#171a1c"/>
+      <stop offset="1" stop-color="#4b5154"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#24282a"/>
+      <stop offset="1" stop-color="#0d0f10"/>
+    </linearGradient>
+    <linearGradient id="duct" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#111315"/>
+      <stop offset="0.5" stop-color="#464c4f"/>
+      <stop offset="1" stop-color="#151719"/>
+    </linearGradient>
+    <radialGradient id="fan" cx="50%" cy="50%" r="62%">
+      <stop offset="0" stop-color="#5d666a"/>
+      <stop offset="0.42" stop-color="#22272a"/>
+      <stop offset="1" stop-color="#070808"/>
+    </radialGradient>
+    <filter id="soft-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.65"/>
+    </filter>
+    <pattern id="mesh" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 16L16 0M-4 4L4 -4M12 20L20 12" stroke="#657078" stroke-width="1" opacity="0.28"/>
+    </pattern>
+    <style>
+      .label { fill: #d7dde0; font: 700 26px Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .small { fill: #a9b2b7; font: 600 17px Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .meter { fill: #f0f4f6; font: 700 22px Arial, Helvetica, sans-serif; letter-spacing: 0; }
+      .line { stroke: #687177; stroke-width: 3; fill: none; }
+      .bolt { fill: #d6a84f; }
+      .cool { fill: #57a9d8; }
+      .warm { fill: #d48a42; }
+      .green { fill: #62b463; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="720" fill="#000000"/>
+  <rect x="34" y="34" width="1212" height="652" rx="22" fill="#070808" stroke="#202527" stroke-width="2"/>
+
+  <g opacity="0.55">
+    <path d="M98 124H1182" stroke="#1d2225" stroke-width="2"/>
+    <path d="M98 596H1182" stroke="#1d2225" stroke-width="2"/>
+    <path d="M120 92V628M1160 92V628" stroke="#15191b" stroke-width="2"/>
+  </g>
+
+  <text x="90" y="92" class="label">FTX</text>
+  <text x="150" y="92" class="small">INDUSTRIAL AIR HANDLING UNIT</text>
+
+  <g filter="url(#soft-shadow)">
+    <path d="M238 204H1042L1104 286V520H176V286Z" fill="url(#steel)" stroke="#687177" stroke-width="5"/>
+    <path d="M234 282H1046V516H234Z" fill="url(#panel)" stroke="#363d40" stroke-width="3"/>
+    <path d="M548 228H732L794 516H486Z" fill="#111416" stroke="#6c7479" stroke-width="4"/>
+    <path d="M585 254H695L752 490H528Z" fill="url(#mesh)" stroke="#3b4347" stroke-width="2"/>
+  </g>
+
+  <g>
+    <rect x="120" y="315" width="170" height="62" rx="8" fill="url(#duct)" stroke="#565e63" stroke-width="3"/>
+    <path d="M120 346H54" class="line"/>
+    <path d="M62 346l28 -18v36Z" class="cool"/>
+    <text x="76" y="302" class="small">UTE</text>
+
+    <rect x="990" y="315" width="170" height="62" rx="8" fill="url(#duct)" stroke="#565e63" stroke-width="3"/>
+    <path d="M1160 346h66" class="line"/>
+    <path d="M1218 346l-28 -18v36Z" class="warm"/>
+    <text x="1131" y="302" class="small">AVLUFT</text>
+
+    <rect x="526" y="96" width="228" height="74" rx="10" fill="url(#duct)" stroke="#565e63" stroke-width="3"/>
+    <path d="M640 170V226" class="line"/>
+    <path d="M640 218l-18 -28h36Z" class="green"/>
+    <text x="550" y="82" class="small">TILLUFT HUS</text>
+
+    <rect x="526" y="552" width="228" height="74" rx="10" fill="url(#duct)" stroke="#565e63" stroke-width="3"/>
+    <path d="M640 552v-48" class="line"/>
+    <path d="M640 512l18 28h-36Z" class="warm"/>
+    <text x="548" y="655" class="small">FRANLUFT HUS</text>
+  </g>
+
+  <g>
+    <circle cx="374" cy="398" r="86" fill="url(#fan)" stroke="#6a7378" stroke-width="4"/>
+    <circle cx="374" cy="398" r="20" fill="#0c0e0f" stroke="#89949a" stroke-width="3"/>
+    <path d="M374 310c31 36 24 65 0 88c-6 -36 -36 -45 -70 -38c12 -35 34 -52 70 -50Z" fill="#3d464b"/>
+    <path d="M459 408c-47 9 -70 -10 -85 -42c34 14 58 -4 75 -35c19 32 22 59 10 77Z" fill="#30383d"/>
+    <path d="M318 462c16 -45 43 -56 78 -48c-29 22 -27 52 -9 84c-37 -2 -60 -15 -69 -36Z" fill="#485157"/>
+    <text x="305" y="504" class="small">SUPPLY FAN</text>
+
+    <circle cx="906" cy="398" r="86" fill="url(#fan)" stroke="#6a7378" stroke-width="4"/>
+    <circle cx="906" cy="398" r="20" fill="#0c0e0f" stroke="#89949a" stroke-width="3"/>
+    <path d="M906 310c31 36 24 65 0 88c-6 -36 -36 -45 -70 -38c12 -35 34 -52 70 -50Z" fill="#3d464b"/>
+    <path d="M991 408c-47 9 -70 -10 -85 -42c34 14 58 -4 75 -35c19 32 22 59 10 77Z" fill="#30383d"/>
+    <path d="M850 462c16 -45 43 -56 78 -48c-29 22 -27 52 -9 84c-37 -2 -60 -15 -69 -36Z" fill="#485157"/>
+    <text x="843" y="504" class="small">EXTRACT FAN</text>
+  </g>
+
+  <g>
+    <path d="M518 285H762M518 333H762M518 381H762M518 429H762" stroke="#8f9ba1" stroke-width="3" opacity="0.55"/>
+    <path d="M534 490L746 254" stroke="#57a9d8" stroke-width="8" opacity="0.8"/>
+    <path d="M534 254L746 490" stroke="#d48a42" stroke-width="8" opacity="0.78"/>
+    <rect x="554" y="340" width="172" height="62" rx="8" fill="#0b0d0e" stroke="#6a7378" stroke-width="3"/>
+    <text x="604" y="378" class="meter">VVX</text>
+  </g>
+
+  <g>
+    <rect x="242" y="238" width="176" height="42" rx="8" fill="#0a0c0d" stroke="#30383c" stroke-width="2"/>
+    <circle cx="270" cy="259" r="9" class="green"/>
+    <text x="292" y="266" class="small">MODE AUTO</text>
+
+    <rect x="862" y="238" width="176" height="42" rx="8" fill="#0a0c0d" stroke="#30383c" stroke-width="2"/>
+    <path d="M889 269h16l-8 -22Z" class="bolt"/>
+    <text x="918" y="266" class="small">MAX 450 W</text>
+
+    <rect x="470" y="552" width="340" height="44" rx="8" fill="#0a0c0d" stroke="#30383c" stroke-width="2"/>
+    <text x="501" y="581" class="small">HOUSE TEMP</text>
+    <text x="682" y="581" class="meter">21 C</text>
+  </g>
+
+  <g opacity="0.9">
+    <path d="M290 346H518" stroke="#57a9d8" stroke-width="7" stroke-linecap="round"/>
+    <path d="M510 346l-32 -19v38Z" class="cool"/>
+    <path d="M762 346H990" stroke="#d48a42" stroke-width="7" stroke-linecap="round"/>
+    <path d="M982 346l-32 -19v38Z" class="warm"/>
+    <path d="M640 226V254" stroke="#62b463" stroke-width="7" stroke-linecap="round"/>
+    <path d="M640 516v36" stroke="#d48a42" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <circle cx="206" cy="610" r="7" fill="#657078"/>
+    <circle cx="238" cy="610" r="7" fill="#657078"/>
+    <circle cx="270" cy="610" r="7" fill="#657078"/>
+    <circle cx="1010" cy="610" r="7" fill="#657078"/>
+    <circle cx="1042" cy="610" r="7" fill="#657078"/>
+    <circle cx="1074" cy="610" r="7" fill="#657078"/>
+  </g>
+</svg>

@@ -1,6 +1,6 @@
 # FTX Sensors
 
-This file maps FTX sensor roles to known Shelly/UNI device sources.
+This file maps current FTX sensor roles to the Shelly devices that own them.
 
 Device identity and reachability are defined in:
 
@@ -8,66 +8,80 @@ Device identity and reachability are defined in:
 memory/infrastructure/devices.md
 ```
 
-## Supply UNI
+## Current sensor architecture
 
-Device:
+The former standalone `ftx-supply-uni`, `ftx-extract-uni` and `ftx-process-uni` devices have been removed from the current physical system.
 
-```text
-ftx-supply-uni / 192.168.77.20
-```
+Their relevant measurement roles are now attached to the Pro devices that also own the supply- and extract-fan actuator roles, using Shelly Sensor Add-On hardware.
 
-Known imported roles:
+Current runtime source reads those sensors locally from `Shelly.GetStatus` on the supply/extract devices and distributes selected values directly to other L2 devices through HTTP/RPC KVS writes.
 
-- supply-side differential pressure / Pa
-- outdoor or supply air before VVX proxy
-- supply air after VVX
-- supply fan RPM
-- to_outdoor temperature
+## Supply Pro + Sensor Add-On
 
-Pressure sensor:
+Device role:
 
 ```text
-Manufacturer: Siemens
-Model: QBM2030-5
-Signal: 0-10 V pressure measurement to Shelly Plus UNI
-Role: supply differential pressure measurement
+ftx-supply-fan / 192.168.77.10
 ```
 
-Runtime usage:
-
-- supply pressure channel is read by `ftx-supply-uni`
-- runtime poll logic converts the pressure signal to Pa and derived l/s airflow
-
-## Extract UNI
-
-Device:
+Current source mapping from `telemetry_publisher_supply_fan_v0_1_0.js`:
 
 ```text
-ftx-extract-uni / 192.168.77.21
+input:100       = supply differential pressure signal / Pa model
+
+temperature:100 = t.to_house
+temperature:101 = t.post_vvx
+temperature:102 = t.out
+temperature:103 = t.brine
+temperature:104 = t.brine_post_shunt
+temperature:105 = t.hotwater
+temperature:106 = t.hotwater_post_shunt
 ```
 
-Known imported roles:
+The supply device also reads its local fan/light actuator status from `light:0`.
 
-- extract-side differential pressure / Pa
-- extract/house air before VVX
-- exhaust/to-outdoor temperature after VVX
-- extract fan RPM
+### Direct thermal publication
 
-Pressure sensor:
+The supply device publishes selected local sensor values directly to the heat and cool L2 devices:
 
 ```text
-Manufacturer: Siemens
-Model: QBM2030-5
-Signal: 0-10 V pressure measurement to Shelly Plus UNI
-Role: extract differential pressure measurement
+ftx.tel.thermal.cool -> 192.168.77.13
+  to_house
+  brine
+  brine_post_shunt
+
+ftx.tel.thermal.heat -> 192.168.77.12
+  to_house
+  hotwater
+  hotwater_post_shunt
 ```
 
-Runtime usage:
+The same publisher sends aggregate supply telemetry as `ftx.tel.dev.sup` to the dampers/coordination host at `192.168.77.30`.
 
-- extract pressure channel is read by `ftx-extract-uni`
-- runtime poll logic converts the pressure signal to Pa and derived l/s airflow
+## Extract Pro + Sensor Add-On
 
-## Pressure sensor inventory and open checks
+Device role:
+
+```text
+ftx-extract-fan / 192.168.77.11
+```
+
+Current source mapping from `telemetry_publisher_extract_fan_v0_1_0.js`:
+
+```text
+input:100        = extract differential pressure signal / Pa model
+input:101        = house air-quality / ppm-like signal
+
+temperature:100  = t.to_outdoor
+temperature:105  = t.house
+humidity:105     = house relative humidity
+```
+
+The extract device also reads its local fan/light actuator status from `light:0`.
+
+Aggregate extract telemetry is published as `ftx.tel.dev.ext` to the dampers/coordination host at `192.168.77.30`.
+
+## Pressure sensors
 
 Identified pressure sensors:
 
@@ -76,13 +90,15 @@ Manufacturer: Siemens
 Model: QBM2030-5
 Quantity: 2
 Role: supply and extract differential pressure measurement
-Signal: 0-10 V pressure measurement to Shelly Plus UNI
+Signal: 0-10 V
 ```
+
+Current source reads the pressure signals through `input:100` on the corresponding supply/extract Pro devices.
 
 Open details:
 
-- confirm exact measurement range interpretation for QBM2030-5 in current wiring/config
-- confirm which physical sensor is supply vs extract if not obvious from installation
+- confirm exact measurement range/scaling represented by `xpercent`/input configuration on each current Pro device
+- confirm physical measurement-point interpretation against installation when recalibrating airflow
 
 Measurement caution:
 
@@ -95,25 +111,6 @@ Pressure measurements can refer to different physical points and must not be mix
 
 Only comparable measurement points should be used for calibration.
 
-## Process UNI
-
-Device:
-
-```text
-ftx-process-uni / 192.168.77.22
-```
-
-Known imported roles:
-
-- house CO2/VOC ppm-equivalent input
-- house relative humidity
-- VVX RPM
-- supply air to house after battery
-- brine reference
-- brine after cooling shunt
-- hot water / heating water reference
-- hot water after heating shunt
-
 ## Air quality sensor
 
 Identified sensor:
@@ -121,6 +118,8 @@ Identified sensor:
 ```text
 Siemens QPM2102
 ```
+
+Current extract-side source reads its ppm-like signal through `input:101`.
 
 Known behavior:
 
@@ -136,10 +135,27 @@ Control implication:
 
 Do not treat all high ppm readings as occupancy-driven CO2.
 
+## Retired UNI provenance
+
+Historical G1/P0002/P0016 documentation may refer to:
+
+```text
+ftx-supply-uni  / 192.168.77.20
+ftx-extract-uni / 192.168.77.21
+ftx-process-uni / 192.168.77.22
+```
+
+These are retired hardware roles and must not be used as the current topology. Preserve package-run evidence that refers to them as historical evidence.
+
 ## Source
 
-Imported from G1 `memory/ftx-fysiskt/02-hardware-inventory.md` during `P0002`.
+Original sensor inventory was imported from G1 during `P0002` and later publisher work.
 
-Pressure sensor model and pressure-measurement caution imported from G1 `memory/ftx-fysiskt/02-hardware-inventory.md` and `memory/ftx-fysiskt/03-airflow-and-pressure-model.md` during `P0009`.
+Current device/channel ownership is aligned with the current G2 runtime source under:
 
-Supply UNI `to_outdoor` temperature role added from operator-provided physical knowledge during publisher-design discussion.
+```text
+src/shelly/ftx/scripts/supply-fan/
+src/shelly/ftx/scripts/extract-fan/
+```
+
+and with operator-confirmed removal of the standalone UNI devices.

@@ -2,13 +2,13 @@
 
 ## Scope
 
-P0057 imported the current G1 FTX Shelly runtime into G2 under:
+P0057 imported the G1 FTX Shelly runtime into G2 under:
 
 ```text
 src/shelly/ftx/
 ```
 
-This catalog records the durable high-level entry points and safety-relevant functions for future G2 packages.
+This catalog records durable high-level entry points, current local-device behavior and safety-relevant functions for future G2 packages.
 
 ## Source Baseline
 
@@ -17,6 +17,23 @@ source repo: marlov1974/shelly
 source commit: 761cc4bc1c527d6bdffa0a0783f0cfd1761040f4
 package: P0057
 ```
+
+Later G2 packages changed selected behavior after the import. Current source in `src/shelly/ftx/` is stronger truth than the original P0057 import description.
+
+## Current Local Device Topology
+
+Current source contains runtime roles for:
+
+```text
+supply-fan
+extract-fan
+heat-dimmer
+cool-dimmer
+dampers
+vvx
+```
+
+The former standalone supply/extract/process UNI devices are not part of the current runtime-role structure. Current supply/extract Pro devices read their Sensor Add-On components locally and publish selected telemetry to peer devices.
 
 ## Brain Runtime
 
@@ -88,6 +105,127 @@ VVX-specific contract:
 
 Last changed:
 - Imported by P0057 from G1.
+
+## L2 Fan Executors
+
+### supply/extract executor apply flow
+
+Status: current baseline
+
+Sources:
+- `src/shelly/ftx/scripts/supply-fan/executor_supply_fan_v0_1_0.js`
+- `src/shelly/ftx/scripts/extract-fan/executor_extract_fan_v0_1_0.js`
+
+Purpose:
+- Apply the latest valid fan intent to local `light:0` output.
+
+Contract:
+- Intent is read from local KVS.
+- Requested output is clipped to `0..100%`.
+- Executor is idempotent when local output already matches requested state.
+- Intent older than `300 s` is rejected and no new output command is applied.
+- Rejecting stale intent does not itself reset the current physical output; the device remains at the already-applied local light state unless another local mechanism changes it.
+
+Architectural note:
+- This means current fan L2 behavior naturally holds the last applied physical output if L3 disappears, although the executor does not treat an indefinitely old intent as valid for reapplication after reboot or other local state loss.
+
+## L2 Heat/Cool Executors
+
+### targetPct()
+
+Status: current baseline
+
+Sources:
+- `src/shelly/ftx/scripts/heat-dimmer/executor_heat_dimmer_v0_1_0.js`
+- `src/shelly/ftx/scripts/cool-dimmer/executor_cool_dimmer_v0_1_0.js`
+
+Purpose:
+- Convert the current local thermal target and locally cached process telemetry into an incremental `light:0` percentage adjustment.
+
+Heat contract:
+- Reads `ftx.tel.thermal.heat` from local KVS.
+- Uses `target_to_house_c` and measured `to_house`.
+- Moves local output by `8%` per execution outside a `0.2 C` hold band.
+
+Cool contract:
+- Reads `ftx.tel.thermal.cool` from local KVS.
+- Uses `target_to_house_c` and measured `to_house`.
+- Moves local output by `5%` per execution outside a `0.2 C` hold band.
+
+Fallback:
+- If target or `to_house` is unavailable, executor falls back to intent `act.pct` when present, otherwise current local brightness.
+
+Current autonomy limitation:
+- Both heat and cool reject intent older than `300 s`.
+- When intent becomes stale, the executor skips without changing the already-applied output.
+- Therefore current code preserves the last physical percentage when L3 disappears, but it does **not** continue actively regulating indefinitely against the last temperature target.
+- A future L2-architecture package should decide whether the durable setpoint itself should remain valid until explicitly replaced, while peer telemetry freshness is handled separately.
+
+## Local Peer Telemetry
+
+### telemetry_publisher_supply_fan_v0_1_0.js
+
+Status: current baseline
+
+Source:
+- `src/shelly/ftx/scripts/supply-fan/telemetry_publisher_supply_fan_v0_1_0.js`
+
+Purpose:
+- Read supply-side actuator/sensor components locally and distribute current telemetry to consumers.
+
+Local measurements include:
+
+```text
+input:100        pressure signal
+light:0          local fan actuator state
+temperature:100  to_house
+temperature:101  post_vvx
+temperature:102  out
+temperature:103  brine
+temperature:104  brine_post_shunt
+temperature:105  hotwater
+temperature:106  hotwater_post_shunt
+```
+
+Direct peer publication:
+
+```text
+ftx.tel.dev.sup      -> 192.168.77.30 / dampers coordination host
+ftx.tel.thermal.cool -> 192.168.77.13 / cool-dimmer
+ftx.tel.thermal.heat -> 192.168.77.12 / heat-dimmer
+```
+
+Transport:
+- direct HTTP/RPC `KVS.Set`
+- no MQTT broker required
+- no L3 process required for the peer telemetry path
+
+### telemetry_publisher_extract_fan_v0_1_0.js
+
+Status: current baseline
+
+Source:
+- `src/shelly/ftx/scripts/extract-fan/telemetry_publisher_extract_fan_v0_1_0.js`
+
+Purpose:
+- Read extract/house-side actuator/sensor components locally and publish aggregate telemetry.
+
+Local measurements include:
+
+```text
+input:100        pressure signal
+input:101        house ppm-like air-quality signal
+light:0          local fan actuator state
+temperature:100  to_outdoor
+temperature:105  house
+humidity:105     house RH
+```
+
+Direct publication:
+
+```text
+ftx.tel.dev.ext -> 192.168.77.30 / dampers coordination host
+```
 
 ## VVX Device Runtime
 
@@ -162,19 +300,4 @@ Contract:
 - P0062 applies the same stopped-VVX zero guard to the legacy duplicate `feature-vvx-efficiency.js` path so source-level behavior is unambiguous even outside the current recipe path.
 
 Last changed:
-- P0058
-
-## Local Device Telemetry
-
-### telemetry payload/sample functions
-
-Status: imported baseline
-
-Sources:
-- `src/shelly/ftx/scripts/*/telemetry_publisher_*`
-
-Purpose:
-- Publish local device status and power telemetry for dampers/brain/state consumption.
-
-Last changed:
-- Imported by P0057 from G1.
+- P0058/P0062

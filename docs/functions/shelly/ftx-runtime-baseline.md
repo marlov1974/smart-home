@@ -249,6 +249,32 @@ Contract:
 Last changed:
 - Imported by P0057 from G1.
 
+### Future local VVX power-fault protection
+
+Status: durable requirement; not yet implemented
+
+Operator observation:
+- During summer operation the rotating VVX physically jammed/stuck.
+- In that failure state measured electrical power was approximately `70 W`.
+- Normal observed running power is approximately `30 W`.
+
+Required L2 safety behavior:
+- When VVX is commanded/running, its local device controller must monitor measured active power.
+- Normal accepted running-power window is currently defined as `25..35 W` inclusive.
+- Measured running power below `25 W` or above `35 W` must be treated as a local VVX fault condition.
+- On detection of such a fault, L2 must stop/de-energize the VVX locally without depending on L3, Home Assistant, Mac or network availability.
+- The fault condition should be made observable upward for diagnostics/alarms.
+
+Design work still required before implementation:
+- define startup grace time before enforcing the power window
+- define how long an out-of-range reading must persist before trip, to reject transients/noise
+- define fault latching and reset/retry policy
+- distinguish commanded-off power semantics from commanded-on/running power semantics
+- decide whether repeated trips should lock out automatic restart until explicit operator reset
+
+Architectural classification:
+- This belongs to L2 hardware protection. Upper layers may request VVX operation, but they must not be able to override this local protection.
+
 ## State Runtime
 
 ### applyVvxRun()

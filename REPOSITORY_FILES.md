@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 400
+Tracked file count: 401
 
 ## Files
 
@@ -256,6 +256,7 @@ Tracked file count: 400
 - `requirements/packages/P0065-live-deploy-ftx-brain-target-floor.md`
 - `requirements/packages/P0066-repository-file-index.md`
 - `requirements/packages/P0067-ha-ftx-industrial-svg.md`
+- `requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -72,7 +72,26 @@
     "requirements/packages/P0012-correct-spotprice-template-and-clean-deploy-artifacts.md",
     "requirements/packages/P0013-spotprice-low-memory-se-elpris-runtime.md",
     "requirements/packages/P0014-device-management-safe-dampers-baseline.md",
-    "requirements/packages/P0015-package-changelog-bootstrap-policy.md"
+    "requirements/packages/P0015-g2-weather-script-from-g1-template.md",
+    "requirements/packages/P0015-package-changelog-bootstrap-policy.md",
+    "requirements/packages/P0016-supply-uni-telemetry-publisher-proof.md",
+    "requirements/packages/P0019-ignore-local-python-artifacts.md",
+    "requirements/packages/P0026-mac-local-kvs-read-poc.md",
+    "requirements/packages/P0027-read-only-mcp-local-operator-bridge.md",
+    "requirements/packages/P0028-true-mcp-stdio-local-operator-bridge.md",
+    "requirements/packages/P0029-chatgpt-compatible-mcp-access.md",
+    "requirements/packages/P0057-import-g1-ftx-runtime-as-g2-baseline.md",
+    "requirements/packages/P0058-gate-vvx-efficiency-by-run-state.md",
+    "requirements/packages/P0059-remove-dewpoint-supply-safety-margin.md",
+    "requirements/packages/P0060-lower-ftx-min-supply-floor-to-12c.md",
+    "requirements/packages/P0061-move-market-simulator-out-of-smart-home.md",
+    "requirements/packages/P0062-close-vvx-efficiency-legacy-path.md",
+    "requirements/packages/P0063-live-deploy-ftx-state-vvx-efficiency.md",
+    "requirements/packages/P0064-ftx-total-power-gauge-max.md",
+    "requirements/packages/P0065-live-deploy-ftx-brain-target-floor.md",
+    "requirements/packages/P0066-repository-file-index.md",
+    "requirements/packages/P0067-ha-ftx-industrial-svg.md",
+    "requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md"
   ],
   "governance": {
     "truth_hierarchy": [

@@ -219,7 +219,7 @@ A conventional fixed thermostat can hold temperature, but it does not create the
 
 ## Target behavior
 
-After P0068 implementation and explicit pilot activation:
+After P0068 implementation and successful staged verification:
 
 - P3 office controls its own floor-heating demand locally;
 - target is 22.0 °C;
@@ -257,7 +257,7 @@ After P0068 implementation and explicit pilot activation:
 - Persistent learning writes must be rate-limited.
 - Source/build/deploy separation must be preserved.
 - Shelly deploy artifacts must come from `dep/s/`, not `src/`.
-- Production activation requires explicit operator approval during package execution.
+- Once device identity, actuator mapping, no-heat polarity and fail-safe behavior are verified, P0068 shall proceed to autonomous pilot activation without a separate operator approval prompt.
 
 ## Knowledge updates
 
@@ -341,7 +341,7 @@ Exact source layout may be refined in design, but L1 and L2 responsibilities mus
 - No G1 repository changes.
 - No external cloud/runtime dependency for L1.
 - No actuator writes to any device except the verified P3 office floor-heating actuator.
-- No production activation without explicit operator approval.
+- No activation is allowed while device identity, actuator mapping, polarity or fail-safe behavior remain uncertain.
 
 ## Pre-implementation consistency review
 
@@ -390,7 +390,7 @@ The design must cover:
 - L2 observable state contract;
 - script/process split and memory budget;
 - live staged-test plan;
-- operator activation/rollback procedure.
+- automatic activation/rollback procedure.
 
 ## Function design policy
 
@@ -431,9 +431,9 @@ only after all of the following are true:
 1. physical Shelly id is verified as `e08cfe8c04bc`;
 2. exact actuator output/component and no-heat polarity are verified;
 3. package review is PASS or WARN without actuator-safety uncertainty;
-4. operator explicitly approves live office-floor actuation during package execution.
+4. Stage A/B verification has completed without actuator-safety uncertainty.
 
-No other actuator may be changed.
+No separate operator approval is required after these conditions are met. No other actuator may be changed.
 
 Shelly log capture required:
 yes during staged live test
@@ -470,7 +470,7 @@ Verify:
 
 ### Stage C: bounded actuator proof
 
-Requires operator approval.
+Proceed automatically after Stage A/B verification passes and the actuator contract is unambiguous.
 
 Apply a short, bounded room-heating command through only the verified office actuator.
 
@@ -480,11 +480,11 @@ Stop immediately on inverted semantics, unexpected device/output change or uncer
 
 ### Stage D: autonomous pilot activation
 
-Requires operator approval after Stage C.
+Proceed automatically after Stage C verifies the expected physical direction and safe no-heat state.
 
-Enable autonomous L1 at 22.0 °C and L2 shadow learning.
+Enable autonomous L1 at 22.0 °C and L2 shadow learning and leave the pilot active unless a verification or safety check fails.
 
-The final report must state whether the pilot was left active or disabled.
+The final report must state the resulting pilot state.
 
 ## Test cases
 
@@ -577,12 +577,12 @@ Live evidence must record:
 - component/status mapping;
 - actuator mapping and no-heat polarity;
 - shadow-mode output;
-- bounded actuator proof result if approved;
+- bounded actuator proof result;
 - final L1/L2 script state;
 - current room temperature/humidity;
 - final physical heat-demand state;
 - relevant log excerpts;
-- whether autonomous pilot activation was approved and left active;
+- whether autonomous pilot activation completed and was left active;
 - memory/heap observations if available.
 
 ## Runtime health checks
@@ -609,9 +609,9 @@ P0068 is a staged single-room pilot.
 
 Successful repository verification authorizes commit/push.
 
-Live deployment may proceed through Stages A-C only within the permissions above.
+Live deployment shall proceed through Stages A-D automatically when each preceding stage passes its verification and no actuator-safety uncertainty remains.
 
-Leaving Stage D autonomous room control active requires explicit operator approval during execution.
+The intended successful end state is autonomous L1 control at 22.0 °C with L2 shadow learning left active.
 
 There is no whole-house rollout in P0068.
 

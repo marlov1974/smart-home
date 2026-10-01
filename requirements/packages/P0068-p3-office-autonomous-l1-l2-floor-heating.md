@@ -85,6 +85,9 @@ Evidence:
 - Shelly's official Plus Uni documentation identifies OUT1 and OUT2 as solid-state relay outputs and specifies a product maximum of **30 V switching voltage** and **300 mA switching current**.
 - Independent board-level inspection discussed in the Shelly Forum identifies the output devices used for OUT1 and OUT2 as two **LT239 Photo DMOS-FET relays**, one per output. This is useful component-identification evidence, but it is not an official Shelly schematic.
 - The LT239 datasheet specifies a **1.5 A peak load current for 100 ms**.
+- The P3 office valve actuator is a **Heatit Actuator 24V AC/DC, art. 4590031**. Heatit's current datasheet specifies **85 mA operating current** and **470 mA maximum start current**, but omits the start-current duration.
+- The Heatit actuator's published construction and electrical characteristics closely match the EAZY Drive Series 2.1 24 V actuator family: 24 V AC/DC, 1 W, 85 mA operating current, 470 mA inrush, NC operation, M30x1.5, manual opening, 360° mounting, IP54 and TÜV/IEC 60730-2-14. The EAZY manufacturer specification explicitly states **470 mA inrush for max. 100 ms**.
+- For P0068, the operator confirms this matching manufacturer/reference evidence resolves the missing-duration question: use **470 mA for max. 100 ms** as the actuator startup/inrush contract.
 
 Operator-corrected engineering rule for P0068:
 
@@ -94,13 +97,16 @@ Operator-corrected engineering rule for P0068:
 - P0068 shall not use 500 mA as the allowed continuous operating current for the assembled Shelly Plus Uni.
 - Codex shall therefore evaluate the P3 office actuator against two separate limits: steady-state current **<= 300 mA** and startup/inrush peak **<= 1.5 A for <= 100 ms**.
 - This finding does **not** by itself verify the P3 office actuator output number, actual circuit voltage/current, command polarity, fail-safe state or physical valve behavior. Those items remain subject to the existing Stage A/Stage C verification gates before physical actuation.
-- Before energizing the actuator, Codex must verify both steady-state current and startup/inrush behavior against the limits above.
+- Electrical load compatibility for the Heatit actuator is therefore resolved for P0068: **85 mA steady-state <= 300 mA**, and **470 mA startup for max. 100 ms <= 1.5 A for 100 ms**.
+- Codex must not block implementation waiting for another Heatit document to restate the 100 ms duration. Remaining pre-actuation verification concerns the actual P3 output/component, voltage, polarity, no-heat state and physical valve direction—not the actuator current envelope.
 
 Sources reviewed:
 
 - Shelly Plus Uni Knowledge Base: https://kb.shelly.cloud/knowledge-base/shelly-plus-uni
 - Independent Plus Uni LT239 identification: https://shelly-forum.com/thread/31720-shelly-uni-plus-galvanische-trennung-der-ausgaenge/
 - LT239 datasheet (Brightek Europe): https://www.brightekeurope.com/productcart/pc/catalog/LT239.pdf
+- Heatit Actuator 24V AC/DC art. 4590031: https://documents.heatit.com/4590031
+- EAZY Drive Series 2.1 24 V manufacturer specification: https://www.eazy-systems.de/en/produkte/eazy-drive-series-2-1/
 
 The observed IP is reachability evidence only and must not be treated as durable device identity. Live implementation must verify device identity before writes.
 

@@ -76,6 +76,31 @@ Humidity component: humidity:100
 Observed example: 20.5 °C / 63.8 %RH
 ```
 
+### Shelly Plus Uni OUT1/OUT2 output-stage investigation — 2026-10-01
+
+This P0068 hardware question has been investigated and shall be treated as durable package context.
+
+Evidence:
+
+- Shelly's official Plus Uni documentation identifies OUT1 and OUT2 as solid-state relay outputs and specifies a product maximum of **30 V switching voltage** and **300 mA switching current**.
+- Independent board-level inspection discussed in the Shelly Forum identifies the output devices used for OUT1 and OUT2 as two **LT239 Photo DMOS-FET relays**, one per output. This is useful component-identification evidence, but it is not an official Shelly schematic.
+- The LT239 datasheet specifies **60 V load voltage**, **500 mA load current at 25 °C**, and **1.5 A peak load current for 100 ms** as device absolute-maximum ratings.
+
+Engineering conclusion for P0068:
+
+- The LT239 semiconductor itself has a higher current rating than 300 mA.
+- The governing limit for the assembled Shelly Plus Uni remains Shelly's published product envelope: **maximum 30 V / 300 mA per output**.
+- The LT239's 500 mA device rating must **not** be used as permission to operate the Shelly Plus Uni above 300 mA.
+- Codex shall therefore not treat the statement "the LT239 itself is limited to 300 mA" as an unresolved hardware blocker; that specific semiconductor-rating question is resolved.
+- This finding does **not** by itself verify the P3 office actuator output number, actual circuit voltage/current, command polarity, fail-safe state or physical valve behavior. Those items remain subject to the existing Stage A/Stage C verification gates before physical actuation.
+- Any bounded actuator proof must verify that the real P3 office circuit remains within the Shelly Plus Uni product rating before the output is energized.
+
+Sources reviewed:
+
+- Shelly Plus Uni Knowledge Base: https://kb.shelly.cloud/knowledge-base/shelly-plus-uni
+- Independent Plus Uni LT239 identification: https://shelly-forum.com/thread/31720-shelly-uni-plus-galvanische-trennung-der-ausgaenge/
+- LT239 datasheet (Brightek Europe): https://www.brightekeurope.com/productcart/pc/catalog/LT239.pdf
+
 The observed IP is reachability evidence only and must not be treated as durable device identity. Live implementation must verify device identity before writes.
 
 The operator states that the Shelly is physically wired for control of the office floor heating. The exact actuator output/component, electrical semantics, polarity, fail-safe state and physical valve behavior are not yet durable repository truth.

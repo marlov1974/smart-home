@@ -84,16 +84,17 @@ Evidence:
 
 - Shelly's official Plus Uni documentation identifies OUT1 and OUT2 as solid-state relay outputs and specifies a product maximum of **30 V switching voltage** and **300 mA switching current**.
 - Independent board-level inspection discussed in the Shelly Forum identifies the output devices used for OUT1 and OUT2 as two **LT239 Photo DMOS-FET relays**, one per output. This is useful component-identification evidence, but it is not an official Shelly schematic.
-- The LT239 datasheet specifies **60 V load voltage**, **500 mA load current at 25 °C**, and **1.5 A peak load current for 100 ms** as device absolute-maximum ratings.
+- The LT239 datasheet specifies a **1.5 A peak load current for 100 ms**.
 
-Engineering conclusion for P0068:
+Operator-corrected engineering rule for P0068:
 
-- The LT239 semiconductor itself has a higher current rating than 300 mA.
-- The governing limit for the assembled Shelly Plus Uni remains Shelly's published product envelope: **maximum 30 V / 300 mA per output**.
-- The LT239's 500 mA device rating must **not** be used as permission to operate the Shelly Plus Uni above 300 mA.
-- Codex shall therefore not treat the statement "the LT239 itself is limited to 300 mA" as an unresolved hardware blocker; that specific semiconductor-rating question is resolved.
+- **Continuous current is limited to maximum 300 mA per OUT1/OUT2 output.**
+- **Startup/inrush current may be up to maximum 1.5 A, but only as a short transient of up to 100 ms.**
+- The 1.5 A figure is a transient/start-current limit, not a continuous-current rating.
+- P0068 shall not use 500 mA as the allowed continuous operating current for the assembled Shelly Plus Uni.
+- Codex shall therefore evaluate the P3 office actuator against two separate limits: steady-state current **<= 300 mA** and startup/inrush peak **<= 1.5 A for <= 100 ms**.
 - This finding does **not** by itself verify the P3 office actuator output number, actual circuit voltage/current, command polarity, fail-safe state or physical valve behavior. Those items remain subject to the existing Stage A/Stage C verification gates before physical actuation.
-- Any bounded actuator proof must verify that the real P3 office circuit remains within the Shelly Plus Uni product rating before the output is energized.
+- Before energizing the actuator, Codex must verify both steady-state current and startup/inrush behavior against the limits above.
 
 Sources reviewed:
 

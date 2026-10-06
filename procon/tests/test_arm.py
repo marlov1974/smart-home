@@ -37,7 +37,7 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
     write32(0xe000e010,7)
     state={'time':0,'index':0,'pending':None,'de':False,'tx_done':0,'tx':bytearray(),'de_high':0,'de_low':0,'led_edges':0}
     writes=set()
-    cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0, 'svc_counts':{27:0,28:0}, 'svc_times':{27:[],28:[]}, 'normal':0, 'overlap':0}
+    cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0, 'svc_counts':{27:0,28:0}, 'svc_times':{27:[],28:[]}, 'normal':0, 'overlap':0, 'phase':4, 'phase_attempts':0}
     request_times=[request_start+i*baud_gap for i in range(len(request))]
     if second_request:
         second_time,second_bytes=second_request
@@ -104,16 +104,22 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                 if cn_hz is not None:
                     if packet[1]==0x5a: response=cn_packet(0x7a,bytes([0]))
                     elif packet[5]==4:
+                        assert cn['phase']==4, 'Hz interleaved inside service operation'
+                        cn['phase']=27;cn['phase_attempts']=0
                         cn['normal']+=1
                         response=cn_packet(0x62,bytes([4,cn_hz])+bytes(14))
                         if cn_corrupt: response=response[:-1]+bytes([response[-1]^1])
                     else:
                         c=packet[7];cn['svc_counts'][c]+=1
+                        assert c==cn['phase'], 'service order violated'
+                        cn['phase_attempts']+=1
                         previous=cn['svc_times'][c]
-                        if previous: assert state['time']-previous[-1]>=999000, 'retry too fast'
+                        if cn['phase_attempts']>1: assert state['time']-previous[-1]>=999000, 'retry too fast'
                         previous.append(state['time'])
                         status=(1 if c==27 else 2) if cn['svc_counts'][c]%2==0 else 0
                         if service_mode=='pending': status=0
+                        if status or cn['phase_attempts']==10:
+                            cn['phase']=28 if c==27 else 4;cn['phase_attempts']=0
                         value=7 if c==27 else 65533
                         response=cn_packet(0x62,bytes([0xa3,0,c,status,value&255,value>>8])+bytes(10))
                     begin=state['time']+20000
@@ -192,13 +198,13 @@ if __name__=='__main__':
         assert completed[0:3]==[7,7,1] and completed[8:11]==[65533,65533,1]
         assert raw[0:3]==[0xa3,0x011b,7] and raw[8:11]==[0xa3,0x021c,65533]
         assert later[5]>baseline[5] and later[7]==later[12]==0
-        assert cn['normal']>=3 and min(cn['svc_counts'].values())>=2
-    run_case(path,'A3 pending and complete with live normal/Modbus',req(0,16),None,duration=5600000,cn_hz=48,request_start=1900000,extra_requests=[(2100000,req(16,16)),(4800000,req(0,16)),(5000000,req(16,16)),(5300000,req(52,16))],inspect=inspect_service)
+        assert cn['normal']>=2 and min(cn['svc_counts'].values())>=2
+    run_case(path,'A3 pending and complete in exclusive sequence with Modbus',req(0,16),None,duration=5600000,cn_hz=48,request_start=1900000,extra_requests=[(2100000,req(16,16)),(4800000,req(0,16)),(5000000,req(16,16)),(5300000,req(52,16))],inspect=inspect_service)
     def inspect_pending(data,cn):
         first,second,service,diagnostic=parse_replies(data)
         assert first[0:2]==second[0:2]==[888,71]
-        assert first[3]==second[3]==1 and second[5]>first[5]
+        assert first[3]==second[3]==1 and second[5]==first[5]
         assert service[2]==service[10]==0 and diagnostic[0] in (2,3)
         assert diagnostic[3]>=3 and diagnostic[4]>=3
-        assert cn['overlap']>0 and cn['svc_counts'][27]>=4 and cn['normal']>=3
-    run_case(path,'A3 repeated pending with concurrent bounded Modbus blocks',req(0,16),None,duration=5700000,cn_hz=20,service_mode='pending',request_start=3300000,extra_requests=[(5100000,req(0,16)),(5300000,req(16,16)),(5500000,req(32,16))],inspect=inspect_pending)
+        assert cn['svc_counts'][27]>=4 and cn['normal']==1
+    run_case(path,'A3 repeated pending with no interleaved Hz and responsive Modbus',req(0,16),None,duration=5700000,cn_hz=20,service_mode='pending',request_start=3300000,extra_requests=[(5100000,req(0,16)),(5300000,req(16,16)),(5500000,req(32,16))],inspect=inspect_pending)

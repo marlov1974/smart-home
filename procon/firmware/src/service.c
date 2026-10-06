@@ -4,7 +4,7 @@
 #define RETRY_MS 1000u
 #define MAX_ATTEMPTS 10u
 #define TTL_MS 60000u
-enum { IDLE, READY, WAIT_REPLY, WAIT_RETRY, COOLDOWN, LINK_DOWN };
+enum { IDLE, READY, WAIT_REPLY, WAIT_RETRY, DONE, LINK_DOWN };
 typedef struct {
     uint8_t payload[16], valid, ever;
     uint16_t raw, status, completions;
@@ -13,7 +13,7 @@ typedef struct {
 static sample samples[2];
 static uint8_t state, index, attempts, wire_payload[16], had_request;
 static uint16_t last_status, accepted, failures, exhausted, seen, gap_ms, cycles;
-static uint32_t request_at, cooldown_at, previous_request;
+static uint32_t request_at, previous_request;
 static uint16_t pair(const uint8_t *p) { return (uint16_t)((uint16_t)p[0] | ((uint16_t)p[1]<<8)); }
 void svc_init(void) {
     for(unsigned i=0;i<2;++i) {
@@ -25,11 +25,12 @@ void svc_init(void) {
     for(unsigned i=0;i<16;++i)wire_payload[i]=0;
     state=IDLE; index=attempts=had_request=0;
     last_status=65535;accepted=failures=exhausted=seen=gap_ms=cycles=0;
-    request_at=cooldown_at=previous_request=0;
+    request_at=previous_request=0;
 }
+void svc_start_cycle(void) {state=READY;index=attempts=0;}
 void svc_link(int up, uint32_t t) {
     (void)t;
-    if(up) { state=READY; index=attempts=0; }
+    if(up) svc_start_cycle();
     else {
         state=LINK_DOWN;attempts=0;
         samples[0].valid=samples[1].valid=0;
@@ -41,7 +42,7 @@ void svc_tick(uint32_t dt, uint32_t t) {
         s->age=dt>=AGE_MAX-s->age?AGE_MAX:s->age+dt;
         if(s->age>=TTL_MS)s->valid=0;
     }
-    if(state==COOLDOWN && t-cooldown_at>=20000u) {state=READY;index=attempts=0;}
+    (void)t; /* DONE waits for the next normal query, no timed restart. */
 }
 int svc_due(uint32_t t, uint8_t *code) {
     if(state==READY || (state==WAIT_RETRY && t-request_at>=RETRY_MS)) {
@@ -56,9 +57,10 @@ void svc_sent(uint32_t t) {
     ++attempts;state=WAIT_REPLY;
 }
 static void advance(uint32_t t) {
+    (void)t;
     attempts=0;
     if(index==0) {index=1;state=READY;}
-    else {state=COOLDOWN;cooldown_at=t;++cycles;}
+    else {state=DONE;++cycles;}
 }
 static void retry(uint32_t t) {
     if(attempts>=MAX_ATTEMPTS) {

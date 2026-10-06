@@ -5,3 +5,5 @@ service.c owns two retained sample records and IDLE/READY/WAIT_REPLY/WAIT_RETRY/
 cn105.c begin/release/disconnect arbitrate one transaction at a time; cn_feed still owns framing/checksum and routes A3 only after validation. cn_tick applies timeouts,normal priority,service retries and50ms turnaround. No blocking service callback. Main's response buffer remains37bytes; modbus_reply permits addresses0–67,max16words. Existing UART helper drains CN105 while RS485 TX waits. No platform/startup/linker change.
 
 read_brine.py request_block/capture record only FC04 with UTC/raw data; decode_samples brackets payload with completion counters and reconstructs frames with explicit provenance. It never labels candidate temperatures hardware-correlated. Host and ARM cases cover package contracts; physical evidence pending. Detailed timings/map:../../procon/docs/BRINE.md.
+
+R2: svc_start_cycle resets only operation phase/attempt count to27. svc_tick ages samples but never auto-restarts. cn_tick/ begin(NORMAL) implement one Hz then full27then28; reconnect is boundary-only. Input68 identifies revision2. See procon/docs/BRINE.md for operator correction and stale-Hz behavior.

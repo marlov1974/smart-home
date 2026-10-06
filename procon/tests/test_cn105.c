@@ -21,7 +21,7 @@ static unsigned drain(uint8_t *b) {unsigned n=0;while(cn_tx_byte(b+n)){cn_tx_sen
 static void simulation(unsigned mode,uint32_t base,unsigned duration) {
     cn_init();uint8_t tx[22],rx[22],late[22];unsigned rxlen=0,late_len=0;
     uint32_t due=0,late_due=0,last_normal=0,last_service[2]={0};
-    unsigned count[2]={0},normals=0,connected=0;
+    unsigned count[2]={0},normals=0,connected=0,phase=4,phase_attempts=0;
     for(unsigned step=0;step<duration;++step) {
         uint32_t t=base+step;cn_tick(t);
         if(rxlen && (int32_t)(t-due)>=0){feed(rx,rxlen,t);rxlen=0;}
@@ -34,13 +34,15 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
             else {
                 assert(tx[1]==0x42 && n==22 && tx[2]==2 && tx[3]==0x7a && tx[4]==16);
                 if(tx[5]==4) {
-                    if(normals)assert(t-last_normal<3000u);
+                    assert(phase==4);phase=27;phase_attempts=0;
+                    if(normals)assert(t-last_normal>=2000u || mode==5);
                     last_normal=t;++normals;response(rx,4,0,0,20+(int)(normals%30));rxlen=22;
                 } else {
                     assert(tx[5]==0xa3 && tx[6]==0 && (tx[7]==27 || tx[7]==28));
                     for(unsigned i=8;i<21;++i)assert(tx[i]==0);
                     unsigned idx=tx[7]-27;assert(tx[21]==(idx?0x73:0x74));
-                    if(count[idx])assert(t-last_service[idx]>=1000u);
+                    assert(tx[7]==phase);++phase_attempts;assert(phase_attempts<=10);
+                    if(phase_attempts>1)assert(t-last_service[idx]>=1000u);
                     last_service[idx]=t;++count[idx];
                     unsigned status=mode==0 && count[idx]%3==0?idx+1:0;
                     if(mode==5)status=6;
@@ -49,20 +51,24 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
                     if(mode==3)rx[21]^=1;
                     if(mode==4){rx[7]=(uint8_t)(idx?27:28);seal(rx,22);}
                     if(mode==7){memcpy(late,rx,22);late_len=22;late_due=t+900;rxlen=0;}
+                    if((mode==0 && status) || mode==5 || phase_attempts==10) {
+                        phase=phase==27?28:4;phase_attempts=0;
+                    }
                 }
             }
             if(mode==6)rxlen=0;
             due=t+50;
         }
-        if(step>4000 && mode!=6)assert(cn_read(3)==1 && cn_read(4)<4);
+        if(cn_read(3))assert(cn_read(4)<10);
+        else assert(cn_read(2)==65535);
     }
     assert(cn_read(0)==888 && cn_read(1)==71);
     if(mode==6){assert(cn_read(3)==0 && connected>=3);return;}
-    assert(normals>=duration/2500 && cn_read(5)>=normals-1);
+    assert(normals>=3 && cn_read(5)>=normals-1);
     assert(count[0] && count[1]);
     if(mode==0) {
         assert(cn_read(18)==1 && cn_read(26)==1 && cn_read(16)==7 && cn_read(24)==65533);
-        assert(cn_read(20)==1 && cn_read(28)==2 && cn_read(42)>=2);
+        assert(cn_read(42)>=2);
         assert(cn_read(52)==0x00a3 && cn_read(53)==0x011b && cn_read(54)==7);
         assert(cn_read(60)==0x00a3 && cn_read(61)==0x021c && cn_read(62)==65533);
         assert(cn_read(7)==0 && cn_read(12)==0 && cn_read(37)==0);
@@ -111,12 +117,10 @@ static void parser_units(void) {
     cn_init();cn_tick(1000);cn_tick(2000);assert(cn_read(12)==1); /* stuck TX */
     cn_init();cn_tick(1000);drain(tx);feed(ack,7,1050);cn_tick(1100);drain(tx);
     response(b,4,0,0,255);feed(b,11,1150);cn_tick(1251);assert(cn_read(7)==1);feed(b,22,1252);assert(cn_read(2)==255);
-    cn_tick(11252);assert(cn_read(3)==0 && cn_read(11)==0 && cn_read(32)==5);
-    /* Reconnect after loss; cached value must not revive on ACK. */
-    cn_tick(11302);assert(drain(tx)==8);feed(ack,7,11352);assert(cn_read(11)==1 && cn_read(3)==0);
-    cn_tick(11402);assert(drain(tx)==22 && tx[5]==4);
-    response(b,4,0,0,48);for(unsigned i=0;i<22;++i)cn_feed(b[i],11452,i==8);
-    assert(cn_read(12)==1 && cn_read(3)==0);feed(b,22,11600);assert(cn_read(2)==48);
+    cn_tick(11252);assert(cn_read(3)==0 && cn_read(2)==65535); /* Hz ages honestly while services own the operation. */
+    cn_init();cn_tick(1000);drain(tx);feed(ack,7,1050);cn_tick(1100);drain(tx);
+    response(b,4,0,0,48);for(unsigned i=0;i<22;++i)cn_feed(b[i],1150,i==8);
+    assert(cn_read(12)==1 && cn_read(3)==0);feed(b,22,1250);assert(cn_read(2)==48);
     cn_init();uint32_t rng=23;
     for(unsigned i=0;i<200000;++i){rng=rng*1664525u+1013904223u;cn_tick(i);cn_feed(rng>>24,i,0);if(i%11==0)drain(tx);}
     assert(cn_read(3)==0);
@@ -125,5 +129,5 @@ int main(void) {
     service_units();parser_units();
     for(unsigned mode=0;mode<=7;++mode)simulation(mode,0,65000);
     simulation(0,0xfffff000u,65000);
-    puts("PASS CN105 P0071: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/normal telemetry; ASan+UBSan");
+    puts("PASS CN105 P0071: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive Hz->27->28 sequence; ASan+UBSan");
 }

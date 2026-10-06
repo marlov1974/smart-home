@@ -3,6 +3,7 @@
 #define PROCON_SERVICE_H
 #include <stdint.h>
 void svc_init(void);
+void svc_start_cycle(void);
 void svc_link(int up, uint32_t now);
 void svc_tick(uint32_t delta, uint32_t now);
 int svc_due(uint32_t now, uint8_t *code);

@@ -1,0 +1,12 @@
+PASS ARM read input0=888: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM bad CRC: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM broadcast: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM write rejected: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM UART framing error: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM TX timeout recovery: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM PC12 heartbeat over 1.1 seconds: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=False: 16 Modbus bytes, CN RX=95, overlap=0, GET04=1, services={27: 2, 28: 1}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 0Hz corrupt=False: 16 Modbus bytes, CN RX=95, overlap=0, GET04=1, services={27: 2, 28: 1}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=True: 16 Modbus bytes, CN RX=73, overlap=0, GET04=1, services={27: 2, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM A3 pending and complete in exclusive sequence with Modbus: 185 Modbus bytes, CN RX=189, overlap=10, GET04=2, services={27: 4, 28: 3}; PD2 released; whitelist/no flash writes
+PASS ARM A3 repeated pending with no interleaved Hz and responsive Modbus: 148 Modbus bytes, CN RX=139, overlap=10, GET04=1, services={27: 5, 28: 0}; PD2 released; whitelist/no flash writes

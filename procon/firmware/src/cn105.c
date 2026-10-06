@@ -5,7 +5,7 @@ enum { NONE, CONNECT, NORMAL, SERVICE };
 static uint8_t rx[22], tx[22], used, tx_len, tx_pos, owner;
 static uint8_t linked, valid, ever, hz, last_type, last_query, polled;
 static uint32_t now, last_byte, last_good, last_send, last_tick, age_ms;
-static uint32_t reply_at, released_at, normal_at;
+static uint32_t reply_at, released_at;
 static uint16_t replies, rx_bytes, errors, sent, uart_errors, handshakes;
 static int started;
 static uint8_t checksum(const uint8_t *b, unsigned n) {
@@ -23,13 +23,13 @@ static void begin(uint8_t kind, uint8_t code, uint32_t t) {
     tx[4]=kind==CONNECT?2:16;
     for(unsigned i=5;i<21;++i)tx[i]=0;
     if(kind==CONNECT){tx[5]=0xca;tx[6]=1;}
-    else if(kind==NORMAL){tx[5]=4;normal_at=t;polled=1;}
+    else if(kind==NORMAL){tx[5]=4;polled=1;svc_start_cycle();}
     else {tx[5]=0xa3;tx[7]=code;svc_sent(t);}
     tx_len=(uint8_t)(tx[4]+6);tx[tx_len-1]=checksum(tx,tx_len-1);
 }
 void cn_init(void) {
     used=tx_len=tx_pos=owner=linked=valid=ever=hz=last_type=last_query=polled=0;
-    now=last_byte=last_good=last_send=last_tick=age_ms=reply_at=released_at=normal_at=0;
+    now=last_byte=last_good=last_send=last_tick=age_ms=reply_at=released_at=0;
     replies=rx_bytes=errors=sent=uart_errors=handshakes=0;started=0;
     svc_init();svc_link(0,0);
 }
@@ -62,7 +62,7 @@ void cn_tick(uint32_t t) {
     if(valid && age_ms>=10000u)valid=0;
     svc_tick(dt,t);
     if(used && t-last_byte>100u){used=0;bad_frame();}
-    if(linked && t-last_good>=10000u)disconnect(t);
+    if(linked && !owner && svc_read(32)==4 && t-last_good>=10000u)disconnect(t);
     if(owner) {
         if(tx_len && t-last_send>=1000u) {
             ++uart_errors;if(owner==SERVICE)svc_timeout(t);
@@ -78,7 +78,7 @@ void cn_tick(uint32_t t) {
         if((!started && t>=1000u)||(started && t-last_send>=3000u))begin(CONNECT,0,t);
         return;
     }
-    if(!polled || t-normal_at>=2000u){begin(NORMAL,0,t);return;}
+    if(!polled || svc_read(32)==4){begin(NORMAL,0,t);return;}
     uint8_t code;
     if(svc_due(t,&code))begin(SERVICE,code,t);
 }
@@ -104,6 +104,7 @@ uint16_t cn_read(unsigned a) {
     case 14:return last_query;
     case 15:return handshakes;
     case 39:return owner;
+    case 68:return 2; /* P0071 r2: exclusive Hz ->27 ->28 sequence. */
     default:return svc_read(a);
     }
 }

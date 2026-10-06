@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 502
+Tracked file count: 512
 
 ## Files
 
@@ -97,6 +97,7 @@ Tracked file count: 502
 - `procon/analysis/live/20261006T175327Z-m1-readback.json`
 - `procon/analysis/live/20261006T190106Z-m1-r2-readback.json`
 - `procon/analysis/live/20261006T192335Z-p0070-compressor.json`
+- `procon/analysis/live/20261006T200502Z-p0071-first-readback.jsonl`
 - `procon/analysis/original-excerpts.txt`
 - `procon/analysis/reference-analysis.json`
 - `procon/analysis/updater-il.txt`
@@ -156,6 +157,13 @@ Tracked file count: 502
 - `procon/releases/P0071-brine-r1/procon-brine.elf`
 - `procon/releases/P0071-brine-r1/procon-brine.json`
 - `procon/releases/P0071-brine-r1/procon-brine.map`
+- `procon/releases/P0071-brine-r2/README.md`
+- `procon/releases/P0071-brine-r2/SHA256SUMS`
+- `procon/releases/P0071-brine-r2/procon-brine.bin`
+- `procon/releases/P0071-brine-r2/procon-brine.disasm.txt`
+- `procon/releases/P0071-brine-r2/procon-brine.elf`
+- `procon/releases/P0071-brine-r2/procon-brine.json`
+- `procon/releases/P0071-brine-r2/procon-brine.map`
 - `procon/tests/test_arm.py`
 - `procon/tests/test_cn105.c`
 - `procon/tests/test_modbus.c`
@@ -313,6 +321,8 @@ Tracked file count: 502
 - `requirements/package-runs/P0071/design.md`
 - `requirements/package-runs/P0071/functions.md`
 - `requirements/package-runs/P0071/hardware-validation.md`
+- `requirements/package-runs/P0071/r2-arm-verification.txt`
+- `requirements/package-runs/P0071/r2-verification.txt`
 - `requirements/package-runs/P0071/review.md`
 - `requirements/package-runs/P0071/verification.txt`
 - `requirements/package-runs/README.md`

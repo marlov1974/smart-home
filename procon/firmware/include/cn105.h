@@ -3,7 +3,7 @@
 #define CN105_H
 #include <stdint.h>
 #include <stddef.h>
-#define REGISTER_COUNT 68u
+#define REGISTER_COUNT 69u
 #define REGISTER_READ_MAX 16u
 void cn_init(void);
 void cn_feed(uint8_t byte, uint32_t now_ms, int error);

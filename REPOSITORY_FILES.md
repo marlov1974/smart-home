@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 512
+Tracked file count: 513
 
 ## Files
 
@@ -98,6 +98,7 @@ Tracked file count: 512
 - `procon/analysis/live/20261006T190106Z-m1-r2-readback.json`
 - `procon/analysis/live/20261006T192335Z-p0070-compressor.json`
 - `procon/analysis/live/20261006T200502Z-p0071-first-readback.jsonl`
+- `procon/analysis/live/20261006T202303Z-p0071-r2-readback.jsonl`
 - `procon/analysis/original-excerpts.txt`
 - `procon/analysis/reference-analysis.json`
 - `procon/analysis/updater-il.txt`

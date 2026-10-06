@@ -1,9 +1,15 @@
-# P0071 hardware attempt 1 — 2026-10-06
+# P0071 hardware attempt2 — r2 completed service responses
 
-Operator reports flashed. Read-only Modbus verification captured30 sample groups/180FC04 reads at20:05:02–20:05:32UTC; no RPC failures. New user confirmation of flashing was treated as authorization to perform the follow-up read-only verification. No device register/settings writes.
+Operator reports r2 flashed. Separate FC04 raw input68 returned2, confirming r2. Read-only capture2026-10-06T20:23:03.789–20:23:48.098UTC:45sample groups,270successfulFC04 calls, no RPC failures. Input0/1=888/71 throughout. No device register/settings writes. LED not separately reconfirmed.
 
-All baseline blocks:888/build71,compressor20Hz,valid1,age0–2s. Normal reply count139→154,link1,UART/protocol errors0. Service replies152→162. Latest raw payloads observed: A3 00 1C 00 +12zero bytes, and A3 00 1B 00 +12zero bytes. Both service statuses remained0(pending); no completed samples, no decoded temperature. Retry gap1000ms within the active operation;20228ms observed across cooldown/start. Service28 retry count advanced1→8 then cooldown, exhaustion15→16, cycles7→8; next service27 started and retried. Repeated pending replies therefore reach finite exhaustion rather than freezing normal telemetry. Service-error counter0 excludes pending/exhaustion, which has its own counter.
+Both channels now repeatedly complete with status2 and raw little-endian0x0005. Retained full payloads:
+-27: A3 00 1B 02 05 00 00 00 00 00 00 00 00 00 00 00
+-28: A3 00 1C 02 05 00 00 00 00 00 00 00 00 00 00 00
 
-No completed frames or display correlation exist. Zero payload data is not0C. Transport/scheduling respond; unresolved issue is why service computation never completes. Possible causes (not established): service-mode prerequisite, need for different transaction sequencing, or pending duration longer than10attempts. Do not select a cause from this capture alone. No firmware changes made during verification.
+Completed27 count4→9, completed28 count4→8; matching service responses52→101, finished cycles4→8. Service errors0,exhaustions0,UART/protocol errors0. Within-operation request-start gap1000ms. Some samples cross a completion; helper marks those incoherent and omits their decoded candidate, while raw blocks remain preserved. Valid coherent samples always raw5 for both. Signed whole-degree reference decoding therefore yields experimental5C/5C. Physical Mitsubishi display027/028 comparison was requested and remains pending; do not mark temperature calibration/correlation complete.
 
-Evidence:procon/analysis/live/20261006T200502Z-p0071-first-readback.jsonl. Hardware attempts1/3; brine goal not achieved. LED was not separately reconfirmed this attempt.
+Hz20 while fresh; normal reply count5→9. Counter pauses during service operations then increments at cycle boundary, consistent with exclusive schedule (not a direct wire trace). One age10s sample honestly reports65535/valid0 before next refresh; no false0Hz interpretation. Brine completion availability is now hardware-demonstrated. r1 interleaving yielded pending-only; r2 exclusive schedule yields completions, supporting sequencing as the cause, without a controlled A/B reversal.
+
+Evidence:procon/analysis/live/20261006T202303Z-p0071-r2-readback.jsonl. Hardware attempts2/3. No firmware changes during validation. Full package hardware pass still awaits display correlation and separately confirming heartbeat. Original r1 observations remain in first-readback log and changelog.
+
+Operator display comparison: in response to the question about current Mitsubishi information027/028, operator replied exactly "5". This matches both captured raw5/reference-decoded5C values at this operating point. The response did not separately label each channel; do not infer independent inlet/outlet mapping, negative-temperature behavior or full-range calibration from this single-point agreement. Display comparison is now recorded; no additional firmware change.

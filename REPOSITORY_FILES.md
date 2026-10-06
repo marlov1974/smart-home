@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 401
+Tracked file count: 417
 
 ## Files
 
@@ -87,6 +87,22 @@ Tracked file count: 401
 - `memory/physical/home/00-index.md`
 - `memory/physical/home/comfort-sensors.md`
 - `memory/physical/home/rooms-zones.md`
+- `procon/CODEX_TASK.md`
+- `procon/README.md`
+- `procon/docs/DECISIONS.md`
+- `procon/docs/EXPERIMENT_HISTORY.md`
+- `procon/docs/HARDWARE.md`
+- `procon/docs/KNOWN_FACTS.md`
+- `procon/docs/MEMORY_MAP.md`
+- `procon/docs/ORIGINAL_FW_MAP.md`
+- `procon/docs/PROJECT_PLAN.md`
+- `procon/docs/RECOVERY.md`
+- `procon/docs/RS485_MODBUS.md`
+- `procon/docs/TOOLCHAIN.md`
+- `procon/reference/original/A1M_R5_Release_08008000.bin`
+- `procon/reference/original/IMPORT_MANIFEST.json`
+- `procon/reference/original/Proon+Firmware+Update+Tool+(v3.1.05).zip`
+- `procon/reference/original/README.md`
 - `requirements/README.md`
 - `requirements/design-backlog/continental-price-pressure-for-se3-se4.md`
 - `requirements/epics/.gitkeep`

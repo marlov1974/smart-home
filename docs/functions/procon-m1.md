@@ -1,0 +1,5 @@
+# Procon M1 functions — P0069
+
+Contract: FC04 address0 quantity1 =>888, unit1,96008N1. No writes/CN105. `modbus_reply` and `crc16` are pure bounded byte functions. `rtu_feed`/`rtu_poll` own frame timing/error state with unsigned32-bit microsecond differences. `platform_init`, `uart_init`, `uart_receive`, `uart_send`, `micros`, `watchdog_refresh` own inferred L433 MMIO; TX releases PD2 after TC or timeout. `Reset_Handler` initializes C memory; `main` polls. See requirements/package-runs/P0069/functions.md for design and test coverage, procon/firmware/include for declarations, procon/docs/HARDWARE.md for evidence.
+
+Development tools: setup.sh installs a local pinned compiler/Python environment. check_image.check validates ELF/load/vector bounds and emits padded BIN metadata. analyze_original.main verifies immutable input and writes bounded disassembly/vector evidence; analyze_updater.main reads .NET IL without running Windows code. test_arm.run_case executes the compiled ELF with mocked peripherals and checks wire bytes/MMIO/DE. No existing G2 functions changed.

@@ -64,3 +64,7 @@ Treat this only as a reverse-engineering lead, not a callable API.
 ## Momentary power background
 
 External CN105 0x07 decoding uses coarse byte-sized power fields. Prior work did not find evidence that Procon discards hidden decimal precision in these standard fields.
+
+## P0069 update — 2026-10-06
+
+Strong inferred MCU family: STM32L433xx; all99 vector positions match ST L433 startup reserved pattern. Physical package/density unverified. See HARDWARE.md for original addresses and trace confidence. New clean application uses USART3 PC10/11AF7, PD2 direction. Software tests passed; operator flash/readback pending. No new live readings or CN105 measurements.

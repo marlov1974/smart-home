@@ -1,5 +1,5 @@
 {
-  "version": 15,
+  "version": 16,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -91,7 +91,8 @@
     "requirements/packages/P0065-live-deploy-ftx-brain-target-floor.md",
     "requirements/packages/P0066-repository-file-index.md",
     "requirements/packages/P0067-ha-ftx-industrial-svg.md",
-    "requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md"
+    "requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md",
+    "requirements/packages/P0069-procon-m1-modbus-888.md"
   ],
   "governance": {
     "truth_hierarchy": [

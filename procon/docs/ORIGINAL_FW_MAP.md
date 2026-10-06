@@ -1,3 +1,18 @@
-# Original firmware map
+# P0069 original firmware map
 
-Record verified functions, addresses, callers/callees, RAM/peripheral accesses and confidence levels. Keep hypotheses explicitly labeled.
+Addresses refer only to immutable original SHA2562ae03b0c…6564766. See analysis/original-excerpts.txt; instruction decoding inside literal pools is not executable-code evidence.
+
+| Address | Role / links | Evidence level |
+|---|---|---|
+|0x0800A340|Reset, calls0x0800A330, copies .data, clears .bss, calls main0x08009824|Verified instructions|
+|0x0800A330|VTOR store at0xE000ED08 =0x08008000|Verified|
+|0x080097B0|Original oscillator/PLL setup called by main; PLL source3, M2,N32,P7,Q2,R2|Verified arguments; HSE frequency not physically known|
+|0x080099C2|USART3 handle0x20000FF0, base0x40004800, initial baud9600|Verified stores|
+|0x08009F80|HAL-style UART MSP; USART3 branch0x0800A068 configures PC10/11AF7 and IRQ39|Verified|
+|0x0800A24C|USART3 IRQ delegates via0x0800FE90 to0x08010AA4 in normal mode|Verified branch chain|
+|0x08009794|Logical port1 ->0x20000FF0 (RS485), port3 ->0x20000EE8 (CN105)|Verified|
+|0x08010AA4|RS485 UART IRQ accesses ISR+0x1C,RDR+0x24,TDR+0x28 and callbacks in RAM object|Verified; object semantic names inferred|
+|0x08010988 /0x080109F4|GPIOD2 high/low around generic TX path|Verified stores; transceiver wiring strongly inferred|
+|0x08010EDC|CN105 buffering helper, NOT raw TX API|Preserved earlier correction; not used|
+
+Updater static IL: analysis/updater-il.txt. init_serialport uses1152008N1; worker sends0x5A discovery, reads device-reported sizes;0x51 erase offset0 and BINlength;0x53 writes file offsets starting0, block CRC/checksum. No host-side BIN signature/header validation beyond nonempty and device maximum size. Device address translation remains unavailable.

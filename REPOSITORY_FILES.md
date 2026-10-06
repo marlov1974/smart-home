@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 417
+Tracked file count: 451
 
 ## Files
 
@@ -41,6 +41,7 @@ Tracked file count: 417
 - `docs/functions/mac/shelly-device-management-tool.md`
 - `docs/functions/mac/shelly-live-deploy-tool.md`
 - `docs/functions/mac/weather-contract-tool.md`
+- `docs/functions/procon-m1.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
 - `docs/functions/shelly/supply-uni-publisher.md`
 - `docs/functions/shelly/weather.md`
@@ -87,8 +88,13 @@ Tracked file count: 417
 - `memory/physical/home/00-index.md`
 - `memory/physical/home/comfort-sensors.md`
 - `memory/physical/home/rooms-zones.md`
+- `procon/.gitignore`
 - `procon/CODEX_TASK.md`
+- `procon/Makefile`
 - `procon/README.md`
+- `procon/analysis/original-excerpts.txt`
+- `procon/analysis/reference-analysis.json`
+- `procon/analysis/updater-il.txt`
 - `procon/docs/DECISIONS.md`
 - `procon/docs/EXPERIMENT_HISTORY.md`
 - `procon/docs/HARDWARE.md`
@@ -99,10 +105,32 @@ Tracked file count: 417
 - `procon/docs/RECOVERY.md`
 - `procon/docs/RS485_MODBUS.md`
 - `procon/docs/TOOLCHAIN.md`
+- `procon/firmware/include/modbus.h`
+- `procon/firmware/include/platform.h`
+- `procon/firmware/linker.ld`
+- `procon/firmware/src/main.c`
+- `procon/firmware/src/modbus.c`
+- `procon/firmware/src/platform.c`
+- `procon/firmware/startup/startup.S`
 - `procon/reference/original/A1M_R5_Release_08008000.bin`
 - `procon/reference/original/IMPORT_MANIFEST.json`
 - `procon/reference/original/Proon+Firmware+Update+Tool+(v3.1.05).zip`
 - `procon/reference/original/README.md`
+- `procon/releases/P0069-m1/README.md`
+- `procon/releases/P0069-m1/RECOVERY.md`
+- `procon/releases/P0069-m1/SHA256SUMS`
+- `procon/releases/P0069-m1/procon-m1.bin`
+- `procon/releases/P0069-m1/procon-m1.disasm.txt`
+- `procon/releases/P0069-m1/procon-m1.elf`
+- `procon/releases/P0069-m1/procon-m1.json`
+- `procon/releases/P0069-m1/procon-m1.map`
+- `procon/tests/test_arm.py`
+- `procon/tests/test_modbus.c`
+- `procon/tools/analyze_original.py`
+- `procon/tools/analyze_updater.py`
+- `procon/tools/check_image.py`
+- `procon/tools/requirements.txt`
+- `procon/tools/setup.sh`
 - `requirements/README.md`
 - `requirements/design-backlog/continental-price-pressure-for-se3-se4.md`
 - `requirements/epics/.gitkeep`
@@ -233,6 +261,11 @@ Tracked file count: 417
 - `requirements/package-runs/P0067/design.md`
 - `requirements/package-runs/P0067/functions.md`
 - `requirements/package-runs/P0067/review.md`
+- `requirements/package-runs/P0069/CHANGELOG.md`
+- `requirements/package-runs/P0069/design.md`
+- `requirements/package-runs/P0069/findings.md`
+- `requirements/package-runs/P0069/functions.md`
+- `requirements/package-runs/P0069/review.md`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -273,6 +306,7 @@ Tracked file count: 417
 - `requirements/packages/P0066-repository-file-index.md`
 - `requirements/packages/P0067-ha-ftx-industrial-svg.md`
 - `requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md`
+- `requirements/packages/P0069-procon-m1-modbus-888.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

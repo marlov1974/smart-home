@@ -10,3 +10,5 @@
 - test14: attempted passive TX trace. Communication was disturbed and trace magic was not observed. Do not use it as evidence of actual transmitted data.
 
 Decision after test14: stop incremental scheduler patching. Reverse-engineer only enough hardware to create clean replacement firmware. First clean target: Modbus Input Register 0 = 888.
+
+- P0069: original verified, L433 family inferred, fresh2KiB M1 candidate built. Native sanitizers and six compiled-ARM simulated cases pass. No original routines patched or copied. No flash performed by Codex; operator physical test pending.

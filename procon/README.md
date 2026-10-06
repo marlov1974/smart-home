@@ -1,9 +1,12 @@
-# Procon clean-room firmware
+# Procon firmware development
 
-This is a subproject of the existing Smart Home repository. Do not create a nested Git repository.
+Subproject of Smart Home; no nested repository. First experimental clean-source M1 candidate is in [releases/P0069-m1](releases/P0069-m1/README.md).
 
-Read `CODEX_TASK.md`, then `docs/KNOWN_FACTS.md`, `docs/EXPERIMENT_HISTORY.md`, and `docs/PROJECT_PLAN.md`.
+**Input register0 =888**, Modbus FC04/slave1/96008N1. STM32L433 hardware inferred from original reference, not physically identified. Software/ARM emulation checks passed; physical flash/readback pending operator. CN105 is not implemented.
 
-First hardware milestone: build a clean replacement Procon application that preserves the existing bootloader if verified possible and answers the existing RS485/Modbus reader with **Input Register 0 = 888 decimal (0x0378)**.
+```sh
+sh procon/tools/setup.sh
+make -C procon verify
+```
 
-Do not implement CN105 until this milestone works.
+Read docs/HARDWARE.md, docs/TOOLCHAIN.md and docs/RECOVERY.md. CODEX_TASK.md is the milestone scope; P0069 records the user's explicit permission to proceed with an inferred MCU and operator-managed physical flash. Original ZIP/BIN remain immutable under reference/original. Do not broaden beyond M1 until hardware readback succeeds.

@@ -1,9 +1,7 @@
 # Procon firmware development
 
-Latest build: [P0071 Geodan brine r2](releases/P0071-brine-r2/README.md). Adds read-only service27/28 with raw payload retention, validity/age and diagnostic counters. **P0071 r2 repeatedly returns completed service27/28 values: raw5, interpreted5C; the operator reports display value5. This is a single-point comparison.** Operator alone flashes and validates. Register map/procedure: [docs/BRINE.md](docs/BRINE.md).
+Latest experimental build: [P0072 MVP r1](releases/P0072-mvp-r1/README.md). Read-only version with18 mapped/derived telemetry fields plus2 unavailable brine-pump fields, water heat calculation, freshness/status/raw diagnostics and alternating exclusive service27/28 operations. [API](docs/MVP_API.md), [pump research](docs/PUMPS.md).
 
-P0070 remains hardware-confirmed: six20Hz reads, fresh CN105 counter updates and zero errors. P0071 preserves input0=888, compressor telemetry and heartbeat, with input1=71; addresses0–67, max16registers per request. Original and prior release files remain immutable.
+**Physical P0072 validation pending. Controls are not implemented:** every Modbus write is rejected; no SET commands. Operator alone flashes. Last hardware-confirmed baseline is P0071 r2: repeated completed27/28raw5 and operator display5 at one point, with20Hz compressor and zero communication errors. Original and earlier release artifacts remain immutable for recovery.
 
-Build: `sh procon/tools/setup.sh`, then `make -C procon verify`. All artifacts are in the release directory. Inferred STM32L433 target; exact marking/density unavailable. No unrelated Shelly runtime changes. See docs/HARDWARE.md, docs/TOOLCHAIN.md and docs/RECOVERY.md.
-
-R2 order: **Hz → all service27 attempts → all service28 attempts → repeat**, with no interleaved Hz. Input68=2. Hz may become stale during long service attempts. r1 hardware test returned pending-only; r2 now has repeated completed responses and a recorded display-value match. See requirements/package-runs/P0071/hardware-validation.md for evidence and limits.
+Build `make -C procon verify` after `sh procon/tools/setup.sh`. Artifacts in releases/P0072-mvp-r1. Inferred STM32L433 assumption unchanged; code7596bytes,BSS844,package96KiB. No unrelated Shelly runtime change. Readback helper `procon/tools/read_mvp.py`; input0=888,1=72,68=1. See hardware/recovery docs before operator installation.

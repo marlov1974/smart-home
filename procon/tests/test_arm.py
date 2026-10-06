@@ -97,18 +97,28 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
             if len(cn['tx'])>=5 and len(cn['tx'])==cn['tx'][4]+6:
                 packet=bytes(cn['tx']);cn['tx'].clear()
                 assert (sum(packet)&255)==0xfc
-                allowed=[bytes.fromhex('fc 5a 02 7a 02 ca 01 5d'),cn_packet(0x42,bytes([4])+bytes(15))]
+                allowed=[bytes.fromhex('fc 5a 02 7a 02 ca 01 5d')]
+                fast_codes=[4,0x0c,0x14,0x0b,9,0x15,0x26]
+                allowed += [cn_packet(0x42,bytes([q])+bytes(15)) for q in fast_codes]
                 allowed += [cn_packet(0x42,bytes([0xa3,0,c])+bytes(13)) for c in (27,28)]
                 assert packet in allowed, 'forbidden CN105 command'
                 assert not cn['schedule'], 'overlapping CN105 transactions'
                 if cn_hz is not None:
                     if packet[1]==0x5a: response=cn_packet(0x7a,bytes([0]))
-                    elif packet[5]==4:
-                        assert cn['phase']==4, 'Hz interleaved inside service operation'
-                        cn['phase']=27;cn['phase_attempts']=0
-                        cn['normal']+=1
-                        response=cn_packet(0x62,bytes([4,cn_hz])+bytes(14))
-                        if cn_corrupt: response=response[:-1]+bytes([response[-1]^1])
+                    elif packet[5]!=0xa3:
+                        assert cn['phase']==4, 'FAST interleaved inside service operation'
+                        f=cn.get('fast',0)
+                        assert packet[5]==fast_codes[f]
+                        cn['fast']=(f+1)%7
+                        if f==6: cn['phase']=cn.get('next',27);cn['phase_attempts']=0
+                        if packet[5]==4: cn['normal']+=1
+                        payload=bytearray(16);payload[0]=packet[5]
+                        if packet[5]==4: payload[1]=cn_hz
+                        if packet[5]==0x0c:
+                            payload[1:3]=(3500).to_bytes(2,'big');payload[4:6]=(3000).to_bytes(2,'big');payload[7:9]=(5000).to_bytes(2,'big')
+                        if packet[5]==0x14: payload[12]=20
+                        response=cn_packet(0x62,bytes(payload))
+                        if cn_corrupt and packet[5]==4: response=response[:-1]+bytes([response[-1]^1])
                     else:
                         c=packet[7];cn['svc_counts'][c]+=1
                         assert c==cn['phase'], 'service order violated'
@@ -119,7 +129,7 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                         status=(1 if c==27 else 2) if cn['svc_counts'][c]%2==0 else 0
                         if service_mode=='pending': status=0
                         if status or cn['phase_attempts']==10:
-                            cn['phase']=28 if c==27 else 4;cn['phase_attempts']=0
+                            cn['next']=28 if c==27 else 27;cn['phase']=4;cn['phase_attempts']=0
                         value=7 if c==27 else 65533
                         response=cn_packet(0x62,bytes([0xa3,0,c,status,value&255,value>>8])+bytes(10))
                     begin=state['time']+20000
@@ -192,19 +202,27 @@ if __name__=='__main__':
         return blocks
     def inspect_service(data,cn):
         baseline,pending,later,completed,raw=parse_replies(data)
-        assert baseline[0:2]==[888,71] and baseline[3]==1
-        assert pending[2]==0 and pending[10]==0
-        assert later[0:2]==[888,71] and later[3]==1
+        assert baseline[0:2]==[888,72] and baseline[3]==1
+        assert pending[10]==0
+        assert later[0:2]==[888,72] and later[3]==1
         assert completed[0:3]==[7,7,1] and completed[8:11]==[65533,65533,1]
         assert raw[0:3]==[0xa3,0x011b,7] and raw[8:11]==[0xa3,0x021c,65533]
         assert later[5]>baseline[5] and later[7]==later[12]==0
         assert cn['normal']>=2 and min(cn['svc_counts'].values())>=2
-    run_case(path,'A3 pending and complete in exclusive sequence with Modbus',req(0,16),None,duration=5600000,cn_hz=48,request_start=1900000,extra_requests=[(2100000,req(16,16)),(4800000,req(0,16)),(5000000,req(16,16)),(5300000,req(52,16))],inspect=inspect_service)
+    run_case(path,'A3 pending and complete in exclusive sequence with Modbus',req(0,16),None,duration=8600000,cn_hz=48,request_start=1900000,extra_requests=[(2100000,req(16,16)),(7800000,req(0,16)),(8000000,req(16,16)),(8300000,req(52,16))],inspect=inspect_service)
     def inspect_pending(data,cn):
         first,second,service,diagnostic=parse_replies(data)
-        assert first[0:2]==second[0:2]==[888,71]
+        assert first[0:2]==second[0:2]==[888,72]
         assert first[3]==second[3]==1 and second[5]==first[5]
         assert service[2]==service[10]==0 and diagnostic[0] in (2,3)
-        assert diagnostic[3]>=3 and diagnostic[4]>=3
-        assert cn['svc_counts'][27]>=4 and cn['normal']==1
+        assert diagnostic[3]>=2 and diagnostic[4]>=2
+        assert cn['svc_counts'][27]>=3 and cn['normal']==1
     run_case(path,'A3 repeated pending with no interleaved Hz and responsive Modbus',req(0,16),None,duration=5700000,cn_hz=20,service_mode='pending',request_start=3300000,extra_requests=[(5100000,req(0,16)),(5300000,req(16,16)),(5500000,req(32,16))],inspect=inspect_pending)
+
+    def inspect_mvp(data,cn):
+        words,states=parse_replies(data)
+        vals=[int.from_bytes(words[i].to_bytes(2,'big')+words[i+1].to_bytes(2,'big'),'big',signed=True) for i in range(0,16,2)]
+        assert vals==[3500,3000,500,2000,6966,48,1,-2147483648], vals
+        assert states[3:10]==[1]*7 and states[10:12]==[4,4]
+        assert cn['normal']==1 and cn['svc_counts'][27]>0
+    run_case(path,'MVP values and validity during exclusive service',req(106,16),None,duration=3600000,cn_hz=48,request_start=3130000,extra_requests=[(3400000,req(140,16))],inspect=inspect_mvp)

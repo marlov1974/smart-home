@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 513
+Tracked file count: 538
 
 ## Files
 
@@ -44,6 +44,7 @@ Tracked file count: 513
 - `docs/functions/procon-brine.md`
 - `docs/functions/procon-cn105.md`
 - `docs/functions/procon-m1.md`
+- `docs/functions/procon-mvp.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
 - `docs/functions/shelly/supply-uni-publisher.md`
 - `docs/functions/shelly/weather.md`
@@ -109,8 +110,10 @@ Tracked file count: 513
 - `procon/docs/HARDWARE.md`
 - `procon/docs/KNOWN_FACTS.md`
 - `procon/docs/MEMORY_MAP.md`
+- `procon/docs/MVP_API.md`
 - `procon/docs/ORIGINAL_FW_MAP.md`
 - `procon/docs/PROJECT_PLAN.md`
+- `procon/docs/PUMPS.md`
 - `procon/docs/RECOVERY.md`
 - `procon/docs/RS485_MODBUS.md`
 - `procon/docs/TOOLCHAIN.md`
@@ -118,12 +121,14 @@ Tracked file count: 513
 - `procon/firmware/include/modbus.h`
 - `procon/firmware/include/platform.h`
 - `procon/firmware/include/service.h`
+- `procon/firmware/include/telemetry.h`
 - `procon/firmware/linker.ld`
 - `procon/firmware/src/cn105.c`
 - `procon/firmware/src/main.c`
 - `procon/firmware/src/modbus.c`
 - `procon/firmware/src/platform.c`
 - `procon/firmware/src/service.c`
+- `procon/firmware/src/telemetry.c`
 - `procon/firmware/startup/startup.S`
 - `procon/reference/original/A1M_R5_Release_08008000.bin`
 - `procon/reference/original/IMPORT_MANIFEST.json`
@@ -165,13 +170,23 @@ Tracked file count: 513
 - `procon/releases/P0071-brine-r2/procon-brine.elf`
 - `procon/releases/P0071-brine-r2/procon-brine.json`
 - `procon/releases/P0071-brine-r2/procon-brine.map`
+- `procon/releases/P0072-mvp-r1/README.md`
+- `procon/releases/P0072-mvp-r1/SHA256SUMS`
+- `procon/releases/P0072-mvp-r1/procon-mvp.bin`
+- `procon/releases/P0072-mvp-r1/procon-mvp.disasm.txt`
+- `procon/releases/P0072-mvp-r1/procon-mvp.elf`
+- `procon/releases/P0072-mvp-r1/procon-mvp.json`
+- `procon/releases/P0072-mvp-r1/procon-mvp.map`
 - `procon/tests/test_arm.py`
 - `procon/tests/test_cn105.c`
 - `procon/tests/test_modbus.c`
+- `procon/tests/test_read_mvp.py`
+- `procon/tests/test_telemetry.c`
 - `procon/tools/analyze_original.py`
 - `procon/tools/analyze_updater.py`
 - `procon/tools/check_image.py`
 - `procon/tools/read_brine.py`
+- `procon/tools/read_mvp.py`
 - `procon/tools/requirements.txt`
 - `procon/tools/setup.sh`
 - `requirements/README.md`
@@ -326,6 +341,15 @@ Tracked file count: 513
 - `requirements/package-runs/P0071/r2-verification.txt`
 - `requirements/package-runs/P0071/review.md`
 - `requirements/package-runs/P0071/verification.txt`
+- `requirements/package-runs/P0072/CHANGELOG.md`
+- `requirements/package-runs/P0072/attempts.md`
+- `requirements/package-runs/P0072/control-research.md`
+- `requirements/package-runs/P0072/design.md`
+- `requirements/package-runs/P0072/deterministic-build.txt`
+- `requirements/package-runs/P0072/functions.md`
+- `requirements/package-runs/P0072/hardware-validation.md`
+- `requirements/package-runs/P0072/review.md`
+- `requirements/package-runs/P0072/verification.txt`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -369,6 +393,7 @@ Tracked file count: 513
 - `requirements/packages/P0069-procon-m1-modbus-888.md`
 - `requirements/packages/P0070-procon-compressor.md`
 - `requirements/packages/P0071-procon-geodan-brine.md`
+- `requirements/packages/P0072-procon-mvp-telemetry-control.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

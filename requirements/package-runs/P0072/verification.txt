@@ -1,0 +1,39 @@
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_cn105.c firmware/src/cn105.c firmware/src/service.c firmware/src/telemetry.c -o build/cn-test
+.local/venv/bin/python tools/check_image.py build/procon-mvp.elf .local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objcopy
+PASS image bounds/vectors: {"package": "P0072", "status": "experimental-unverified-on-hardware", "mcu_assumption": "STM32L433xx, exact package/density unverified", "base": "0x8008000", "end_exclusive": "0x8020000", "initial_sp": "0x20004000", "reset_vector": "0x800818d", "raw_bytes": 7596, "padded_bytes": 98304, "revision": "MVP r1 read-only telemetry", "cn105": "USART1 PA9 TX/PA10 RX, 2400 8E1, FAST GET04/0C/14/0B/09/15/26 and exclusive alternating A3 service27/28", "uart_cr2": "0x00008000", "pin_routing": "PC10 RX, PC11 TX, AF7 with SWAP=1", "heartbeat": "PC12 toggles every 500 ms", "padding": "0xFF through original application footprint, not entire unknown flash", "sha256": "f8823fab325018c31f093215cd72d19c6d28dd28082bcd64d83df82e88b3b4a9", "serial": "9600 8N1", "slave_id": 1, "function": 4, "address": 0, "value": 888, "bootloader_verification": "device bootloader absent; vendor host protocol analyzed only"}
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objdump -d build/procon-mvp.elf > build/procon-mvp.disasm.txt
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-size build/procon-mvp.elf
+   text	   data	    bss	    dec	    hex	filename
+   7596	      0	    844	   8440	   20f8	build/procon-mvp.elf
+./build/host-test
+PASS host: CRC golden vector, 64 corruptions, 256 unit IDs, exceptions, capacities, RTU timing/overflow/error recovery/wrap, 20000 malformed packets (ASan/UBSan)
+./build/cn-test
+PASS CN105 service simulation mode0, base0, normal23, svc27=35 svc28=33 cycles22
+PASS CN105 service simulation mode1, base0, normal7, svc27=35 svc28=30 cycles6
+PASS CN105 service simulation mode2, base0, normal7, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode3, base0, normal7, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode4, base0, normal7, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode5, base0, normal80, svc27=40 svc28=39 cycles79
+PASS CN105 service simulation mode7, base0, normal7, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode0, base4294963200, normal24, svc27=36 svc28=33 cycles23
+PASS CN105 P0072: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive FAST->27->FAST->28 sequence; ASan+UBSan
+./build/tele-test
+PASS P0072 telemetry: all mapped queries, unavailable, raw bytes, signed/zero/boundary power, stale/skew/invalid propagation, pump codes, negative brine; ASan+UBSan
+.local/venv/bin/python tests/test_arm.py build/procon-mvp.elf
+PASS ARM read input0=888: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM bad CRC: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM broadcast: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM write rejected: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM UART framing error: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM TX timeout recovery: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM PC12 heartbeat over 1.1 seconds: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=False: 16 Modbus bytes, CN RX=183, overlap=2, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 0Hz corrupt=False: 16 Modbus bytes, CN RX=183, overlap=2, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=True: 16 Modbus bytes, CN RX=139, overlap=3, GET04=1, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM A3 pending and complete in exclusive sequence with Modbus: 185 Modbus bytes, CN RX=491, overlap=18, GET04=3, services={27: 2, 28: 2}; PD2 released; whitelist/no flash writes
+PASS ARM A3 repeated pending with no interleaved Hz and responsive Modbus: 148 Modbus bytes, CN RX=227, overlap=7, GET04=1, services={27: 3, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM MVP values and validity during exclusive service: 74 Modbus bytes, CN RX=183, overlap=12, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+.local/venv/bin/python tools/analyze_original.py
+PASS original ZIP/BIN identity, vectors, L433 reserved pattern; evidence in procon/analysis
+
+PASS offline helper: signed values, cross-update rejection, stale-during-read rejection, wrong firmware identity (4 unittest cases).

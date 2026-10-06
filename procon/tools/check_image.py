@@ -39,12 +39,12 @@ def check(path, objcopy):
     assert size == 98304 and BASE + size == 0x08020000
     candidate = path.with_suffix('.bin')
     candidate.write_bytes(content + b'\xff' * (size - len(content)))
-    info = {'package': 'P0071', 'status': 'experimental-unverified-on-hardware',
+    info = {'package': 'P0072', 'status': 'experimental-unverified-on-hardware',
             'mcu_assumption': 'STM32L433xx, exact package/density unverified',
             'base': hex(BASE), 'end_exclusive': hex(BASE + size),
             'initial_sp': hex(words[0]), 'reset_vector': hex(words[1]),
             'raw_bytes': len(content), 'padded_bytes': size,
-            'revision': 'Geodan brine r2 exclusive sequence', 'cn105': 'USART1 PA9 TX/PA10 RX, 2400 8E1, GET04 and read-only A3 service27/28', 'uart_cr2': '0x00008000',
+            'revision': 'MVP r1 read-only telemetry', 'cn105': 'USART1 PA9 TX/PA10 RX, 2400 8E1, FAST GET04/0C/14/0B/09/15/26 and exclusive alternating A3 service27/28', 'uart_cr2': '0x00008000',
             'pin_routing': 'PC10 RX, PC11 TX, AF7 with SWAP=1',
             'heartbeat': 'PC12 toggles every 500 ms',
             'padding': '0xFF through original application footprint, not entire unknown flash',

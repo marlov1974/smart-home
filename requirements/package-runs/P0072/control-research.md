@@ -1,0 +1,7 @@
+# P0072 controls — deferred, not implemented
+
+Pinned F1p EcodanDecoder.cpp exposes candidate SET0x41 encoders: basic payload0x32 for power, zone control mode, DHW target and flow target; controller0x34 for forced DHW. EcodanDecoder.h defines SET_RESPONSE0x61. Flow encoding explicitly preserves current DHW target ("DHW Anti 0 Setpoint") and combines flags. This is evidence that plausible commands exist, not validation of isolated fields, acknowledgement semantics or effective behavior on our Geodan.
+
+AUTO requires an explicit choice of native control mode/restoration and handling of prior forced DHW/prohibit/server-control state. OFF/FIXED_FLOW/DHW can require multiple writes. A generic packet acknowledgement alone cannot establish effective settings, and link loss prevents guaranteeing a compensating AUTO command. A lease design also needs reboot/restore behavior verified against Mitsubishi's own mode persistence. The package requires verified SET mappings, while user allows building what is currently possible.
+
+Therefore r1 emits no SET and offers no command acceptance, sequence/ack or lease claim. All writes are rejected at Modbus, input70 lacks control capability, input71=4 unavailable. No control ever applied means expiration/reboot leaves Mitsubishi's own settings untouched. Target validation/command sequence/lease tests are not counted as passed; those features await a later P0072 revision. Telemetry/readback/raw diagnostics are built now to support that work. No speculative pump writes.

@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
+static const uint8_t fast_codes[]={4,0x0c,0x14,0x0b,9,0x15,0x26};
 static const uint8_t ack[]={0xfc,0x7a,2,0x7a,1,0,9};
 static unsigned seal(uint8_t *b,unsigned n) {
     unsigned sum=0;for(unsigned i=0;i<n-1;++i)sum+=b[i];b[n-1]=(uint8_t)(0xfc-sum);return n;
@@ -20,8 +21,8 @@ static unsigned drain(uint8_t *b) {unsigned n=0;while(cn_tx_byte(b+n)){cn_tx_sen
  *4 wrong echo,5 terminal status6,6 no replies at all,7 delayed late A3. */
 static void simulation(unsigned mode,uint32_t base,unsigned duration) {
     cn_init();uint8_t tx[22],rx[22],late[22];unsigned rxlen=0,late_len=0;
-    uint32_t due=0,late_due=0,last_normal=0,last_service[2]={0};
-    unsigned count[2]={0},normals=0,connected=0,phase=4,phase_attempts=0;
+    uint32_t due=0,late_due=0,last_service[2]={0};
+    unsigned count[2]={0},normals=0,connected=0,phase=4,phase_attempts=0,fast=0,next=27;
     for(unsigned step=0;step<duration;++step) {
         uint32_t t=base+step;cn_tick(t);
         if(rxlen && (int32_t)(t-due)>=0){feed(rx,rxlen,t);rxlen=0;}
@@ -33,10 +34,11 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
             if(tx[1]==0x5a){assert(n==8 && memcmp(tx,"\xfc\x5a\x02\x7a\x02\xca\x01\x5d",8)==0);memcpy(rx,ack,7);rxlen=7;++connected;}
             else {
                 assert(tx[1]==0x42 && n==22 && tx[2]==2 && tx[3]==0x7a && tx[4]==16);
-                if(tx[5]==4) {
-                    assert(phase==4);phase=27;phase_attempts=0;
-                    if(normals)assert(t-last_normal>=2000u || mode==5);
-                    last_normal=t;++normals;response(rx,4,0,0,20+(int)(normals%30));rxlen=22;
+                if(tx[5]!=0xa3) {
+                    assert(phase==4 && tx[5]==fast_codes[fast]);
+                    if(!fast){++normals;}
+                    if(++fast==7){fast=0;phase=next;phase_attempts=0;}
+                    response(rx,tx[5],0,0,20+(int)(normals%30));rxlen=22;
                 } else {
                     assert(tx[5]==0xa3 && tx[6]==0 && (tx[7]==27 || tx[7]==28));
                     for(unsigned i=8;i<21;++i)assert(tx[i]==0);
@@ -52,7 +54,7 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
                     if(mode==4){rx[7]=(uint8_t)(idx?27:28);seal(rx,22);}
                     if(mode==7){memcpy(late,rx,22);late_len=22;late_due=t+900;rxlen=0;}
                     if((mode==0 && status) || mode==5 || phase_attempts==10) {
-                        phase=phase==27?28:4;phase_attempts=0;
+                        next=phase==27?28:27;phase=4;phase_attempts=0;
                     }
                 }
             }
@@ -62,7 +64,7 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
         if(cn_read(3))assert(cn_read(4)<10);
         else assert(cn_read(2)==65535);
     }
-    assert(cn_read(0)==888 && cn_read(1)==71);
+    assert(cn_read(0)==888 && cn_read(1)==72);
     if(mode==6){assert(cn_read(3)==0 && connected>=3);return;}
     assert(normals>=3 && cn_read(5)>=normals-1);
     assert(count[0] && count[1]);
@@ -88,10 +90,12 @@ static void service_units(void) {
         assert(svc_reply(p,t+10,1));
         if(i<9)assert(!svc_due(t+999,&code));
     }
-    assert(svc_read(38)==1 && svc_due(10000,&code) && code==28);
+    assert(svc_read(38)==1 && !svc_due(10000,&code));
+    svc_start_cycle();assert(svc_due(10000,&code) && code==28);
     p[3]=1;
     svc_init();svc_link(1,0);assert(svc_due(0,&code) && code==27);svc_sent(0);
     assert(svc_reply(p,10,1) && svc_read(16)==65535 && svc_read(18)==1); /* -1 is real, not missing */
+    assert(!svc_due(11,&code));svc_start_cycle();
     assert(svc_due(11,&code) && code==28);svc_sent(11);p[2]=28;p[3]=2;p[4]=0;p[5]=0;
     assert(svc_reply(p,20,1) && svc_read(24)==0 && svc_read(26)==1);
     svc_tick(60000,60020);assert(svc_read(18)==0 && svc_read(26)==0 && svc_read(22)==1);
@@ -105,11 +109,14 @@ static void service_units(void) {
 static void parser_units(void) {
     uint8_t b[22],tx[22];cn_init();cn_tick(1000);assert(drain(tx)==8);feed(ack,7,1050);
     cn_tick(1100);assert(drain(tx)==22 && tx[5]==4);
+    response(b,0x0c,0,0,48);feed(b,22,1140);assert(cn_read(3)==0 && cn_read(39)==2);
     response(b,4,0,0,0);feed(b,22,1150);assert(cn_read(2)==0 && cn_read(3)==1);
-    cn_tick(1200);assert(drain(tx)==22 && tx[5]==0xa3);
-    response(b,0xa3,27,1,7);b[21]^=1;feed(b,22,1250);assert(cn_read(18)==0 && cn_read(39)==3);
-    response(b,0xa3,28,1,7);feed(b,22,1250);assert(cn_read(18)==0 && cn_read(39)==3);
-    response(b,0xa3,27,1,7);feed(b,22,1250);assert(cn_read(18)==1 && cn_read(39)==0);
+    for(unsigned i=1;i<7;++i){cn_tick(1150+i*100);assert(drain(tx)==22 && tx[5]==fast_codes[i]);
+        response(b,tx[5],0,0,0);feed(b,22,1200+i*100);}
+    cn_tick(1850);assert(drain(tx)==22 && tx[5]==0xa3);
+    response(b,0xa3,27,1,7);b[21]^=1;feed(b,22,1900);assert(cn_read(18)==0 && cn_read(39)==3);
+    response(b,0xa3,28,1,7);feed(b,22,1900);assert(cn_read(18)==0 && cn_read(39)==3);
+    response(b,0xa3,27,1,7);feed(b,22,1900);assert(cn_read(18)==1 && cn_read(39)==0);
     for(unsigned bit=0;bit<176;++bit){
         cn_init();cn_tick(1000);drain(tx);feed(ack,7,1050);cn_tick(1100);drain(tx);
         response(b,4,0,0,48);b[bit/8]^=1u<<(bit%8);feed(b,22,1150);assert(cn_read(3)==0);
@@ -129,5 +136,5 @@ int main(void) {
     service_units();parser_units();
     for(unsigned mode=0;mode<=7;++mode)simulation(mode,0,65000);
     simulation(0,0xfffff000u,65000);
-    puts("PASS CN105 P0071: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive Hz->27->28 sequence; ASan+UBSan");
+    puts("PASS CN105 P0072: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive FAST->27->FAST->28 sequence; ASan+UBSan");
 }

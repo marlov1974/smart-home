@@ -1,0 +1,8 @@
+# P0072 function design
+
+- svc_start_cycle/svc_link/advance/svc_due/svc_reply: select one entry from generic service code table; advance round-robin only after completion/exhaustion, no attempt reset by normal traffic. Retain two legacy channel caches. Tests assert alternating whole operations, retry bound, stale/wrap.
+- cn_init/begin/cn_tick/cn_feed/disconnect/cn_read: initialize telemetry; bounded FAST cursor and matching response query; preserve GET04 counters; service scheduling at FAST boundary; invalidate on disconnect; route new API. Tests cover full outbound whitelist, wrong query, all error modes and concurrent Modbus.
+- tele_init/tick/invalidate/accept: initialize, saturate ages, parse only validated owned payloads into range-checked samples and retain raw blocks. Update generations per fresh response. No I/O. Fixtures for all seven queries and unavailable values.
+- tele_read and internal value/derived helpers: provide signed32 high/low words, validity, ages, generations, raw payload pairs; calculate delta-T and signed water power with bounded int64 intermediates and skew gate. Arithmetic, negative, zero, limits and freshness tests.
+- read_mvp.py main/read/decode: read-only timestamped FC04 snapshots with before/after generations, raw blocks and diagnostics; distinguish cross-read coherence from validity and physical correlation.
+- Tests/build/image tooling: extend relevant test entrypoints and artifact names/metadata for P0072. No platform or Modbus control implementation change; all write function codes still exception1, tested including FC16. Control encoding, acknowledgement and lease functions deliberately deferred pending protocol validation.

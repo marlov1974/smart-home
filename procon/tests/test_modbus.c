@@ -13,6 +13,7 @@ static uint32_t feed(rtu_state *s, const uint8_t *r, size_t n, uint32_t now, int
     return now-1042;
 }
 int main(void) {
+    cn_init();
     uint8_t out[260], r[260];
     assert(crc16(read0,6)==0xca31 && crc16(read0,8)==0);
     assert(modbus_reply(read0,8,out,sizeof out)==7);
@@ -31,18 +32,20 @@ int main(void) {
         memcpy(r,read0,8);r[0]=(uint8_t)unit;seal(r,8);
         assert(modbus_reply(r,8,out,sizeof out)==(unit==1?7u:0u));
     }
-    memcpy(r,read0,8);r[1]=6;seal(r,8);
+    memcpy(r,read0,8);r[1]=16;seal(r,8);
+    assert(modbus_reply(r,8,out,sizeof out)==5 && out[1]==0x90 && out[2]==1);
+    r[1]=6;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[1]==0x86 && out[2]==1 && crc16(out,5)==0);
-    memcpy(r,read0,8);r[3]=REGISTER_COUNT;seal(r,8);
+    memcpy(r,read0,8);r[2]=REGISTER_COUNT>>8;r[3]=REGISTER_COUNT&255;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
-    memcpy(r,read0,8);r[3]=0;r[5]=REGISTER_COUNT+1;seal(r,8);
+    memcpy(r,read0,8);r[3]=0;r[5]=REGISTER_READ_MAX+1;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
     r[5]=0;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==3);
     r[5]=126;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==3);
     /* P0070 block reads, small output capacity and overflow-safe range. */
     memcpy(r,read0,8);r[5]=REGISTER_READ_MAX;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==37 && out[2]==32 && crc16(out,37)==0);
-    assert(out[3]==3 && out[4]==120 && out[5]==0 && out[6]==71);
+    assert(out[3]==3 && out[4]==120 && out[5]==0 && out[6]==72);
     assert(out[7]==255 && out[8]==255 && out[9]==0 && out[10]==0);
     memset(out,0xa5,sizeof out);assert(modbus_reply(r,8,out,36)==0);
     for(size_t i=0;i<sizeof out;i++)assert(out[i]==0xa5);

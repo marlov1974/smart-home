@@ -24,3 +24,7 @@ P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 o
 ## P0071 brine candidate
 
 Adds a separate read-only service27/28 state machine with exclusive CN105 transaction ownership, bounded retries and continued GET04 telemetry. Preserves P0070 registers0–15 (build marker71); adds16–67, with max16 registers per read. Raw completed payloads are retained per service; temperature candidates use reference-backed signed little-endian encoding and remain experimental. See [BRINE.md](BRINE.md) and `../releases/P0071-brine-r1/README.md`. Software tests pass; no P0071 hardware readings or physical flash yet. Previous P0070 hardware result remains valid historical evidence.
+
+## P0072 r1 — read-only MVP candidate
+
+Latest build P0072-mvp-r1, operator flash pending. Implements FAST04/0C/14/0B/09/15/26 then one exclusive round-robin A3 service27/28 operation, preserving retry ownership. Adds20-field version1 API (18 mapped/derived candidates; brine pump run/step unavailable), status/age/generations, raw FAST payloads and fixed-point water heat. Marker1=72,revision68=1. Legacy addresses retained;42 counts individual service operations. See [MVP_API.md](MVP_API.md) and [PUMPS.md](PUMPS.md) for evidence and limits. No controls/SET/lease implementation; all writes rejected and control capability unavailable. P0071 physical evidence remains historical, not P0072 validation. No live actions performed in build.

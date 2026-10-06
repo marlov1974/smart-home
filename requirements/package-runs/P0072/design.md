@@ -1,0 +1,9 @@
+# P0072 implementation design
+
+Build r1 read-only MVP candidate, preserving platform, watchdog, UART and original images. Generalize service selection using a code table and round-robin cursor; one operation per FAST cycle, ten attempts, 1s retry. Connect only at operation boundary. FAST queries 04,0C,14,0B,09,15,26; one attempt each, existing 800ms response/1s TX deadline. Match normal replies to actual query owner. Retain compressor legacy TTL10s, other FAST TTL30s, service TTL60s; invalidate on disconnect. No other query interrupts A3 retries.
+
+New telemetry module owns 20 signed32 values, per-value status/age/update generation and seven raw FAST payloads. Values use centidegrees, centilitres/minute, W, Hz, enums/booleans. Brine values retain whole-degree source resolution. Reference-backed pump level is candidate only; brine pump state/speed remain unavailable. Derived values require valid sources; power additionally requires <=2s temperature/flow acquisition skew. Water assumption rho1kg/L, cp4180J/kg/K; signed W, no glycol correction/COP. Use checked ranges and int64 intermediate.
+
+Inputs0–67 retain layout; marker1=72, revision68=1 (package-specific), service cycle42 now counts individual completed/exhausted operations. API diagnostics69–71; reserved72–99; values100–139 (high word first), statuses140–159, age160–179, generations180–199; raw GET payloads200–255 (low byte first). Per-block reads max16. No atomic cross-block claim: bracket value/raw reads with generations. FC06/16 remain rejected; capability says no controls. Do not stage a pretend applied/lease state.
+
+Tests: independent native fixtures, malformed/late replies, alternating exclusive retry sequence, timeout/reconnect/wrap, derived arithmetic/ranges/stale/skew, Modbus rejection/ranges and actual ELF mocked UART/watchdog/heartbeat. Deterministic binary and original/release hashes. Read-only operator helper for post-flash evidence. No device action in build.

@@ -68,3 +68,7 @@ Native65s simulations assert every emitted request follows Hz→27→28, includi
 ## P0071 r2 live result — 2026-10-06
 
 45read-only sample groups show repeated completed27/28 responses,status2,raw5 for both. Completed counters27:4→9,28:4→8; UART/protocol/service errors0,exhaustions0. Operator replied "5" when asked about display027/028, matching the reference decoding at this operating point. This single response does not separately establish channel mapping or validate negative/full-range scaling. Raw evidence: procon/analysis/live/20261006T202303Z-p0071-r2-readback.jsonl; full report: requirements/package-runs/P0071/hardware-validation.md. No firmware changes. This supersedes earlier pending-r2-result notes; immutable release metadata remains as built.
+
+## P0072 r1 — read-only MVP candidate
+
+Latest build P0072-mvp-r1, operator flash pending. Implements FAST04/0C/14/0B/09/15/26 then one exclusive round-robin A3 service27/28 operation, preserving retry ownership. Adds20-field version1 API (18 mapped/derived candidates; brine pump run/step unavailable), status/age/generations, raw FAST payloads and fixed-point water heat. Marker1=72,revision68=1. Legacy addresses retained;42 counts individual service operations. See [MVP_API.md](MVP_API.md) and [PUMPS.md](PUMPS.md) for evidence and limits. No controls/SET/lease implementation; all writes rejected and control capability unavailable. P0071 physical evidence remains historical, not P0072 validation. No live actions performed in build.

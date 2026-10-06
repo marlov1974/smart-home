@@ -1,4 +1,4 @@
-/* P0071. Signed little-endian interpretation is reference-backed, provisional. */
+/* P0072. Signed little-endian interpretation is reference-backed, provisional. */
 #include "service.h"
 #define AGE_MAX 65535000u
 #define RETRY_MS 1000u
@@ -10,7 +10,10 @@ typedef struct {
     uint16_t raw, status, completions;
     uint32_t age;
 } sample;
-static sample samples[2];
+static const uint8_t codes[]={27,28};
+#define SERVICE_COUNT (sizeof codes/sizeof codes[0])
+static sample samples[SERVICE_COUNT];
+static uint8_t next_index;
 static uint8_t state, index, attempts, wire_payload[16], had_request;
 static uint16_t last_status, accepted, failures, exhausted, seen, gap_ms, cycles;
 static uint32_t request_at, previous_request;
@@ -23,11 +26,11 @@ void svc_init(void) {
         samples[i].status=65535;
     }
     for(unsigned i=0;i<16;++i)wire_payload[i]=0;
-    state=IDLE; index=attempts=had_request=0;
+    state=IDLE; next_index=index=attempts=had_request=0;
     last_status=65535;accepted=failures=exhausted=seen=gap_ms=cycles=0;
     request_at=previous_request=0;
 }
-void svc_start_cycle(void) {state=READY;index=attempts=0;}
+void svc_start_cycle(void) {state=READY;index=next_index;attempts=0;}
 void svc_link(int up, uint32_t t) {
     (void)t;
     if(up) svc_start_cycle();
@@ -46,7 +49,7 @@ void svc_tick(uint32_t dt, uint32_t t) {
 }
 int svc_due(uint32_t t, uint8_t *code) {
     if(state==READY || (state==WAIT_RETRY && t-request_at>=RETRY_MS)) {
-        *code=(uint8_t)(27u+index);return 1;
+        *code=codes[index];return 1;
     }
     return 0;
 }
@@ -59,8 +62,8 @@ void svc_sent(uint32_t t) {
 static void advance(uint32_t t) {
     (void)t;
     attempts=0;
-    if(index==0) {index=1;state=READY;}
-    else {state=DONE;++cycles;}
+    next_index=(uint8_t)((index+1u)%SERVICE_COUNT);
+    state=DONE;++cycles;
 }
 static void retry(uint32_t t) {
     if(attempts>=MAX_ATTEMPTS) {
@@ -71,7 +74,7 @@ int svc_reply(const uint8_t p[16], uint32_t t, int owned) {
     ++seen;
     for(unsigned i=0;i<16;++i)wire_payload[i]=p[i];
     last_status=p[3];
-    if(!owned || state!=WAIT_REPLY || p[1]!=0 || p[2]!=27u+index) {++failures;return 0;}
+    if(!owned || state!=WAIT_REPLY || p[1]!=0 || p[2]!=codes[index]) {++failures;return 0;}
     ++accepted;sample *s=&samples[index];s->status=p[3];
     if(p[3]==1 || p[3]==2) {
         for(unsigned i=0;i<16;++i)s->payload[i]=p[i];
@@ -102,7 +105,7 @@ uint16_t svc_read(unsigned a) {
     if(a>=60 && a<68)return pair(samples[1].payload+2*(a-60));
     switch(a) {
     case 32:return state;
-    case 33:return (state==READY || state==WAIT_REPLY || state==WAIT_RETRY)?(uint16_t)(27+index):0;
+    case 33:return (state==READY || state==WAIT_REPLY || state==WAIT_RETRY)?codes[index]:0;
     case 34:return last_status;
     case 35:return attempts?attempts-1u:0;
     case 36:return accepted;

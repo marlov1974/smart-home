@@ -8,6 +8,7 @@ import sys
 from elftools.elf.elffile import ELFFile
 
 BASE, LIMIT, RAM, RAM_END = 0x08008000, 0x0800C000, 0x20000000, 0x20004000
+PACKAGE_END = 0x08020000  # original 96692-byte app rounded to complete 2KiB pages
 
 def check(path, objcopy):
     with path.open('rb') as stream:
@@ -33,8 +34,9 @@ def check(path, objcopy):
     subprocess.run([objcopy, '-O', 'binary', str(path), str(raw)], check=True)
     content = raw.read_bytes()
     assert struct.unpack_from('<II', content) == words[:2]
-    size = (len(content) + 2047) // 2048 * 2048
-    assert 0 < size <= LIMIT - BASE
+    assert 0 < len(content) <= LIMIT - BASE
+    size = PACKAGE_END - BASE
+    assert size == 98304 and BASE + size == 0x08020000
     candidate = path.with_suffix('.bin')
     candidate.write_bytes(content + b'\xff' * (size - len(content)))
     info = {'package': 'P0069', 'status': 'experimental-unverified-on-hardware',
@@ -42,6 +44,10 @@ def check(path, objcopy):
             'base': hex(BASE), 'end_exclusive': hex(BASE + size),
             'initial_sp': hex(words[0]), 'reset_vector': hex(words[1]),
             'raw_bytes': len(content), 'padded_bytes': size,
+            'revision': 'M1 r2', 'uart_cr2': '0x00008000',
+            'pin_routing': 'PC10 RX, PC11 TX, AF7 with SWAP=1',
+            'heartbeat': 'PC12 toggles every 500 ms',
+            'padding': '0xFF through original application footprint, not entire unknown flash',
             'sha256': hashlib.sha256(candidate.read_bytes()).hexdigest(),
             'serial': '9600 8N1', 'slave_id': 1, 'function': 4, 'address': 0, 'value': 888,
             'bootloader_verification': 'device bootloader absent; vendor host protocol analyzed only'}

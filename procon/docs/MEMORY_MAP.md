@@ -7,3 +7,5 @@ Inferred L433 family supports128/256KiB flash and64KiB SRAM (48KiB SRAM1 plus16K
 Candidate: raw1704 bytes, padded2048 bytes (one2KiB page), address range[0x08008000,0x08008800). Stack0x20004000, reset0x0800818D. Code never unlocks/programs/erases flash. ELF checker rejects flash load segments below application base or outside conservative bounds.
 
 [0x08000000,0x08008000) is the inferred resident bootloader reservation. Device-side bootloader is absent from supplied archive; its erase implementation has NOT been disassembled or independently verified. Existing vendor updater use and application VTOR support the boundary inference.
+
+Final M1 r2: procon/releases/P0069-m1-r2/procon-m1.bin is98304bytes (96KiB),0x08008000–0x0801FFFF, including0xFF padding over the previous original application footprint. Code still limited to16KiB; bootloader excluded. PC12 heartbeat toggles every500ms as startup indication; USART3 SWAP=1. Final BIN SHA2561ad976eef711558ed180a4037e84885f7d74b76175ac2ba0daea0d171f864073. Physical verification pending.

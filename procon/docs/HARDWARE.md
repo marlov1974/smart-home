@@ -7,10 +7,15 @@ Status: inferred STM32L433xx. Operator explicitly permits an educated MCU assump
 | L433 startup target | All 99 vector positions, including all 22 reserved zeros, match ST startup_stm32l433xx.s. Of 24 L4 templates compared, only L433 has zero reserved mismatches. | Strong inference |
 | L4 peripheral map | RCC 0x40021000: AHB2ENR+0x4C, APB1ENR1+0x58, APB2ENR+0x60; PLLP=7 in original oscillator configuration | Strong inference, independent of vector match |
 | RS485 USART3 | IRQ39 at 0x0800A24C -> 0x0800FE90 -> 0x08010AA4; port1 resolver 0x08009794 returns handle0x20000FF0; main stores peripheral0x40004800 there | Verified in reference code |
-| PC10 TX / PC11 RX AF7 | USART3 MSP branch 0x0800A068–0x0800A0CE initializes GPIOC mask0xC00, AF7 | Verified in reference code; electrical wiring inferred |
+| PC10 RX / PC11 TX AF7 with SWAP=1 | USART3 MSP branch 0x0800A068–0x0800A0CE initializes GPIOC mask0xC00, AF7 | Verified in reference code; electrical wiring inferred |
 | PD2 direction active high | 0x08010988 writes GPIOD pin4 high before TX; 0x080109F4 writes it low; factory RS485 test also toggles PD2 | Strong inference of DE/RE wiring |
 | CN105 USART1 PA9/10 | Handle0x20000EE8 ->0x40013800, MSP mask0x600 AF7; separate RX/TX implementation | Verified separation in reference code; unused in M1 |
 
 Authoritative comparison: [ST CMSIS L4 at pinned commit](https://github.com/STMicroelectronics/cmsis-device-l4/tree/ca0bfa2b8b68dc2994b27fba0a10dfd28d086ee1). [STM32L433RC product/memory](https://www.st.com/en/microcontrollers-microprocessors/stm32l433rc.html).
 
 Initial broad F3/G4 hypotheses were rejected after inspecting RCC offsets, PLL fields and startup vectors. Do not reuse those initial family guesses. Trace artifacts are in ../analysis/.
+
+## M1 r2 correction
+Original0x080099CC/CE selects AdvancedInit0x38 (includes SWAP_INIT0x08);0x080099D2/E2 writes Swap0x8000 at UART handle+0x34. ST HAL UART_AdvFeatureInitTypeDef puts Swap there; USART_CR2_SWAP is bit15. Corrected firmware sets CR2=0x8000. Thus AF7 nominal TX/RX are exchanged: PC10 RX,PC11 TX. Initial M1 omitted this and timed out; it is superseded. Evidence is static and test-backed; successful physical readback remains pending. [ST HAL UART definitions](https://github.com/STMicroelectronics/stm32l4xx-hal-driver/blob/master/Inc/stm32l4xx_hal_uart.h).
+
+Final M1 r2: procon/releases/P0069-m1-r2/procon-m1.bin is98304bytes (96KiB),0x08008000–0x0801FFFF, including0xFF padding over the previous original application footprint. Code still limited to16KiB; bootloader excluded. PC12 heartbeat toggles every500ms as startup indication; USART3 SWAP=1. Final BIN SHA2561ad976eef711558ed180a4037e84885f7d74b76175ac2ba0daea0d171f864073. Physical verification pending.

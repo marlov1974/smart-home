@@ -68,3 +68,5 @@ External CN105 0x07 decoding uses coarse byte-sized power fields. Prior work did
 ## P0069 update — 2026-10-06
 
 Strong inferred MCU family: STM32L433xx; all99 vector positions match ST L433 startup reserved pattern. Physical package/density unverified. See HARDWARE.md for original addresses and trace confidence. New clean application uses USART3 PC10/11AF7, PD2 direction. Software tests passed; operator flash/readback pending. No new live readings or CN105 measurements.
+
+P0069 attempt2: initial M1 hardware readback failed with seven timeouts. Shelly settings96008N1 verified; operator confirmed flash/reconnect/DIP/reset. Original USART3 SWAP=1 was omitted in M1; r2 corrects only CR2 bit15 and passes enhanced wiring-aware emulator. Physical r2 test pending.

@@ -12,3 +12,7 @@
 - Python setup/build-check/analysis/test entry points: reproducible local tools, vector/literal and updater inspection, ELF/BIN bounds, known protocol scenarios; no network/device access during tests.
 
 No existing runtime functions changed or removed. Any detailed helper functions remain within these responsibilities.
+
+Attempt2: uart_init now enables USART3 CR2_SWAP, matching original firmware. test_arm.run_case models the board RX/TX routing and rejects unswapped UART. No other runtime function changes.
+
+Attempt2 steering: add heartbeat(now_us), toggling evidenced PC12 every500000us; platform_init sets that output; main invokes heartbeat. check_image retains16KiB executable bounds but packages98304-byte FF-filled erase envelope. test_arm supports longer run duration and asserts heartbeat edges.

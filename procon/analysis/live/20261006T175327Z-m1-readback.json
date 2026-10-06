@@ -1,0 +1,61 @@
+{
+  "operation": "Read-only FC04 input0 quantity1 via Shelly MbRtuClient.ReadInputRegisters id100 sid1",
+  "samples": [
+    {
+      "timestamp": "2026-10-06 17:53:27 UTC",
+      "chunk_id": "c65c76",
+      "wall_time_seconds": 0.949907875,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    },
+    {
+      "timestamp": "2026-10-06 17:53:28 UTC",
+      "chunk_id": "37b094",
+      "wall_time_seconds": 0.945961167,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    },
+    {
+      "timestamp": "2026-10-06 17:53:30 UTC",
+      "chunk_id": "849d7d",
+      "wall_time_seconds": 0.942954292,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    },
+    {
+      "timestamp": "2026-10-06 17:53:31 UTC",
+      "chunk_id": "e45bb3",
+      "wall_time_seconds": 0.944838125,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    },
+    {
+      "timestamp": "2026-10-06 17:53:32 UTC",
+      "chunk_id": "1d376f",
+      "wall_time_seconds": 0.912068,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    },
+    {
+      "timestamp": "2026-10-06 17:53:33 UTC",
+      "chunk_id": "af54d4",
+      "wall_time_seconds": 0.978619708,
+      "exit_code": 0,
+      "original_token_count": 11,
+      "output": "{\"code\":-104,\"message\":\"Command timeout\"}"
+    }
+  ],
+  "serial_config": {
+    "chunk_id": "ece180",
+    "wall_time_seconds": 0.0000075,
+    "exit_code": 0,
+    "original_token_count": 21,
+    "output": "{\"mode\":\"mb_client\",\"serial\":{\"baud\":9600,\"format\":\"8N1\"},\"mb_server\":{\"addr\":1}}"
+  },
+  "note": "One preceding identical read also returned -104. No writes performed."
+}

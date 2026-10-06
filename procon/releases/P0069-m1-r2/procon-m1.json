@@ -1,0 +1,23 @@
+{
+  "package": "P0069",
+  "status": "experimental-unverified-on-hardware",
+  "mcu_assumption": "STM32L433xx, exact package/density unverified",
+  "base": "0x8008000",
+  "end_exclusive": "0x8020000",
+  "initial_sp": "0x20004000",
+  "reset_vector": "0x800818d",
+  "raw_bytes": 1816,
+  "padded_bytes": 98304,
+  "revision": "M1 r2",
+  "uart_cr2": "0x00008000",
+  "pin_routing": "PC10 RX, PC11 TX, AF7 with SWAP=1",
+  "heartbeat": "PC12 toggles every 500 ms",
+  "padding": "0xFF through original application footprint, not entire unknown flash",
+  "sha256": "1ad976eef711558ed180a4037e84885f7d74b76175ac2ba0daea0d171f864073",
+  "serial": "9600 8N1",
+  "slave_id": 1,
+  "function": 4,
+  "address": 0,
+  "value": 888,
+  "bootloader_verification": "device bootloader absent; vendor host protocol analyzed only"
+}

@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 451
+Tracked file count: 461
 
 ## Files
 
@@ -92,6 +92,7 @@ Tracked file count: 451
 - `procon/CODEX_TASK.md`
 - `procon/Makefile`
 - `procon/README.md`
+- `procon/analysis/live/20261006T175327Z-m1-readback.json`
 - `procon/analysis/original-excerpts.txt`
 - `procon/analysis/reference-analysis.json`
 - `procon/analysis/updater-il.txt`
@@ -116,6 +117,13 @@ Tracked file count: 451
 - `procon/reference/original/IMPORT_MANIFEST.json`
 - `procon/reference/original/Proon+Firmware+Update+Tool+(v3.1.05).zip`
 - `procon/reference/original/README.md`
+- `procon/releases/P0069-m1-r2/README.md`
+- `procon/releases/P0069-m1-r2/SHA256SUMS`
+- `procon/releases/P0069-m1-r2/procon-m1.bin`
+- `procon/releases/P0069-m1-r2/procon-m1.disasm.txt`
+- `procon/releases/P0069-m1-r2/procon-m1.elf`
+- `procon/releases/P0069-m1-r2/procon-m1.json`
+- `procon/releases/P0069-m1-r2/procon-m1.map`
 - `procon/releases/P0069-m1/README.md`
 - `procon/releases/P0069-m1/RECOVERY.md`
 - `procon/releases/P0069-m1/SHA256SUMS`
@@ -265,6 +273,8 @@ Tracked file count: 451
 - `requirements/package-runs/P0069/design.md`
 - `requirements/package-runs/P0069/findings.md`
 - `requirements/package-runs/P0069/functions.md`
+- `requirements/package-runs/P0069/r2-regression-red.txt`
+- `requirements/package-runs/P0069/r2-verification.txt`
 - `requirements/package-runs/P0069/review.md`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`

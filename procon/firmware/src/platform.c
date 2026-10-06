@@ -28,6 +28,13 @@ void platform_init(void) {
     REG(0xe000ed04u) = (1u << 25) | (1u << 27); /* Pending SysTick/PendSV clear. */
     REG(0xe000ed08u) = 0x08008000u;
     __asm volatile("dsb\nisb" ::: "memory");
+    /* Original TIM2 ISR toggles PC12: expose application heartbeat. */
+    REG(RCC + 0x4c) |= 4u;
+    (void)REG(RCC + 0x4c);
+    REG(GPIOC + 0x18) = 1u << 28;
+    REG(GPIOC + 4) &= ~(1u << 12);
+    REG(GPIOC + 0x0c) &= ~(3u << 24);
+    REG(GPIOC) = (REG(GPIOC) & ~(3u << 24)) | (1u << 24);
     clock_init();
     REG(RCC + 0x58) |= 1u; /* TIM2 clock */
     (void)REG(RCC + 0x58);
@@ -62,7 +69,7 @@ void uart_init(void) {
     REG(RCC + 0x38) &= ~(1u << 18);
     REG(UART) = 0;
     REG(RCC + 0x88) = (REG(RCC + 0x88) & ~0x30u) | 0x20u; /* HSI16 */
-    REG(UART + 4) = 0; /* one stop bit, no inversion/swap */
+    REG(UART + 4) = 1u << 15; /* Original board swaps RX/TX: PC10 RX, PC11 TX. */
     REG(UART + 8) = 0; /* no DMA or HW DE */
     REG(UART + 0x0c) = 1667; /* round(16000000/9600) */
     REG(UART + 0x20) = 0xffffffffu;
@@ -104,4 +111,12 @@ int uart_send(const uint8_t *bytes, size_t n) {
     REG(UART + 0x20) = 15;
     REG(UART) |= 4u;
     return ok;
+}
+
+void heartbeat(uint32_t now) {
+    static uint32_t last;
+    if (now - last >= 500000u) {
+        REG(GPIOC + 0x14) ^= 1u << 12;
+        last = now;
+    }
 }

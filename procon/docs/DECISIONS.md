@@ -8,3 +8,5 @@
 - P0069 operator owns physical flashing from separate computer. User explicitly allows guessed/inferred MCU; use evidence-backed STM32L433 profile and label uncertainty.
 - Use HSI16 and polling-only USART3 for M1, fixed96008N1/slave1, PD2 direction. No EEPROM access, CN105 or flash writes.
 - Conservative16KiB app/16KiB SRAM linker,2KiB padded candidate; retain original recovery files. Software pass is distinct from hardware milestone completion.
+
+P0069 r2: fix proven USART3 SWAP omission before speculative start-vector changes. Add PC12 heartbeat on operator report of no LEDs, and extend delivered BIN to old application page footprint (98304bytes) using0xFF. Preserve first release unchanged for regression evidence.

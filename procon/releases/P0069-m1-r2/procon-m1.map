@@ -1,0 +1,238 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_macro   0x00000000      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_macro   0x00000000      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .debug_macro   0x00000000      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .debug_macro   0x00000000      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .debug_macro   0x00000000       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08008000         0x00004000         xr
+RAM              0x20000000         0x00004000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+                0x20004000                        _stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08008000      0x18c
+ *(.isr_vector)
+ .isr_vector    0x08008000      0x18c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+                0x08008000                vectors
+
+.text           0x0800818c      0x58c
+ *(.text*)
+ .text.Reset_Handler
+                0x0800818c       0x6c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+                0x0800818c                Reset_Handler
+ .text.Default_Handler
+                0x080081f8       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+                0x080081f8                Default_Handler
+ .text.startup.main
+                0x08008208       0x58 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+                0x08008208                main
+ .text.wait_uart
+                0x08008260       0x34 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .text.watchdog_refresh
+                0x08008294       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x08008294                watchdog_refresh
+ .text.platform_init
+                0x080082a4      0x128 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x080082a4                platform_init
+ .text.micros   0x080083cc        0x8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x080083cc                micros
+ .text.uart_init
+                0x080083d4       0xf4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x080083d4                uart_init
+ .text.uart_receive
+                0x080084c8       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x080084c8                uart_receive
+ .text.uart_send
+                0x08008508       0x90 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x08008508                uart_send
+ .text.heartbeat
+                0x08008598       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+                0x08008598                heartbeat
+ .text.crc16    0x080085c0       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+                0x080085c0                crc16
+ .text.modbus_reply
+                0x080085ee       0x94 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+                0x080085ee                modbus_reply
+ .text.rtu_feed
+                0x08008682       0x58 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+                0x08008682                rtu_feed
+ .text.rtu_poll
+                0x080086da       0x3e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+                0x080086da                rtu_poll
+ *(.rodata*)
+                0x08008718                        . = ALIGN (0x4)
+
+.glue_7         0x08008718        0x0
+ .glue_7        0x08008718        0x0 linker stubs
+
+.glue_7t        0x08008718        0x0
+ .glue_7t       0x08008718        0x0 linker stubs
+
+.vfp11_veneer   0x08008718        0x0
+ .vfp11_veneer  0x08008718        0x0 linker stubs
+
+.v4_bx          0x08008718        0x0
+ .v4_bx         0x08008718        0x0 linker stubs
+
+.iplt           0x08008718        0x0
+ .iplt          0x08008718        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+
+.rel.dyn        0x08008718        0x0
+ .rel.iplt      0x08008718        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+
+.ARM.exidx
+ *(.ARM.exidx*)
+
+.data           0x20000000        0x0 load address 0x08008718
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _data_start = .
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _data_end = .
+                0x08008718                        _data_load = LOADADDR (.data)
+
+.igot.plt       0x20000000        0x0 load address 0x08008718
+ .igot.plt      0x20000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+
+.bss            0x20000000      0x110 load address 0x08008718
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _bss_start = .
+ *(.bss*)
+ .bss.receiver  0x20000000      0x10c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .bss.last.0    0x2000010c        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ *(COMMON)
+                0x20000110                        . = ALIGN (0x4)
+                0x20000110                        _bss_end = .
+
+/DISCARD/
+ *(.comment*)
+ *(.note*)
+                0x00000001                        ASSERT ((ADDR (.isr_vector) == 0x8008000), Wrong vector base)
+                0x00000001                        ASSERT (((_bss_end + 0x800) <= _stack_top), Insufficient stack)
+OUTPUT(build/procon-m1.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .ARM.attributes
+                0x00000021       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .ARM.attributes
+                0x0000004f       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .ARM.attributes
+                0x0000007d       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_line     0x00000000      0xc49
+ .debug_line    0x00000000       0x81 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .debug_line    0x00000081      0x162 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_line    0x000001e3      0x6a1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_line    0x00000884      0x3c5 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_line_str
+                0x00000000       0x1d
+ .debug_line_str
+                0x00000000       0x1d /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+
+.debug_info     0x00000000      0xa5d
+ .debug_info    0x00000000       0x3b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .debug_info    0x0000003b      0x2e2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_info    0x0000031d      0x335 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_info    0x00000652      0x40b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_abbrev   0x00000000      0x570
+ .debug_abbrev  0x00000000       0x26 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .debug_abbrev  0x00000026      0x169 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_abbrev  0x0000018f      0x1f1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_abbrev  0x00000380      0x1f0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_aranges  0x00000000       0xd8
+ .debug_aranges
+                0x00000000       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .debug_aranges
+                0x00000028       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_aranges
+                0x00000048       0x58 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_aranges
+                0x000000a0       0x38 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_str      0x00000000     0x3ce9
+ .debug_str     0x00000000     0x3ce9 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+                                 0x49 (size before relaxing)
+ .debug_str     0x00003ce9     0x3d44 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_str     0x00003ce9     0x3d7f /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_str     0x00003ce9     0x3d18 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_rnglists
+                0x00000000      0x141
+ .debug_rnglists
+                0x00000000       0x19 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccMyZrKW.o
+ .debug_rnglists
+                0x00000019       0x13 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_rnglists
+                0x0000002c       0xb3 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_rnglists
+                0x000000df       0x62 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_loclists
+                0x00000000      0x565
+ .debug_loclists
+                0x00000000       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_loclists
+                0x00000020      0x17e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_loclists
+                0x0000019e      0x3c7 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_macro    0x00000000     0x1095
+ .debug_macro   0x00000000       0x4a /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_macro   0x0000004a      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_macro   0x00000b10      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_macro   0x00000ca0      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_macro   0x00000fee       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_macro   0x00000ffe       0x5b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_macro   0x00001059       0x3c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o
+
+.debug_frame    0x00000000      0x16c
+ .debug_frame   0x00000000       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccve3KZ5.o
+ .debug_frame   0x00000028       0xbc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccDlp6D4.o
+ .debug_frame   0x000000e4       0x88 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cctO0MsJ.o

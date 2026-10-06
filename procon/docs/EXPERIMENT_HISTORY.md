@@ -12,3 +12,5 @@
 Decision after test14: stop incremental scheduler patching. Reverse-engineer only enough hardware to create clean replacement firmware. First clean target: Modbus Input Register 0 = 888.
 
 - P0069: original verified, L433 family inferred, fresh2KiB M1 candidate built. Native sanitizers and six compiled-ARM simulated cases pass. No original routines patched or copied. No flash performed by Codex; operator physical test pending.
+
+P0069 attempt2: initial M1 hardware readback failed with seven timeouts. Shelly settings96008N1 verified; operator confirmed flash/reconnect/DIP/reset. Original USART3 SWAP=1 was omitted in M1; r2 corrects only CR2 bit15 and passes enhanced wiring-aware emulator. Physical r2 test pending.

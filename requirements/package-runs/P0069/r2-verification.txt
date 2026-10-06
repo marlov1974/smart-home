@@ -1,0 +1,17 @@
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -std=c11 -Os -g3 -Wall -Wextra -Werror -ffreestanding -fno-builtin -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -Ifirmware/include -ffile-prefix-map=/Users/marcus/Documents/Codex/smart-home-procon/procon=. firmware/startup/startup.S firmware/src/main.c firmware/src/platform.c firmware/src/modbus.c -nostdlib -Wl,--gc-sections,--build-id=none,-Map,build/procon-m1.map -Tfirmware/linker.ld -o build/procon-m1.elf
+.local/venv/bin/python tools/check_image.py build/procon-m1.elf .local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objcopy
+PASS image bounds/vectors: {"package": "P0069", "status": "experimental-unverified-on-hardware", "mcu_assumption": "STM32L433xx, exact package/density unverified", "base": "0x8008000", "end_exclusive": "0x8020000", "initial_sp": "0x20004000", "reset_vector": "0x800818d", "raw_bytes": 1816, "padded_bytes": 98304, "revision": "M1 r2", "uart_cr2": "0x00008000", "pin_routing": "PC10 RX, PC11 TX, AF7 with SWAP=1", "heartbeat": "PC12 toggles every 500 ms", "padding": "0xFF through original application footprint, not entire unknown flash", "sha256": "1ad976eef711558ed180a4037e84885f7d74b76175ac2ba0daea0d171f864073", "serial": "9600 8N1", "slave_id": 1, "function": 4, "address": 0, "value": 888, "bootloader_verification": "device bootloader absent; vendor host protocol analyzed only"}
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objdump -d build/procon-m1.elf > build/procon-m1.disasm.txt
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-size build/procon-m1.elf
+   text	   data	    bss	    dec	    hex	filename
+   1816	      0	    272	   2088	    828	build/procon-m1.elf
+./build/host-test
+PASS host: CRC golden vector, 64 corruptions, 256 unit IDs, exceptions, capacities, RTU timing/overflow/error recovery/wrap, 20000 malformed packets (ASan/UBSan)
+.local/venv/bin/python tests/test_arm.py build/procon-m1.elf
+PASS ARM read input0=888: TX=01 04 02 03 78 b9 e2; PD2 released; no CN105/flash writes
+PASS ARM bad CRC: TX=silent; PD2 released; no CN105/flash writes
+PASS ARM broadcast: TX=silent; PD2 released; no CN105/flash writes
+PASS ARM write rejected: TX=01 86 01 83 a0; PD2 released; no CN105/flash writes
+PASS ARM UART framing error: TX=silent; PD2 released; no CN105/flash writes
+PASS ARM TX timeout recovery: TX=silent; PD2 released; no CN105/flash writes
+PASS ARM PC12 heartbeat over 1.1 seconds: TX=01 04 02 03 78 b9 e2; PD2 released; no CN105/flash writes

@@ -9,6 +9,7 @@ int main(void) {
         uint8_t response[7], byte;
         int error;
         watchdog_refresh();
+        heartbeat(micros());
         size_t n = rtu_poll(&receiver, micros(), response, sizeof(response));
         if (n) (void)uart_send(response, n);
         if (uart_receive(&byte, &error)) rtu_feed(&receiver, byte, micros(), error);

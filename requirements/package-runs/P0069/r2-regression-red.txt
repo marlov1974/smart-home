@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/marcus/Documents/Codex/smart-home-procon/procon/tests/test_arm.py", line 102, in <module>
+    run_case(path,'read input0=888',REQUEST,reply)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/marcus/Documents/Codex/smart-home-procon/procon/tests/test_arm.py", line 85, in run_case
+    assert bytes(state['tx'])==expected,(name,state['tx'].hex(),expected.hex())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('read input0=888', '', '0104020378b9e2')

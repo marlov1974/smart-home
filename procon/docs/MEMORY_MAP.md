@@ -9,3 +9,5 @@ Candidate: raw1704 bytes, padded2048 bytes (one2KiB page), address range[0x08008
 [0x08000000,0x08008000) is the inferred resident bootloader reservation. Device-side bootloader is absent from supplied archive; its erase implementation has NOT been disassembled or independently verified. Existing vendor updater use and application VTOR support the boundary inference.
 
 Final M1 r2: procon/releases/P0069-m1-r2/procon-m1.bin is98304bytes (96KiB),0x08008000–0x0801FFFF, including0xFF padding over the previous original application footprint. Code still limited to16KiB; bootloader excluded. PC12 heartbeat toggles every500ms as startup indication; USART3 SWAP=1. Final BIN SHA2561ad976eef711558ed180a4037e84885f7d74b76175ac2ba0daea0d171f864073. Physical verification pending.
+
+P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 on PA9/10AF7 and read-only compressor telemetry. See `../releases/P0070-compressor-r1/README.md` and `CN105.md`. Same conservative flash/RAM/vector limits and96KiB FF envelope. Physical CN105 result pending. No setting writes or physical flash by Codex.

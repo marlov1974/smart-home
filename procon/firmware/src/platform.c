@@ -1,5 +1,6 @@
 /* P0069; register definitions cross-checked with ST stm32l433xx.h. */
 #include "platform.h"
+#include "cn105.h"
 #define REG(a) (*(volatile uint32_t *)(uintptr_t)(a))
 #define RCC 0x40021000u
 #define GPIOC 0x48000800u
@@ -90,6 +91,7 @@ static int wait_uart(uint32_t mask) {
     uint32_t start = micros();
     while (!(REG(UART + 0x1c) & mask)) {
         watchdog_refresh();
+        cn_service(); /* P0070: drain CN105 while RS485 TX waits. */
         if (micros() - start > 10000u) return 0;
     }
     return 1;
@@ -120,3 +122,38 @@ void heartbeat(uint32_t now) {
         last = now;
     }
 }
+
+/* P0070 CN105: original USART1 GPIO mapping, documented ATW 2400 8E1. */
+#define CN_UART 0x40013800u
+#define GPIOA 0x48000000u
+void cn_uart_init(void) {
+    REG(RCC + 0x4c) |= 1u;
+    (void)REG(RCC + 0x4c);
+    REG(GPIOA + 0x24) = (REG(GPIOA + 0x24) & ~0xff0u) | 0x770u;
+    REG(GPIOA + 4) &= ~0x600u;
+    REG(GPIOA + 8) = (REG(GPIOA + 8) & ~0x3c0000u) | 0x3c0000u;
+    REG(GPIOA + 0x0c) &= ~0x3c0000u;
+    REG(GPIOA) = (REG(GPIOA) & ~0x3c0000u) | 0x280000u;
+    REG(RCC + 0x60) |= 1u << 14;
+    (void)REG(RCC + 0x60);
+    REG(RCC + 0x40) |= 1u << 14;
+    REG(RCC + 0x40) &= ~(1u << 14);
+    REG(CN_UART) = 0;
+    REG(RCC + 0x88) = (REG(RCC + 0x88) & ~3u) | 2u;
+    REG(CN_UART + 4) = 0; /* No SWAP or inversion. */
+    REG(CN_UART + 8) = 0;
+    REG(CN_UART + 0x0c) = 6667; /* HSI16 / 2400 */
+    REG(CN_UART + 0x20) = 0xffffffffu;
+    REG(CN_UART + 0x18) = 8;
+    REG(CN_UART) = 0x140du; /* M0 | PCE | TE | RE | UE: 8 data + even parity. */
+}
+int cn_uart_receive(uint8_t *byte, int *error) {
+    uint32_t status = REG(CN_UART + 0x1c);
+    if (!(status & 0x2fu)) return 0;
+    *error = (status & 15u) != 0;
+    *byte = (status & 0x20u) ? (uint8_t)REG(CN_UART + 0x24) : 0;
+    if (*error) REG(CN_UART + 0x20) = status & 15u;
+    return 1;
+}
+int cn_uart_ready(void) { return (REG(CN_UART + 0x1c) & 0x80u) != 0; }
+void cn_uart_write(uint8_t byte) { REG(CN_UART + 0x28) = byte; }

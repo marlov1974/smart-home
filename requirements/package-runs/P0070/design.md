@@ -1,0 +1,7 @@
+# Implementation design
+
+Fresh bounded CN105 parser/state machine: maximum22-byte frame, FC/02/7A header, checksum, exact1-byte zero connect ACK (reference Melcloud.cpp) or16-byte GET0x04 response. TX whitelist consists solely of ATW connect and GET0x04. Connect every3s until ACK; poll once per2s after ACK. Missing valid response for10s invalidates cache and reconnects. One-byte UART TX servicing, no blocking CN105 waits. Bounded RX service also runs inside existing Modbus TX waits to prevent USART1 overrun during a Modbus response. Keep existing RS485 direction/TC/recovery path.
+
+Input map FC04 raw addresses0–15:888,build70,Hz(or65535 invalid),valid,age seconds(or65535 never),valid0x04 count low16,UART RX bytes low16,parser errors low16,TX frames low16,uptime seconds low16,Modbus requests low16,link state0/1,UART errors low16,last frame type,last query,handshake count low16. Maximum16-register block, unknown ranges exception2; all writes rejected. No compatibility claim with original H73. Diagnostic reads snapshot once per request.
+
+Tests cover protocol fixtures0/48/255Hz, invalid checksum/header/type/length, truncation/gap/error, reconnect/staleness and timer wrap; Modbus boundaries and larger replies; compiled ARM concurrent serial RX during RS485 TX and PC12 heartbeat; no flash/config writes. Preserve first-M1 and r2 artifacts. Package96KiB with FF tail and identical flash/RAM bounds. Hardware unknowns explicit in release.

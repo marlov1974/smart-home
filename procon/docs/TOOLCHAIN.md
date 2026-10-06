@@ -20,3 +20,5 @@ Setup uses Python venv/pip and an official Arm archive. [Arm installation guide]
 Unicorn JIT raised macOS illegal-instruction under the Codex sandbox. The identical test passed outside the sandbox. Grant JIT execution permission when required; do not count a sandbox crash as a passing test or hide failures. Tests have no serial/network device access.
 
 GNU Make accepts TOOLCHAIN=/path/to/toolchain and PYTHON=/path/to/python overrides for other supported compiler hosts. Original vector comparison used ST CMSIS-L4 commitca0bfa2b8b68dc2994b27fba0a10dfd28d086ee1, optional command `python tools/analyze_original.py /path/to/Source/Templates/gcc` from procon. Generated BIN deterministic across a forced full rebuild. No Ghidra/OpenOCD needed for this bounded milestone.
+
+P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 on PA9/10AF7 and read-only compressor telemetry. See `../releases/P0070-compressor-r1/README.md` and `CN105.md`. Same conservative flash/RAM/vector limits and96KiB FF envelope. Physical CN105 result pending. No setting writes or physical flash by Codex.

@@ -77,3 +77,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0065` updated `docs/functions/mac/shelly-live-deploy-tool.md` with live FTX brain deploy and P0059/P0060 target-floor code verification.
 
 `P0069` adds [Procon M1 firmware/tool contracts](procon-m1.md).
+
+`P0070` adds [Procon CN105 compressor telemetry](procon-cn105.md).

@@ -1,5 +1,5 @@
 {
-  "version": 16,
+  "version": 17,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -92,7 +92,8 @@
     "requirements/packages/P0066-repository-file-index.md",
     "requirements/packages/P0067-ha-ftx-industrial-svg.md",
     "requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md",
-    "requirements/packages/P0069-procon-m1-modbus-888.md"
+    "requirements/packages/P0069-procon-m1-modbus-888.md",
+    "requirements/packages/P0070-procon-compressor.md"
   ],
   "governance": {
     "truth_hierarchy": [

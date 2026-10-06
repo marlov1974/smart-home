@@ -17,7 +17,7 @@ def crc(data):
             value = (value >> 1) ^ (0xa001 if value & 1 else 0)
     return value.to_bytes(2, 'little')
 
-def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000):
+def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000, cn_hz=None, cn_corrupt=False, request_start=10000, second_request=None):
     u = Uc(UC_ARCH_ARM, UC_MODE_THUMB | UC_MODE_MCLASS)
     for address, size in [(0x08000000,0x40000),(0x20000000,0x10000),
                           (0x40000000,0x30000),(0x48000000,0x2000),(0xe000e000,0x2000)]:
@@ -37,6 +37,16 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
     write32(0xe000e010,7)
     state={'time':0,'index':0,'pending':None,'de':False,'tx_done':0,'tx':bytearray(),'de_high':0,'de_low':0,'led_edges':0}
     writes=set()
+    cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0}
+    request_times=[request_start+i*baud_gap for i in range(len(request))]
+    if second_request:
+        second_time,second_bytes=second_request
+        request_times += [second_time+i*baud_gap for i in range(len(second_bytes))]
+        request += second_bytes
+    def cn_packet(kind,payload):
+        b=bytes([0xfc,kind,2,0x7a,len(payload)])+payload
+        return b+bytes([(0xfc-sum(b))&255])
+
     def code(uc,address,size,data):
         state['time']+=1
         assert address != (symbols['Default_Handler']&~1), 'fault handler entered'
@@ -51,22 +61,44 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
             write32(address,now)
         elif address==UART+0x1c:
             idx=state['index']
-            if idx<len(request) and now>=10000+idx*baud_gap and state['pending'] is None and read32(UART+4)&0x8000:
+            if idx<len(request) and now>=request_times[idx] and state['pending'] is None and read32(UART+4)&0x8000:
                 state['pending']=request[idx];state['index']+=1
             status=0 if stall_tx else (0xc0 if now>=state['tx_done'] else 0)
             if state['pending'] is not None and read32(UART)&4:
                 status|=0x20
                 if rx_error and state['index']==3: status|=2
             write32(address,status)
+        elif address==0x4001381c:
+            status=0xc0 if now>=cn['next_tx'] else 0
+            if cn['schedule'] and now>=cn['schedule'][0][0]:
+                assert now-cn['schedule'][0][0]<4584, 'CN105 RX overrun during Modbus TX'
+                status|=0x20
+            write32(address,status)
+        elif address==0x40013824:
+            _,b=cn['schedule'].pop(0); write32(address,b);cn['rx']+=1
         elif address==UART+0x24:
             write32(address,state['pending'] or 0);state['pending']=None
     def mem_write(uc,access,address,size,value,data):
         if 0x20000000<=address<0x20010000: return
         permitted=(RCC<=address<RCC+0x100 or 0x40000000<=address<0x40000040 or
-                   UART<=address<UART+0x30 or 0x48000800<=address<0x48000c30 or
+                   UART<=address<UART+0x30 or 0x40013800<=address<0x40013830 or 0x48000000<=address<0x48000030 or 0x48000800<=address<0x48000c30 or
                    address==0x40003000 or 0xe000e000<=address<0xe000f000)
         assert permitted, f'unexpected MMIO/flash write {address:#x}'
         writes.add(address)
+        if address==0x40013828:
+            assert read32(0x40013800)==0x140d and read32(0x40013804)==0
+            assert read32(0x4001380c)==6667
+            cn['next_tx']=state['time']+4584
+            cn['tx'].append(value&255);cn['wire'].append(value&255)
+            if len(cn['tx'])>=5 and len(cn['tx'])==cn['tx'][4]+6:
+                packet=bytes(cn['tx']);cn['tx'].clear()
+                assert (sum(packet)&255)==0xfc
+                assert packet==bytes.fromhex('fc 5a 02 7a 02 ca 01 5d') or packet==cn_packet(0x42,bytes([4])+bytes(15)), 'forbidden CN105 command'
+                if cn_hz is not None:
+                    response=cn_packet(0x7a,bytes([0])) if packet[1]==0x5a else cn_packet(0x62,bytes([4,cn_hz])+bytes(14))
+                    if cn_corrupt and packet[1]==0x42: response=response[:-1]+bytes([response[-1]^1])
+                    begin=state['time']+20000
+                    cn['schedule'] += [(begin+i*4584,b) for i,b in enumerate(response)]
         if address==0x48000814:
             if (read32(address)^value)&(1<<12): state['led_edges']+=1
         if address==PD+0x18:
@@ -98,8 +130,13 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
     assert read32(0x48000800)&(3<<24)==1<<24
     if duration>=1100000: assert state['led_edges']>=2, 'missing PC12 heartbeat'
     assert 0x40003000 in writes
-    assert read32(0x40013800)==0, 'CN105 USART1 touched'
-    print(f'PASS ARM {name}: TX={bytes(state["tx"]).hex(" ") or "silent"}; PD2 released; no CN105/flash writes')
+    assert read32(0x40013800)==0x140d
+    assert read32(0x40013804)==0 and read32(0x4001380c)==6667
+    assert read32(0x48000000)&0x3c0000==0x280000
+    assert read32(0x48000024)&0xff0==0x770
+    assert read32(RCC+0x88)&3==2
+    if cn_hz is not None: assert cn['rx']>=29, 'CN105 ACK/GET not exercised'
+    print(f'PASS ARM {name}: TX={bytes(state["tx"]).hex(" ") or "silent"}; PD2 released; CN105 whitelist; no flash writes')
 
 if __name__=='__main__':
     path=Path(sys.argv[1]);reply=bytes.fromhex('01 04 02 03 78');reply+=crc(reply)
@@ -112,3 +149,8 @@ if __name__=='__main__':
     run_case(path,'TX timeout recovery',REQUEST,b'',stall_tx=True)
 
     run_case(path,'PC12 heartbeat over 1.1 seconds',REQUEST,reply,duration=1100000)
+
+    request=bytes.fromhex('01 04 00 02 00 02');request+=crc(request)
+    for hz,corrupt in [(48,False),(0,False),(48,True)]:
+        data=bytes.fromhex('01 04 04')+(65535 if corrupt else hz).to_bytes(2,'big')+bytes([0,0 if corrupt else 1])
+        run_case(path,f'concurrent CN105 {hz}Hz corrupt={corrupt}',REQUEST,reply+data+crc(data),duration=3400000,cn_hz=hz,cn_corrupt=corrupt,request_start=3130000,second_request=(3300000,request))

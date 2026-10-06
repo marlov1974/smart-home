@@ -18,3 +18,5 @@ Addresses refer only to immutable original SHA2562ae03b0c…6564766. See analysi
 Updater static IL: analysis/updater-il.txt. init_serialport uses1152008N1; worker sends0x5A discovery, reads device-reported sizes;0x51 erase offset0 and BINlength;0x53 writes file offsets starting0, block CRC/checksum. No host-side BIN signature/header validation beyond nonempty and device maximum size. Device address translation remains unavailable.
 
 P0069 r2:0x080099CC–0x080099E8 sets USART3 AdvancedInit0x38 and Swap0x8000; USART3 uses swapped AF7 pin directions. Missing this caused the first candidate to disagree with original hardware configuration.
+
+P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 on PA9/10AF7 and read-only compressor telemetry. See `../releases/P0070-compressor-r1/README.md` and `CN105.md`. Same conservative flash/RAM/vector limits and96KiB FF envelope. Physical CN105 result pending. No setting writes or physical flash by Codex.

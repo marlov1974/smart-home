@@ -10,4 +10,8 @@ int uart_send(const uint8_t *bytes, size_t n);
 uint32_t micros(void);
 void watchdog_refresh(void);
 void heartbeat(uint32_t now);
+void cn_uart_init(void);
+int cn_uart_receive(uint8_t *byte, int *error);
+int cn_uart_ready(void);
+void cn_uart_write(uint8_t byte);
 #endif

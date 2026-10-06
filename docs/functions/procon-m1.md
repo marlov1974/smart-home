@@ -5,3 +5,5 @@ Contract: FC04 address0 quantity1 =>888, unit1,96008N1. No writes/CN105. `modbus
 Development tools: setup.sh installs a local pinned compiler/Python environment. check_image.check validates ELF/load/vector bounds and emits padded BIN metadata. analyze_original.main verifies immutable input and writes bounded disassembly/vector evidence; analyze_updater.main reads .NET IL without running Windows code. test_arm.run_case executes the compiled ELF with mocked peripherals and checks wire bytes/MMIO/DE. No existing G2 functions changed.
 
 P0069 attempt2: heartbeat(now_us) toggles PC12 every500ms for M1 startup diagnostics. uart_init sets original-board USART3 SWAP=1 (PC10 RX,PC11 TX). test_arm.run_case models pin routing and checks heartbeat over1.1s. check_image.check uses separate16KiB code bounds and96KiB original-application erase envelope filled with0xFF.
+
+P0070 retains the input0=888 and heartbeat contract; M1 r2 hardware pass recorded. Current map and CN105 functions: [procon-cn105.md](procon-cn105.md).

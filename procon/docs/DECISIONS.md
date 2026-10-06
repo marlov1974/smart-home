@@ -10,3 +10,5 @@
 - Conservative16KiB app/16KiB SRAM linker,2KiB padded candidate; retain original recovery files. Software pass is distinct from hardware milestone completion.
 
 P0069 r2: fix proven USART3 SWAP omission before speculative start-vector changes. Add PC12 heartbeat on operator report of no LEDs, and extend delivered BIN to old application page footprint (98304bytes) using0xFF. Preserve first release unchanged for regression evidence.
+
+P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 on PA9/10AF7 and read-only compressor telemetry. See `../releases/P0070-compressor-r1/README.md` and `CN105.md`. Same conservative flash/RAM/vector limits and96KiB FF envelope. Physical CN105 result pending. No setting writes or physical flash by Codex.

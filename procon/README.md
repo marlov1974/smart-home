@@ -1,14 +1,7 @@
 # Procon firmware development
 
-Subproject of Smart Home; no nested repository. First experimental clean-source M1 candidate is in [releases/P0069-m1-r2](releases/P0069-m1-r2/README.md).
+Subproject of Smart Home. Latest experimental candidate: [P0070 compressor r1](releases/P0070-compressor-r1/README.md).
 
-**Input register0 =888**, Modbus FC04/slave1/96008N1. STM32L433 hardware inferred from original reference, not physically identified. Software/ARM emulation checks passed; physical flash/readback pending operator. CN105 is not implemented.
+M1 r2 is hardware-confirmed (five input0=888 replies and operator-reported heartbeat). P0070 adds read-only CN105 connect/GET0x04 and input2 compressor Hz. Input3 must be1 before using it;65535 means unknown/stale. Physical P0070 verification awaits operator flash. RS485 remains slave1,96008N1,FC04; input0=888, input1=70. Full register map and recovery notes are in the release README.
 
-```sh
-sh procon/tools/setup.sh
-make -C procon verify
-```
-
-Read docs/HARDWARE.md, docs/TOOLCHAIN.md and docs/RECOVERY.md. CODEX_TASK.md is the milestone scope; P0069 records the user's explicit permission to proceed with an inferred MCU and operator-managed physical flash. Original ZIP/BIN remain immutable under reference/original. Do not broaden beyond M1 until hardware readback succeeds.
-
-M1 first physical readback failed (seven timeouts). r2 corrects proven USART3 TX/RX SWAP omission; updated ARM wiring test rejects first ELF and passes r2. Physical r2 result pending.
+Build/test: `sh procon/tools/setup.sh`, then `make -C procon verify`. Operator alone performs physical flashing. Original ZIP/BIN and old M1 releases remain immutable. Inferred STM32L433 target; exact part marking unavailable. See docs/HARDWARE.md, docs/TOOLCHAIN.md and docs/RECOVERY.md.

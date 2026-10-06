@@ -14,3 +14,9 @@ Decision after test14: stop incremental scheduler patching. Reverse-engineer onl
 - P0069: original verified, L433 family inferred, fresh2KiB M1 candidate built. Native sanitizers and six compiled-ARM simulated cases pass. No original routines patched or copied. No flash performed by Codex; operator physical test pending.
 
 P0069 attempt2: initial M1 hardware readback failed with seven timeouts. Shelly settings96008N1 verified; operator confirmed flash/reconnect/DIP/reset. Original USART3 SWAP=1 was omitted in M1; r2 corrects only CR2 bit15 and passes enhanced wiring-aware emulator. Physical r2 test pending.
+
+## P0070 — 2026-10-06
+
+M1 r2 hardware pass: operator reports blinking; five consecutive FC04 raw input0 reads returned888. Evidence: `analysis/live/20261006T190106Z-m1-r2-readback.json`. This supersedes older pending-M1 status.
+
+P0070 adds USART1 read-only ATW connect/GET0x04. Input0 stays888; input1=70, input2=Hz or65535 unknown/stale; input3 validity, input4 age and further counters. UART/packet errors are visible. CN105 electrical communication remains unverified until operator flashes P0070 and live values are captured. No device setting writes by this package. Firmware tests pass; hardware milestone M3/M4 remains pending.

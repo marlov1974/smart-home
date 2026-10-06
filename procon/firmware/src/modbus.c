@@ -1,5 +1,7 @@
 /* P0069: clean implementation, no dependency on original application code. */
 #include "modbus.h"
+#include "cn105.h"
+static uint16_t request_count;
 
 uint16_t crc16(const uint8_t *data, size_t length) {
     uint16_t crc = 0xffffu;
@@ -13,21 +15,29 @@ uint16_t crc16(const uint8_t *data, size_t length) {
 
 size_t modbus_reply(const uint8_t *r, size_t n, uint8_t *out, size_t capacity) {
     if (n < 4 || n > 256 || r[0] != 1 || crc16(r, n) != 0) return 0;
+    ++request_count;
     uint8_t exception = 0;
+    unsigned address=0, quantity=0;
     if (r[1] != 4) exception = 1;
     else {
         if (n != 8) return 0;
-        unsigned address = ((unsigned)r[2] << 8) | r[3];
-        unsigned quantity = ((unsigned)r[4] << 8) | r[5];
+        address = ((unsigned)r[2] << 8) | r[3];
+        quantity = ((unsigned)r[4] << 8) | r[5];
         if (quantity == 0 || quantity > 125) exception = 3;
-        else if (address != 0 || quantity != 1) exception = 2;
+        else if (address >= REGISTER_COUNT || quantity > REGISTER_COUNT-address) exception = 2;
     }
-    size_t payload = exception ? 3u : 5u;
+    size_t payload = exception ? 3u : 3u+quantity*2u;
     if (capacity < payload + 2) return 0;
     out[0] = 1;
     out[1] = exception ? (uint8_t)(r[1] | 0x80u) : 4;
-    out[2] = exception ? exception : 2;
-    if (!exception) { out[3] = 0x03; out[4] = 0x78; }
+    out[2] = exception ? exception : (uint8_t)(quantity*2u);
+    if (!exception) {
+        for(unsigned i=0;i<quantity;++i) {
+            unsigned a=address+i;
+            uint16_t value=a==10?request_count:cn_read(a);
+            out[3+i*2]=(uint8_t)(value>>8);out[4+i*2]=(uint8_t)value;
+        }
+    }
     uint16_t crc = crc16(out, payload);
     out[payload] = (uint8_t)crc;
     out[payload + 1] = (uint8_t)(crc >> 8);

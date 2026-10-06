@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 480
+Tracked file count: 482
 
 ## Files
 
@@ -95,6 +95,7 @@ Tracked file count: 480
 - `procon/README.md`
 - `procon/analysis/live/20261006T175327Z-m1-readback.json`
 - `procon/analysis/live/20261006T190106Z-m1-r2-readback.json`
+- `procon/analysis/live/20261006T192335Z-p0070-compressor.json`
 - `procon/analysis/original-excerpts.txt`
 - `procon/analysis/reference-analysis.json`
 - `procon/analysis/updater-il.txt`
@@ -291,6 +292,7 @@ Tracked file count: 480
 - `requirements/package-runs/P0069/review.md`
 - `requirements/package-runs/P0070/CHANGELOG.md`
 - `requirements/package-runs/P0070/design.md`
+- `requirements/package-runs/P0070/findings.md`
 - `requirements/package-runs/P0070/functions.md`
 - `requirements/package-runs/P0070/review.md`
 - `requirements/package-runs/P0070/verification.txt`

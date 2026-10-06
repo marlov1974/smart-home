@@ -1,0 +1,153 @@
+{
+  "firmware": "P0070 compressor r1",
+  "commit": "391d903dc9e8197bfda9b83a93014788e06fced9",
+  "read_only": true,
+  "endpoint": "http://192.168.86.85/rpc/MbRtuClient.ReadInputRegisters?id=100&sid=1&addr=0&qty=16",
+  "samples": [
+    {
+      "timestamp": "2026-10-06T19:23:35.221Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          1,
+          109,
+          2405,
+          0,
+          110,
+          221,
+          2,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-06T19:23:37.391Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          0,
+          111,
+          2449,
+          0,
+          112,
+          223,
+          3,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-06T19:23:39.567Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          0,
+          112,
+          2471,
+          0,
+          113,
+          225,
+          4,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-06T19:23:41.747Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          0,
+          113,
+          2493,
+          0,
+          114,
+          227,
+          5,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-06T19:23:43.915Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          0,
+          114,
+          2515,
+          0,
+          115,
+          229,
+          6,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-10-06T19:23:46.092Z",
+      "exit_code": 0,
+      "response": {
+        "values": [
+          888,
+          70,
+          20,
+          1,
+          0,
+          115,
+          2537,
+          0,
+          116,
+          231,
+          7,
+          1,
+          0,
+          98,
+          4,
+          1
+        ]
+      }
+    }
+  ],
+  "result": "Six reads:20Hz valid,age0–1s,accepted CN105 replies109→115,parse/UART errors0."
+}

@@ -1,4 +1,4 @@
-/* P0070: read-only ATW CN105 and Modbus telemetry, no control writes. */
+/* P0071: read-only ATW CN105 and Modbus telemetry, no control writes. */
 #include "modbus.h"
 #include "platform.h"
 #include "cn105.h"
@@ -26,7 +26,7 @@ int main(void) {
     cn_init(); cn_uart_init();
     last_us=micros();
     for (;;) {
-        uint8_t response[5+2*REGISTER_COUNT], byte;
+        uint8_t response[5+2*REGISTER_READ_MAX], byte;
         int error;
         watchdog_refresh();
         heartbeat(micros());

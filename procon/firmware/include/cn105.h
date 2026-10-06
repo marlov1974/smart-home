@@ -1,9 +1,10 @@
-/* P0070: read-only CN105 telemetry. */
+/* P0071: read-only CN105 telemetry. */
 #ifndef CN105_H
 #define CN105_H
 #include <stdint.h>
 #include <stddef.h>
-#define REGISTER_COUNT 16u
+#define REGISTER_COUNT 68u
+#define REGISTER_READ_MAX 16u
 void cn_init(void);
 void cn_feed(uint8_t byte, uint32_t now_ms, int error);
 void cn_tick(uint32_t now_ms);

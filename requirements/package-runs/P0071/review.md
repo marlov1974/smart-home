@@ -1,0 +1,7 @@
+# P0071 consistency review — WARN
+
+Synced clean baseline bef81d87e82441fe89e99a6573f99a2d392a6759 from origin/main before inspection. P0070 physical readback proves Modbus and CN105 compressor path. Package is consistent with that baseline; no unrelated G2 edits. User explicitly requests full package build. Operator owns physical installation and read-only hardware validation under P0071; do not run live tests or claim hardware completion from simulation.
+
+Existing pinned reference F1p7687d11e8f4ec23de13f2c95bcdf76ebe9daebb5: Ecodan.cpp WriteServiceCodeCMD builds GET/A3 with big-endian service echo in payload1/2. EcodanDecoder.cpp Process0xA3 treats status1 or2 as complete and status0 as pending; other nonzero values terminate without a value. ExtractInt16_v2_Signed reads payload4/5 little-endian signed16. ECODAN_Bridge.ino2029–2030 publishes TH32/TH34 directly as BrineInletTemp/BrineOutletTemp. Supports provisional whole-degree signed decoding, not physical calibration. Preserve full16-byte completed payload for both services independently.
+
+WARN: service responses may stay pending as in historical experiments; link arbitration must never starve compressor reads. Existing GET04 scheduler lacks explicit transaction ownership; a package-scoped arbiter is necessary. Historical patched scheduler/hook architecture will not be used. P0071 package was not yet in file index/manifest; update them.

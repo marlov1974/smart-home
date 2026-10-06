@@ -33,20 +33,20 @@ int main(void) {
     }
     memcpy(r,read0,8);r[1]=6;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[1]==0x86 && out[2]==1 && crc16(out,5)==0);
-    memcpy(r,read0,8);r[3]=16;seal(r,8);
+    memcpy(r,read0,8);r[3]=REGISTER_COUNT;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
-    memcpy(r,read0,8);r[3]=0;r[5]=17;seal(r,8);
+    memcpy(r,read0,8);r[3]=0;r[5]=REGISTER_COUNT+1;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
     r[5]=0;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==3);
     r[5]=126;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==3);
     /* P0070 block reads, small output capacity and overflow-safe range. */
-    memcpy(r,read0,8);r[5]=16;seal(r,8);
+    memcpy(r,read0,8);r[5]=REGISTER_READ_MAX;seal(r,8);
     assert(modbus_reply(r,8,out,sizeof out)==37 && out[2]==32 && crc16(out,37)==0);
-    assert(out[3]==3 && out[4]==120 && out[5]==0 && out[6]==70);
+    assert(out[3]==3 && out[4]==120 && out[5]==0 && out[6]==71);
     assert(out[7]==255 && out[8]==255 && out[9]==0 && out[10]==0);
     memset(out,0xa5,sizeof out);assert(modbus_reply(r,8,out,36)==0);
     for(size_t i=0;i<sizeof out;i++)assert(out[i]==0xa5);
-    r[3]=15;r[5]=1;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==7);
+    r[3]=REGISTER_COUNT-1;r[5]=1;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==7);
     r[5]=2;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
     r[2]=255;r[3]=255;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
     rtu_state s={0}; uint32_t last=feed(&s,read0,8,10000,0);

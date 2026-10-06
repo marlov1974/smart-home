@@ -20,3 +20,7 @@ Updater static IL: analysis/updater-il.txt. init_serialport uses1152008N1; worke
 P0069 r2:0x080099CC–0x080099E8 sets USART3 AdvancedInit0x38 and Swap0x8000; USART3 uses swapped AF7 pin directions. Missing this caused the first candidate to disagree with original hardware configuration.
 
 P0070: M1 r2 now hardware-confirmed; next experimental build adds CN10524008E1 on PA9/10AF7 and read-only compressor telemetry. See `../releases/P0070-compressor-r1/README.md` and `CN105.md`. Same conservative flash/RAM/vector limits and96KiB FF envelope. Physical CN105 result pending. No setting writes or physical flash by Codex.
+
+## P0071 brine candidate
+
+Adds a separate read-only service27/28 state machine with exclusive CN105 transaction ownership, bounded retries and continued GET04 telemetry. Preserves P0070 registers0–15 (build marker71); adds16–67, with max16 registers per read. Raw completed payloads are retained per service; temperature candidates use reference-backed signed little-endian encoding and remain experimental. See [BRINE.md](BRINE.md) and `../releases/P0071-brine-r1/README.md`. Software tests pass; no P0071 hardware readings or physical flash yet. Previous P0070 hardware result remains valid historical evidence.

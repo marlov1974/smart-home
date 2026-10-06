@@ -1,0 +1,25 @@
+mkdir -p build
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=soft -std=c11 -Os -g3 -Wall -Wextra -Werror -ffreestanding -fno-builtin -ffunction-sections -fdata-sections -fno-unwind-tables -fno-asynchronous-unwind-tables -Ifirmware/include -ffile-prefix-map=/private/tmp/procon-brine/procon=. firmware/startup/startup.S firmware/src/main.c firmware/src/platform.c firmware/src/modbus.c firmware/src/cn105.c firmware/src/service.c -nostdlib -Wl,--gc-sections,--build-id=none,-Map,build/procon-brine.map -Tfirmware/linker.ld -o build/procon-brine.elf
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_modbus.c firmware/src/modbus.c firmware/src/cn105.c firmware/src/service.c -o build/host-test
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_cn105.c firmware/src/cn105.c firmware/src/service.c -o build/cn-test
+.local/venv/bin/python tools/check_image.py build/procon-brine.elf .local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objcopy
+PASS image bounds/vectors: {"package": "P0071", "status": "experimental-unverified-on-hardware", "mcu_assumption": "STM32L433xx, exact package/density unverified", "base": "0x8008000", "end_exclusive": "0x8020000", "initial_sp": "0x20004000", "reset_vector": "0x800818d", "raw_bytes": 5312, "padded_bytes": 98304, "revision": "Geodan brine r1", "cn105": "USART1 PA9 TX/PA10 RX, 2400 8E1, GET04 and read-only A3 service27/28", "uart_cr2": "0x00008000", "pin_routing": "PC10 RX, PC11 TX, AF7 with SWAP=1", "heartbeat": "PC12 toggles every 500 ms", "padding": "0xFF through original application footprint, not entire unknown flash", "sha256": "dab6f29a694ddade4c87d967451c7be476fc1a300cebee45a5f335905a51e3ca", "serial": "9600 8N1", "slave_id": 1, "function": 4, "address": 0, "value": 888, "bootloader_verification": "device bootloader absent; vendor host protocol analyzed only"}
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-objdump -d build/procon-brine.elf > build/procon-brine.disasm.txt
+.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/arm-none-eabi-size build/procon-brine.elf
+   text	   data	    bss	    dec	    hex	filename
+   5312	      0	    500	   5812	   16b4	build/procon-brine.elf
+PASS host: CRC golden vector, 64 corruptions, 256 unit IDs, exceptions, capacities, RTU timing/overflow/error recovery/wrap, 20000 malformed packets (ASan/UBSan)
+PASS CN105 service simulation mode0, base0, normal32, svc27=9 svc28=9 cycles3
+PASS CN105 service simulation mode1, base0, normal32, svc27=20 svc28=20 cycles2
+PASS CN105 service simulation mode2, base0, normal32, svc27=20 svc28=20 cycles2
+PASS CN105 service simulation mode3, base0, normal32, svc27=20 svc28=20 cycles2
+PASS CN105 service simulation mode4, base0, normal32, svc27=20 svc28=20 cycles2
+PASS CN105 service simulation mode5, base0, normal32, svc27=4 svc28=4 cycles4
+PASS CN105 service simulation mode7, base0, normal32, svc27=20 svc28=20 cycles2
+PASS CN105 service simulation mode0, base4294963200, normal33, svc27=9 svc28=9 cycles3
+PASS CN105 P0071: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/normal telemetry; ASan+UBSan
+
+PASS forced deterministic BIN rebuild: dab6f29a694ddade4c87d967451c7be476fc1a300cebee45a5f335905a51e3ca
+PASS full FF tail, original BIN SHA256 and every previous release checksum
+PASS offline logging helper: signed endian, reconstructed checksum, inconsistent snapshot rejection
+ARM output: arm-verification.txt; all12 cases passed. No hardware actions performed for P0071.

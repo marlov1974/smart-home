@@ -24,7 +24,7 @@ size_t modbus_reply(const uint8_t *r, size_t n, uint8_t *out, size_t capacity) {
         address = ((unsigned)r[2] << 8) | r[3];
         quantity = ((unsigned)r[4] << 8) | r[5];
         if (quantity == 0 || quantity > 125) exception = 3;
-        else if (address >= REGISTER_COUNT || quantity > REGISTER_COUNT-address) exception = 2;
+        else if (address >= REGISTER_COUNT || quantity > REGISTER_READ_MAX || quantity > REGISTER_COUNT-address) exception = 2;
     }
     size_t payload = exception ? 3u : 3u+quantity*2u;
     if (capacity < payload + 2) return 0;

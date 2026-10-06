@@ -79,3 +79,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0069` adds [Procon M1 firmware/tool contracts](procon-m1.md).
 
 `P0070` adds [Procon CN105 compressor telemetry](procon-cn105.md).
+
+`P0071` adds [Procon service27/28 brine operations](procon-brine.md).

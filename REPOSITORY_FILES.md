@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 482
+Tracked file count: 502
 
 ## Files
 
@@ -41,6 +41,7 @@ Tracked file count: 482
 - `docs/functions/mac/shelly-device-management-tool.md`
 - `docs/functions/mac/shelly-live-deploy-tool.md`
 - `docs/functions/mac/weather-contract-tool.md`
+- `docs/functions/procon-brine.md`
 - `docs/functions/procon-cn105.md`
 - `docs/functions/procon-m1.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
@@ -99,6 +100,7 @@ Tracked file count: 482
 - `procon/analysis/original-excerpts.txt`
 - `procon/analysis/reference-analysis.json`
 - `procon/analysis/updater-il.txt`
+- `procon/docs/BRINE.md`
 - `procon/docs/CN105.md`
 - `procon/docs/DECISIONS.md`
 - `procon/docs/EXPERIMENT_HISTORY.md`
@@ -113,11 +115,13 @@ Tracked file count: 482
 - `procon/firmware/include/cn105.h`
 - `procon/firmware/include/modbus.h`
 - `procon/firmware/include/platform.h`
+- `procon/firmware/include/service.h`
 - `procon/firmware/linker.ld`
 - `procon/firmware/src/cn105.c`
 - `procon/firmware/src/main.c`
 - `procon/firmware/src/modbus.c`
 - `procon/firmware/src/platform.c`
+- `procon/firmware/src/service.c`
 - `procon/firmware/startup/startup.S`
 - `procon/reference/original/A1M_R5_Release_08008000.bin`
 - `procon/reference/original/IMPORT_MANIFEST.json`
@@ -145,12 +149,20 @@ Tracked file count: 482
 - `procon/releases/P0070-compressor-r1/procon-compressor.elf`
 - `procon/releases/P0070-compressor-r1/procon-compressor.json`
 - `procon/releases/P0070-compressor-r1/procon-compressor.map`
+- `procon/releases/P0071-brine-r1/README.md`
+- `procon/releases/P0071-brine-r1/SHA256SUMS`
+- `procon/releases/P0071-brine-r1/procon-brine.bin`
+- `procon/releases/P0071-brine-r1/procon-brine.disasm.txt`
+- `procon/releases/P0071-brine-r1/procon-brine.elf`
+- `procon/releases/P0071-brine-r1/procon-brine.json`
+- `procon/releases/P0071-brine-r1/procon-brine.map`
 - `procon/tests/test_arm.py`
 - `procon/tests/test_cn105.c`
 - `procon/tests/test_modbus.c`
 - `procon/tools/analyze_original.py`
 - `procon/tools/analyze_updater.py`
 - `procon/tools/check_image.py`
+- `procon/tools/read_brine.py`
 - `procon/tools/requirements.txt`
 - `procon/tools/setup.sh`
 - `requirements/README.md`
@@ -296,6 +308,13 @@ Tracked file count: 482
 - `requirements/package-runs/P0070/functions.md`
 - `requirements/package-runs/P0070/review.md`
 - `requirements/package-runs/P0070/verification.txt`
+- `requirements/package-runs/P0071/CHANGELOG.md`
+- `requirements/package-runs/P0071/arm-verification.txt`
+- `requirements/package-runs/P0071/design.md`
+- `requirements/package-runs/P0071/functions.md`
+- `requirements/package-runs/P0071/hardware-validation.md`
+- `requirements/package-runs/P0071/review.md`
+- `requirements/package-runs/P0071/verification.txt`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -338,6 +357,7 @@ Tracked file count: 482
 - `requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md`
 - `requirements/packages/P0069-procon-m1-modbus-888.md`
 - `requirements/packages/P0070-procon-compressor.md`
+- `requirements/packages/P0071-procon-geodan-brine.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

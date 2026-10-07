@@ -1,0 +1,4 @@
+Isolated docs-only fixture: only docs/ and tests/test_platform_spec.py present; no firmware, original BIN, vendor updater or private analysis.
+PASS P0074 documentation: 24 Markdown files, 8 Modbus and 13 CN105 vectors; platform, sequencing, wrap and links
+Firmware source comparison: 13/13 identical to source baseline.
+Sanitization: 82 tracked text files, zero findings.

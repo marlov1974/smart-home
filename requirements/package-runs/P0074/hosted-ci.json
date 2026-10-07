@@ -1,0 +1,95 @@
+{
+  "id": 37586676765,
+  "head_sha": "474bc171310886f0c61a60c21b6e48b34657061e",
+  "status": "completed",
+  "conclusion": "success",
+  "html_url": "https://github.com/marlov1974/procon-melcobems-mini-a1m/actions/runs/37586676765",
+  "jobs": [
+    {
+      "id": 112678305810,
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-07T07:20:08Z",
+          "completed_at": "2026-10-07T07:20:10Z"
+        },
+        {
+          "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-07T07:20:10Z",
+          "completed_at": "2026-10-07T07:20:11Z"
+        },
+        {
+          "name": "Run sudo apt-get update && sudo apt-get install -y clang make python3-venv",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-07T07:20:11Z",
+          "completed_at": "2026-10-07T07:20:21Z"
+        },
+        {
+          "name": "Run sh tools/setup.sh",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-07T07:20:21Z",
+          "completed_at": "2026-10-07T07:20:46Z"
+        },
+        {
+          "name": "Run make verify",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-07T07:20:46Z",
+          "completed_at": "2026-10-07T07:21:29Z"
+        },
+        {
+          "name": "Run .local/venv/bin/python tools/sanitize.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-07T07:21:29Z",
+          "completed_at": "2026-10-07T07:21:29Z"
+        },
+        {
+          "name": "Run .local/venv/bin/python tools/release.py",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-07T07:21:29Z",
+          "completed_at": "2026-10-07T07:21:32Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-07T07:21:32Z",
+          "completed_at": "2026-10-07T07:21:33Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-07T07:21:33Z",
+          "completed_at": "2026-10-07T07:21:33Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-07T07:21:33Z",
+          "completed_at": "2026-10-07T07:21:33Z"
+        }
+      ]
+    }
+  ]
+}

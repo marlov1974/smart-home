@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 551
+Tracked file count: 563
 
 ## Files
 
@@ -46,6 +46,7 @@ Tracked file count: 551
 - `docs/functions/procon-export.md`
 - `docs/functions/procon-m1.md`
 - `docs/functions/procon-mvp.md`
+- `docs/functions/procon-platform-spec.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
 - `docs/functions/shelly/supply-uni-publisher.md`
 - `docs/functions/shelly/weather.md`
@@ -362,6 +363,16 @@ Tracked file count: 551
 - `requirements/package-runs/P0073/sanitization.json`
 - `requirements/package-runs/P0073/standalone-verification.txt`
 - `requirements/package-runs/P0073/traceability.json`
+- `requirements/package-runs/P0074/CHANGELOG.md`
+- `requirements/package-runs/P0074/acceptance.md`
+- `requirements/package-runs/P0074/design.md`
+- `requirements/package-runs/P0074/findings.md`
+- `requirements/package-runs/P0074/functions.md`
+- `requirements/package-runs/P0074/hosted-ci.json`
+- `requirements/package-runs/P0074/review.md`
+- `requirements/package-runs/P0074/sanitization.json`
+- `requirements/package-runs/P0074/traceability.json`
+- `requirements/package-runs/P0074/verification.txt`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -407,6 +418,7 @@ Tracked file count: 551
 - `requirements/packages/P0071-procon-geodan-brine.md`
 - `requirements/packages/P0072-procon-mvp-telemetry-control.md`
 - `requirements/packages/P0073-public-procon-open-source-export.md`
+- `requirements/packages/P0074-procon-a1m-clean-room-platform-spec.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

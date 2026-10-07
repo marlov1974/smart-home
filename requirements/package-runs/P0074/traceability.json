@@ -1,0 +1,20 @@
+{
+  "package": "P0074",
+  "source_commit": "687abf69ef68952617e6f9f174aa88542f26b773",
+  "destination_repository": "marlov1974/procon-melcobems-mini-a1m",
+  "destination_base": "be4f02e4b31c09eed5073a151925361b4fd2bad8",
+  "destination_commit": "474bc171310886f0c61a60c21b6e48b34657061e",
+  "destination_tree": "3c2e4a7403b75d062508847c326b24b97439e379",
+  "visibility": "private",
+  "visibility_changed": false,
+  "firmware_source_files_unchanged": 13,
+  "new_markdown_reference_guide_files": 24,
+  "golden_frames": 21,
+  "live_actions": [],
+  "local_doc_check": "PASS",
+  "sanitization": "PASS",
+  "ci": {
+    "run": 37586676765,
+    "conclusion": "success"
+  }
+}

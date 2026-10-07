@@ -85,3 +85,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0072` adds [Procon MVP telemetry](procon-mvp.md).
 
 `P0073` adds [standalone Procon export and protocol research](procon-export.md).
+
+- [P0074 Procon platform specification checks](procon-platform-spec.md)

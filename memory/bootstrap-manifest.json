@@ -1,5 +1,5 @@
 {
-  "version": 18,
+  "version": 19,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -94,7 +94,11 @@
     "requirements/packages/P0068-p3-office-autonomous-l1-l2-floor-heating.md",
     "requirements/packages/P0069-procon-m1-modbus-888.md",
     "requirements/packages/P0070-procon-compressor.md",
-    "requirements/packages/P0071-procon-geodan-brine.md"
+    "requirements/packages/P0071-procon-geodan-brine.md",
+    "requirements/packages/P0072-procon-mvp-telemetry-control.md",
+    "requirements/packages/P0073-public-procon-open-source-export.md",
+    "requirements/packages/P0074-procon-a1m-clean-room-platform-spec.md",
+    "requirements/packages/P0075-procon-shelly-firmware-readback.md"
   ],
   "governance": {
     "truth_hierarchy": [

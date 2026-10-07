@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 603
+Tracked file count: 604
 
 ## Files
 
@@ -459,6 +459,7 @@ Tracked file count: 603
 - `requirements/packages/P0072-procon-mvp-telemetry-control.md`
 - `requirements/packages/P0073-public-procon-open-source-export.md`
 - `requirements/packages/P0074-procon-a1m-clean-room-platform-spec.md`
+- `requirements/packages/P0075-procon-shelly-firmware-readback.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

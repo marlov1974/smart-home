@@ -17,7 +17,7 @@ def crc(data):
             value = (value >> 1) ^ (0xa001 if value & 1 else 0)
     return value.to_bytes(2, 'little')
 
-def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000, cn_hz=None, cn_corrupt=False, request_start=10000, second_request=None, extra_requests=None, service_mode="complete", inspect=None):
+def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000, cn_hz=None, cn_corrupt=False, request_start=10000, second_request=None, extra_requests=None, service_mode="complete", inspect=None, control_model=False):
     u = Uc(UC_ARCH_ARM, UC_MODE_THUMB | UC_MODE_MCLASS)
     for address, size in [(0x08000000,0x40000),(0x20000000,0x10000),
                           (0x40000000,0x30000),(0x48000000,0x2000),(0xe000e000,0x2000)]:
@@ -38,6 +38,8 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
     state={'time':0,'index':0,'pending':None,'de':False,'tx_done':0,'tx':bytearray(),'de_high':0,'de_low':0,'led_edges':0}
     writes=set()
     cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0, 'svc_counts':{27:0,28:0}, 'svc_times':{27:[],28:[]}, 'normal':0, 'overlap':0, 'phase':4, 'phase_attempts':0}
+    model={'power':1,'mode':2,'flow':2950,'dhw':5200,'boost':0,'sets':0}
+    cn['model']=model
     request_times=[request_start+i*baud_gap for i in range(len(request))]
     if second_request:
         second_time,second_bytes=second_request
@@ -92,6 +94,7 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
         if address==0x40013828:
             assert read32(0x40013800)==0x140d and read32(0x40013804)==0
             assert read32(0x4001380c)==6667
+            if not cn['tx']: cn['frame_started']=state['time']
             cn['next_tx']=state['time']+4584
             cn['tx'].append(value&255);cn['wire'].append(value&255)
             if len(cn['tx'])>=5 and len(cn['tx'])==cn['tx'][4]+6:
@@ -101,11 +104,37 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                 fast_codes=[4,0x0c,0x14,0x0b,9,0x15,0x26]
                 allowed += [cn_packet(0x42,bytes([q])+bytes(15)) for q in fast_codes]
                 allowed += [cn_packet(0x42,bytes([0xa3,0,c])+bytes(13)) for c in (27,28)]
-                assert packet in allowed, 'forbidden CN105 command'
+                assert packet in allowed or (control_model and ((packet[1]==0x42 and packet[5]==0x28) or packet[1]==0x41)), 'forbidden CN105 command'
                 assert not cn['schedule'], 'overlapping CN105 transactions'
                 if cn_hz is not None:
                     if packet[1]==0x5a: response=cn_packet(0x7a,bytes([0]))
+                    elif control_model and (packet[1]==0x41 or cn.get('control',False) or (packet[5]==0x26 and cn['phase']==4 and cn.get('fast',0)==0)) and packet[5]!=4:
+                        assert cn['phase']==4, 'control interleaved inside service operation'
+                        cn['control']=True
+                        payload=bytearray(16);payload[0]=packet[5]
+                        if packet[1]==0x41:
+                            q=packet[5:21];model['sets']+=1
+                            if q[0]==0x34:
+                                assert q[1]==1;model['boost']=q[3]
+                            else:
+                                assert q[0]==0x32
+                                if q[1]==1:model['power']=q[3]
+                                elif q[1]==8:model['mode']=q[6]
+                                elif q[1]==0x20:model['dhw']=int.from_bytes(q[8:10],'big')
+                                elif q[1]==0x80:
+                                    assert q[6]==model['mode'] and int.from_bytes(q[8:10],'big')==model['dhw']
+                                    model['flow']=int.from_bytes(q[10:12],'big')
+                                else:raise AssertionError('unknown SET mask')
+                            response=cn_packet(0x61,bytes([0]))
+                        else:
+                            if packet[5]==0x26:
+                                payload[3]=model['power'];payload[6]=model['mode'];payload[8:10]=model['dhw'].to_bytes(2,'big')
+                            elif packet[5]==9:payload[5:7]=model['flow'].to_bytes(2,'big')
+                            elif packet[5]==0x28:payload[3]=model['boost']
+                            else:raise AssertionError('unexpected control read')
+                            response=cn_packet(0x62,bytes(payload))
                     elif packet[5]!=0xa3:
+                        cn['control']=False
                         assert cn['phase']==4, 'FAST interleaved inside service operation'
                         f=cn.get('fast',0)
                         assert packet[5]==fast_codes[f]
@@ -124,8 +153,8 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                         assert c==cn['phase'], 'service order violated'
                         cn['phase_attempts']+=1
                         previous=cn['svc_times'][c]
-                        if cn['phase_attempts']>1: assert state['time']-previous[-1]>=999000, 'retry too fast'
-                        previous.append(state['time'])
+                        if cn['phase_attempts']>1: assert cn['frame_started']-previous[-1]>=999000, f'retry too fast c={c} now={state["time"]} previous={previous[-1]} delta={state["time"]-previous[-1]}'
+                        previous.append(cn['frame_started'])
                         status=(1 if c==27 else 2) if cn['svc_counts'][c]%2==0 else 0
                         if service_mode=='pending': status=0
                         if status or cn['phase_attempts']==10:
@@ -226,3 +255,22 @@ if __name__=='__main__':
         assert states[3:10]==[1]*7 and states[10:12]==[4,4]
         assert cn['normal']==1 and cn['svc_counts'][27]>0
     run_case(path,'MVP values and validity during exclusive service',req(106,16),None,duration=3600000,cn_hz=48,request_start=3130000,extra_requests=[(3400000,req(140,16))],inspect=inspect_mvp)
+
+    def command(seq,mode,flow=0,lease=0,flags=0):
+        values=[0xc072,seq,mode,flow,0,lease,flags,2]
+        b=bytes.fromhex('01 10 01 2c 00 08 10')+b''.join(v.to_bytes(2,'big') for v in values)
+        return b+crc(b)
+    def inspect_control(data,cn):
+        # Mixed FC16 acknowledgements and FC04 diagnostics.
+        responses=[]
+        while data:
+            n=8 if data[1]==16 else data[2]+5
+            b=data[:n];assert b[-2:]==crc(b[:-2]);responses.append(b);data=data[n:]
+        assert [b[1] for b in responses]==[16,4,16,4]
+        applied=[int.from_bytes(responses[1][i:i+2],'big') for i in range(3,35,2)]
+        restored=[int.from_bytes(responses[3][i:i+2],'big') for i in range(3,35,2)]
+        assert applied[:3]==[4,1,1],applied
+        assert restored[:3]==[0,2,2] and restored[11]>=1,restored
+        assert cn['model']['mode']==2 and cn['model']['flow']==2950 and cn['model']['sets']==4
+        assert cn['normal']>1 and cn['svc_counts'][27]>=2 and cn['svc_counts'][28]>=2
+    run_case(path,'P0072 r2 FC16 FIXED38 then AUTO readback with exclusive A3',command(1,2,3800,60,1),None,duration=24000000,cn_hz=20,request_start=3000000,extra_requests=[(11000000,req(256,16)),(12000000,command(2,1)),(22500000,req(256,16))],inspect=inspect_control,control_model=True)

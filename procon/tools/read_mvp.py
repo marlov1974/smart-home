@@ -22,8 +22,9 @@ def capture(host):
             words.extend(block['values'])
         return words
     baseline = read(0, 16)
-    if baseline[:2] != [888, 72] or read(68, 4) != [1, 1, 1, 4]:
-        raise ValueError('Expected P0072 r1 read-only API; refusing to decode another map')
+    identity = read(68, 4)
+    if baseline[:2] != [888, 72] or not (identity == [1, 1, 1, 4] or (identity[:3] == [2, 1, 3] and identity[3] <= 6)):
+        raise ValueError('Expected P0072 r1/r2 telemetry API; refusing to decode another map')
     before = read(180, 20)
     state_before = read(140, 20)
     words = read(100, 40)
@@ -34,6 +35,9 @@ def capture(host):
     ages = read(160, 20)
     states = read(140, 20)
     after = read(180, 20)
+    control = None
+    if identity[0] == 2:
+        control = read(256, 27)
     samples = {}
     for i, name in enumerate(NAMES):
         coherent = before[i] == after[i] and state_before[i] == states[i]
@@ -43,7 +47,7 @@ def capture(host):
                          'coherent': coherent, 'status': states[i], 'age_s': ages[i],
                          'generation': after[i], 'hardware_correlated': False}
     return {'timestamp': datetime.now(timezone.utc).isoformat(), 'read_only': True,
-            'blocks': blocks, 'samples': samples,
+            'blocks': blocks, 'samples': samples, 'identity': identity, 'control_words_256_282': control,
             'note': 'Multi-block acquisition; generations/status bracket reads. Units are API integers; fresh does not mean physically calibrated.'}
 
 

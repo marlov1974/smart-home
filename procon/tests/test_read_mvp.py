@@ -8,7 +8,7 @@ import read_mvp
 
 
 class CaptureTests(unittest.TestCase):
-    def capture(self, change=False, stale=False, wrong=False):
+    def capture(self, change=False, stale=False, wrong=False, revision=1):
         reads = []
         def read(host, address, quantity):
             self.assertEqual(host, 'fixture')
@@ -19,7 +19,7 @@ class CaptureTests(unittest.TestCase):
             if address == 0:
                 values[:2] = [888, 71 if wrong else 72]
             elif address == 68:
-                values = [1, 1, 1, 4]
+                values = [1, 1, 1, 4] if revision == 1 else [2, 1, 3, 0]
             elif address in (180, 196):
                 values = [2 if change and seen else 1]*quantity
             elif address in (140, 156):
@@ -29,6 +29,11 @@ class CaptureTests(unittest.TestCase):
             return {'address': address, 'quantity': quantity, 'values': values, 'timestamp': 'fixture'}
         with patch.object(read_mvp, 'request_block', read):
             return read_mvp.capture('fixture')
+
+    def test_control_revision(self):
+        result = self.capture(revision=2)
+        self.assertEqual(result["identity"], [2, 1, 3, 0])
+        self.assertEqual(len(result["control_words_256_282"]), 27)
 
     def test_signed_value(self):
         sample = self.capture()['samples']['brine_in_cC']

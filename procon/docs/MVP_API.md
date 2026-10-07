@@ -60,3 +60,7 @@ Inputs200–255 hold seven16-byte matched FAST payloads,8 words each in schedule
 After operator flash:
 `python3 procon/tools/read_mvp.py --samples 10 --interval 2 --output <new-file.jsonl>`
 The helper only invokes MbRtuClient.ReadInputRegisters. Interval is minimum sample-group period; serial transactions can take longer. Correlate physical flow/return/DHW/outdoor/flow/Hz/targets, brine completions, error counters and LED. Do not test control until a later actuating revision has explicit verified semantics and telemetry passes. Hardware attempts used for this revision:0/3.
+
+## P0072 r2 update
+
+Revision2 adds supervised, reference-backed control commands with snapshot/readback/runtime lease restoration. See [control API](CONTROL_API.md). Earlier r1 read-only statements remain historical. No hardware control validation or reboot restoration is claimed.

@@ -87,3 +87,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0073` adds [standalone Procon export and protocol research](procon-export.md).
 
 - [P0074 Procon platform specification checks](procon-platform-spec.md)
+
+- [P0072 r2 supervised control contracts](procon-control.md)

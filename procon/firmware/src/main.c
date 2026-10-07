@@ -1,4 +1,4 @@
-/* P0071: read-only ATW CN105 and Modbus telemetry, no control writes. */
+/* P0072 r2: ATW telemetry and supervised, leased control commands. */
 #include "modbus.h"
 #include "platform.h"
 #include "cn105.h"

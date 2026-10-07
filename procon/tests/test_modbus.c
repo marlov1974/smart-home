@@ -49,9 +49,18 @@ int main(void) {
     assert(out[7]==255 && out[8]==255 && out[9]==0 && out[10]==0);
     memset(out,0xa5,sizeof out);assert(modbus_reply(r,8,out,36)==0);
     for(size_t i=0;i<sizeof out;i++)assert(out[i]==0xa5);
-    r[3]=REGISTER_COUNT-1;r[5]=1;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==7);
+    r[2]=(REGISTER_COUNT-1)>>8;r[3]=(REGISTER_COUNT-1)&255;r[5]=1;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==7);
     r[5]=2;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
     r[2]=255;r[3]=255;seal(r,8);assert(modbus_reply(r,8,out,sizeof out)==5 && out[2]==2);
+    /* Atomic FC16 envelope and no mutation for truncated/capacity/broadcast requests. */
+    uint16_t cw[8]={0xc072,1,2,3800,0,30,1,2};
+    memset(r,0,25);r[0]=1;r[1]=16;r[2]=1;r[3]=44;r[5]=8;r[6]=16;
+    for(unsigned i=0;i<8;++i){r[7+2*i]=(uint8_t)(cw[i]>>8);r[8+2*i]=(uint8_t)cw[i];}seal(r,25);
+    assert(!modbus_reply(r,25,out,7) && cn_read(257)==0);
+    assert(modbus_reply(r,25,out,sizeof out)==8 && cn_read(257)==1 && crc16(out,8)==0);
+    assert(modbus_reply(r,25,out,sizeof out)==8 && cn_read(257)==1);
+    r[0]=0;seal(r,25);assert(!modbus_reply(r,25,out,sizeof out));
+    cn_init();
     rtu_state s={0}; uint32_t last=feed(&s,read0,8,10000,0);
     assert(rtu_poll(&s,last+3999,out,sizeof out)==0);
     assert(rtu_poll(&s,last+4000,out,sizeof out)==7);

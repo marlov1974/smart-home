@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 563
+Tracked file count: 583
 
 ## Files
 
@@ -43,6 +43,7 @@ Tracked file count: 563
 - `docs/functions/mac/weather-contract-tool.md`
 - `docs/functions/procon-brine.md`
 - `docs/functions/procon-cn105.md`
+- `docs/functions/procon-control.md`
 - `docs/functions/procon-export.md`
 - `docs/functions/procon-m1.md`
 - `docs/functions/procon-mvp.md`
@@ -107,6 +108,7 @@ Tracked file count: 563
 - `procon/analysis/updater-il.txt`
 - `procon/docs/BRINE.md`
 - `procon/docs/CN105.md`
+- `procon/docs/CONTROL_API.md`
 - `procon/docs/DECISIONS.md`
 - `procon/docs/EXPERIMENT_HISTORY.md`
 - `procon/docs/HARDWARE.md`
@@ -120,12 +122,14 @@ Tracked file count: 563
 - `procon/docs/RS485_MODBUS.md`
 - `procon/docs/TOOLCHAIN.md`
 - `procon/firmware/include/cn105.h`
+- `procon/firmware/include/control.h`
 - `procon/firmware/include/modbus.h`
 - `procon/firmware/include/platform.h`
 - `procon/firmware/include/service.h`
 - `procon/firmware/include/telemetry.h`
 - `procon/firmware/linker.ld`
 - `procon/firmware/src/cn105.c`
+- `procon/firmware/src/control.c`
 - `procon/firmware/src/main.c`
 - `procon/firmware/src/modbus.c`
 - `procon/firmware/src/platform.c`
@@ -179,14 +183,24 @@ Tracked file count: 563
 - `procon/releases/P0072-mvp-r1/procon-mvp.elf`
 - `procon/releases/P0072-mvp-r1/procon-mvp.json`
 - `procon/releases/P0072-mvp-r1/procon-mvp.map`
+- `procon/releases/P0072-mvp-r2/README.md`
+- `procon/releases/P0072-mvp-r2/SHA256SUMS`
+- `procon/releases/P0072-mvp-r2/procon-mvp.bin`
+- `procon/releases/P0072-mvp-r2/procon-mvp.disasm.txt`
+- `procon/releases/P0072-mvp-r2/procon-mvp.elf`
+- `procon/releases/P0072-mvp-r2/procon-mvp.json`
+- `procon/releases/P0072-mvp-r2/procon-mvp.map`
 - `procon/tests/test_arm.py`
 - `procon/tests/test_cn105.c`
+- `procon/tests/test_control.c`
+- `procon/tests/test_control_command.py`
 - `procon/tests/test_modbus.c`
 - `procon/tests/test_read_mvp.py`
 - `procon/tests/test_telemetry.c`
 - `procon/tools/analyze_original.py`
 - `procon/tools/analyze_updater.py`
 - `procon/tools/check_image.py`
+- `procon/tools/control_command.py`
 - `procon/tools/read_brine.py`
 - `procon/tools/read_mvp.py`
 - `procon/tools/requirements.txt`
@@ -343,6 +357,12 @@ Tracked file count: 563
 - `requirements/package-runs/P0071/r2-verification.txt`
 - `requirements/package-runs/P0071/review.md`
 - `requirements/package-runs/P0071/verification.txt`
+- `requirements/package-runs/P0072-r2/CHANGELOG.md`
+- `requirements/package-runs/P0072-r2/design.md`
+- `requirements/package-runs/P0072-r2/functions.md`
+- `requirements/package-runs/P0072-r2/review.md`
+- `requirements/package-runs/P0072-r2/source-sha256.json`
+- `requirements/package-runs/P0072-r2/verification.md`
 - `requirements/package-runs/P0072/CHANGELOG.md`
 - `requirements/package-runs/P0072/attempts.md`
 - `requirements/package-runs/P0072/control-research.md`

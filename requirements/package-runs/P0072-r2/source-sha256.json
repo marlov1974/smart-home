@@ -1,0 +1,20 @@
+{
+  "base_commit": "23f2c946d0752f18e1824246c758bdba5793055b",
+  "files": {
+    "procon/firmware/include/cn105.h": "919c4ac9e36651c894bb1f440e27b009a21f0195bbc9b0a3f32a6629706ab6e1",
+    "procon/firmware/include/control.h": "4e12b2247436d6b44ecbca704b194c3c3bd0af791942ccc372c84ba6ef41e673",
+    "procon/firmware/include/modbus.h": "aa751fbd964f2f8ed2e8909a42035cc6c12daa697af5a5f14f8aed208338ae70",
+    "procon/firmware/include/platform.h": "8451fc562bf277a695da2eaae19ea666f2199d64adfa89074c03263e5d9ed88e",
+    "procon/firmware/include/service.h": "226d8ace6c0a1da14fd6decd449d15e1b040e778b59a1efde5a305df5dc211d3",
+    "procon/firmware/include/telemetry.h": "114393b2781c7f5babf421a7294ce2e9bb6194224ee98f4f2b1e9607d25cf584",
+    "procon/firmware/linker.ld": "1457a1adc07bef9b7d07c78f19ab18fbe3c8b920e2a968a6b3f2a8de08b7cee5",
+    "procon/firmware/src/cn105.c": "2460e34e2c036d8796da03c4118b0037e59b633f17b45b0033e03ad84261999b",
+    "procon/firmware/src/control.c": "65607572540128a36153b90dabfcd306e3658a5398bc0234dda30789a28a0fa0",
+    "procon/firmware/src/main.c": "e3526b3f679a0ac14e3dca7eae532d9c538d257642bfebb03716366b3735341e",
+    "procon/firmware/src/modbus.c": "46c43a36b32a9e23f6bf9eeb7e35f8a17c572b97ccd94bf33b6f41801ec7b0aa",
+    "procon/firmware/src/platform.c": "6c0190f6034616752d387018459d9aff8d5f8cbda6bb4a2c9090fa3157b0a58a",
+    "procon/firmware/src/service.c": "f6b0fd8dc714d1101dcdc635abe9a4cce5b5c1afe5ee89c03dcab2ff5a8c198a",
+    "procon/firmware/src/telemetry.c": "339b453d64d175ec0bd138e68f8498be2e09952a263b5a64065e53a692e8f318",
+    "procon/firmware/startup/startup.S": "cb36519b583438738ddf91d018e693f2dbc6d24122549c6635dc01609bd3be68"
+  }
+}

@@ -1,8 +1,9 @@
-/* P0072: existing framing plus exclusive transaction arbitration. No SET frames. */
+/* P0072: existing framing plus exclusive transaction arbitration. Bounded supervised SET path at service boundaries. */
 #include "cn105.h"
 #include "service.h"
 #include "telemetry.h"
-enum { NONE, CONNECT, NORMAL, SERVICE };
+#include "control.h"
+enum { NONE, CONNECT, NORMAL, SERVICE, CONTROL };
 static uint8_t rx[22], tx[22], used, tx_len, tx_pos, owner;
 static uint8_t linked, valid, ever, hz, last_type, last_query, polled;
 static uint32_t now, last_byte, last_good, last_send, last_tick, age_ms;
@@ -35,7 +36,7 @@ void cn_init(void) {
     used=tx_len=tx_pos=owner=linked=valid=ever=hz=last_type=last_query=polled=0;
     now=last_byte=last_good=last_send=last_tick=age_ms=reply_at=released_at=0;
     replies=rx_bytes=errors=sent=uart_errors=handshakes=0;started=0;
-    fast_index=query=0;tele_init();svc_init();svc_link(0,0);
+    fast_index=query=0;ctl_init();tele_init();svc_init();svc_link(0,0);
 }
 static void bad_frame(void) {++errors;if(owner==SERVICE)svc_bad_frame();}
 void cn_feed(uint8_t byte, uint32_t t, int error) {
@@ -52,7 +53,10 @@ void cn_feed(uint8_t byte, uint32_t t, int error) {
     unsigned n=used;used=0;
     if(checksum(rx,n-1)!=rx[n-1]){bad_frame();return;}
     last_type=rx[1];last_query=rx[4]?rx[5]:0;
-    if(rx[1]==0x62 && rx[4]==16 && rx[5]==0xa3) {
+    if(owner==CONTROL && !tx_len && ctl_reply(rx[1],rx+5,rx[4],t)) {
+        if(rx[1]==0x62 && rx[4]==16)tele_accept(rx+5);
+        last_good=t;release(t);
+    } else if(rx[1]==0x62 && rx[4]==16 && rx[5]==0xa3) {
         if(svc_reply(rx+5,t,linked && owner==SERVICE && !tx_len)) {last_good=t;release(t);}
     } else if(rx[1]==0x7a && rx[4]==1 && rx[5]==0 && owner==CONNECT && !tx_len) {
         linked=1;last_good=t;++handshakes;polled=fast_index=0;svc_link(1,t);release(t);
@@ -66,15 +70,17 @@ void cn_tick(uint32_t t) {
     uint32_t dt=t-last_tick;last_tick=t;now=t;
     if(ever)age_ms=dt>=65535000u-age_ms?65535000u:age_ms+dt;
     if(valid && age_ms>=10000u)valid=0;
-    svc_tick(dt,t);tele_tick(dt);
+    svc_tick(dt,t);tele_tick(dt);ctl_tick(t);
     if(used && t-last_byte>100u){used=0;bad_frame();}
     if(linked && !owner && svc_read(32)==4 && t-last_good>=10000u)disconnect(t);
     if(owner) {
         if(tx_len && t-last_send>=1000u) {
             ++uart_errors;if(owner==SERVICE)svc_timeout(t);
+            if(owner==CONTROL)ctl_timeout(t);
             tx_len=tx_pos=0;release(t);
         } else if(!tx_len && t-reply_at>=800u) {
             if(owner==SERVICE)svc_timeout(t);
+            if(owner==CONTROL)ctl_timeout(t);
             release(t);
         } else return;
     }
@@ -82,6 +88,16 @@ void cn_tick(uint32_t t) {
     if(t-released_at<50u)return;
     if(!linked) {
         if((!started && t>=1000u)||(started && t-last_send>=3000u))begin(CONNECT,0,t);
+        return;
+    }
+    if(svc_read(32)==4 && ctl_busy()) {
+        uint8_t type,payload[16];
+        if(ctl_next(&type,payload,t)){
+            owner=CONTROL;started=1;last_send=t;tx_pos=0;
+            tx[0]=0xfc;tx[1]=type;tx[2]=2;tx[3]=0x7a;tx[4]=16;
+            for(unsigned i=0;i<16;++i)tx[5+i]=payload[i];
+            tx[21]=checksum(tx,21);tx_len=22;
+        }
         return;
     }
     if(svc_read(32)==4){fast_index=0;svc_start_cycle();}
@@ -111,10 +127,12 @@ uint16_t cn_read(unsigned a) {
     case 14:return last_query;
     case 15:return handshakes;
     case 39:return owner;
-    case 68:return 1; /* P0072 r1. */
+    case 68:return 2; /* P0072 r2. */
     case 69:return 1; /* MVP API version. */
-    case 70:return 1; /* Read telemetry only; no control capability. */
-    case 71:return 4; /* Control unavailable, all writes rejected. */
-    default:return a>=100?tele_read(a):svc_read(a);
+    case 70:return 3; /* Telemetry plus experimental supervised control. */
+    case 71:return ctl_read(256); /* Revision2 control state. */
+    default:if(a>=256)return ctl_read(a);return a>=100?tele_read(a):svc_read(a);
     }
 }
+
+uint8_t cn_command(const uint16_t words[8]) {return ctl_submit(words,now);}

@@ -1,0 +1,7 @@
+# P0072 r2 design
+
+Separate control.c state machine from CN105 framing. It supplies one GET/SET transaction at a time only at service-operation boundaries. Before changes obtain GET26/09/28 snapshots, reject cooling/dry-up/holiday/server/prohibit states. Set one documented dimension, then verify through GET with bounded retries. Generic SET ack does not establish effective state. Missing/mismatching readback triggers restoration. Existing FAST/service schedule resumes between completed commands; lease expiry waits for current bounded A3 operation and then restores.
+
+FC16 at300,count8: magicC072,sequence,mode,flow_cC,DHW_cC,lease_s,flags,version2. flags1 flow/2 DHW; irrelevant words must be0. OFF0,AUTO1,FIXED_FLOW2,DHW3,TARGETS4. Fixed requiresflow flag; targets needsnonzero flags. Flow20–45C,DHW40–60C; no raw SET pass-through. Duplicate identical sequence is idempotent without lease refresh; next sequential command with identical intent renews lease; onlyAUTO allowed to supersede active session. New sequence starts at1 afterboot. Input256..287 exposes state/accepted/applied/rejected/error/remaining/ack/readback/snapshot, extending map to320. No persistent flash writes.
+
+Tests: validation/sequence/renewal; emitted packet masks; application vsack; failedreadback/timeout→restore; expiry/wrap; A3 exclusive arbitration; malformed/short Modbus; ARM end-to-end FC16 plus reads/watchdog/heartbeat. Deterministic96KiB padded artifacts; pending hardware status.

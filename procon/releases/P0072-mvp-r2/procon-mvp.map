@@ -1,0 +1,613 @@
+Archive member included to satisfy reference by file (symbol)
+
+/private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                              <compiler-temp>/ccc7oBoz.o (__aeabi_ldivmod)
+/private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+                              /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o) (__udivmoddi4)
+/private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+                              /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o) (__aeabi_ldiv0)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 <compiler-temp>/ccczEeZ8.o
+ .data          0x00000000        0x0 <compiler-temp>/ccczEeZ8.o
+ .bss           0x00000000        0x0 <compiler-temp>/ccczEeZ8.o
+ .group         0x00000000        0xc <compiler-temp>/cc3RrkTH.o
+ .group         0x00000000        0xc <compiler-temp>/cc3RrkTH.o
+ .group         0x00000000        0xc <compiler-temp>/cc3RrkTH.o
+ .group         0x00000000        0xc <compiler-temp>/cc3RrkTH.o
+ .group         0x00000000        0xc <compiler-temp>/cc3RrkTH.o
+ .text          0x00000000        0x0 <compiler-temp>/cc3RrkTH.o
+ .data          0x00000000        0x0 <compiler-temp>/cc3RrkTH.o
+ .bss           0x00000000        0x0 <compiler-temp>/cc3RrkTH.o
+ .comment       0x00000000       0x47 <compiler-temp>/cc3RrkTH.o
+ .group         0x00000000        0xc <compiler-temp>/cclQcdyQ.o
+ .group         0x00000000        0xc <compiler-temp>/cclQcdyQ.o
+ .group         0x00000000        0xc <compiler-temp>/cclQcdyQ.o
+ .group         0x00000000        0xc <compiler-temp>/cclQcdyQ.o
+ .text          0x00000000        0x0 <compiler-temp>/cclQcdyQ.o
+ .data          0x00000000        0x0 <compiler-temp>/cclQcdyQ.o
+ .bss           0x00000000        0x0 <compiler-temp>/cclQcdyQ.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/cclQcdyQ.o
+ .debug_macro   0x00000000      0x190 <compiler-temp>/cclQcdyQ.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/cclQcdyQ.o
+ .debug_macro   0x00000000       0x10 <compiler-temp>/cclQcdyQ.o
+ .comment       0x00000000       0x47 <compiler-temp>/cclQcdyQ.o
+ .group         0x00000000        0xc <compiler-temp>/cc9ocxpt.o
+ .group         0x00000000        0xc <compiler-temp>/cc9ocxpt.o
+ .group         0x00000000        0xc <compiler-temp>/cc9ocxpt.o
+ .group         0x00000000        0xc <compiler-temp>/cc9ocxpt.o
+ .group         0x00000000        0xc <compiler-temp>/cc9ocxpt.o
+ .text          0x00000000        0x0 <compiler-temp>/cc9ocxpt.o
+ .data          0x00000000        0x0 <compiler-temp>/cc9ocxpt.o
+ .bss           0x00000000        0x0 <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x00000000      0x190 <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x00000000       0x10 <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x00000000       0x10 <compiler-temp>/cc9ocxpt.o
+ .comment       0x00000000       0x47 <compiler-temp>/cc9ocxpt.o
+ .group         0x00000000        0xc <compiler-temp>/cciLIzgo.o
+ .group         0x00000000        0xc <compiler-temp>/cciLIzgo.o
+ .group         0x00000000        0xc <compiler-temp>/cciLIzgo.o
+ .group         0x00000000        0xc <compiler-temp>/cciLIzgo.o
+ .text          0x00000000        0x0 <compiler-temp>/cciLIzgo.o
+ .data          0x00000000        0x0 <compiler-temp>/cciLIzgo.o
+ .bss           0x00000000        0x0 <compiler-temp>/cciLIzgo.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/cciLIzgo.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/cciLIzgo.o
+ .debug_macro   0x00000000      0x190 <compiler-temp>/cciLIzgo.o
+ .debug_macro   0x00000000       0x10 <compiler-temp>/cciLIzgo.o
+ .comment       0x00000000       0x47 <compiler-temp>/cciLIzgo.o
+ .group         0x00000000        0xc <compiler-temp>/ccKxqsm1.o
+ .group         0x00000000        0xc <compiler-temp>/ccKxqsm1.o
+ .text          0x00000000        0x0 <compiler-temp>/ccKxqsm1.o
+ .data          0x00000000        0x0 <compiler-temp>/ccKxqsm1.o
+ .bss           0x00000000        0x0 <compiler-temp>/ccKxqsm1.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/ccKxqsm1.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/ccKxqsm1.o
+ .comment       0x00000000       0x47 <compiler-temp>/ccKxqsm1.o
+ .group         0x00000000        0xc <compiler-temp>/ccc7oBoz.o
+ .group         0x00000000        0xc <compiler-temp>/ccc7oBoz.o
+ .text          0x00000000        0x0 <compiler-temp>/ccc7oBoz.o
+ .data          0x00000000        0x0 <compiler-temp>/ccc7oBoz.o
+ .bss           0x00000000        0x0 <compiler-temp>/ccc7oBoz.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/ccc7oBoz.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/ccc7oBoz.o
+ .comment       0x00000000       0x47 <compiler-temp>/ccc7oBoz.o
+ .group         0x00000000        0xc <compiler-temp>/cc86rd0z.o
+ .group         0x00000000        0xc <compiler-temp>/cc86rd0z.o
+ .text          0x00000000        0x0 <compiler-temp>/cc86rd0z.o
+ .data          0x00000000        0x0 <compiler-temp>/cc86rd0z.o
+ .bss           0x00000000        0x0 <compiler-temp>/cc86rd0z.o
+ .debug_macro   0x00000000      0xac6 <compiler-temp>/cc86rd0z.o
+ .debug_macro   0x00000000      0x34e <compiler-temp>/cc86rd0z.o
+ .comment       0x00000000       0x47 <compiler-temp>/cc86rd0z.o
+ .data          0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .bss           0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .text          0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .data          0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .bss           0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .ARM.extab.text.__udivmoddi4
+                0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .data          0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x08008000         0x00004000         xr
+RAM              0x20000000         0x00004000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD <compiler-temp>/ccczEeZ8.o
+LOAD <compiler-temp>/cc3RrkTH.o
+LOAD <compiler-temp>/cclQcdyQ.o
+LOAD <compiler-temp>/cc9ocxpt.o
+LOAD <compiler-temp>/cciLIzgo.o
+LOAD <compiler-temp>/ccKxqsm1.o
+LOAD <compiler-temp>/ccc7oBoz.o
+LOAD <compiler-temp>/cc86rd0z.o
+LOAD /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a
+                0x20004000                        _stack_top = (ORIGIN (RAM) + LENGTH (RAM))
+
+.isr_vector     0x08008000      0x18c
+ *(.isr_vector)
+ .isr_vector    0x08008000      0x18c <compiler-temp>/ccczEeZ8.o
+                0x08008000                vectors
+
+.text           0x0800818c     0x2884
+ *(.text*)
+ .text.Reset_Handler
+                0x0800818c       0x6c <compiler-temp>/ccczEeZ8.o
+                0x0800818c                Reset_Handler
+ .text.Default_Handler
+                0x080081f8       0x10 <compiler-temp>/ccczEeZ8.o
+                0x080081f8                Default_Handler
+ .text.cn_service
+                0x08008208       0x84 <compiler-temp>/cc3RrkTH.o
+                0x08008208                cn_service
+ .text.startup.main
+                0x0800828c       0x74 <compiler-temp>/cc3RrkTH.o
+                0x0800828c                main
+ .text.wait_uart
+                0x08008300       0x48 <compiler-temp>/cclQcdyQ.o
+ .text.watchdog_refresh
+                0x08008348       0x10 <compiler-temp>/cclQcdyQ.o
+                0x08008348                watchdog_refresh
+ .text.platform_init
+                0x08008358      0x128 <compiler-temp>/cclQcdyQ.o
+                0x08008358                platform_init
+ .text.micros   0x08008480        0x8 <compiler-temp>/cclQcdyQ.o
+                0x08008480                micros
+ .text.uart_init
+                0x08008488       0xf4 <compiler-temp>/cclQcdyQ.o
+                0x08008488                uart_init
+ .text.uart_receive
+                0x0800857c       0x40 <compiler-temp>/cclQcdyQ.o
+                0x0800857c                uart_receive
+ .text.uart_send
+                0x080085bc       0x90 <compiler-temp>/cclQcdyQ.o
+                0x080085bc                uart_send
+ .text.heartbeat
+                0x0800864c       0x28 <compiler-temp>/cclQcdyQ.o
+                0x0800864c                heartbeat
+ .text.cn_uart_init
+                0x08008674       0xa4 <compiler-temp>/cclQcdyQ.o
+                0x08008674                cn_uart_init
+ .text.cn_uart_receive
+                0x08008718       0x40 <compiler-temp>/cclQcdyQ.o
+                0x08008718                cn_uart_receive
+ .text.cn_uart_ready
+                0x08008758       0x10 <compiler-temp>/cclQcdyQ.o
+                0x08008758                cn_uart_ready
+ .text.cn_uart_write
+                0x08008768        0xc <compiler-temp>/cclQcdyQ.o
+                0x08008768                cn_uart_write
+ .text.crc16    0x08008774       0x2e <compiler-temp>/cc9ocxpt.o
+                0x08008774                crc16
+ *fill*         0x080087a2        0x2
+ .text.modbus_reply
+                0x080087a4      0x18c <compiler-temp>/cc9ocxpt.o
+                0x080087a4                modbus_reply
+ .text.rtu_feed
+                0x08008930       0x58 <compiler-temp>/cc9ocxpt.o
+                0x08008930                rtu_feed
+ .text.rtu_poll
+                0x08008988       0x3e <compiler-temp>/cc9ocxpt.o
+                0x08008988                rtu_poll
+ *fill*         0x080089c6        0x2
+ .text.bad_frame
+                0x080089c8       0x20 <compiler-temp>/cciLIzgo.o
+ .text.begin    0x080089e8       0xc8 <compiler-temp>/cciLIzgo.o
+ .text.cn_init  0x08008ab0       0xf4 <compiler-temp>/cciLIzgo.o
+                0x08008ab0                cn_init
+ .text.cn_feed  0x08008ba4      0x220 <compiler-temp>/cciLIzgo.o
+                0x08008ba4                cn_feed
+ .text.cn_tick  0x08008dc4      0x27c <compiler-temp>/cciLIzgo.o
+                0x08008dc4                cn_tick
+ .text.cn_tx_byte
+                0x08009040       0x24 <compiler-temp>/cciLIzgo.o
+                0x08009040                cn_tx_byte
+ .text.cn_tx_sent
+                0x08009064       0x44 <compiler-temp>/cciLIzgo.o
+                0x08009064                cn_tx_sent
+ .text.cn_read  0x080090a8      0x194 <compiler-temp>/cciLIzgo.o
+                0x080090a8                cn_read
+ .text.cn_command
+                0x0800923c        0xc <compiler-temp>/cciLIzgo.o
+                0x0800923c                cn_command
+ .text.advance.isra.0
+                0x08009248       0x38 <compiler-temp>/ccKxqsm1.o
+ .text.retry.isra.0
+                0x08009280       0x40 <compiler-temp>/ccKxqsm1.o
+ .text.svc_init
+                0x080092c0       0xc8 <compiler-temp>/ccKxqsm1.o
+                0x080092c0                svc_init
+ .text.svc_start_cycle
+                0x08009388       0x28 <compiler-temp>/ccKxqsm1.o
+                0x08009388                svc_start_cycle
+ .text.svc_link
+                0x080093b0       0x28 <compiler-temp>/ccKxqsm1.o
+                0x080093b0                svc_link
+ .text.svc_tick
+                0x080093d8       0x58 <compiler-temp>/ccKxqsm1.o
+                0x080093d8                svc_tick
+ .text.svc_due  0x08009430       0x3c <compiler-temp>/ccKxqsm1.o
+                0x08009430                svc_due
+ .text.svc_sent
+                0x0800946c       0x50 <compiler-temp>/ccKxqsm1.o
+                0x0800946c                svc_sent
+ .text.svc_reply
+                0x080094bc       0xd4 <compiler-temp>/ccKxqsm1.o
+                0x080094bc                svc_reply
+ .text.svc_timeout
+                0x08009590       0x20 <compiler-temp>/ccKxqsm1.o
+                0x08009590                svc_timeout
+ .text.svc_bad_frame
+                0x080095b0       0x10 <compiler-temp>/ccKxqsm1.o
+                0x080095b0                svc_bad_frame
+ .text.svc_read
+                0x080095c0      0x154 <compiler-temp>/ccKxqsm1.o
+                0x080095c0                svc_read
+ .text.put      0x08009714       0x38 <compiler-temp>/ccc7oBoz.o
+ .text.brine    0x0800974c       0x64 <compiler-temp>/ccc7oBoz.o
+ .text.tele_init
+                0x080097b0       0x50 <compiler-temp>/ccc7oBoz.o
+                0x080097b0                tele_init
+ .text.tele_tick
+                0x08009800       0x48 <compiler-temp>/ccc7oBoz.o
+                0x08009800                tele_tick
+ .text.tele_invalidate
+                0x08009848       0x20 <compiler-temp>/ccc7oBoz.o
+                0x08009848                tele_invalidate
+ .text.tele_accept
+                0x08009868      0x188 <compiler-temp>/ccc7oBoz.o
+                0x08009868                tele_accept
+ .text.tele_read
+                0x080099f0      0x220 <compiler-temp>/ccc7oBoz.o
+                0x080099f0                tele_read
+ .text.add      0x08009c10       0x20 <compiler-temp>/cc86rd0z.o
+ .text.restore_plan
+                0x08009c30       0x9c <compiler-temp>/cc86rd0z.o
+ .text.fail     0x08009ccc       0x58 <compiler-temp>/cc86rd0z.o
+ .text.ctl_init
+                0x08009d24       0xfc <compiler-temp>/cc86rd0z.o
+                0x08009d24                ctl_init
+ .text.ctl_submit
+                0x08009e20      0x208 <compiler-temp>/cc86rd0z.o
+                0x08009e20                ctl_submit
+ .text.ctl_tick
+                0x0800a028       0x90 <compiler-temp>/cc86rd0z.o
+                0x0800a028                ctl_tick
+ .text.ctl_busy
+                0x0800a0b8       0x20 <compiler-temp>/cc86rd0z.o
+                0x0800a0b8                ctl_busy
+ .text.ctl_next
+                0x0800a0d8      0x1c4 <compiler-temp>/cc86rd0z.o
+                0x0800a0d8                ctl_next
+ .text.ctl_reply
+                0x0800a29c      0x248 <compiler-temp>/cc86rd0z.o
+                0x0800a29c                ctl_reply
+ .text.ctl_timeout
+                0x0800a4e4       0x60 <compiler-temp>/cc86rd0z.o
+                0x0800a4e4                ctl_timeout
+ .text.ctl_read
+                0x0800a544      0x11c <compiler-temp>/cc86rd0z.o
+                0x0800a544                ctl_read
+ .text          0x0800a660       0xa0 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                0x0800a660                __aeabi_ldivmod
+ .text.__udivmoddi4
+                0x0800a700      0x2f8 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+                0x0800a700                __udivmoddi4
+ .text          0x0800a9f8        0x4 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+                0x0800a9f8                __aeabi_ldiv0
+                0x0800a9f8                __aeabi_idiv0
+ *(.rodata*)
+ .rodata.fast_codes
+                0x0800a9fc        0x7 <compiler-temp>/cciLIzgo.o
+ .rodata.codes  0x0800aa03        0x2 <compiler-temp>/ccKxqsm1.o
+ .rodata.queries
+                0x0800aa05        0x7 <compiler-temp>/ccc7oBoz.o
+ .rodata.q.0    0x0800aa0c        0x3 <compiler-temp>/cc86rd0z.o
+                0x0800aa10                        . = ALIGN (0x4)
+ *fill*         0x0800aa0f        0x1
+
+.glue_7         0x0800aa10        0x0
+ .glue_7        0x0800aa10        0x0 linker stubs
+
+.glue_7t        0x0800aa10        0x0
+ .glue_7t       0x0800aa10        0x0 linker stubs
+
+.vfp11_veneer   0x0800aa10        0x0
+ .vfp11_veneer  0x0800aa10        0x0 linker stubs
+
+.v4_bx          0x0800aa10        0x0
+ .v4_bx         0x0800aa10        0x0 linker stubs
+
+.iplt           0x0800aa10        0x0
+ .iplt          0x0800aa10        0x0 <compiler-temp>/ccczEeZ8.o
+
+.ARM.exidx      0x0800aa10        0x8
+ *(.ARM.exidx*)
+ .ARM.exidx.text.__udivmoddi4
+                0x0800aa10        0x8 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+
+.rel.dyn        0x0800aa18        0x0
+ .rel.iplt      0x0800aa18        0x0 <compiler-temp>/ccczEeZ8.o
+
+.data           0x20000000        0x0 load address 0x0800aa18
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _data_start = .
+ *(.data*)
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _data_end = .
+                0x0800aa18                        _data_load = LOADADDR (.data)
+
+.igot.plt       0x20000000        0x0 load address 0x0800aa18
+ .igot.plt      0x20000000        0x0 <compiler-temp>/ccczEeZ8.o
+
+.bss            0x20000000      0x3b4 load address 0x0800aa18
+                0x20000000                        . = ALIGN (0x4)
+                0x20000000                        _bss_start = .
+ *(.bss*)
+ .bss.remainder_us
+                0x20000000        0x4 <compiler-temp>/cc3RrkTH.o
+ .bss.time_ms   0x20000004        0x4 <compiler-temp>/cc3RrkTH.o
+ .bss.last_us   0x20000008        0x4 <compiler-temp>/cc3RrkTH.o
+ .bss.receiver  0x2000000c      0x10c <compiler-temp>/cc3RrkTH.o
+ .bss.last.0    0x20000118        0x4 <compiler-temp>/cclQcdyQ.o
+ .bss.request_count
+                0x2000011c        0x2 <compiler-temp>/cc9ocxpt.o
+ .bss.query     0x2000011e        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.fast_index
+                0x2000011f        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.started   0x20000120        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.handshakes
+                0x20000124        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.uart_errors
+                0x20000126        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.sent      0x20000128        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.errors    0x2000012a        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.rx_bytes  0x2000012c        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.replies   0x2000012e        0x2 <compiler-temp>/cciLIzgo.o
+ .bss.released_at
+                0x20000130        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.reply_at  0x20000134        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.age_ms    0x20000138        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.last_tick
+                0x2000013c        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.last_send
+                0x20000140        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.last_good
+                0x20000144        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.last_byte
+                0x20000148        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.now       0x2000014c        0x4 <compiler-temp>/cciLIzgo.o
+ .bss.last_query
+                0x20000150        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.last_type
+                0x20000151        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.hz        0x20000152        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.ever      0x20000153        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.valid     0x20000154        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.linked    0x20000155        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.owner     0x20000156        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.tx_pos    0x20000157        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.tx_len    0x20000158        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.used      0x20000159        0x1 <compiler-temp>/cciLIzgo.o
+ .bss.tx        0x2000015a       0x16 <compiler-temp>/cciLIzgo.o
+ .bss.rx        0x20000170       0x16 <compiler-temp>/cciLIzgo.o
+ *fill*         0x20000186        0x2
+ .bss.previous_request
+                0x20000188        0x4 <compiler-temp>/ccKxqsm1.o
+ .bss.request_at
+                0x2000018c        0x4 <compiler-temp>/ccKxqsm1.o
+ .bss.cycles    0x20000190        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.gap_ms    0x20000192        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.seen      0x20000194        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.exhausted
+                0x20000196        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.failures  0x20000198        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.accepted  0x2000019a        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.last_status
+                0x2000019c        0x2 <compiler-temp>/ccKxqsm1.o
+ .bss.had_request
+                0x2000019e        0x1 <compiler-temp>/ccKxqsm1.o
+ .bss.wire_payload
+                0x2000019f       0x10 <compiler-temp>/ccKxqsm1.o
+ .bss.attempts  0x200001af        0x1 <compiler-temp>/ccKxqsm1.o
+ .bss.index     0x200001b0        0x1 <compiler-temp>/ccKxqsm1.o
+ .bss.state     0x200001b1        0x1 <compiler-temp>/ccKxqsm1.o
+ .bss.next_index
+                0x200001b2        0x1 <compiler-temp>/ccKxqsm1.o
+ *fill*         0x200001b3        0x1
+ .bss.samples   0x200001b4       0x38 <compiler-temp>/ccKxqsm1.o
+ .bss.raw       0x200001ec       0x70 <compiler-temp>/ccc7oBoz.o
+ .bss.values    0x2000025c       0xf0 <compiler-temp>/ccc7oBoz.o
+ .bss.settle_at
+                0x2000034c        0x4 <compiler-temp>/cc86rd0z.o
+ .bss.flow_prepared
+                0x20000350        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.settling  0x20000351        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.inflight_query
+                0x20000352        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.inflight_type
+                0x20000353        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.retry_at  0x20000354        0x4 <compiler-temp>/cc86rd0z.o
+ .bss.lease_ms  0x20000358        0x4 <compiler-temp>/cc86rd0z.o
+ .bss.lease_at  0x2000035c        0x4 <compiler-temp>/cc86rd0z.o
+ .bss.now_ms    0x20000360        0x4 <compiler-temp>/cc86rd0z.o
+ .bss.waiting   0x20000364        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.snapshot_step
+                0x20000365        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.retries   0x20000366        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.phase     0x20000367        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.index_action
+                0x20000368        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.n_actions
+                0x20000369        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.touched   0x2000036a        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.saved     0x2000036b        0x1 <compiler-temp>/cc86rd0z.o
+ .bss.state     0x2000036c        0x1 <compiler-temp>/cc86rd0z.o
+ *fill*         0x2000036d        0x1
+ .bss.restores  0x2000036e        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.readbacks
+                0x20000370        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.acks      0x20000372        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.error     0x20000374        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.rejected  0x20000376        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.applied   0x20000378        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.accepted  0x2000037a        0x2 <compiler-temp>/cc86rd0z.o
+ .bss.command   0x2000037c       0x10 <compiler-temp>/cc86rd0z.o
+ .bss.actions   0x2000038c       0x14 <compiler-temp>/cc86rd0z.o
+ .bss.current   0x200003a0        0xa <compiler-temp>/cc86rd0z.o
+ .bss.original  0x200003aa        0xa <compiler-temp>/cc86rd0z.o
+ *(COMMON)
+                0x200003b4                        . = ALIGN (0x4)
+                0x200003b4                        _bss_end = .
+
+/DISCARD/
+ *(.comment*)
+ *(.note*)
+                0x00000001                        ASSERT ((ADDR (.isr_vector) == 0x8008000), Wrong vector base)
+                0x00000001                        ASSERT (((_bss_end + 0x800) <= _stack_top), Insufficient stack)
+OUTPUT(build/procon-mvp.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2f
+ .ARM.attributes
+                0x00000000       0x21 <compiler-temp>/ccczEeZ8.o
+ .ARM.attributes
+                0x00000021       0x2e <compiler-temp>/cc3RrkTH.o
+ .ARM.attributes
+                0x0000004f       0x2e <compiler-temp>/cclQcdyQ.o
+ .ARM.attributes
+                0x0000007d       0x2e <compiler-temp>/cc9ocxpt.o
+ .ARM.attributes
+                0x000000ab       0x2e <compiler-temp>/cciLIzgo.o
+ .ARM.attributes
+                0x000000d9       0x2e <compiler-temp>/ccKxqsm1.o
+ .ARM.attributes
+                0x00000107       0x2e <compiler-temp>/ccc7oBoz.o
+ .ARM.attributes
+                0x00000135       0x2e <compiler-temp>/cc86rd0z.o
+ .ARM.attributes
+                0x00000163       0x1e /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .ARM.attributes
+                0x00000181       0x2e /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)
+ .ARM.attributes
+                0x000001af       0x1e /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_line     0x00000000     0x4089
+ .debug_line    0x00000000       0x81 <compiler-temp>/ccczEeZ8.o
+ .debug_line    0x00000081      0x275 <compiler-temp>/cc3RrkTH.o
+ .debug_line    0x000002f6      0x856 <compiler-temp>/cclQcdyQ.o
+ .debug_line    0x00000b4c      0x570 <compiler-temp>/cc9ocxpt.o
+ .debug_line    0x000010bc      0xd46 <compiler-temp>/cciLIzgo.o
+ .debug_line    0x00001e02      0x80a <compiler-temp>/ccKxqsm1.o
+ .debug_line    0x0000260c      0x97f <compiler-temp>/ccc7oBoz.o
+ .debug_line    0x00002f8b     0x10fe <compiler-temp>/cc86rd0z.o
+
+.debug_line_str
+                0x00000000       0xf8
+ .debug_line_str
+                0x00000000       0xf8 <compiler-temp>/ccczEeZ8.o
+                                 0x1d (size before relaxing)
+ .debug_line_str
+                0x000000f8       0xcf /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .debug_line_str
+                0x000000f8       0xd3 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_info     0x00000000     0x30bf
+ .debug_info    0x00000000       0x3b <compiler-temp>/ccczEeZ8.o
+ .debug_info    0x0000003b      0x4a1 <compiler-temp>/cc3RrkTH.o
+ .debug_info    0x000004dc      0x3d3 <compiler-temp>/cclQcdyQ.o
+ .debug_info    0x000008af      0x4a1 <compiler-temp>/cc9ocxpt.o
+ .debug_info    0x00000d50      0xb8e <compiler-temp>/cciLIzgo.o
+ .debug_info    0x000018de      0x5df <compiler-temp>/ccKxqsm1.o
+ .debug_info    0x00001ebd      0x824 <compiler-temp>/ccc7oBoz.o
+ .debug_info    0x000026e1      0x9de <compiler-temp>/cc86rd0z.o
+
+.debug_abbrev   0x00000000     0x10b0
+ .debug_abbrev  0x00000000       0x26 <compiler-temp>/ccczEeZ8.o
+ .debug_abbrev  0x00000026      0x199 <compiler-temp>/cc3RrkTH.o
+ .debug_abbrev  0x000001bf      0x22a <compiler-temp>/cclQcdyQ.o
+ .debug_abbrev  0x000003e9      0x1d5 <compiler-temp>/cc9ocxpt.o
+ .debug_abbrev  0x000005be      0x2d9 <compiler-temp>/cciLIzgo.o
+ .debug_abbrev  0x00000897      0x23e <compiler-temp>/ccKxqsm1.o
+ .debug_abbrev  0x00000ad5      0x2dd <compiler-temp>/ccc7oBoz.o
+ .debug_abbrev  0x00000db2      0x2fe <compiler-temp>/cc86rd0z.o
+
+.debug_aranges  0x00000000      0x298
+ .debug_aranges
+                0x00000000       0x28 <compiler-temp>/ccczEeZ8.o
+ .debug_aranges
+                0x00000028       0x28 <compiler-temp>/cc3RrkTH.o
+ .debug_aranges
+                0x00000050       0x78 <compiler-temp>/cclQcdyQ.o
+ .debug_aranges
+                0x000000c8       0x38 <compiler-temp>/cc9ocxpt.o
+ .debug_aranges
+                0x00000100       0x60 <compiler-temp>/cciLIzgo.o
+ .debug_aranges
+                0x00000160       0x78 <compiler-temp>/ccKxqsm1.o
+ .debug_aranges
+                0x000001d8       0x50 <compiler-temp>/ccc7oBoz.o
+ .debug_aranges
+                0x00000228       0x70 <compiler-temp>/cc86rd0z.o
+
+.debug_str      0x00000000     0x43fa
+ .debug_str     0x00000000     0x43fa <compiler-temp>/ccczEeZ8.o
+                                 0x49 (size before relaxing)
+ .debug_str     0x000043fa     0x3e04 <compiler-temp>/cc3RrkTH.o
+ .debug_str     0x000043fa     0x3e1c <compiler-temp>/cclQcdyQ.o
+ .debug_str     0x000043fa     0x3d78 <compiler-temp>/cc9ocxpt.o
+ .debug_str     0x000043fa     0x3f6d <compiler-temp>/cciLIzgo.o
+ .debug_str     0x000043fa     0x3af7 <compiler-temp>/ccKxqsm1.o
+ .debug_str     0x000043fa     0x3a10 <compiler-temp>/ccc7oBoz.o
+ .debug_str     0x000043fa     0x3b3d <compiler-temp>/cc86rd0z.o
+
+.debug_rnglists
+                0x00000000      0x4ef
+ .debug_rnglists
+                0x00000000       0x19 <compiler-temp>/ccczEeZ8.o
+ .debug_rnglists
+                0x00000019       0x26 <compiler-temp>/cc3RrkTH.o
+ .debug_rnglists
+                0x0000003f       0xdb <compiler-temp>/cclQcdyQ.o
+ .debug_rnglists
+                0x0000011a       0x6c <compiler-temp>/cc9ocxpt.o
+ .debug_rnglists
+                0x00000186       0xab <compiler-temp>/cciLIzgo.o
+ .debug_rnglists
+                0x00000231       0xbb <compiler-temp>/ccKxqsm1.o
+ .debug_rnglists
+                0x000002ec      0x126 <compiler-temp>/ccc7oBoz.o
+ .debug_rnglists
+                0x00000412       0xdd <compiler-temp>/cc86rd0z.o
+
+.debug_loclists
+                0x00000000     0x26b5
+ .debug_loclists
+                0x00000000       0x72 <compiler-temp>/cc3RrkTH.o
+ .debug_loclists
+                0x00000072      0x19d <compiler-temp>/cclQcdyQ.o
+ .debug_loclists
+                0x0000020f      0x513 <compiler-temp>/cc9ocxpt.o
+ .debug_loclists
+                0x00000722      0x57c <compiler-temp>/cciLIzgo.o
+ .debug_loclists
+                0x00000c9e      0x406 <compiler-temp>/ccKxqsm1.o
+ .debug_loclists
+                0x000010a4     0x103d <compiler-temp>/ccc7oBoz.o
+ .debug_loclists
+                0x000020e1      0x5d4 <compiler-temp>/cc86rd0z.o
+
+.debug_macro    0x00000000     0x1209
+ .debug_macro   0x00000000       0x5d <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x0000005d      0xac6 <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x00000b23      0x190 <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x00000cb3      0x34e <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x00001001       0x10 <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x00001011       0x10 <compiler-temp>/cc3RrkTH.o
+ .debug_macro   0x00001021       0x7b <compiler-temp>/cclQcdyQ.o
+ .debug_macro   0x0000109c       0x4f <compiler-temp>/cc9ocxpt.o
+ .debug_macro   0x000010eb       0x60 <compiler-temp>/cciLIzgo.o
+ .debug_macro   0x0000114b       0x4c <compiler-temp>/ccKxqsm1.o
+ .debug_macro   0x00001197       0x44 <compiler-temp>/ccc7oBoz.o
+ .debug_macro   0x000011db       0x2e <compiler-temp>/cc86rd0z.o
+
+.debug_frame    0x00000000      0x658
+ .debug_frame   0x00000000       0x48 <compiler-temp>/cc3RrkTH.o
+ .debug_frame   0x00000048      0x108 <compiler-temp>/cclQcdyQ.o
+ .debug_frame   0x00000150       0x94 <compiler-temp>/cc9ocxpt.o
+ .debug_frame   0x000001e4      0x104 <compiler-temp>/cciLIzgo.o
+ .debug_frame   0x000002e8       0xf0 <compiler-temp>/ccKxqsm1.o
+ .debug_frame   0x000003d8       0xe0 <compiler-temp>/ccc7oBoz.o
+ .debug_frame   0x000004b8      0x128 <compiler-temp>/cc86rd0z.o
+ .debug_frame   0x000005e0       0x44 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x00000624       0x34 /private/tmp/procon-export/.local/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a(_udivmoddi4.o)

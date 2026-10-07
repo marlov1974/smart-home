@@ -18,7 +18,22 @@ size_t modbus_reply(const uint8_t *r, size_t n, uint8_t *out, size_t capacity) {
     ++request_count;
     uint8_t exception = 0;
     unsigned address=0, quantity=0;
-    if (r[1] != 4) exception = 1;
+    if (r[1] == 16 && n >= 9) {
+        /* One atomic envelope only; no staging registers or raw packet tunnel. */
+        if (r[2]!=1 || r[3]!=44 || r[4]!=0 || r[5]!=8) exception=2;
+        else if (r[6]!=16 || n!=25) exception=3;
+        else {
+            if(capacity<8)return 0; /* never mutate if acceptance cannot be returned */
+            uint16_t words[8];
+            for(unsigned i=0;i<8;++i)words[i]=(uint16_t)((r[7+2*i]<<8)|r[8+2*i]);
+            exception=cn_command(words);
+            if(!exception){
+                for(unsigned i=0;i<6;++i)out[i]=r[i];
+                uint16_t c=crc16(out,6);out[6]=(uint8_t)c;out[7]=(uint8_t)(c>>8);return 8;
+            }
+        }
+    }
+    else if (r[1] != 4) exception = 1;
     else {
         if (n != 8) return 0;
         address = ((unsigned)r[2] << 8) | r[3];

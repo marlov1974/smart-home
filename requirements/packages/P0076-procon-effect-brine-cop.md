@@ -1,24 +1,17 @@
-# P0076 — EFFECT, brine step-response and COP comparison
+# P0076 — Procon EFFECT and multi-unit Modbus addressing
 
 ## Status and authorization
-Ordered requirements package; implementation may be prepared by Codex after normal package review/design/function-design gates. Creating this package does **not** authorize physical flashing, live actuation, unattended operation or a high-load field trial. Physical experiments require explicit supervised go/no-go and safe restoration.
+Ordered for Codex implementation/design. **No long-duration brine tests or COP experiments in P0076**; those are moved to P0077. No physical flashing or uncontrolled actuation authorized by this document.
 
-## Package order and ownership
-P0076 follows P0072 r3; independent of P0075 bootloader-readback outcome. Two separately accepted features:
-- F0076-A: EFFECT — feedback regulation of delivered heating power in kW.
-- F0076-B: BRINE STRESS / COP — time-series acquisition, staged-load analysis, recovery and efficiency comparison.
+## Package order, scope and ownership
+P0076 follows P0072 r3; independent of P0075 readback success. Two features:
+- **F0076-A EFFECT**: regulate an individual heat pump's delivered heating kW through safe Zone1 flow-target adjustments.
+- **F0076-B Modbus addressing / two Procons on one RS485 bus**: unique persistent addresses, discovery and independent control.
 
-Reusable Procon firmware and portable tests belong to `marlov1974/procon-melcobems-mini-a1m`. Experiment planning, Mac logging, analysis and site evidence belong to `marlov1974/smart-home`. No unrelated system modifications.
+Standalone `marlov1974/procon-melcobems-mini-a1m` owns portable application source, tests and documentation; Smart Home owns package evidence and site integration. Both units have STM32L433 CPUs per operator inspection. VP1 and VP2 use a shared borehole/source. Do not infer independent brine circuits or identical heat meter boundaries.
 
-## Operator decisions — measurement boundaries
-**The independent load variable is heat delivered to the floor-heating circuit in kW.** Do not substitute ground extraction, electric compressor consumption, requested setpoint, or compressor Hz. The existing MVP field i7 measures estimated water-side output from GET0C/GET14, not automatically floor heat delivered. Before labeling it 'floor kW', determine hydraulic routing (space-heating vs DHW, bypass, mixing, buffers/pool, pumps) and validate the sensor/meter boundary. For an unsuitable hydraulic state, tag `FLOOR_HEAT_UNCONFIRMED` and do not claim a floor-load or floor-COP point.
-
-**A single pump cannot deliver 18 kW as a sustained target** per operator's current planning constraints. For a single unit, 9 and 12 kW are example comparison levels, subject to its actual observed capability and native limits. **18 kW is a combined VP1+VP2 load point.** The operator expects the pair *may* achieve 24–27 kW continuously, but this is an **unverified hypothesis**, not rated capacity, continuous capability, or authorization to demand it. Validate each pump and the combined hydraulic/electrical system separately before claiming sustained capability.
-
-For two pumps, record `P1_floor`, `P2_floor` and `P_total_floor` only when measurement topology allows non-overlapping contributions; otherwise use a valid common downstream floor meter and label its boundary. **Never add two measurements that count the same circulating heat twice.** Collect `E1` and `E2` electric power on corresponding synchronized boundaries; separate compressors, internal pumps, booster/immersion heat, other auxiliaries and shared loads if metered. Record exactly which components enter COP. A single Procon does not itself control the other heat pump; coordinating two units is a separate guarded Mac/controller layer, not an implicit Modbus command broadcast.
-
-## Existing source baseline
-P0072 r3 is the latest discussed firmware. MVP field i7 delivers signed water heat in W, `W = trunc(flow_cL_min * delta_cC * 418 / 60000)`, based on GET0C supply/return and GET14 primary flow. It assumes water properties, has whole-L/min source resolution and a 2-second alignment criterion. A3 service27/28 TH32/TH34 candidates have source whole-degree resolution and limited across-range calibration. GET04 exposes compressor Hz. P0072 r3 has supervised physical evidence for FIXED_FLOW38 C, explicit AUTO and lease-expiry restoration; other modes and persistent reboot recovery remain unverified. Its snapshot and lease live only in RAM: loss of power/reset may leave native setpoints changed. Do not claim unattended autonomous recovery.
+## Existing baseline
+P0072 r3 reports water-side estimated watts in MVP field i7, calculated from GET0C supply/return and GET14 primary flow: `W = trunc(flow_cL_min * delta_cC * 418 / 60000)`; source flow resolution is whole L/min and sample alignment matters. It is **not automatically verified delivered floor heat**: identify heating/DHW/hydraulic routing first. A3/27 and /28 provide provisional brine readings, with whole-degree source resolution. P0072 r3 FC16 holding offset300/count8 envelope v2 supports OFF/AUTO/FIXED_FLOW/DHW/TARGETS; existing modes and telemetry must remain backward-compatible. Physical evidence: supervised FIXED_FLOW38C, AUTO and lease expiry restoration; no persistent restoration after MCU reset/power loss (snapshot in RAM only). Current replacement firmware hardcodes Modbus slave 1 at 9600 8N1 and does not interpret DIP addressing.
 
 ## F0076-A — EFFECT feedback regulation
 
@@ -40,121 +33,34 @@ P0072 r3 is the latest discussed firmware. MVP field i7 delivers signed water he
 ### Acceptance F0076-A
 Pass offline tests first, including telemetry freshness, source generation uniqueness, zero flow, DHW transition, request limits, response delay, anti-windup, noisy/quantized measurements, native rejects, timeout and power-loss state reporting. Hardware gate: supervised low/medium reachable targets; no continuous tuning while reference measurements invalid; measured convergence and stability reported with actual bands (initial goal ±0.5–1 kW, not promised precision). Verify explicit AUTO and lease restoration; no claim of post-reset restoration without a proven persistent recovery solution.
 
-## F0076-B — BRINE STRESS / COP
 
-### Acquisition
-- Log TH32 brine in, TH34 brine out and brine delta **once per minute**, recording separate source sample timestamps, generations and age; do not pretend asynchronous samples are simultaneous.
-- Log faster process/electric data as available, aggregate per minute with actual timestamp boundaries (mean/min/max Hz, power, flow, flow/return, temperatures and EFFECT state).
-- Measure actual delivered floor kW, requested kW, independently measured electric kW, heat-pump mode, primary flow, supply/return, TH32/TH34, load-step ID, minutes since transition, validity/quality and source IDs.
-- No fabricated electric power or COP. If Shelly 3EM measurements are not installed/validated/assigned to correct circuits, output `COP_UNAVAILABLE`. Sensor placement and shared-load inclusion must be explicit.
-- Retain raw timestamped measurements locally on Mac and export CSV/Parquet plus machine-readable metadata. Never replace failed/missing minutes with silent interpolation for analysis.
+## F0076-B — Individual RS485 Modbus addresses
 
-### Controlled staged experiment
-- Passively validate acquisition first. Later conduct supervised rising load, downward load and recovery intervals, preferably 15–30 min per plateau where safe/feasible; select step setpoints from **actual accessible output** not assumed capacities.
-- One-unit and two-unit experiments are separate datasets. Run only a tested, explicitly coordinated two-pump sequence for combined 18 kW or higher. 24–27 kW continuous is a **research objective to verify**, not a guaranteed setting or a minimum acceptance target.
-- Each plateau must be classified by measured achieved floor kW and fraction of time held, with native limits and compressor Hz. Reject comparisons based solely on requested kW.
-- Stop conditions before field test must be defined from verified Geodan native operating envelopes and observed supply/brine temperatures; never disable built-in safety. A stop request does not guarantee immediate compressor stop. Test must be supervisable, bounded, and allow a safe return to the previously recorded state.
-
-### Analysis of curves and knees
-- For each interval calculate TH32/TH34 starting temperature, deviations after 1/5/10/15/30 min where measured, fast/slow °C/min slopes, best-fitting response family only when justified, continued decay versus plateau, and post-load recovery.
-- Compare multiple real **floor-delivered** kW plateaus at matched time since step and matched/adjusted initial thermal state. Look for thresholds/plateaus and reproducibility; do not label a single transient 'collapse' without repeats and quantified uncertainty. Document 1°C source quantization and sample-age limitations.
-- Analyze up/down hysteresis, prior operating history and the common borehole interaction if two units share the source. Keep brine sensor identities per unit and do not assume hydraulic source topology.
-- Produce time-series graphs of TH32/TH34 with load overlays, achieved kW/Hz against time, equal-time brine depression vs achieved floor kW, recovery curves and knee/uncertainty report.
-
-### COP comparison and future optimization
-- Define `COP_boundary = delivered_floor_heat_kW / measured_electric_input_kW` over synchronized windows, explicitly stating what electrical/thermal loads are included. This is **floor-delivery system COP** unless measurement boundaries support a narrower heat-pump COP. Reject zero/invalid watts and windows dominated by transients if reporting steady-state COP.
-- Compare at **9 and 12 kW per individual pump where reachable**, and **18 kW combined VP1+VP2**. Optionally compare combined 24–27 kW only if subsequently demonstrated safe/reachable. Also compare equivalent combined output under alternative load splits, such as 9+9 vs 12+6 if both feasible, rather than attributing one fixed COP to a total output level.
-- Capture outdoor/ground-entry, floor flow temperature, return temperature, DHW state, compressor Hz, primary pump behavior, electrical heater status and test history. Normalize or stratify comparisons; COP difference from unequal supply temp / starting brine is not automatically a kW-caused effect.
-- Compute per-unit and combined COP **only with consistent, non-overlapping heat and electric measurement boundaries**. Record inclusion of both circulation pumps and any booster heater. Prefer measured delivered thermal energy divided by measured electrical energy over the stable comparison window, with sample count, duration and measurement uncertainty. Avoid point-ratio artifacts.
-- Deliver a comparison table with achieved heat (kW), electrical input (kW), COP, window length, input brine temperature, supply/return, split VP1/VP2, limits and uncertainty. No result claimed where measurement support is missing.
-- Later control optimization based on COP is **out of scope** for this initial package; report recommendations separately and require a new authorized control package before closed-loop dual-unit dispatch.
+### Desired operating model
+- Support **two physically distinct Procon STM32L433 units on one half-duplex RS485 bus**, each with one unique Modbus RTU slave address (operator-configured candidate: VP1=1, VP2=2; actual mapping requires read-only identity proof before final assignment).
+- Preserve current 9600 8N1 application serial configuration and existing UART/DE direction behavior until separately authorized otherwise; bootloader's 115200 profile is not part of this feature.
+- Prefer the hardware DIP-address model **only if physically verified**; the original vendor DIP semantics do not prove replacement-firmware semantics. Otherwise specify a safe nonvolatile per-device configuration mechanism with verified persistence, bounds, wear protection and recovery, without arbitrary writes to the bootloader/EEPROM.
+- Document whether address changes are sampled on cold boot, application reset or live; define deterministic effective address, valid range 1–247, reserved/broadcast address 0 behavior, precedence and invalid configuration fallback. Avoid assigning the same fallback address to two live units.
+- Before joining devices on the same bus, verify their addresses **individually with the other slave isolated**. Reject duplicate address as a hard blocker; do not attempt discovery by writing broadcasts or issuing control commands. Maintain a stable mapping from device identity (physical VP, unique observable identity) to slave address; never infer identity solely from a returned 888 marker.
+- Unaddressed and CRC-invalid Modbus frames must be silent; preserve the known FC04/FC16 exception and read-only restrictions per slave. No shared control lease or target between devices; diagnostics and sequence ownership stay local to each device.
+- With both attached, poll interleaved FC04 on both addresses; verify no collisions, overlap, stale cross-device data or bus starvation while each device continues its independent CN105 FAST/A3 service. Ensure RS485 is a single-master bus, with validated termination/bias and line lengths. A Shelly Modbus master must be configured to address both slaves correctly.
+- Any controller issuing EFFECT/FC16 must target exactly one slave address; forbid broadcast control; maintain independent desired-state, sequence numbers, lease tracking, recovery logs and backup of original native settings for VP1/VP2.
+- Expose read-only identity/address/config-source and diagnostics per unit; report a mismatch between requested and observed address as an error, not a success.
+- Include a setup guide for isolated initial provisioning, sequential join, dual polling, independent control and rollback/recovery. Do not overwrite the previous running image on two units simultaneously before one-unit validation.
 
 ### Acceptance F0076-B
-Pass offline tests using labelled simulated input (no fabricated hardware success), validate minutely collection, timestamps, source generations, energy integration, COP boundaries, no double counting, missing sensors, individual-vs-pair identifiers and knee detection under drift/noise. Physical acceptance is staged: passive capture first, supervised one-unit tests second, then separately authorized two-unit tests. A sound inconclusive result (no detectable knee or no measured COP at a target) must be reported honestly rather than forced to pass.
+1. Offline tests prove separate slave1/slave2 behavior, correct silence/CRC handling, addressed FC04 and FC16, broadcast refusal, persistence/restart semantics and invalid/duplicate-address detection strategy.
+2. On real hardware, each unit can be read individually; after joining, both can be read on one bus over extended intervals, with unique recorded device identity and successful CN105 telemetry per unit.
+3. Existing slave1-only installs continue behaving as before when left unconfigured.
+4. One pump's setting, telemetry, command sequence, lease and restore cannot alter or masquerade as the other pump's.
+5. A failed provisioning/join can be rolled back without uncontrolled writes or resetting the heat pump.
 
-## Operator-defined weekend long-duration protocols (2026-10-07)
+## Safety, scope, handoff
+Preserve existing native Mitsubishi inhibit/holiday/server protection, A3 exclusive retries, readback and lease semantics. EFFECT must not force brine/primary pump speed, compressor Hz, native-protection bypass or fault reset. Loss of fresh process feedback must stop new upward setpoint changes. RAM-only restore after reset remains a deployment blocker for unattended control; document a separately verified recovery mechanism rather than claiming one.
 
-Two distinct studies are requested. They are **future physical experiment protocols**, not authorization to execute before hardware/control gates are satisfied. The calendar start, machine identity, monitoring responsibility and exact safety thresholds remain to be confirmed with the operator. Do not merge them into a single uninterrupted 16-hour run without transition/restoration checks. Separate run identifiers and complete timestamped datasets are required.
+No scripted multi-hour staircase, borehole recovery, COP comparison or 18–27 kW combined dispatch in P0076. All such test sequences and electrical/thermal metering specifications are in **P0077**. Designing per-unit EFFECT and safe shared-bus communications is not permission to run P0077.
 
-### Study A — 4-hour heat-output staircase
+## Implementation process and deliverables
+Codex follows normal bootstrap/review/design/functions gates, and creates `requirements/package-runs/P0076/review.md`, `design.md`, `functions.md`, attempts/verification/CHANGELOG with real code/test evidence. Inspect P0072 r3 `CHANGELOG`, `procon/docs/MVP_API.md`, `CONTROL_API.md`, UART and DIP evidence. Implement deterministic native/ARM/mock tests before live integration; no flash or active heat control without a separate operator handoff. At most three supervised hardware-debug attempts per reviewed validation round. Include test vectors for different addresses, DIP/config change on reboot, collisions, independent FC04/FC16, stale power and cross-unit state isolation. Update source/deploy artifacts and function catalog only within scope; synchronize REPOSITORY_FILES.md for file changes, and keep private logs/vendor binaries out of public standalone exports.
 
-| Step | Target delivered floor heat | Duration |
-|---|---:|---:|
-| A1 | 3 kW | 4 h |
-| A2 | 6 kW | 4 h |
-| A3 | 9 kW | 4 h |
-| A4 | 12 kW | 4 h |
-
-Total target dwell time **16 hours**, excluding setup, any transitions/pauses and the subsequent recovery observation. Targets are requested **floor-delivered heat**, not compressor electric kW or extraction from brine. Keep each step's achieved kW, tracking error and percentage of valid within-band time; an unattainable 12 kW plateau must be flagged `TARGET_NOT_REACHED`, not silently forced. The thermal state at step A2/A3/A4 includes accumulated heat extraction from earlier stages, so raw step differences are *not* pure causal power-response curves. Capture initial state and optionally validate with repeated or reordered plateaus on a later day.
-
-### Study B — repeated 9 kW recovery comparison
-
-| Sequence | Requested load/hold | Interval |
-|---|---|---:|
-| B1 | 9 kW delivered floor heat | 4 h |
-| B2 | Rest / source recovery | 1 h |
-| B3 | 9 kW | 4 h |
-| B4 | Rest / source recovery | 2 h |
-| B5 | 9 kW | 4 h |
-| B6 | Rest / source recovery | 4 h |
-| B7 | 9 kW | 4 h |
-
-Total is **16 h of requested 9 kW plus 7 h of rest = 23 h**. If both studies are performed once, minimum scheduled holds total **39 h**, not counting inter-study stabilization, initial baseline, transitions or final recovery. Log continuously during every rest and consider adding a separately agreed post-B7 recovery observation; no default duration is invented.
-
-**Rest definition must be explicitly implemented and verified.** A request for `EFFECT=0` does not mean actual compressor shutdown. Choose and record a safe native state that genuinely stops *the tested unit's* heat extraction when appropriate, preserve operator-approved antifreeze/native protections and note other loads (DHW/pool/other heat pump) that may prevent the ground source from resting. Record actual compressor Hz=0 and brine-pump state when available; do not call a rest period `RECOVERY_ZERO_LOAD` if another machine continues extracting from a shared loop. If no confirmed shutdown/restore procedure exists, block active recovery testing rather than assuming Modbus OFF is equivalent to zero source extraction.
-
-### Continuous capture and analysis
-- Record brine TH32/TH34 at **one valid time-stamped observation per minute**, retaining source age, whole-degree quantization, acquisition order and confidence. Maintain uninterrupted logging during load, rest, transitions and any stops.
-- Also record each minute: requested and measured floor kW, rolling power, compressor Hz, primary flow, forward/return temperatures, native mode, DHW/boost and other heat-source activity, regulation phase and flow target, electric kW (when validated), and current step/run ID. Calculate achieved heat energy per phase using only validated time-aligned measurements.
-- For Study A, compare TH32/TH34/ΔTbrine level and slope at common elapsed times 5/15/30/60/120/240 min, as data allow, plus end-of-step decay and possible threshold changes versus **achieved** floor heat.
-- For Study B, capture temperature just before/after each shutdown and restart; quantify rebound during 1/2/4 h rest, starting temperature for each subsequent 9 kW hold, first-hour response, final 4-hour temperature and cumulative history. A 1/2/4 h rest sequence has a changing starting thermal state and order confounding; do not claim isolated recovery constants or a precise sustainable ground-output threshold from one sequence.
-- Log actual heat-delivered and electrical energy during load and rest; compute COP only for valid consistently bounded periods, and do not claim 9/12 kW COP comparison is causal unless supply temperature, initial brine and load mix are considered.
-
-### Multi-hour execution / lease and recovery gate
-- Existing r3 command envelope has **30–1800 s lease** and RAM-only snapshots. **Four-hour holds cannot be executed by simply setting a four-hour lease.** Define and test bounded supervised lease renewals, single-writer ownership, stop/resume and application/native-state reconciliation after host, Shelly, Procon and heat-pump restarts. On network disconnect, inability to refresh state, failure of telemetry freshness, run-away target, native inhibit or exceeded temperature/rate limits, command no new up-ramp; enter a verified safe stop/restore path and alert the operator.
-- Require a documented check of cooling/pump/source and heat-sink capacity for a sustained 12 kW requested floor load. Confirm exact safe temperatures/abort margins from the device and plumbing before running; native protections must remain enabled.
-- Before running over a weekend, require operator approval of: specific VP, test start, supervision/availability, logging path, effect setpoint ceilings, compressor/source limits, rest mechanism, what happens if host loses power, and automatic stop/rollback behavior. If persistent recovery and abort behavior cannot be validated, run only shorter supervised periods; **do not run these 16/23 h scripts unattended**.
-- Time-based test schedule belongs in the experiment controller with monotonic elapsed-time accounting, durable step state, explicit human pause/resume and restart checks. A device reboot must never restart a long test automatically at a high-load step without operator reapproval.
-- Include dry-run tests covering all 7 recovery phases, both 4-hour staircase boundaries, failed/unattainable plateaus, missing brine minutes, lease renewals, and interruptions during a rest/load transition.
-
-### Verified installation topology — shared source (operator clarification)
-
-**VP1 and VP2 use the same borehole/brine source.** Treat the ground loop as one coupled thermal system, not two independent boreholes. For any brine-response test, record both units' compressor/activity status, actual delivered floor heat and (where instrumented) electric power. Individual TH32/TH34 sensors may report different local temperatures because of plumbing/flow/timing; do not presume they measure the same point or average them blindly.
-
-A true *borehole recovery/rest* interval requires verifying that **both** units cease significant heat extraction from the shared source, including unexpected DHW activity; turning only the tested unit OFF is not enough. Log both machine states throughout rest. If VP2 extracts heat while VP1 rests, label the phase `PARTIAL_LOAD_SHARED_SOURCE`, retain the data but exclude it from zero-load recovery estimation. Record any brine circulation with compressors off and distinguish hydraulic mixing/rebound from actual geological replenishment. Before commanding both units OFF, confirm the home's hot-water/heating constraints and safe alternative heat supply; do not automatically shut down both machines without separate operator approval. Native frost and other protections remain active.
-
-For the 3/6/9/12 kW staircase, specify whether the target is VP1 floor delivery alone or the **total output to the common floor system**. If VP2 runs, its heat delivery contributes to shared source loading even when not included in an individual VP1 output target; record actual total loading to compare ground response fairly. The first version is a one-pump control experiment with the second pump's activity explicitly supervised and measured, and no silent assumption that it stays off. Dual-pump dispatch remains separately gated.
-
-### Weekend physical setup — one heat pump intentionally shut down
-
-Operator confirms that **one of the two heat pumps will be shut down throughout the weekend tests**. The identity of the shut-down unit (VP1 or VP2) is not yet specified; ask and record it before physical execution. Do not assume VP1 is the tested unit. The **other unit alone** is the controlled 3/6/9/12 kW load and repeated 9 kW heat source for P0076. This is a single-unit test against the shared borehole, not a two-unit COP test. Confirm by independent readings that the shut-down unit's compressor remains off, including automatic DHW or protection-driven activity, and record any unexpected operation.
-
-For Study B's 1/2/4 h recovery periods, also bring the **tested unit's** source extraction to a verified safe rest state. Thus both units must cease significant heat extraction for a true zero-load recovery segment. If not, retain and label measurements as partial recovery. Never disable intrinsic frost protection or change the operator's shut-down method without permission. Confirm heat/hot-water service and a fallback before a multi-hour stop of both pumps.
-
-The four-hour 12 kW stage is only valid if the single remaining unit can actually attain that delivered heat level safely; never substitute output from the shut-down unit, force a higher limit or misreport an unattainable plateau. No pair COP or 18/24–27 kW validation takes place this weekend. Those remain future separate experiments.
-
-## Non-goals and invariants
-No bootloader/readback development, firmware programming over Shelly, EEPROM changes, arbitrary CN105 SET, brine/primary pump override, fault reset, native safety bypass, automatic compressor-Hz command, or unattended load scheduling. No claim that 18kW is a single-unit target, or that 24–27kW continuous combined is established. No uncontrolled simultaneous masters or control leases. Preserve existing P0072 Modbus layout/telemetry and deterministic release paths.
-
-## Implementation phases and gates
-1. **Review/design:** read Smart Home bootstrap and `AGENTS.md`; relevant P0072 r3 changelog, `procon/docs/MVP_API.md`, `CONTROL_API.md`, test evidence, and standalone repo hardware/API reference. Preimplementation PASS/WARN/STOP, write `requirements/package-runs/P0076/review.md`, `design.md`, `functions.md` before changes. Any STOP blocks implementation. No changed API silently.
-2. **Offline:** implement and test regulator, interface/mocks, Mac collector and analysis with synthetic datasets. Preserve stable existing modes and output. Test determinism, no changes to unrelated control paths and full safety behaviors.
-3. **Passive hardware measurements:** only after operator go-ahead; no thermal-setting writes. Validate floorside thermal-power measurement location, A3 TH32/34 identity/quantization, logging and electrical metering.
-4. **Supervised single-unit EFFECT:** separately authorized, record original native settings externally, test bounded low/medium targets and restoration; cap debugging attempts at 3 before review.
-5. **Supervised load-staircase and optional dual-pump COP:** separately authorized with verified power and hydraulic measurement boundaries, thermal limits, pause/abort and per-unit controls. Never assume the package authorizes 18kW single-unit or 24–27kW continuous combined.
-
-## Test cases / expected deliverables
-- TC1 unchanged P0072 existing Modbus telem/FC16 v2 behavior and exclusive A3 scheduling.
-- TC2 rolling valid power from distinct cycles; stale/skew/unavailable/zero-flow fail safe; bounded filter lag.
-- TC3 START/CAPTURE/HOLD convergence, overshoot prevention, limited state and no setpoint ratchet at unreachable kW.
-- TC4 timeout, native inhibits, concurrent lease, reset/power interruption; no claim of durable automatic restore.
-- TC5 passive one-minute brine capture and timestamp/quality correctness.
-- TC6 rising/descending experiments and safe incomplete data handling.
-- TC7 identical target but changed starting brine distinguishes hysteresis; quantified knees vs false positives.
-- TC8 COP 9/12 single unit, 18 combined, optional 24–27 combined: correct metering boundaries; refuse missing electric readings or overlapping heat meters; separate transient vs stable windows.
-- TC9 end-to-end restoration, telemetry revalidation and durable signed-off evidence with real operator go-ahead.
-
-Codex to produce review/design/functions/CHANGELOG, test outputs and sanitized findings under `requirements/package-runs/P0076/`, portable release/test artifacts in standalone repo, exact commit/release hashes, and an explicit not-yet-tested statement for physical phases. New source paths require a synchronized `REPOSITORY_FILES.md`. No vendor binaries, raw dumps, proprietary updaters, credentials or site-private logs enter standalone repo.
-
-## Codex execution order
-Implement the offline package first. Before any deployment/physical actuation, stop and report the remaining safety blockers, accurate capability boundaries, valid COP measurement channels and proposed field runbook. User alone authorizes the next physical phase.
+**Codex completion condition**: EFFECT and addressing features implemented/tested offline with explicit unverified hardware stages; follow-up operator approval needed before physical provisioning or control. P0077 begins only after its stated blockers are cleared.

@@ -21,6 +21,10 @@ The operator then requested a scan from00throughFF and answered Ja to the explic
 
 Stop on partial send, overflow128bytes, unsolicited/late/ongoing receive, unhealthy Shelly, uncertain RPC or identity/config drift. No claim of Procon liveness can be inferred for silent probes because the operator requested no helper traffic. No response means only no received byte within this method/window, not absence of a handler or side effects. A standalone41 example was performed before the operator clarified it was illustrative; keep that observation separate from the full-range scan. Physical normal-mode restoration remains the operator's evening handoff.
 
+## Following paired-opcode authorization — 2026-10-07
+
+The operator next requested `0x40 + 0x5A`, followed by `0x57 + 0x5A`. This authorizes exactly those two contiguous two-byte sequences, once each, with a three-second receive window and no interleaved helper traffic. The resulting silence for both is recorded separately in opcode-sweep-results.md. It does not authorize further bytes or establish a working read command; restoration remains the pending operator handoff.
+
 ## Decision and scope
 
 Operator request, 2026-10-07: read the firmware from the A1M currently connected through Shelly, save it on the Mac and compare it with the replacement firmware we built. The operator changes the A1M DIP switches and power-cycles the A1M. Codex prepares the tooling, temporarily changes the connected Shelly serial transport to raw UART at 115200 8N1, performs discovery and flash readback, compares the dump and restores the Shelly configuration.

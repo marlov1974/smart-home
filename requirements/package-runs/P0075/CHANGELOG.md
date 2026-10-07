@@ -20,3 +20,7 @@ Added bounded documented0x53 controls and0x50 comparisons before returning to th
 Completed the separately risk-authorized `00..FF` sweep: exactly one byte per trial, no helper UART traffic, 3000 ms window and 1700 ms response classification. All 256 transactions validated. Only `50`, `51`, `53` and `5A` responded; `51`/`53` returned negative ACKs at about 1.62 seconds. The silence of `47`/`57` and other opcodes is bounded evidence, not a proof of absent handlers.
 
 Added the bounded sweep adapter, offline sanitizer/validator and full per-opcode map to standalone; coordinated design/results/function documentation here. Focused tests pass: 46 write-reference, 34 read/ACK, 12 sweep and 5 summary cases plus the prior suites. Current bridge stop/disabled state is verified; physical return to normal remains pending until the operator's evening handoff. Both file indexes are updated. No firmware source or G2 runtime changes; no global knowhow promotion for profile-specific hypotheses.
+
+## Following paired-opcode request
+
+The explicitly requested contiguous pairs `40 5A` and `57 5A` each returned zero bytes within three seconds. Four TX bytes in two separate transactions; no helper command. Recorded separately in the opcode report with passive/order/timing mock verification and final script stop/disable readback. This documentation update adds no tracked paths; the file indexes remain unchanged. No inference of read support or a unique `57` parameter wait.

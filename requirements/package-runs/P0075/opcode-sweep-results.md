@@ -36,3 +36,18 @@ Procon's last operator-confirmed DIP is `00000000`. Physical return to `10000110
 `make readback-test PYTHON=python3` passed with the existing suites plus 46 write-reference cases, 34 fixed read/ACK cases, 12 pure-sweep cases (including 256 ordered mock requests) and 5 offline summary tests. Only three flash-read candidates from the read/ACK adapter ran on hardware; the separately defined `59` and `A0` candidates were not run through that adapter. They were covered as single bytes in this sweep.
 
 Firmware source, release images and G2 runtime are unchanged. Raw traffic, credentials and site snapshots remain private. Both tracked-file indexes are regenerated for this scoped change. Knowhow promotion was considered and intentionally kept package-local: command support and timeout behavior remain profile-specific and unresolved.
+
+## Later paired-opcode check — 2026-10-07
+
+The operator next explicitly requested `40 5A`, then `57 5A`. Each was sent once as one contiguous two-byte UART transmission, without a deliberate inter-byte gap. Each had a 3000 ms receive window, followed by an out-of-band result read. No standalone discovery or other helper command was inserted. These two transactions and four transmitted bytes are separate from the 256-byte sweep above.
+
+| Transmitted bytes | Bytes accepted | Received within 3000 ms | Result read after TX |
+|---|---:|---:|---:|
+| `40 5A` | 2 | 0 | 3273 ms |
+| `57 5A` | 2 | 0 | 3290 ms |
+
+Both windows completed without an observed byte or receive/overflow error. This does not uniquely implicate `57`: the `40` prefix also prevented an observed discovery response in this contiguous-pair test. Handling an entire burst according to its first byte, discarding trailing bytes, or retaining parser state are possible explanations. There was no physical reset between pairs, and no final standalone `5A` was sent, so post-test Procon responsiveness is unverified. A successful standalone discovery from the earlier sweep is a historical comparison, not a concurrent control. No read handler, packet length or timeout was proven by this check.
+
+The small local adapter accepted only the two fixed pairs, once each in order, capped RX at 128 bytes, and rejected replay/order errors or late RX. An offline mock verified passive load, exact frames, order/replay handling, three-second windows, receive timing and late-RX stop before hardware use. A sandbox network denial occurred during the initial identity request, before script changes or UART transmission; the authorized network retry then ran the test once.
+
+The research script was stopped and disabled again, read back at 2026-10-07T14:45:51.506871+00:00. Serial and physical restoration status remain unchanged: maintenance at 115200 8N1, operator return to normal mode pending. Raw logs and this site-specific one-shot runner remain local.

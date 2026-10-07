@@ -24,3 +24,7 @@ Added the bounded sweep adapter, offline sanitizer/validator and full per-opcode
 ## Following paired-opcode request
 
 The explicitly requested contiguous pairs `40 5A` and `57 5A` each returned zero bytes within three seconds. Four TX bytes in two separate transactions; no helper command. Recorded separately in the opcode report with passive/order/timing mock verification and final script stop/disable readback. This documentation update adds no tracked paths; the file indexes remain unchanged. No inference of read support or a unique `57` parameter wait.
+
+## Delayed discovery comparison
+
+Added the bounded adapter for delayed `40`/`57` followed by `5A`, with 20 offline tests in standalone, plus design, function and evidence documentation here. Completed 58 prefix trials and 58 valid standalone controls: 174 TX bytes and 1080 RX bytes. Initial timing variation justified a documented extension from 40 to 58 trials, within the cap of 60, with host polling removed during the gap and response window. No stable opcode-specific difference was established: both respond above the measured transition near 1.56–1.58 seconds. Normal restoration remains pending; the owned slot's stopped/disabled state and unchanged maintenance profile are verified. Both file indexes are updated. All readback tests and evidence validation pass. Profile-specific learning intentionally remains package-local.

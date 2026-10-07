@@ -17,3 +17,7 @@ The operator subsequently confirmed normal DIP/restart. The normal-mode raw-UART
 ## Later write-reference and opcode follow-up
 
 `make readback-test PYTHON=python3`: PASS, including all existing cases and 46 write-reference, 34 read/ACK, 12 pure-sweep and 5 offline summary cases. Summary validation established all 256 one-byte intents/results in order, with no validation errors; final bridge stop/disable was verified separately by read-only Shelly management calls. See `opcode-sweep-results.md` for precise observations and final handoff. Earlier normal-operation verification is historical: physical restoration is now pending. Firmware source/releases are unchanged, so the earlier full ARM/native/determinism result remains applicable to those identical sources; the follow-up is not a new firmware build.
+
+## Delayed discovery follow-up
+
+`make readback-test PYTHON=python3`: PASS, including 20 new offline delay-probe cases. Independently audited all 116 intention/result pairs across five runs: 58 prefix trials, 58 valid controls, 174 accepted TX bytes and 1080 RX bytes. Response, timing, count and aggregate checks passed. All run cleanup flags are true; final management readback at 15:31:59.993283 UTC verifies the owned slot is stopped/disabled and the maintenance profile remains active. No firmware source changed. See delay-probe-results.md and the design amendment for the bounded timing refinement and pending physical handoff.

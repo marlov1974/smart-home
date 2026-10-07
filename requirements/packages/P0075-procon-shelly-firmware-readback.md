@@ -1,7 +1,7 @@
 # P0075 — Procon firmware readback through Shelly and exact build comparison
 
 ## Status
-Partial readback research and the later explicitly authorized write-reference and pure opcode survey are complete on 2026-10-07. Readback remains `BLOCKED_READ_PROTOCOL`: no application bytes or backup were extracted. The full single-byte `00..FF` sweep produced responses only for `50`, `51`, `53` and `5A`; see `opcode-sweep-results.md`. The maintenance script is verified stopped/disabled. Physical restoration remains deferred by the operator until evening: `WAITING_FOR_OPERATOR_RESTORE`.
+Partial readback research and the later explicitly authorized write-reference and pure opcode survey are complete on 2026-10-07. Readback remains `BLOCKED_READ_PROTOCOL`: no application bytes or backup were extracted. The full single-byte `00..FF` sweep produced responses only for `50`, `51`, `53` and `5A`; see `opcode-sweep-results.md`. The later delayed-discovery comparison completed 58 prefix trials and 58 valid standalone controls, without establishing a stable difference between 40 and 57; see `delay-probe-results.md`. The maintenance script is verified stopped/disabled. Physical restoration remains deferred by the operator until evening: `WAITING_FOR_OPERATOR_RESTORE`.
 
 The original read-only restrictions below are the default baseline. The dated operator amendments take precedence for their distinct bounded experiments; no general updater, further experiment or heat-pump control is authorized by their completion.
 
@@ -24,6 +24,10 @@ Stop on partial send, overflow128bytes, unsolicited/late/ongoing receive, unheal
 ## Following paired-opcode authorization — 2026-10-07
 
 The operator next requested `0x40 + 0x5A`, followed by `0x57 + 0x5A`. This authorizes exactly those two contiguous two-byte sequences, once each, with a three-second receive window and no interleaved helper traffic. The resulting silence for both is recorded separately in opcode-sweep-results.md. It does not authorize further bytes or establish a working read command; restoration remains the pending operator handoff.
+
+## Later delayed-discovery comparison — 2026-10-07
+
+The operator then requested comparing `40` and `57` by varying the delay before a separately sent `5A`, treating their alleged command/noncommand status as hypotheses. This authorizes the bounded comparison in `delay-probe-design.md`: standalone discovery controls, those two prefix bytes only, delays up to 5000 ms, an initial 40 prefix trials with a documented bounded extension up to 60 to resolve measured timing jitter, no parameter payload or heat-pump control. Unexpected replies, failed controls or uncertain transport stop further transmission. The delayed probes supersede the preceding two-contiguous-pair limit only for this new experiment; physical restoration remains the pending operator handoff.
 
 ## Decision and scope
 

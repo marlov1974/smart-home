@@ -125,6 +125,14 @@ A true *borehole recovery/rest* interval requires verifying that **both** units 
 
 For the 3/6/9/12 kW staircase, specify whether the target is VP1 floor delivery alone or the **total output to the common floor system**. If VP2 runs, its heat delivery contributes to shared source loading even when not included in an individual VP1 output target; record actual total loading to compare ground response fairly. The first version is a one-pump control experiment with the second pump's activity explicitly supervised and measured, and no silent assumption that it stays off. Dual-pump dispatch remains separately gated.
 
+### Weekend physical setup — one heat pump intentionally shut down
+
+Operator confirms that **one of the two heat pumps will be shut down throughout the weekend tests**. The identity of the shut-down unit (VP1 or VP2) is not yet specified; ask and record it before physical execution. Do not assume VP1 is the tested unit. The **other unit alone** is the controlled 3/6/9/12 kW load and repeated 9 kW heat source for P0076. This is a single-unit test against the shared borehole, not a two-unit COP test. Confirm by independent readings that the shut-down unit's compressor remains off, including automatic DHW or protection-driven activity, and record any unexpected operation.
+
+For Study B's 1/2/4 h recovery periods, also bring the **tested unit's** source extraction to a verified safe rest state. Thus both units must cease significant heat extraction for a true zero-load recovery segment. If not, retain and label measurements as partial recovery. Never disable intrinsic frost protection or change the operator's shut-down method without permission. Confirm heat/hot-water service and a fallback before a multi-hour stop of both pumps.
+
+The four-hour 12 kW stage is only valid if the single remaining unit can actually attain that delivered heat level safely; never substitute output from the shut-down unit, force a higher limit or misreport an unattainable plateau. No pair COP or 18/24–27 kW validation takes place this weekend. Those remain future separate experiments.
+
 ## Non-goals and invariants
 No bootloader/readback development, firmware programming over Shelly, EEPROM changes, arbitrary CN105 SET, brine/primary pump override, fault reset, native safety bypass, automatic compressor-Hz command, or unattended load scheduling. No claim that 18kW is a single-unit target, or that 24–27kW continuous combined is established. No uncontrolled simultaneous masters or control leases. Preserve existing P0072 Modbus layout/telemetry and deterministic release paths.
 

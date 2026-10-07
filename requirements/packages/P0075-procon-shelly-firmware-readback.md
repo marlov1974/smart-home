@@ -1,13 +1,25 @@
 # P0075 — Procon firmware readback through Shelly and exact build comparison
 
 ## Status
-Partial implementation and supervised research completed on 2026-10-07. `BLOCKED_READ_PROTOCOL`: physical discovery works, but no flash bytes were extracted. Normal operation subsequently restored and verified after the operator handoff; a Shelly restart during temporary-script deletion is documented separately. See package-run findings and hardware report. No A1M programming authorized or performed.
+Partial readback research and the later explicitly authorized write-reference and pure opcode survey are complete on 2026-10-07. Readback remains `BLOCKED_READ_PROTOCOL`: no application bytes or backup were extracted. The full single-byte `00..FF` sweep produced responses only for `50`, `51`, `53` and `5A`; see `opcode-sweep-results.md`. The maintenance script is verified stopped/disabled. Physical restoration remains deferred by the operator until evening: `WAITING_FOR_OPERATOR_RESTORE`.
+
+The original read-only restrictions below are the default baseline. The dated operator amendments take precedence for their distinct bounded experiments; no general updater, further experiment or heat-pump control is authorized by their completion.
 
 ## Operator amendments — 2026-10-07
 
 The operator subsequently authorized bounded trial-and-error 0x57 request variants, one hypothesis at a time with raw responses retained locally. Later instructions explicitly authorized zero-completion probes, discovery between hypotheses instead of a physical reset each time, 10–20 ranked variants, then one hour of independent research. These amendments supersede the original proven-contract-only gate and three-attempt limit for this bounded research session. They do not authorize opcode sweeps, erase/program/EEPROM, uncontrolled frame permutations, or claims that unknown address/length semantics are validated. Discovery/transport qualification comes first; invalid discovery or unexpected read data stops the series. Valid discovery proves responsiveness, not full parser reset. Bulk application reads remain gated on validated semantics and bounds. The original conservative requirements below remain the default for future sessions unless separately amended.
 
 The operator confirmed Shelly is the sole RS485 master and normal DIP10000110, and separately approved supervised Shelly reboots for the raw-UART transition. Existing physical handoff, restoration and no-heat-pump-reboot constraints remain. See package-run attempts for current state.
+
+## Later write-reference authorization — 2026-10-07
+
+The operator explicitly requested learning write behavior before returning to0x57. This supersedes earlier read-only prohibitions only for the bounded reference experiment in package-run write-reference-design.md: three fixed0x53 frames at application-relative0x17000 with eight FF bytes (one correct-format attempt, two negative controls), selected fragmentation of a negative control, and0x50 cached-ACK comparison. No erase, EEPROM, arbitrary programming, application-code overwrite or heat-pump control is included. The correct-format attempt may affect hidden ECC; it is not declared a physical no-op. No automatic retry/erase to force success. A later fixed0x57/0x50 comparison contains no write command. Current outcomes and restoration state are in write-reference-results.md; earlier reports are dated observations.
+
+## Later full opcode mapping authorization — 2026-10-07
+
+The operator then requested a scan from00throughFF and answered Ja to the explicit warning that unknown single-byte commands may erase firmware or alter persistent state, with recovery not guaranteed. This further expands only this experimental session. The final clarified method sends exactly one opcode byte per trial, ascending00..FF, without parameters and without interleaved discovery/last-ACK commands. Each probe has a3second observation window; record whether bytes arrived within1700ms. No fabricated packet parameters, payloads or automatic programming/erase sequence is added. Known command numbers are included as single-byte trials under the explicit risk acceptance.
+
+Stop on partial send, overflow128bytes, unsolicited/late/ongoing receive, unhealthy Shelly, uncertain RPC or identity/config drift. No claim of Procon liveness can be inferred for silent probes because the operator requested no helper traffic. No response means only no received byte within this method/window, not absence of a handler or side effects. A standalone41 example was performed before the operator clarified it was illustrative; keep that observation separate from the full-range scan. Physical normal-mode restoration remains the operator's evening handoff.
 
 ## Decision and scope
 

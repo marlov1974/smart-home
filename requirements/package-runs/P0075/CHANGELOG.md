@@ -10,3 +10,13 @@ Partial readback tooling and research, 2026-10-07. Physical discovery works, but
 - Knowhow promotion considered and intentionally skipped globally; profile-specific lessons remain in package evidence and standalone documentation.
 
 See verification.md for offline checks and findings.md for remaining uncertainty.
+
+## Subsequent operator-authorized write reference
+
+Added bounded documented0x53 controls and0x50 comparisons before returning to three fixed0x57 hypotheses. All seven0x53 transmissions returned72, including one correct-format FF attempt; the long-gap negative control returned72 after19bytes before the tail. All three reads stayed silent and retained cached7A. No successful write, firmware dump or erase. The new evidence supersedes the earlier final normal-state claim for the current physical session: operator restoration is deferred until evening and the bridge is stopped/disabled. New adapter tests46+27 pass; both file indexes updated. Profile-specific knowhow remains in the package.
+
+## Subsequent pure single-byte opcode survey
+
+Completed the separately risk-authorized `00..FF` sweep: exactly one byte per trial, no helper UART traffic, 3000 ms window and 1700 ms response classification. All 256 transactions validated. Only `50`, `51`, `53` and `5A` responded; `51`/`53` returned negative ACKs at about 1.62 seconds. The silence of `47`/`57` and other opcodes is bounded evidence, not a proof of absent handlers.
+
+Added the bounded sweep adapter, offline sanitizer/validator and full per-opcode map to standalone; coordinated design/results/function documentation here. Focused tests pass: 46 write-reference, 34 read/ACK, 12 sweep and 5 summary cases plus the prior suites. Current bridge stop/disabled state is verified; physical return to normal remains pending until the operator's evening handoff. Both file indexes are updated. No firmware source or G2 runtime changes; no global knowhow promotion for profile-specific hypotheses.

@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 624
+Tracked file count: 628
 
 ## Files
 
@@ -430,9 +430,13 @@ Tracked file count: 624
 - `requirements/package-runs/P0075/findings.md`
 - `requirements/package-runs/P0075/functions.md`
 - `requirements/package-runs/P0075/hardware-report.md`
+- `requirements/package-runs/P0075/opcode-sweep-design.md`
+- `requirements/package-runs/P0075/opcode-sweep-results.md`
 - `requirements/package-runs/P0075/review.md`
 - `requirements/package-runs/P0075/variant-series.md`
 - `requirements/package-runs/P0075/verification.md`
+- `requirements/package-runs/P0075/write-reference-design.md`
+- `requirements/package-runs/P0075/write-reference-results.md`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`

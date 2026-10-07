@@ -194,6 +194,36 @@ Before declaring this inventory complete, reconcile it against:
 
 Publish explicit coverage statistics, for example: total unique CN105 codes/descriptors found, mapped to RS485 semantics, partially mapped, and unknown. Do not hide unresolved entries.
 
+
+## External CN105 project reconciliation
+
+Also scan the external open-source CN105 projects already used as protocol references in this work, especially:
+
+- `F1p/Home-Assistant-Mitsubishi-CN105-to-MQTT`;
+- `m000c400/Mitsubishi-CN105-Protocol-Decode`.
+
+Inspect their source, protocol documentation, packet definitions, parsers, setters, service/A3 handling and model-specific branches. Extract CN105 request/response codes, payload fields, scaling, enums, service codes and SET operations that are not yet present in our original-Procon cross-reference.
+
+Reconcile external findings against the original Procon binary-derived table rather than mixing all evidence into one undifferentiated list. Every row/field must carry provenance such as:
+- `procon-original-binary`;
+- `procon-rs485-manual`;
+- `mitsubishi-service-manual`;
+- `P007x-hardware-verified`;
+- `F1p-cn105-project`;
+- `m000c400-cn105-project`.
+
+For externally discovered items not present in the Procon original binary, keep them in the master CN105 catalog and mark them explicitly as `external-only / not found in Procon A1M v3.1.05`. Conversely, retain Procon-only codes even if neither external project knows them.
+
+For conflicts in code meaning, byte offsets, scaling or enum interpretation, do not silently choose one. Record both interpretations, evidence/provenance and a conflict status requiring resolution.
+
+The public repository should therefore contain:
+1. a Procon-A1M-specific cross-reference;
+2. a broader CN105 master catalog merging our independently established mappings with additional open-source findings;
+3. explicit provenance/confidence per mapping;
+4. a short differences section showing Procon-only, F1p-only, m000c400-only and shared findings.
+
+Respect the external projects' licenses. Do not copy substantial source or documentation text merely to create the catalog; independently summarize protocol facts and preserve required attribution/links.
+
 ## Build reproducibility
 
 The destination repo must build independently on a clean supported development environment.

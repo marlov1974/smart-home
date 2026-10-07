@@ -72,6 +72,51 @@ Pass offline tests first, including telemetry freshness, source generation uniqu
 ### Acceptance F0076-B
 Pass offline tests using labelled simulated input (no fabricated hardware success), validate minutely collection, timestamps, source generations, energy integration, COP boundaries, no double counting, missing sensors, individual-vs-pair identifiers and knee detection under drift/noise. Physical acceptance is staged: passive capture first, supervised one-unit tests second, then separately authorized two-unit tests. A sound inconclusive result (no detectable knee or no measured COP at a target) must be reported honestly rather than forced to pass.
 
+## Operator-defined weekend long-duration protocols (2026-10-07)
+
+Two distinct studies are requested. They are **future physical experiment protocols**, not authorization to execute before hardware/control gates are satisfied. The calendar start, machine identity, monitoring responsibility and exact safety thresholds remain to be confirmed with the operator. Do not merge them into a single uninterrupted 16-hour run without transition/restoration checks. Separate run identifiers and complete timestamped datasets are required.
+
+### Study A — 4-hour heat-output staircase
+
+| Step | Target delivered floor heat | Duration |
+|---|---:|---:|
+| A1 | 3 kW | 4 h |
+| A2 | 6 kW | 4 h |
+| A3 | 9 kW | 4 h |
+| A4 | 12 kW | 4 h |
+
+Total target dwell time **16 hours**, excluding setup, any transitions/pauses and the subsequent recovery observation. Targets are requested **floor-delivered heat**, not compressor electric kW or extraction from brine. Keep each step's achieved kW, tracking error and percentage of valid within-band time; an unattainable 12 kW plateau must be flagged `TARGET_NOT_REACHED`, not silently forced. The thermal state at step A2/A3/A4 includes accumulated heat extraction from earlier stages, so raw step differences are *not* pure causal power-response curves. Capture initial state and optionally validate with repeated or reordered plateaus on a later day.
+
+### Study B — repeated 9 kW recovery comparison
+
+| Sequence | Requested load/hold | Interval |
+|---|---|---:|
+| B1 | 9 kW delivered floor heat | 4 h |
+| B2 | Rest / source recovery | 1 h |
+| B3 | 9 kW | 4 h |
+| B4 | Rest / source recovery | 2 h |
+| B5 | 9 kW | 4 h |
+| B6 | Rest / source recovery | 4 h |
+| B7 | 9 kW | 4 h |
+
+Total is **16 h of requested 9 kW plus 7 h of rest = 23 h**. If both studies are performed once, minimum scheduled holds total **39 h**, not counting inter-study stabilization, initial baseline, transitions or final recovery. Log continuously during every rest and consider adding a separately agreed post-B7 recovery observation; no default duration is invented.
+
+**Rest definition must be explicitly implemented and verified.** A request for `EFFECT=0` does not mean actual compressor shutdown. Choose and record a safe native state that genuinely stops *the tested unit's* heat extraction when appropriate, preserve operator-approved antifreeze/native protections and note other loads (DHW/pool/other heat pump) that may prevent the ground source from resting. Record actual compressor Hz=0 and brine-pump state when available; do not call a rest period `RECOVERY_ZERO_LOAD` if another machine continues extracting from a shared loop. If no confirmed shutdown/restore procedure exists, block active recovery testing rather than assuming Modbus OFF is equivalent to zero source extraction.
+
+### Continuous capture and analysis
+- Record brine TH32/TH34 at **one valid time-stamped observation per minute**, retaining source age, whole-degree quantization, acquisition order and confidence. Maintain uninterrupted logging during load, rest, transitions and any stops.
+- Also record each minute: requested and measured floor kW, rolling power, compressor Hz, primary flow, forward/return temperatures, native mode, DHW/boost and other heat-source activity, regulation phase and flow target, electric kW (when validated), and current step/run ID. Calculate achieved heat energy per phase using only validated time-aligned measurements.
+- For Study A, compare TH32/TH34/ΔTbrine level and slope at common elapsed times 5/15/30/60/120/240 min, as data allow, plus end-of-step decay and possible threshold changes versus **achieved** floor heat.
+- For Study B, capture temperature just before/after each shutdown and restart; quantify rebound during 1/2/4 h rest, starting temperature for each subsequent 9 kW hold, first-hour response, final 4-hour temperature and cumulative history. A 1/2/4 h rest sequence has a changing starting thermal state and order confounding; do not claim isolated recovery constants or a precise sustainable ground-output threshold from one sequence.
+- Log actual heat-delivered and electrical energy during load and rest; compute COP only for valid consistently bounded periods, and do not claim 9/12 kW COP comparison is causal unless supply temperature, initial brine and load mix are considered.
+
+### Multi-hour execution / lease and recovery gate
+- Existing r3 command envelope has **30–1800 s lease** and RAM-only snapshots. **Four-hour holds cannot be executed by simply setting a four-hour lease.** Define and test bounded supervised lease renewals, single-writer ownership, stop/resume and application/native-state reconciliation after host, Shelly, Procon and heat-pump restarts. On network disconnect, inability to refresh state, failure of telemetry freshness, run-away target, native inhibit or exceeded temperature/rate limits, command no new up-ramp; enter a verified safe stop/restore path and alert the operator.
+- Require a documented check of cooling/pump/source and heat-sink capacity for a sustained 12 kW requested floor load. Confirm exact safe temperatures/abort margins from the device and plumbing before running; native protections must remain enabled.
+- Before running over a weekend, require operator approval of: specific VP, test start, supervision/availability, logging path, effect setpoint ceilings, compressor/source limits, rest mechanism, what happens if host loses power, and automatic stop/rollback behavior. If persistent recovery and abort behavior cannot be validated, run only shorter supervised periods; **do not run these 16/23 h scripts unattended**.
+- Time-based test schedule belongs in the experiment controller with monotonic elapsed-time accounting, durable step state, explicit human pause/resume and restart checks. A device reboot must never restart a long test automatically at a high-load step without operator reapproval.
+- Include dry-run tests covering all 7 recovery phases, both 4-hour staircase boundaries, failed/unattainable plateaus, missing brine minutes, lease renewals, and interruptions during a rest/load transition.
+
 ## Non-goals and invariants
 No bootloader/readback development, firmware programming over Shelly, EEPROM changes, arbitrary CN105 SET, brine/primary pump override, fault reset, native safety bypass, automatic compressor-Hz command, or unattended load scheduling. No claim that 18kW is a single-unit target, or that 24–27kW continuous combined is established. No uncontrolled simultaneous masters or control leases. Preserve existing P0072 Modbus layout/telemetry and deterministic release paths.
 

@@ -1,0 +1,633 @@
+{
+  "p72-r3-expiry-20261007T101032Z.jsonl": {
+    "first": "2026-10-07T10:10:34.548354+00:00",
+    "last": "2026-10-07T10:11:28.656135+00:00",
+    "applied": "2026-10-07T10:10:43.826468+00:00",
+    "commands": [
+      {
+        "timestamp": "2026-10-07T10:10:34.743760+00:00",
+        "words": [
+          49266,
+          3,
+          2,
+          3800,
+          0,
+          45,
+          1,
+          2
+        ]
+      }
+    ],
+    "finished": {
+      "control": [
+        0,
+        3,
+        3,
+        0,
+        7,
+        0,
+        0,
+        2,
+        0,
+        8,
+        18,
+        2,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "active_seen": true,
+      "auto": false,
+      "failed": false
+    },
+    "final_control": [
+      0,
+      3,
+      3,
+      0,
+      7,
+      0,
+      0,
+      2,
+      0,
+      8,
+      18,
+      2,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "samples": 4,
+    "metrics": {
+      "brine_in_cC": {
+        "min": 600,
+        "max": 700,
+        "last": 700,
+        "n": 3
+      },
+      "brine_out_cC": {
+        "min": 600,
+        "max": 600,
+        "last": 600,
+        "n": 4
+      },
+      "brine_delta_cC": {
+        "min": 0,
+        "max": 100,
+        "last": 100,
+        "n": 3
+      },
+      "flow_cC": {
+        "min": 2950,
+        "max": 3000,
+        "last": 2950,
+        "n": 3
+      },
+      "return_cC": {
+        "min": 2900,
+        "max": 2900,
+        "last": 2900,
+        "n": 3
+      },
+      "water_delta_cC": {
+        "min": 50,
+        "max": 100,
+        "last": 50,
+        "n": 3
+      },
+      "flow_cL_min": {
+        "min": 1000,
+        "max": 1000,
+        "last": 1000,
+        "n": 3
+      },
+      "heat_W": {
+        "min": 348,
+        "max": 696,
+        "last": 348,
+        "n": 3
+      },
+      "compressor_Hz": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 3
+      },
+      "compressor_running": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 3
+      },
+      "brine_pump_running": {
+        "n": 0
+      },
+      "brine_pump_step": {
+        "n": 0
+      },
+      "water_pump_running": {
+        "min": 1,
+        "max": 1,
+        "last": 1,
+        "n": 2
+      },
+      "water_pump_level": {
+        "min": 5,
+        "max": 5,
+        "last": 5,
+        "n": 2
+      },
+      "dhw_cC": {
+        "min": 5300,
+        "max": 5300,
+        "last": 5300,
+        "n": 3
+      },
+      "outdoor_cC": {
+        "min": 1300,
+        "max": 1300,
+        "last": 1300,
+        "n": 2
+      },
+      "flow_target_cC": {
+        "min": 2800,
+        "max": 3800,
+        "last": 2800,
+        "n": 2
+      },
+      "dhw_target_cC": {
+        "min": 5200,
+        "max": 5200,
+        "last": 5200,
+        "n": 2
+      },
+      "operating_mode_raw": {
+        "min": 2,
+        "max": 2,
+        "last": 2,
+        "n": 2
+      },
+      "heater_bits": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 3
+      }
+    },
+    "first_running_sample": null
+  },
+  "p72-r3-long-20261007T101221Z.jsonl": {
+    "first": "2026-10-07T10:12:23.904239+00:00",
+    "last": "2026-10-07T10:27:50.582717+00:00",
+    "applied": "2026-10-07T10:12:33.179050+00:00",
+    "commands": [
+      {
+        "timestamp": "2026-10-07T10:12:24.105518+00:00",
+        "words": [
+          49266,
+          4,
+          2,
+          3800,
+          0,
+          960,
+          1,
+          2
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T10:27:36.704739+00:00",
+        "words": [
+          49266,
+          5,
+          1,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      }
+    ],
+    "finished": {
+      "control": [
+        0,
+        5,
+        5,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        12,
+        27,
+        3,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "active_seen": true,
+      "auto": true,
+      "failed": false
+    },
+    "final_control": [
+      0,
+      5,
+      5,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      12,
+      27,
+      3,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "samples": 53,
+    "metrics": {
+      "brine_in_cC": {
+        "min": 500,
+        "max": 1000,
+        "last": 500,
+        "n": 50
+      },
+      "brine_out_cC": {
+        "min": 300,
+        "max": 800,
+        "last": 400,
+        "n": 45
+      },
+      "brine_delta_cC": {
+        "min": -100,
+        "max": 300,
+        "last": 100,
+        "n": 42
+      },
+      "flow_cC": {
+        "min": 2800,
+        "max": 3950,
+        "last": 3850,
+        "n": 40
+      },
+      "return_cC": {
+        "min": 2800,
+        "max": 3450,
+        "last": 3450,
+        "n": 40
+      },
+      "water_delta_cC": {
+        "min": 0,
+        "max": 700,
+        "last": 400,
+        "n": 40
+      },
+      "flow_cL_min": {
+        "min": 1000,
+        "max": 1100,
+        "last": 1100,
+        "n": 42
+      },
+      "heat_W": {
+        "min": 0,
+        "max": 4981,
+        "last": 3065,
+        "n": 40
+      },
+      "compressor_Hz": {
+        "min": 0,
+        "max": 42,
+        "last": 26,
+        "n": 42
+      },
+      "compressor_running": {
+        "min": 0,
+        "max": 1,
+        "last": 1,
+        "n": 42
+      },
+      "brine_pump_running": {
+        "n": 0
+      },
+      "brine_pump_step": {
+        "n": 0
+      },
+      "water_pump_running": {
+        "min": 1,
+        "max": 1,
+        "last": 1,
+        "n": 43
+      },
+      "water_pump_level": {
+        "min": 5,
+        "max": 5,
+        "last": 5,
+        "n": 43
+      },
+      "dhw_cC": {
+        "min": 5250,
+        "max": 5300,
+        "last": 5300,
+        "n": 40
+      },
+      "outdoor_cC": {
+        "min": 1300,
+        "max": 1300,
+        "last": 1300,
+        "n": 40
+      },
+      "flow_target_cC": {
+        "min": 2800,
+        "max": 3800,
+        "last": 2800,
+        "n": 40
+      },
+      "dhw_target_cC": {
+        "min": 5200,
+        "max": 5200,
+        "last": 5200,
+        "n": 42
+      },
+      "operating_mode_raw": {
+        "min": 0,
+        "max": 2,
+        "last": 0,
+        "n": 42
+      },
+      "heater_bits": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 40
+      }
+    },
+    "applied_to_auto_seconds": 903.525689,
+    "first_running_sample": "2026-10-07T10:18:21.005851+00:00"
+  },
+  "p72-r3-short-20261007T100054Z.jsonl": {
+    "first": "2026-10-07T10:00:56.712897+00:00",
+    "last": "2026-10-07T10:01:15.278318+00:00",
+    "applied": "2026-10-07T10:01:03.823067+00:00",
+    "commands": [
+      {
+        "timestamp": "2026-10-07T10:00:56.909693+00:00",
+        "words": [
+          49266,
+          1,
+          2,
+          3800,
+          0,
+          90,
+          1,
+          2
+        ]
+      },
+      {
+        "timestamp": "2026-10-07T10:01:03.823165+00:00",
+        "words": [
+          49266,
+          2,
+          1,
+          0,
+          0,
+          0,
+          0,
+          2
+        ]
+      }
+    ],
+    "finished": {
+      "control": [
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        4,
+        9,
+        1,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        1,
+        2,
+        2800,
+        5200,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0
+      ],
+      "active_seen": true,
+      "auto": true,
+      "failed": false
+    },
+    "final_control": [
+      0,
+      2,
+      2,
+      0,
+      0,
+      0,
+      0,
+      1,
+      0,
+      4,
+      9,
+      1,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      1,
+      2,
+      2800,
+      5200,
+      0,
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "samples": 2,
+    "metrics": {
+      "brine_in_cC": {
+        "min": 1300,
+        "max": 1300,
+        "last": 1300,
+        "n": 2
+      },
+      "brine_out_cC": {
+        "min": 1500,
+        "max": 1500,
+        "last": 1500,
+        "n": 2
+      },
+      "brine_delta_cC": {
+        "min": -200,
+        "max": -200,
+        "last": -200,
+        "n": 2
+      },
+      "flow_cC": {
+        "min": 2950,
+        "max": 2950,
+        "last": 2950,
+        "n": 2
+      },
+      "return_cC": {
+        "min": 2700,
+        "max": 2700,
+        "last": 2700,
+        "n": 2
+      },
+      "water_delta_cC": {
+        "min": 250,
+        "max": 250,
+        "last": 250,
+        "n": 2
+      },
+      "flow_cL_min": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 2
+      },
+      "heat_W": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 2
+      },
+      "compressor_Hz": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 2
+      },
+      "compressor_running": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 2
+      },
+      "brine_pump_running": {
+        "n": 0
+      },
+      "brine_pump_step": {
+        "n": 0
+      },
+      "water_pump_running": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 1
+      },
+      "water_pump_level": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 1
+      },
+      "dhw_cC": {
+        "min": 5300,
+        "max": 5300,
+        "last": 5300,
+        "n": 2
+      },
+      "outdoor_cC": {
+        "min": 1300,
+        "max": 1300,
+        "last": 1300,
+        "n": 1
+      },
+      "flow_target_cC": {
+        "min": 2800,
+        "max": 2800,
+        "last": 2800,
+        "n": 1
+      },
+      "dhw_target_cC": {
+        "min": 5200,
+        "max": 5200,
+        "last": 5200,
+        "n": 1
+      },
+      "operating_mode_raw": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 1
+      },
+      "heater_bits": {
+        "min": 0,
+        "max": 0,
+        "last": 0,
+        "n": 2
+      }
+    },
+    "applied_to_auto_seconds": 9.8e-05,
+    "first_running_sample": null
+  }
+}

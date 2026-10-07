@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 604
+Tracked file count: 614
 
 ## Files
 
@@ -380,6 +380,16 @@ Tracked file count: 604
 - `requirements/package-runs/P0072-r3/attempts.md`
 - `requirements/package-runs/P0072-r3/design.md`
 - `requirements/package-runs/P0072-r3/functions.md`
+- `requirements/package-runs/P0072-r3/live-20261007/SHA256SUMS`
+- `requirements/package-runs/P0072-r3/live-20261007/analyze_r3.py`
+- `requirements/package-runs/P0072-r3/live-20261007/control_trial_r3.py`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-baseline.jsonl.gz`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-expiry-20261007T101032Z.jsonl.gz`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-final.jsonl.gz`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-long-20261007T101221Z.jsonl.gz`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-short-20261007T100054Z.jsonl.gz`
+- `requirements/package-runs/P0072-r3/live-20261007/p72-r3-summary.json`
+- `requirements/package-runs/P0072-r3/live-20261007/report.md`
 - `requirements/package-runs/P0072-r3/review.md`
 - `requirements/package-runs/P0072-r3/scheduler-verification.txt`
 - `requirements/package-runs/P0072-r3/source-sha256.json`

@@ -117,6 +117,14 @@ Total is **16 h of requested 9 kW plus 7 h of rest = 23 h**. If both studies are
 - Time-based test schedule belongs in the experiment controller with monotonic elapsed-time accounting, durable step state, explicit human pause/resume and restart checks. A device reboot must never restart a long test automatically at a high-load step without operator reapproval.
 - Include dry-run tests covering all 7 recovery phases, both 4-hour staircase boundaries, failed/unattainable plateaus, missing brine minutes, lease renewals, and interruptions during a rest/load transition.
 
+### Verified installation topology — shared source (operator clarification)
+
+**VP1 and VP2 use the same borehole/brine source.** Treat the ground loop as one coupled thermal system, not two independent boreholes. For any brine-response test, record both units' compressor/activity status, actual delivered floor heat and (where instrumented) electric power. Individual TH32/TH34 sensors may report different local temperatures because of plumbing/flow/timing; do not presume they measure the same point or average them blindly.
+
+A true *borehole recovery/rest* interval requires verifying that **both** units cease significant heat extraction from the shared source, including unexpected DHW activity; turning only the tested unit OFF is not enough. Log both machine states throughout rest. If VP2 extracts heat while VP1 rests, label the phase `PARTIAL_LOAD_SHARED_SOURCE`, retain the data but exclude it from zero-load recovery estimation. Record any brine circulation with compressors off and distinguish hydraulic mixing/rebound from actual geological replenishment. Before commanding both units OFF, confirm the home's hot-water/heating constraints and safe alternative heat supply; do not automatically shut down both machines without separate operator approval. Native frost and other protections remain active.
+
+For the 3/6/9/12 kW staircase, specify whether the target is VP1 floor delivery alone or the **total output to the common floor system**. If VP2 runs, its heat delivery contributes to shared source loading even when not included in an individual VP1 output target; record actual total loading to compare ground response fairly. The first version is a one-pump control experiment with the second pump's activity explicitly supervised and measured, and no silent assumption that it stays off. Dual-pump dispatch remains separately gated.
+
 ## Non-goals and invariants
 No bootloader/readback development, firmware programming over Shelly, EEPROM changes, arbitrary CN105 SET, brine/primary pump override, fault reset, native safety bypass, automatic compressor-Hz command, or unattended load scheduling. No claim that 18kW is a single-unit target, or that 24–27kW continuous combined is established. No uncontrolled simultaneous masters or control leases. Preserve existing P0072 Modbus layout/telemetry and deterministic release paths.
 

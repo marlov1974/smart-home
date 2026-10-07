@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 614
+Tracked file count: 624
 
 ## Files
 
@@ -48,6 +48,7 @@ Tracked file count: 614
 - `docs/functions/procon-m1.md`
 - `docs/functions/procon-mvp.md`
 - `docs/functions/procon-platform-spec.md`
+- `docs/functions/procon-readback.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
 - `docs/functions/shelly/supply-uni-publisher.md`
 - `docs/functions/shelly/weather.md`
@@ -423,6 +424,15 @@ Tracked file count: 614
 - `requirements/package-runs/P0074/sanitization.json`
 - `requirements/package-runs/P0074/traceability.json`
 - `requirements/package-runs/P0074/verification.txt`
+- `requirements/package-runs/P0075/CHANGELOG.md`
+- `requirements/package-runs/P0075/attempts.md`
+- `requirements/package-runs/P0075/design.md`
+- `requirements/package-runs/P0075/findings.md`
+- `requirements/package-runs/P0075/functions.md`
+- `requirements/package-runs/P0075/hardware-report.md`
+- `requirements/package-runs/P0075/review.md`
+- `requirements/package-runs/P0075/variant-series.md`
+- `requirements/package-runs/P0075/verification.md`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`

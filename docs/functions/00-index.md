@@ -89,3 +89,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0074 Procon platform specification checks](procon-platform-spec.md)
 
 - [P0072 r2 supervised control contracts](procon-control.md)
+
+- [P0075 bounded firmware readback research](procon-readback.md)

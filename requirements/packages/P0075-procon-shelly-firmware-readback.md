@@ -1,7 +1,13 @@
 # P0075 — Procon firmware readback through Shelly and exact build comparison
 
 ## Status
-planned — implementation and supervised hardware readback authorized; no A1M programming authorized.
+Partial implementation and supervised research completed on 2026-10-07. `BLOCKED_READ_PROTOCOL`: physical discovery works, but no flash bytes were extracted. Normal operation subsequently restored and verified after the operator handoff; a Shelly restart during temporary-script deletion is documented separately. See package-run findings and hardware report. No A1M programming authorized or performed.
+
+## Operator amendments — 2026-10-07
+
+The operator subsequently authorized bounded trial-and-error 0x57 request variants, one hypothesis at a time with raw responses retained locally. Later instructions explicitly authorized zero-completion probes, discovery between hypotheses instead of a physical reset each time, 10–20 ranked variants, then one hour of independent research. These amendments supersede the original proven-contract-only gate and three-attempt limit for this bounded research session. They do not authorize opcode sweeps, erase/program/EEPROM, uncontrolled frame permutations, or claims that unknown address/length semantics are validated. Discovery/transport qualification comes first; invalid discovery or unexpected read data stops the series. Valid discovery proves responsiveness, not full parser reset. Bulk application reads remain gated on validated semantics and bounds. The original conservative requirements below remain the default for future sessions unless separately amended.
+
+The operator confirmed Shelly is the sole RS485 master and normal DIP10000110, and separately approved supervised Shelly reboots for the raw-UART transition. Existing physical handoff, restoration and no-heat-pump-reboot constraints remain. See package-run attempts for current state.
 
 ## Decision and scope
 

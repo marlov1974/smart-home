@@ -35,6 +35,80 @@ Audit identity: ZIP SHA256 `45e46af9892d16141db05bb6a03e4d51dbc06c46d88eb4dd56db
 
 The enum does NOT establish the request's address/length layout, response framing/CRC, absolute versus application-relative addressing, or implementation of reading in the resident bootloader. Resolving these is part of the research, not a fact to invent. Before transmitting 0x57, document a sufficiently supported complete frame and bounded reply contract. If safe framing cannot be established, stop hardware read attempts with `BLOCKED_READ_PROTOCOL`; a successful discovery is only partial progress. No opcode sweep, arbitrary command endpoint or blind frame permutations. After ambiguous framing/timeouts, stop and resynchronize through an operator-controlled new boot session rather than streaming guesses.
 
+### Established Windows updater protocol facts — do not re-derive
+
+The following host-side protocol facts have already been statically audited from the lawfully held Windows updater and are durable input to P0075. Codex must use these as established evidence and **must not spend package time re-deriving them from the DLL** unless a later repository artifact contradicts them or implementation testing exposes an inconsistency. The detailed technical reference is `marlov1974/procon-melcobems-mini-a1m/docs/hardware-reference/boot-update.md`; P0075 owns the execution constraints, while that document owns the byte-level protocol description.
+
+Serial transport used by the Windows updater is **115200 baud, 8 data bits, no parity, 1 stop bit, no handshake**. No host-side baud negotiation or auto-baud was found.
+
+The active discovery request is exactly one byte:
+
+```text
+5A
+```
+
+The expected discovery reply is exactly 12 bytes:
+
+```text
+7A | max_flash LE32 | max_eeprom LE16 | erase_block LE16 | max_write_page LE16 | checksum8
+```
+
+where `checksum8` is the sum of bytes 0 through 10 modulo 256. The reported `max_write_page` is what the Windows writer uses as its normal write payload size. In the observed hardware/UI case that value is 8192 bytes. This value does **not** establish a read size.
+
+The active flash-erase request is:
+
+```text
+51 | offset LE32 | byte_count LE32 | checksum8
+```
+
+Total transmitted length is 10 bytes. The Windows updater uses offset zero and the selected BIN file length. `checksum8` is the sum of all preceding bytes modulo 256. Defined/observed acknowledgement values are `71` for success and `70` for failure. P0075 must never transmit this command.
+
+The active flash-write request is exactly:
+
+```text
+53 | data_length LE16 | offset LE32 | data[N] | CRC32 LE32 | checksum8
+```
+
+Byte layout:
+
+```text
+offset  size       meaning
+0       1          0x53 WRITE_FLASH
+1       2          N, payload length, little-endian
+3       4          file-relative update offset, little-endian
+7       N          firmware payload
+7+N     4          CRC32, little-endian
+11+N    1          additive checksum8
+```
+
+Total packet length is `N + 12`. The CRC32 is the standard reflected CRC-32/ISO-HDLC form: polynomial `0xEDB88320`, internal initial state `0xFFFFFFFF`, final XOR `0xFFFFFFFF`; check value for ASCII `123456789` is `0xCBF43926`. CRC covers the write header plus payload, from byte 0 through byte `N+6`, and excludes the trailing CRC field and final checksum. The CRC value is serialized least-significant byte first. The final `checksum8` is calculated after the CRC is appended and equals the sum of bytes 0 through `N+10` modulo 256.
+
+The Windows updater loads `device_MaxWritePageSize` from discovery, uses that as N for ordinary blocks, caps the final block to remaining bytes, and advances offset only after a successful acknowledgement. This explains observed 8192-byte progress increments for a 98304-byte image. The format explicitly carries both length and offset; therefore 8192 is not implicit in the wire format. A shorter final write is represented by a smaller N. This proves variable encoded write length on the host side, but does not prove that arbitrary shorter aligned/un-aligned writes are accepted by every bootloader revision.
+
+Defined/observed write acknowledgements are:
+
+```text
+73 = write success
+72 = write failure / retry condition
+```
+
+If the normal write acknowledgement is missing, the active Windows flow can send a single-byte `50` query and then interpret the reply as the outstanding write acknowledgement. `50` is not a flash-read command and must not be confused with the unused `READ_STATUS = A0` definition.
+
+The Windows updater does **not** read existing firmware before erase, does not perform post-write flash readback comparison, and does not save device firmware to a file. Its local `FileStream.Read` reads the selected BIN from the PC filesystem.
+
+The DLL defines, but the inspected active GUI flow does not call:
+
+```text
+55 = WRITE_EEPROM_REQ       75 = OK   74 = NG
+57 = READ_FROM_FLASH_REQ    77 = OK   76 = NG
+59 = READ_FROM_EEPROM_REQ   79 = OK   78 = NG
+A0 = READ_STATUS            B0 = ACK
+```
+
+These enum constants establish command identities only. They do **not** establish the frame format for `57` or `59`, the response layout, address/count widths, checksum/CRC coverage, segmentation, alignment, maximum read size, absolute versus application-relative addressing, or whether the connected resident bootloader implements those operations. The unused `bufferCRC32Check` routine is not a correctness oracle and must not be used to infer the missing read-response format.
+
+For P0075, the unresolved research starts specifically at the `57` request/response contract. Codex should not redo discovery/erase/write reverse engineering unless evidence conflicts; it should use the established write-family structure only as a hypothesis generator, never as proof that `57` is `57 | length | offset | ...`.
+
 Relevant official API references, checked 2026-10-07:
 - https://shelly-api-docs.shelly.cloud/gen2/ComponentsAndServices/Serial/
 - https://shelly-api-docs.shelly.cloud/gen2/Scripts/APIs/UART/

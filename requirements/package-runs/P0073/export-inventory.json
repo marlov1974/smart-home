@@ -1,0 +1,43 @@
+{
+  "source_commit": "7ae48e6e7fb5aff22526d9f2d213d4817f6d3491",
+  "allowed_before_copy": [
+    "firmware/include/cn105.h",
+    "firmware/include/modbus.h",
+    "firmware/include/platform.h",
+    "firmware/include/service.h",
+    "firmware/include/telemetry.h",
+    "firmware/linker.ld",
+    "firmware/src/cn105.c",
+    "firmware/src/main.c",
+    "firmware/src/modbus.c",
+    "firmware/src/platform.c",
+    "firmware/src/service.c",
+    "firmware/src/telemetry.c",
+    "firmware/startup/startup.S",
+    "tests/test_arm.py",
+    "tests/test_cn105.c",
+    "tests/test_modbus.c",
+    "tests/test_read_mvp.py",
+    "tests/test_telemetry.c",
+    "Makefile",
+    "tools/check_image.py",
+    "tools/read_brine.py",
+    "tools/read_mvp.py"
+  ],
+  "excluded": [
+    "reference/original/**",
+    "analysis/**",
+    "releases/** (regenerate own artifacts)",
+    "tools/analyze_updater.py",
+    "tools/analyze_original.py",
+    "tools/setup.sh (replace portable installer)",
+    "all unrelated Smart Home files",
+    "all raw hardware logs",
+    "all vendor PDFs/ZIP/BIN/updaters"
+  ],
+  "adapted": [
+    "Makefile portable toolchain/host-only tests/no vendor verification",
+    "read helpers require explicit host",
+    "new standalone documentation/CI/release tools"
+  ]
+}

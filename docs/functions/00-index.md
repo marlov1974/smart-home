@@ -83,3 +83,5 @@ Created by `P0007-codex-phased-package-build-process`.
 `P0071` adds [Procon service27/28 brine operations](procon-brine.md).
 
 `P0072` adds [Procon MVP telemetry](procon-mvp.md).
+
+`P0073` adds [standalone Procon export and protocol research](procon-export.md).

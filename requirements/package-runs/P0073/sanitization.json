@@ -1,0 +1,281 @@
+{
+  "files": 55,
+  "failures": [],
+  "inventory": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "bytes": 639,
+      "sha256": "8bded56031dad4e5164ca8db19b1227c48013231aec6823e063f3b96cead5511"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 43,
+      "sha256": "b13a829de70f8334129ca07e8b24b6bede2571a4169750a9a998854505fdc9ff"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 707,
+      "sha256": "d1d667e15b831482639d937a03629b4c1a5d4748d2f208eb5f68596ba3218bc9"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "Makefile",
+      "bytes": 2776,
+      "sha256": "614d90540644bf1951d4a75ed8b88a48a92d6189cc625a10544be3f90ee7eac0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 3130,
+      "sha256": "1be2478cd5cbdbd1b53c58b06e5ec4c28fd779f28338247febdfd409cf52d3c6"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 1097,
+      "sha256": "7ca417e7dbb2c7785e5e65e28301cab0aeda4b93e5da12f4a3d6356a72b54b4d"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1877,
+      "sha256": "4ba178e58c8ea1df9706aa4de315f15777e1a7dc9ccd5e00dc8cb8877a1c120a"
+    },
+    {
+      "path": "docs/a3-service-protocol.md",
+      "bytes": 1918,
+      "sha256": "b1e6d5232fea16a89d14000d83c64f0686ebccae2e098a7ffd57b203303ab76e"
+    },
+    {
+      "path": "docs/architecture.md",
+      "bytes": 1113,
+      "sha256": "fd576cc42695128bd7bd089b2ebe0fd53d2f1926e607fb6bd27e150bcfa8f0c1"
+    },
+    {
+      "path": "docs/building.md",
+      "bytes": 1128,
+      "sha256": "9d0b4a9cd3bbbeee2d5d91c341d88fb1d4f5c2516528c6985478e7cb0bc7de1f"
+    },
+    {
+      "path": "docs/cn105-master-catalog.json",
+      "bytes": 275246,
+      "sha256": "a4550daca642162b2cfaaa8d2d59df1a48747d5dbf34ab8676745eecfab75d19"
+    },
+    {
+      "path": "docs/cn105-master-catalog.md",
+      "bytes": 3125,
+      "sha256": "f597abbe68d02a3c12e6e47b7a98094fb417b7f06e2f71182bb37bff2bc996b5"
+    },
+    {
+      "path": "docs/cn105-packets.md",
+      "bytes": 1017,
+      "sha256": "a70374187dcf04641040b7a2955a8b192d005677b0bcfc4fac10653994515231"
+    },
+    {
+      "path": "docs/cn105-procon-cross-reference.json",
+      "bytes": 1021829,
+      "sha256": "4b140699760db1b604fb4f4d36f8f04ac01ed3a9cf09f44b5fbe2012a57fbb74"
+    },
+    {
+      "path": "docs/cn105-procon-cross-reference.md",
+      "bytes": 12429,
+      "sha256": "6069ba280da8fd1be4ce64847ee17b3e53bfacb285ef50491789279b8806fab7"
+    },
+    {
+      "path": "docs/cn105-protocol.md",
+      "bytes": 480,
+      "sha256": "78703f3701fb0b38bad41b0fa0da5c0cc397aae4a0f30948e2edbd8b3a4cdcc9"
+    },
+    {
+      "path": "docs/flashing-and-recovery.md",
+      "bytes": 1349,
+      "sha256": "0dd202e7dff88b42dfc4dc34e15ffce3c602b19d998c742847c99baa25842a47"
+    },
+    {
+      "path": "docs/geodan-service-codes.md",
+      "bytes": 602,
+      "sha256": "bcc9972e03440c2fc1d452202c4bdf4d5ba09393cc2f279136da5822b32c50e3"
+    },
+    {
+      "path": "docs/hardware.md",
+      "bytes": 1155,
+      "sha256": "2c2ee4abade389c107d27b9917654c93cda832330f02aa95127f886a3d334bde"
+    },
+    {
+      "path": "docs/modbus.md",
+      "bytes": 7051,
+      "sha256": "d65bc3e8d3454ed3f6c12611679cc70884c2004152d17afec4061733aaaa722a"
+    },
+    {
+      "path": "docs/public-release-checklist.md",
+      "bytes": 967,
+      "sha256": "ebb08be288e5ccc05abaf59dfb53e0d223655304a7b8cff4f874e51253406d14"
+    },
+    {
+      "path": "docs/pumps.md",
+      "bytes": 1948,
+      "sha256": "24d2860bbf33b8f5231be9faa465cf8d31e30c366ddf29902f06703e07d05c63"
+    },
+    {
+      "path": "docs/releases.md",
+      "bytes": 1033,
+      "sha256": "5b4b1cac2c44dcc294424daac5ff2a8c3c7000dd2c6c57376a2b840312f2ce5d"
+    },
+    {
+      "path": "docs/sources.md",
+      "bytes": 1363,
+      "sha256": "f34efed488e3a320def102c87d27add144c65bb09982ab7b19a6f7c73ea06b82"
+    },
+    {
+      "path": "docs/verification.md",
+      "bytes": 1348,
+      "sha256": "c17dfa052c21132facc9faf0bf35cae4504be958cd4981b77260b259c58e3e83"
+    },
+    {
+      "path": "firmware/include/cn105.h",
+      "bytes": 397,
+      "sha256": "7f74b418fdd6a7d5e8f19f4c6b559c79405a199a5841a82d9098d96fa02d9599"
+    },
+    {
+      "path": "firmware/include/modbus.h",
+      "bytes": 616,
+      "sha256": "aa751fbd964f2f8ed2e8909a42035cc6c12daa697af5a5f14f8aed208338ae70"
+    },
+    {
+      "path": "firmware/include/platform.h",
+      "bytes": 514,
+      "sha256": "8451fc562bf277a695da2eaae19ea666f2199d64adfa89074c03263e5d9ed88e"
+    },
+    {
+      "path": "firmware/include/service.h",
+      "bytes": 505,
+      "sha256": "226d8ace6c0a1da14fd6decd449d15e1b040e778b59a1efde5a305df5dc211d3"
+    },
+    {
+      "path": "firmware/include/telemetry.h",
+      "bytes": 289,
+      "sha256": "114393b2781c7f5babf421a7294ce2e9bb6194224ee98f4f2b1e9607d25cf584"
+    },
+    {
+      "path": "firmware/linker.ld",
+      "bytes": 808,
+      "sha256": "1457a1adc07bef9b7d07c78f19ab18fbe3c8b920e2a968a6b3f2a8de08b7cee5"
+    },
+    {
+      "path": "firmware/src/cn105.c",
+      "bytes": 5091,
+      "sha256": "d8a21c83a2835946b7e4a01ce6aaf19e3bd0a5ee5bbde8958b7fc24d35f661b9"
+    },
+    {
+      "path": "firmware/src/main.c",
+      "bytes": 1180,
+      "sha256": "22150564536101dc42d3e69707f31f1896b3ffbbea9f2b96c9923d5123179789"
+    },
+    {
+      "path": "firmware/src/modbus.c",
+      "bytes": 2418,
+      "sha256": "f63ef6822adb2c5846b6644bd074851b7a1c1e898372b240b46105295e98e5bd"
+    },
+    {
+      "path": "firmware/src/platform.c",
+      "bytes": 5611,
+      "sha256": "6c0190f6034616752d387018459d9aff8d5f8cbda6bb4a2c9090fa3157b0a58a"
+    },
+    {
+      "path": "firmware/src/service.c",
+      "bytes": 4414,
+      "sha256": "f6b0fd8dc714d1101dcdc635abe9a4cce5b5c1afe5ee89c03dcab2ff5a8c198a"
+    },
+    {
+      "path": "firmware/src/telemetry.c",
+      "bytes": 3965,
+      "sha256": "339b453d64d175ec0bd138e68f8498be2e09952a263b5a64065e53a692e8f318"
+    },
+    {
+      "path": "firmware/startup/startup.S",
+      "bytes": 1031,
+      "sha256": "cb36519b583438738ddf91d018e693f2dbc6d24122549c6635dc01609bd3be68"
+    },
+    {
+      "path": "tests/test_arm.py",
+      "bytes": 13626,
+      "sha256": "16a80adccebb1f36e91b67b2909f099d6d2b1e510185268c42f23328c56358de"
+    },
+    {
+      "path": "tests/test_catalogs.py",
+      "bytes": 1732,
+      "sha256": "3153c50742d3411a4936cc2498ea352316ec0c0ff2f28bdb05e3f780b11936db"
+    },
+    {
+      "path": "tests/test_cn105.c",
+      "bytes": 8093,
+      "sha256": "f6d48056fccf6bdb1d32b57cf2fc4afb11b26a5806518fa9165108ea6206a7a6"
+    },
+    {
+      "path": "tests/test_modbus.c",
+      "bytes": 4272,
+      "sha256": "dfe65a5f0fcc68f15758e4ecf6be58689b73403a2ea48e07a13ba955abd18495"
+    },
+    {
+      "path": "tests/test_read_mvp.py",
+      "bytes": 1958,
+      "sha256": "f1471f0fdcec391b75c996277338c3e53b18f5ec0e92a3316f5c1676daee35ff"
+    },
+    {
+      "path": "tests/test_telemetry.c",
+      "bytes": 3677,
+      "sha256": "58626d938daa8390d3abb9d47c0b395096b8e94c2a6690d54e393f1e809e6234"
+    },
+    {
+      "path": "tools/catalog_external.py",
+      "bytes": 7710,
+      "sha256": "319dae75ba36a0dd79e1e85eb64f7c83b1480bb165e57d64cfb3a247d8241eb6"
+    },
+    {
+      "path": "tools/check_image.py",
+      "bytes": 3092,
+      "sha256": "458e6c835078be3101fa9d23e519f7dc25c46d30f38dbb3b2c53bc1b4bce2f67"
+    },
+    {
+      "path": "tools/inventory_original.py",
+      "bytes": 7840,
+      "sha256": "2a916ecdded9d957fafb23305a0c6ed109ebac8e53acf0819db24fad2306583d"
+    },
+    {
+      "path": "tools/read_brine.py",
+      "bytes": 3573,
+      "sha256": "72d0e75590f6cee2dabfabfff1df18915d05c0366d1b5440333338ce8a2d8a14"
+    },
+    {
+      "path": "tools/read_mvp.py",
+      "bytes": 3129,
+      "sha256": "7ac05994f6de1f5f5c63c1cc587998373f48def7e16bf410fb6ca882aad9fa24"
+    },
+    {
+      "path": "tools/release.py",
+      "bytes": 2215,
+      "sha256": "7726887c29b547c00db09697d24403c47d400bfb75ea3d71d674b6d66b8dc2c9"
+    },
+    {
+      "path": "tools/render_catalogs.py",
+      "bytes": 8694,
+      "sha256": "a6bd64717936a0e6ac4a85f245e60f27920f19dd166ab1451a4d2b63ab904aac"
+    },
+    {
+      "path": "tools/requirements.txt",
+      "bytes": 32,
+      "sha256": "d5de7a49e2eb75578f3c19dff0a59de82e556a8a11417b7d662179af9ba0a3d8"
+    },
+    {
+      "path": "tools/sanitize.py",
+      "bytes": 1776,
+      "sha256": "e29c9fc4f54888c037e042f6c250e0b809f570be1ac09a91c7f98699672cff06"
+    },
+    {
+      "path": "tools/setup.sh",
+      "bytes": 1078,
+      "sha256": "d7038cb0dbba41db7c4a1c2bcb4c564a9f8e25131e21a006fa56377d0c6c010c"
+    }
+  ]
+}

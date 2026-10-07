@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 538
+Tracked file count: 551
 
 ## Files
 
@@ -43,6 +43,7 @@ Tracked file count: 538
 - `docs/functions/mac/weather-contract-tool.md`
 - `docs/functions/procon-brine.md`
 - `docs/functions/procon-cn105.md`
+- `docs/functions/procon-export.md`
 - `docs/functions/procon-m1.md`
 - `docs/functions/procon-mvp.md`
 - `docs/functions/shelly/ftx-runtime-baseline.md`
@@ -350,6 +351,17 @@ Tracked file count: 538
 - `requirements/package-runs/P0072/hardware-validation.md`
 - `requirements/package-runs/P0072/review.md`
 - `requirements/package-runs/P0072/verification.txt`
+- `requirements/package-runs/P0073/CHANGELOG.md`
+- `requirements/package-runs/P0073/design.md`
+- `requirements/package-runs/P0073/export-inventory.json`
+- `requirements/package-runs/P0073/findings.md`
+- `requirements/package-runs/P0073/functions.md`
+- `requirements/package-runs/P0073/hosted-ci.json`
+- `requirements/package-runs/P0073/public-release-review.md`
+- `requirements/package-runs/P0073/review.md`
+- `requirements/package-runs/P0073/sanitization.json`
+- `requirements/package-runs/P0073/standalone-verification.txt`
+- `requirements/package-runs/P0073/traceability.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -394,6 +406,7 @@ Tracked file count: 538
 - `requirements/packages/P0070-procon-compressor.md`
 - `requirements/packages/P0071-procon-geodan-brine.md`
 - `requirements/packages/P0072-procon-mvp-telemetry-control.md`
+- `requirements/packages/P0073-public-procon-open-source-export.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

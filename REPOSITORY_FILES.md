@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 583
+Tracked file count: 588
 
 ## Files
 
@@ -360,6 +360,11 @@ Tracked file count: 583
 - `requirements/package-runs/P0072-r2/CHANGELOG.md`
 - `requirements/package-runs/P0072-r2/design.md`
 - `requirements/package-runs/P0072-r2/functions.md`
+- `requirements/package-runs/P0072-r2/live-20261007/control_trial.py`
+- `requirements/package-runs/P0072-r2/live-20261007/p72-r2-baseline.jsonl`
+- `requirements/package-runs/P0072-r2/live-20261007/p72-r2-post-test.jsonl`
+- `requirements/package-runs/P0072-r2/live-20261007/p72-r2-short-20261007T093742Z.jsonl`
+- `requirements/package-runs/P0072-r2/live-20261007/report.md`
 - `requirements/package-runs/P0072-r2/review.md`
 - `requirements/package-runs/P0072-r2/source-sha256.json`
 - `requirements/package-runs/P0072-r2/verification.md`

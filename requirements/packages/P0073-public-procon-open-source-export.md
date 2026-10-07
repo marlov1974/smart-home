@@ -140,6 +140,60 @@ Use searchable terminology such as `CN105 A3`, `Geodan brine temperature`, `TH32
 
 Do not copy prose/tables from vendor manuals. State our independently documented facts in our own words and cite/link lawful external references where appropriate.
 
+
+## Complete original-firmware CN105 cross-reference
+
+In addition to the clean-room firmware documentation, perform a systematic static-analysis inventory of **all CN105 query/command codes present in the original Procon application**, including codes that the replacement firmware does not currently use.
+
+This is a documentation/research deliverable, not permission to publish vendor binaries or raw vendor disassembly.
+
+For every CN105 code or descriptor found in the original application:
+
+1. locate every occurrence in the original binary and determine whether it is code, descriptor/table data, or a false positive;
+2. identify the original Procon query/handler path and relevant flash/file offsets for traceability;
+3. determine which Procon RS485/Modbus register(s), object(s), or exposed value(s) receive the decoded result, where the mapping can be established;
+4. use the project's Procon/Mitsubishi manuals to determine the documented name, unit, range and description of that corresponding RS485 value;
+5. link that RS485 semantic name/description back to the CN105 code;
+6. record request type, response type, payload offsets/scaling/encoding, and read/write direction where supported by evidence;
+7. record whether the mapping is verified from original-firmware data flow, strongly inferred, or still unknown.
+
+The goal is a complete cross-reference of the form:
+
+```text
+CN105 code -> original Procon handler/descriptor -> RS485 register/value -> documented RS485 name/meaning
+```
+
+Do not limit the inventory to values used by P0069-P0072. Unknown and unused CN105 codes are important and must remain in the table with their uncertainty explicitly recorded.
+
+Create a standalone public document such as `docs/cn105-procon-cross-reference.md` plus a machine-readable equivalent such as `docs/cn105-procon-cross-reference.csv` or JSON. The table should include at least:
+
+- CN105 request/response code;
+- packet/function family;
+- original binary evidence location(s);
+- Procon RS485/Modbus register/address;
+- register type if known;
+- documented Procon register name;
+- description;
+- unit;
+- scale/encoding;
+- read/write direction;
+- payload byte/bit mapping where known;
+- evidence source;
+- confidence;
+- notes/unknowns.
+
+Use scripts under `tools/` or `analysis/` so extraction is reproducible. Prefer systematic scanning plus control/data-flow confirmation over manual cherry-picking.
+
+The private Smart Home analysis may use the original BIN and manuals as evidence. The public destination repository must contain only our independently written cross-reference and reproducible clean-room analysis conclusions; do not export the original BIN, manuals, raw decompilation or substantial copied vendor text.
+
+Before declaring this inventory complete, reconcile it against:
+- all CN105 descriptors/tables found by static analysis;
+- all Procon RS485 values/register definitions available in the supplied documentation;
+- all CN105 codes already known from P0069-P0072;
+- any code that remains unmapped.
+
+Publish explicit coverage statistics, for example: total unique CN105 codes/descriptors found, mapped to RS485 semantics, partially mapped, and unknown. Do not hide unresolved entries.
+
 ## Build reproducibility
 
 The destination repo must build independently on a clean supported development environment.

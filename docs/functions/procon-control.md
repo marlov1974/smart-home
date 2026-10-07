@@ -5,3 +5,5 @@
 `modbus_handle` accepts only exact addressed FC16 offset300/count8 after output-capacity validation. `cn105` schedules control outside complete A3 operations. No raw SET tunnel or native safety override. `control_command.py` only encodes offline bytes and never opens a network or serial connection.
 
 [API and limitations](../../procon/docs/CONTROL_API.md). Native and actual-ELF simulations cover application and restoration; hardware verification remains pending. RAM lease is not power-loss-safe.
+
+P0072 r3: `ctl_observe` retains matched GET28 payload/generation/age, including passive FAST polling. `gate28` uses operation-relevant binary flags and rejects unknown encodings, preserving rejection metadata. `ctl_read` exposes283–298; `ctl_tick` saturates sample age. Existing SET encoders/restoration are unchanged.

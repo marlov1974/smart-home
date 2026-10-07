@@ -64,3 +64,5 @@ The helper only invokes MbRtuClient.ReadInputRegisters. Interval is minimum samp
 ## P0072 r2 update
 
 Revision2 adds supervised, reference-backed control commands with snapshot/readback/runtime lease restoration. See [control API](CONTROL_API.md). Earlier r1 read-only statements remain historical. No hardware control validation or reboot restoration is claimed.
+
+Revision3 adds GET28 as the eighth FAST query and input283–298 diagnostics without changing the20-value map or raw200–255. Identity68=3. See [CONTROL_API](CONTROL_API.md).

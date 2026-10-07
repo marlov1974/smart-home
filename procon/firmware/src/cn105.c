@@ -11,7 +11,7 @@ static uint32_t reply_at, released_at;
 static uint16_t replies, rx_bytes, errors, sent, uart_errors, handshakes;
 static int started;
 static uint8_t fast_index, query;
-static const uint8_t fast_codes[]={4,0x0c,0x14,0x0b,9,0x15,0x26};
+static const uint8_t fast_codes[]={4,0x0c,0x14,0x0b,9,0x15,0x26,0x28};
 #define FAST_COUNT (sizeof fast_codes/sizeof fast_codes[0])
 static uint8_t checksum(const uint8_t *b, unsigned n) {
     uint8_t sum=0;
@@ -61,7 +61,7 @@ void cn_feed(uint8_t byte, uint32_t t, int error) {
     } else if(rx[1]==0x7a && rx[4]==1 && rx[5]==0 && owner==CONNECT && !tx_len) {
         linked=1;last_good=t;++handshakes;polled=fast_index=0;svc_link(1,t);release(t);
     } else if(rx[1]==0x62 && rx[4]==16 && rx[5]==query && linked && owner==NORMAL && !tx_len) {
-        tele_accept(rx+5);
+        tele_accept(rx+5);ctl_observe(rx+5,t);
         if(query==4){hz=rx[6];ever=valid=1;age_ms=0;++replies;}
         last_good=t;release(t);
     }
@@ -127,7 +127,7 @@ uint16_t cn_read(unsigned a) {
     case 14:return last_query;
     case 15:return handshakes;
     case 39:return owner;
-    case 68:return 2; /* P0072 r2. */
+    case 68:return 3; /* P0072 r3: operation-scoped gate and GET28 diagnostics. */
     case 69:return 1; /* MVP API version. */
     case 70:return 3; /* Telemetry plus experimental supervised control. */
     case 71:return ctl_read(256); /* Revision2 control state. */

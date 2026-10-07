@@ -3,6 +3,7 @@
 #define CONTROL_H
 #include <stdint.h>
 void ctl_init(void);
+void ctl_observe(const uint8_t payload[16], uint32_t now);
 uint8_t ctl_submit(const uint16_t words[8], uint32_t now);
 void ctl_tick(uint32_t now);
 int ctl_busy(void);

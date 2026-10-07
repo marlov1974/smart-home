@@ -17,7 +17,7 @@ def crc(data):
             value = (value >> 1) ^ (0xa001 if value & 1 else 0)
     return value.to_bytes(2, 'little')
 
-def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000, cn_hz=None, cn_corrupt=False, request_start=10000, second_request=None, extra_requests=None, service_mode="complete", inspect=None, control_model=False):
+def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud_gap=1042, duration=90000, cn_hz=None, cn_corrupt=False, request_start=10000, second_request=None, extra_requests=None, service_mode="complete", inspect=None, control_model=False, flags28=None):
     u = Uc(UC_ARCH_ARM, UC_MODE_THUMB | UC_MODE_MCLASS)
     for address, size in [(0x08000000,0x40000),(0x20000000,0x10000),
                           (0x40000000,0x30000),(0x48000000,0x2000),(0xe000e000,0x2000)]:
@@ -101,7 +101,7 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                 packet=bytes(cn['tx']);cn['tx'].clear()
                 assert (sum(packet)&255)==0xfc
                 allowed=[bytes.fromhex('fc 5a 02 7a 02 ca 01 5d')]
-                fast_codes=[4,0x0c,0x14,0x0b,9,0x15,0x26]
+                fast_codes=[4,0x0c,0x14,0x0b,9,0x15,0x26,0x28]
                 allowed += [cn_packet(0x42,bytes([q])+bytes(15)) for q in fast_codes]
                 allowed += [cn_packet(0x42,bytes([0xa3,0,c])+bytes(13)) for c in (27,28)]
                 assert packet in allowed or (control_model and ((packet[1]==0x42 and packet[5]==0x28) or packet[1]==0x41)), 'forbidden CN105 command'
@@ -130,7 +130,9 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                             if packet[5]==0x26:
                                 payload[3]=model['power'];payload[6]=model['mode'];payload[8:10]=model['dhw'].to_bytes(2,'big')
                             elif packet[5]==9:payload[5:7]=model['flow'].to_bytes(2,'big')
-                            elif packet[5]==0x28:payload[3]=model['boost']
+                            elif packet[5]==0x28:
+                                payload[3]=model['boost']
+                                for i,v in (flags28 or {}).items():payload[i]=v
                             else:raise AssertionError('unexpected control read')
                             response=cn_packet(0x62,bytes(payload))
                     elif packet[5]!=0xa3:
@@ -138,14 +140,16 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                         assert cn['phase']==4, 'FAST interleaved inside service operation'
                         f=cn.get('fast',0)
                         assert packet[5]==fast_codes[f]
-                        cn['fast']=(f+1)%7
-                        if f==6: cn['phase']=cn.get('next',27);cn['phase_attempts']=0
+                        cn['fast']=(f+1)%len(fast_codes)
+                        if f==len(fast_codes)-1: cn['phase']=cn.get('next',27);cn['phase_attempts']=0
                         if packet[5]==4: cn['normal']+=1
                         payload=bytearray(16);payload[0]=packet[5]
                         if packet[5]==4: payload[1]=cn_hz
                         if packet[5]==0x0c:
                             payload[1:3]=(3500).to_bytes(2,'big');payload[4:6]=(3000).to_bytes(2,'big');payload[7:9]=(5000).to_bytes(2,'big')
                         if packet[5]==0x14: payload[12]=20
+                        if packet[5]==0x28:
+                            for i,v in (flags28 or {}).items():payload[i]=v
                         response=cn_packet(0x62,bytes(payload))
                         if cn_corrupt and packet[5]==4: response=response[:-1]+bytes([response[-1]^1])
                     else:
@@ -273,4 +277,13 @@ if __name__=='__main__':
         assert restored[:3]==[0,2,2] and restored[11]>=1,restored
         assert cn['model']['mode']==2 and cn['model']['flow']==2950 and cn['model']['sets']==4
         assert cn['normal']>1 and cn['svc_counts'][27]>=2 and cn['svc_counts'][28]>=2
-    run_case(path,'P0072 r2 FC16 FIXED38 then AUTO readback with exclusive A3',command(1,2,3800,60,1),None,duration=24000000,cn_hz=20,request_start=3000000,extra_requests=[(11000000,req(256,16)),(12000000,command(2,1)),(22500000,req(256,16))],inspect=inspect_control,control_model=True)
+    run_case(path,'P0072 r3 unrelated flags permit FIXED38 then AUTO with exclusive A3',command(1,2,3800,60,1),None,duration=24000000,cn_hz=20,request_start=3000000,extra_requests=[(11000000,req(256,16)),(12000000,command(2,1)),(22500000,req(256,16))],inspect=inspect_control,control_model=True,flags28={5:1,7:1,8:1,9:1})
+
+    def inspect_blocked(data,cn):
+        assert data[:8][-2:]==crc(data[:6]) and data[1]==16
+        control,diag=parse_replies(data[8:])
+        assert control[:7]==[0,1,0,0,3,0,0],control
+        assert diag[0]==1 and diag[2]>=1 and diag[3]==64 and diag[4]==1104,diag
+        assert diag[13:16]==[0x28,6,1],diag
+        assert cn['model']['sets']==0 and cn['normal']>1
+    run_case(path,'P0072 r3 heating inhibit blocks before SET and exposes reason',command(1,2,3800,60,1),None,duration=13000000,cn_hz=20,request_start=3000000,extra_requests=[(11000000,req(256,16)),(12000000,req(283,16))],inspect=inspect_blocked,control_model=True,flags28={6:1,7:1})

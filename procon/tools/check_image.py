@@ -44,7 +44,7 @@ def check(path, objcopy):
             'base': hex(BASE), 'end_exclusive': hex(BASE + size),
             'initial_sp': hex(words[0]), 'reset_vector': hex(words[1]),
             'raw_bytes': len(content), 'padded_bytes': size,
-            'revision': 'MVP r2 supervised control candidate', 'cn105': 'USART1 PA9 TX/PA10 RX, 2400 8E1, FAST GET04/0C/14/0B/09/15/26 and exclusive alternating A3 service27/28', 'uart_cr2': '0x00008000',
+            'revision': 'MVP r3 operation-scoped gate candidate', 'cn105': 'USART1 PA9 TX/PA10 RX, 2400 8E1, FAST GET04/0C/14/0B/09/15/26/28 and exclusive alternating A3 service27/28', 'uart_cr2': '0x00008000',
             'pin_routing': 'PC10 RX, PC11 TX, AF7 with SWAP=1',
             'heartbeat': 'PC12 toggles every 500 ms',
             'padding': '0xFF through original application footprint, not entire unknown flash',

@@ -11,3 +11,5 @@ P0073: a sanitized standalone export is prepared in the private repository [proc
 ## P0072 r2 update
 
 Revision2 adds supervised, reference-backed control commands with snapshot/readback/runtime lease restoration. See [control API](docs/CONTROL_API.md). Earlier r1 read-only statements remain historical. No hardware control validation or reboot restoration is claimed.
+
+P0072 r3 fixes operation-specific GET28 gating and exposes passive raw flags/rejection diagnostics. [Release](releases/P0072-mvp-r3/README.md). Hardware confirmation pending; operator flashes.

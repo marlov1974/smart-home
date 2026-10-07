@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 588
+Tracked file count: 603
 
 ## Files
 
@@ -190,6 +190,13 @@ Tracked file count: 588
 - `procon/releases/P0072-mvp-r2/procon-mvp.elf`
 - `procon/releases/P0072-mvp-r2/procon-mvp.json`
 - `procon/releases/P0072-mvp-r2/procon-mvp.map`
+- `procon/releases/P0072-mvp-r3/README.md`
+- `procon/releases/P0072-mvp-r3/SHA256SUMS`
+- `procon/releases/P0072-mvp-r3/procon-mvp.bin`
+- `procon/releases/P0072-mvp-r3/procon-mvp.disasm.txt`
+- `procon/releases/P0072-mvp-r3/procon-mvp.elf`
+- `procon/releases/P0072-mvp-r3/procon-mvp.json`
+- `procon/releases/P0072-mvp-r3/procon-mvp.map`
 - `procon/tests/test_arm.py`
 - `procon/tests/test_cn105.c`
 - `procon/tests/test_control.c`
@@ -368,6 +375,14 @@ Tracked file count: 588
 - `requirements/package-runs/P0072-r2/review.md`
 - `requirements/package-runs/P0072-r2/source-sha256.json`
 - `requirements/package-runs/P0072-r2/verification.md`
+- `requirements/package-runs/P0072-r3/CHANGELOG.md`
+- `requirements/package-runs/P0072-r3/arm-verification.txt`
+- `requirements/package-runs/P0072-r3/attempts.md`
+- `requirements/package-runs/P0072-r3/design.md`
+- `requirements/package-runs/P0072-r3/functions.md`
+- `requirements/package-runs/P0072-r3/review.md`
+- `requirements/package-runs/P0072-r3/scheduler-verification.txt`
+- `requirements/package-runs/P0072-r3/source-sha256.json`
 - `requirements/package-runs/P0072/CHANGELOG.md`
 - `requirements/package-runs/P0072/attempts.md`
 - `requirements/package-runs/P0072/control-research.md`

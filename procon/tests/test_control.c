@@ -5,8 +5,9 @@
 #include <string.h>
 static uint16_t cmd[8]={0xc072,1,2,3800,0,30,1,2};
 static unsigned power,mode,flow,dhw,boost,sets,bad,dropack;
+static uint8_t flags28[16];
 static uint32_t time_ms;
-static void reset(void){ctl_init();power=1;mode=2;flow=2950;dhw=5200;boost=sets=bad=dropack=0;time_ms=0;cmd[1]=1;cmd[2]=2;cmd[3]=3800;cmd[4]=0;cmd[5]=30;cmd[6]=1;}
+static void reset(void){memset(flags28,0,sizeof flags28);ctl_init();power=1;mode=2;flow=2950;dhw=5200;boost=sets=bad=dropack=0;time_ms=0;cmd[1]=1;cmd[2]=2;cmd[3]=3800;cmd[4]=0;cmd[5]=30;cmd[6]=1;}
 static void tick(void){
  uint8_t type,p[16],r[16]={0};ctl_tick(time_ms);
  if(ctl_next(&type,p,time_ms)){
@@ -25,7 +26,7 @@ static void tick(void){
    assert(type==0x42);r[0]=p[0];
    if(p[0]==0x26){r[3]=power;r[6]=mode;r[8]=dhw>>8;r[9]=dhw;}
    else if(p[0]==9){r[5]=flow>>8;r[6]=flow;}
-   else {assert(p[0]==0x28);r[3]=boost;}
+   else {assert(p[0]==0x28);memcpy(r+4,flags28+4,12);r[3]=boost;}
    assert(ctl_reply(0x62,r,16,time_ms));
   }
  }
@@ -33,7 +34,36 @@ static void tick(void){
 }
 static void until(unsigned state,unsigned limit){for(unsigned i=0;i<limit && ctl_read(256)!=state;++i)tick();assert(ctl_read(256)==state);}
 static void auto_restore(void){uint16_t a[8]={0xc072,(uint16_t)(ctl_read(257)+1),1,0,0,0,0,2};assert(!ctl_submit(a,time_ms));until(0,200);assert(mode==2 && flow==2950 && dhw==5200 && power==1 && boost==0 && !ctl_read(261));}
+static void flag_matrix(void){
+ for(unsigned intent=0;intent<6;++intent)for(unsigned byte=4;byte<=10;++byte)for(unsigned value=1;value<=2;++value){
+  reset();
+  if(intent==0){cmd[2]=0;cmd[3]=cmd[6]=0;}
+  if(intent==2){cmd[2]=3;cmd[3]=cmd[6]=0;}
+  if(intent==3){cmd[2]=4;cmd[3]=0;cmd[4]=5400;cmd[6]=2;}
+  if(intent==4){cmd[2]=4;}
+  if(intent==5){cmd[4]=5400;cmd[6]=3;}
+  flags28[byte]=(uint8_t)value;
+  unsigned mask=(1u<<4)|(1u<<10);
+  if(intent==1 || intent==4 || intent==5)mask|=1u<<6;
+  if(intent==2 || intent==3 || intent==5)mask|=1u<<5;
+  unsigned blocked=value>1 || (mask&(1u<<byte));
+  assert(!ctl_submit(cmd,0));tick();tick();tick();
+  assert(ctl_read(283)==1 && ctl_read(285)==1 && ctl_read(287)==mask);
+  if(blocked){
+   assert(ctl_read(256)==0 && ctl_read(260)==3 && !sets && !ctl_read(261));
+   assert(ctl_read(286)==(1u<<byte) && ctl_read(296)==0x28 && ctl_read(297)==byte && ctl_read(298)==value);
+   uint8_t fresh[16]={0x28};ctl_observe(fresh,time_ms);
+   assert(ctl_read(286)==(1u<<byte) && ctl_read(297)==byte); /* passive update retains reason */
+  }else{until(4,200);assert(!ctl_read(286));auto_restore();}
+ }
+ reset();uint8_t raw[16]={0x28,0,0,0,0,1,0,1,1,1};ctl_observe(raw,0);ctl_tick(32000);
+ assert(ctl_read(284)==32 && ctl_read(290)==256 && ctl_read(291)==256 && ctl_read(292)==257);
+ ctl_tick(70000000);assert(ctl_read(284)==65535);
+ reset();flags28[4]=flags28[6]=flags28[10]=1;assert(!ctl_submit(cmd,0));tick();tick();tick();
+ assert(ctl_read(286)==((1u<<4)|(1u<<6)|(1u<<10)) && ctl_read(297)==4);
+}
 int main(void){
+ flag_matrix();
  reset();uint16_t w[8];memcpy(w,cmd,sizeof w);w[3]=4501;assert(ctl_submit(w,0)==3 && !sets);w[3]=1999;assert(ctl_submit(w,0)==3);w[3]=3800;w[5]=1801;assert(ctl_submit(w,0)==3);
  w[5]=30;w[4]=3900;w[6]=3;assert(ctl_submit(w,0)==3);w[4]=6001;assert(ctl_submit(w,0)==3);w[4]=5200;w[2]=5;assert(ctl_submit(w,0)==3);
  reset();assert(!ctl_submit(cmd,0));until(4,200);assert(mode==1 && flow==3800 && ctl_read(258)==1 && sets==2 && ctl_read(265)==2);
@@ -58,5 +88,5 @@ int main(void){
  assert(ctl_read(261)==1 && ctl_read(267)==0 && flow==3800);bad=0;until(0,300);assert(flow==2950 && mode==2);
  /* Reboot is intentionally read-only, with no false restoration claim. */
  ctl_init();assert(!ctl_busy() && !ctl_read(261) && ctl_read(282)==0);
- puts("PASS P0072 r2 controls: ranges, sequence/idempotence, renewal, snapshot, OFF/FIXED/DHW/targets, readback not ack, restoration, lease/wrap, missing replies and reboot limits");
+ puts("PASS P0072 r3 controls + 84 flag cases: ranges, sequence/idempotence, renewal, snapshot, OFF/FIXED/DHW/targets, readback not ack, restoration, lease/wrap, missing replies and reboot limits");
 }

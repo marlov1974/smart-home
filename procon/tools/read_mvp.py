@@ -23,8 +23,8 @@ def capture(host):
         return words
     baseline = read(0, 16)
     identity = read(68, 4)
-    if baseline[:2] != [888, 72] or not (identity == [1, 1, 1, 4] or (identity[:3] == [2, 1, 3] and identity[3] <= 6)):
-        raise ValueError('Expected P0072 r1/r2 telemetry API; refusing to decode another map')
+    if baseline[:2] != [888, 72] or not (identity == [1, 1, 1, 4] or (identity[0] in (2,3) and identity[1:3] == [1,3] and identity[3] <= 6)):
+        raise ValueError('Expected P0072 r1/r2/r3 telemetry API; refusing to decode another map')
     before = read(180, 20)
     state_before = read(140, 20)
     words = read(100, 40)
@@ -36,8 +36,19 @@ def capture(host):
     states = read(140, 20)
     after = read(180, 20)
     control = None
-    if identity[0] == 2:
+    if identity[0] >= 2:
         control = read(256, 27)
+    diagnostics = None
+    if identity[0] >= 3:
+        d = read(283, 16)
+        raw = b''.join(v.to_bytes(2, 'little') for v in d[5:13])
+        diagnostics = {'words_283_298': d, 'received': bool(d[0]), 'age_s': d[1],
+                       'generation': d[2], 'blocking_mask': d[3], 'relevant_mask': d[4],
+                       'payload_hex': raw.hex(' '), 'last_rejected_query': d[13],
+                       'last_rejected_byte': d[14], 'last_rejected_value': d[15],
+                       'flags': {name: raw[i] for i,name in enumerate(
+                           ['boost','holiday','prohibit_dhw','prohibit_heating_z1',
+                            'prohibit_cooling_z1','prohibit_heating_z2','prohibit_cooling_z2','server_control'],3)}}
     samples = {}
     for i, name in enumerate(NAMES):
         coherent = before[i] == after[i] and state_before[i] == states[i]
@@ -47,7 +58,7 @@ def capture(host):
                          'coherent': coherent, 'status': states[i], 'age_s': ages[i],
                          'generation': after[i], 'hardware_correlated': False}
     return {'timestamp': datetime.now(timezone.utc).isoformat(), 'read_only': True,
-            'blocks': blocks, 'samples': samples, 'identity': identity, 'control_words_256_282': control,
+            'blocks': blocks, 'samples': samples, 'identity': identity, 'control_words_256_282': control, 'controller_diagnostics': diagnostics,
             'note': 'Multi-block acquisition; generations/status bracket reads. Units are API integers; fresh does not mean physically calibrated.'}
 
 

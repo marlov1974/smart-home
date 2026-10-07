@@ -19,11 +19,13 @@ class CaptureTests(unittest.TestCase):
             if address == 0:
                 values[:2] = [888, 71 if wrong else 72]
             elif address == 68:
-                values = [1, 1, 1, 4] if revision == 1 else [2, 1, 3, 0]
+                values = [1, 1, 1, 4] if revision == 1 else [revision, 1, 3, 0]
             elif address in (180, 196):
                 values = [2 if change and seen else 1]*quantity
             elif address in (140, 156):
                 values = [2 if stale and seen else 1]*quantity
+            elif address == 283:
+                values = [1,2,5,64,1104,40,0,0,257,256,0,0,0,40,6,1]
             elif address == 100:
                 values[:2] = [0xffff, 0xff9c]  # signed -100 centidegrees
             return {'address': address, 'quantity': quantity, 'values': values, 'timestamp': 'fixture'}
@@ -34,6 +36,14 @@ class CaptureTests(unittest.TestCase):
         result = self.capture(revision=2)
         self.assertEqual(result["identity"], [2, 1, 3, 0])
         self.assertEqual(len(result["control_words_256_282"]), 27)
+
+    def test_revision3_diagnostics(self):
+        d = self.capture(revision=3)['controller_diagnostics']
+        self.assertEqual(d['blocking_mask'],64)
+        self.assertEqual(d['flags']['prohibit_heating_z1'],1)
+        self.assertEqual(d['flags']['prohibit_cooling_z1'],1)
+        self.assertEqual(d['last_rejected_byte'],6)
+        self.assertEqual(d['age_s'],2)
 
     def test_signed_value(self):
         sample = self.capture()['samples']['brine_in_cC']

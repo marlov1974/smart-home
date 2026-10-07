@@ -119,3 +119,7 @@ PYTHONPYCACHEPREFIX=/private/tmp/<package>-pycache /usr/bin/python3 -m <module>
 ```
 
 If imports fail only under escalation, verify both `which python3` and `python3 -c "import site, sys; ..."` in the same execution mode before installing or changing dependencies.
+
+## P0072 controller precondition diagnostics
+
+Expose the raw, timestamped inputs and exact rejection reason of a hardware precondition before requiring an actuation attempt. Evaluate flags by documented operation/zone relevance; do not infer that every nonzero flag forbids every operation. Preserve native inhibits and fail on unknown encodings. P0072 r2 blocked safely but could not identify the triggering GET28 byte; r3 adds passive diagnostics and a command/flag regression matrix.

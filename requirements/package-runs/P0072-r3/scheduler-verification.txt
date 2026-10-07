@@ -1,0 +1,9 @@
+PASS CN105 service simulation mode0, base0, normal23, svc27=33 svc28=33 cycles22
+PASS CN105 service simulation mode1, base0, normal7, svc27=34 svc28=30 cycles6
+PASS CN105 service simulation mode2, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode3, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode4, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode5, base0, normal71, svc27=36 svc28=35 cycles71
+PASS CN105 service simulation mode7, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode0, base4294963200, normal23, svc27=34 svc28=33 cycles22
+PASS CN105 P0072: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive FAST->27->FAST->28 sequence; ASan+UBSan

@@ -4,7 +4,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
-static const uint8_t fast_codes[]={4,0x0c,0x14,0x0b,9,0x15,0x26};
+static const uint8_t fast_codes[]={4,0x0c,0x14,0x0b,9,0x15,0x26,0x28};
 static const uint8_t ack[]={0xfc,0x7a,2,0x7a,1,0,9};
 static unsigned seal(uint8_t *b,unsigned n) {
     unsigned sum=0;for(unsigned i=0;i<n-1;++i)sum+=b[i];b[n-1]=(uint8_t)(0xfc-sum);return n;
@@ -37,7 +37,7 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
                 if(tx[5]!=0xa3) {
                     assert(phase==4 && tx[5]==fast_codes[fast]);
                     if(!fast){++normals;}
-                    if(++fast==7){fast=0;phase=next;phase_attempts=0;}
+                    if(++fast==8){fast=0;phase=next;phase_attempts=0;}
                     response(rx,tx[5],0,0,20+(int)(normals%30));rxlen=22;
                 } else {
                     assert(tx[5]==0xa3 && tx[6]==0 && (tx[7]==27 || tx[7]==28));
@@ -111,12 +111,13 @@ static void parser_units(void) {
     cn_tick(1100);assert(drain(tx)==22 && tx[5]==4);
     response(b,0x0c,0,0,48);feed(b,22,1140);assert(cn_read(3)==0 && cn_read(39)==2);
     response(b,4,0,0,0);feed(b,22,1150);assert(cn_read(2)==0 && cn_read(3)==1);
-    for(unsigned i=1;i<7;++i){cn_tick(1150+i*100);assert(drain(tx)==22 && tx[5]==fast_codes[i]);
+    for(unsigned i=1;i<8;++i){cn_tick(1150+i*100);assert(drain(tx)==22 && tx[5]==fast_codes[i]);
         response(b,tx[5],0,0,0);feed(b,22,1200+i*100);}
-    cn_tick(1850);assert(drain(tx)==22 && tx[5]==0xa3);
-    response(b,0xa3,27,1,7);b[21]^=1;feed(b,22,1900);assert(cn_read(18)==0 && cn_read(39)==3);
-    response(b,0xa3,28,1,7);feed(b,22,1900);assert(cn_read(18)==0 && cn_read(39)==3);
-    response(b,0xa3,27,1,7);feed(b,22,1900);assert(cn_read(18)==1 && cn_read(39)==0);
+    assert(cn_read(283)==1 && cn_read(285)==1 && cn_read(288)==0x28); /* passive, no command */
+    cn_tick(1950);assert(drain(tx)==22 && tx[5]==0xa3);
+    response(b,0xa3,27,1,7);b[21]^=1;feed(b,22,2000);assert(cn_read(18)==0 && cn_read(39)==3);
+    response(b,0xa3,28,1,7);feed(b,22,2000);assert(cn_read(18)==0 && cn_read(39)==3);
+    response(b,0xa3,27,1,7);feed(b,22,2000);assert(cn_read(18)==1 && cn_read(39)==0);
     for(unsigned bit=0;bit<176;++bit){
         cn_init();cn_tick(1000);drain(tx);feed(ack,7,1050);cn_tick(1100);drain(tx);
         response(b,4,0,0,48);b[bit/8]^=1u<<(bit%8);feed(b,22,1150);assert(cn_read(3)==0);

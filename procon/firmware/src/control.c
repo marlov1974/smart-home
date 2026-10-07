@@ -1,4 +1,4 @@
-/* P0072 r2. Independently encoded reference-backed controls; hardware trial pending. */
+/* P0072 r3. Independently encoded reference-backed controls; hardware trial pending. */
 #include "control.h"
 enum { IDLE, QUEUED, SNAPSHOT, APPLY, ACTIVE, RESTORE, RESTORE_BLOCKED };
 enum { POWER=1, MODE, FLOW, DHW_TARGET, BOOST };
@@ -11,6 +11,28 @@ static uint8_t state,saved,touched,n_actions,index_action,phase,retries,snapshot
 static uint32_t now_ms,lease_at,lease_ms,retry_at;
 static uint8_t inflight_type,inflight_query,settling,flow_prepared;
 static uint32_t settle_at;
+static uint8_t raw28[16],seen28,reject_byte,reject_value;
+static uint16_t generation28,blocked28,relevant28;
+static uint32_t age28,diag_tick;
+void ctl_observe(const uint8_t p[16],uint32_t t){
+    if(p[0]!=0x28)return;
+    for(unsigned i=0;i<16;++i)raw28[i]=p[i];
+    seen28=1;++generation28;age28=0;diag_tick=t;
+}
+static int gate28(const uint8_t *p){
+    relevant28=(1u<<4)|(1u<<10); /* holiday and external server ownership */
+    if(command[2]==2 || (command[6]&1))relevant28|=1u<<6;
+    if(command[2]==3 || (command[6]&2))relevant28|=1u<<5;
+    blocked28=0;reject_byte=reject_value=0;
+    for(unsigned i=4;i<=10;++i){
+        /* Unknown encodings remain a failure, including unrelated flags. */
+        if(p[i]>1 || (p[i] && (relevant28&(1u<<i)))){
+            blocked28|=(uint16_t)(1u<<i);
+            if(!reject_byte){reject_byte=(uint8_t)i;reject_value=p[i];}
+        }
+    }
+    return !blocked28;
+}
 static uint16_t be(const uint8_t *p){return (uint16_t)((p[0]<<8)|p[1]);}
 static void word(uint8_t *p,uint16_t v){p[0]=(uint8_t)(v>>8);p[1]=(uint8_t)v;}
 static int equal_intent(const uint16_t *w){return w[2]==command[2] && w[3]==command[3] && w[4]==command[4] && w[6]==command[6];}
@@ -33,6 +55,8 @@ static void fail(uint16_t why){
 }
 void ctl_init(void){
     original=current=(settings){0};
+    for(unsigned i=0;i<16;++i)raw28[i]=0;
+    seen28=reject_byte=reject_value=0;generation28=blocked28=relevant28=0;age28=65535000u;diag_tick=0;
     for(unsigned i=0;i<8;++i)command[i]=0;
     accepted=applied=rejected=error=acks=readbacks=restores=0;
     state=saved=touched=n_actions=index_action=phase=retries=snapshot_step=waiting=0;
@@ -67,11 +91,14 @@ uint8_t ctl_submit(const uint16_t w[8],uint32_t now){
     if(state!=IDLE || saved)goto busy;
     for(unsigned i=0;i<8;++i)command[i]=w[i];
     accepted=w[1];error=0;lease_at=now;lease_ms=(uint32_t)w[5]*1000u;
+    blocked28=relevant28=0;reject_byte=reject_value=0;
     touched=0;snapshot_step=retries=waiting=0;state=QUEUED;return 0;
 invalid:rejected=w[1];error=1;return 3;
 busy:rejected=w[1];error=2;return 6;
 }
 void ctl_tick(uint32_t t){
+    uint32_t dt=t-diag_tick;diag_tick=t;
+    if(seen28)age28=dt>=65535000u-age28?65535000u:age28+dt;
     now_ms=t;
     if((state==QUEUED || state==SNAPSHOT || state==APPLY || state==ACTIVE) && t-lease_at>=lease_ms){
         /* Never interrupt a wire transaction; expiration is processed after it. */
@@ -143,9 +170,10 @@ int ctl_reply(uint8_t type,const uint8_t *p,unsigned len,uint32_t t){
     }
     if(type!=0x62 || len!=16 || p[0]!=inflight_query)return 0;
     waiting=0;++readbacks;
+    ctl_observe(p,t);
     if(!update(p)){fail(3);return 1;}
     if(state==SNAPSHOT){
-        if(p[0]==0x28){for(unsigned i=4;i<=10;++i)if(p[i]){fail(3);return 1;}}
+        if(p[0]==0x28 && !gate28(p)){fail(3);return 1;}
         retries=0;
         if(++snapshot_step==3){original=current;saved=1;apply_plan();}
     }else if(phase==2){flow_prepared=1;phase=retries=0;}
@@ -160,7 +188,11 @@ void ctl_timeout(uint32_t t){
     if(++retries>=3)fail(4);
 }
 uint16_t ctl_read(unsigned a){
+    if(a>=288 && a<=295){unsigned i=2*(a-288);return (uint16_t)(raw28[i]|(raw28[i+1]<<8));}
     switch(a){
+    case 283:return seen28;case 284:return (uint16_t)(age28/1000u);case 285:return generation28;
+    case 286:return blocked28;case 287:return relevant28;
+    case 296:return blocked28?0x28:0;case 297:return reject_byte;case 298:return reject_value;
     case 256:return state;case 257:return accepted;case 258:return applied;case 259:return rejected;
     case 260:return error;case 261:return saved;case 262:return touched;case 263:return command[2];
     case 264:return (state==ACTIVE || state==APPLY || state==SNAPSHOT || state==QUEUED)?(now_ms-lease_at>=lease_ms?0:(uint16_t)((lease_ms-(now_ms-lease_at)+999u)/1000u)):0;

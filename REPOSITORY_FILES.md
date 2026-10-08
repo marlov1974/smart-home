@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 634
+Tracked file count: 635
 
 ## Files
 
@@ -490,6 +490,7 @@ Tracked file count: 634
 - `requirements/packages/P0076-procon-effect-brine-cop.md`
 - `requirements/packages/P0077-weekend-borehole-stress-cop.md`
 - `requirements/packages/P0078-geodan-ftc-system-identification.md`
+- `requirements/packages/P0079-procon-one-time-memory-dump.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

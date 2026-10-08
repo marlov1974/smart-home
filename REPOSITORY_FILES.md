@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 633
+Tracked file count: 634
 
 ## Files
 
@@ -61,6 +61,7 @@ Tracked file count: 633
 - `memory/06-chatgpt-requirements-analyst.md`
 - `memory/07-project-instructions.md`
 - `memory/08-context-bootstrap-modes.md`
+- `memory/09-control-abstraction-tree.md`
 - `memory/bootstrap-manifest.json`
 - `memory/device-management/00-index.md`
 - `memory/device-management/identity-and-registry.md`

@@ -1,5 +1,5 @@
 {
-  "version": 22,
+  "version": 23,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -15,6 +15,7 @@
     "memory/06-chatgpt-requirements-analyst.md",
     "memory/07-project-instructions.md",
     "memory/08-context-bootstrap-modes.md",
+    "memory/09-control-abstraction-tree.md",
     "memory/device-management/00-index.md",
     "memory/device-management/identity-and-registry.md",
     "memory/device-management/installer-model.md",

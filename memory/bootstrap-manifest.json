@@ -1,5 +1,5 @@
 {
-  "version": 21,
+  "version": 22,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -100,7 +100,8 @@
     "requirements/packages/P0074-procon-a1m-clean-room-platform-spec.md",
     "requirements/packages/P0075-procon-shelly-firmware-readback.md",
     "requirements/packages/P0076-procon-effect-brine-cop.md",
-    "requirements/packages/P0077-weekend-borehole-stress-cop.md"
+    "requirements/packages/P0077-weekend-borehole-stress-cop.md",
+    "requirements/packages/P0078-geodan-ftc-system-identification.md"
   ],
   "governance": {
     "truth_hierarchy": [

@@ -1,5 +1,5 @@
 {
-  "version": 24,
+  "version": 25,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -103,7 +103,8 @@
     "requirements/packages/P0076-procon-effect-brine-cop.md",
     "requirements/packages/P0077-weekend-borehole-stress-cop.md",
     "requirements/packages/P0078-geodan-ftc-system-identification.md",
-    "requirements/packages/P0079-procon-one-time-memory-dump.md"
+    "requirements/packages/P0079-procon-one-time-memory-dump.md",
+    "requirements/packages/P0080-procon-bl2-modular-ota-feasibility.md"
   ],
   "governance": {
     "truth_hierarchy": [

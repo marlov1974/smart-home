@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1065
+Tracked file count: 1090
 
 ## Files
 
@@ -784,6 +784,25 @@ Tracked file count: 1065
 - `requirements/package-runs/P0088/uart6-room-path.md`
 - `requirements/package-runs/P0088/unresolved-handlers.md`
 - `requirements/package-runs/P0088/verification.json`
+- `requirements/package-runs/P0089/CHANGELOG.md`
+- `requirements/package-runs/P0089/cn105-contracts.json`
+- `requirements/package-runs/P0089/control-contracts.md`
+- `requirements/package-runs/P0089/coverage.json`
+- `requirements/package-runs/P0089/design.md`
+- `requirements/package-runs/P0089/evidence.json`
+- `requirements/package-runs/P0089/functions.md`
+- `requirements/package-runs/P0089/new-capabilities.md`
+- `requirements/package-runs/P0089/open-questions.md`
+- `requirements/package-runs/P0089/physical-test-plan.md`
+- `requirements/package-runs/P0089/procon-handoff.md`
+- `requirements/package-runs/P0089/provenance.json`
+- `requirements/package-runs/P0089/provenance.md`
+- `requirements/package-runs/P0089/read-service-contracts.md`
+- `requirements/package-runs/P0089/reproduce.md`
+- `requirements/package-runs/P0089/review.md`
+- `requirements/package-runs/P0089/settings-fields.md`
+- `requirements/package-runs/P0089/settings-session.md`
+- `requirements/package-runs/P0089/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -1071,5 +1090,11 @@ Tracked file count: 1065
 - `tools/ftc6/p88/uart1_snapshot.py`
 - `tools/ftc6/p88/uart6.py`
 - `tools/ftc6/p88/verify_artifacts.py`
+- `tools/ftc6/p89/codec.py`
+- `tools/ftc6/p89/controls.py`
+- `tools/ftc6/p89/extract_evidence.py`
+- `tools/ftc6/p89/models.py`
+- `tools/ftc6/p89/report.py`
+- `tools/ftc6/p89/test_p89.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

@@ -1,0 +1,14 @@
+{
+  "package": "P0089",
+  "status": "PARTIAL",
+  "structural_cn105_routes": 141,
+  "settings_blocks": 47,
+  "new_field_contracts": 14,
+  "offline_models": 13,
+  "whole_operational_transactions_complete": 0,
+  "physical_tests": 0,
+  "physical_status": "NOT RUN",
+  "repeated_exports": 45,
+  "direct_category6_writes": 101,
+  "metric": "Field-level edges with explicit residuals; not new unique features or complete commands"
+}

@@ -1,0 +1,1892 @@
+{
+  "schema_version": 1,
+  "package": "P0089",
+  "status": "PARTIAL",
+  "reference": "Public-input consolidation of FTC20.01; no complete-command or installed-profile claims",
+  "fields": [
+    {
+      "id": "set34.inhibit0",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        5
+      ],
+      "name": "Varmvattenspärr",
+      "enable": "p1.bit2;0/1;owner39A3==1 selects remote",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled -> FF preserve"
+      },
+      "source_consumer": "39A6.bit0 ->8F8F2 ->399A.bit0",
+      "effect": "Fjärrmasken väljs endast vid accepterat ägande; lokal39A5 väljs vid owner0",
+      "readback": "GET28 p5 plus p10 ownership",
+      "retry": "Bitassignment idempotent; native selection can change",
+      "proof": [
+        "8f816",
+        "8f8f2",
+        "b1096"
+      ],
+      "remaining": "All downstream physical actuator conditions and installed21.00 behavior remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.inhibit1",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": 1,
+      "category": null,
+      "positions": [
+        6
+      ],
+      "name": "Värmespärr zon1",
+      "enable": "p1.bit3;0/1;owner39A3==1 selects remote",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled -> FF preserve"
+      },
+      "source_consumer": "39A6.bit1 ->8F8F2 ->399A.bit1",
+      "effect": "Fjärrmasken väljs endast vid accepterat ägande; lokal39A5 väljs vid owner0",
+      "readback": "GET28 p6 plus p10 ownership",
+      "retry": "Bitassignment idempotent; native selection can change",
+      "proof": [
+        "8f816",
+        "8f8f2",
+        "bdb88"
+      ],
+      "remaining": "All downstream physical actuator conditions and installed21.00 behavior remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.inhibit2",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": 1,
+      "category": null,
+      "positions": [
+        7
+      ],
+      "name": "Kylspärr zon1",
+      "enable": "p1.bit4;0/1;owner39A3==1 selects remote",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled -> FF preserve"
+      },
+      "source_consumer": "39A6.bit2 ->8F8F2 ->399A.bit2",
+      "effect": "Fjärrmasken väljs endast vid accepterat ägande; lokal39A5 väljs vid owner0",
+      "readback": "GET28 p7 plus p10 ownership",
+      "retry": "Bitassignment idempotent; native selection can change",
+      "proof": [
+        "8f816",
+        "8f8f2",
+        "beb4c"
+      ],
+      "remaining": "All downstream physical actuator conditions and installed21.00 behavior remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.inhibit3",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": 2,
+      "category": null,
+      "positions": [
+        8
+      ],
+      "name": "Värmespärr zon2",
+      "enable": "p1.bit5;0/1;owner39A3==1 selects remote",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled -> FF preserve"
+      },
+      "source_consumer": "39A6.bit3 ->8F8F2 ->399A.bit3",
+      "effect": "Fjärrmasken väljs endast vid accepterat ägande; lokal39A5 väljs vid owner0",
+      "readback": "GET28 p8 plus p10 ownership",
+      "retry": "Bitassignment idempotent; native selection can change",
+      "proof": [
+        "8f816",
+        "8f8f2",
+        "bdb88"
+      ],
+      "remaining": "All downstream physical actuator conditions and installed21.00 behavior remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.inhibit4",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": 2,
+      "category": null,
+      "positions": [
+        9
+      ],
+      "name": "Kylspärr zon2",
+      "enable": "p1.bit6;0/1;owner39A3==1 selects remote",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled -> FF preserve"
+      },
+      "source_consumer": "39A6.bit4 ->8F8F2 ->399A.bit4",
+      "effect": "Fjärrmasken väljs endast vid accepterat ägande; lokal39A5 väljs vid owner0",
+      "readback": "GET28 p9 plus p10 ownership",
+      "retry": "Bitassignment idempotent; native selection can change",
+      "proof": [
+        "8f816",
+        "8f8f2",
+        "beb4c"
+      ],
+      "remaining": "All downstream physical actuator conditions and installed21.00 behavior remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.owner",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        10
+      ],
+      "name": "Begär/släpp fjärrstyrningsägande",
+      "enable": "p1.bit7;CE8C2 ordinary branch0900!=2",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other/disabled ignore"
+      },
+      "source_consumer": "4976/4977 event ->CE9C8 ->39A3",
+      "effect": "Acquire only if38BF not2/3,39EA!=1,39ED==0; release also via4978; events cleared each pass",
+      "readback": "GET28 p10; then p5..9 selected inhibits",
+      "retry": "Event not unconditional assignment; repeated acquire cannot defeat guards",
+      "proof": [
+        "ce8c2",
+        "ce9c8",
+        "ce9b0",
+        "cea26"
+      ],
+      "remaining": "Peer owner release and controller profile must be observed; timers not seconds",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.counter",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        11
+      ],
+      "name": "Räknare som kan återkalla fjärrägande",
+      "enable": "p2.bit0;0/1",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other preserves"
+      },
+      "source_consumer": "33EA >=10 OR timer ->39ED ->CE9C8",
+      "effect": "Ten increments from zero inhibit/release owner; byte wraps at256, zero resets",
+      "readback": "GET28 p11 echoes39EC, NOT counter33EA; p10 shows ownership",
+      "retry": "NOT idempotent; each enabled1 increments",
+      "proof": [
+        "ce9c8",
+        "ce8c2"
+      ],
+      "remaining": "Timer timebase and hidden counter not directly read; CE920 is inheritedP88 proof",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.peerflag",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        12
+      ],
+      "name": "Rått hjälptillstånd till D-publicering",
+      "enable": "p2.bit1;0/1",
+      "encoding": {
+        "endian": "byte",
+        "scale": 1,
+        "range": [
+          0,
+          1
+        ],
+        "sentinel": "other preserves"
+      },
+      "source_consumer": "39A4 ->0874;CEA26 can overwrite from050C.bit5 in profile2",
+      "effect": "Shared flag copied to D outgoing staging and compared for updates; physical meaning not closed",
+      "readback": "GET28 p12",
+      "retry": "Assignment; peer/profile may overwrite",
+      "proof": [
+        "9aafe",
+        "9ad80",
+        "cea26"
+      ],
+      "remaining": "No proved user label; no control planner",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": false,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set34.raw_limit",
+      "p88_id": "uart2.41.34",
+      "frame_type": "41",
+      "opcode": "34",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        13
+      ],
+      "name": "Övre gräns för en intern, diskret styrstorhet",
+      "enable": "p2.bit2;ABE04 override gates",
+      "encoding": {
+        "endian": "byte",
+        "scale": "8929D[value]*10",
+        "range": [
+          0,
+          255
+        ],
+        "sentinel": ">10 mapsindex0 ->100; disabled preserves"
+      },
+      "source_consumer": "3E06 ->3933 ->min(100,0600,3933,3934) ->05FE/3935",
+      "effect": "Can lower selected internal value but cannot raise above native/peer limits; overrides force active3933=100",
+      "readback": "GET05 p5 encodes floor(05FE/10) via8929D; not stored3E06",
+      "retry": "Assignment idempotent at store; selection can change with native state",
+      "proof": [
+        "abe04",
+        "ac9a8",
+        "abd58",
+        "a3d18",
+        "a5628",
+        "99b8a"
+      ],
+      "remaining": "Physical units/source-board response unresolved; NOT kW,Hz or percentage command",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "get05.selected_limit",
+      "p88_id": "uart2.42.05",
+      "frame_type": "42",
+      "opcode": "05",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        5
+      ],
+      "name": "Återläs vald intern gränsnivå",
+      "enable": "GET dispatcher; no ownership implied",
+      "encoding": {
+        "endian": "byte",
+        "scale": "table8929D[min(unsigned05FE//10,10)]",
+        "range": [
+          0,
+          10
+        ],
+        "sentinel": "0 encodes highest index10;10 encodes index0"
+      },
+      "source_consumer": "A5628 ->A3D18 ->05FE",
+      "effect": "Distinguishes selected aggregate from stored SET34 request; some quantization",
+      "readback": "Compare expected encoded selected state; cannot reconstruct individual limiting owner",
+      "retry": "Inspected helper contains no counter fold; whole dispatcher side effects not universally excluded",
+      "proof": [
+        "a5628",
+        "a3d18"
+      ],
+      "remaining": "No production decoder added; full GET05 remaining bytes inherited/unqualified",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set35.zone1",
+      "p88_id": "uart2.41.35",
+      "frame_type": "41",
+      "opcode": "35",
+      "selector": null,
+      "zone": 1,
+      "category": null,
+      "positions": [
+        4,
+        5
+      ],
+      "name": "Rumsmål zon1",
+      "enable": "p1.bit1;event4;0900!=2;p3=0 heating/1 cooling",
+      "encoding": {
+        "endian": "big",
+        "scale": "raw16 target; centidegree interpretation needs field calibration",
+        "range": [
+          0,
+          65534
+        ],
+        "sentinel": "FFFF ignored"
+      },
+      "source_consumer": "B9B76 ->38DC/38E2",
+      "effect": "Routes raw room target to heating/cooling store, not fixed-flow target",
+      "readback": "GET26 target selection or room-target getter requires matching selected native mode; physical effectiveness separate",
+      "retry": "Assignment idempotent in this store; other tasks may override",
+      "proof": [
+        "b9b76",
+        "a545c"
+      ],
+      "remaining": "Full target safety range and selected readback binding not completed",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set35.zone2",
+      "p88_id": "uart2.41.35",
+      "frame_type": "41",
+      "opcode": "35",
+      "selector": null,
+      "zone": 2,
+      "category": null,
+      "positions": [
+        6,
+        7
+      ],
+      "name": "Rumsmål zon2",
+      "enable": "p1.bit3;event4;0900!=2;p3=0 heating/1 cooling",
+      "encoding": {
+        "endian": "big",
+        "scale": "raw16 target; centidegree interpretation needs field calibration",
+        "range": [
+          0,
+          65534
+        ],
+        "sentinel": "FFFF ignored"
+      },
+      "source_consumer": "B9B76 ->38EE/38F4",
+      "effect": "Routes raw room target to heating/cooling store, not fixed-flow target",
+      "readback": "GET26 target selection or room-target getter requires matching selected native mode; physical effectiveness separate",
+      "retry": "Assignment idempotent in this store; other tasks may override",
+      "proof": [
+        "b9b76",
+        "a545c"
+      ],
+      "remaining": "Full target safety range and selected readback binding not completed",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "set32.modecoupling",
+      "p88_id": "uart2.41.32",
+      "frame_type": "41",
+      "opcode": "32",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        6,
+        7
+      ],
+      "name": "Zonlägen kan kopplas ihop av kompatibilitetstabell",
+      "enable": "p1.bit3/4;A468E valid;0900!=2",
+      "encoding": {
+        "endian": "byte",
+        "scale": "enum",
+        "range": [
+          0,
+          4
+        ],
+        "sentinel": "invalid ->FF"
+      },
+      "source_consumer": "BBE92 ->3913/3914 ->860CC indexed by06D6.bit5 and both modes",
+      "effect": "Setting one requested mode may also adjust zone2 requested mode; target-onlymodecontext remains required",
+      "readback": "GET26 p6/7 are selected3916/3918, not raw3913/3914",
+      "retry": "Final pair can change through coupling; do not assume independent zone assignments",
+      "proof": [
+        "bbe92",
+        "b9bfe"
+      ],
+      "remaining": "Need installed profile and complete selected-mode path; table bytes pinned",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    },
+    {
+      "id": "get0b.quantization",
+      "p88_id": "uart2.42.0b",
+      "frame_type": "42",
+      "opcode": "0b",
+      "selector": null,
+      "zone": null,
+      "category": null,
+      "positions": [
+        11
+      ],
+      "name": "Temperaturkodning med avrundning mot noll och klamp",
+      "enable": "GET0B selected0686",
+      "encoding": {
+        "endian": "byte",
+        "scale": "clamp(trunc((signed16+4000)/50),0,255)",
+        "range": [
+          0,
+          255
+        ],
+        "sentinel": "no validity sentinel introduced by helper"
+      },
+      "source_consumer": "A4D5E ->A4CDC ->D4704 ->A4D00",
+      "effect": "Signed subtraction and signed division truncate toward zero, then clamp0..255",
+      "readback": "Raw companion/source validity remains independent",
+      "retry": "Pure encoding",
+      "proof": [
+        "a4d5e",
+        "d4704"
+      ],
+      "remaining": "Rounding helper closed; invalid/freshness and physical sensor identity remain",
+      "scope": "static FTC20.01",
+      "new_in_p89": true,
+      "static_effect_known": true,
+      "offline_codec_ready": true,
+      "physical_test_ready": false,
+      "physically_verified": false
+    }
+  ],
+  "settings_blocks": [
+    {
+      "opcode": "50",
+      "get_id": "uart2.42.50",
+      "set_id": "uart2.41.50",
+      "get_handler": [
+        "a629c"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "51",
+      "get_id": "uart2.42.51",
+      "set_id": "uart2.41.51",
+      "get_handler": [
+        "a630e"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "52",
+      "get_id": "uart2.42.52",
+      "set_id": "uart2.41.52",
+      "get_handler": [
+        "a6376"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "53",
+      "get_id": "uart2.42.53",
+      "set_id": "uart2.41.53",
+      "get_handler": [
+        "a63d4"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "54",
+      "get_id": "uart2.42.54",
+      "set_id": "uart2.41.54",
+      "get_handler": [
+        "a6426"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "55",
+      "get_id": "uart2.42.55",
+      "set_id": "uart2.41.55",
+      "get_handler": [
+        "a653e"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "56",
+      "get_id": "uart2.42.56",
+      "set_id": "uart2.41.56",
+      "get_handler": [
+        "a6642"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "57",
+      "get_id": "uart2.42.57",
+      "set_id": "uart2.41.57",
+      "get_handler": [
+        "a77b8"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "58",
+      "get_id": "uart2.42.58",
+      "set_id": "uart2.41.58",
+      "get_handler": [
+        "a77f2"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "59",
+      "get_id": "uart2.42.59",
+      "set_id": "uart2.41.59",
+      "get_handler": [
+        "a7816"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5a",
+      "get_id": "uart2.42.5a",
+      "set_id": "uart2.41.5a",
+      "get_handler": [
+        "a7874"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5b",
+      "get_id": "uart2.42.5b",
+      "set_id": "uart2.41.5b",
+      "get_handler": [
+        "a7914"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5c",
+      "get_id": "uart2.42.5c",
+      "set_id": "uart2.41.5c",
+      "get_handler": [
+        "a7938"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5d",
+      "get_id": "uart2.42.5d",
+      "set_id": "uart2.41.5d",
+      "get_handler": [
+        "a7984"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5e",
+      "get_id": "uart2.42.5e",
+      "set_id": "uart2.41.5e",
+      "get_handler": [
+        "a79e2"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "5f",
+      "get_id": "uart2.42.5f",
+      "set_id": "uart2.41.5f",
+      "get_handler": [
+        "a7a3a"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "60",
+      "get_id": "uart2.42.60",
+      "set_id": "uart2.41.60",
+      "get_handler": [
+        "a7afc"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "61",
+      "get_id": "uart2.42.61",
+      "set_id": "uart2.41.61",
+      "get_handler": [
+        "a7b88"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "62",
+      "get_id": "uart2.42.62",
+      "set_id": "uart2.41.62",
+      "get_handler": [
+        "a7c14"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "63",
+      "get_id": "uart2.42.63",
+      "set_id": "uart2.41.63",
+      "get_handler": [
+        "a7c6e"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "64",
+      "get_id": "uart2.42.64",
+      "set_id": "uart2.41.64",
+      "get_handler": [
+        "a7ce6"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "65",
+      "get_id": "uart2.42.65",
+      "set_id": "uart2.41.65",
+      "get_handler": [
+        "a7d48",
+        "cfb18"
+      ],
+      "category": 6,
+      "import_group": "BD296",
+      "known_fields": [
+        "configured pump level"
+      ],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "66",
+      "get_id": "uart2.42.66",
+      "set_id": "uart2.41.66",
+      "get_handler": [
+        "a7d9e"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "67",
+      "get_id": "uart2.42.67",
+      "set_id": "uart2.41.67",
+      "get_handler": [
+        "a7dfe"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "68",
+      "get_id": "uart2.42.68",
+      "set_id": "uart2.41.68",
+      "get_handler": [
+        "a7e84"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "69",
+      "get_id": "uart2.42.69",
+      "set_id": "uart2.41.69",
+      "get_handler": [
+        "a7ee8"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6a",
+      "get_id": "uart2.42.6a",
+      "set_id": "uart2.41.6a",
+      "get_handler": [
+        "a7f52"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6b",
+      "get_id": "uart2.42.6b",
+      "set_id": "uart2.41.6b",
+      "get_handler": [
+        "a7fca"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6c",
+      "get_id": "uart2.42.6c",
+      "set_id": "uart2.41.6c",
+      "get_handler": [
+        "a8008"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6d",
+      "get_id": "uart2.42.6d",
+      "set_id": "uart2.41.6d",
+      "get_handler": [
+        "a80a0"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6e",
+      "get_id": "uart2.42.6e",
+      "set_id": "uart2.41.6e",
+      "get_handler": [
+        "a8138"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "6f",
+      "get_id": "uart2.42.6f",
+      "set_id": "uart2.41.6f",
+      "get_handler": [
+        "a8184"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "70",
+      "get_id": "uart2.42.70",
+      "set_id": "uart2.41.70",
+      "get_handler": [
+        "a821c"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "71",
+      "get_id": "uart2.42.71",
+      "set_id": "uart2.41.71",
+      "get_handler": [
+        "a8290"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "72",
+      "get_id": "uart2.42.72",
+      "set_id": "uart2.41.72",
+      "get_handler": [
+        "a830c"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "73",
+      "get_id": "uart2.42.73",
+      "set_id": "uart2.41.73",
+      "get_handler": [
+        "a8378"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "74",
+      "get_id": "uart2.42.74",
+      "set_id": "uart2.41.74",
+      "get_handler": [
+        "a8402"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "75",
+      "get_id": "uart2.42.75",
+      "set_id": "uart2.41.75",
+      "get_handler": [
+        "a8a20"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "76",
+      "get_id": "uart2.42.76",
+      "set_id": "uart2.41.76",
+      "get_handler": [
+        "a8a90"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "77",
+      "get_id": "uart2.42.77",
+      "set_id": "uart2.41.77",
+      "get_handler": [
+        "a8afe"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "78",
+      "get_id": "uart2.42.78",
+      "set_id": "uart2.41.78",
+      "get_handler": [
+        "a8b6c"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "79",
+      "get_id": "uart2.42.79",
+      "set_id": "uart2.41.79",
+      "get_handler": [
+        "a8bcc",
+        "cfb18"
+      ],
+      "category": 6,
+      "import_group": "BD780",
+      "known_fields": [
+        "configured pump level"
+      ],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "7a",
+      "get_id": "uart2.42.7a",
+      "set_id": "uart2.41.7a",
+      "get_handler": [
+        "a8c24"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "7b",
+      "get_id": "uart2.42.7b",
+      "set_id": "uart2.41.7b",
+      "get_handler": [
+        "a8c92"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "7c",
+      "get_id": "uart2.42.7c",
+      "set_id": "uart2.41.7c",
+      "get_handler": [
+        "a8d1e"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "7d",
+      "get_id": "uart2.42.7d",
+      "set_id": "uart2.41.7d",
+      "get_handler": [
+        "a8d78"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    },
+    {
+      "opcode": "7e",
+      "get_id": "uart2.42.7e",
+      "set_id": "uart2.41.7e",
+      "get_handler": [
+        "a8dda"
+      ],
+      "category": "not individually qualified",
+      "import_group": "unqualified category-dependent import",
+      "known_fields": [],
+      "unknown_fields": "all remaining meanings/defaults/constraints and affected neighbors",
+      "apply_ready": false
+    }
+  ],
+  "backlog": [
+    {
+      "id": "uart2.41.32",
+      "name": "Operating controls including zone1 fixed-flow target",
+      "remaining": "p4/operating request, remaining enable bits and native admission/overrides; complete persistence and error semantics"
+    },
+    {
+      "id": "uart2.41.33",
+      "name": "SET 33",
+      "remaining": "Trace a5430 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.34",
+      "name": "SET 34",
+      "remaining": "Physical meaning and downstream lifetime of flags39A6/4976/4977/39EC/39A4; timer units; installed firmware equivalence"
+    },
+    {
+      "id": "uart2.41.35",
+      "name": "SET 35",
+      "remaining": "Trace a545c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.50",
+      "name": "SET 50",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.51",
+      "name": "SET 51",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.52",
+      "name": "SET 52",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.53",
+      "name": "SET 53",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.54",
+      "name": "SET 54",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.55",
+      "name": "SET 55",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.56",
+      "name": "SET 56",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.57",
+      "name": "SET 57",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.58",
+      "name": "SET 58",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.59",
+      "name": "SET 59",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5a",
+      "name": "SET 5a",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5b",
+      "name": "SET 5b",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5c",
+      "name": "SET 5c",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5d",
+      "name": "SET 5d",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5e",
+      "name": "SET 5e",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.5f",
+      "name": "SET 5f",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.60",
+      "name": "SET 60",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.61",
+      "name": "SET 61",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.62",
+      "name": "SET 62",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.63",
+      "name": "SET 63",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.64",
+      "name": "SET 64",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.65",
+      "name": "Stage DHW settings block including pump level",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.66",
+      "name": "SET 66",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.67",
+      "name": "SET 67",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.68",
+      "name": "SET 68",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.69",
+      "name": "SET 69",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6a",
+      "name": "SET 6a",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6b",
+      "name": "SET 6b",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6c",
+      "name": "SET 6c",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6d",
+      "name": "SET 6d",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6e",
+      "name": "SET 6e",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.6f",
+      "name": "SET 6f",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.70",
+      "name": "SET 70",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.71",
+      "name": "SET 71",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.72",
+      "name": "SET 72",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.73",
+      "name": "SET 73",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.74",
+      "name": "SET 74",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.75",
+      "name": "SET 75",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.76",
+      "name": "SET 76",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.77",
+      "name": "SET 77",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.78",
+      "name": "SET 78",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.79",
+      "name": "Stage heating settings including pump level",
+      "remaining": "Name all neighboring fields and qualify category/session completion"
+    },
+    {
+      "id": "uart2.41.7a",
+      "name": "SET 7a",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.7b",
+      "name": "SET 7b",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.7c",
+      "name": "SET 7c",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.7d",
+      "name": "SET 7d",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.7e",
+      "name": "SET 7e",
+      "remaining": "Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.41.c8",
+      "name": "Settings category session action",
+      "remaining": "Peer scheduling/close sequence needs peer firmware or authorized passive capture"
+    },
+    {
+      "id": "uart2.42.01",
+      "name": "GET 01",
+      "remaining": "Trace a5480 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.02",
+      "name": "GET 02",
+      "remaining": "Trace a54f8 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.03",
+      "name": "GET 03",
+      "remaining": "Trace a5540 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.04",
+      "name": "Native and multi-unit status fields (raw sources)",
+      "remaining": "Identify395A/3958 record producers and physical units; payload layout is closed"
+    },
+    {
+      "id": "uart2.42.05",
+      "name": "GET 05",
+      "remaining": "Trace a5628 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.06",
+      "name": "GET 06",
+      "remaining": "Trace a56a4 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.07",
+      "name": "Consumed/produced power and increasing consumed counter",
+      "remaining": "correlate dated meter/counter deltas; no precise live COP claim"
+    },
+    {
+      "id": "uart2.42.09",
+      "name": "GET 09",
+      "remaining": "Trace a57a4 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.0b",
+      "name": "Room/selected temperature sources",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.0c",
+      "name": "Primary flow/return/DHW temperatures and sampled companions",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.0d",
+      "name": "GET 0d",
+      "remaining": "Trace a591c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.0e",
+      "name": "GET 0e",
+      "remaining": "Trace a599a and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.0f",
+      "name": "GET 0f",
+      "remaining": "Trace a59e4 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.10",
+      "name": "GET 10",
+      "remaining": "Trace a5a3e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.11",
+      "name": "GET 11",
+      "remaining": "Trace a5a7e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.13",
+      "name": "GET 13",
+      "remaining": "Trace a5b08 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.14",
+      "name": "Input flags, multi-unit words and quantized primary flow",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.15",
+      "name": "Actuator/native-state report",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.16",
+      "name": "GET 16",
+      "remaining": "Trace a5c62 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.17",
+      "name": "GET 17",
+      "remaining": "Trace a5c86 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.18",
+      "name": "GET 18",
+      "remaining": "Trace a5d3a and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.19",
+      "name": "GET 19",
+      "remaining": "Trace a5df6 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1a",
+      "name": "GET 1a",
+      "remaining": "Trace a5e76 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1b",
+      "name": "GET 1b",
+      "remaining": "Trace a5efc and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1c",
+      "name": "GET 1c",
+      "remaining": "Trace a5f1a and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1d",
+      "name": "GET 1d",
+      "remaining": "Trace a5f8c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1e",
+      "name": "Explicit zero data response 1e",
+      "remaining": "Trace a5ff6,a4cd2 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.1f",
+      "name": "Explicit zero data response 1f",
+      "remaining": "Trace a6068,a4cd2 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.20",
+      "name": "GET 20",
+      "remaining": "Trace a60cc and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.26",
+      "name": "Reported modes and requested target words",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.27",
+      "name": "GET 27",
+      "remaining": "Trace a61b2 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.28",
+      "name": "Boost, holiday and flag report",
+      "remaining": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md"
+    },
+    {
+      "id": "uart2.42.29",
+      "name": "GET 29",
+      "remaining": "Trace a624e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.50",
+      "name": "GET 50",
+      "remaining": "Trace a629c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.51",
+      "name": "GET 51",
+      "remaining": "Trace a630e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.52",
+      "name": "GET 52",
+      "remaining": "Trace a6376 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.53",
+      "name": "GET 53",
+      "remaining": "Trace a63d4 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.54",
+      "name": "GET 54",
+      "remaining": "Trace a6426 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.55",
+      "name": "GET 55",
+      "remaining": "Trace a653e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.56",
+      "name": "GET 56",
+      "remaining": "Trace a6642 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.57",
+      "name": "GET 57",
+      "remaining": "Trace a77b8 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.58",
+      "name": "GET 58",
+      "remaining": "Trace a77f2 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.59",
+      "name": "GET 59",
+      "remaining": "Trace a7816 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5a",
+      "name": "GET 5a",
+      "remaining": "Trace a7874 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5b",
+      "name": "GET 5b",
+      "remaining": "Trace a7914 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5c",
+      "name": "GET 5c",
+      "remaining": "Trace a7938 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5d",
+      "name": "GET 5d",
+      "remaining": "Trace a7984 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5e",
+      "name": "GET 5e",
+      "remaining": "Trace a79e2 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.5f",
+      "name": "GET 5f",
+      "remaining": "Trace a7a3a and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.60",
+      "name": "GET 60",
+      "remaining": "Trace a7afc and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.61",
+      "name": "GET 61",
+      "remaining": "Trace a7b88 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.62",
+      "name": "GET 62",
+      "remaining": "Trace a7c14 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.63",
+      "name": "GET 63",
+      "remaining": "Trace a7c6e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.64",
+      "name": "GET 64",
+      "remaining": "Trace a7ce6 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.65",
+      "name": "DHW pump configured level, within settings block",
+      "remaining": "Trace a7d48,cfb18 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.66",
+      "name": "GET 66",
+      "remaining": "Trace a7d9e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.67",
+      "name": "GET 67",
+      "remaining": "Trace a7dfe and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.68",
+      "name": "GET 68",
+      "remaining": "Trace a7e84 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.69",
+      "name": "GET 69",
+      "remaining": "Trace a7ee8 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6a",
+      "name": "GET 6a",
+      "remaining": "Trace a7f52 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6b",
+      "name": "GET 6b",
+      "remaining": "Trace a7fca and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6c",
+      "name": "GET 6c",
+      "remaining": "Trace a8008 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6d",
+      "name": "GET 6d",
+      "remaining": "Trace a80a0 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6e",
+      "name": "GET 6e",
+      "remaining": "Trace a8138 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.6f",
+      "name": "GET 6f",
+      "remaining": "Trace a8184 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.70",
+      "name": "GET 70",
+      "remaining": "Trace a821c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.71",
+      "name": "GET 71",
+      "remaining": "Trace a8290 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.72",
+      "name": "GET 72",
+      "remaining": "Trace a830c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.73",
+      "name": "GET 73",
+      "remaining": "Trace a8378 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.74",
+      "name": "GET 74",
+      "remaining": "Trace a8402 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.75",
+      "name": "GET 75",
+      "remaining": "Trace a8a20 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.76",
+      "name": "GET 76",
+      "remaining": "Trace a8a90 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.77",
+      "name": "GET 77",
+      "remaining": "Trace a8afe and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.78",
+      "name": "GET 78",
+      "remaining": "Trace a8b6c and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.79",
+      "name": "Heating pump configured level, within settings block",
+      "remaining": "Trace a8bcc,cfb18 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.7a",
+      "name": "GET 7a",
+      "remaining": "Trace a8c24 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.7b",
+      "name": "GET 7b",
+      "remaining": "Trace a8c92 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.7c",
+      "name": "GET 7c",
+      "remaining": "Trace a8d1e and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.7d",
+      "name": "GET 7d",
+      "remaining": "Trace a8d78 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.7e",
+      "name": "GET 7e",
+      "remaining": "Trace a8dda and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.a1",
+      "name": "GET a1",
+      "remaining": "Trace a8e38 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.a2",
+      "name": "GET a2",
+      "remaining": "Trace a8eb6 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.42.a3",
+      "name": "Service selector/result gateway",
+      "remaining": "Per-selector formats/side effects and admission; never treat all A3 queries as harmless reads"
+    },
+    {
+      "id": "uart2.42.c8",
+      "name": "GET c8",
+      "remaining": "Trace a8f74 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.frame.5b",
+      "name": "About/configuration C9 through alternate frame type",
+      "remaining": "Name capability fields and trace native request effects; payload layout is closed"
+    },
+    {
+      "id": "uart2.frame.5c",
+      "name": "CC frame family5C",
+      "remaining": "Reply payload is fully constant; trace request dispatch effects before calling it a no-op"
+    },
+    {
+      "id": "uart2.frame.5d",
+      "name": "CC frame family5D",
+      "remaining": "Reply payload is fully constant; trace request dispatch effects before calling it a no-op"
+    },
+    {
+      "id": "uart2.frame.02.00",
+      "name": "Alternate02 frame subfamily00",
+      "remaining": "Trace a51c6,a5250 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    },
+    {
+      "id": "uart2.frame.02.01",
+      "name": "Alternate02 frame subfamily01",
+      "remaining": "Trace a51e2,a5250 and its callees: field encoding, enable masks, effect and completion; stop at15min"
+    }
+  ],
+  "inherited": [
+    "SET32 target mode context; ACK independent of application",
+    "SET34 field enables/counter raw behavior",
+    "GET0B/0C/14/15/26/28 source maps",
+    "C8 import before final acknowledgment; A3 effectful energy regressions"
+  ],
+  "boundaries": {
+    "set32_p4": "No consumer located in bounded literal/event search; dormantA4602 returnsFF, no located caller. Not proof of global unsupported operation.",
+    "set33": "Mapped event2 and zero ACK A5430; no consumer located in examined main event paths. Do not offer encoder.",
+    "settings": "101 direct active destination writes in BD296/BD780; not101 named settings. Complete serializer unavailable."
+  }
+}

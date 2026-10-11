@@ -1,0 +1,38 @@
+{
+  "package": "P0089",
+  "status": "PARTIAL",
+  "tests": {
+    "p89_public": {
+      "passed": 19,
+      "skipped": 1
+    },
+    "p89_private": {
+      "passed": 20
+    },
+    "p86": {
+      "passed": 21
+    },
+    "p88_private": {
+      "passed": 45
+    },
+    "p88_public": {
+      "passed": 31,
+      "skipped_classes": 1
+    }
+  },
+  "evidence": {
+    "repeated_assembly_roots": 45,
+    "image_hash_verified": true,
+    "missing_evidence_negative_test": true,
+    "wrong_image_negative_test": true,
+    "padded_release_hashes_verified": 8
+  },
+  "reports": "schema and generated control/coverage equality PASS",
+  "physical": "NOT RUN",
+  "hardware_calls": 0,
+  "production_changes": false,
+  "settings_serializer": "BLOCKED: unknown neighboring fields and peer completion",
+  "knowhow": "package-local evidence; no global promotion",
+  "scope": "First meaningful field qualification checkpoint; backlog remains",
+  "tracked_file_count": 1090
+}

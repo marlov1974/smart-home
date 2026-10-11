@@ -1,0 +1,23 @@
+{
+  "repo_base": "07a89d7",
+  "p88_checkpoint": "4934a0e03a16cfdb89bb35ec08819c238a52b6ff",
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "decoder": "m16c:LE:16:p88-bits",
+  "decoder_sha256": "1395807e49d7ef74e368fbd97b6aa0ca7a9cbeba6abe9843b68aa8739385e358",
+  "public_references": {
+    "F1p": "7687d11e8f4ec23de13f2c95bcdf76ebe9daebb5",
+    "gekkekoe": "829754a334df5050a1ffb58557b45d28fa2de231"
+  },
+  "current_source_sha256": {
+    "procon/modular/firmware/src/control.c": "e7fdac3693a6e9474d58a8c8d3803a260b25ef89079a944cabab48b9cbcdc6dd",
+    "procon/modular/firmware/src/cn105.c": "7b616109100a3b1eaf114677d4a9d003f9d79e8172a79ef3ecfffdb8d39b293e",
+    "procon/modular/firmware/src/service.c": "c4cca9fb4f89492041f6b8597c13a5d50cc96f4f017f6253bb1ba02fc1eb2174",
+    "procon/modular/firmware/src/telemetry.c": "eb792160eedf676c5ee70ede3ada2e459a954610e5d96efe451252aeefad9c86",
+    "procon/modular/release-p81/sizes.json": "eeeae92e51716ba4327bb558f17d8000c56e24a626e794d401dd055aba71e0ee"
+  },
+  "local_reference_sha256": {
+    "EcodanDecoder.cpp": "a34a969235ef416869364b7f23152801d10f31096f7b9f9b5cfd4a7f206c7025",
+    "gekk-protocol.md": "d9a57748b1a7fb0af1c0993c30a38324778a683b76c030f81db5490958ce9d16",
+    "gekk-response.cpp": "57405bc4adcacb3a18612bfacbad15d28ffdc9623f220c3cb0c347b5f9399c44"
+  }
+}

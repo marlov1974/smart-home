@@ -1,0 +1,700 @@
+{
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "assembly_sha256": {
+    "8f816": "c0238df233c81f41e2b0777e5c083166a02782802dc3ac7ed299a76b9f051221",
+    "8f8f2": "71cdfc1e0e5f8c502809870f11be6f2be7dc5d167052c2f2ac61ca3e7aa6b74d",
+    "9aafe": "f488863df2be4f592e4f8b2b3baa02d29fc95f4851dceceb794b0da9d899e14f",
+    "9ad80": "2c56e4e2c999f8ef4c8a111487183dc5852676b9b2593cfea3613b416e2cf980",
+    "a5430": "e4e08895fae6d68f7539d9230a0db6c8c203889d3c0c910f0587789e42b7f91f",
+    "a545c": "32b2bcf90ae41a9a98604429aca5417540d8cab0b2067ed96544fac8506abc3c",
+    "abd38": "5d2a5c8e2508e9d28bd726d4e6d7f1d794ad81f6f18e6edf5ef6f2637d04f37b",
+    "abd58": "c1a843f8c21ba02f5057b6a2045215d12b49d335d780f3c7620f9a50f9bc7025",
+    "abe04": "5f080515a50f04b0303301e7794b0d14a553dac141554598e061644599ebdd32",
+    "ac9a8": "93bd978c25d66f5fdc1125aa1be0f0fbdf704300888951f5e9ba0752a158a928",
+    "b1096": "1ead85d91b7074b1cf911f21ce94c594f22fc423032cd2fb8b29b2793f6cade0",
+    "b9b76": "46ddb9e304063115b3d4500b8fbdd8c619fa1fbc287e518d98e6b07d08d2fe0b",
+    "bdb88": "445d8b0d4c21eae388b48ad51c42573549e659e278d73345395bc180fa44c4c8",
+    "beb4c": "6df2e7408e2764ee0a262cc838a96e647adfbc8ddf0a6dc94aa45d9d3fbed5ec",
+    "bf66c": "2232437d56095d2d9470543bef2d39ff18f83016a41ecddd7a652d12659bc06a",
+    "bf750": "570f57777bf9a60d43319f27e393fcbb208219d9523c688fe490f7fbe7ce18cb",
+    "ce8c2": "0983c6fa399ad642878bb869acff88c03ac1086a29229bbe1b43952f25ab6191",
+    "ce9c8": "06381dcc0483bd22b36c2b39954882a03f4c91753d5ee108a9b02e6f3cf32866",
+    "cea26": "7c4b2d0fdbf060eaceb7409b8f729a114ae1c567a87a1bcf5ecea32ac6eeec95",
+    "99b8a": "a1f3eeca189dd119525442826b1977de643f9bf40fe9dd4ad054bdd81bc43149",
+    "a3d18": "9f969f30faf90a1fd10cd41547bbbd5ed3cfbcab9cbd778cded00240934b618e",
+    "a4601": "e82a381f8ac01c1f86466b96d17b54a76ff595c64ebd166a9bc4505e6ae4180b",
+    "a508a": "a520f8a84e5f63da731206f86832919dbbfd622301d7434116a4e6135b3b855d",
+    "a5268": "a096226b41bbe7ce1d54ae34ea43b268dbd9a8172b235ad482f4aaab6b2c5eab",
+    "abd6c": "7871c35ba087ed2d700dcd8bc0cc2f339abf41acac182817efcac68032d7237b",
+    "abd9c": "72602d079576a149470f65484d2e06d4a156fa6354a4aadd88de8e15fa250787",
+    "abe44": "10dbad3e828f54de70cac6514bbd1f2fccc68d443f27ac51fd25b6635dfac6a4",
+    "b9bfe": "745342d19fa58dd791ab5d796ea8d2d0d64748da5e7db70e01f00f1f0a774fac",
+    "bbe92": "6a4b773caa781c502fb54354eb5204fe660165e50a13e59aac9def8a60de9b89",
+    "bd296": "7072dc30e0785c20dc601c915fbc4ac6a6e684a1b45329021ee5d322641222c0",
+    "bd780": "228b0356363ceceb41afb36f4dc2ca337f29a95de16e1cd259ec62d4dd5d2d88",
+    "ce9b0": "3be1c965892f769f927d6c65a5b3fb387f9008332c14149ed70006d4fc5efbe2",
+    "cf518": "048ce3a2c09dbeca9c50618ffd74b823f5d4191f7ccd8731009e1fc4c28a4776",
+    "cf704": "72654b1bde555f26fb8e92f02f3a2c94763974c1a07891147d14c92fcc7ba9b3",
+    "9a87a": "2a2b6a782c5cf19b899a7b1b27167395e78e98d8c8dbded7b62abebde4295bd5",
+    "a4d5e": "ac53ea4c2778e6b7b7d3a884685eca7f9a07240f66fe50b637ad3d743081734a",
+    "a5148": "ea07d062e14fc0198f030e1e438227ca63987b5926642e68dc385df6bd0ce562",
+    "a5172": "e23f15213cb2bea02cda88ae21bb1fde2d982bcce4b9fbf36e11c811f2642a76",
+    "a519c": "40f549772db1dbe3823d19d12825c17e7d60a725d079beca6526e60f9d598e89",
+    "a5628": "f3184ad2d349c531d30be2267262d9a07328c9a80651f0158b765f29e2a7a778",
+    "c50bc": "2a4659b70ef9b8ea347ca67296311a71e820bf407626237cb10758e018f18ef5",
+    "c514a": "c87d37d8d23ad3a0aa42d9a956d0ffaf85a7cf232d5cc7865df768d0e7da3ee9",
+    "cf764": "7e8d867c2094622f89a16ee590173c90b6594c45c0f3313c7a8b58e77887781a",
+    "cf77e": "7c6c2ea4874bb13ab1b1f67d2b0e441fb481e6dbb913ec541aa2ea425144b023",
+    "d4704": "74ba81adbb7fa47866d5f49a9650b24666c7e2e8e510e2ec0e526ece06b78087"
+  },
+  "repeat_count": 45,
+  "tables": {
+    "8929d": [
+      10,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      0
+    ],
+    "82406": [
+      10,
+      0,
+      1,
+      0,
+      2,
+      0,
+      3,
+      0,
+      4,
+      0,
+      5,
+      0,
+      6,
+      0,
+      7,
+      0,
+      8,
+      0,
+      9,
+      0,
+      0,
+      0
+    ],
+    "8241c": [
+      10,
+      0,
+      9,
+      0,
+      8,
+      0,
+      7,
+      0,
+      6,
+      0,
+      5,
+      0,
+      4,
+      0,
+      3,
+      0,
+      2,
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "860cc": [
+      1,
+      255,
+      255,
+      1,
+      1,
+      1,
+      255,
+      255,
+      255,
+      1,
+      1,
+      1,
+      255,
+      255,
+      255,
+      1,
+      1,
+      1,
+      4,
+      4,
+      4,
+      4,
+      255,
+      4,
+      4,
+      4,
+      4,
+      255,
+      255,
+      4,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      255,
+      1,
+      1,
+      1,
+      1,
+      2,
+      2,
+      255,
+      2,
+      2,
+      2,
+      3,
+      3,
+      3,
+      255,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      255,
+      4,
+      255,
+      255,
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "category6_direct_writes": {
+    "bd296": [
+      {
+        "proof": "000bd2a8",
+        "active": "0729",
+        "width": 2
+      },
+      {
+        "proof": "000bd2be",
+        "active": "072b",
+        "width": 2
+      },
+      {
+        "proof": "000bd2d4",
+        "active": "072f",
+        "width": 2
+      },
+      {
+        "proof": "000bd2ea",
+        "active": "0771",
+        "width": 2
+      },
+      {
+        "proof": "000bd300",
+        "active": "0773",
+        "width": 2
+      },
+      {
+        "proof": "000bd316",
+        "active": "0775",
+        "width": 2
+      },
+      {
+        "proof": "000bd32c",
+        "active": "0777",
+        "width": 2
+      },
+      {
+        "proof": "000bd342",
+        "active": "0779",
+        "width": 2
+      },
+      {
+        "proof": "000bd358",
+        "active": "077b",
+        "width": 2
+      },
+      {
+        "proof": "000bd363",
+        "active": "073d",
+        "width": 1
+      },
+      {
+        "proof": "000bd375",
+        "active": "0723",
+        "width": 2
+      },
+      {
+        "proof": "000bd38b",
+        "active": "0725",
+        "width": 2
+      },
+      {
+        "proof": "000bd3a1",
+        "active": "0727",
+        "width": 2
+      },
+      {
+        "proof": "000bd3ac",
+        "active": "073c",
+        "width": 1
+      },
+      {
+        "proof": "000bd3be",
+        "active": "0721",
+        "width": 2
+      },
+      {
+        "proof": "000bd3c9",
+        "active": "073b",
+        "width": 1
+      },
+      {
+        "proof": "000bd3db",
+        "active": "07fd",
+        "width": 2
+      },
+      {
+        "proof": "000bd3eb",
+        "active": "077d",
+        "width": 2
+      },
+      {
+        "proof": "000bd3fd",
+        "active": "077f",
+        "width": 2
+      },
+      {
+        "proof": "000bd401",
+        "active": "0770",
+        "width": 1
+      },
+      {
+        "proof": "000bd40e",
+        "active": "0720",
+        "width": 1
+      },
+      {
+        "proof": "000bd419",
+        "active": "073e",
+        "width": 1
+      },
+      {
+        "proof": "000bd42f",
+        "active": "073f",
+        "width": 2
+      },
+      {
+        "proof": "000bd43a",
+        "active": "0741",
+        "width": 1
+      },
+      {
+        "proof": "000bd450",
+        "active": "0742",
+        "width": 2
+      },
+      {
+        "proof": "000bd462",
+        "active": "0744",
+        "width": 2
+      },
+      {
+        "proof": "000bd478",
+        "active": "0746",
+        "width": 2
+      },
+      {
+        "proof": "000bd48e",
+        "active": "0748",
+        "width": 2
+      },
+      {
+        "proof": "000bd499",
+        "active": "0753",
+        "width": 1
+      },
+      {
+        "proof": "000bd4af",
+        "active": "0756",
+        "width": 2
+      },
+      {
+        "proof": "000bd4c5",
+        "active": "0754",
+        "width": 2
+      },
+      {
+        "proof": "000bd4d7",
+        "active": "074a",
+        "width": 2
+      },
+      {
+        "proof": "000bd4e3",
+        "active": "074c",
+        "width": 2
+      },
+      {
+        "proof": "000bd4ef",
+        "active": "074e",
+        "width": 2
+      },
+      {
+        "proof": "000bd4fa",
+        "active": "0752",
+        "width": 1
+      },
+      {
+        "proof": "000bd510",
+        "active": "0758",
+        "width": 2
+      },
+      {
+        "proof": "000bd514",
+        "active": "075a",
+        "width": 1
+      },
+      {
+        "proof": "000bd528",
+        "active": "07c3",
+        "width": 2
+      },
+      {
+        "proof": "000bd53a",
+        "active": "0763",
+        "width": 2
+      },
+      {
+        "proof": "000bd54c",
+        "active": "0769",
+        "width": 2
+      },
+      {
+        "proof": "000bd55e",
+        "active": "0800",
+        "width": 2
+      },
+      {
+        "proof": "000bd570",
+        "active": "0802",
+        "width": 2
+      },
+      {
+        "proof": "000bd582",
+        "active": "0804",
+        "width": 2
+      },
+      {
+        "proof": "000bd594",
+        "active": "0806",
+        "width": 2
+      },
+      {
+        "proof": "000bd5a6",
+        "active": "0808",
+        "width": 2
+      },
+      {
+        "proof": "000bd5b8",
+        "active": "080a",
+        "width": 2
+      },
+      {
+        "proof": "000bd5ca",
+        "active": "080c",
+        "width": 2
+      },
+      {
+        "proof": "000bd5dc",
+        "active": "080e",
+        "width": 2
+      },
+      {
+        "proof": "000bd5ee",
+        "active": "0810",
+        "width": 2
+      },
+      {
+        "proof": "000bd600",
+        "active": "0812",
+        "width": 2
+      },
+      {
+        "proof": "000bd612",
+        "active": "0814",
+        "width": 2
+      },
+      {
+        "proof": "000bd624",
+        "active": "0816",
+        "width": 2
+      },
+      {
+        "proof": "000bd636",
+        "active": "0787",
+        "width": 2
+      },
+      {
+        "proof": "000bd648",
+        "active": "078d",
+        "width": 2
+      },
+      {
+        "proof": "000bd65a",
+        "active": "0793",
+        "width": 2
+      },
+      {
+        "proof": "000bd66c",
+        "active": "0799",
+        "width": 2
+      },
+      {
+        "proof": "000bd67e",
+        "active": "079f",
+        "width": 2
+      },
+      {
+        "proof": "000bd690",
+        "active": "07a5",
+        "width": 2
+      },
+      {
+        "proof": "000bd6a2",
+        "active": "07ab",
+        "width": 2
+      },
+      {
+        "proof": "000bd6b4",
+        "active": "07b1",
+        "width": 2
+      },
+      {
+        "proof": "000bd6c6",
+        "active": "07b7",
+        "width": 2
+      },
+      {
+        "proof": "000bd6d8",
+        "active": "07bd",
+        "width": 2
+      },
+      {
+        "proof": "000bd6e4",
+        "active": "075b",
+        "width": 2
+      },
+      {
+        "proof": "000bd6f6",
+        "active": "075d",
+        "width": 2
+      },
+      {
+        "proof": "000bd708",
+        "active": "07cc",
+        "width": 2
+      },
+      {
+        "proof": "000bd71a",
+        "active": "07d3",
+        "width": 2
+      },
+      {
+        "proof": "000bd729",
+        "active": "07d5",
+        "width": 1
+      },
+      {
+        "proof": "000bd738",
+        "active": "07d6",
+        "width": 1
+      },
+      {
+        "proof": "000bd748",
+        "active": "07d7",
+        "width": 2
+      },
+      {
+        "proof": "000bd74c",
+        "active": "07ca",
+        "width": 1
+      },
+      {
+        "proof": "000bd752",
+        "active": "07cb",
+        "width": 1
+      },
+      {
+        "proof": "000bd75f",
+        "active": "07c9",
+        "width": 1
+      },
+      {
+        "proof": "000bd763",
+        "active": "07d2",
+        "width": 1
+      },
+      {
+        "proof": "000bd77b",
+        "active": "072d",
+        "width": 2
+      }
+    ],
+    "bd780": [
+      {
+        "proof": "000bd787",
+        "active": "0750",
+        "width": 1
+      },
+      {
+        "proof": "000bd792",
+        "active": "0751",
+        "width": 1
+      },
+      {
+        "proof": "000bd7a8",
+        "active": "07d9",
+        "width": 2
+      },
+      {
+        "proof": "000bd7be",
+        "active": "07db",
+        "width": 2
+      },
+      {
+        "proof": "000bd7c2",
+        "active": "07dd",
+        "width": 1
+      },
+      {
+        "proof": "000bd7c8",
+        "active": "07de",
+        "width": 1
+      },
+      {
+        "proof": "000bd7d5",
+        "active": "07df",
+        "width": 1
+      },
+      {
+        "proof": "000bd7e0",
+        "active": "07e0",
+        "width": 1
+      },
+      {
+        "proof": "000bd7f2",
+        "active": "07e1",
+        "width": 2
+      },
+      {
+        "proof": "000bd7fe",
+        "active": "07e3",
+        "width": 2
+      },
+      {
+        "proof": "000bd80d",
+        "active": "07e5",
+        "width": 1
+      },
+      {
+        "proof": "000bd811",
+        "active": "07e6",
+        "width": 1
+      },
+      {
+        "proof": "000bd817",
+        "active": "07e7",
+        "width": 1
+      },
+      {
+        "proof": "000bd81d",
+        "active": "07e8",
+        "width": 1
+      },
+      {
+        "proof": "000bd823",
+        "active": "07e9",
+        "width": 1
+      },
+      {
+        "proof": "000bd83b",
+        "active": "07ea",
+        "width": 2
+      },
+      {
+        "proof": "000bd851",
+        "active": "07ec",
+        "width": 2
+      },
+      {
+        "proof": "000bd85c",
+        "active": "07ee",
+        "width": 1
+      },
+      {
+        "proof": "000bd872",
+        "active": "07ef",
+        "width": 2
+      },
+      {
+        "proof": "000bd888",
+        "active": "07f1",
+        "width": 2
+      },
+      {
+        "proof": "000bd89e",
+        "active": "07f3",
+        "width": 2
+      },
+      {
+        "proof": "000bd8b4",
+        "active": "07f5",
+        "width": 2
+      },
+      {
+        "proof": "000bd8bf",
+        "active": "07f7",
+        "width": 1
+      },
+      {
+        "proof": "000bd8ca",
+        "active": "07f8",
+        "width": 1
+      },
+      {
+        "proof": "000bd8dc",
+        "active": "07f9",
+        "width": 2
+      },
+      {
+        "proof": "000bd8e7",
+        "active": "07fb",
+        "width": 1
+      },
+      {
+        "proof": "000bd8eb",
+        "active": "07fc",
+        "width": 1
+      }
+    ]
+  },
+  "scope": "Repeated corrected-project assembly, not independent decoder proof; direct MOV writes in two importers, not complete semantic closure"
+}

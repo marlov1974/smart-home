@@ -1,0 +1,30 @@
+{
+  "instructions.tsv": {
+    "sha256": "ad98c7435b4917625560e8e74f71261d46fff17e0275bcad652c3cf29d189e6d",
+    "bytes": 1783026,
+    "rows": 58252,
+    "repeat_equal": true
+  },
+  "functions.tsv": {
+    "sha256": "24f859756d1c2c662135e693f4358e3d225f5d9084552980c20f57d53cdcc646",
+    "bytes": 52622,
+    "rows": 1584,
+    "repeat_equal": true
+  },
+  "references.tsv": {
+    "sha256": "7cb34a2f3a33c6cd2f469568c2bc9e21faaf6a740713dffd716df57b2a306518",
+    "bytes": 1324675,
+    "rows": 37748,
+    "repeat_equal": true
+  },
+  "memory-validation.txt": {
+    "sha256": "c6ddc06d36ad4c8a745555bca3a28c3b1e44d75c6471e522a20a392f49d151c3",
+    "bytes": 102,
+    "rows": 2,
+    "repeat_equal": true
+  },
+  "id_consistency": "PASS",
+  "parser_tests": 6,
+  "status": "PARTIAL",
+  "live_actions": false
+}

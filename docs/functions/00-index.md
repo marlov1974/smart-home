@@ -95,3 +95,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0080 modular EFFECT firmware and chunk OTA](procon-modular-ota.md)
 
 - [P0081 raw mapper](procon-raw-mapper.md): bounded diagnostic request/result and mapping workflow.
+
+- [P0082 FTC6 static analysis](ftc6-static-analysis.md): local image validation and qualified M16C investigation.

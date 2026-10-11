@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 820
+Tracked file count: 839
 
 ## Files
 
@@ -33,6 +33,7 @@ Tracked file count: 820
 - `dep/s/rec/weather_v0_9_0.json`
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
+- `docs/functions/ftc6-static-analysis.md`
 - `docs/functions/mac/chatgpt-mcp-access.md`
 - `docs/functions/mac/local-kvs-read-poc.md`
 - `docs/functions/mac/local-operator-bridge.md`
@@ -78,6 +79,7 @@ Tracked file count: 820
 - `memory/infrastructure/router-nat.md`
 - `memory/knowhow/00-index.md`
 - `memory/knowhow/codex.md`
+- `memory/knowhow/ftc6-static-analysis.md`
 - `memory/knowhow/procon-async-mapping.md`
 - `memory/knowhow/procon-manifest-crc.md`
 - `memory/knowhow/shelly.md`
@@ -622,6 +624,18 @@ Tracked file count: 820
 - `requirements/package-runs/P0081/workspace-sync/README.md`
 - `requirements/package-runs/P0081/workspace-sync/historical-workspace.tar.xz`
 - `requirements/package-runs/P0081/workspace-sync/manifest.json`
+- `requirements/package-runs/P0082/CHANGELOG.md`
+- `requirements/package-runs/P0082/design.md`
+- `requirements/package-runs/P0082/disassembly-evidence.md`
+- `requirements/package-runs/P0082/findings.md`
+- `requirements/package-runs/P0082/functions.md`
+- `requirements/package-runs/P0082/image-validation.json`
+- `requirements/package-runs/P0082/image-validation.md`
+- `requirements/package-runs/P0082/open-questions.md`
+- `requirements/package-runs/P0082/review.md`
+- `requirements/package-runs/P0082/service-dispatch-candidates.json`
+- `requirements/package-runs/P0082/toolchain.md`
+- `requirements/package-runs/P0082/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -828,3 +842,8 @@ Tracked file count: 820
 - `tests/mac/tools/shelly_live/test_core.py`
 - `tests/mac/tools/weather_contract/__init__.py`
 - `tests/mac/tools/weather_contract/test_core.py`
+- `tools/ftc6/P82Audit.java`
+- `tools/ftc6/extract_service_map.py`
+- `tools/ftc6/inspect_image.py`
+- `tools/ftc6/run-analysis.sh`
+- `tools/ftc6/test_inspect_image.py`

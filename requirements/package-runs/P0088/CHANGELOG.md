@@ -17,3 +17,5 @@ Activation continuation: resolved descriptor30 within33×26-byte table to0939 co
 - Continued0939 ownership: traced09F1 calculation and184-byte configuration copy; checked profile overlay retain marker; added exhaustive gate model tests. No live access.
 
 - Continued gate provenance: persistent07DF/07EE defaults and staging sources, derived3A4F/0A45, sampled bit7 path and runtime arbitration boundary. Added pure gate tests and private default-byte checks. No tracked files added, removed or moved; index unchanged.
+
+- Port sprint: public-input command/port matrix with269 mixed-unit rows, deduplicated response-store registry,64 pre-history raw translations and explicit cross-port links. Closed C9/GET04 byte sources and shared zero-initialization; constant5C/5D payloads. Added five tracked files and updated repository index. No live actions;40 tests including deterministic report and pinned tables.

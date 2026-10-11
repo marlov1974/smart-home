@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1053
+Tracked file count: 1058
 
 ## Files
 
@@ -738,6 +738,8 @@ Tracked file count: 1053
 - `requirements/package-runs/P0088/cn105-new-capabilities.md`
 - `requirements/package-runs/P0088/command-atlas.csv`
 - `requirements/package-runs/P0088/command-atlas.json`
+- `requirements/package-runs/P0088/command-port-matrix.json`
+- `requirements/package-runs/P0088/command-port-matrix.md`
 - `requirements/package-runs/P0088/continuation-extraction.json`
 - `requirements/package-runs/P0088/coverage.json`
 - `requirements/package-runs/P0088/decoder-and-pin-corrections.md`
@@ -750,6 +752,8 @@ Tracked file count: 1053
 - `requirements/package-runs/P0088/function-matrix.md`
 - `requirements/package-runs/P0088/functions.md`
 - `requirements/package-runs/P0088/port-role-analysis.md`
+- `requirements/package-runs/P0088/port-sprint-evidence.json`
+- `requirements/package-runs/P0088/port-sprint.md`
 - `requirements/package-runs/P0088/procon-port-choice.md`
 - `requirements/package-runs/P0088/provenance.md`
 - `requirements/package-runs/P0088/pump-consumer-extraction.json`
@@ -1048,6 +1052,7 @@ Tracked file count: 1053
 - `tools/ftc6/p88/matrix.py`
 - `tools/ftc6/p88/menu_inventory.json`
 - `tools/ftc6/p88/patch_bit_decoder.py`
+- `tools/ftc6/p88/port_matrix.py`
 - `tools/ftc6/p88/pump_control.py`
 - `tools/ftc6/p88/reviewed.json`
 - `tools/ftc6/p88/settings_peer.py`

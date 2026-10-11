@@ -44,3 +44,5 @@ The immediate remaining boundaries are physical status-indicator attribution, ti
 For new bit-sensitive exports use the qualified isolated language variant described in [decoder repair](decoder-bit-repair.md). Historical exports retain their original language identity; repaired C does not imply that unrelated CPU semantics are fully validated.
 
 Configuration producer0939 is now traced through09F1 and the184-byte publication in917FE; see the activation contract.
+
+For command-to-port navigation use [the generated matrix](command-port-matrix.md). Its mixed route/template/range units are separate from the raw atlas count. [The sprint plan](port-sprint.md) lists bounded next actions and external evidence stops.

@@ -18,6 +18,49 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_port_matrix_route_conservation(self):
+        from port_matrix import build
+        folder=ROOT/'requirements/package-runs/P0088'
+        atlas=json.loads((folder/'command-atlas.json').read_text())['rows']
+        report=build(folder)
+        expected={r['id'] for r in atlas if r['id'].startswith(('uart2.41.','uart2.42.')) and r.get('disposition')=='mapped'}
+        actual={r['id'] for r in report['rows'] if r['counting_unit']=='mapped command route'}
+        self.assertEqual(actual,expected)
+        self.assertEqual(len(actual),136)
+        self.assertEqual(len(report['rejected_lookup_slots']),376)
+        packets=[r for r in report['rows'] if r['counting_unit']=='outgoing packet template']
+        self.assertEqual(len(packets),37)
+        self.assertEqual(sum(len(r['tx_fields']) for r in packets),249)
+        self.assertFalse(any(r['fully_documented'] for r in report['rows']))
+        self.assertTrue(all(s['known_total_all_commands'] is None for s in report['summary'].values()))
+
+    def test_port_matrix_cross_links_and_translation(self):
+        from port_matrix import build
+        report=build(ROOT/'requirements/package-runs/P0088')
+        rows={r['id']:r for r in report['rows']}
+        self.assertIn('source.packet.82c2a',rows['uart2.41.32']['links'])
+        self.assertIn('d.settings.extended-end',rows['uart2.41.c8']['links'])
+        self.assertIn('source.service-result.1d',rows['uart2.42.a3']['links'])
+        maps={(r['path'],r['raw']):r for r in report['wire_translation']}
+        self.assertEqual(maps['source_rx','1d']['candidate_branch'],'source.dispatch.09')
+        self.assertEqual(maps['d_rx','0b']['candidate_branch'],'d.dispatch.13')
+        self.assertEqual(maps['source_rx','06']['disposition'],'no normalized event')
+        self.assertEqual(len(maps),64)
+        about=rows['uart2.frame.5b']['tx_fields']
+        self.assertEqual(len(about),16)
+        self.assertEqual([f['source'] for f in about[10:]],[0]*6)
+        get04=rows['uart2.42.04']
+        self.assertTrue(get04['raw_response_fields'])
+        self.assertTrue(all(report['raw_field_registry'][key]['handler'] in get04['handlers'] for key in get04['raw_response_fields']))
+
+    def test_port_matrix_reproducible(self):
+        from port_matrix import build,render
+        folder=ROOT/'requirements/package-runs/P0088'
+        report=build(folder)
+        self.assertEqual(report,json.loads((folder/'command-port-matrix.json').read_text()))
+        self.assertEqual(render(report),(folder/'command-port-matrix.md').read_text())
+
+
     def test_reduction_derived_gates(self):
         truth={(0,0,0):0,(0,0,1):0,(0,1,0):0,(0,1,1):0,
                (1,0,0):1,(1,0,1):1,(1,1,0):2,(1,1,1):1}
@@ -245,6 +288,13 @@ class Offline(unittest.TestCase):
                 if isinstance(n,ast.Import):self.assertFalse(forbidden.intersection(a.name.split('.')[0] for a in n.names))
                 if isinstance(n,ast.ImportFrom):self.assertNotIn((n.module or '').split('.')[0],forbidden)
 class LocalImage(unittest.TestCase):
+    def test_port_sprint_pinned_tables(self):
+        evidence=json.loads((ROOT/'requirements/package-runs/P0088/port-sprint-evidence.json').read_text())
+        self.assertEqual(evidence['image_sha256'],SHA)
+        for row in evidence['translations'].values():
+            self.assertEqual(list(self.image.at(int(row['address'],16),len(row['values']))),row['values'])
+        self.assertEqual(list(self.image.at(0x84ade,4)),evidence['about']['rom84ade'])
+
     def test_reduction_default_profiles(self):
         for base in (0x8000a,0x8020a,0x8040a):
             self.assertEqual([self.image.at(base+off,1)[0] for off in (0x146,0x87,0x1ab)],[0,0,5])

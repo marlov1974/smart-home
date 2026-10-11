@@ -1,0 +1,222 @@
+{
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "scope": "FTC20.01, pre-history translations, not complete acceptance",
+  "translations": {
+    "source_rx": {
+      "address": "8328e",
+      "values": [
+        1,
+        6,
+        11,
+        15,
+        2,
+        7,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0,
+        4,
+        0,
+        13,
+        0,
+        5,
+        8,
+        14,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0
+      ]
+    },
+    "d_tx_event": {
+      "address": "832ee",
+      "values": [
+        18,
+        0,
+        17,
+        0,
+        23,
+        0,
+        16,
+        0,
+        20,
+        0,
+        24,
+        0,
+        22,
+        0,
+        21,
+        0
+      ]
+    },
+    "d_rx": {
+      "address": "832fe",
+      "values": [
+        5,
+        1,
+        4,
+        0,
+        13,
+        12,
+        3,
+        2,
+        7,
+        0,
+        15,
+        14,
+        11,
+        10,
+        9,
+        8
+      ]
+    }
+  },
+  "about": {
+    "rom84ade": [
+      3,
+      0,
+      1,
+      0
+    ],
+    "payload_length": 16,
+    "p0": 201,
+    "p5": 20,
+    "p6": 3,
+    "p7": "RAM05B2",
+    "p8": "RAM099B != 0",
+    "p9": 1,
+    "p10_15": "zero: A906A clears22-byte frame before packer"
+  },
+  "repeat_exports": [
+    {
+      "root": "a4a72",
+      "assembly_sha256": "7b08f63ce48b8a70241250e4e9b9fe224124e3825892e2875d795f1c4443a78f"
+    },
+    {
+      "root": "a4a86",
+      "assembly_sha256": "3d2859fa5a903032130a01419f41317b6289273ac2dde435e9cc71f8c3fc6deb"
+    },
+    {
+      "root": "a4a9a",
+      "assembly_sha256": "29dcbb486a65183bb0fc31f84931af85cb4d1c4d1472c53df107ba628a2276cb"
+    },
+    {
+      "root": "a4aa4",
+      "assembly_sha256": "43b734eeeac92d06bc246baee0358b6740f1e59c5f82be9a48650eb142d165c5"
+    },
+    {
+      "root": "a4ade",
+      "assembly_sha256": "f96d95b073ece9ba080afbcabe33b5e6d1db2d1b280f30cd710687d4e7d977f1"
+    },
+    {
+      "root": "a5148",
+      "assembly_sha256": "ea07d062e14fc0198f030e1e438227ca63987b5926642e68dc385df6bd0ce562"
+    },
+    {
+      "root": "a5172",
+      "assembly_sha256": "e23f15213cb2bea02cda88ae21bb1fde2d982bcce4b9fbf36e11c811f2642a76"
+    },
+    {
+      "root": "a519c",
+      "assembly_sha256": "40f549772db1dbe3823d19d12825c17e7d60a725d079beca6526e60f9d598e89"
+    }
+  ],
+  "common_tx": {
+    "dispatcher": "A535E",
+    "callback_order": [
+      "descriptor+4 init",
+      "descriptor+8 payload",
+      "descriptor+12 checksum"
+    ],
+    "about_descriptor": "85676",
+    "callbacks": [
+      "A9080",
+      "A8F8A",
+      "A90A0"
+    ],
+    "clear": "A906A clears2359..236E (22 bytes)",
+    "header": "FC/type/02/7A/length",
+    "checksum": "sum frame bytes1..last ==0 mod256; FC excluded"
+  },
+  "get04": {
+    "payload_length": 16,
+    "sources": [
+      "04",
+      "062C & 7F",
+      "395A",
+      "3966",
+      "3972",
+      "397E",
+      "398A",
+      "3996",
+      "status_map(4925)",
+      "status_map(3958)",
+      "status_map(3964)",
+      "00",
+      "00",
+      "00",
+      "00",
+      "00"
+    ],
+    "status_map": "0->0,1->1,2->2,other->0",
+    "scope": "Raw sources qualified; physical identity/unit of all multi-unit fields remains open"
+  },
+  "supporting_exports": [
+    {
+      "root": "a535e",
+      "assembly_sha256": "8307bce58cf1038096be1bccb8782e99ee1bd3c5752a23e468c645d661249d71",
+      "repeat_equal": null
+    },
+    {
+      "root": "a906a",
+      "assembly_sha256": "ffc45baad17555502a39b13aa61cce578a707852d555e28fff6290e599b33aa9",
+      "repeat_equal": null
+    },
+    {
+      "root": "a9080",
+      "assembly_sha256": "c3cb3d93cefb3555e26ead27e957662ed84efce060c19390976f5a27cba47fc4",
+      "repeat_equal": null
+    },
+    {
+      "root": "a90a0",
+      "assembly_sha256": "68d4bf9ec9806b2309c740ec49fb9a49e86f12ae740578ac05b1d598d80e8974",
+      "repeat_equal": null
+    },
+    {
+      "root": "a3c88",
+      "assembly_sha256": "cf5eef5db99336d1abeb7ff53dd25f7604aa4f28767f6517013afb34f4e848f2",
+      "repeat_equal": null
+    },
+    {
+      "root": "a3c98",
+      "assembly_sha256": "4a528ac92e1a219c240d2b7df32df9b89dbc0af6a8998beba361a5183b928a3f",
+      "repeat_equal": null
+    },
+    {
+      "root": "a3cbc",
+      "assembly_sha256": "10c7e72433600b3082464c82fa3218be55dde147d8f333e203b0848eee8db4be",
+      "repeat_equal": null
+    },
+    {
+      "root": "a3ccc",
+      "assembly_sha256": "f230f20713c1a557b1a8a47ef3005edd8cba76d5f3c925ae033b08c85510b611",
+      "repeat_equal": null
+    },
+    {
+      "root": "a3cf4",
+      "assembly_sha256": "0c987c9896bdf2b3622a1f9c678455b20960440461720dece54f83905505c326",
+      "repeat_equal": null
+    }
+  ]
+}

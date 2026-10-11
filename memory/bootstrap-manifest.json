@@ -1,5 +1,5 @@
 {
-  "version": 33,
+  "version": 34,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -112,7 +112,8 @@
     "requirements/packages/P0085-ftc6-ports-access-research.md",
     "requirements/packages/P0086-ftc6-cn105-uart1-qualification.md",
     "requirements/packages/P0087-ftc6-flow-temperature-control-dynamics.md",
-    "requirements/packages/P0088-ftc6-complete-command-atlas-port-selection.md"
+    "requirements/packages/P0088-ftc6-complete-command-atlas-port-selection.md",
+    "requirements/packages/P0089-ftc6-cn105-command-qualification.md"
   ],
   "governance": {
     "truth_hierarchy": [

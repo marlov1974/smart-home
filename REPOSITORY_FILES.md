@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1064
+Tracked file count: 1065
 
 ## Files
 
@@ -844,6 +844,7 @@ Tracked file count: 1064
 - `requirements/packages/P0086-ftc6-cn105-uart1-qualification.md`
 - `requirements/packages/P0087-ftc6-flow-temperature-control-dynamics.md`
 - `requirements/packages/P0088-ftc6-complete-command-atlas-port-selection.md`
+- `requirements/packages/P0089-ftc6-cn105-command-qualification.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

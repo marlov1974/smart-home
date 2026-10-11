@@ -4,7 +4,7 @@ FTC20.01 static evidence, same SHA-pinned image as the persistence model. No liv
 
 ## Reduction is a timed state machine
 
-Record81A3E contains raw identifier0939, output address49C7, callback table88794 and policy bytes at8972C. The latter is **data**, not executable code; an initial pointer classification was rejected after inspection. Callback table records0/1 contain D3C44/D3C52/D3C78/D3C9E/D3D0C/D3CA8/D3CAC. D3D0C maintains state49C8 and step count49C9; D3CAC encodes their result as the code consumed by AF452. Exact generic-dispatch eligibility and live Geodan activation still need qualification.
+Record81A3E contains raw identifier0939, output address49C7, callback table88794 and policy bytes at8972C. The latter is **data**, not executable code; an initial pointer classification was rejected after inspection. Callback table records0/1 contain D3C44/D3C52/D3C78/D3C9E/D3D0C/D3CA8/D3CAC. D3D0C maintains state49C8 and step count49C9; D3CAC encodes their result as the code consumed by AF452. Generic dispatch is now qualified in [activation and inputs](reduction-activation.md): record30, configuration0939 nonzero, phase8 only. Live Geodan activation remains unverified.
 
 D3E44 permits entry when39EA==0. D3E5E inhibits when3D07==2 OR3A02==2 OR3A2C==0. These functions do not always return0: that C output is caused by the known signed-FB bit defect. Instruction-level predicates are authoritative.
 
@@ -59,4 +59,4 @@ Practical implication: pump commands feed a table/configuration estimate that co
 
 ## Next unresolved contracts
 
-Qualify generic descriptor dispatch for49C7, names/units for3908/0686/322E, ownership of39EA, and actual Geodan activation. Follow the zero-sample condition's upstream scheduling/validity handling before calling retained averages a production fault. The exact compressor control law and physical calibration remain outside what these functions prove.
+Generic dispatch and upstream39EA ownership are now linked in reduction-activation.md;3908 is the effective heating target. Remaining work is the configuration0939 producer, physical0686 provenance/322E units, external39EA name and actual Geodan activation. Follow the zero-sample condition's upstream scheduling/validity handling before calling retained averages a production fault. The exact compressor control law and physical calibration remain outside what these functions prove.

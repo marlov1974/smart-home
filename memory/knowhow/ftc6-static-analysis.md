@@ -59,3 +59,5 @@ P0088 persistence lesson: desired/shadow equality does not imply a verified phys
 P0088 follow-through: check indexed-bit operands even when the decompiled destination looks like a plausible settings address.984D9 actually writes3ACF.bit1, not075A.bit3. Also distinguish pump command3A33, Timer A2 actuator output and CE2A4 table-derived accounting; a shared source value does not make accounting a physical sensor.
 
 P0088 now provides a qualified opt-in bit decoder: `m16c:LE:16:p88-bits`, spec1395807e49d7ef74e368fbd97b6aa0ca7a9cbeba6abe9843b68aa8739385e358. Use it for new bit-sensitive targets; preserve baseline projects and record which language produced each export.468 actual p-code BSET cases pass; old language fails negative FB offset. EXITD remains unresolved in this variant.
+
+P0088 reference-index lesson: cross-check instruction operands before declaring no writers. Writes8FBC4/8FBEF to0686 were absent from the collected near-reference search. Callback descriptor fields can also be RAM pointers rather than numeric command IDs:81A3E begins with configuration pointer0939, not service0939.

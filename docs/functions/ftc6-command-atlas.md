@@ -27,3 +27,5 @@ Readable reconstruction entry point: [firmware model](../../requirements/package
 `pump_control.selected_level` reconstructs AF400/AF452 raw selection and bounded reduction. `accounting_allowance` reconstructs CE2A4 override/table/cap/enable logic. Both are pure offline functions. Tests cover mode exclusions, all reduction byte values, table boundary21/22, all level bytes, disable/cap behavior, and SHA-pinned ROM table/vector anchors. See P0088/pump-consumers-and-timing.md.
 
 P0088 additions: `pump_control.reduction_code`, `reduction_allowed` and `sample_average` preserve native state encoding, signed16 thresholds and empty-window retention. `patch_bit_decoder.patch` validates source hash/anchors, creates a separate language variant and refuses existing output; `P88BitProof` exercises468 memory-effect cases. See reduction-and-energy-chain.md and decoder-bit-repair.md.
+
+`pump_control.reduction_active` models the record30 phase/configuration gate (0939 nonzero, phase8). Exhaustive byte/phase tests and private ROM descriptor/callback anchors verify the finite contract. See P0088/reduction-activation.md for initialization, resets and input ownership.

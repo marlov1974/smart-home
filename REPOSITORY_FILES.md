@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1051
+Tracked file count: 1053
 
 ## Files
 
@@ -733,6 +733,7 @@ Tracked file count: 1051
 - `requirements/package-runs/P0087/verification.json`
 - `requirements/package-runs/P0088/CHANGELOG.md`
 - `requirements/package-runs/P0088/a3-job-lifecycle.md`
+- `requirements/package-runs/P0088/activation-extraction.json`
 - `requirements/package-runs/P0088/atlas-ledger.md`
 - `requirements/package-runs/P0088/cn105-new-capabilities.md`
 - `requirements/package-runs/P0088/command-atlas.csv`
@@ -753,6 +754,7 @@ Tracked file count: 1051
 - `requirements/package-runs/P0088/provenance.md`
 - `requirements/package-runs/P0088/pump-consumer-extraction.json`
 - `requirements/package-runs/P0088/pump-consumers-and-timing.md`
+- `requirements/package-runs/P0088/reduction-activation.md`
 - `requirements/package-runs/P0088/reduction-and-energy-chain.md`
 - `requirements/package-runs/P0088/reduction-extraction.json`
 - `requirements/package-runs/P0088/reproduce.md`

@@ -10,6 +10,7 @@ This is the entry point for the reconstructed FTC20.01 architecture. It is a par
 |Settings persistence|Serialize selected profile; compare and write words;verify twice|Read/shadow bookkeeping, storage fault, startup reload|[Named persistence model](settings-store-model.md)|
 |Pump-level consumers|Active0770/07E6, demand and profile reduction|Timer A2 output and separate table-derived accounting contribution|[Consumers and timing](pump-consumers-and-timing.md)|
 |Pump reduction and energy chain|Timed state49C8/count49C9 and calculated sample windows|Reduction code49C7, power output and separate running/published energy banks|[Reduction and accounting](reduction-and-energy-chain.md)|
+|Reduction activation|Descriptor30, configuration0939, phase3CB7 and upstream inputs|Gate/reset/update and result49C7; effective target and selected temperature ownership|[Activation contract](reduction-activation.md)|
 |A3 job lifecycle|Request class/selector, queue and asynchronous completion|Cached result; cancellation can follow unrelated commands|[A3 lifecycle](a3-job-lifecycle.md)|
 |Source-board outgoing packer|37 qualified templates,249 bitfields, selected active values|Packed messages toward source-board path|[Outgoing descriptors](source-outgoing.md)|
 |Source-board result import|Response decode and result dispatch|Service values and completion state|[Source link](source-link.md)|
@@ -38,6 +39,6 @@ For each newly understood function: give it an analytical name; retain firmware 
 
 Do not merge staging, active state, physical memory and telemetry merely because values resemble one another. Do not promote a software UART role into a physical connector fact without supporting evidence. Export complete bounded control flow when the decompiler or function body is incomplete.
 
-The immediate remaining boundaries are physical status-indicator attribution, timer clock qualification, pump-reduction descriptor eligibility, raw gate identities and accounting freshness/units, then source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.
+The immediate remaining boundaries are physical status-indicator attribution, timer clock qualification, pump configuration ownership, remaining physical gate identities and accounting freshness/units, then source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.
 
 For new bit-sensitive exports use the qualified isolated language variant described in [decoder repair](decoder-bit-repair.md). Historical exports retain their original language identity; repaired C does not imply that unrelated CPU semantics are fully validated.

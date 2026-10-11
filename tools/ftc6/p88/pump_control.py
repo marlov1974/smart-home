@@ -57,3 +57,10 @@ def sample_average(samples, previous):
     if len(samples) > 17 or any(not 0 <= x <= 0xffffffff for x in [*samples, previous]):
         raise ValueError('at most17 uint32 samples required')
     return ((sum(samples) & 0xffffffff) // len(samples)) if samples else previous
+
+
+def reduction_active(configuration, phase):
+    """9171A record30 phase mask; not proof of installed configuration."""
+    if not 0 <= configuration <= 255 or not 0 <= phase < 14:
+        raise ValueError('configuration byte and bounded phase required')
+    return configuration != 0 and phase == 8

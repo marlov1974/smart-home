@@ -1,0 +1,56 @@
+{
+  "result": "PASS",
+  "language": "m16c:LE:16:p88-bits",
+  "scope": "Eight targeted matching assembly exports; C equality recorded separately, not required as semantic proof",
+  "files": [
+    {
+      "root": "91642",
+      "assembly_sha256": "4bef523cf6d96ed20d2d5ca051caf4abb4f7141440f3cb484d950d047615a6da",
+      "first_export": "reduction-dispatch",
+      "C_equal": true
+    },
+    {
+      "root": "9171a",
+      "assembly_sha256": "76add5434348f151747e9c3ad2a0a24b0df341f1beaa5a126c0139a2425a2ad4",
+      "first_export": "reduction-dispatch",
+      "C_equal": true
+    },
+    {
+      "root": "8fa7e",
+      "assembly_sha256": "183408c8634963e5ff893e74eb1d1efb6bbeefc47768f311a13aa67557a5908d",
+      "first_export": "reduction-temperature",
+      "C_equal": true
+    },
+    {
+      "root": "a4088",
+      "assembly_sha256": "f183fbdce614272b753f054e944b0839cf3bd386f5b59f8489c670b646d17077",
+      "first_export": "reduction-temperature",
+      "C_equal": true
+    },
+    {
+      "root": "9a942",
+      "assembly_sha256": "f9e49405a36f96a5bf50b7289647dcdeffd081616071a3e0d569c34aa1a137c4",
+      "first_export": "reduction-temperature",
+      "C_equal": true
+    },
+    {
+      "root": "a5832",
+      "assembly_sha256": "01eac6b7a650388fe7b7586f8f439a789a402e38883866cbb924b398049130d0",
+      "first_export": "state-dispatch",
+      "C_equal": true
+    },
+    {
+      "root": "cbcfe",
+      "assembly_sha256": "444ee3570b5b70ac14c72d23390ad6aff55f26572f108a7d79d7229e9a7e548f",
+      "first_export": "reduction-sources",
+      "C_equal": false
+    },
+    {
+      "root": "97d48",
+      "assembly_sha256": "ef094e63e1161ce964d9c277fe8617843a64502a0d7643b7c41bb1d3c42940f6",
+      "first_export": "reduction-inputs",
+      "C_equal": true
+    }
+  ],
+  "C_difference_review": "CBCFE differs only in generated symbol name DAT_near_39ea versus cNear39ea; assembly identical."
+}

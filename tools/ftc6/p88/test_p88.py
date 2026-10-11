@@ -7,7 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
-from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_code,reduction_allowed,sample_average
+from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_active,reduction_code,reduction_allowed,sample_average
 from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
@@ -18,6 +18,14 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_reduction_activation(self):
+        for configuration in range(256):
+            for phase in range(14):
+                self.assertEqual(reduction_active(configuration,phase),configuration!=0 and phase==8)
+        for configuration,phase in ((-1,8),(256,8),(1,14)):
+            with self.assertRaises(ValueError):reduction_active(configuration,phase)
+
+
     def test_decoder_patch_rejects_wrong_source(self):
         from patch_bit_decoder import patch
         with tempfile.TemporaryDirectory() as folder:
@@ -212,6 +220,17 @@ class LocalImage(unittest.TestCase):
         cls.path=os.environ.get('P88_IMAGE');cls.catalog=os.environ.get('P88_CATALOG')
         if not cls.path or not cls.catalog:raise unittest.SkipTest('P88_IMAGE and P88_CATALOG needed for private-ROM checks')
         cls.image=Image(Path(cls.path).read_bytes())
+    def test_reduction_descriptor_gate(self):
+        record=self.image.at(0x81732+30*26,26)
+        self.assertEqual(int.from_bytes(record[:2],'little'),0x939)
+        self.assertEqual(int.from_bytes(record[2:4],'little'),0x49c7)
+        self.assertEqual(record[12:],bytes([0]*8+[1]+[0]*5))
+        self.assertEqual(self.image.at(0x88794,2),bytes(2))
+        self.assertEqual(self.image.at(0x88794+30,2),bytes([1,0]))
+        for offset,callback in ((2,0xd3c44),(6,0xd3c52),(10,0xd3c78),(14,0xd3c9e),(18,0xd3d0c),(22,0xd3ca8),(26,0xd3cac)):
+            self.assertEqual(self.image.ptr(0x88794+offset),callback)
+            self.assertEqual(self.image.ptr(0x88794+30+offset),callback)
+
     def test_reduction_rom_anchors(self):
         self.assertEqual(self.image.at(0x8419a,12).hex(),'c018023c0807c218023c5802')
         self.assertEqual(self.image.at(0x81a3e,12).hex(),'3909c749948708002c970800')

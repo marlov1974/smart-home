@@ -791,6 +791,14 @@ Tracked file count: 909
 - `src/shelly/ftx/brain/main.js`
 - `src/shelly/ftx/brain/modes.js`
 - `src/shelly/ftx/brain/output.js`
+- `src/shelly/ftx/common/helpers.js`
+- `src/shelly/ftx/common/kvs.js`
+- `src/shelly/ftx/common/number.js`
+- `src/shelly/ftx/common/script.js`
+- `src/shelly/ftx/common/shelly.js`
+- `src/shelly/ftx/common/wrapper.end.js`
+- `src/shelly/ftx/common/wrapper.start.js`
+- `src/shelly/ftx/import-manifest.json`
 - `src/shelly/ftx/recipes/boot.json`
 - `src/shelly/ftx/recipes/brain.json`
 - `src/shelly/ftx/recipes/dampers/boot.json`

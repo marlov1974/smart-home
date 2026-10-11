@@ -1,0 +1,489 @@
+{
+  "source": "https://www.nukumi.cz/data/files/26/software-s-nazvem-ecodan-sd-tool-pro-ftc6-1757948609.zip?v=c7fc5bae",
+  "archive_sha256": "4ebfb4e89f4a584ed8fe6ddf5b925fa845df39ecff8ec4c95b134bf5738cea3d",
+  "exe_sha256": "823c2b3613630341ddf08db17d77e144c5c47ca0a0a54cbfe3a560e016f87102",
+  "version": "FTC6 SD Tool 1.01 basic (2020)",
+  "methods": {
+    "SDRead": {
+      "token": "06000000+377",
+      "rva": "531d4",
+      "sha256": "feb13070aeb83d6a4d7ef4aa2494fa703644233984bd43ba38b51d7abd66caab"
+    },
+    "ReadSCH": {
+      "token": "06000000+37c",
+      "rva": "53c84",
+      "sha256": "b4536305e2e413fce6b73f7b775a7248175ca63e34107281352a34d14a001529"
+    },
+    "ReadHOL": {
+      "token": "06000000+37e",
+      "rva": "53f10",
+      "sha256": "a9b4ae1ba13ecb30a42eae0ccf117f5f874caba161150bebed79a0c42e624838"
+    },
+    "ReadINIT": {
+      "token": "06000000+37f",
+      "rva": "54020",
+      "sha256": "46633de5488a4d236bb25542a9642fd67eba910bd32de72000df92dd2efd7cda"
+    },
+    "ReadSER1": {
+      "token": "06000000+380",
+      "rva": "54338",
+      "sha256": "3ad8fc570856c9ed88fa61882b88c2bc192991f93a90009fa513eb7063dd8c06"
+    },
+    "ReadSER2": {
+      "token": "06000000+381",
+      "rva": "54b44",
+      "sha256": "0327392b80959b2f34868cb7e1df5f7c7920eaac37457f306c01627bd96dc8c0"
+    }
+  },
+  "rows": [
+    {
+      "command": "57",
+      "name": "Årsperiod för veckoprogram 2",
+      "status": "trolig",
+      "packer": "a77b8",
+      "enum": "SD_Sch_Pos",
+      "offsets_decimal": [
+        105
+      ],
+      "symbols": {
+        "Sc_Sch2_from": 105,
+        "Sc_Sch2_to": 105
+      }
+    },
+    {
+      "command": "59",
+      "name": "Semesterläge: aktivering samt start- och slutdatum",
+      "status": "trolig",
+      "packer": "a7816",
+      "enum": "SD_Hol_Pos",
+      "offsets_decimal": [
+        0,
+        3,
+        6
+      ],
+      "symbols": {
+        "Hl_DHW": 0,
+        "Hl_Heat_Cool": 0,
+        "Hl_Start_Date": 3,
+        "Hl_End_Date": 6
+      }
+    },
+    {
+      "command": "5c",
+      "name": "Displayens språk, temperaturenhet och temperaturvisning",
+      "status": "trolig",
+      "packer": "a7938",
+      "enum": "SD_Is_Pos",
+      "offsets_decimal": [
+        0,
+        3,
+        6
+      ],
+      "symbols": {
+        "In_Lang": 0,
+        "In_CF": 3,
+        "In_Temp_display": 6
+      }
+    },
+    {
+      "command": "5d",
+      "name": "Kontakttelefon som visas på manöverpanelen",
+      "status": "trolig",
+      "packer": "a7984",
+      "enum": "SD_Is_Pos",
+      "offsets_decimal": [
+        9,
+        12,
+        15,
+        18
+      ],
+      "symbols": {
+        "In_Contact_number": 9
+      }
+    },
+    {
+      "command": "5e",
+      "name": "Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval",
+      "status": "trolig",
+      "packer": "a79e2",
+      "enum": "SD_Is_Pos",
+      "offsets_decimal": [
+        21,
+        24,
+        27,
+        30
+      ],
+      "symbols": {
+        "In_Time_display": 21,
+        "In_Zcon_Room_RC": 24,
+        "In_Z1_Room_sensor_setting": 27,
+        "In_Z2_Room_sensor_setting": 30
+      }
+    },
+    {
+      "command": "5f",
+      "name": "Tidsschema för val av rumsgivare per zon",
+      "status": "trolig",
+      "packer": "a7a3a",
+      "enum": "SD_Is_Pos",
+      "offsets_decimal": [
+        33,
+        36,
+        39,
+        42,
+        45,
+        48,
+        51,
+        54,
+        57,
+        60
+      ],
+      "symbols": {
+        "In_Z1_Select_Time_St_Tm_1": 33,
+        "In_Z1_Select_Time_ID_1": 33,
+        "In_Z1_Select_Time_St_Tm_2": 36,
+        "In_Z1_Select_Time_ID_2": 36,
+        "In_Z1_Select_Time_St_Tm_3": 39,
+        "In_Z1_Select_Time_ID_3": 39,
+        "In_Z1_Select_Time_St_Tm_4": 42,
+        "In_Z1_Select_Time_ID_4": 42,
+        "In_Z1_Select_Time_St_Tm_5": 45,
+        "In_Z1_Select_Time_ID_5": 45,
+        "In_Z2_Select_Time_St_Tm_1": 48,
+        "In_Z2_Select_Time_ID_1": 48,
+        "In_Z2_Select_Time_St_Tm_2": 51,
+        "In_Z2_Select_Time_ID_2": 51,
+        "In_Z2_Select_Time_St_Tm_3": 54,
+        "In_Z2_Select_Time_ID_3": 54,
+        "In_Z2_Select_Time_St_Tm_4": 57,
+        "In_Z2_Select_Time_ID_4": 57,
+        "In_Z2_Select_Time_St_Tm_5": 60,
+        "In_Z2_Select_Time_ID_5": 60
+      }
+    },
+    {
+      "command": "6e",
+      "name": "Säsongsperioder för elprisschemat",
+      "status": "trolig",
+      "packer": "a8138",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        165,
+        168
+      ],
+      "symbols": {
+        "Sv_Tan_season2_from_to": 165,
+        "Sv_Tan_season3_from_to": 168
+      }
+    },
+    {
+      "command": "74",
+      "name": "Veckoschema för elpris i tre säsonger",
+      "status": "trolig",
+      "packer": "a8402",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [],
+      "symbols": {}
+    },
+    {
+      "command": "75",
+      "name": "Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg",
+      "status": "trolig",
+      "packer": "a8a20",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        315,
+        318,
+        321,
+        324
+      ],
+      "symbols": {
+        "Sv_Fl_start_stop_temp": 315,
+        "Sv_Fl_Max_temp": 318,
+        "Sv_Fl_Max_temp_From_To": 321,
+        "Sv_Fl_up": 324
+      }
+    },
+    {
+      "command": "76",
+      "name": "Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5",
+      "status": "namngiven del",
+      "packer": "a8a90",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        327,
+        330,
+        333,
+        336
+      ],
+      "symbols": {
+        "Sv_Fl_Up_keep": 327,
+        "Sv_Fl_Down": 330,
+        "Sv_Fl_Down_keep": 333,
+        "Sv_Fl_ele_rec_set": 336,
+        "Sv_Fl_Low_rec_set": 336
+      }
+    },
+    {
+      "command": "7d",
+      "name": "Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser",
+      "status": "namngiven del",
+      "packer": "a8d78",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        411,
+        414,
+        417,
+        420
+      ],
+      "symbols": {
+        "Sv_Heater_Capa_Limit": 411,
+        "Sv_Season_Func_Setting": 414,
+        "Sv_Season_Outside_Parmit": 417,
+        "Sv_Season_Outside_Prohibited": 417,
+        "Sv_Season_Time_Parmit": 420,
+        "Sv_Season_Time_Prohibited": 420
+      }
+    },
+    {
+      "command": "7e",
+      "name": "Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift",
+      "status": "trolig",
+      "packer": "a8dda",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        423,
+        426,
+        429,
+        432
+      ],
+      "symbols": {
+        "Sv_Season_Force_Parmit": 423,
+        "Sv_Silent_Func_OnOff": 426,
+        "Sv_Silent_Time_Start": 429,
+        "Sv_Silent_Time_End": 429,
+        "Sv_Silent_Lv_Setting": 432
+      }
+    },
+    {
+      "command": "73",
+      "name": "Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering",
+      "status": "identifierad",
+      "packer": "a8378",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        255,
+        258,
+        261
+      ],
+      "symbols": {
+        "Sv_Flow_Sensor_maximum": 255,
+        "Sv_DHW_Booster_Heater": 258,
+        "Sv_Room_Temp_Operation_mode": 261
+      }
+    },
+    {
+      "command": "77",
+      "name": "Smart-grid-temperaturbidrag, termo-ON-utgång och varmvattenåterladdning",
+      "status": "identifierad",
+      "packer": "a8afe",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        339,
+        342,
+        345,
+        348
+      ],
+      "symbols": {
+        "Sv_SG_Ready_Hw_SetTemp": 339,
+        "Sv_SG_Ready_Ht_SetTemp": 342,
+        "Sv_Hc_Thermo_Off_Setting": 345,
+        "Sv_DHW_Start_Thermo_Setting": 348
+      }
+    },
+    {
+      "command": "78",
+      "name": "Variabelt vattenflöde och analogutgångens styrning, intervall och effekt",
+      "status": "identifierad",
+      "packer": "a8b6c",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        351,
+        354,
+        357,
+        360
+      ],
+      "symbols": {
+        "Sv_Var_Flow_Setting": 351,
+        "Sv_0_10V_Out_Control": 354,
+        "Sv_0_10V_Interval_Time": 357,
+        "Sv_0_10V_Power_Setting": 360
+      }
+    },
+    {
+      "command": "79",
+      "name": "Pump 4:s energibidrag, värmepumpens pumpnivå, analogprioritet och minflöde",
+      "status": "identifierad",
+      "packer": "a8bcc",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        363,
+        366,
+        369,
+        372
+      ],
+      "symbols": {
+        "Sv_Wat_Pump4_Power": 363,
+        "Sv_Air_Pump4_Circuit": 366,
+        "Sv_0_10V_Control_Priority": 369,
+        "Sv_Out_Flow_Range_Lower": 372
+      }
+    },
+    {
+      "command": "7a",
+      "name": "Maxflöde, hybridhysteres, buffertgivarkorrigering och smart-grid-värmeval",
+      "status": "identifierad",
+      "packer": "a8c24",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        375,
+        378,
+        381,
+        384
+      ],
+      "symbols": {
+        "Sv_Out_Flow_Range_Upper": 375,
+        "Sv_HtSource_Hybrid_Temp": 378,
+        "Sv_Buff_Temp_Correction": 381,
+        "Sv_Buff_HtCool_Control": 384
+      }
+    },
+    {
+      "command": "7b",
+      "name": "Smart-grid-börvärden för rekommenderad/tvingad värme och kyla",
+      "status": "identifierad",
+      "packer": "a8c92",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        387,
+        390,
+        393,
+        396
+      ],
+      "symbols": {
+        "Sv_Buff_On_Heat_Recommend": 387,
+        "Sv_Buff_On_Heat_Force": 390,
+        "Sv_Buff_On_Cool_Recommend": 393,
+        "Sv_Buff_On_Cool_Force": 396
+      }
+    },
+    {
+      "command": "7c",
+      "name": "Periodisk cirkulation för värme/kyla, intervall och smart-grid-kylval",
+      "status": "identifierad",
+      "packer": "a8d1e",
+      "enum": "SD_SV2_Pos",
+      "offsets_decimal": [
+        399,
+        402,
+        405,
+        408
+      ],
+      "symbols": {
+        "Sv_Wat_Pump2_Heat_Inter_Drive": 399,
+        "Sv_Wat_Pump2_Cool_Inter_Drive": 402,
+        "Sv_Wat_Pump2_Drive_Cycle": 405,
+        "Sv_Buff_HtCool_Cool_Control": 408
+      }
+    },
+    {
+      "command": "6c",
+      "name": "Konfigurerad COP-tabell, punkter 1–6",
+      "status": "namngiven del",
+      "packer": "a8008",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        129,
+        132,
+        135,
+        138,
+        141,
+        144
+      ],
+      "symbols": {
+        "Sv_COP_1": 129,
+        "Sv_COP_2": 132,
+        "Sv_COP_3": 135,
+        "Sv_COP_4": 138,
+        "Sv_COP_5": 141,
+        "Sv_COP_6": 144
+      }
+    },
+    {
+      "command": "6d",
+      "name": "Konfigurerad COP-tabell, punkter 7–12",
+      "status": "namngiven del",
+      "packer": "a80a0",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        147,
+        150,
+        153,
+        156,
+        159,
+        162
+      ],
+      "symbols": {
+        "Sv_COP_7": 147,
+        "Sv_COP_8": 150,
+        "Sv_COP_9": 153,
+        "Sv_COP_10": 156,
+        "Sv_COP_11": 159,
+        "Sv_COP_12": 162
+      }
+    },
+    {
+      "command": "6f",
+      "name": "Elpriser 1–6 för hybridens kostnadsjämförelse",
+      "status": "namngiven del",
+      "packer": "a8184",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        171,
+        177,
+        183,
+        189,
+        195,
+        201
+      ],
+      "symbols": {
+        "Sv_Tan_ele1": 171,
+        "Sv_Tan_ele2": 177,
+        "Sv_Tan_ele3": 183,
+        "Sv_Tan_ele4": 189,
+        "Sv_Tan_ele5": 195,
+        "Sv_Tan_ele6": 201
+      }
+    },
+    {
+      "command": "70",
+      "name": "Elpriser 7–10 för hybridens kostnadsjämförelse",
+      "status": "namngiven del",
+      "packer": "a821c",
+      "enum": "SD_SV_Pos",
+      "offsets_decimal": [
+        207,
+        213,
+        219,
+        225
+      ],
+      "symbols": {
+        "Sv_Tan_ele7": 207,
+        "Sv_Tan_ele8": 213,
+        "Sv_Tan_ele9": 219,
+        "Sv_Tan_ele10": 225
+      }
+    }
+  ],
+  "limitation": "Symbol and format correlation, not live validation. Shared staging addresses require category. Vendor files stay private."
+}

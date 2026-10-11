@@ -1,0 +1,4883 @@
+{
+  "scope": "FTC20.01: 141 previously catalogued routes plus connection primitive; not universal CN105 coverage",
+  "status": "PARTIAL",
+  "physical_tests": 0,
+  "services": [
+    {
+      "code_decimal": 0,
+      "name": "Drifttillstånd",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Drifttillstånd"
+    },
+    {
+      "code_decimal": 1,
+      "name": "Kompressorström",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorström"
+    },
+    {
+      "code_decimal": 2,
+      "name": "Kompressorns sammanlagda drifttid",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns sammanlagda drifttid"
+    },
+    {
+      "code_decimal": 3,
+      "name": "Kompressorns antal starter",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns antal starter"
+    },
+    {
+      "code_decimal": 4,
+      "name": "Hetgastemperatur TH4",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Hetgastemperatur TH4"
+    },
+    {
+      "code_decimal": 5,
+      "name": "Vätskeledningens temperatur TH3",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Vätskeledningens temperatur TH3"
+    },
+    {
+      "code_decimal": 9,
+      "name": "Utetemperatur TH7",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Utetemperatur TH7"
+    },
+    {
+      "code_decimal": 10,
+      "name": "Kylflänstemperatur TH8",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kylflänstemperatur TH8"
+    },
+    {
+      "code_decimal": 12,
+      "name": "Överhettning",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Överhettning"
+    },
+    {
+      "code_decimal": 13,
+      "name": "Underkylning",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkylning"
+    },
+    {
+      "code_decimal": 14,
+      "name": "Kondenseringstemperatur",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kondenseringstemperatur"
+    },
+    {
+      "code_decimal": 16,
+      "name": "Kompressorns faktiska frekvens",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns faktiska frekvens"
+    },
+    {
+      "code_decimal": 17,
+      "name": "Kompressorns målfrekvens",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns målfrekvens"
+    },
+    {
+      "code_decimal": 18,
+      "name": "Brinepumpens styrsteg",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brinepumpens styrsteg"
+    },
+    {
+      "code_decimal": 19,
+      "name": "Brinepumpens varvtal",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brinepumpens varvtal"
+    },
+    {
+      "code_decimal": 22,
+      "name": "Expansionsventil A: öppning",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Expansionsventil A: öppning"
+    },
+    {
+      "code_decimal": 25,
+      "name": "Primärström",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Primärström"
+    },
+    {
+      "code_decimal": 26,
+      "name": "DC-mellankretsspänning",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "DC-mellankretsspänning"
+    },
+    {
+      "code_decimal": 27,
+      "name": "Brine in TH32",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brine in TH32"
+    },
+    {
+      "code_decimal": 28,
+      "name": "Brine ut TH34",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brine ut TH34"
+    },
+    {
+      "code_decimal": 48,
+      "name": "Drifttid med aktiv termostat",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Drifttid med aktiv termostat"
+    },
+    {
+      "code_decimal": 51,
+      "name": "Underkortets reglerstatus",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkortets reglerstatus"
+    },
+    {
+      "code_decimal": 52,
+      "name": "Kompressorns frekvensreglerstatus",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns frekvensreglerstatus"
+    },
+    {
+      "code_decimal": 53,
+      "name": "Fläktreglerstatus enligt manualen",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Fläktreglerstatus enligt manualen"
+    },
+    {
+      "code_decimal": 54,
+      "name": "Aktuatorernas utgångsstatus",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Aktuatorernas utgångsstatus"
+    },
+    {
+      "code_decimal": 55,
+      "name": "Detaljer för fel U9",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Detaljer för fel U9"
+    },
+    {
+      "code_decimal": 70,
+      "name": "Underkortets inställda kapacitet",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkortets inställda kapacitet"
+    },
+    {
+      "code_decimal": 71,
+      "name": "Underkortets konfiguration",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkortets konfiguration"
+    },
+    {
+      "code_decimal": 90,
+      "name": "Underkortets firmwareversion",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkortets firmwareversion"
+    },
+    {
+      "code_decimal": 91,
+      "name": "Underkortets versionssuffix",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkortets versionssuffix"
+    },
+    {
+      "code_decimal": 100,
+      "name": "Senaste fördröjda fel på underkortet",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Senaste fördröjda fel på underkortet"
+    },
+    {
+      "code_decimal": 101,
+      "name": "Näst senaste fördröjda fel på underkortet",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Näst senaste fördröjda fel på underkortet"
+    },
+    {
+      "code_decimal": 102,
+      "name": "Tredje senaste fördröjda fel på underkortet",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Tredje senaste fördröjda fel på underkortet"
+    },
+    {
+      "code_decimal": 103,
+      "name": "Senaste fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Senaste fel"
+    },
+    {
+      "code_decimal": 104,
+      "name": "Näst senaste fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Näst senaste fel"
+    },
+    {
+      "code_decimal": 105,
+      "name": "Tredje senaste fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Tredje senaste fel"
+    },
+    {
+      "code_decimal": 106,
+      "name": "Felaktig givare TH3/TH7/TH8",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Felaktig givare TH3/TH7/TH8"
+    },
+    {
+      "code_decimal": 107,
+      "name": "Drifttillstånd vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Drifttillstånd vid fel"
+    },
+    {
+      "code_decimal": 108,
+      "name": "Kompressorström vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorström vid fel"
+    },
+    {
+      "code_decimal": 109,
+      "name": "Kompressorns drifttid vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns drifttid vid fel"
+    },
+    {
+      "code_decimal": 110,
+      "name": "Kompressorns antal starter vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorns antal starter vid fel"
+    },
+    {
+      "code_decimal": 111,
+      "name": "Hetgastemperatur vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Hetgastemperatur vid fel"
+    },
+    {
+      "code_decimal": 112,
+      "name": "TH3 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "TH3 vid fel"
+    },
+    {
+      "code_decimal": 113,
+      "name": "Brine ut TH34 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brine ut TH34 vid fel"
+    },
+    {
+      "code_decimal": 115,
+      "name": "Brine in TH32 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brine in TH32 vid fel"
+    },
+    {
+      "code_decimal": 116,
+      "name": "Utetemperatur vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Utetemperatur vid fel"
+    },
+    {
+      "code_decimal": 117,
+      "name": "Kylflänstemperatur vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kylflänstemperatur vid fel"
+    },
+    {
+      "code_decimal": 118,
+      "name": "Överhettning vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Överhettning vid fel"
+    },
+    {
+      "code_decimal": 119,
+      "name": "Underkylning vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Underkylning vid fel"
+    },
+    {
+      "code_decimal": 120,
+      "name": "Kompressorfrekvens vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kompressorfrekvens vid fel"
+    },
+    {
+      "code_decimal": 121,
+      "name": "Brinepumpens styrsteg vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Brinepumpens styrsteg vid fel"
+    },
+    {
+      "code_decimal": 122,
+      "name": "Fläkt 1-varvtal vid fel enligt manualen",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Fläkt 1-varvtal vid fel enligt manualen"
+    },
+    {
+      "code_decimal": 125,
+      "name": "Expansionsventil A vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Expansionsventil A vid fel"
+    },
+    {
+      "code_decimal": 129,
+      "name": "Kondenseringstemperatur vid fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Kondenseringstemperatur vid fel"
+    },
+    {
+      "code_decimal": 130,
+      "name": "Termostatens drifttid fram till fel",
+      "naming_status": "manualnamn",
+      "routing": "manualkod; native A3-rutt inte individuellt kvalificerad här",
+      "side_effect": "Inte individuellt kvalificerad",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Termostatens drifttid fram till fel"
+    },
+    {
+      "code_decimal": 154,
+      "name": "Vattenpump 1: drifttid sedan nollställning",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c0c3",
+        "8C0B4"
+      ],
+      "description": "Vattenpump 1: drifttid sedan nollställning"
+    },
+    {
+      "code_decimal": 155,
+      "name": "Kompressorns ackumulerade drifttidsräknare (grov del)",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C4BF→14FC; A1448 counts while3A2C=1; interval unit not requalified",
+        "ram:0008c0cc",
+        "8C0B4"
+      ],
+      "description": "Kompressorns ackumulerade drifttidsräknare (grov del)"
+    },
+    {
+      "code_decimal": 156,
+      "name": "Vattenpump 2: drifttid sedan nollställning",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c0d5",
+        "8C0B4"
+      ],
+      "description": "Vattenpump 2: drifttid sedan nollställning"
+    },
+    {
+      "code_decimal": 157,
+      "name": "Vattenpump 3: drifttid sedan nollställning",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c0de",
+        "8C0B4"
+      ],
+      "description": "Vattenpump 3: drifttid sedan nollställning"
+    },
+    {
+      "code_decimal": 158,
+      "name": "Vattenpump 4: drifttid sedan nollställning",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c0e7",
+        "8C0B4"
+      ],
+      "description": "Vattenpump 4: drifttid sedan nollställning"
+    },
+    {
+      "code_decimal": 160,
+      "name": "Läs modellprofil",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C52B→38BC; 8F142 remaps profile through80FF8; 91948 selects configuration record88E95; model-number dictionary unresolved",
+        "ram:0008c0f0",
+        "8C0B4"
+      ],
+      "description": "FTC modellprofil-ID"
+    },
+    {
+      "code_decimal": 161,
+      "name": "Läs hårdvaruvariant",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C538→38BD; 8E3DE extracts3879 bits2..6; 91948 indexes81ADC; CE2A4 selects pump-power table87F9A; exact variant names unresolved",
+        "ram:0008c0f9",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-vald hårdvaruvariant"
+    },
+    {
+      "code_decimal": 162,
+      "name": "FTC DIP-bank 1",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c102",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-bank 1"
+    },
+    {
+      "code_decimal": 163,
+      "name": "FTC DIP-bank 2",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c10b",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-bank 2"
+    },
+    {
+      "code_decimal": 164,
+      "name": "FTC DIP-bank 3",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c114",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-bank 3"
+    },
+    {
+      "code_decimal": 165,
+      "name": "FTC DIP-bank 4",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c11d",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-bank 4"
+    },
+    {
+      "code_decimal": 166,
+      "name": "FTC DIP-bank 5",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c126",
+        "8C0B4"
+      ],
+      "description": "FTC DIP-bank 5"
+    },
+    {
+      "code_decimal": 175,
+      "name": "FTC utgångssignaler",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c12f",
+        "8C0B4"
+      ],
+      "description": "FTC utgångssignaler"
+    },
+    {
+      "code_decimal": 176,
+      "name": "FTC ingångssignaler",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c138",
+        "8C0B4"
+      ],
+      "description": "FTC ingångssignaler"
+    },
+    {
+      "code_decimal": 177,
+      "name": "Shuntventilens öppningssteg",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c141",
+        "8C0B4"
+      ],
+      "description": "Shuntventilens öppningssteg"
+    },
+    {
+      "code_decimal": 178,
+      "name": "Primärpumpens återrapporterade signal",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C67D→3E9D; same source as GET15; P83 pump-control-trace; not RPM",
+        "ram:0008c14a",
+        "8C0B4"
+      ],
+      "description": "Primärpumpens återrapporterade signal"
+    },
+    {
+      "code_decimal": 179,
+      "name": "Termo-ON-utgångens status",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C68A→49A7; D1C6E/D1CE6 uses07DD, named Thermo ON output by SD_SER2 offset345",
+        "ram:0008c153",
+        "8C0B4"
+      ],
+      "description": "Termo-ON-utgångens status"
+    },
+    {
+      "code_decimal": 185,
+      "name": "Förbrukningsberäkningens aktuella värde",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C6A0→CDFD2 selects3216/321A by099B; P86 energy; unit/timebase unqualified",
+        "ram:0008c15c",
+        "8C0B4"
+      ],
+      "description": "Förbrukningsberäkningens aktuella värde"
+    },
+    {
+      "code_decimal": 186,
+      "name": "Värmeproduktionsberäkningens aktuella värde",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C6B7→CE01E selects3222/3226 by099C; P86 energy; unit/timebase unqualified",
+        "ram:0008c165",
+        "8C0B4"
+      ],
+      "description": "Värmeproduktionsberäkningens aktuella värde"
+    },
+    {
+      "code_decimal": 190,
+      "name": "FTC firmwareversion, första delen",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c16e",
+        "8C0B4"
+      ],
+      "description": "FTC firmwareversion, första delen"
+    },
+    {
+      "code_decimal": 191,
+      "name": "FTC firmwareversion, andra delen",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c177",
+        "8C0B4"
+      ],
+      "description": "FTC firmwareversion, andra delen"
+    },
+    {
+      "code_decimal": 200,
+      "name": "Återställ funktionsinställningar till fabriksinställning",
+      "naming_status": "manualnamn",
+      "routing": "CN105 avvisar denna kod",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text"
+      ],
+      "description": "Återställ funktionsinställningar till fabriksinställning"
+    },
+    {
+      "code_decimal": 340,
+      "name": "Nollställ vattenpump 1:s drifttid",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c180",
+        "8C0B4"
+      ],
+      "description": "Nollställ vattenpump 1:s drifttid"
+    },
+    {
+      "code_decimal": 341,
+      "name": "Nollställ kompressorns grova drifttidsräknare",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "8C6FF→3AE0; A1448 clears3D8C and14FC",
+        "ram:0008c189",
+        "8C0B4"
+      ],
+      "description": "Nollställ kompressorns grova drifttidsräknare"
+    },
+    {
+      "code_decimal": 342,
+      "name": "Nollställ vattenpump 2:s drifttid",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c192",
+        "8C0B4"
+      ],
+      "description": "Nollställ vattenpump 2:s drifttid"
+    },
+    {
+      "code_decimal": 343,
+      "name": "Nollställ vattenpump 3:s drifttid",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c19b",
+        "8C0B4"
+      ],
+      "description": "Nollställ vattenpump 3:s drifttid"
+    },
+    {
+      "code_decimal": 344,
+      "name": "Nollställ vattenpump 4:s drifttid",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c1a4",
+        "8C0B4"
+      ],
+      "description": "Nollställ vattenpump 4:s drifttid"
+    },
+    {
+      "code_decimal": 350,
+      "name": "Återställ källsidans serviceläge",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C733 clears39FE/39FF/3A00/3A01; Mitsubishi JG79N353H02 section9 pp13–14 (PDF pages14–15) specifies350 after pump-down on SUZ-SWM/SHWM; Geodan-specific effect not proven; service-manual-followup.md",
+        "ram:0008c1ad",
+        "8C0B4"
+      ],
+      "description": "Återställ källsidans serviceläge (bland annat pump-down)"
+    },
+    {
+      "code_decimal": 351,
+      "name": "Pump-down-val (SUZ; Geodan obekräftat)",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=1 and clears auxiliary selectors; Mitsubishi JG79N353H02 section9 p13 (PDF page14) specifies351 during refrigerant recovery; physical function on Geodan unknown; service-manual-followup.md",
+        "ram:0008c1b6",
+        "8C0B4"
+      ],
+      "description": "Välj pump-down-serviceläge (dokumenterat för SUZ, ej verifierat på Geodan)"
+    },
+    {
+      "code_decimal": 352,
+      "name": "Välj serviceläge 2",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=2, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1bf",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 2 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 353,
+      "name": "Välj serviceläge 3",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=3, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1c8",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 3 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 354,
+      "name": "Välj serviceläge 4",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=4, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1d1",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 4 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 355,
+      "name": "Välj serviceläge 5",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=5, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1da",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 5 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 356,
+      "name": "Välj serviceläge 6",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=6, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1e3",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 6 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 357,
+      "name": "Välj serviceläge 7",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FE=7, clears39FF/3A00/3A01, sets3A76; A162A sets39CD; descriptor82B34 byte2 bits0..2; peer semantics absent",
+        "ram:0008c1ec",
+        "8C0B4"
+      ],
+      "description": "Välj källsidans serviceläge 7 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 358,
+      "name": "Sätt serviceval 39FF till 1",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FF=1, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits4..5; not proven ON/OFF",
+        "ram:0008c1f5",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 39FF: värde 1 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 359,
+      "name": "Sätt serviceval 39FF till 2",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes39FF=2, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits4..5; not proven ON/OFF",
+        "ram:0008c1fe",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 39FF: värde 2 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 360,
+      "name": "Sätt serviceval 3A00 till 1",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes3A00=1, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits0..1; not proven ON/OFF",
+        "ram:0008c207",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 3A00: värde 1 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 361,
+      "name": "Sätt serviceval 3A00 till 2",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes3A00=2, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits0..1; not proven ON/OFF",
+        "ram:0008c210",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 3A00: värde 2 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 362,
+      "name": "Sätt serviceval 3A01 till 1",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes3A01=1, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits2..3; not proven ON/OFF",
+        "ram:0008c219",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 3A01: värde 1 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 363,
+      "name": "Sätt serviceval 3A01 till 2",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Ändrar serviceväljare och köar sändning; inte mätfråga",
+      "evidence": [
+        "8C0B4 writes3A01=2, clears other two auxiliary selectors, preserves39FE, sets3A76; descriptor82B34 byte1 bits2..3; not proven ON/OFF",
+        "ram:0008c222",
+        "8C0B4"
+      ],
+      "description": "Källsidans serviceval 3A01: värde 2 (fysisk funktion okänd)"
+    },
+    {
+      "code_decimal": 500,
+      "name": "Rumsbörvärde värme, zon 1",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C88C→38DC/100; C979E and SD_HtCl_Pos6",
+        "ram:0008c22b",
+        "8C0B4"
+      ],
+      "description": "Rumsbörvärde värme, zon 1"
+    },
+    {
+      "code_decimal": 501,
+      "name": "Framledningsbörvärde värme, zon 1",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C89F→38DE/100; C979E and SD_HtCl_Pos9",
+        "ram:0008c234",
+        "8C0B4"
+      ],
+      "description": "Framledningsbörvärde värme, zon 1"
+    },
+    {
+      "code_decimal": 502,
+      "name": "Rumsbörvärde kyla, zon 1",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C8B2→38E2/100; C979E and SD_HtCl_Pos15",
+        "ram:0008c23d",
+        "8C0B4"
+      ],
+      "description": "Rumsbörvärde kyla, zon 1"
+    },
+    {
+      "code_decimal": 503,
+      "name": "Framledningsbörvärde kyla, zon 1",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C8C5→38E4/100; C979E and SD_HtCl_Pos18",
+        "ram:0008c246",
+        "8C0B4"
+      ],
+      "description": "Framledningsbörvärde kyla, zon 1"
+    },
+    {
+      "code_decimal": 504,
+      "name": "Rumstemperatur zon 1 TH1A",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c24f",
+        "8C0B4"
+      ],
+      "description": "Rumstemperatur zon 1 TH1A"
+    },
+    {
+      "code_decimal": 505,
+      "name": "Köldmediets vätsketemperatur TH2",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c258",
+        "8C0B4"
+      ],
+      "description": "Köldmediets vätsketemperatur TH2"
+    },
+    {
+      "code_decimal": 506,
+      "name": "Primär retur THW2",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c261",
+        "8C0B4"
+      ],
+      "description": "Primär retur THW2"
+    },
+    {
+      "code_decimal": 507,
+      "name": "Rumstemperatur zon 2 TH1B",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c26a",
+        "8C0B4"
+      ],
+      "description": "Rumstemperatur zon 2 TH1B"
+    },
+    {
+      "code_decimal": 508,
+      "name": "Varmvatten nedre givare THW5B",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c273",
+        "8C0B4"
+      ],
+      "description": "Varmvatten nedre givare THW5B"
+    },
+    {
+      "code_decimal": 509,
+      "name": "Framledning zon 1 THW6",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c27c",
+        "8C0B4"
+      ],
+      "description": "Framledning zon 1 THW6"
+    },
+    {
+      "code_decimal": 510,
+      "name": "Utetemperatur TH7",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c285",
+        "8C0B4"
+      ],
+      "description": "Utetemperatur TH7"
+    },
+    {
+      "code_decimal": 511,
+      "name": "Primär framledning THW1",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c28e",
+        "8C0B4"
+      ],
+      "description": "Primär framledning THW1"
+    },
+    {
+      "code_decimal": 512,
+      "name": "Retur zon 1 THW7",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c297",
+        "8C0B4"
+      ],
+      "description": "Retur zon 1 THW7"
+    },
+    {
+      "code_decimal": 513,
+      "name": "Framledning zon 2 THW8",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c2a0",
+        "8C0B4"
+      ],
+      "description": "Framledning zon 2 THW8"
+    },
+    {
+      "code_decimal": 514,
+      "name": "Retur zon 2 THW9",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c2a9",
+        "8C0B4"
+      ],
+      "description": "Retur zon 2 THW9"
+    },
+    {
+      "code_decimal": 515,
+      "name": "Extern pannas framledning THWB1",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c2b2",
+        "8C0B4"
+      ],
+      "description": "Extern pannas framledning THWB1"
+    },
+    {
+      "code_decimal": 516,
+      "name": "Extern pannas returtemperatur",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C9BC→067C/100; A4132→GET0C; THWB2 physical naming remains model-dependent",
+        "ram:0008c2bb",
+        "8C0B4"
+      ],
+      "description": "Extern pannas returtemperatur"
+    },
+    {
+      "code_decimal": 517,
+      "name": "Rumsbörvärde värme, zon 2",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C9CF→38EE/100; C979E and SD_HtCl_Pos30",
+        "ram:0008c2c4",
+        "8C0B4"
+      ],
+      "description": "Rumsbörvärde värme, zon 2"
+    },
+    {
+      "code_decimal": 518,
+      "name": "Framledningsbörvärde värme, zon 2",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C9E2→38F0/100; C979E and SD_HtCl_Pos33",
+        "ram:0008c2cd",
+        "8C0B4"
+      ],
+      "description": "Framledningsbörvärde värme, zon 2"
+    },
+    {
+      "code_decimal": 519,
+      "name": "Rumsbörvärde kyla, zon 2",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8C9F5→38F4/100; C979E and SD_HtCl_Pos48",
+        "ram:0008c2d6",
+        "8C0B4"
+      ],
+      "description": "Rumsbörvärde kyla, zon 2"
+    },
+    {
+      "code_decimal": 520,
+      "name": "Energiräknare förbrukning varmvatten, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c2df",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning varmvatten, högre siffror"
+    },
+    {
+      "code_decimal": 521,
+      "name": "Energiräknare förbrukning varmvatten, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c2e8",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning varmvatten, lägre siffror"
+    },
+    {
+      "code_decimal": 522,
+      "name": "Energiräknare förbrukning värme, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c2f1",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning värme, högre siffror"
+    },
+    {
+      "code_decimal": 523,
+      "name": "Energiräknare förbrukning värme, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c2fa",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning värme, lägre siffror"
+    },
+    {
+      "code_decimal": 524,
+      "name": "Energiräknare förbrukning kyla, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c303",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning kyla, högre siffror"
+    },
+    {
+      "code_decimal": 525,
+      "name": "Energiräknare förbrukning kyla, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c30c",
+        "8C0B4"
+      ],
+      "description": "Energiräknare förbrukning kyla, lägre siffror"
+    },
+    {
+      "code_decimal": 526,
+      "name": "Energiräknare produktion varmvatten, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c315",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion varmvatten, högre siffror"
+    },
+    {
+      "code_decimal": 527,
+      "name": "Energiräknare produktion varmvatten, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c31e",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion varmvatten, lägre siffror"
+    },
+    {
+      "code_decimal": 528,
+      "name": "Energiräknare produktion värme, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c327",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion värme, högre siffror"
+    },
+    {
+      "code_decimal": 529,
+      "name": "Energiräknare produktion värme, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c330",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion värme, lägre siffror"
+    },
+    {
+      "code_decimal": 530,
+      "name": "Energiräknare produktion kyla, högre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c339",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion kyla, högre siffror"
+    },
+    {
+      "code_decimal": 531,
+      "name": "Energiräknare produktion kyla, lägre siffror",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Even queries fold pending counters, losing division remainders; odd results truncate digits (P86)",
+      "evidence": [
+        "8C0B4→CE0D2; P86 energy-qualification: bucket strong hypothesis, unit unknown; even reads fold counters",
+        "ram:0008c342",
+        "8C0B4"
+      ],
+      "description": "Energiräknare produktion kyla, lägre siffror"
+    },
+    {
+      "code_decimal": 532,
+      "name": "Spara och nollställ energiräknarbanken",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Nollställning; inte mätfråga",
+      "evidence": [
+        "8CC18→CDF46; P86 energy-qualification, not a passive query",
+        "ram:0008c34b",
+        "8C0B4"
+      ],
+      "description": "Spara och nollställ energiräknarbanken"
+    },
+    {
+      "code_decimal": 533,
+      "name": "Framledningsbörvärde kyla, zon 2",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CC22→38F6/100; C979E and SD_HtCl_Pos51",
+        "ram:0008c354",
+        "8C0B4"
+      ],
+      "description": "Framledningsbörvärde kyla, zon 2"
+    },
+    {
+      "code_decimal": 534,
+      "name": "Varmvatten övre givare THW5A",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c35d",
+        "8C0B4"
+      ],
+      "description": "Varmvatten övre givare THW5A"
+    },
+    {
+      "code_decimal": 535,
+      "name": "Blandningstankens temperatur THW10",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c366",
+        "8C0B4"
+      ],
+      "description": "Blandningstankens temperatur THW10"
+    },
+    {
+      "code_decimal": 536,
+      "name": "Kondenserings-/mättnadstemperatur från FTC:s givarkanal",
+      "naming_status": "trolig",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CC5B→0692 signed/100; 8DDD0:0ADC→80DF2→0692 gated0915/0A8C; A59E4 packs GET0F bytes4..5, matching pinned EcodanDecoder CondensingTemp; not independently validated T63HS/brine",
+        "ram:0008c36f",
+        "8C0B4"
+      ],
+      "description": "Kondenserings-/mättnadstemperatur från FTC:s givarkanal"
+    },
+    {
+      "code_decimal": 540,
+      "name": "Primärkretsens vattenflöde",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c378",
+        "8C0B4"
+      ],
+      "description": "Primärkretsens vattenflöde"
+    },
+    {
+      "code_decimal": 550,
+      "name": "FTC senaste fördröjda fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c381",
+        "8C0B4"
+      ],
+      "description": "FTC senaste fördröjda fel"
+    },
+    {
+      "code_decimal": 551,
+      "name": "Vald värmekälla vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c38a",
+        "8C0B4"
+      ],
+      "description": "Vald värmekälla vid fel"
+    },
+    {
+      "code_decimal": 552,
+      "name": "FTC driftläge vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c393",
+        "8C0B4"
+      ],
+      "description": "FTC driftläge vid fel"
+    },
+    {
+      "code_decimal": 553,
+      "name": "FTC utgångssignaler vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c39c",
+        "8C0B4"
+      ],
+      "description": "FTC utgångssignaler vid fel"
+    },
+    {
+      "code_decimal": 554,
+      "name": "FTC ingångssignaler vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3a5",
+        "8C0B4"
+      ],
+      "description": "FTC ingångssignaler vid fel"
+    },
+    {
+      "code_decimal": 555,
+      "name": "Rumstemperatur zon 1 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3ae",
+        "8C0B4"
+      ],
+      "description": "Rumstemperatur zon 1 vid fel"
+    },
+    {
+      "code_decimal": 556,
+      "name": "Rumstemperatur zon 2 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3b7",
+        "8C0B4"
+      ],
+      "description": "Rumstemperatur zon 2 vid fel"
+    },
+    {
+      "code_decimal": 557,
+      "name": "TH2 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3c0",
+        "8C0B4"
+      ],
+      "description": "TH2 vid fel"
+    },
+    {
+      "code_decimal": 558,
+      "name": "Primär framledning vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3c9",
+        "8C0B4"
+      ],
+      "description": "Primär framledning vid fel"
+    },
+    {
+      "code_decimal": 559,
+      "name": "Primär retur vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3d2",
+        "8C0B4"
+      ],
+      "description": "Primär retur vid fel"
+    },
+    {
+      "code_decimal": 560,
+      "name": "Varmvatten THW5B vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3db",
+        "8C0B4"
+      ],
+      "description": "Varmvatten THW5B vid fel"
+    },
+    {
+      "code_decimal": 561,
+      "name": "Framledning zon 1 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3e4",
+        "8C0B4"
+      ],
+      "description": "Framledning zon 1 vid fel"
+    },
+    {
+      "code_decimal": 562,
+      "name": "Retur zon 1 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3ed",
+        "8C0B4"
+      ],
+      "description": "Retur zon 1 vid fel"
+    },
+    {
+      "code_decimal": 563,
+      "name": "Framledning zon 2 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3f6",
+        "8C0B4"
+      ],
+      "description": "Framledning zon 2 vid fel"
+    },
+    {
+      "code_decimal": 564,
+      "name": "Retur zon 2 vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c3ff",
+        "8C0B4"
+      ],
+      "description": "Retur zon 2 vid fel"
+    },
+    {
+      "code_decimal": 565,
+      "name": "Extern pannas framledning vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c408",
+        "8C0B4"
+      ],
+      "description": "Extern pannas framledning vid fel"
+    },
+    {
+      "code_decimal": 566,
+      "name": "Extern pannas returtemperatur vid fel",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CF01→3E2F/100; AE1EA copies067C, AE390 restores history",
+        "ram:0008c411",
+        "8C0B4"
+      ],
+      "description": "Extern pannas returtemperatur vid fel"
+    },
+    {
+      "code_decimal": 567,
+      "name": "FTC identifiering av felaktig temperaturgivare",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c41a",
+        "8C0B4"
+      ],
+      "description": "FTC identifiering av felaktig temperaturgivare"
+    },
+    {
+      "code_decimal": 568,
+      "name": "Shuntventilens öppningssteg vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c423",
+        "8C0B4"
+      ],
+      "description": "Shuntventilens öppningssteg vid fel"
+    },
+    {
+      "code_decimal": 569,
+      "name": "Vilken flödesvakt som löste ut",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c42c",
+        "8C0B4"
+      ],
+      "description": "Vilken flödesvakt som löste ut"
+    },
+    {
+      "code_decimal": 570,
+      "name": "Primärpumpens återrapporterade signal vid fel",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CF3B→3E2C; AE1EA copies3E9D, AE390 restores history",
+        "ram:0008c435",
+        "8C0B4"
+      ],
+      "description": "Primärpumpens återrapporterade signal vid fel"
+    },
+    {
+      "code_decimal": 571,
+      "name": "Primärflöde vid fel",
+      "naming_status": "manualnamn",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "OCH722A section8-6 pp30–32; pinned local text",
+        "ram:0008c43e",
+        "8C0B4"
+      ],
+      "description": "Primärflöde vid fel"
+    },
+    {
+      "code_decimal": 572,
+      "name": "Varmvattentemperatur vid fel",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CF56→3E23/100; AE1EA copies0666, AE390 restores history",
+        "ram:0008c447",
+        "8C0B4"
+      ],
+      "description": "Varmvattentemperatur vid fel"
+    },
+    {
+      "code_decimal": 573,
+      "name": "Termo-ON-utgångens status vid fel",
+      "naming_status": "identifierad",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CF69→3E1A bit0; AE1EA←3E59; ADD64←49A7",
+        "ram:0008c450",
+        "8C0B4"
+      ],
+      "description": "Termo-ON-utgångens status vid fel"
+    },
+    {
+      "code_decimal": 574,
+      "name": "Bufferttankstemperatur vid fel",
+      "naming_status": "namngiven del",
+      "routing": "lokal FTC-gren belagd; yttre villkor kvarstår",
+      "side_effect": "Unresolved beyond local handler",
+      "evidence": [
+        "8CF8C→3E3D/100; AE1EA copies0690; GET12 mixing/buffer temperature",
+        "ram:0008c459",
+        "8C0B4"
+      ],
+      "description": "Bufferttankstemperatur vid fel"
+    }
+  ],
+  "counts": {
+    "identifierad": 44,
+    "namngiven del": 36,
+    "platshållare": 10,
+    "trolig": 52
+  },
+  "counting": "Routes, not independent features; paired settings reads/writes and A3 subcodes must not be added as equivalent units.",
+  "public_reference_pin": "F1p 7687d11e8f4ec23de13f2c95bcdf76ebe9daebb5",
+  "rows": [
+    {
+      "id": "uart2.41.32",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "32",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Begär driftläge och temperaturbörvärden, inklusive fast framledning.",
+      "name": "Ställ driftläge och temperaturmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.32",
+        "cn105-new-capabilities.md",
+        "892e3",
+        "84d66",
+        "lookup index 49",
+        "../P0087/flow-target-trace.md",
+        "source-outgoing.md",
+        "cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a541a"
+      ]
+    },
+    {
+      "id": "uart2.41.33",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "33",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Generisk SET-kvittens för 33; tillämpning ej identifierad. Protokollrollen är namngiven. Vilken eventuell inställning anroparen avser och om en indirekt tillämpning finns är fortfarande okänt.",
+      "name": "Kvittera SET33",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.33",
+        "RX SET33→internal2; A5430 emits generic zero ACK; bounded consumer audit"
+      ],
+      "handlers": [
+        "a5430"
+      ]
+    },
+    {
+      "id": "uart2.41.34",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "34",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Begär boost, semester, driftspärrar och extern styrning; innehåller även begränsningssignal.",
+      "name": "Ställ driftspärrar och extern styrning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.34",
+        "cn105-new-capabilities.md",
+        "8931e",
+        "84d86",
+        "lookup index 1",
+        "cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a5446"
+      ]
+    },
+    {
+      "id": "uart2.41.35",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "35",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Begär zonernas separata temperaturmål för värme/kyla; inte samma väg som fast framledning.",
+      "name": "Ställ zonernas temperaturmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.35",
+        "cn105-new-capabilities.md",
+        "8931e",
+        "84d96",
+        "lookup index 2"
+      ],
+      "handlers": [
+        "a545c"
+      ]
+    },
+    {
+      "id": "uart2.41.50",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "50",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot varmvattenmål, temperaturfall och maximal körtid. Temperaturfall är kopplat till samma källa som GET09; körtidsnamnet stöds av minutomvandling och manualen. Övriga fält återstår.",
+      "name": "Varmvattenmål, temperaturfall och maximal körtid",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.50",
+        "A629C; BD190:1947/1948→0714,194A/194B→0716; A3FF2; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.51",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "51",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot varmvattenläge, återhämtningspaus och legionellamål. Läge är direkt identifierat. Paus och legionellamål är funktionshypoteser från import, standardvärden och manual; inte full konsumentkedja.",
+      "name": "Varmvattenläge, återhämtningspaus och legionellamål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.51",
+        "A630E:3912; BD190:194D/194E→0718,1953/1954→071A; 959DE defaults; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.52",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "52",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot legionellacykelns tidsinställningar. Tidsenheterna och standardvärdena passar maximal cykeltid och temperaturhålltid. Alla fält är inte namngivna.",
+      "name": "Legionellacykelns tidsinställningar",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.52",
+        "A6376; BD190:195C/195D→071C (hours),195F/1960→071E (minutes); 959DE defaults; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.53",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "53",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot zonernas värme-/kylreglerläge. Inställningssessionens väg; skilj begärt läge från valt läge.",
+      "name": "Zonernas värme-/kylreglerläge",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.53",
+        "A63D4:3913/3914; C979E; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.54",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "54",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot zonernas temperaturbörvärden. Blocket omfattar flera temperaturmål per zon, inte ett enda framledningsmål.",
+      "name": "Zonernas temperaturbörvärden",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.54",
+        "A6426; A6410 zone selection; C979E:38DC..38F6; P0088/cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.55",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "55",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot värmekurvans punkter per zon. Zonval och punktstruktur stöder namnet. Exakt kurvtolkning är en hypotes och inte härledd enbart från ordningsföljden.",
+      "name": "Värmekurvans punkter per zon",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.55",
+        "A653E/A6410:zone-select and three staged point groups; adjacent53/54 mode/target blocks"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.56",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "56",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot veckoprogram för värme/kyla och varmvatten. Sjudagarsindex och schemabanker stöder familjen. Exakt betydelse av samtliga programväljare är ännu inte fastställd.",
+      "name": "Veckoprogram för värme/kyla och varmvatten",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.56",
+        "A6642; A65CC:3*28+2*14+2*7+weekday; P0088/settings-transfer-map.md; S1/S2 files in atlas-ledger.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.57",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "57",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot årsperiod för veckoprogram 2. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Årsperiod för veckoprogram 2",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.57",
+        "A77B8; FTC6 SD Tool1.01 SD_Sch_Pos offsets [105]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.58",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "58",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Tar emot reserverad inställningsplats 58. Läsaren lämnar inget inställningsinnehåll och skrivgrenen går direkt till gemensamt slut i denna image.",
+      "name": "Reserverad inställningsplats 58",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.58",
+        "A77F2 only session-status/category; A910F switch index8→ABB8B"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.59",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "59",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot semesterläge: aktivering samt start- och slutdatum. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Semesterläge: aktivering samt start- och slutdatum",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.59",
+        "A7816; FTC6 SD Tool1.01 SD_Hol_Pos offsets [0, 3, 6]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5a",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot semesterlägets temperaturmål. Flera mål och zonval; inte själva semesteraktiveringen.",
+      "name": "Semesterlägets temperaturmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5a",
+        "A7874; BD20E:194A..195D→0733/0735/0737/0739/0781/0783/0785; B9C9E/B9D5A; P0088/cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5b",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Tar emot reserverad inställningsplats 5B. Läsaren lämnar inget inställningsinnehåll och skrivgrenen går direkt till gemensamt slut i denna image.",
+      "name": "Reserverad inställningsplats 5B",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5b",
+        "A7914 only session-status/category; A910F switch index11→ABB8B"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5c",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot displayens språk, temperaturenhet och temperaturvisning. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Displayens språk, temperaturenhet och temperaturvisning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5c",
+        "A7938; FTC6 SD Tool1.01 SD_Is_Pos offsets [0, 3, 6]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5d",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot kontakttelefon som visas på manöverpanelen. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Kontakttelefon som visas på manöverpanelen",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5d",
+        "A7984; FTC6 SD Tool1.01 SD_Is_Pos offsets [9, 12, 15, 18]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5e",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5e",
+        "A79E2; FTC6 SD Tool1.01 SD_Is_Pos offsets [21, 24, 27, 30]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.5f",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "5f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot tidsschema för val av rumsgivare per zon. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Tidsschema för val av rumsgivare per zon",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.5f",
+        "A7A3A; FTC6 SD Tool1.01 SD_Is_Pos offsets [33, 36, 39, 42, 45, 48, 51, 54, 57, 60]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.60",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "60",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot kalibrering av temperaturgivare, grupp 1. Framledning och retur är belagda. Alla givarnamn i gruppen återstår.",
+      "name": "Kalibrering av temperaturgivare, grupp 1",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.60",
+        "A7AFC:0729/072B/072F/0771; 986E2/98702; P0087/flow-target-trace.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.61",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "61",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot kalibrering av temperaturgivare, grupp 2. Kalibreringsfamilj identifierad; tilldelning till varje fysisk givare återstår.",
+      "name": "Kalibrering av temperaturgivare, grupp 2",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.61",
+        "A7B88:0773/0775/0777/0779; 987AE and adjacent sensor writers"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.62",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "62",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot kalibrering av temperaturgivare, grupp 3. Två ytterligare kalibreringsvärden; fysisk givartilldelning inte fullständigt belagd.",
+      "name": "Kalibrering av temperaturgivare, grupp 3",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.62",
+        "A7C14:077B/072D; 959DE zero-offset defaults; sensor writer family986E2..9884E"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.63",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "63",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot cirkulationspumpens ekonomi- och temperaturvillkor. Pumpvillkor och fördröjning har native konsumenter. Gruppens fullständiga fältnamn återstår.",
+      "name": "Cirkulationspumpens ekonomi- och temperaturvillkor",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.63",
+        "A7C6E:073D/0723/0725/0727; AF12E/AF660/C132A; 959DE; OCH722A auxiliary menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.64",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "64",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot eltillskottets tillåtelse och fördröjningar. Standardvärden och tillståndsvillkor stöder namnet; inte ett bevis för varje tillskottssteg.",
+      "name": "Eltillskottets tillåtelse och fördröjningar",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.64",
+        "A7CE6:073C/0721/073B/07FD; BE24E; 959DE defaults30/15min; OCH722A auxiliary menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.65",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "65",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot shuntventilens gångtid/intervall och varmvattenpumpens nivå. Rättar tidigare alltför snävt namn DHW settings. Shuntnamnet är korrelerat via tider, utgångar och manual; pumpnivån är tidigare belagd.",
+      "name": "Shuntventilens gångtid/intervall och varmvattenpumpens nivå",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.65",
+        "A7D48:077D/077F/0770; C47FE/C4126; 959DE defaults120s/2min; P0083/pump-control-trace.md; OCH722A mixing valve menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.66",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "66",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot val av värmekälla och samtidig värme/varmvatten. BF750 kombinerar utetemperaturvillkor med zonspärrar. Namnet är en arbetshypotes för blandat block.",
+      "name": "Val av värmekälla och samtidig värme/varmvatten",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.66",
+        "A7D9E:0720/073E/073F/0741; BF750; 959DE; OCH722A simultaneous operation menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.67",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "67",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot värmeregleringens temperaturgränser och tidsintervall. Framledningens min/max har läskoppling. Övriga villkor och intervall ska inte likställas med dessa gränser.",
+      "name": "Värmeregleringens temperaturgränser och tidsintervall",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.67",
+        "A7DFE:0742/0744/0746/0748; A400C/A4026→GET09; B4F42; OCH722A heating menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.68",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "68",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot värmepumpens temperaturhysteres. Standardvärden +5/-5 och användning i regleringen stöder familjen; aktiveringens fulla semantik återstår.",
+      "name": "Värmepumpens temperaturhysteres",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.68",
+        "A7E84:0753/0754/0756; AC3AE; 959DE offsets153/154; OCH722A thermo diff.adjust"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.69",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "69",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot värmekällornas kapaciteter för hybridberäkning. Matchar värmepumpskapacitet och två tillskott. Sista fältet är inte slutligt namngivet.",
+      "name": "Värmekällornas kapaciteter för hybridberäkning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.69",
+        "A7EE8:074A/074C/074E/0752; C3374; 959DE defaults11.2/2/4; OCH722A hybrid menu"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6a",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot hybridens utetemperaturgräns, pannverkningsgrad, bränslepris och elens CO2-faktor. Faktornamnen stöds av kategorikvalificerad SD-import. Skala och fysisk tillämpning är separata frågor.",
+      "name": "Hybridens utetemperaturgräns, pannverkningsgrad, bränslepris och elens CO2-faktor",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6a",
+        "field-purpose-audit.json;A7F52→0758/075A/07C3/0763;BD296;SD_SV_Pos105/108/111/117"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6b",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot pannbränslets CO2-faktor för hybridval. Konfigurerad jämförelsefaktor, inte uppmätt utsläpp eller effekt.",
+      "name": "Pannbränslets CO2-faktor för hybridval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6b",
+        "field-purpose-audit.json;A7FCA→0769;BD296;SD_SV_Pos123;C34F8/C2F48"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6c",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot konfigurerad COP-tabell, punkter 1–6. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Detta är INTE live-COP.",
+      "name": "Konfigurerad COP-tabell, punkter 1–6",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6c",
+        "A8008; FTC6 SD Tool1.01 SD_SV_Pos offsets [129, 132, 135, 138, 141, 144]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6d",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot konfigurerad COP-tabell, punkter 7–12. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Detta är INTE live-COP.",
+      "name": "Konfigurerad COP-tabell, punkter 7–12",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6d",
+        "A80A0; FTC6 SD Tool1.01 SD_SV_Pos offsets [147, 150, 153, 156, 159, 162]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6e",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot säsongsperioder för elprisschemat. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Säsongsperioder för elprisschemat",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6e",
+        "A8138; FTC6 SD Tool1.01 SD_SV_Pos offsets [165, 168]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.6f",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "6f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot elpriser 1–6 för hybridens kostnadsjämförelse. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Elpriser 1–6 för hybridens kostnadsjämförelse",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.6f",
+        "A8184; FTC6 SD Tool1.01 SD_SV_Pos offsets [171, 177, 183, 189, 195, 201]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.70",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "70",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot elpriser 7–10 för hybridens kostnadsjämförelse. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Elpriser 7–10 för hybridens kostnadsjämförelse",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.70",
+        "A821C; FTC6 SD Tool1.01 SD_SV_Pos offsets [207, 213, 219, 225]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.71",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "71",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot energiberäkning: tillskott och primärpump. Blocket innehåller energiberäkningens konfiguration; varje kapacitetsfält är inte slutligt namngivet.",
+      "name": "Energiberäkning: tillskott och primärpump",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.71",
+        "A8290:075B/075D/07CC/07D3; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.72",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "72",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot energiberäkning: extra pumpar och energikorrigering. Pump2/3 och korrigeringen tidigare belagda; återstående byte öppet.",
+      "name": "Energiberäkning: extra pumpar och energikorrigering",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.72",
+        "A830C:07D5/07D6/07D7/07CA; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.73",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "73",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.73",
+        "A8378; FTC6 SD Tool1.01 SD_SV_Pos offsets [255, 258, 261]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.74",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "74",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot veckoschema för elpris i tre säsonger. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade. Tre säsonger × sju dagar stöds av ReadSER2:s prisparser; tidigare kandidat tyst drift var fel.",
+      "name": "Veckoschema för elpris i tre säsonger",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.74",
+        "A8402; FTC6 SD Tool1.01 SD_SV2_Pos offsets []; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.75",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "75",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.75",
+        "A8A20; FTC6 SD Tool1.01 SD_SV2_Pos offsets [315, 318, 321, 324]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.76",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "76",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.76",
+        "A8A90; FTC6 SD Tool1.01 SD_SV2_Pos offsets [327, 330, 333, 336]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.77",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "77",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot smart-grid-temperaturbidrag, termo-ON-utgång och varmvattenåterladdning. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Ersätter det tidigare alltför breda och missvisande namnet rumsgivarval.",
+      "name": "Smart-grid-temperaturbidrag, termo-ON-utgång och varmvattenåterladdning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.77",
+        "A8AFE; FTC6 SD Tool1.01 SD_SV2_Pos offsets [339, 342, 345, 348]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.78",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "78",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot variabelt vattenflöde och analogutgångens styrning, intervall och effekt. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Variabelt vattenflöde och analogutgångens styrning, intervall och effekt",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.78",
+        "A8B6C; FTC6 SD Tool1.01 SD_SV2_Pos offsets [351, 354, 357, 360]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.79",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "79",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot pump 4:s energibidrag, värmepumpens pumpnivå, analogprioritet och minflöde. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Pump 4:s energibidrag, värmepumpens pumpnivå, analogprioritet och minflöde",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.79",
+        "A8BCC; FTC6 SD Tool1.01 SD_SV2_Pos offsets [363, 366, 369, 372]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.7a",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "7a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot maxflöde, hybridhysteres, buffertgivarkorrigering och smart-grid-värmeval. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Maxflöde, hybridhysteres, buffertgivarkorrigering och smart-grid-värmeval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.7a",
+        "A8C24; FTC6 SD Tool1.01 SD_SV2_Pos offsets [375, 378, 381, 384]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.7b",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "7b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot smart-grid-börvärden för rekommenderad/tvingad värme och kyla. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Smart-grid-börvärden för rekommenderad/tvingad värme och kyla",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.7b",
+        "A8C92; FTC6 SD Tool1.01 SD_SV2_Pos offsets [387, 390, 393, 396]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.7c",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "7c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Tar emot periodisk cirkulation för värme/kyla, intervall och smart-grid-kylval. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Periodisk cirkulation för värme/kyla, intervall och smart-grid-kylval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.7c",
+        "A8D1E; FTC6 SD Tool1.01 SD_SV2_Pos offsets [399, 402, 405, 408]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.7d",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "7d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Tar emot begränsning av eltillskott och sommarlägets temperatur-/tidsgränser. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.7d",
+        "A8D78; FTC6 SD Tool1.01 SD_SV2_Pos offsets [411, 414, 417, 420]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.7e",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "7e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Tar emot sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.7e",
+        "A8DDA; FTC6 SD Tool1.01 SD_SV2_Pos offsets [423, 426, 429, 432]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a5472"
+      ]
+    },
+    {
+      "id": "uart2.41.c8",
+      "wire": {
+        "frame": "FC",
+        "type": "41",
+        "opcode": "c8",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Styr en kategoribaserad session för överföring och tillämpning av inställningar.",
+      "name": "Styr inställningsöverföring",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.41.c8",
+        "cn105-new-capabilities.md",
+        "P0086/settings-session.md",
+        "settings-apply-order.md",
+        "settings-d-events.md"
+      ],
+      "handlers": [
+        "cee20",
+        "cf704",
+        "cf7c8"
+      ]
+    },
+    {
+      "id": "uart2.42.01",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "01",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser styrenhetens tid.",
+      "name": "Läs styrenhetens tid",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.01",
+        "F1p Process0x01; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5480"
+      ]
+    },
+    {
+      "id": "uart2.42.02",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "02",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar avfrostning och termostatstatus.",
+      "name": "Läs avfrostnings- och termostatstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.02",
+        "F1p Process0x02; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a54f8"
+      ]
+    },
+    {
+      "id": "uart2.42.03",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "03",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar felkoder och zonernas arbetsstatus.",
+      "name": "Läs fel och zonstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.03",
+        "F1p Process0x03; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5540"
+      ]
+    },
+    {
+      "id": "uart2.42.04",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "04",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar kompressorfrekvens och ytterligare driftstatus, inklusive flera enheter.",
+      "name": "Läs kompressorfrekvens och enhetsstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.04",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "850d6",
+        "lookup index 3",
+        "port-sprint-evidence.json"
+      ],
+      "handlers": [
+        "a55c2"
+      ]
+    },
+    {
+      "id": "uart2.42.05",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "05",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar värmekälla och varmvattenproduktionens status.",
+      "name": "Läs värmekälla och varmvattenstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.05",
+        "F1p Process0x05; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5628"
+      ]
+    },
+    {
+      "id": "uart2.42.06",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "06",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Hybridjämförelse: kostnad, CO2 och valt elpris. Beräknade jämförelsevärden baserade på pris-, verkningsgrads- och COP-konfiguration. Inte uppmätt effekt eller live-COP; absoluta skalenheter återstår.",
+      "name": "Hybridjämförelse: kostnad, CO2 och valt elpris",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.06",
+        "field-purpose-audit.json;C34F8→C371C→262C..263E→A3E0C/A3E34/A3E5C"
+      ],
+      "handlers": [
+        "a56a4"
+      ]
+    },
+    {
+      "id": "uart2.42.07",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "07",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar förbrukad/producerad effekt och en ökande förbrukningsräknare.",
+      "name": "Läs effekt och förbrukningsräknare",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.07",
+        "cn105-new-capabilities.md",
+        "A5724",
+        "P0086/energy-qualification.md"
+      ],
+      "handlers": [
+        "a5724"
+      ]
+    },
+    {
+      "id": "uart2.42.09",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "09",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser temperaturbörvärden och temperaturgränser för zoner och varmvatten.",
+      "name": "Läs temperaturmål och gränser",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.09",
+        "F1p Process0x09; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a57a4"
+      ]
+    },
+    {
+      "id": "uart2.42.0b",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "0b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar rumstemperaturer och andra valda temperaturkällor.",
+      "name": "Läs rumstemperaturer och valda givare",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.0b",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "85146",
+        "lookup index 10",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a5832"
+      ]
+    },
+    {
+      "id": "uart2.42.0c",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "0c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar primär framledning, retur och varmvatten samt ytterligare temperaturfält.",
+      "name": "Läs primärkretsens och varmvattnets temperaturer",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.0c",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "85156",
+        "lookup index 11",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a58a2"
+      ]
+    },
+    {
+      "id": "uart2.42.0d",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "0d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser framledning och retur separat för zon 1 och zon 2.",
+      "name": "Läs zonernas framledning och retur",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.0d",
+        "F1p Process0x0D; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a591c"
+      ]
+    },
+    {
+      "id": "uart2.42.0e",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "0e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser extern pannas framledning och retur.",
+      "name": "Läs pannans framledning och retur",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.0e",
+        "F1p Process0x0E; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a599a"
+      ]
+    },
+    {
+      "id": "uart2.42.0f",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "0f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser ytterligare temperaturgivare; givarnas identitet är modellberoende.",
+      "name": "Läs extra temperaturgivare",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.0f",
+        "F1p Process0x0F; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a59e4"
+      ]
+    },
+    {
+      "id": "uart2.42.10",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "10",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Termostatingångar, flödesvakter och externa styringångar. Visar sju separata ingångar. Tidigare samlingsnamn termostaternas värmebehov var för snävt; externa ingångarnas funktion beror på konfiguration.",
+      "name": "Läs termostater, flödesvakter och externa ingångar",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.10",
+        "field-purpose-audit.json;A4156..A41B6;8DCAC"
+      ],
+      "handlers": [
+        "a5a3e"
+      ]
+    },
+    {
+      "id": "uart2.42.11",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "11",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar DIP-konfiguration och därmed möjliga systemegenskaper.",
+      "name": "Läs DIP-konfiguration",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.11",
+        "F1p Process0x11; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5a7e"
+      ]
+    },
+    {
+      "id": "uart2.42.13",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "13",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar kompressordrift och drifttid.",
+      "name": "Läs kompressordrift och drifttid",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.13",
+        "F1p Process0x13; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5b08"
+      ]
+    },
+    {
+      "id": "uart2.42.14",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "14",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar ingångs-/tillskottsstatus och primärt vattenflöde.",
+      "name": "Läs ingångar, tillskott och vattenflöde",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.14",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "851d6",
+        "lookup index 19",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a5b7a"
+      ]
+    },
+    {
+      "id": "uart2.42.15",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "15",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar pumpar, ventiler och andra aktuatorers driftstatus.",
+      "name": "Läs pump- och ventilstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.15",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "851e6",
+        "lookup index 20",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a5bf8"
+      ]
+    },
+    {
+      "id": "uart2.42.16",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "16",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar ytterligare vattenpumpars status.",
+      "name": "Läs extra pumpars status",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.16",
+        "F1p Process0x16; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a5c62"
+      ]
+    },
+    {
+      "id": "uart2.42.17",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "17",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Givarfel, övertemperatur och frysrisk. Visar om temperaturvärden och temperaturgränser är användbara för säker drift. Alla11 skrivna statusfält har nu följts. Tids-/aktiveringsvillkor gäller; statuskod0 betyder inte generellt frisk givare.",
+      "name": "Läs givarfel, övertemperatur och frysrisk",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.17",
+        "purpose-analysis.json; A5C86→fault descriptors→B7E76/B812E/B8E14 and sensor callbacks"
+      ],
+      "handlers": [
+        "a5c86"
+      ]
+    },
+    {
+      "id": "uart2.42.18",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "18",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Temperaturrespons, cirkulation och givarfel. Upptäcker utebliven uppvärmning, omvänd temperaturskillnad i zonerna, flödesvaktsfel och flera givarfel. Alla12 skrivna statusfält har nu följts; dessa signaler bevisar inte en viss fysisk felorsak.",
+      "name": "Läs temperaturrespons och cirkulationsfel",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.18",
+        "purpose-analysis.json; A5D3A→B85E6/CADF4/CB0A4/A2F6C and fault callbacks"
+      ],
+      "handlers": [
+        "a5d3a"
+      ]
+    },
+    {
+      "id": "uart2.42.19",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "19",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Driftskydd, värmekällekonfiguration och flödesgivarfel. Skiljer bland annat låg temperatur, oförenlig systemkonfiguration och fel på flödesgivaren. Alla åtta fält har syftesbeskrivning, inklusive kommunikation med rumsgivarmottagaren och spärrar per rumskanal. Exakt radioorsak bakom spärrar återstår.",
+      "name": "Driftskydd, värmekällekonfiguration och flödesgivarfel",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.19",
+        "purpose-analysis.json; A5DF6→C1BE6/C2634/C914C/CCCCE/CE86A"
+      ],
+      "handlers": [
+        "a5df6"
+      ]
+    },
+    {
+      "id": "uart2.42.1a",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Rapporterade tillståndskoder från sex anslutna enheter. En kod per enhet. Kodernas fulla betydelse och fysisk tilldelning är inte slutligt fastställda.",
+      "name": "Rapporterade tillståndskoder från sex anslutna enheter",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1a",
+        "A5E76→A4544→3952+12*i; 8D9AA unit-index1..6 reads D513; C396C inspects the same records"
+      ],
+      "handlers": [
+        "a5e76"
+      ]
+    },
+    {
+      "id": "uart2.42.1b",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Status för övervakning av värmepumpens tillåtna vattenflöde. Rapporterar övervakning av min-/maxflöde, inte flödet i l/min. Indirekt producent bevisar varför direktreferenssökningen inte räckte.",
+      "name": "Status för övervakning av värmepumpens tillåtna vattenflöde",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1b",
+        "A5EFC→49B6; table85702 row7 state pointer49B6/callback table882FC; ACB52 indirect writer; D2C00 compares322E with07E8/07E9; D2D5A returns49B7 fault status"
+      ],
+      "handlers": [
+        "a5efc"
+      ]
+    },
+    {
+      "id": "uart2.42.1c",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Packar uttryckliga nollvärden i sina datafält i referensfirmwaren; ingen användbar mätfunktion där.",
+      "name": "Läs nollfyllt svar 1C",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1c",
+        "FTC20.01 packer a5f1a",
+        "A4CD2 zero helper; private instructions.tsv"
+      ],
+      "handlers": [
+        "a5f1a"
+      ]
+    },
+    {
+      "id": "uart2.42.1d",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Packar uttryckliga nollvärden i sina datafält i referensfirmwaren; ingen användbar mätfunktion där.",
+      "name": "Läs nollfyllt svar 1D",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1d",
+        "FTC20.01 packer a5f8c",
+        "A4CD2 zero helper; private instructions.tsv"
+      ],
+      "handlers": [
+        "a5f8c"
+      ]
+    },
+    {
+      "id": "uart2.42.1e",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Packar uttryckliga nollvärden i sina datafält i referensfirmwaren; ingen användbar mätfunktion där.",
+      "name": "Läs nollfyllt svar 1E",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1e",
+        "FTC20.01 packer a5ff6,a4cd2",
+        "A4CD2 zero helper; private instructions.tsv"
+      ],
+      "handlers": [
+        "a5ff6",
+        "a4cd2"
+      ]
+    },
+    {
+      "id": "uart2.42.1f",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "1f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Packar uttryckliga nollvärden i sina datafält i referensfirmwaren; ingen användbar mätfunktion där.",
+      "name": "Läs nollfyllt svar 1F",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.1f",
+        "FTC20.01 packer a6068,a4cd2",
+        "A4CD2 zero helper; private instructions.tsv"
+      ],
+      "handlers": [
+        "a6068",
+        "a4cd2"
+      ]
+    },
+    {
+      "id": "uart2.42.20",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "20",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Tom reserverad datasvarsplats 20. Datafältet lämnas tomt i denna referensfirmware. Avsedd funktion i andra versioner är okänd.",
+      "name": "Tom reserverad datasvarsplats 20",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.20",
+        "A60CC only writes frame/type/length/opcode; A9080→A906A clears reply first (P0088 port-sprint)"
+      ],
+      "handlers": [
+        "a60cc"
+      ]
+    },
+    {
+      "id": "uart2.42.26",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "26",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar valda driftlägen och temperaturmål.",
+      "name": "Läs driftlägen och temperaturmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.26",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "852f6",
+        "lookup index 37",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a612c"
+      ]
+    },
+    {
+      "id": "uart2.42.27",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "27",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Packar uttryckliga nollvärden i sina datafält i referensfirmwaren; ingen användbar mätfunktion där.",
+      "name": "Läs nollfyllt svar 27",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.27",
+        "FTC20.01 packer a61b2",
+        "A4CD2 zero helper; private instructions.tsv"
+      ],
+      "handlers": [
+        "a61b2"
+      ]
+    },
+    {
+      "id": "uart2.42.28",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "28",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar boost, semester, driftspärrar och extern styrstatus.",
+      "name": "Läs driftspärrar och extern styrstatus",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.28",
+        "cn105-new-capabilities.md",
+        "893cf",
+        "85316",
+        "lookup index 39",
+        "cn105-fast-fields.md"
+      ],
+      "handlers": [
+        "a61f2"
+      ]
+    },
+    {
+      "id": "uart2.42.29",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "29",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Rapporterar värme/kyla och zonernas temperaturbörvärden.",
+      "name": "Läs värme-/kylläge och zonmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.29",
+        "F1p Process0x29; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a624e"
+      ]
+    },
+    {
+      "id": "uart2.42.50",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "50",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut varmvattenmål, temperaturfall och maximal körtid. Temperaturfall är kopplat till samma källa som GET09; körtidsnamnet stöds av minutomvandling och manualen. Övriga fält återstår.",
+      "name": "Varmvattenmål, temperaturfall och maximal körtid",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.50",
+        "A629C; BD190:1947/1948→0714,194A/194B→0716; A3FF2; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a629c"
+      ]
+    },
+    {
+      "id": "uart2.42.51",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "51",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut varmvattenläge, återhämtningspaus och legionellamål. Läge är direkt identifierat. Paus och legionellamål är funktionshypoteser från import, standardvärden och manual; inte full konsumentkedja.",
+      "name": "Varmvattenläge, återhämtningspaus och legionellamål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.51",
+        "A630E:3912; BD190:194D/194E→0718,1953/1954→071A; 959DE defaults; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a630e"
+      ]
+    },
+    {
+      "id": "uart2.42.52",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "52",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut legionellacykelns tidsinställningar. Tidsenheterna och standardvärdena passar maximal cykeltid och temperaturhålltid. Alla fält är inte namngivna.",
+      "name": "Legionellacykelns tidsinställningar",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.52",
+        "A6376; BD190:195C/195D→071C (hours),195F/1960→071E (minutes); 959DE defaults; OCH722A DHW menu"
+      ],
+      "handlers": [
+        "a6376"
+      ]
+    },
+    {
+      "id": "uart2.42.53",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "53",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut zonernas värme-/kylreglerläge. Inställningssessionens väg; skilj begärt läge från valt läge.",
+      "name": "Zonernas värme-/kylreglerläge",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.53",
+        "A63D4:3913/3914; C979E; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a63d4"
+      ]
+    },
+    {
+      "id": "uart2.42.54",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "54",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut zonernas temperaturbörvärden. Blocket omfattar flera temperaturmål per zon, inte ett enda framledningsmål.",
+      "name": "Zonernas temperaturbörvärden",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.54",
+        "A6426; A6410 zone selection; C979E:38DC..38F6; P0088/cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a6426"
+      ]
+    },
+    {
+      "id": "uart2.42.55",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "55",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut värmekurvans punkter per zon. Zonval och punktstruktur stöder namnet. Exakt kurvtolkning är en hypotes och inte härledd enbart från ordningsföljden.",
+      "name": "Värmekurvans punkter per zon",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.55",
+        "A653E/A6410:zone-select and three staged point groups; adjacent53/54 mode/target blocks"
+      ],
+      "handlers": [
+        "a653e"
+      ]
+    },
+    {
+      "id": "uart2.42.56",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "56",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut veckoprogram för värme/kyla och varmvatten. Sjudagarsindex och schemabanker stöder familjen. Exakt betydelse av samtliga programväljare är ännu inte fastställd.",
+      "name": "Veckoprogram för värme/kyla och varmvatten",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.56",
+        "A6642; A65CC:3*28+2*14+2*7+weekday; P0088/settings-transfer-map.md; S1/S2 files in atlas-ledger.md"
+      ],
+      "handlers": [
+        "a6642"
+      ]
+    },
+    {
+      "id": "uart2.42.57",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "57",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut årsperiod för veckoprogram 2. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Årsperiod för veckoprogram 2",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.57",
+        "A77B8; FTC6 SD Tool1.01 SD_Sch_Pos offsets [105]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a77b8"
+      ]
+    },
+    {
+      "id": "uart2.42.58",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "58",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Lämnar ut reserverad inställningsplats 58. Läsaren lämnar inget inställningsinnehåll och skrivgrenen går direkt till gemensamt slut i denna image.",
+      "name": "Reserverad inställningsplats 58",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.58",
+        "A77F2 only session-status/category; A910F switch index8→ABB8B"
+      ],
+      "handlers": [
+        "a77f2"
+      ]
+    },
+    {
+      "id": "uart2.42.59",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "59",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut semesterläge: aktivering samt start- och slutdatum. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Semesterläge: aktivering samt start- och slutdatum",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.59",
+        "A7816; FTC6 SD Tool1.01 SD_Hol_Pos offsets [0, 3, 6]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a7816"
+      ]
+    },
+    {
+      "id": "uart2.42.5a",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut semesterlägets temperaturmål. Flera mål och zonval; inte själva semesteraktiveringen.",
+      "name": "Semesterlägets temperaturmål",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5a",
+        "A7874; BD20E:194A..195D→0733/0735/0737/0739/0781/0783/0785; B9C9E/B9D5A; P0088/cn105-control-fields.md"
+      ],
+      "handlers": [
+        "a7874"
+      ]
+    },
+    {
+      "id": "uart2.42.5b",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "platshållare",
+      "function": "Lämnar ut reserverad inställningsplats 5B. Läsaren lämnar inget inställningsinnehåll och skrivgrenen går direkt till gemensamt slut i denna image.",
+      "name": "Reserverad inställningsplats 5B",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5b",
+        "A7914 only session-status/category; A910F switch index11→ABB8B"
+      ],
+      "handlers": [
+        "a7914"
+      ]
+    },
+    {
+      "id": "uart2.42.5c",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut displayens språk, temperaturenhet och temperaturvisning. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Displayens språk, temperaturenhet och temperaturvisning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5c",
+        "A7938; FTC6 SD Tool1.01 SD_Is_Pos offsets [0, 3, 6]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a7938"
+      ]
+    },
+    {
+      "id": "uart2.42.5d",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut kontakttelefon som visas på manöverpanelen. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Kontakttelefon som visas på manöverpanelen",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5d",
+        "A7984; FTC6 SD Tool1.01 SD_Is_Pos offsets [9, 12, 15, 18]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a7984"
+      ]
+    },
+    {
+      "id": "uart2.42.5e",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5e",
+        "A79E2; FTC6 SD Tool1.01 SD_Is_Pos offsets [21, 24, 27, 30]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a79e2"
+      ]
+    },
+    {
+      "id": "uart2.42.5f",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "5f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut tidsschema för val av rumsgivare per zon. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Tidsschema för val av rumsgivare per zon",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.5f",
+        "A7A3A; FTC6 SD Tool1.01 SD_Is_Pos offsets [33, 36, 39, 42, 45, 48, 51, 54, 57, 60]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a7a3a"
+      ]
+    },
+    {
+      "id": "uart2.42.60",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "60",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut kalibrering av temperaturgivare, grupp 1. Framledning och retur är belagda. Alla givarnamn i gruppen återstår.",
+      "name": "Kalibrering av temperaturgivare, grupp 1",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.60",
+        "A7AFC:0729/072B/072F/0771; 986E2/98702; P0087/flow-target-trace.md"
+      ],
+      "handlers": [
+        "a7afc"
+      ]
+    },
+    {
+      "id": "uart2.42.61",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "61",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut kalibrering av temperaturgivare, grupp 2. Kalibreringsfamilj identifierad; tilldelning till varje fysisk givare återstår.",
+      "name": "Kalibrering av temperaturgivare, grupp 2",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.61",
+        "A7B88:0773/0775/0777/0779; 987AE and adjacent sensor writers"
+      ],
+      "handlers": [
+        "a7b88"
+      ]
+    },
+    {
+      "id": "uart2.42.62",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "62",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut kalibrering av temperaturgivare, grupp 3. Två ytterligare kalibreringsvärden; fysisk givartilldelning inte fullständigt belagd.",
+      "name": "Kalibrering av temperaturgivare, grupp 3",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.62",
+        "A7C14:077B/072D; 959DE zero-offset defaults; sensor writer family986E2..9884E"
+      ],
+      "handlers": [
+        "a7c14"
+      ]
+    },
+    {
+      "id": "uart2.42.63",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "63",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut cirkulationspumpens ekonomi- och temperaturvillkor. Pumpvillkor och fördröjning har native konsumenter. Gruppens fullständiga fältnamn återstår.",
+      "name": "Cirkulationspumpens ekonomi- och temperaturvillkor",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.63",
+        "A7C6E:073D/0723/0725/0727; AF12E/AF660/C132A; 959DE; OCH722A auxiliary menu"
+      ],
+      "handlers": [
+        "a7c6e"
+      ]
+    },
+    {
+      "id": "uart2.42.64",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "64",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut eltillskottets tillåtelse och fördröjningar. Standardvärden och tillståndsvillkor stöder namnet; inte ett bevis för varje tillskottssteg.",
+      "name": "Eltillskottets tillåtelse och fördröjningar",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.64",
+        "A7CE6:073C/0721/073B/07FD; BE24E; 959DE defaults30/15min; OCH722A auxiliary menu"
+      ],
+      "handlers": [
+        "a7ce6"
+      ]
+    },
+    {
+      "id": "uart2.42.65",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "65",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut shuntventilens gångtid/intervall och varmvattenpumpens nivå. Rättar tidigare alltför snävt namn DHW settings. Shuntnamnet är korrelerat via tider, utgångar och manual; pumpnivån är tidigare belagd.",
+      "name": "Shuntventilens gångtid/intervall och varmvattenpumpens nivå",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.65",
+        "A7D48:077D/077F/0770; C47FE/C4126; 959DE defaults120s/2min; P0083/pump-control-trace.md; OCH722A mixing valve menu"
+      ],
+      "handlers": [
+        "a7d48",
+        "cfb18"
+      ]
+    },
+    {
+      "id": "uart2.42.66",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "66",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut val av värmekälla och samtidig värme/varmvatten. BF750 kombinerar utetemperaturvillkor med zonspärrar. Namnet är en arbetshypotes för blandat block.",
+      "name": "Val av värmekälla och samtidig värme/varmvatten",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.66",
+        "A7D9E:0720/073E/073F/0741; BF750; 959DE; OCH722A simultaneous operation menu"
+      ],
+      "handlers": [
+        "a7d9e"
+      ]
+    },
+    {
+      "id": "uart2.42.67",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "67",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut värmeregleringens temperaturgränser och tidsintervall. Framledningens min/max har läskoppling. Övriga villkor och intervall ska inte likställas med dessa gränser.",
+      "name": "Värmeregleringens temperaturgränser och tidsintervall",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.67",
+        "A7DFE:0742/0744/0746/0748; A400C/A4026→GET09; B4F42; OCH722A heating menu"
+      ],
+      "handlers": [
+        "a7dfe"
+      ]
+    },
+    {
+      "id": "uart2.42.68",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "68",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut värmepumpens temperaturhysteres. Standardvärden +5/-5 och användning i regleringen stöder familjen; aktiveringens fulla semantik återstår.",
+      "name": "Värmepumpens temperaturhysteres",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.68",
+        "A7E84:0753/0754/0756; AC3AE; 959DE offsets153/154; OCH722A thermo diff.adjust"
+      ],
+      "handlers": [
+        "a7e84"
+      ]
+    },
+    {
+      "id": "uart2.42.69",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "69",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut värmekällornas kapaciteter för hybridberäkning. Matchar värmepumpskapacitet och två tillskott. Sista fältet är inte slutligt namngivet.",
+      "name": "Värmekällornas kapaciteter för hybridberäkning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.69",
+        "A7EE8:074A/074C/074E/0752; C3374; 959DE defaults11.2/2/4; OCH722A hybrid menu"
+      ],
+      "handlers": [
+        "a7ee8"
+      ]
+    },
+    {
+      "id": "uart2.42.6a",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut hybridens utetemperaturgräns, pannverkningsgrad, bränslepris och elens CO2-faktor. Faktornamnen stöds av kategorikvalificerad SD-import. Skala och fysisk tillämpning är separata frågor.",
+      "name": "Hybridens utetemperaturgräns, pannverkningsgrad, bränslepris och elens CO2-faktor",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6a",
+        "field-purpose-audit.json;A7F52→0758/075A/07C3/0763;BD296;SD_SV_Pos105/108/111/117"
+      ],
+      "handlers": [
+        "a7f52"
+      ]
+    },
+    {
+      "id": "uart2.42.6b",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut pannbränslets CO2-faktor för hybridval. Konfigurerad jämförelsefaktor, inte uppmätt utsläpp eller effekt.",
+      "name": "Pannbränslets CO2-faktor för hybridval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6b",
+        "field-purpose-audit.json;A7FCA→0769;BD296;SD_SV_Pos123;C34F8/C2F48"
+      ],
+      "handlers": [
+        "a7fca"
+      ]
+    },
+    {
+      "id": "uart2.42.6c",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut konfigurerad COP-tabell, punkter 1–6. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Detta är INTE live-COP.",
+      "name": "Konfigurerad COP-tabell, punkter 1–6",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6c",
+        "A8008; FTC6 SD Tool1.01 SD_SV_Pos offsets [129, 132, 135, 138, 141, 144]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8008"
+      ]
+    },
+    {
+      "id": "uart2.42.6d",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut konfigurerad COP-tabell, punkter 7–12. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Detta är INTE live-COP.",
+      "name": "Konfigurerad COP-tabell, punkter 7–12",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6d",
+        "A80A0; FTC6 SD Tool1.01 SD_SV_Pos offsets [147, 150, 153, 156, 159, 162]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a80a0"
+      ]
+    },
+    {
+      "id": "uart2.42.6e",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut säsongsperioder för elprisschemat. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Säsongsperioder för elprisschemat",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6e",
+        "A8138; FTC6 SD Tool1.01 SD_SV_Pos offsets [165, 168]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8138"
+      ]
+    },
+    {
+      "id": "uart2.42.6f",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "6f",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut elpriser 1–6 för hybridens kostnadsjämförelse. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Elpriser 1–6 för hybridens kostnadsjämförelse",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.6f",
+        "A8184; FTC6 SD Tool1.01 SD_SV_Pos offsets [171, 177, 183, 189, 195, 201]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8184"
+      ]
+    },
+    {
+      "id": "uart2.42.70",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "70",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut elpriser 7–10 för hybridens kostnadsjämförelse. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Elpriser 7–10 för hybridens kostnadsjämförelse",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.70",
+        "A821C; FTC6 SD Tool1.01 SD_SV_Pos offsets [207, 213, 219, 225]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a821c"
+      ]
+    },
+    {
+      "id": "uart2.42.71",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "71",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut energiberäkning: tillskott och primärpump. Blocket innehåller energiberäkningens konfiguration; varje kapacitetsfält är inte slutligt namngivet.",
+      "name": "Energiberäkning: tillskott och primärpump",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.71",
+        "A8290:075B/075D/07CC/07D3; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a8290"
+      ]
+    },
+    {
+      "id": "uart2.42.72",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "72",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut energiberäkning: extra pumpar och energikorrigering. Pump2/3 och korrigeringen tidigare belagda; återstående byte öppet.",
+      "name": "Energiberäkning: extra pumpar och energikorrigering",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.72",
+        "A830C:07D5/07D6/07D7/07CA; P0084/settings-trace.md"
+      ],
+      "handlers": [
+        "a830c"
+      ]
+    },
+    {
+      "id": "uart2.42.73",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "73",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.73",
+        "A8378; FTC6 SD Tool1.01 SD_SV_Pos offsets [255, 258, 261]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8378"
+      ]
+    },
+    {
+      "id": "uart2.42.74",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "74",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut veckoschema för elpris i tre säsonger. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade. Tre säsonger × sju dagar stöds av ReadSER2:s prisparser; tidigare kandidat tyst drift var fel.",
+      "name": "Veckoschema för elpris i tre säsonger",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.74",
+        "A8402; FTC6 SD Tool1.01 SD_SV2_Pos offsets []; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8402"
+      ]
+    },
+    {
+      "id": "uart2.42.75",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "75",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.75",
+        "A8A20; FTC6 SD Tool1.01 SD_SV2_Pos offsets [315, 318, 321, 324]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8a20"
+      ]
+    },
+    {
+      "id": "uart2.42.76",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "76",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.76",
+        "A8A90; FTC6 SD Tool1.01 SD_SV2_Pos offsets [327, 330, 333, 336]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8a90"
+      ]
+    },
+    {
+      "id": "uart2.42.77",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "77",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut smart-grid-temperaturbidrag, termo-ON-utgång och varmvattenåterladdning. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad. Ersätter det tidigare alltför breda och missvisande namnet rumsgivarval.",
+      "name": "Smart-grid-temperaturbidrag, termo-ON-utgång och varmvattenåterladdning",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.77",
+        "A8AFE; FTC6 SD Tool1.01 SD_SV2_Pos offsets [339, 342, 345, 348]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8afe"
+      ]
+    },
+    {
+      "id": "uart2.42.78",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "78",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut variabelt vattenflöde och analogutgångens styrning, intervall och effekt. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Variabelt vattenflöde och analogutgångens styrning, intervall och effekt",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.78",
+        "A8B6C; FTC6 SD Tool1.01 SD_SV2_Pos offsets [351, 354, 357, 360]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8b6c"
+      ]
+    },
+    {
+      "id": "uart2.42.79",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "79",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut pump 4:s energibidrag, värmepumpens pumpnivå, analogprioritet och minflöde. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Pump 4:s energibidrag, värmepumpens pumpnivå, analogprioritet och minflöde",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.79",
+        "A8BCC; FTC6 SD Tool1.01 SD_SV2_Pos offsets [363, 366, 369, 372]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8bcc",
+        "cfb18"
+      ]
+    },
+    {
+      "id": "uart2.42.7a",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "7a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut maxflöde, hybridhysteres, buffertgivarkorrigering och smart-grid-värmeval. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Maxflöde, hybridhysteres, buffertgivarkorrigering och smart-grid-värmeval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.7a",
+        "A8C24; FTC6 SD Tool1.01 SD_SV2_Pos offsets [375, 378, 381, 384]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8c24"
+      ]
+    },
+    {
+      "id": "uart2.42.7b",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "7b",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut smart-grid-börvärden för rekommenderad/tvingad värme och kyla. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Smart-grid-börvärden för rekommenderad/tvingad värme och kyla",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.7b",
+        "A8C92; FTC6 SD Tool1.01 SD_SV2_Pos offsets [387, 390, 393, 396]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8c92"
+      ]
+    },
+    {
+      "id": "uart2.42.7c",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "7c",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Lämnar ut periodisk cirkulation för värme/kyla, intervall och smart-grid-kylval. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Periodisk cirkulation för värme/kyla, intervall och smart-grid-kylval",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.7c",
+        "A8D1E; FTC6 SD Tool1.01 SD_SV2_Pos offsets [399, 402, 405, 408]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8d1e"
+      ]
+    },
+    {
+      "id": "uart2.42.7d",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "7d",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Lämnar ut begränsning av eltillskott och sommarlägets temperatur-/tidsgränser. Namnet stöds av SD-format och native packarens/exportörens gemensamma källor. Gäller konfiguration, inte ett nytt uppmätt värde; fysisk tillämpning ej provad.",
+      "name": "Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.7d",
+        "A8D78; FTC6 SD Tool1.01 SD_SV2_Pos offsets [411, 414, 417, 420]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8d78"
+      ]
+    },
+    {
+      "id": "uart2.42.7e",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "7e",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Lämnar ut sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift. Funktionsnamn från kategorikvalificerad struktur-/offsetmatchning mot SD-verktyget. Peerimplementation och fysisk tillämpning är inte verifierade.",
+      "name": "Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.7e",
+        "A8DDA; FTC6 SD Tool1.01 SD_SV2_Pos offsets [423, 426, 429, 432]; RCFile.ReadINIT/ReadHOL/ReadSER1/ReadSER2/ReadSCH; sd-tool-correlation.md"
+      ],
+      "handlers": [
+        "a8dda"
+      ]
+    },
+    {
+      "id": "uart2.42.a1",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "a1",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser förbrukad energi uppdelad på värme, kyla och varmvatten.",
+      "name": "Läs förbrukad energi",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.a1",
+        "F1p Process0xA1; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a8e38"
+      ]
+    },
+    {
+      "id": "uart2.42.a2",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "a2",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "trolig",
+      "function": "Läser producerad energi uppdelad på värme, kyla och varmvatten.",
+      "name": "Läs producerad energi",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.a2",
+        "F1p Process0xA2; pinned in P0089/provenance.json"
+      ],
+      "handlers": [
+        "a8eb6"
+      ]
+    },
+    {
+      "id": "uart2.42.a3",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "a3",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Förmedlar servicefrågor och deras typade resultat; en gateway med många underkoder.",
+      "name": "Beställ och läs serviceresultat",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.a3",
+        "cn105-new-capabilities.md",
+        "P0083/service-trace.md",
+        "P0086/energy-qualification.md",
+        "a3-job-lifecycle.md",
+        "source-link.md",
+        "../P0086/energy-qualification.md"
+      ],
+      "handlers": [
+        "ceba8",
+        "cebee",
+        "8c0b4",
+        "ced82",
+        "a8f34"
+      ]
+    },
+    {
+      "id": "uart2.42.c8",
+      "wire": {
+        "frame": "FC",
+        "type": "42",
+        "opcode": "c8",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Rapporterar inställningssessionens acceptans, upptagenstatus eller avvisning; inget tillämpningskvitto.",
+      "name": "Läs inställningssessionens status",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.42.c8",
+        "cn105-new-capabilities.md",
+        "89480",
+        "85656",
+        "lookup index 49"
+      ],
+      "handlers": [
+        "a8f74"
+      ]
+    },
+    {
+      "id": "uart2.frame.02.00",
+      "wire": {
+        "frame": "02",
+        "type_position": 3,
+        "type": "00"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Avsluta inställningssession och lämna alternativt informationssvar. Detta beskriver belagd funktion i FTC. Syftet med de konstanta informationsbytena är ännu inte namngivet; kommandot är inte effektfri läsning.",
+      "name": "Avsluta session och svara med information",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.frame.02.00",
+        "RX descriptor13 internal149=95h; A51C6/A5250; CF518 atCF639→2372=0; CE920 watchdog; TX149→A901E"
+      ],
+      "handlers": [
+        "a51c6",
+        "a5250"
+      ]
+    },
+    {
+      "id": "uart2.frame.02.01",
+      "wire": {
+        "frame": "02",
+        "type_position": 3,
+        "type": "01"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Nollkvittens i det alternativa 02-protokollet. Belagd transportfunktion. Överordnad avsikt och eventuell indirekt sidoeffekt är inte identifierade.",
+      "name": "Kvittera alternativ ram 02",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.frame.02.01",
+        "A51E2 requires FF/FF and zero parameter; internal96→A9056; A9090 alternative header"
+      ],
+      "handlers": [
+        "a51e2",
+        "a5250"
+      ]
+    },
+    {
+      "id": "uart2.frame.5a",
+      "wire": {
+        "frame": "FC",
+        "type": "5a",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "name": "Anslutning till CN105",
+      "function": "Etablerar protokollanslutning; separat ramtyp, inte GET/SET-underkommando 5A.",
+      "evidence": [
+        "P0088/structural-inventory.json: uart2.rx descriptor9 at894BB",
+        "A50F2",
+        "procon/modular/firmware/src/cn105.c CONNECT"
+      ],
+      "handlers": [
+        "a50f2"
+      ]
+    },
+    {
+      "id": "uart2.frame.5b",
+      "wire": {
+        "frame": "FC",
+        "type": "5b",
+        "opcode": "c9",
+        "direction": "RX→TX"
+      },
+      "port": "CN105 / UART2",
+      "status": "identifierad",
+      "function": "Läser information om styrenhet/konfiguration genom C9 i ramtyp 5B.",
+      "name": "Läs styrenhetsinformation",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.frame.5b",
+        "cn105-new-capabilities.md",
+        "892A8 descriptor10",
+        "A5148",
+        "A8F8A",
+        "F1p Process0xC9",
+        "port-sprint-evidence.json"
+      ],
+      "handlers": [
+        "a5148",
+        "a8f8a"
+      ]
+    },
+    {
+      "id": "uart2.frame.5c",
+      "wire": {
+        "type": "5c",
+        "opcode": "cc"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Anslutningsbunden CC-fråga med CC/FF-svar. Funktionsnamnet beskriver observerbar protokollfunktion. Det är inte belägg för en fysisk styrfunktion eller fullständig effektfrihet.",
+      "name": "Besvara ansluten CC-fråga",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.frame.5c",
+        "A5172 requires connected state and CC; internal93→A8FF8/A4ADE"
+      ],
+      "handlers": [
+        "a5172"
+      ]
+    },
+    {
+      "id": "uart2.frame.5d",
+      "wire": {
+        "type": "5d",
+        "opcode": "cc"
+      },
+      "port": "CN105 / UART2",
+      "status": "namngiven del",
+      "function": "Anslutningsbunden CC-kvittens. Funktionsnamnet beskriver observerbar protokollfunktion. Överordnad avsikt och indirekta sidoeffekter är fortfarande öppna.",
+      "name": "Kvittera ansluten CC-ram",
+      "evidence": [
+        "P0088/command-port-matrix.json#uart2.frame.5d",
+        "A519C requires connected state and CC; internal94→A900E"
+      ],
+      "handlers": [
+        "a519c"
+      ]
+    }
+  ]
+}

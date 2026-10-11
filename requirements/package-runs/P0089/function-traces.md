@@ -1,0 +1,31 @@
+# P0089 — återstående kommandon följda till konsument eller belagd gräns
+
+Alla 23 tidigare luckor har granskats. Ett ändläge utan funktionsnamn är fortfarande öppet, inte ett färdigt namn. Läs/skrivparet redovisas tillsammans. Inga enheter kontaktade.
+
+| Kommando | Kedjans ändläge |
+|---|---|
+| 42.57 | Tre stagingbytes1FA9..1FAB. D-utökad väljare500 når samma triple. Ingen namngiven aktiv konsument hittad; schemadatum är ännu bara en hypotes. Senare SD-korrelation: Årsperiod för veckoprogram 2; SD_Sch_Pos offset [105]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.59 | Staging1940..1948 delas mellan kategorier. Semesterfamilj är kandidat, men kategori4-importBD20E börjar vid194A. De observerade DHW/zon-konsumenterna har kategori1/2 och kan inte användas som bevis för59 i kategori4. Senare SD-korrelation: Semesterläge: aktivering samt start- och slutdatum; SD_Hol_Pos offset [0, 3, 6]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.5c | Staging1940..1948. Samma bytes används för DHW/zonlägen under andra kategorier. Ingen betydelse som grundinställningar kan fastställas genom adresslikheten. Senare SD-korrelation: Displayens språk, temperaturenhet och temperaturvisning; SD_Is_Pos offset [0, 3, 6]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.5d | Staging1949..1954. Temperatur-/DHW-konsumenterna är kategori1/2/4; avsedd kategori5-betydelse är inte visad. Senare SD-korrelation: Kontakttelefon som visas på manöverpanelen; SD_Is_Pos offset [9, 12, 15, 18]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.5e | Staging1955..1960. Kategori5-importBD28E kopierar195A→076F;076F har bara direktreferenser i import/persistens i exporten. UI-/peerbetydelsen saknas. Senare SD-korrelation: Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval; SD_Is_Pos offset [21, 24, 27, 30]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.5f | Zonvalt staging1961..197E. B984A läser flera av dessa bytes men endast i kategori2. Det ger inte namn åt kategori5-innehållet. Senare SD-korrelation: Tidsschema för val av rumsgivare per zon; SD_Is_Pos offset [33, 36, 39, 42, 45, 48, 51, 54, 57, 60]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.6a | Konsumentkedja till temperaturgränsC2B96 och jämförelseberäkningC34F8; namngivna delar, individuella kostnads-/CO2-faktorer kvarstår. |
+| 42.6e | Två stagingtriplar19E5..19EA; D-väljare601/602. Ingen lokal aktiv konsument hittad; frånvaro av direkta referenser utesluter inte indirekt peeranvändning. Senare SD-korrelation: Säsongsperioder för elprisschemat; SD_SV_Pos offset [165, 168]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.73 | 07CB→CE554→CE422→322E identifierar flödessensorns övre skalpunkt.07D2 påverkar BB160:s temperaturrespons.07C9 påverkar BF8A6:s tillskottsvillkor. Senare SD-korrelation: Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering; SD_SV_Pos offset [255, 258, 261]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.75 | Fyra stagingtriplar1C7B..1C86; D-väljare801..804. Inga direkta aktiva konsumenter hittade i exporten. Senare SD-korrelation: Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg; SD_SV2_Pos offset [315, 318, 321, 324]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.76 | 0750/0751→8DCAC byter hur externa styrsignaler förs vidare. Tre återstående triplar1C87..1C8F motsvarar D805..807 och saknar namngiven konsument. Senare SD-korrelation: Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5; SD_SV2_Pos offset [327, 330, 333, 336]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.7d | 07FC och staging1CDE..1CE6. D-väljare10..12;07FC syns i persistens/import men ingen direkt aktiv konsument. Sommarstyrning är inte bevisad. Senare SD-korrelation: Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser; SD_SV2_Pos offset [411, 414, 417, 420]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 42.7e | Staging1CE7..1CF2; D-väljare13..16. Ingen namngiven aktiv konsument hittad. Anslutningen till7D ger inte i sig ett funktionsnamn. Senare SD-korrelation: Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift; SD_SV2_Pos offset [423, 426, 429, 432]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget. |
+| 41.33 | Intern händelse2 och generiskt svarA5430. Ingen verksam konsument bevisad i befintlig avgränsad händelsesökning; får inte döpas till en styrfunktion utan belägg. |
+| 42.06 | C371C kopierar C34F8-resultat till packarens källor; C2E60/C2F48 använder jämförelsetalen. Namngiven beräkningsfamilj, inga uppmätta watt påstås. |
+| 42.19 | C163A/C16C2 och BF66C binder delar av fälten till övervakning/spärrar. Några statusplatser saknar identifierad producent. |
+| 42.1a | 8D9AA fyller sex separata poster från D-vägen. A4544 läser kodfältet; C396C konsumerar samma poster. Enhetsspecifika tillståndskoder, inte sex temperaturer. |
+| 42.1b | Indirekt producent funnen:85702 rad7 pekar på49B6 och callbacktabell882FC. ACB52 skriver callbackresultatet. D2C00 jämför primärflödet322E med min/max07E8/07E9; D2D5A returnerar status. Namn: övervakning av tillåtet vattenflöde. Se fault1b-trace.md. |
+| 42.20 | A9080/A906A nollställer svaret; A60CC skriver bara huvud/längd/kod. Därmed tom datafunktion i denna image. |
+| frame.02.00 | Descriptor13→intern95→CF518 avslutar session2372; CE920 behandlar95 i timeoutvillkoret; A901E lämnar konstant informationssvar. |
+| frame.02.01 | Descriptor14→intern96, A51E2 accepterar nollparameter, A9056 lämnar nollkvittens. Ingen särskild funktion hos96 bevisad utöver protokollkvittensen. |
+| frame.5c | Descriptor11→intern93; A5172 kräver anslutning ochCC; A8FF8/A4ADE svararCC FF. Innehållets avsedda funktion saknar belägg. |
+| frame.5d | Descriptor12→intern94; A519C kräver anslutning ochCC; A900E svararCC. Ingen särskild verksam konsument bevisad; inte ett bevis för generell effektfrihet. |
+
+Direkta operandträffar och hash för granskade assemblyrötter finns i JSON. Sökningen är inte en fullständig analys av alla indirekta skrivningar. P88-underlaget är oförändrat.

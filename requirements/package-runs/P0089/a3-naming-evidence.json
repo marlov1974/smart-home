@@ -1,0 +1,14 @@
+{
+  "scope": "A3 remaining17; offline only",
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "descriptor_address": "82b34",
+  "descriptor_hex": "1000660000000115293d00000613a73900000912003a00000b12013a00000d12ff3900001113fe3900001e0101000000270100000000ff0000000000",
+  "private_exports": {
+    "8f142": "8fb043f7f3c8abbe006663aaecb164894a395632095ad69b6c658b7d514c207b",
+    "91948": "fd839509a1cf1f21edbef65e5cf5b2db7aebfa2d675e889884054382c97880c8",
+    "8efa2": "8741520f9a2df075eb07f399339cc17643a249a41c8798d0d0630abb8f54c2c5",
+    "ce2a4": "3f3562e85ee596a2e61c981bd55af149e4bd061ebca45af4a099db277eb79802"
+  },
+  "semantic_boundary": "350..363 peer actuator/mode meanings unresolved; named operations are not physical-function identifications",
+  "physical_tests": 0
+}

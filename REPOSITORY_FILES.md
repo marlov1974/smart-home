@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1090
+Tracked file count: 1098
 
 ## Files
 
@@ -786,10 +786,14 @@ Tracked file count: 1090
 - `requirements/package-runs/P0088/verification.json`
 - `requirements/package-runs/P0089/CHANGELOG.md`
 - `requirements/package-runs/P0089/cn105-contracts.json`
+- `requirements/package-runs/P0089/cn105-function-overview.json`
+- `requirements/package-runs/P0089/cn105-function-overview.md`
 - `requirements/package-runs/P0089/control-contracts.md`
 - `requirements/package-runs/P0089/coverage.json`
 - `requirements/package-runs/P0089/design.md`
 - `requirements/package-runs/P0089/evidence.json`
+- `requirements/package-runs/P0089/function-naming-progress.md`
+- `requirements/package-runs/P0089/function-overview-verification.json`
 - `requirements/package-runs/P0089/functions.md`
 - `requirements/package-runs/P0089/new-capabilities.md`
 - `requirements/package-runs/P0089/open-questions.md`
@@ -1093,8 +1097,46 @@ Tracked file count: 1090
 - `tools/ftc6/p89/codec.py`
 - `tools/ftc6/p89/controls.py`
 - `tools/ftc6/p89/extract_evidence.py`
+- `tools/ftc6/p89/function_names.py`
 - `tools/ftc6/p89/models.py`
+- `tools/ftc6/p89/overview.py`
 - `tools/ftc6/p89/report.py`
+- `tools/ftc6/p89/service_names.py`
+- `tools/ftc6/p89/test_overview.py`
 - `tools/ftc6/p89/test_p89.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`
+
+- `requirements/package-runs/P0089/function-traces.md` — P0089 funktionell namngivning och reproducerbar evidens.
+- `requirements/package-runs/P0089/function-traces.json` — P0089 funktionell namngivning och reproducerbar evidens.
+- `requirements/package-runs/P0089/sd-tool-correlation.md` — P0089 funktionell namngivning och reproducerbar evidens.
+- `requirements/package-runs/P0089/sd-tool-correlation.json` — P0089 funktionell namngivning och reproducerbar evidens.
+- `requirements/package-runs/P0089/fault1b-trace.md` — P0089 funktionell namngivning och reproducerbar evidens.
+- `requirements/package-runs/P0089/fault1b-trace.json` — P0089 funktionell namngivning och reproducerbar evidens.
+- `tools/ftc6/p89/trace_names.py` — P0089 funktionell namngivning och reproducerbar evidens.
+- `tools/ftc6/p89/sd_names.py` — P0089 funktionell namngivning och reproducerbar evidens.
+- `tools/ftc6/p89/sd_evidence.py` — P0089 funktionell namngivning och reproducerbar evidens.
+- `tools/ftc6/p89/service_native_names.py` — P0089 funktionell namngivning och reproducerbar evidens.
+
+- `requirements/package-runs/P0089/a3-functions.md` — A3-namn, sidoeffekter och kvarstående mottagargräns.
+- `requirements/package-runs/P0089/a3-naming-evidence.json` — A3-tabellbytes och native källhashar.
+
+- `tools/ftc6/p89/short_names.py` — Korta presentationsnamn utan ändrad evidensgrad.
+- `tools/ftc6/p89/name_registry.py` — Reproducerbart namnregister för CN105 och A3.
+- `tools/ftc6/p89/test_name_registry.py` — Täckning, reproducerbarhet och bevarad osäkerhet.
+- `requirements/package-runs/P0089/name-registry.json` — Maskinläsbart namnregister med originalmetadata.
+- `requirements/package-runs/P0089/name-registry.md` — Läsbart namnregister.
+
+- `tools/ftc6/p89/purpose_fields.py` — Syften för31 statusfält, med native källkedjor och gränser.
+- `tools/ftc6/p89/purpose_report.py` — Reproducerbar rapport om syften och indirekta feltabeller.
+- `tools/ftc6/p89/test_purpose.py` — Verifierar descriptorbindning, täckning och privatevidens.
+- `requirements/package-runs/P0089/purpose-analysis.json` — Native descriptorbytes och callbackhashar för syftesanalysen.
+- `requirements/package-runs/P0089/purpose-analysis.md` — Användarbegripliga syften för GET17–19.
+
+- `tools/ftc6/p89/field_purposes.py` — Grupperade fältsyften med källkedjor och evidensgrader.
+- `tools/ftc6/p89/field_audit.py` — Binder syften till payloadfält, sparar spårhashar och redovisar restlista.
+- `tools/ftc6/p89/test_field_audit.py` — Regressionskontroller för protokollroller, shuntpar och native evidens.
+- `requirements/package-runs/P0089/field-purpose-audit.md` — Fältsyften, källor och kvarstående semantiska gränser.
+- `requirements/package-runs/P0089/field-purpose-audit.json` — Fältsyften, källor och kvarstående semantiska gränser.
+- `requirements/package-runs/P0089/field-purpose-findings.md` — Fältsyften, källor och kvarstående semantiska gränser.
+- `requirements/package-runs/P0089/service-manual-followup.md` — Fältsyften, källor och kvarstående semantiska gränser.

@@ -1,0 +1,961 @@
+{
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "listing_sha256": "a2f4f054b01ef5ecff2d52efeb33f54456da626faedcab21a74f65c6daee6bac",
+  "scope": "All 13 previously unnamed setting pairs and 10 other routes; existing bounded export, no universal absence proof",
+  "warning": "Operand mentions are search candidates, not typed references. Indexed references and category aliases require separate interpretation.",
+  "roots": {
+    "8d9aa": "6ac0c3fa3944a9b31e1316c82e57cedeba4da94a51a5bba357210c75414dab05",
+    "8dcac": "da6e0454ef88ea25e6b454fc8caddf48083401f7077c82df0746f46d706e9822",
+    "a4410": "5f85803f1172a7db8663dabfa657d7f8d9d9025c2aab134c45103d3b1601d743",
+    "a4544": "6334615350867ca7e4af3a3f131d3774a2a5f44c0d7826cce95b1e6932c627da",
+    "a4ade": "13ae4a533f246f7d80d896b8327b096ecf1689461d0d082506ad2ff33889b1b9",
+    "a4f68": "b5961ac129e1453dd3cf524df17f4dc784b9f2c90ce7f3a06d037b26d559a298",
+    "a4fe0": "53e80b4a577e8a86ce0111f1815b8a95ff491e162bff1b271a8d943f2b054e2f",
+    "a5172": "de40dd1493778355715f90b42ded0e352710a884b8b8da5f2fdf3dd32738c683",
+    "a519c": "04f6bbeec05d4555923e5198b5fde47f10d8d1ecf0cc6dd9da0284321f6da241",
+    "a51c6": "9ab1e36f13290aea8db08dd5f42b2c5b5b0f2e2101f331731ba9304bc7af6151",
+    "a51e2": "6c91d57e05e4962779374e833c9116cd696145bd540655b40199624459614769",
+    "a5250": "77ba50f2c452f9df5682cecc663664fa6ac2d62f9f7b8e3bc59406d27b16fe8e",
+    "a535e": "37dc8ac03d1a91c5daf56d860a5bb1f27edaeb53131c82e7e2e37f8d065f8f9c",
+    "a53d6": "8461765c21b2395c2cc9aa4d75785958f2b85e43065bae7730091741844e69d5",
+    "a5430": "18939590a11693435ac46b673692fb8a8a7d8ae6aa2826904f1a3a423460b014",
+    "a56a4": "03e5a14fbd251544df880684b162f0484ab4534625ed0c950042cccaaefdd173",
+    "a5df6": "0f22db82496da4effe715f10df7c2e023d26db325f247da444c1dcfbfd1ff82e",
+    "a5e76": "a71004ea59cb5c6109e70f93340c768f56ce9ddcaf925279fc6727548f9add90",
+    "a5efc": "c1a67e1d415a301d119fc84a7b6a9fa56be4cc706332805c73b938ef56a5e5af",
+    "a60cc": "b5d3aea96d3926cb79403328eb57ad70145284d7aaeae3c28ef540b4d42e092d",
+    "a77b8": "2bd78fff41a9e17a805a60233ab373817956c27b7606a98cfc8aa7a38269946d",
+    "a7816": "8011b97f6f8556735f9cf5e1a5238d15b747f6827424d2862e447619d265f4d1",
+    "a7938": "56a714c1d563c4b054d3dfbd7e2c83411c89469725112d4ca12fde7660961a9a",
+    "a7984": "a03ffae3d95fa81ccd0196ae72c80ddcb1d5202f50539f73764156d8e526a442",
+    "a79e2": "74b3bebfdf5b1a40b664a2032ee6d5bb637cf210609c2c3ce560cf86f32e5e44",
+    "a7a3a": "a3afebd994c40cd8e54bd2c0d36136260be54286d15048e2f74c88ccc4bca779",
+    "a7f52": "47a28dedf9b8dc710901c78691f73a90559d29d2bf14c7e0c1198f1fe620ea31",
+    "a8138": "6190ba395c2e47b941efec97b471247e25e92313912edb70e223a1c971ba724e",
+    "a8378": "963f877d7149817f75f3a860f00483996a7284ace7c9c745acceb2111e00a364",
+    "a8a20": "e47f8407ab2fecdababfb06761b01daf3b1cf4d14f872222bcca28e91d976f9c",
+    "a8a90": "df498bb4b30ce7d989923506594ab223fcdfe3a7738fa4fe4b4cd1d012c3d92e",
+    "a8d78": "d469ceae89e0f95f18ac7168cb71f73651a33356df180c10be4405fd317cf724",
+    "a8dda": "ffcba8535291e74fee0be429c244dbd34f5e611e0024509a91a32aa20a575d56",
+    "a8ff8": "1cc1de7a18d4313a895e85c4395e1573d2caeb57499c6df41b98e5673ed01340",
+    "a900e": "a880de8f7495600e3d8c2388ede0a65314478c605480facc69e5493d6b8edf47",
+    "a901e": "cd79e37a34e3fe8ec22d7e5c11e3a1b0d4cd29508ca2b15a5f3d705fac2f4649",
+    "a9056": "5fac3105170efb0f6e0265101d2bb86bc838c040cb146ca63c6156ef0b18e97a",
+    "a906a": "924cd8a9433c81a9f1ab71ada6e3a998c851bfbb699ec51cfc43ef20fd545923",
+    "a9080": "85466ecff4e0f10ffceef8b579fe22cd754f86fbe76cd7b17c1fa820c826deec",
+    "a9090": "0a7659ffbccdf70b7e251dc3df3bde17e51e5a614171f30ab728af1cc143968a",
+    "b984a": "a214b1df44de8716948aad3f3f4e85da171baea5575fab1ce4e8398e056524d2",
+    "bb160": "f3f59c394cf28f25a87871b5f689413c4850eeed8a4f09b3ec156df4f553eadb",
+    "bb9dc": "d042f8b6e3a8032490914d53efb1762721e09d51dfcbf87f3931a88574778f48",
+    "bbbea": "cc63ead2744015d6bb8c2d5a7bbc1109ec7b752a3bde871f9e72cae1e9db912f",
+    "bbfca": "f6fac11bb329ae158373929bd42f9578265309c9b66c286f39e6b584d81bcced",
+    "bd20e": "d9308fcfaf566f1674820d3b17c0bbe4ef35046ad83b7434f64da1a7508edce1",
+    "bd28e": "a2ee88563128b8b6f2094fa08054ae1624764e0a3744c0fa48e757f2b6d45730",
+    "bf66c": "c8210139cf864ee90b785d90bec1a46f09c6c21df70495ca6e375f3da2cb097b",
+    "bf8a6": "bf129c9291ddf29aa06698e8531154fea46cab812ac610da2a694d62a6ffe953",
+    "c163a": "2c2de6a80b6174619350fd0b7ad2063806c7d25f30c9da41db9d5d91f2e43bf6",
+    "c16c2": "ce47ac84404a2d05f1c3e0e11ecb26b83a3715532988963471712cc74d22b8db",
+    "c2e60": "46177cfa66df82950052dfb85363ecebc553d5b329101e5dc23dd58a51eae0c5",
+    "c2f48": "8b0d7e89fc137dbc1f5b928f39ad9d9efc9072358a71c2d2aeb0f360c071d34d",
+    "c34f8": "dafe215ae1ab9f69b6209486da3a73fa4708b20a973d31b086563337e7815cb5",
+    "c371c": "be06b739d6ba4165459e5d7890ecc2e1ddabf15633c96f84944c8ba8663424c5",
+    "c396c": "282d0512aeedbf9e266bdd911e4d7c44ccd6ba7302892010b63a956ffaf78bbf",
+    "ce422": "ea63c2a162a7763a25ab40c9f6ab1ee43befaf431107469c91d541b5ab90f36f",
+    "ce554": "c2169d2f6a4dfafd50106ed16a856e2b5ea6ac8e74be07a8d8ca71646e3acb0c",
+    "ce920": "fcedfcf7ae63676ec4fdaadd91067646040eb1ea32145a0498073e67cc4b532d",
+    "cf518": "55a44138305565b2a69127d3108e60a4d5b33f6413c8f20753754312a44e826b"
+  },
+  "rows": [
+    {
+      "id": "uart2.42.57",
+      "paired_set": "uart2.41.57",
+      "name": "Årsperiod för veckoprogram 2",
+      "status": "trolig",
+      "boundary": "Tre stagingbytes1FA9..1FAB. D-utökad väljare500 når samma triple. Ingen namngiven aktiv konsument hittad; schemadatum är ännu bara en hypotes. Senare SD-korrelation: Årsperiod för veckoprogram 2; SD_Sch_Pos offset [105]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1fa9": [
+          "a77b8",
+          "a90f8"
+        ],
+        "1faa": [
+          "a77b8",
+          "a90f8"
+        ],
+        "1fab": [
+          "a77b8",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.59",
+      "paired_set": "uart2.41.59",
+      "name": "Semesterläge: aktivering samt start- och slutdatum",
+      "status": "trolig",
+      "boundary": "Staging1940..1948 delas mellan kategorier. Semesterfamilj är kandidat, men kategori4-importBD20E börjar vid194A. De observerade DHW/zon-konsumenterna har kategori1/2 och kan inte användas som bevis för59 i kategori4. Senare SD-korrelation: Semesterläge: aktivering samt start- och slutdatum; SD_Hol_Pos offset [0, 3, 6]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1940": [
+          "8d694",
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1941": [
+          "a7816",
+          "a90f8"
+        ],
+        "1942": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8",
+          "bbbea",
+          "bd296"
+        ],
+        "1943": [
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1944": [
+          "a7816",
+          "a90f8"
+        ],
+        "1945": [
+          "a7816",
+          "a7938",
+          "a90f8",
+          "bb9dc",
+          "bbbea",
+          "bd296"
+        ],
+        "1946": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1947": [
+          "a629c",
+          "a7816",
+          "a90f8",
+          "bd190"
+        ],
+        "1948": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd296"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.5c",
+      "paired_set": "uart2.41.5c",
+      "name": "Displayens språk, temperaturenhet och temperaturvisning",
+      "status": "trolig",
+      "boundary": "Staging1940..1948. Samma bytes används för DHW/zonlägen under andra kategorier. Ingen betydelse som grundinställningar kan fastställas genom adresslikheten. Senare SD-korrelation: Displayens språk, temperaturenhet och temperaturvisning; SD_Is_Pos offset [0, 3, 6]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1940": [
+          "8d694",
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1942": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8",
+          "bbbea",
+          "bd296"
+        ],
+        "1943": [
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1945": [
+          "a7816",
+          "a7938",
+          "a90f8",
+          "bb9dc",
+          "bbbea",
+          "bd296"
+        ],
+        "1946": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8"
+        ],
+        "1948": [
+          "a629c",
+          "a7816",
+          "a7938",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd296"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.5d",
+      "paired_set": "uart2.41.5d",
+      "name": "Kontakttelefon som visas på manöverpanelen",
+      "status": "trolig",
+      "boundary": "Staging1949..1954. Temperatur-/DHW-konsumenterna är kategori1/2/4; avsedd kategori5-betydelse är inte visad. Senare SD-korrelation: Kontakttelefon som visas på manöverpanelen; SD_Is_Pos offset [9, 12, 15, 18]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1949": [
+          "a629c",
+          "a7874",
+          "a7984",
+          "a90f8"
+        ],
+        "194a": [
+          "a629c",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "bd190",
+          "bd20e"
+        ],
+        "194b": [
+          "a629c",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd20e",
+          "bd296"
+        ],
+        "194d": [
+          "a630e",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "bd190",
+          "bd20e"
+        ],
+        "194e": [
+          "a630e",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd20e",
+          "bd296"
+        ],
+        "1950": [
+          "a7874",
+          "a7984",
+          "a90f8",
+          "bd20e"
+        ],
+        "1951": [
+          "a7874",
+          "a7984",
+          "a90f8",
+          "b984a",
+          "bbfca",
+          "bd20e",
+          "bd296"
+        ],
+        "1953": [
+          "a630e",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "bd190",
+          "bd20e"
+        ],
+        "1954": [
+          "a630e",
+          "a7874",
+          "a7984",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd20e",
+          "bd296"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.5e",
+      "paired_set": "uart2.41.5e",
+      "name": "Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval",
+      "status": "trolig",
+      "boundary": "Staging1955..1960. Kategori5-importBD28E kopierar195A→076F;076F har bara direktreferenser i import/persistens i exporten. UI-/peerbetydelsen saknas. Senare SD-korrelation: Tidsformat, fjärrkontrollernas zontilldelning och rumsgivarval; SD_Is_Pos offset [21, 24, 27, 30]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1955": [
+          "a630e",
+          "a653e",
+          "a7874",
+          "a79e2",
+          "a90f8"
+        ],
+        "1957": [
+          "a630e",
+          "a653e",
+          "a7874",
+          "a79e2",
+          "a90f8",
+          "bd20e",
+          "bd296"
+        ],
+        "1958": [
+          "a6376",
+          "a79e2",
+          "a90f8"
+        ],
+        "195a": [
+          "a6376",
+          "a653e",
+          "a7874",
+          "a79e2",
+          "a90f8",
+          "bd20e",
+          "bd28e",
+          "bd296"
+        ],
+        "195b": [
+          "a6376",
+          "a79e2",
+          "a90f8"
+        ],
+        "195d": [
+          "a6376",
+          "a653e",
+          "a7874",
+          "a79e2",
+          "a90f8",
+          "bd190",
+          "bd20e",
+          "bd296"
+        ],
+        "195e": [
+          "a6376",
+          "a79e2",
+          "a90f8"
+        ],
+        "1960": [
+          "a6376",
+          "a79e2",
+          "a90f8",
+          "b984a",
+          "bd190",
+          "bd296"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.5f",
+      "paired_set": "uart2.41.5f",
+      "name": "Tidsschema för val av rumsgivare per zon",
+      "status": "trolig",
+      "boundary": "Zonvalt staging1961..197E. B984A läser flera av dessa bytes men endast i kategori2. Det ger inte namn åt kategori5-innehållet. Senare SD-korrelation: Tidsschema för val av rumsgivare per zon; SD_Is_Pos offset [33, 36, 39, 42, 45, 48, 51, 54, 57, 60]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1961": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1962": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1963": [
+          "a7a3a",
+          "a90f8",
+          "b984a",
+          "bd296"
+        ],
+        "1965": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1966": [
+          "a7a3a",
+          "a90f8",
+          "b984a",
+          "bd296"
+        ],
+        "1968": [
+          "a653e",
+          "a7a3a",
+          "a90f8"
+        ],
+        "1969": [
+          "a653e",
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ],
+        "196b": [
+          "a653e",
+          "a7a3a",
+          "a90f8"
+        ],
+        "196c": [
+          "a653e",
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ],
+        "196e": [
+          "a653e",
+          "a7a3a",
+          "a90f8"
+        ],
+        "196f": [
+          "a653e",
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ],
+        "1970": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1971": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1972": [
+          "a7a3a",
+          "a90f8",
+          "b984a",
+          "bd296"
+        ],
+        "1974": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1975": [
+          "a7a3a",
+          "a90f8",
+          "b984a",
+          "bd296"
+        ],
+        "1977": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "1978": [
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ],
+        "197a": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "197b": [
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ],
+        "197d": [
+          "a7a3a",
+          "a90f8"
+        ],
+        "197e": [
+          "a7a3a",
+          "a90f8",
+          "bd296"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.6a",
+      "paired_set": "uart2.41.6a",
+      "name": "Hybridvalets temperaturgräns och jämförelseparametrar",
+      "status": "namngiven del",
+      "boundary": "Konsumentkedja till temperaturgränsC2B96 och jämförelseberäkningC34F8; namngivna delar, individuella kostnads-/CO2-faktorer kvarstår.",
+      "candidate_operand_mentions": {
+        "0758": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a7f52",
+          "bcb0a",
+          "bd296",
+          "c2b96",
+          "c9958"
+        ],
+        "075a": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a7f52",
+          "bcb0a",
+          "bd296",
+          "c34f8",
+          "c9958"
+        ],
+        "0763": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a7f52",
+          "bcb0a",
+          "bd296",
+          "c9958"
+        ],
+        "07c3": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a7f52",
+          "bcb0a",
+          "bd296",
+          "c9958"
+        ],
+        "f060": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a4088",
+          "a7c6e",
+          "a7d9e",
+          "a7dfe",
+          "a7f52",
+          "b94b0",
+          "bcb0a",
+          "bd296",
+          "c9958"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.6e",
+      "paired_set": "uart2.41.6e",
+      "name": "Säsongsperioder för elprisschemat",
+      "status": "trolig",
+      "boundary": "Två stagingtriplar19E5..19EA; D-väljare601/602. Ingen lokal aktiv konsument hittad; frånvaro av direkta referenser utesluter inte indirekt peeranvändning. Senare SD-korrelation: Säsongsperioder för elprisschemat; SD_SV_Pos offset [165, 168]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "19e5": [
+          "a8138",
+          "a90f8"
+        ],
+        "19e6": [
+          "a8138",
+          "a90f8"
+        ],
+        "19e7": [
+          "a8138",
+          "a90f8"
+        ],
+        "19e8": [
+          "a8138",
+          "a90f8"
+        ],
+        "19e9": [
+          "a8138",
+          "a90f8"
+        ],
+        "19ea": [
+          "a8138",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.73",
+      "paired_set": "uart2.41.73",
+      "name": "Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering",
+      "status": "identifierad",
+      "boundary": "07CB→CE554→CE422→322E identifierar flödessensorns övre skalpunkt.07D2 påverkar BB160:s temperaturrespons.07C9 påverkar BF8A6:s tillskottsvillkor. Senare SD-korrelation: Flödessensorns maxvärde, varmvatten-tillskott och Normal/Fast-rumsreglering; SD_SV_Pos offset [255, 258, 261]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "07c9": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a8378",
+          "b452e",
+          "bcb0a",
+          "bd296",
+          "bf8a6",
+          "c9958"
+        ],
+        "07cb": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a8378",
+          "bcb0a",
+          "bd296",
+          "c9958",
+          "ce554"
+        ],
+        "07d2": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a8378",
+          "bb160",
+          "bcb0a",
+          "bd296",
+          "c9958",
+          "cb780",
+          "d0892",
+          "d08fa"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.75",
+      "paired_set": "uart2.41.75",
+      "name": "Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg",
+      "status": "trolig",
+      "boundary": "Fyra stagingtriplar1C7B..1C86; D-väljare801..804. Inga direkta aktiva konsumenter hittade i exporten. Senare SD-korrelation: Golvtorkning: start-/sluttemperatur, maxtemperatur, hålltid och uppsteg; SD_SV2_Pos offset [315, 318, 321, 324]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1c7b": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c7c": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c7d": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c7e": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c7f": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c80": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c81": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c82": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c83": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c84": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c85": [
+          "a8a20",
+          "a90f8"
+        ],
+        "1c86": [
+          "a8a20",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.76",
+      "paired_set": "uart2.41.76",
+      "name": "Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5",
+      "status": "namngiven del",
+      "boundary": "0750/0751→8DCAC byter hur externa styrsignaler förs vidare. Tre återstående triplar1C87..1C8F motsvarar D805..807 och saknar namngiven konsument. Senare SD-korrelation: Golvtorkningens stegintervall/nedsteg och externa ingångar IN4/IN5; SD_SV2_Pos offset [327, 330, 333, 336]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "0750": [
+          "8dcac",
+          "94a82",
+          "959de",
+          "96af4",
+          "a8a90",
+          "bcff4",
+          "bd780",
+          "ca1d2"
+        ],
+        "0751": [
+          "8dcac",
+          "94a82",
+          "959de",
+          "96af4",
+          "a8a90",
+          "bcff4",
+          "bd780",
+          "ca1d2"
+        ],
+        "1c87": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c88": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c89": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8a": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8b": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8c": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8d": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8e": [
+          "a8a90",
+          "a90f8"
+        ],
+        "1c8f": [
+          "a8a90",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.7d",
+      "paired_set": "uart2.41.7d",
+      "name": "Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser",
+      "status": "namngiven del",
+      "boundary": "07FC och staging1CDE..1CE6. D-väljare10..12;07FC syns i persistens/import men ingen direkt aktiv konsument. Sommarstyrning är inte bevisad. Senare SD-korrelation: Begränsning av eltillskott och sommarlägets temperatur-/tidsgränser; SD_SV2_Pos offset [411, 414, 417, 420]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "07fc": [
+          "94a82",
+          "959de",
+          "96af4",
+          "a8d78",
+          "bcff4",
+          "bd780",
+          "ca1d2"
+        ],
+        "1cde": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce0": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce1": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce2": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce3": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce4": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce5": [
+          "a8d78",
+          "a90f8"
+        ],
+        "1ce6": [
+          "a8d78",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.7e",
+      "paired_set": "uart2.41.7e",
+      "name": "Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift",
+      "status": "trolig",
+      "boundary": "Staging1CE7..1CF2; D-väljare13..16. Ingen namngiven aktiv konsument hittad. Anslutningen till7D ger inte i sig ett funktionsnamn. Senare SD-korrelation: Sommarlägets tvångsstarttemperatur och schema/nivå för tyst drift; SD_SV2_Pos offset [423, 426, 429, 432]. Se sd-tool-correlation.md; tidigare stopp är inte längre slutläget.",
+      "candidate_operand_mentions": {
+        "1ce7": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1ce9": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cea": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cec": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1ced": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cee": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cef": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cf0": [
+          "a8dda",
+          "a90f8"
+        ],
+        "1cf2": [
+          "a8dda",
+          "a90f8"
+        ]
+      }
+    },
+    {
+      "id": "uart2.41.33",
+      "paired_set": null,
+      "name": "Generisk SET-kvittens för 33; tillämpning ej identifierad",
+      "status": "namngiven del",
+      "boundary": "Intern händelse2 och generiskt svarA5430. Ingen verksam konsument bevisad i befintlig avgränsad händelsesökning; får inte döpas till en styrfunktion utan belägg.",
+      "candidate_operand_mentions": {}
+    },
+    {
+      "id": "uart2.42.06",
+      "paired_set": null,
+      "name": "Jämförelsevärden för val av värmekälla",
+      "status": "namngiven del",
+      "boundary": "C371C kopierar C34F8-resultat till packarens källor; C2E60/C2F48 använder jämförelsetalen. Namngiven beräkningsfamilj, inga uppmätta watt påstås.",
+      "candidate_operand_mentions": {}
+    },
+    {
+      "id": "uart2.42.19",
+      "paired_set": null,
+      "name": "Övervaknings- och spärrstatus för driftutgångar",
+      "status": "namngiven del",
+      "boundary": "C163A/C16C2 och BF66C binder delar av fälten till övervakning/spärrar. Några statusplatser saknar identifierad producent.",
+      "candidate_operand_mentions": {}
+    },
+    {
+      "id": "uart2.42.1a",
+      "paired_set": null,
+      "name": "Rapporterade tillståndskoder från sex anslutna enheter",
+      "status": "namngiven del",
+      "boundary": "8D9AA fyller sex separata poster från D-vägen. A4544 läser kodfältet; C396C konsumerar samma poster. Enhetsspecifika tillståndskoder, inte sex temperaturer.",
+      "candidate_operand_mentions": {}
+    },
+    {
+      "id": "uart2.42.1b",
+      "paired_set": null,
+      "name": "Status för övervakning av värmepumpens tillåtna vattenflöde",
+      "status": "identifierad",
+      "boundary": "Indirekt producent funnen:85702 rad7 pekar på49B6 och callbacktabell882FC. ACB52 skriver callbackresultatet. D2C00 jämför primärflödet322E med min/max07E8/07E9; D2D5A returnerar status. Namn: övervakning av tillåtet vattenflöde. Se fault1b-trace.md.",
+      "candidate_operand_mentions": {
+        "49b6": [
+          "a5efc"
+        ]
+      }
+    },
+    {
+      "id": "uart2.42.20",
+      "paired_set": null,
+      "name": "Tom reserverad datasvarsplats 20",
+      "status": "platshållare",
+      "boundary": "A9080/A906A nollställer svaret; A60CC skriver bara huvud/längd/kod. Därmed tom datafunktion i denna image.",
+      "candidate_operand_mentions": {}
+    },
+    {
+      "id": "uart2.frame.02.00",
+      "paired_set": null,
+      "name": "Avsluta inställningssession och lämna alternativt informationssvar",
+      "status": "namngiven del",
+      "boundary": "Descriptor13→intern95→CF518 avslutar session2372; CE920 behandlar95 i timeoutvillkoret; A901E lämnar konstant informationssvar.",
+      "candidate_operand_mentions": {
+        "3dca": [
+          "a504c",
+          "a50bc",
+          "a50f2",
+          "a5148",
+          "a5172",
+          "a519c",
+          "a51c6",
+          "a51e2"
+        ]
+      }
+    },
+    {
+      "id": "uart2.frame.02.01",
+      "paired_set": null,
+      "name": "Nollkvittens i det alternativa 02-protokollet",
+      "status": "namngiven del",
+      "boundary": "Descriptor14→intern96, A51E2 accepterar nollparameter, A9056 lämnar nollkvittens. Ingen särskild funktion hos96 bevisad utöver protokollkvittensen.",
+      "candidate_operand_mentions": {
+        "3dca": [
+          "a504c",
+          "a50bc",
+          "a50f2",
+          "a5148",
+          "a5172",
+          "a519c",
+          "a51c6",
+          "a51e2"
+        ]
+      }
+    },
+    {
+      "id": "uart2.frame.5c",
+      "paired_set": null,
+      "name": "Anslutningsbunden CC-fråga med CC/FF-svar",
+      "status": "namngiven del",
+      "boundary": "Descriptor11→intern93; A5172 kräver anslutning ochCC; A8FF8/A4ADE svararCC FF. Innehållets avsedda funktion saknar belägg.",
+      "candidate_operand_mentions": {
+        "3dca": [
+          "a504c",
+          "a50bc",
+          "a50f2",
+          "a5148",
+          "a5172",
+          "a519c",
+          "a51c6",
+          "a51e2"
+        ]
+      }
+    },
+    {
+      "id": "uart2.frame.5d",
+      "paired_set": null,
+      "name": "Anslutningsbunden CC-kvittens",
+      "status": "namngiven del",
+      "boundary": "Descriptor12→intern94; A519C kräver anslutning ochCC; A900E svararCC. Ingen särskild verksam konsument bevisad; inte ett bevis för generell effektfrihet.",
+      "candidate_operand_mentions": {
+        "3dca": [
+          "a504c",
+          "a50bc",
+          "a50f2",
+          "a5148",
+          "a5172",
+          "a519c",
+          "a51c6",
+          "a51e2"
+        ]
+      }
+    }
+  ],
+  "physical_tests": 0
+}

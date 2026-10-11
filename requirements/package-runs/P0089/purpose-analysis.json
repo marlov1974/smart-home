@@ -1,0 +1,1001 @@
+{
+  "status": "PARTIAL",
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "physical_tests": 0,
+  "fields": [
+    {
+      "opcode": "17",
+      "position": 1,
+      "state_pointer": "3ed6",
+      "name": "Övertemperatur i primärkretsen",
+      "purpose": "Upptäcka att framledning eller retur blir för varm.",
+      "evidence": "B7CEE→B7E76: valid0662/0664>=8000, timed",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3ed6",
+          "address": "812a4",
+          "hex": "4d09d63ee73a3421a3585e08005a960800000000000000000101010101010000",
+          "callback_table": "85e58",
+          "callback_hex": "0000567c0b00647c0b00a27c0b00e07c0b00ee7c0b00ea7c0b00527e0b000100567c0b00647c0b00a27c0b00e07c0b00ee7c0b00ea7c0b00527e0b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 2,
+      "state_pointer": "3ed8",
+      "name": "Övertemperatur i varmvattentanken",
+      "purpose": "Upptäcka för hög temperatur i varmvattnet.",
+      "evidence": "B7FD4→B812E:0668>=7500, timed",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3ed8",
+          "address": "81284",
+          "hex": "4c09d83ee73a3421a4945e08005b960800000000000000000101010101010000",
+          "callback_table": "85e94",
+          "callback_hex": "0000587f0b00667f0b00967f0b00c67f0b00d47f0b00d07f0b000a810b000100587f0b00667f0b00967f0b00c67f0b00d47f0b00d07f0b000a810b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 3,
+      "state_pointer": "3e8a",
+      "name": "Fel på primär framledningsgivare",
+      "purpose": "Visa när framledningstemperaturen inte kan användas som tillförlitligt mätvärde.",
+      "evidence": "B1602→B1730:0A80;8DDD0→0658;986E2→0662",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3e8a",
+          "address": "81184",
+          "hex": "43098a3ee73a5151a5165b080044960800000000000000000101010101010000",
+          "callback_table": "85b16",
+          "callback_hex": "0000a2150b00b0150b00d2150b00f4150b0002160b00fe150b000c170b000100a2150b00b0150b00d2150b00f4150b0002160b00fe150b000c170b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 4,
+      "state_pointer": "3e8c",
+      "name": "Fel på primär returgivare",
+      "purpose": "Visa när returtemperaturen inte kan användas som tillförlitligt mätvärde.",
+      "evidence": "B17A0→B18CE:0A81;8DDD0→065A;98702→0664",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3e8c",
+          "address": "811a4",
+          "hex": "44098c3ee73a5251a5525b080045960800000000000000000101010101010000",
+          "callback_table": "85b52",
+          "callback_hex": "000040170b004e170b0070170b0092170b00a0170b009c170b00aa180b00010040170b004e170b0070170b0092170b00a0170b009c170b00aa180b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 5,
+      "state_pointer": "3e8e",
+      "name": "Fel på varmvattengivare THW5B",
+      "purpose": "Upptäcka bortfall eller fel i den nedre varmvattengivarens kanal.",
+      "evidence": "B193E→B1A6C:0A83;8DDD0→065E;98762→0668",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3e8e",
+          "address": "811c4",
+          "hex": "46098e3ee73a5551a58e5b080046960800000000000000000101010101010000",
+          "callback_table": "85b8e",
+          "callback_hex": "0000de180b00ec180b000e190b0030190b003e190b003a190b00481a0b000100de180b00ec180b000e190b0030190b003e190b003a190b00481a0b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 6,
+      "state_pointer": "4945",
+      "name": "Fel på framledningsgivare zon 1",
+      "purpose": "Kontrollera att zon 1 har ett användbart framledningsvärde.",
+      "evidence": "CA5EC→CA71A:0A84;8DDD0→0672;A3/509→067E",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "4945",
+          "address": "810c4",
+          "hex": "68094549e73a5651a57e7d0800e3960800000000000000000101010101010000",
+          "callback_table": "87d7e",
+          "callback_hex": "00008ca50c009aa50c00bca50c00dea50c00eca50c00e8a50c00f6a60c0001008ca50c009aa50c00bca50c00dea50c00eca50c00e8a50c00f6a60c00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 7,
+      "state_pointer": "4947",
+      "name": "Fel på returgivare zon 1",
+      "purpose": "Kontrollera att zon 1 har ett användbart returvärde.",
+      "evidence": "CA78A→CA8B8:0A85;8DDD0→0674;987AE→0680;A3/512",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "4947",
+          "address": "810e4",
+          "hex": "69094749e73a5751a5ba7d0800e4960800000000000000000101010101010000",
+          "callback_table": "87dba",
+          "callback_hex": "00002aa70c0038a70c005aa70c007ca70c008aa70c0086a70c0094a80c0001002aa70c0038a70c005aa70c007ca70c008aa70c0086a70c0094a80c00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 8,
+      "state_pointer": "4949",
+      "name": "Fel på framledningsgivare zon 2",
+      "purpose": "Kontrollera att zon 2 har ett användbart framledningsvärde.",
+      "evidence": "CA928→CAA56:0A87;8DDD0→0676;987CE→0682;A3/513",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "4949",
+          "address": "81104",
+          "hex": "6a094949e73a5851a5f67d0800e5960800000000000000000101010101010000",
+          "callback_table": "87df6",
+          "callback_hex": "0000c8a80c00d6a80c00f8a80c001aa90c0028a90c0024a90c0032aa0c000100c8a80c00d6a80c00f8a80c001aa90c0028a90c0024a90c0032aa0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 9,
+      "state_pointer": "494b",
+      "name": "Fel på returgivare zon 2",
+      "purpose": "Kontrollera att zon 2 har ett användbart returvärde.",
+      "evidence": "CAAC6→CABF4:0A88;8DDD0→0678;987EE→0684;A3/514",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "494b",
+          "address": "81124",
+          "hex": "6b094b49e73a5951a5327e0800e6960800000000000000000101010101010000",
+          "callback_table": "87e32",
+          "callback_hex": "000066aa0c0074aa0c0096aa0c00b8aa0c00c6aa0c00c2aa0c00d0ab0c00010066aa0c0074aa0c0096aa0c00b8aa0c00c6aa0c00c2aa0c00d0ab0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 10,
+      "state_pointer": "3eeb",
+      "name": "Frysrisk i primärkretsen",
+      "purpose": "Upptäcka farligt låg vattentemperatur i framledning eller retur.",
+      "evidence": "B8C6C→B8E14: valid0662<=100 or0664<=300, timed",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "3eeb",
+          "address": "81384",
+          "hex": "5309eb3ee73a3521a6c05f080060960800000000000000000101010101010000",
+          "callback_table": "85fc0",
+          "callback_hex": "0000d48b0b00e28b0b00208c0b005e8c0b006c8c0b00688c0b00f08d0b000100d48b0b00e28b0b00208c0b005e8c0b006c8c0b00688c0b00f08d0b00"
+        }
+      ]
+    },
+    {
+      "opcode": "17",
+      "position": 13,
+      "state_pointer": "4994",
+      "name": "Fel på varmvattengivare THW5A",
+      "purpose": "Övervaka den övre varmvattengivaren; felet används också när temperaturkälla väljs.",
+      "evidence": "D1486→D15B8:0A82;8DDD0→065C;98762 checks4994 for666/668 selection",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5c86",
+      "descriptors": [
+        {
+          "state_pointer": "4994",
+          "address": "85802",
+          "hex": "45099449e73a5451a532800800f0960800020000000000000101010101010000",
+          "callback_table": "88032",
+          "callback_hex": "000026140d0034140d0056140d0078140d0086140d0082140d0092150d00010026140d0034140d0056140d0078140d0086140d0082140d0092150d00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 1,
+      "state_pointer": "3edd",
+      "name": "Orimlig temperaturrespons i primärkretsen",
+      "purpose": "Upptäcka utebliven temperaturökning under värmeproduktion tillsammans med orimligt förhållande mellan framledning och retur.",
+      "evidence": "B845A→B85E6/B85AE:0662/0668 increase<=100 and0662-0664<-500; mode gates",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3edd",
+          "address": "81224",
+          "hex": "4b09dd3ee73a3421a80c5f08005d960800000000000000000001020000000000",
+          "callback_table": "85f0c",
+          "callback_hex": "0000f2830b0000840b0026840b004c840b005a840b0056840b008a850b000100f2830b0000840b0026840b004c840b005a840b0056840b008a850b00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 2,
+      "state_pointer": "494d",
+      "name": "Omvänt temperaturförhållande i zon 1",
+      "purpose": "Upptäcka att zonens retur är mer än 5 grader varmare än framledningen under övervakad drift.",
+      "evidence": "CAC6C→CADF4/CADE4: valid067E-0680<-500 after delay",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "494d",
+          "address": "81084",
+          "hex": "6c094d49e73a3421a86e7e0800e7960800000000000000000000010000000000",
+          "callback_table": "87e6e",
+          "callback_hex": "000004ac0c0012ac0c0038ac0c005eac0c006cac0c0068ac0c00c0ad0c00010004ac0c0012ac0c0038ac0c005eac0c006cac0c0068ac0c00c0ad0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 3,
+      "state_pointer": "4950",
+      "name": "Omvänt temperaturförhållande i zon 2",
+      "purpose": "Upptäcka att zonens retur är mer än 5 grader varmare än framledningen under övervakad drift.",
+      "evidence": "CAF32→CB0A4/CB094: valid0682-0684<-500 after delay",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "4950",
+          "address": "810a4",
+          "hex": "6d095049e73a3421a8aa7e0800e8960800000000000000000000010000000000",
+          "callback_table": "87eaa",
+          "callback_hex": "0000caae0c00d8ae0c00feae0c0024af0c0032af0c002eaf0c0070b00c000100caae0c00d8ae0c00feae0c0024af0c0032af0c002eaf0c0070b00c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 4,
+      "state_pointer": "3ed2",
+      "name": "Otillräckligt primärflöde",
+      "purpose": "Upptäcka för liten vattencirkulation via flödesvakt eller flödesmätare.",
+      "evidence": "B79D6→B7BAA→A2F6C:069C or322E<500 or322E<07CA*100 when enabled",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3ed2",
+          "address": "812e4",
+          "hex": "4e09d23ee73a0020a91c5e08005996080000000000000000000102030405ff00",
+          "callback_table": "85e1c",
+          "callback_hex": "00006a790b0078790b00a0790b00c8790b00d6790b00d2790b00607b0b0001006a790b0078790b00a0790b00c8790b00d6790b00d2790b00607b0b00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 8,
+      "state_pointer": "3eda",
+      "name": "Fel på köldmediets vätsketemperaturgivare",
+      "purpose": "Kontrollera att köldmediets temperaturkanal ger ett användbart värde.",
+      "evidence": "B822A→B8360:0A7F;8DDD0→063A/0642;A3/505",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3eda",
+          "address": "814e4",
+          "hex": "3f09da3ee73a0251c2d05e08005c960800000000000000000101010101010000",
+          "callback_table": "85ed0",
+          "callback_hex": "0000c2810b00d0810b00f6810b001c820b002a820b0026820b003c830b000100c2810b00d0810b00f6810b001c820b002a820b0026820b003c830b00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 9,
+      "state_pointer": "4919",
+      "name": "För kallt under övervakad drift eller avfrostning",
+      "purpose": "Upptäcka låga köldmedie-/vattentemperaturer i särskilda driftlägen.",
+      "evidence": "C7B28→C7CC0: mode0B timer>359 and063A<-499; or3D07=2,0664<1501,063A<-1599",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "4919",
+          "address": "815e4",
+          "hex": "65091949e73a0315c6f8710800da960800000000000000000101010101020000",
+          "callback_table": "871f8",
+          "callback_hex": "00009c7a0c00aa7a0c00de7a0c00127b0c00287b0c00247b0c007e7c0c0001009c7a0c00aa7a0c00de7a0c00127b0c00287b0c00247b0c007e7c0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 10,
+      "state_pointer": "3f84",
+      "name": "Övertemperatur vid extern panna",
+      "purpose": "Upptäcka för hög temperatur på pannans framledning.",
+      "evidence": "C22C2→C23D4: valid067A>=8000, timed;A3/515",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3f84",
+          "address": "81364",
+          "hex": "5209843fe73a3421acda6e0800b6960800000000000000000101010101010000",
+          "callback_table": "86eda",
+          "callback_hex": "000092220c00a0220c00aa220c00b4220c00c2220c00be220c00b6230c00010092220c00a0220c00aa220c00b4220c00c2220c00be220c00b6230c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 11,
+      "state_pointer": "3f80",
+      "name": "Fel på pannans framledningsgivare",
+      "purpose": "Kontrollera att den externa pannans framledningstemperatur är användbar.",
+      "evidence": "C1F98→C20C8:0A89;8DDD0→066E;9880E→067A;A3/515",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3f80",
+          "address": "81244",
+          "hex": "4809803fe73a8151ad626e0800b4960800000000000000000101010101010000",
+          "callback_table": "86e62",
+          "callback_hex": "0000381f0c00461f0c00681f0c008a1f0c00981f0c00941f0c00aa200c000100381f0c00461f0c00681f0c008a1f0c00981f0c00941f0c00aa200c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 12,
+      "state_pointer": "3f82",
+      "name": "Fel på delad panna-/buffertgivarkanal",
+      "purpose": "Visa fel i givarkanalen som konfigurationen använder för pannretur eller bufferttank.",
+      "evidence": "C2150→C2282:0A8B;8DDD0→0670/068E;9882E/9884E→067C/0690",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3f82",
+          "address": "81264",
+          "hex": "4909823fe73a8251ad9e6e0800b5960800000000000000000101010101010000",
+          "callback_table": "86e9e",
+          "callback_hex": "0000f0200c00fe200c0020210c0042210c0050210c004c210c0064220c000100f0200c00fe200c0020210c0042210c0050210c004c210c0064220c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 1,
+      "state_pointer": "3f79",
+      "name": "För låg framledning i zon 1 under särskild drift",
+      "purpose": "Upptäcka att zon 1 förblir under 25 grader när det övervakade driftläget kräver uppvärmning.",
+      "evidence": "C1A70→C1BE6: valid067E<2500 with timed mode-specific gates",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "3f79",
+          "address": "857a2",
+          "hex": "5609793fe73a3421aeea6d0800b2960800020000000000000101010101010000",
+          "callback_table": "86dea",
+          "callback_hex": "0000401a0c004e1a0c00581a0c00621a0c00701a0c006c1a0c00a41b0c000100401a0c004e1a0c00581a0c00621a0c00701a0c006c1a0c00a41b0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 2,
+      "state_pointer": "3f86",
+      "name": "Frysrisk vid extern panna",
+      "purpose": "Upptäcka mycket låg temperatur på pannans framledning efter startvillkor och väntetider.",
+      "evidence": "C24A6→C2634: valid067A<=100, timers3DCE/3DD4>600 and other gates",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "3f86",
+          "address": "85782",
+          "hex": "5409863fe73a3521b1166f0800b7960800020000000000000101010101010000",
+          "callback_table": "86f16",
+          "callback_hex": "000076240c0084240c008e240c0098240c00a6240c00a2240c00f2250c00010076240c0084240c008e240c0098240c00a6240c00a2240c00f2250c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 3,
+      "state_pointer": "492e",
+      "name": "Oförenlig värmekällekonfiguration",
+      "purpose": "Upptäcka kombinationer av värmekälla, tillgängliga enheter och systemval som inte stöds.",
+      "evidence": "C914C→C91A6/C91EC/C9204: source selection0720, unit masks399E/399F, configuration06D4/06D5",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "492e",
+          "address": "85762",
+          "hex": "66092e49e73a1371b3d0730800e2960800020000000000000101010101010000",
+          "callback_table": "873d0",
+          "callback_hex": "000024910c0032910c0038910c003e910c004c910c0048910c0096910c00010024910c0032910c0038910c003e910c004c910c0048910c0096910c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 6,
+      "state_pointer": "491c",
+      "name": "Samlad avvikelse från anslutna källenheter",
+      "purpose": "Visa om någon vald källenhet har den avvikelse som rapporteras i enheternas sammanfattande statusmask.",
+      "evidence": "C7D6E:399E &39A1 &3F; exact peer fault category unresolved",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "491c",
+          "address": "85822",
+          "hex": "67091c49e73a31688934720800db960800020101010101010101010101010000",
+          "callback_table": "87234",
+          "callback_hex": "0000467d0c00547d0c005a7d0c00607d0c006e7d0c006a7d0c00b07d0c000100467d0c00547d0c005a7d0c00607d0c006e7d0c006a7d0c00b07d0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 7,
+      "state_pointer": "495a",
+      "name": "Misslyckad varmvatten-/växlingssekvens",
+      "purpose": "Upptäcka utebliven tankuppvärmning eller för hög primärtemperatur under särskilda varmvattensekvenser.",
+      "evidence": "CCCCE→CCD16→CCD9A/CCDD4/CCE58/CCEB2: modes9/10, event count,0668 and0662/0664; precise actuator diagnosis unresolved",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "495a",
+          "address": "857c2",
+          "hex": "6e095a49e73a3321b2367f0800eb960800020000000000000101010101010000",
+          "callback_table": "87f36",
+          "callback_hex": "00008ecc0c009ccc0c00aecc0c00c0cc0c00cecc0c00cacc0c0006cd0c0001008ecc0c009ccc0c00aecc0c00c0cc0c00cecc0c00cacc0c0006cd0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 5,
+      "state_pointer": "3f7c",
+      "name": "Utlöst flödesvakt 2",
+      "purpose": "Upptäcka utebliven cirkulation på kretsen som övervakas av flödesvakt 2.",
+      "evidence": "C1CC8→C1E96:069F;8DCAC:0542 with DIP polarity;A3/569 fault selector",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3f7c",
+          "address": "81304",
+          "hex": "4f097c3fe73a0020a9266e0800b396080000000000000000000102030405ff00",
+          "callback_table": "86e26",
+          "callback_hex": "00005c1c0c006a1c0c00921c0c00ba1c0c00c81c0c00c41c0c00521e0c0001005c1c0c006a1c0c00921c0c00ba1c0c00c81c0c00c41c0c00521e0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 6,
+      "state_pointer": "490d",
+      "name": "Utlöst flödesvakt 3",
+      "purpose": "Upptäcka utebliven cirkulation på kretsen som övervakas av flödesvakt 3.",
+      "evidence": "C6BA8→C6D7C:06A1;8DCAC:0554 with DIP polarity;A3/569 fault selector",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "490d",
+          "address": "81324",
+          "hex": "50090d49e73a0020a97e710800d896080000000000000000000102000003ff00",
+          "callback_table": "8717e",
+          "callback_hex": "00003c6b0c004a6b0c00726b0c009a6b0c00a86b0c00a46b0c00386d0c0001003c6b0c004a6b0c00726b0c009a6b0c00a86b0c00a46b0c00386d0c00"
+        }
+      ]
+    },
+    {
+      "opcode": "18",
+      "position": 7,
+      "state_pointer": "3e84/4953",
+      "name": "Fel på någon av zonernas rumsgivare",
+      "purpose": "Visa om rumstemperaturen för zon 1 eller zon 2 inte går att lita på.",
+      "evidence": "A4446 combines3E84/4953;B1180→B12B8:0828;CB1F6→CB32C:0829;AE2CC maps1/8 to manual567 TH1A/TH1B",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5d3a",
+      "descriptors": [
+        {
+          "state_pointer": "3e84",
+          "address": "81144",
+          "hex": "4109843ee73a0151c19e5a080042960800000000000000000101010101010000",
+          "callback_table": "85a9e",
+          "callback_hex": "000020110b002e110b0050110b0072110b0080110b007c110b0094120b00010020110b002e110b0050110b0072110b0080110b007c110b0094120b00"
+        },
+        {
+          "state_pointer": "4953",
+          "address": "81164",
+          "hex": "42095349e73a0151c1e67e0800e9960800000000000000000101010101000000",
+          "callback_table": "87ee6",
+          "callback_hex": "000096b10c00a4b10c00c6b10c00e8b10c00f6b10c00f2b10c0008b30c00010096b10c00a4b10c00c6b10c00e8b10c00f6b10c00f2b10c0008b30c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 8,
+      "state_pointer": "4974",
+      "name": "Fel på vattenflödesmätarens givarkanal",
+      "purpose": "Skilja ett fel på själva flödesgivaren från ett giltigt men för lågt vattenflöde.",
+      "evidence": "CE730→CE86A:0A86;CE422 uses same fault flag to qualify322E flow calculation",
+      "confidence": "native villkor följt",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "4974",
+          "address": "812c4",
+          "hex": "6f097449e73a0259afb27f0800ee960800000000000000000101010101010000",
+          "callback_table": "87fb2",
+          "callback_hex": "0000d0e60c00dee60c0000e70c0022e70c0030e70c002ce70c0044e80c000100d0e60c00dee60c0000e70c0022e70c0030e70c002ce70c0044e80c00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 4,
+      "state_pointer": "3f17",
+      "name": "Kommunikationsövervakning av rumsgivarmottagaren",
+      "purpose": "Upptäcka att giltig kommunikation från rumsgivarmottagaren uteblir under för lång tid.",
+      "evidence": "BFB6E/BFBE6: timer3BD6 reset by3F21 or39E7;C06DC sets3F21 from UART6 accepted reception;C1056 provides temporary grace",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "3f17",
+          "address": "81644",
+          "hex": "6109173fe73a030490c669080062960800000101010101010101010101010101",
+          "callback_table": "869c6",
+          "callback_hex": "00002afb0b0038fb0b004cfb0b0060fb0b006efb0b006afb0b00e6fb0b0001002afb0b0038fb0b004cfb0b0060fb0b006efb0b006afb0b00e6fb0b00"
+        }
+      ]
+    },
+    {
+      "opcode": "19",
+      "position": 5,
+      "state_pointer": "3f18/3f19/3f1a/3f1b/3f1c/3f1d/3f1e/3f1f",
+      "name": "Spärrad rumsreglering per rumskanal",
+      "purpose": "Visa vilka av de åtta rumskanalerna som rapporterar status som hindrar rumsreglering.",
+      "evidence": "A4482→fault callbacks→39E6;8F75E←C025E;A2BA0/A2BC0 select room bit;BE2CC/BE43E/BEE16/BEF6C require bit clear; exact radio cause unknown",
+      "confidence": "namngiven del",
+      "limitation": "Övervakningsstatus, inte mätvärde. Tids- och aktiveringsvillkor gäller; inget liveprov. Ingen slutsats om fysisk felorsak från denna signal ensam.",
+      "packer": "a5df6",
+      "descriptors": [
+        {
+          "state_pointer": "3f18",
+          "address": "85842",
+          "hex": "6109183fe73a030481026a080063960800020101010101010101010101010000",
+          "callback_table": "86a02",
+          "callback_hex": "0000f6fb0b0004fc0b000afc0b0010fc0b002cfc0b001afc0b0036fc0b000100f6fb0b0004fc0b000afc0b0010fc0b002cfc0b001afc0b0036fc0b00"
+        },
+        {
+          "state_pointer": "3f19",
+          "address": "85862",
+          "hex": "6109193fe73a0304823e6a080064960800020101010101010101010101010000",
+          "callback_table": "86a3e",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b004afc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b004afc0b00"
+        },
+        {
+          "state_pointer": "3f1a",
+          "address": "85882",
+          "hex": "61091a3fe73a0304837a6a080065960800020101010101010101010101010000",
+          "callback_table": "86a7a",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b005efc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b005efc0b00"
+        },
+        {
+          "state_pointer": "3f1b",
+          "address": "858a2",
+          "hex": "61091b3fe73a030484b66a080066960800020101010101010101010101010000",
+          "callback_table": "86ab6",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b0072fc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b0072fc0b00"
+        },
+        {
+          "state_pointer": "3f1c",
+          "address": "858c2",
+          "hex": "61091c3fe73a030485f26a080067960800020101010101010101010101010000",
+          "callback_table": "86af2",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b0086fc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b0086fc0b00"
+        },
+        {
+          "state_pointer": "3f1d",
+          "address": "858e2",
+          "hex": "61091d3fe73a0304862e6b080068960800020101010101010101010101010000",
+          "callback_table": "86b2e",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b009afc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b009afc0b00"
+        },
+        {
+          "state_pointer": "3f1e",
+          "address": "85902",
+          "hex": "61091e3fe73a0304876a6b080069960800020101010101010101010101010000",
+          "callback_table": "86b6a",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b00aefc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b00aefc0b00"
+        },
+        {
+          "state_pointer": "3f1f",
+          "address": "85922",
+          "hex": "61091f3fe73a030488a66b08006a960800020101010101010101010101010000",
+          "callback_table": "86ba6",
+          "callback_hex": "00001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b00c2fc0b0001001efc0b0028fc0b0028fc0b0028fc0b0028fc0b001afc0b00c2fc0b00"
+        }
+      ]
+    }
+  ],
+  "exports": {
+    "purpose/b15a2.asm": "554b2667edc2d0578acdf8470949ea3b424207968330134233395a1d28593982",
+    "purpose/b15b0.asm": "adf8ce1a0bc42ab16e1db7203d57e41db181116ced2e1b4495a216d7a08afe92",
+    "purpose/b15d2.asm": "26f1a3fa63af40192d3a1cfd7e6c4379a82d63e6fbdd2073293d633dfce3168b",
+    "purpose/b15f4.asm": "04ecc6e0fc81b52d8263a95907d26d8dddf9b9378225fa65aae3bb0f51932f45",
+    "purpose/b15fe.asm": "814ebcdec781c5d70e1af976e2cdd8e10e04246a020034cc05dd366258bcf8fe",
+    "purpose/b1602.asm": "3233de1bdb23d5280426488f6b33ee428886dde786e455902469cafe7a54518d",
+    "purpose/b170c.asm": "225633367f397b62fd64593f650ee08d4f498e500e37c724c5439368067667fb",
+    "purpose/b1740.asm": "c6e4036d81ac13a657b255893eef6d2b9404dde963b58693b2631a8dabab88c1",
+    "purpose/b174e.asm": "ccfe9377b05157b85d3187a608b852a3c46840d3a0d3b35465b925dcfbb13d24",
+    "purpose/b1770.asm": "103b178aa7773cc9b4e276d92cd2cbb1e49ef969c86bf17f940f283eea4053b5",
+    "purpose/b1792.asm": "045c79f120fa77cbc246e422d14b9bd54adec3002a94f3264ecc8a36800d50e3",
+    "purpose/b179c.asm": "76fab3f10ab6f724b2ab1b8cf451c50218785456271ed45504594f40344654d1",
+    "purpose/b17a0.asm": "3383084ce2c5e27e22e5d07e9310fd68261832ed4223e5e5627a5ecf46b639af",
+    "purpose/b18aa.asm": "b34e922fe43566ae52b79611bffdb7ee1b4e102b4c379658b4c51d5f1bf957e9",
+    "purpose/b18de.asm": "c8c613856d83ba560bff0bbda8562780692315f98955e4cab23f3060876b8cc2",
+    "purpose/b18ec.asm": "521657dc08d032d8ab00d4ba47498656afea7f7c24a6ec448d1153f765fb427a",
+    "purpose/b190e.asm": "7343294f9693f4a31a5f9ba146e5de5a7904e54d6f8185472a477f50595eebb0",
+    "purpose/b1930.asm": "ee24d4865326566bd371902c337dfa10bd2b4b6ffe116fa54fc64c083c84dbbc",
+    "purpose/b193a.asm": "c1468a6080ab811da9bf6399561927187222a584828bcd2c797a7754790ba683",
+    "purpose/b193e.asm": "a76cd36b7ab7728a48620d4906357fcc4d0c848111872c70b92ab26be1455849",
+    "purpose/b1a48.asm": "c64f13b50bbd8609631db060adc38b2ca5abfbd6c6cef8afbcd4e13fef8bef89",
+    "purpose/b796a.asm": "0b88a562205fd0b4d71e21b98066ee51d610e81f44f6b6d4fbef72e3c42ed0ff",
+    "purpose/b7978.asm": "5ed98b3745c576ac6c6017cc572b53ffb8d277d6726c6c4302b85a9e19890087",
+    "purpose/b79a0.asm": "ee4faffa21ba7b131dc24ed2ed757b3b34941e80e77d0ff2f3ae016097e2601c",
+    "purpose/b79c8.asm": "fa9198aba25ce4ab686ce6464d83b32ba82c0f29d9dee3a58d12eabc86d7fc5a",
+    "purpose/b79d2.asm": "aa70e73847e6ee7c0d674f661a79ea9b7c4c52bf89bb2fcabe490027cb3e3eeb",
+    "purpose/b79d6.asm": "0b3c8a00aba41b227bc499fb36a4bb32bb5933baa6e7a3014458505e6124401d",
+    "purpose/b7b60.asm": "dc810c42bc04e28eaff93fe8b281671cbe5104fca811ee05655edd5962f25119",
+    "purpose/b7c56.asm": "d1535f42eac451e66cdffcafb59cc3e58d029ad29d37d560c5d11813864d9eb9",
+    "purpose/b7c64.asm": "89b5afcb268ec392a88b0cb1db6bfa9e655024cfb9f9c367c54e27086a842289",
+    "purpose/b7ca2.asm": "9721bce23a4f3da23fcfa5e1af11537e8982776993410735461e3258da39e6b8",
+    "purpose/b7ce0.asm": "59bc2ac441a60b63d4252d9940c9cd61f64332b2e281254544c144cae072b8b9",
+    "purpose/b7cea.asm": "cbd776119f1b8346b6c3b47aee1c3d18ce6bc7f66493d38adfcc325955defff7",
+    "purpose/b7cee.asm": "151292289956d746d2a062784a030d0bb559cda675462bf36bd1fb58b03dd05f",
+    "purpose/b7e52.asm": "6d01fbdd04f49bd59087d93fddafab0a83d2d206698ad6f6a2bf4e163cbbd37c",
+    "purpose/b7f58.asm": "b4bbb88c0cc549b77988286c3d887d363e69eb7c8f00e89fab16bcf83d19f5d6",
+    "purpose/b7f66.asm": "b9eea8fbbfb0d6c264168bbe4113bb92dd06cc61d7b7b26e0e21da449684ad61",
+    "purpose/b7f96.asm": "dbafca891392ebeaaf3ca2f76dfce6aa86e1a21e1ae0287e52c456bf6779c7cc",
+    "purpose/b7fc6.asm": "30f64a42e4ca6108568bb44a446614c6c9d77cabee850bd6bd521f0f50720c5e",
+    "purpose/b7fd0.asm": "283947403f7e8cbd0c8082bf7a0a67e84f47fea25f9071a14bfd12dde4cb6f11",
+    "purpose/b7fd4.asm": "3e18d55de62c12579a848433e90a3a57bb12900c71bc3fe579e80d84c6c2d548",
+    "purpose/b810a.asm": "1019684a1e1f1ea4a6889983f163ba08864652782a3e6fd2a5fc85cafd553c2c",
+    "purpose/b81c2.asm": "cc9d58b18491843cc449890c7bfcc4d24c1f2f34d1a05c9f54708b0b07b06d24",
+    "purpose/b81d0.asm": "9134ca0d927d720476e8876b43e5d27e9acf97cee61677725dadc0dcdb528e51",
+    "purpose/b81f6.asm": "577b07a8d3961d25bbe12c565f70710b0a77d105e1712a0a1c3ddb25050469c6",
+    "purpose/b821c.asm": "4dd0f20a7668469662be42a4723468a09526ee70ae1ef06378366f67511f7048",
+    "purpose/b8226.asm": "b880e13ba614e2e86be8c9fbb0a0447f73d94d885e9f457005a08c2fb7b6b43c",
+    "purpose/b822a.asm": "4d4ef22942cfa919a789b3e6045cf3cc3d5d4e2a9d49160fff8f3dcb42422593",
+    "purpose/b833c.asm": "9fa75c132e4467c53d7175989050db82e95cfc852bcf4259f612d6e6c8001c68",
+    "purpose/b83f2.asm": "c0831715955b1d4054cb05fb394b1bb2ed36041dbf895ea213db406d1b790070",
+    "purpose/b8400.asm": "cab02920e7f428895eb7830b6a46c42eebc5e0ace032c5cd99f63019edf9c4fe",
+    "purpose/b8426.asm": "4f90344e275cf16393940d75d28998798f24bc2df81fdda6dbab33ba2277a6f1",
+    "purpose/b844c.asm": "a1e493555c0fb909eb03ea8929a5141abf17257710387eb08a38998ac7a00936",
+    "purpose/b8456.asm": "9a8a5ec2b6f045bad508ed39185301731aa3c9eea851a48ab82e34a9fbf1ed32",
+    "purpose/b845a.asm": "3170ee12b84f3bc6f7c4159bd3c746de15f2c82ace5182d629c8af5a79ff17d7",
+    "purpose/b858a.asm": "b8a079289cb654b495474c248dd5beae9b53758167f383737740b0a213c106ea",
+    "purpose/b8bd4.asm": "87e43f95a3f8bd1468a8f0036f8a7d8371eac1903379a92760f8d95f1299e3bd",
+    "purpose/b8be2.asm": "ee8fbcb3f4cc74d93f8bd0ff584a636fedfc7c518976156abfb7b9320ca2ec0b",
+    "purpose/b8c20.asm": "76d383cdac2e3e32f26232a7dba2091c9cc7d028325a8158b4a586dc8824389c",
+    "purpose/b8c5e.asm": "7ece70b0ba788b67170a9b2b1099902105cd42e37a14cd6feb04c8a8e5e3500d",
+    "purpose/b8c68.asm": "568c1d3f22928426f1c5d6d5b67797946849558344782d29b7bf8dcce862627b",
+    "purpose/b8c6c.asm": "1daad5e28cffff53ad93bc36655353bacb975b096605e5421a768fd7c1ce83d0",
+    "purpose/b8df0.asm": "a18dc10b8aaff4c60f2636e945240a0b3137c5d2b5750a74c934910705a8bf53",
+    "purpose/bfb2a.asm": "7cf4508f1a3c9ecc798d4df299984e82bc369b8a7186bd740294b6572cb9d9f8",
+    "purpose/bfb38.asm": "a473d32424522c8db9f039fc797c5e9a1a539d00d105f6858e9fa432f457ccb1",
+    "purpose/bfb4c.asm": "5c961681733f289e7a7b7d102ac5b4016b4c257cf00750a297fa9f93516dadfd",
+    "purpose/bfb60.asm": "2418b2c91dd5ceae500d5169d0f6316f1dfbf74757a26608416758dda48a67e9",
+    "purpose/bfb6a.asm": "98d39d6f22d056c6ce7baa92409605ed777774307bc56614db70483bf61efcde",
+    "purpose/bfb6e.asm": "8d5dac6858fe226b7d2f25e3ad1cc7b26ac9db27002b0fb5e6b349502f5095e0",
+    "purpose/bfbe6.asm": "ede445f72c05d825ed11c6bc27e12a1ecec74c943566ab0036876ebbcee6188c",
+    "purpose/c1a40.asm": "a66a83412650cdfe69027b4a9170e47d515ec01154091a62a3176414482ddd9a",
+    "purpose/c1a4e.asm": "fc16463941ff5919d05ca1bfc193da84e28a3d729ba6f3f0d7d01222c96c9929",
+    "purpose/c1a58.asm": "b7d99b7b306b8955b45de6f506a8c0660d8148eab6b43166f7514b18a1f9c518",
+    "purpose/c1a62.asm": "c9c7ed3b579a70b0eea02af4edac8851800e7bf1ed5c5967d85c80e7226f8274",
+    "purpose/c1a6c.asm": "d73a5215d4f1c82d047d590fa970f57c8299740d4971573df2885e48321807bd",
+    "purpose/c1a70.asm": "7a1604a83be5f15e4e145f30657d29784cf9546d9d695a19bac04be6ce7e3010",
+    "purpose/c1ba4.asm": "f9bc6ecd4ce9f3c1e47a9e667ec220ca76473dd12cfdc16ef77335cdc9a8a02a",
+    "purpose/c1c5c.asm": "8a2fb1d49e314e63ff41687c4f5ba6960b79e32b88ba95e241f4530e0447be12",
+    "purpose/c1c6a.asm": "0b6e1049a6a31fe0f03702ad90a7986f5654112cab9dceef63453da6a9b445fb",
+    "purpose/c1c92.asm": "6636b0a14f4a0fe8ca3e5c0cc65af32433f3ef791c232388d54793c96ffda765",
+    "purpose/c1cba.asm": "68d4c3c05f6b1428df76d1e39669f6354c247475d6935232e81a400998378cfe",
+    "purpose/c1cc4.asm": "e1b6310ae88d0f123977b77a64dcb0ea037839b243c80243e95d5be636237ada",
+    "purpose/c1cc8.asm": "09515a59fcdfbaeab02109ecd438ffc3fafad6918002f1fc1bf60e29507fe394",
+    "purpose/c1e52.asm": "a0e11219494de051b9be966d91fdcf9c8d584dc1c394a5eb0a75261765a5824d",
+    "purpose/c1f38.asm": "4c7e14a9a1da495c03383fd023a3a6d39acf6012b5ebe53fcb733add1cf2cd69",
+    "purpose/c1f46.asm": "7f2acc027eb4aadd55a0c5cdcf81a84f52f147e6e9c0a2a64c7ed5ac1da0490c",
+    "purpose/c1f68.asm": "2208311a8488c74f3de93efc8db2d0a8625fd50a94458ef7c9b707b87d8f81d8",
+    "purpose/c1f8a.asm": "1e9e580602ebce8d840305b9d3ce9118d152fe6a25742d8f24bf3449f1f163f9",
+    "purpose/c1f94.asm": "4c43a5d11582a5e37cadfb6965958272dd0f490623f020bcbeb40baf60376335",
+    "purpose/c1f98.asm": "6367e84fdec2c376d5dcc031791252dab64183a65d8bc6f3d5b40c19f8474b75",
+    "purpose/c20aa.asm": "31344cb714c0744fbe6ce9231362f0e3d80684ef6c8ce7e54f9fcdfe44c40a8a",
+    "purpose/c20f0.asm": "c7598da47dcd9dec0b7adac24d331aef519f30098ebfbe2052c45b100b5458be",
+    "purpose/c20fe.asm": "1408b1dada414e154da46abe6e1afa0b38f1f05cc3669f504d73de45aaa760dd",
+    "purpose/c2120.asm": "bc1b7f867789d8097d83aeceda08886c0872351284bf7be86c31b3c626fb6af4",
+    "purpose/c2142.asm": "cf53de71affdff8d5948f8937dc742b9bc760016f90eb2d9e145338d92ab4518",
+    "purpose/c214c.asm": "b084bbd6a71c7b7504a24c2d46908d6fb3158fc387f748250e9de1817471a02f",
+    "purpose/c2150.asm": "3be6e111e132ab25234ade7767c069d1986e97ad777af844b6cbe1bb79ba1a32",
+    "purpose/c2264.asm": "41f50526318d54635ad535c1680ab5f33a54c37c335b8d83770ef05858d01250",
+    "purpose/c2292.asm": "2d5b7ff62d00d77ee8a960594bb5058479857512f2fee71d4af8e57d008912ea",
+    "purpose/c22a0.asm": "114bbcaa66320450dfa9e7bf552e8034cfc66ae49502435d3b603277c01fba07",
+    "purpose/c22aa.asm": "9385642053e99995272863b348b1fe30dc9490df5c5ec86af8ef5fc56a0a2152",
+    "purpose/c22b4.asm": "68a3b0f40c36670d9a300e49132a56ebbee44975c90e93b115c9a5e0e34f8552",
+    "purpose/c22be.asm": "62a519fa99d230c2d4278e88100c5f1c71493151c7b239ed1063241016e3a174",
+    "purpose/c22c2.asm": "0905ca1401e6d12fb804b5414fb936e63dcfac850787bdc2e2352447256bfd9d",
+    "purpose/c23b6.asm": "c87891cdc96ff848ddf95299326bdffd112ac22a0aaa2a7c8273ca11d6fe6b22",
+    "purpose/c2476.asm": "49da358431bfc7c732043a72e03b7b7ed0f1e0b1849ef81f3e27c15a871d0421",
+    "purpose/c2484.asm": "ea8e4351ed9369470a862273368984861415ecb95704e8f5618bb337efdb4642",
+    "purpose/c248e.asm": "e1b6959e520d4ef50a22f16f86cc5871668bb7c26a8e6520c2a67f4cbfaae05b",
+    "purpose/c2498.asm": "45844937b79b6b363bdbbb6969a1d270f7ab68d686bb53619318acd3de04576e",
+    "purpose/c24a2.asm": "f8cbf8c3f3499aa402dca12e3ffdf818213e945e3bb8f476ea5f49c49e3ca663",
+    "purpose/c24a6.asm": "0378ccc7a2277f532ee379c20563f234f0e3c9402dc3d19172677b0ddc9bfa4f",
+    "purpose/c25f2.asm": "f2db92fa30ad9e9c057abdfbc2445df43999115d0070ed14540e21410e21b85e",
+    "purpose/c6b3c.asm": "e4d4b32f8db9ca282f9e85b938c4fafb609e25110af57035dfc44ba7595205bd",
+    "purpose/c6b4a.asm": "0d88d77dc36bfafbb578078a4f5b105c1fc2b16705430ae943fb6f41e5abe92d",
+    "purpose/c6b72.asm": "b14cc187b902487fa256a9b4af4b356063e6042e76e0be123198aa46e0db2eaf",
+    "purpose/c6b9a.asm": "1c7f0e652ff71fdfad0d8867c136e5909fa4b3255f9138f83b998d76059df002",
+    "purpose/c6ba4.asm": "4ddac0aaf2ebb40481ce53add16eba394d3ff72a1e64010b6fd13d6e0a019aa6",
+    "purpose/c6ba8.asm": "fa9c6aadcfb039e406719dbbe20d885015537478f761f4b8ad1ddd26e9553cae",
+    "purpose/c6d38.asm": "1612c8e63e7efeb3ea6d3a9421fd73049afbc810d78e6d2a884c8ab90f522b36",
+    "purpose/c7a9c.asm": "32f673b1c92f909beb6992143c3c85df99815c6b30cf07634e14a219d89b7a67",
+    "purpose/c7aaa.asm": "8e974de43a1776415cdd00431c57240362aa93c9f7c3431a2e909a0cbdb451a7",
+    "purpose/c7ade.asm": "9febc0470f5ffe20ae426c698b80fbd808ca8fc9ff72f63bdc0e0c3852a7c9d2",
+    "purpose/c7b12.asm": "78cb624add1fa393035bb6d0ebc7d2bde7920f0e8cdf35dfea523fc6f57fcbab",
+    "purpose/c7b24.asm": "b6cc8be92102ad0b90ccb707095659ad4f84a246da3ad15bc16e67aba792ef43",
+    "purpose/c7b28.asm": "6689a0a404dc9a0d24be415e17a96fa6cd3b57c9a43c90aecc457f79319689df",
+    "purpose/c7c7e.asm": "f2a3b48fa83100b87ba3739226b37cbb2b42ca45f587f7295bd32fbf1e288c49",
+    "purpose/c7d46.asm": "33a12d80da4bef36606e1071d1dc3e65c6f810fdb622d0346a9bd7e9f6cc120e",
+    "purpose/c7d54.asm": "60d475287fd92824913d1c806dce1e4054a4fe5e9ea4cf5af03ed808574b42a1",
+    "purpose/c7d5a.asm": "fe4be887e7df5c1765687dc40569f07f410417ea83708262aa0e1f2ba3f88c67",
+    "purpose/c7d60.asm": "74a135079c934f1641daf84992d96aee576126ac5a65e090b1b8026890c99798",
+    "purpose/c7d6a.asm": "9d8d0092d5b025a1b3a5e50ff660e418b521fdd3aa4b62015fd14a37d5a6ebef",
+    "purpose/c7d6e.asm": "5aa201f7b8cd98a974f15d001cc820bb9ee0d09b2630d29b39ac15772f85928b",
+    "purpose/c7db0.asm": "8bf6d5c11f2379e33624370c7d31b80f4cec2ea2799c027c399b8b19c6dbf147",
+    "purpose/c9124.asm": "c195b6a1ff4279c2ea8cd6ed1fee4b3b71f4dbde7bba3dbffe1c5a9e12249c50",
+    "purpose/c9132.asm": "66fa337917645437d5aa7e4cf192288619f6902641c19e8a2e5ffd21d4462aba",
+    "purpose/c9138.asm": "b5a2106e5abffefdb8fbf8eac150ba0fa4fb0f79de940878ec3204a48f38413e",
+    "purpose/c913e.asm": "3e4eded0a2d5ca429e49faf7ac485e53e89a6847e5710ab0c2ae45127444b761",
+    "purpose/c9148.asm": "b5173bcf3aef90b82ee91cd4346fa17a7f66c6b1011a5b603e11ac5c4ba73b2f",
+    "purpose/c914c.asm": "13f1b3bf0f0d023c9b89b32321309c5d73c25e9146150acafe0653539b21bebf",
+    "purpose/c9196.asm": "2310fab00456b605e3b344e2a44a2731a1361e9d812a91844e3677811873aa53",
+    "purpose/ca58c.asm": "299ad38e18076521392b20282909431ec47d359c7ab21d1f28ac0fc744179e69",
+    "purpose/ca59a.asm": "6736767a117a7f06f1576c322700141bf900824a5a3a6cdd8a6fb37cb3cba723",
+    "purpose/ca5bc.asm": "bf3df00c125dc85939f152a9e54b676d50f6e973f20bd91605c2fefa08570930",
+    "purpose/ca5de.asm": "2d5afc8a9b68b7843e3869ba324a68544b07bcf577570c2976d53ce1158c35c9",
+    "purpose/ca5e8.asm": "932f6a596be433762c12fb1b4ba927be2417d1a896514d6ee87e4478a1593c1d",
+    "purpose/ca5ec.asm": "a009a0f102f03091f53c25bc7d1375e39bd3d8d2cd9bd387eb9efa5d41b03190",
+    "purpose/ca6f6.asm": "c13ddaa1a7a2f0e4cb4af31c20e8148742d6e1fa9571b170af6dff76f5bcd329",
+    "purpose/ca72a.asm": "4d9648ba14537b38a6bb0b9309d532c54226ba72038053b9eb814c693103708a",
+    "purpose/ca738.asm": "b120ad388b2c2e1331e07c2190900bd4dd3cd3a9e0624f48831029555dad709b",
+    "purpose/ca75a.asm": "1cee4523d0df6a23f127a4bd4854831db429b7d47ee3bace3facba3b6afd2125",
+    "purpose/ca77c.asm": "50b3821f2a32c955267f292c3eec83ef7a95f37f6327491146e4e694a9a7590d",
+    "purpose/ca786.asm": "50c09c6fed89d418167368a61e7b578a4ad78a1f9eeb917eeeb489672e965182",
+    "purpose/ca78a.asm": "5e5ed975bee0073302c02c0f9bc680add02d3f29a74932d3a5ca8507b071b8fc",
+    "purpose/ca894.asm": "855f9388ab20cd85da2a3126fd9392e5f42b6a74c60c2923d280dc9610b263b4",
+    "purpose/ca8c8.asm": "64df1c73ff59da4631f53036967b96b9a2011eaad7814d32c13ef06ce2cf7a5a",
+    "purpose/ca8d6.asm": "4fd71938013373fd42104881fb6308e2d48ba95e0b9aba92f83ed5531695a227",
+    "purpose/ca8f8.asm": "d3dcd88f82c5d7bf909c83c3bd4e126867537621d71786f879fb4bc78a7454c7",
+    "purpose/ca91a.asm": "a853d18adaf36a9d484c72c3b5b0a745b846f39d459a6e8348080e0e8636ae34",
+    "purpose/ca924.asm": "db573e9a094975af96dd1495e0ce5d045c427a812f046a8b3f05b6def830a334",
+    "purpose/ca928.asm": "d069d20173e1aabd2bbb3534e1c04215f467a333fe7cb34cf6b562a97d944f97",
+    "purpose/caa32.asm": "e9f8872e0876ba45676efa2d19b5292ae899c64586df45a63ffe9fc7b6ac45e8",
+    "purpose/caa66.asm": "be620eae3c4051635918f488c6760ceddbcf9681c1d081c8864601a8e29ac2ee",
+    "purpose/caa74.asm": "793ab18eace00d978ff9b0678223f73e051728ab44757ad417ec4c953ccb4b11",
+    "purpose/caa96.asm": "1c6a806106a8e10c7a00bdfd2c51d1e8d5ac9f2dca68e13aee47a20eb3e393b4",
+    "purpose/caab8.asm": "b9bb97a89a8d0acce8f4206ae705e84b03cb72c3bd011b77538caa86839dd25c",
+    "purpose/caac2.asm": "83bd8bcb44b28302ad082780aa1d4a5bb2a17905368673cef06a8faa6adbde35",
+    "purpose/caac6.asm": "9aa30871fa9ee767802c20b75cec25f57a95e5a40c291ffb78ee53dc9bb103e4",
+    "purpose/cabd0.asm": "26b8e62c3a690a4c8661649beb94680f68e327ae0e7086f10f3c860441b916f4",
+    "purpose/cac04.asm": "30707595b3189eac8516f3db3d07e1a994f0fa26b24ca598d93e31f0d1c0050f",
+    "purpose/cac12.asm": "19222a1fb1bfaa09607cf3fed0de4dd4497ccf6108cdc4f49c1ce63ed560a401",
+    "purpose/cac38.asm": "f29e537073f1546a176bb074a55f09554da1f5ad188da9a97eed2e9b23dbf18c",
+    "purpose/cac5e.asm": "96e8a4e9d6e2541d1cf91711aa8738b634cfc7d40f910e368f8b5ce08ddb9d7f",
+    "purpose/cac68.asm": "175f65c5b521e02ac7da4cde05d52983c1220f211f3bafc93678a4afcd1fd6ba",
+    "purpose/cac6c.asm": "8b14746576a912ad563a56346455c5cf1d3baec068df3112304c6ad40e8e8e45",
+    "purpose/cadc0.asm": "977f69687e02ece7196bbbc5a7163aa659ab08bd6b857a74bfbb5a7436c6dd5f",
+    "purpose/caeca.asm": "9b8c65e1851311a54a89fa4e6e347942d91d5cd44a26bf45f02f1f0d97a807c8",
+    "purpose/caed8.asm": "381434717b3433d014778208cfe06216813bf971f3f50d5ca190c0a64b766f87",
+    "purpose/caefe.asm": "eb35fea7214cf487db5a8f6bf1414c88099fee46c820600dfbf2e4aa855aa9a9",
+    "purpose/caf24.asm": "f4cf3b7e09823f3f4dbf779571f15032b32728f717c68cb345f1241ce9a2ad04",
+    "purpose/caf2e.asm": "8093fdfb040d6ae0310b3b3e2d7ac38d1a85371e53308d241b7431f241e2eec6",
+    "purpose/caf32.asm": "2b5f2ebb28835583e82d19dea5b6451374524a14c0aac169d021b01bcb453084",
+    "purpose/cb070.asm": "122ed9d92c368d476063961c0baec22563652b50a81f721d2764536852c6b91b",
+    "purpose/ccc8e.asm": "184549bd191febc188e09a286eff90a848fb970513b98c53115394481f0ef2f7",
+    "purpose/ccc9c.asm": "86aef7022974e493f064c701244329c23baa47d21bbf49a530e846953b538682",
+    "purpose/cccae.asm": "d97d89face85689f7b39b2938f323bc4190037c11232a0f735e388d86861fec1",
+    "purpose/cccc0.asm": "0634e0f389b0b20ad58268108043a45790ddb78d9c1a3b326b4d2d49f7ee56eb",
+    "purpose/cccca.asm": "9625ee8a957c93c37b1b45c55ca630075e5273e81c533cb8b9d2b160b7316a42",
+    "purpose/cccce.asm": "1e0c23d74579300f48bf4a5fc9451f1b5ec8815692e7551e9d842945c4ee4d04",
+    "purpose/ccd06.asm": "a1f66e478834d59474b26ff98cd0c94e05d30e8178026ecc5f452f9e61ef903d",
+    "purpose/ce6d0.asm": "3b19def9ecd2eb07d79af3e9457f2ad8521b02cc5b654cd24ff1cbd70cbf10ca",
+    "purpose/ce6de.asm": "a4fd5131568546f630706298aaaa053f8aeba04f8da2209e3f239d75522c71d9",
+    "purpose/ce700.asm": "275ee1897533a8c4d545649051a7ff22b62fcadd52265164354a4ca2855d3d60",
+    "purpose/ce722.asm": "f4afa7c167b07b6ca4768970feb267ec008fa992153d2c1a90490e746fec2034",
+    "purpose/ce72c.asm": "ad627efe315cd79e127ab580cb0e4178dc2b25bba6ca9918683d40510109096a",
+    "purpose/ce730.asm": "bff90e3f495a94e51503a44fca67b73e22bd363e394b740c83b2ec4f699cebad",
+    "purpose/ce844.asm": "280ea44b9d4722932ee11a5dc6e2a3942b00dbc4a39c79450213a735f7c5df39",
+    "purpose/d1426.asm": "57f151a18344a671b2acc49ffaa999d540482d27b379640811e54118887eeb2c",
+    "purpose/d1434.asm": "105ea515540c49e36820399d3b53f8b45f5a6e206e2d8c45f15ed8451c2f36e7",
+    "purpose/d1456.asm": "05fca496477ce4b9c32f59bf2d82c9591447b76983856a8600b5fd946d5d611e",
+    "purpose/d1478.asm": "d287d305fd34ab23f1911177f0bb448c9dee16d31027a2fb9d83a4243fd26604",
+    "purpose/d1482.asm": "6f2bfabebb24e9892b13b3395617952e494ae8fd4953d799d4fb2758d334ca57",
+    "purpose/d1486.asm": "c0fed479322128303c8431406dd29356ba857a29c448d019d91a375bc2849bf8",
+    "purpose/d1592.asm": "0000bbae7d7bfc9251caba0890d0d4e193bdf24f20f1cf9e9826a72913314b7a",
+    "purpose-next/b1730.asm": "51f9f9f1550c370edd697adfbe7040d3e8119f796d3fa89b6322abe6cb29d792",
+    "purpose-next/b18ce.asm": "bb8963ddde770d7b8ee6cf2e133feaa249ab349a06d82add2301fb25234764ae",
+    "purpose-next/b1a6c.asm": "bad012a70d7a6f6d9bd1b3d4174c7702fabf922bdb8b6d6dc77dd925a655a25a",
+    "purpose-next/b7b84.asm": "bef174f011bc9eb8570881344f7f8ca78687835f0d9cef4a255ec31ba4cdc505",
+    "purpose-next/b7b9a.asm": "c94d63200e0e02adaea1d46de8915a81ce19a4a21ebbade3f66488e845955334",
+    "purpose-next/b7baa.asm": "332faec4ed2f9cc7a3cf826d641f65137e0bb467618827b435ffcc783cacafe0",
+    "purpose-next/b7bf2.asm": "ca630209155660b2413648287b954dd779db29de7ba25ac6bace65ccafc5b063",
+    "purpose-next/b7c34.asm": "cdcb2fe51347859987d1cadd1d81b232a82af1223ed7a2b59af5ba41e4b423a5",
+    "purpose-next/b7e76.asm": "3536c2c14a17693e9c0eb64ca6d3bc8b2aae92225ab8d651393f6553fcdf0e6e",
+    "purpose-next/b7f20.asm": "d2e66ece058785f9f9523e98748724ff6c33074150e5db35b3e8c2e035d5e093",
+    "purpose-next/b812e.asm": "660515372a1be033ef6f50d9bbd0e9c4414e02f533ace2be01e349a01480c0eb",
+    "purpose-next/b8192.asm": "bcd67d3bcd3bfc6cad5de9ae464875fc5cd99359e03a5adbc066e0867bd3ece7",
+    "purpose-next/b8360.asm": "ee369d96120a57bffea9c47292397d593b30c26dfa9f168ee9179c8eb16c3948",
+    "purpose-next/b8370.asm": "6e2e7d30da91e53f85e42ed02ad64841da642aa548d881ef7858ce9d8f4d4013",
+    "purpose-next/b8382.asm": "716843ef48a97e64f295384cb66e1dd9a52befa42fd48c0b312b1aa0e3299739",
+    "purpose-next/b85ae.asm": "e22df2223dad526743739bf888399cede090029f29e1354f509da2c310677861",
+    "purpose-next/b85e6.asm": "7caccbb642f3e3bbb80524a37ef7076c9f2e27b86b8a2bd99486189991b0bd95",
+    "purpose-next/b87c0.asm": "c72b32a38815daca32d58ef5fa62efe55d5c4ca20f7ade94328a0d92432aaaaa",
+    "purpose-next/b8e14.asm": "d3088302416d4abe3495013dc7b08e13f483a885236f35158908488658e3e0d1",
+    "purpose-next/b8eda.asm": "a8b8b9eb8d383a593af7bce222277959bbd9759ea0674fd726e70a5a47a2c5fc",
+    "purpose-next/c1bc2.asm": "62996ad937852b76dd528e66b08b3ec9e577a82fc15971ffa0f11d729120a0ae",
+    "purpose-next/c1be6.asm": "0da45399e85a5b40357e4ebc190432184c23a94a432ef9c1d3deab4afbed63a2",
+    "purpose-next/c1c2e.asm": "b10bf616f5f22d08f46e101e990c2493fa315b3d2c23c2c02aa24ac23b748ac9",
+    "purpose-next/c1e70.asm": "cbb1d07092fe3f317fcb28ede25a1d5ebbb12670589e81d02adc37be88e02415",
+    "purpose-next/c1e86.asm": "741eb8219fc58ae23e9177ef8b5bd58c545c87c87da8e7a41c6b1757dc3b368b",
+    "purpose-next/c1e96.asm": "53d7a689ae6cbaa547aeb5eaa7013be81a22d5da6e300e2f7a8d721e2d54f68a",
+    "purpose-next/c1ed4.asm": "e1046b4c73ed0b4a52b55e632b67890657e833e368c4c65ec44e3ac6b72747f5",
+    "purpose-next/c1f16.asm": "b7463c2d6df3f2a226146ea7eceaf7f15f24f1cb4757f6e1f3a6ab76e8f69f81",
+    "purpose-next/c20c8.asm": "f26669f874b11b78e72d3f39d69c347ec948fc38c032be183ff018aebb3ba472",
+    "purpose-next/c20d8.asm": "6479a4b329a223f7fefca3bb1cb26bfcc2c87d2b75c4048abb418434fcea4968",
+    "purpose-next/c2282.asm": "f3757cd06ada214cedc45cedc0d01ded170db501eede3ab7deedd79ceef53e72",
+    "purpose-next/c23d4.asm": "11854d1b5650d2efe2778d820539cd5ead53e92b4ffb6859d24a869440c43b1f",
+    "purpose-next/c243c.asm": "5ebc4d30c70cdf83d9be83fb6efcdefc8db82727c34bb4266b13dc42597ee101",
+    "purpose-next/c2610.asm": "7db57e3c2eeec51717dabc069d5f3a98e51742c07cb04d5c9d02a329ff718317",
+    "purpose-next/c2634.asm": "a9506e40a90f10148470ebafdd38f12289b83ca6790a0df6b08c542f41cf7c62",
+    "purpose-next/c267c.asm": "a5371fa06c64956482b0eb553b049d7bc80978eea2296a2d8153f0613f779ac8",
+    "purpose-next/c6d56.asm": "ba8d5e495bf5e1b05488e26120a7ab4e695867c1cbdbbd66cf430dd1bf8258c3",
+    "purpose-next/c6d6c.asm": "a555e5c9808d9cf7ae42fa76c333a686a28b8a71e0f5cef3e17d635ba43ac80e",
+    "purpose-next/c6d7c.asm": "5563aeb3b94cfaada23ceb911c3ea0c6e00859474b739531ed396312cd2d9808",
+    "purpose-next/c6dba.asm": "8a08cef4a5be34434da87fc2b43b0d68f16a58c1eee59a39dd552780d7c91387",
+    "purpose-next/c6dfc.asm": "b6bb8e0a0823dd258b4582c6a8d9a2cc516ca55130c1501f4ebc81e4cd6ea73b",
+    "purpose-next/c7c9c.asm": "4de5cff31b30ec5d51a2f23c5c60021bcf15ab18ac8af5a9a441362ddd1b4e44",
+    "purpose-next/c7cc0.asm": "e7a5f322b16017857f4aca7409512a5ea6270e90f04d64ab37305d35301b9f53",
+    "purpose-next/c91a6.asm": "1bb57a621e44a14081c56400be450b888deb212696e0456ecfa998a7d448d974",
+    "purpose-next/c91ec.asm": "4c265d75d4042a90365bff591b1f542b0eb415ba071fa253e946cc6623c91020",
+    "purpose-next/c9204.asm": "e8ac42c2943cd18cfb9f022dfb7a03fc969e10a8d19b6ad1f138d1ffa29e0685",
+    "purpose-next/ca71a.asm": "e4b0ef9134c12574e6b3000c18d8b4bae396c5547add09a12e91d842dac26dcc",
+    "purpose-next/ca8b8.asm": "df92e1b9569d4d434a513c5024f70911f3baf29875522c1adc3996f819e0d7ff",
+    "purpose-next/caa56.asm": "c10be0fe29c5a151f02aaa3fc36de974e3895798d6ea02cd1f2d0ce691b44224",
+    "purpose-next/cabf4.asm": "533e094f9cd6e6bc023bd70875dc0cc2d7027404004a02c8305fed30109add98",
+    "purpose-next/cade4.asm": "9a2b1bafb759d0ebee27be2b2f56c1466bfc3753ee1fd488c92b012d33c84eff",
+    "purpose-next/cadf4.asm": "ce057f67ce320794bce6977ef086c5f7441581530a33110e248f8801522d68fb",
+    "purpose-next/caea8.asm": "09e62cb189be1e02ac152f968bc28ea5687f5ab554cff6e89830ef2c0f10c386",
+    "purpose-next/cb094.asm": "6b692885dbcb2cd6e7a3ebfc9cd1d653e5d796560d6f527274913f1ce59d4931",
+    "purpose-next/cb0a4.asm": "f5eacefabf0824dd59f32ff8873afc310d11262ab87b6f407a8306a127f4c3f3",
+    "purpose-next/cb174.asm": "f34a7d4b6fd4208a361dba8db8d6eb1213c5ef6655d741d264dcec994aae792f",
+    "purpose-next/ccd16.asm": "45ee2694c41bc525132a95b56c2002734365c86fef5ffb86d5df5dd9bc4ecac7",
+    "purpose-next/ccd8a.asm": "10561fe74fae87fbc2e42d1f08c60bd70317b6fa754b6382c85f296a3cd4d0cb",
+    "purpose-next/ccdc2.asm": "e53974d92c5dbf27a600605dc4765385b023bd89dd5734f08364606374a0b3bc",
+    "purpose-next/cce3a.asm": "7206e76279b2f2413c74a46987e793a55025892548674a170beefa2f0c0ec952",
+    "purpose-next/ccee2.asm": "55993c27c134147d30b727c8fee58d4f11cdfd7620fbfd0fee2a093947cbd5a6",
+    "purpose-next/ce86a.asm": "031b82f2da4cc46abec28c1134b0de52c26946bbcb4713cdaef339ceed06cf01",
+    "purpose-next/d15b8.asm": "18ba525d4539aca80ab696690f675c5997a0c57dd8e8b8bfdc861f6e8c374b49",
+    "purpose-next/d3c34.asm": "0b69a688f0e88d7277faf1ef9f2339146e9760ed2ce7999b610c3f8e3dfc7552",
+    "purpose-leaves/8dcac.asm": "1166368c9f67ca65d6c12f5ef0945d41480a2948ea7939119c21488608ef9e44",
+    "purpose-leaves/98762.asm": "a09d6dd9dc53b647bd04d3054858eef1ca9bc5c64bf9490d010abebaeb59fe7e",
+    "purpose-leaves/987ae.asm": "f1bd47940cdde149605fab058e88c4fd13fa47238cd0102ffda6c188379a9ced",
+    "purpose-leaves/987ce.asm": "85e8321ef50e91b76049e1eb8f3db852dc628814c5a12f0d98a3ef83de508d71",
+    "purpose-leaves/987ee.asm": "7f065d5fe6e2fd839306e9834ddc0ec8ff635e4fd11c69c072853ad7a2ef9b5b",
+    "purpose-leaves/9880e.asm": "89c6bed2539ed09ce790d3aa37acaa3bf4c368d4f91db387781231b6d8ab7d3f",
+    "purpose-leaves/9882e.asm": "609d950867a5b27143c4411d95f3ea43b88db6f7e234d65c14ca6b57127d5821",
+    "purpose-leaves/9884e.asm": "095018870b10e5ee3ddb87fe41cea99eb5b92394a8305519453b99e6b7e41bfa",
+    "purpose-leaves/a2f6c.asm": "8e230f82fb9b877e6cad115f2027d6b085e8c865bf122f333093b10952f21132",
+    "purpose-leaves/a4446.asm": "ebc6695b0a13c3139b39651d6c8285d71438189b78849093db6059befc2ad364",
+    "purpose-leaves/ccd9a.asm": "c49b0d879bcda3760684b1e4de97392dbc1a3ef9eefb66fdcff1ed4893d5ee30",
+    "purpose-leaves/ccdd4.asm": "5bca4e3ed79052e4b84109633c5e58b9582a8bbfbb4ec11f8f598fc5e4e2c463",
+    "purpose-leaves/cce58.asm": "d163c5f7d220aca4d82bd847a1e38b9dabe5fb7131e9c9912b9d1b60cd3807d1",
+    "purpose-leaves/cceb2.asm": "2eb0dd91ae92a1646bc3fa82eff34644d38798f81b8ae144bf8c778cc7f1f909",
+    "purpose-leaves/ccefa.asm": "cf88235d458b1ca3c35708878bbfa5b5666da7404feb1feda486c8ac0649cf19",
+    "purpose-last/8f982.asm": "016693f0767e4521f06601800e0822c7ee9aab937e91df87440f78cc585f973a",
+    "purpose-last/ae2cc.asm": "d25644716fb11fc69ee21cfb5ba4a36e76f3bd13102895ed114adff842b611f8",
+    "purpose-last/b1120.asm": "1a58bdae0b6aaf4118cfee27a65ec9cc6c9ea0b50520c74b8e826c6cee997a2d",
+    "purpose-last/b112e.asm": "14e78f9f6c34592b74a03add14941dd7c7fa6fbab731a51db240aa1c99e92d4a",
+    "purpose-last/b1150.asm": "4b0ec6674bebe45997c903c571de9e6ecffe465f291ea3ac4d24ad782e69f4bf",
+    "purpose-last/b1172.asm": "223d56e96c3900edbe187fe9201dc9e0acf40376f6bb36982449ff6b2e43edd1",
+    "purpose-last/b117c.asm": "bc2905cc028dcb2f4d957b5edd8286895ea7942b699c83ba7b6def95ef4b076a",
+    "purpose-last/b1180.asm": "6cc4e4d9071962a4989d29ea111d850276dfcd5a333693b398c286fcfaa051bd",
+    "purpose-last/b1294.asm": "ed5e360648749be7158aa2317389c5728055b0beb0fcb079693b11bbf5288eb8",
+    "purpose-last/bfbf6.asm": "5be65acfc3682146651d2cce8d7ad86a755f9b459593f6791981005d13b2f0c3",
+    "purpose-last/bfc04.asm": "584addacc815ff087535847fdb80ad4ddb3692c7846ed1ed26b97a4cba86d915",
+    "purpose-last/bfc0a.asm": "645b469b60aa72b7055b587dbcccbf09d74cd418c7310252f94564e31790da81",
+    "purpose-last/bfc10.asm": "7688e0e4d461bd1fa1b5bb6997ad6c5891ea22b0d4a7f45031f98cb5eace3a04",
+    "purpose-last/bfc1a.asm": "81491e0bbbecae7e0e946534084ac3a8428d4bdfd411d28e4e41b3aa115e223b",
+    "purpose-last/bfc2c.asm": "dedfb1fcb8382abedc4ce6a914dc8c1e4f69dd0b850952691d8b1324ab1b7414",
+    "purpose-last/bfc36.asm": "25799459c36d58ac3b8cce75f3a0fcd83e603394327cb1b60fade7af0fd6495b",
+    "purpose-last/c396c.asm": "9ddc84b89e729a06a54819f6b58d03101f1f9ce9a895e0b8f99387578262fba5",
+    "purpose-last/cb196.asm": "8402b6e0782a9595f10df1dd5d7dc56ce06c96b1e7e6b6e53d55b2fba6325198",
+    "purpose-last/cb1a4.asm": "c8bcb364b82a95aca489f5bbc360432ef7fc0fdd1ef84ab2e22c12781de71635",
+    "purpose-last/cb1c6.asm": "ddeb30f34330d2a81c5ac7fda3735b6ea1c9815bd0497477753911ba2fe945d7",
+    "purpose-last/cb1e8.asm": "e1034ddd5d29466b6d147c05811e55d0a1f1b4097ab0b670b407c432e0dbf4d9",
+    "purpose-last/cb1f2.asm": "97e5c39adcf7936cd83c31c0cffe41624c76c7908528ff6cedea9044179d799c",
+    "purpose-last/cb1f6.asm": "acbefbebf1326510a2fee996d53a7ffcf73acbc5f78c576a5c47a6bbb55ccdad",
+    "purpose-last/cb308.asm": "788d0281383e1b00b8f83048df1f3c4106731d31d7ea19e3fcefb9846a8d713d",
+    "purpose-final/8f75e.asm": "ea0a3df28c1ecfe7796c1b6098f825c6a7bef9c798e11caa882a7ab1f6146c1f",
+    "purpose-final/ae390.asm": "488e6ca4a3a3cb22b735ae709ba63f68c51a8598e7d6f849a61645380ab2e3db",
+    "purpose-final/b12b8.asm": "5d29815a219f87f5b756acf8ba9a3c6af357c8002f00b5e53bf971c64c499beb",
+    "purpose-final/c1056.asm": "2734dae76dfd1909b18de3b5d9a1465ad94fe75f69c379ab00279884069d55d8",
+    "purpose-final/cb32c.asm": "975c30c41c250fd5f670e159769d1bff6b4aedb437f743b64a33ff476a5884e6",
+    "purpose-radio/c00d2.asm": "9b33b0a245506973276007b5e5aae93baec1c18e2dca50c54e950158eae5617d",
+    "purpose-radio/c01fc.asm": "ac31b281c0f62adcf61a0da446e44d62284f363b92f1455f355d42fc8a9fa256",
+    "purpose-radio/c025e.asm": "71e8cd2e1d87d6d3f79620c68c4587a68c984f62f5ce95d19ded7bbcdbcb7802"
+  },
+  "decoding": "A4410 maps source0→0;1/2→1;3/4/5→(flag?2:0). Other states fall back0. Do not label the wire byte a universal boolean fault flag.",
+  "remaining": "GET19 receiver mask has unknown radio-level cause; A3 service modes350..363 still need peer semantics; other commands/fields remain outside this purpose pass."
+}

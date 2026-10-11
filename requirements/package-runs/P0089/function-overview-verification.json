@@ -1,0 +1,184 @@
+{
+  "status": "PASS",
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "assembly_source": "P0088/private/pump-timing-first/instructions.tsv (reused existing export; no fresh decompilation)",
+  "assembly_sha256": "a2f4f054b01ef5ecff2d52efeb33f54456da626faedcab21a74f65c6daee6bac",
+  "root_sha256": {
+    "a653e": "0da24ee2ebc68392fcb5bef02faef3b49cba4af515b043c72568aa9c9a37114b",
+    "a65cc": "6b7db8da208a2aef3d96f376d93a66d894f0a829a22825c34c16d865d47a17b2",
+    "a77f2": "fc76733add6b04d95ac56db3878379cdf62fcf436973facd6744edbf937c6cd7",
+    "a7914": "6aadbf7354a54efdfbd61bf57de70fcc9b604369b01a4a45932228091594752a",
+    "a7afc": "e80d222a524b3dce04519b70992a6a7bab19897af37c1743644b937d89d1a1d6",
+    "a7b88": "5934010bbdedb0f315ca4942e7a0d344ccdee0daff0a9dad983fa0bf3ae520c9",
+    "a7c14": "1439988cf0a8968afe6d02b952abaecc5816dac05eb0fa53a8fe9ccf81ab6844",
+    "a7d48": "b73bc6e4a237ac2076d8eb32f9bcc29c13eb076bbd39815153a17607ad96eec7",
+    "a8008": "b1bbaa12ae04b5f0ce8e3e3b59ea8b4120df6cfd4e22b5655649aec9e50c9815",
+    "a80a0": "6c8830f348a61f93567677fa02167a1c14e573cbec248d585b5c2718252cd099",
+    "a83be": "86d1b69454d88abbc50bd3f8dee44f58be1928a6ba83ef4de66b049d18bbab3b",
+    "a8afe": "b78b27018ef350eff22500ae19fd3769ee71b38b0f869590580957491a34d4ae",
+    "a8b6c": "154951f2a05e349e0595253ab92f9a88d0c94c1b9fe0a7d4cb94e763b95970d7",
+    "a8c92": "7e7921c14967311f56af815ade922849da81ce14f3ab10890e7cc634aea12c93",
+    "a90f8": "5eb96b41a49aad469e1afd03ab2abc56d19a65377f7fdd0a61e3bf216895de6e",
+    "986e2": "a2778a1d3a19c32c3abce712840d8f0d05fd023783835a5e6bc7d8fff45fe971",
+    "98702": "1984396a019936d8a27fcbd02a331eaf332ba97572512ecdf1baedd1d77ab154",
+    "98762": "f7f9efc23a8818c0b9c32c892825bc25a27d9268afed9757c0a42dc2f3b2e88c",
+    "987ae": "0e716cb4cf2c869d25143005c29cde5fa183d34a03edf0347ca7d4b97a158213",
+    "9884e": "131980e8ffcfd644271dbcaefed4c803b04d7dbde8f33f246a241f51c9ed0795",
+    "959de": "fcbb1a824fa1fb4ac43b238b69bce371a249ce8d701cd720b15726d76697101b",
+    "bd190": "10b8b51accee72bb1e0413959643d9a0d6ff137d96ef8f2133aaa61832c7fa3e",
+    "bd20e": "d9308fcfaf566f1674820d3b17c0bbe4ef35046ad83b7434f64da1a7508edce1",
+    "bd28e": "a2ee88563128b8b6f2094fa08054ae1624764e0a3744c0fa48e757f2b6d45730",
+    "ae2cc": "31c49daf77a2135f08431e55d180f5c774dd5fb744aaadc5f2ae3c928cc00234",
+    "a4410": "5f85803f1172a7db8663dabfa657d7f8d9d9025c2aab134c45103d3b1601d743",
+    "a5c86": "57443939b7d19dfeed8af5a51f8150ee33d20bc0116e9b8efecc7ffe3e358610",
+    "a5d3a": "7564e0393f4c92e81911880c38ecf15eba8a5d38caa2a99e32268bb27de86931",
+    "c3050": "08490dfefb6e335cfd43772954a07aa696f9ad1faa96433fb50951d714f6cf18",
+    "c3374": "8142190b7211530a646085159f63e82726a69078c2aa8080a42aa93567fb0787",
+    "c34f8": "dafe215ae1ab9f69b6209486da3a73fa4708b20a973d31b086563337e7815cb5",
+    "c371c": "be06b739d6ba4165459e5d7890ecc2e1ddabf15633c96f84944c8ba8663424c5",
+    "c47fe": "304e5a47085066d442a528aee7da1b020498f432971bc562c53e5159e3df3740",
+    "c4126": "8249e0dde6aa703785b666def3e8f6d4382c31ee91a4714398c16711f45d30f4",
+    "bc148": "cc21c41b31b98f1b619c90c4b16b64f1cbc610b4c2c54e83e7c673df510a94dd",
+    "bc29c": "5939772daa70322512b37448c79e54f5e2dccbc1f93bd59ca4a74ebe656679c0",
+    "c2b96": "9842ae4d970f3a964b668f946b5636d917a6db33a3dc2039adf6eba2486d159d",
+    "c2f48": "8b0d7e89fc137dbc1f5b928f39ad9d9efc9072358a71c2d2aeb0f360c071d34d",
+    "bab56": "052274b2cfbc70d88a43bb035dadf656e9a16afd667810124ac2fe6720d9f1de",
+    "bf750": "c1fb9ea5ec3e9137d26a6940562fe5199aa33cb17c08a57520ad59035cb46952",
+    "d1334": "9fec79697b1b62ef447d3a01303640850ea70f4ee87dc5350b777a2eb9f5053e"
+  },
+  "empty_setting_dispatch_targets": {
+    "58": "abb8b",
+    "5b": "abb8b"
+  },
+  "manual_text_sha256": "13281bdfe2867318476f60335bc4865c17b5a578edf80e2eebef260a679a86b5",
+  "public_tests": "24 run, 23 passed, 1 private-evidence skip",
+  "functional_counts": {
+    "familj känd": 26,
+    "identifierad": 28,
+    "namngiven del": 28,
+    "okänd": 10,
+    "platshållare": 9,
+    "trolig": 41
+  },
+  "named_manual_a3_codes": 109,
+  "physical_tests": 0,
+  "all_functions_named": false,
+  "private_tests": "24 passed",
+  "regressions": {
+    "P86": "21 passed",
+    "P88_private": "45 passed"
+  },
+  "continued_naming": {
+    "counts": {
+      "identifierad": 43,
+      "namngiven del": 36,
+      "platshållare": 10,
+      "trolig": 53
+    },
+    "setting_blocks_with_qualified_name": 47,
+    "manual_service_names": 109,
+    "additional_service_names": 33,
+    "remaining_unnamed_services": [
+      160,
+      161,
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363,
+      536
+    ],
+    "protocol_intent_open": [
+      "41.33",
+      "frame.02.01",
+      "frame.5c",
+      "frame.5d"
+    ],
+    "tests": {
+      "public": {
+        "run": 28,
+        "pass": 27,
+        "skip": 1
+      },
+      "private": {
+        "run": 28,
+        "pass": 28
+      }
+    },
+    "new_private_native_export": "P0089/private/fault1b",
+    "static_vendor_analysis": "sd-tool-correlation.json",
+    "new_function_hashes": "fault1b-trace.json"
+  },
+  "a3_continuation": {
+    "status": "PARTIAL",
+    "services": 159,
+    "manual_names": 109,
+    "native_or_correlated_descriptions": 50,
+    "physical_function_unresolved": [
+      350,
+      351,
+      352,
+      353,
+      354,
+      355,
+      356,
+      357,
+      358,
+      359,
+      360,
+      361,
+      362,
+      363
+    ],
+    "model_dictionary_unresolved": [
+      160,
+      161
+    ],
+    "sensor_identity_provisional": [
+      536
+    ],
+    "tests_private": {
+      "run": 30,
+      "pass": 30
+    },
+    "tests_public": {
+      "run": 30,
+      "pass": 29,
+      "skip": 1
+    },
+    "evidence": "a3-naming-evidence.json",
+    "physical_tests": 0
+  },
+  "final_naming_pass": {
+    "status": "PASS",
+    "command_names": 142,
+    "a3_names": 159,
+    "field_occurrence_names": 1547,
+    "technical_position_names": 996,
+    "semantic_claims_upgraded": false,
+    "tests_private_pass": 33,
+    "physical_tests": 0
+  },
+  "purpose_pass": {
+    "status": "PARTIAL",
+    "fields_traced": 31,
+    "groups": {
+      "17": 11,
+      "18": 12,
+      "19": 8
+    },
+    "remaining_technical_position_names": 965,
+    "tests_private_pass": 36,
+    "physical_tests": 0,
+    "report": "purpose-analysis.json"
+  }
+}

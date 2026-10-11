@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 868
+Tracked file count: 887
 
 ## Files
 
@@ -34,6 +34,7 @@ Tracked file count: 868
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
 - `docs/functions/ftc6-protocol-research.md`
+- `docs/functions/ftc6-screen-parity.md`
 - `docs/functions/ftc6-static-analysis.md`
 - `docs/functions/mac/chatgpt-mcp-access.md`
 - `docs/functions/mac/local-kvs-read-poc.md`
@@ -653,6 +654,19 @@ Tracked file count: 868
 - `requirements/package-runs/P0083/review.md`
 - `requirements/package-runs/P0083/service-trace.md`
 - `requirements/package-runs/P0083/verification.json`
+- `requirements/package-runs/P0084/CHANGELOG.md`
+- `requirements/package-runs/P0084/address-evidence.json`
+- `requirements/package-runs/P0084/design.md`
+- `requirements/package-runs/P0084/findings.md`
+- `requirements/package-runs/P0084/functions.md`
+- `requirements/package-runs/P0084/open-questions.md`
+- `requirements/package-runs/P0084/reproduce.md`
+- `requirements/package-runs/P0084/review.md`
+- `requirements/package-runs/P0084/screen-cn105-parity-matrix.md`
+- `requirements/package-runs/P0084/screen-cn22-trace.md`
+- `requirements/package-runs/P0084/settings-trace.md`
+- `requirements/package-runs/P0084/transport-comparison.md`
+- `requirements/package-runs/P0084/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -874,5 +888,10 @@ Tracked file count: 868
 - `tools/ftc6/p83/patch_module.py`
 - `tools/ftc6/p83/trace-targets.txt`
 - `tools/ftc6/p83/verify_local.py`
+- `tools/ftc6/p84/P84Switch.java`
+- `tools/ftc6/p84/evidence.py`
+- `tools/ftc6/p84/roots.txt`
+- `tools/ftc6/p84/targets.txt`
+- `tools/ftc6/p84/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

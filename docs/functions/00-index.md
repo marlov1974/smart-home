@@ -99,3 +99,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0082 FTC6 static analysis](ftc6-static-analysis.md): local image validation and qualified M16C investigation.
 
 - [P0083 FTC6 protocol research](ftc6-protocol-research.md): qualified offline service, pump and energy tracing.
+
+- [P0084 FTC6 screen/CN105 parity](ftc6-screen-parity.md): local transport, settings and capability evidence.

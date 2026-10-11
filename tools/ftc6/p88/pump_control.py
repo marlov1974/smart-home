@@ -64,3 +64,22 @@ def reduction_active(configuration, phase):
     if not 0 <= configuration <= 255 or not 0 <= phase < 14:
         raise ValueError('configuration byte and bounded phase required')
     return configuration != 0 and phase == 8
+
+
+def reduction_configuration(mode_3a4a, state_3a4f, setting_07df, level_07e6,
+                            flags_06d5, setting_07ee, setting_0a45,
+                            flags_06d7, flags_06d4, setting_073c):
+    """91FC0 -> 923BC -> 09F1 -> 917FE -> 0939, qualified FTC20.01.
+
+    Profile2 override for this byte is FF (retain calculated value).
+    ROM88EEE=0 enables publication. Not a claim about installed firmware.
+    """
+    values = (mode_3a4a, state_3a4f, setting_07df, level_07e6, flags_06d5,
+              setting_07ee, setting_0a45, flags_06d7, flags_06d4, setting_073c)
+    if any(not isinstance(v, int) or not 0 <= v <= 255 for v in values):
+        raise ValueError('raw uint8 configuration required')
+    return int(mode_3a4a == 0 and state_3a4f == 0 and setting_07df == 1
+               and level_07e6 >= 3 and bool(flags_06d5 & 0x80)
+               and setting_07ee != 1 and setting_0a45 != 1
+               and not flags_06d7 & 1
+               and not (flags_06d4 & 0x10 and setting_073c == 1))

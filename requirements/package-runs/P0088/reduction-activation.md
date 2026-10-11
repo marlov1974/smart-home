@@ -43,3 +43,40 @@ D3E44 requires39EA==0. This is a latched mode value with explicit update conditi
 The complete local ordering now is configuration/phase gate -> initialize/reset or timed reduction update -> publish49C7 -> AF452 applies bounded level reduction. Effective target and selected sensor ownership are upstream contracts. Current hardware activation, configuration0939's owner and remaining physical signal identities are still needed before asserting this reduction happened in a particular historical trial.
 
 Cross-reference caution: Ghidra's reference index missed some writes shown in the instruction listing, including8FBC4/8FBEF to0686. Absence from references.tsv is not proof of no writer. This is now recorded as reusable analysis guidance.
+
+## Configuration owner — subsequent checkpoint
+
+The direct-writer search missed a **block copy**, not an absent feature. `917FE`
+constructs a 184-byte configuration at09AA..0A61 and copies92 words to
+08F2..09A9 when ROM88EEE!=1. The qualified image contains0 there.
+Offset47 therefore copies **09F1 ->0939**.
+
+`91FC0` sets09F1 to the result of923BC only when3A4A==0; every other
+branch clears it. With the corrected bit decoder,923BC requires:
+
+- 3A4F==0,07DF==1,07E6>=3 and06D5.bit7 set;
+- 07EE!=1,0A45!=1 and06D7.bit0 clear;
+- not(06D4.bit4 set and073C==1).
+
+Executable pseudocode is `reduction_configuration()` in
+[the pure model](../../../tools/ftc6/p88/pump_control.py).
+These are configuration gates, separate from the seven runtime temperature/flow
+conditions inD3E8A. Pump level07E6 is already identified; the other raw settings
+must retain their addresses until their external meanings are established.
+This closes the immediate producer, not every producer of its inputs.
+
+There is a later profile overlay:09B8==2 calls92298(2), selecting row6 of
+seven159-byte records at88A3C. Its nine5-byte copy descriptors start88EEF.
+Descriptor6 covers09D7..09F4 from3C4C..3C69, including09F1 from3C66.
+For selected row6, the corresponding ROM byte88E46 isFF, meaning **retain**.
+Thus it does not replace the computed09F1. Moreover09B8==2 requires06D7
+bits0 and1; bit0 itself inhibits923BC. This path cannot enable reduction.
+Other ROM rows must not be substituted for the actual selected row.
+
+Resulting chain: settings/state ->91FC0/923BC ->09F1 ->block publication
+->0939 ->phase8 dispatch ->timed reduction ->49C7 ->AF452 pump level.
+No installed-device value or universal Geodan activation is established.
+Three owner routines were independently exported from both corrected projects;
+the assembly matches.92298 and the overlay bytes were separately inspected.
+A raw-byte3909 match atCBFAA was rejected as overlapping operands, not a0939
+reference; the exploratoryCBF90 seed supplies no evidence for this result.

@@ -39,6 +39,8 @@ For each newly understood function: give it an analytical name; retain firmware 
 
 Do not merge staging, active state, physical memory and telemetry merely because values resemble one another. Do not promote a software UART role into a physical connector fact without supporting evidence. Export complete bounded control flow when the decompiler or function body is incomplete.
 
-The immediate remaining boundaries are physical status-indicator attribution, timer clock qualification, pump configuration ownership, remaining physical gate identities and accounting freshness/units, then source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.
+The immediate remaining boundaries are physical status-indicator attribution, timer clock qualification, external meanings of pump configuration gates, remaining physical gate identities and accounting freshness/units, then source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.
 
 For new bit-sensitive exports use the qualified isolated language variant described in [decoder repair](decoder-bit-repair.md). Historical exports retain their original language identity; repaired C does not imply that unrelated CPU semantics are fully validated.
+
+Configuration producer0939 is now traced through09F1 and the184-byte publication in917FE; see the activation contract.

@@ -7,7 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
-from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_active,reduction_code,reduction_allowed,sample_average
+from pump_control import reduction_configuration,selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_active,reduction_code,reduction_allowed,sample_average
 from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
@@ -18,6 +18,23 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_reduction_configuration(self):
+        import itertools
+        # Exhaust all nine enabling/inhibiting decisions independently.
+        for bits in itertools.product((False, True), repeat=9):
+            a,b,c,d,e,f,g,h,i=bits
+            args=(0 if a else 1,0 if b else 1,1 if c else 0,
+                  3 if d else 2,0x80 if e else 0,0 if f else 1,
+                  0 if g else 1,0 if h else 1,0x10,0 if i else 1)
+            self.assertEqual(reduction_configuration(*args), int(all(bits)))
+        base=[0,0,1,3,0x80,0,0,0,0,1]
+        self.assertEqual(reduction_configuration(*base),1)
+        for level in range(256):
+            base[3]=level
+            self.assertEqual(reduction_configuration(*base),int(level>=3))
+        base[0]=256
+        with self.assertRaises(ValueError): reduction_configuration(*base)
+
     def test_reduction_activation(self):
         for configuration in range(256):
             for phase in range(14):

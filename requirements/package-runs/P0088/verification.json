@@ -2,9 +2,9 @@
   "package_status": "PARTIAL",
   "offline_tests": {
     "result": "PASS",
-    "tests": 27,
+    "tests": 31,
     "command": "P88_IMAGE=<private-ftc6.bin> P88_CATALOG=<private-catalog> python3 -m unittest discover -s tools/ftc6/p88 -p test_p88.py -v",
-    "public_only_tests": 18
+    "public_only_tests": 21
   },
   "artifact_consistency": {
     "result": "PASS",
@@ -26,7 +26,9 @@
       "continuation-extraction.json",
       "settings-transfer-extraction.json",
       "settings-store-extraction.json",
-      "pump-consumer-extraction.json"
+      "pump-consumer-extraction.json",
+      "reduction-extraction.json",
+      "decoder-verification.json"
     ],
     "scope": "Targeted assembly equality, not full-image independent semantic validation",
     "continuation_routines": 19,
@@ -35,7 +37,8 @@
     "settings_transfer_routines": 17,
     "settings_store_routines": 30,
     "settings_clock_instructions": 31,
-    "pump_consumer_routines": 16
+    "pump_consumer_routines": 16,
+    "reduction_energy_routines": 11
   },
   "hardware_calls": 0,
   "deployment": false,
@@ -45,8 +48,15 @@
   "repository_checks": {
     "scoped_paths": "PASS",
     "index": "PASS",
-    "tracked_file_count": 1045,
+    "tracked_file_count": 1051,
     "git_diff_check": "PASS",
     "private_identifier_scan": "PASS"
+  },
+  "decoder_repair": {
+    "result": "PASS",
+    "cases_per_run": 468,
+    "fresh_runs": 2,
+    "baseline_negative_control": "PASS (expected failure)",
+    "language": "m16c:LE:16:p88-bits"
   }
 }

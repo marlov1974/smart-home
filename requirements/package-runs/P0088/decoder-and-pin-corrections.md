@@ -9,3 +9,5 @@ Two operand checks prevent plausible but false hardware conclusions.
 `addressing.py` and boundary tests encode the manual rule; no shared Ghidra module has been modified. Other such indexed-bit decompilations require requalification. Earlier P87 EXITD and signedFB displacement defects remain applicable. Static C output is supporting evidence; instruction operands and architecture semantics decide these conclusions.
 
 3. Persistence follow-through:984D2 loads A0=1;984D9 BMNE/NZ base3ACF[A0] writes3ACF.bit1. The previous P88 persistence report incorrectly repeated the C output075A.bit3. Corrected in settings-store-model.md; regression added. This is another instance of item2, not a newly discovered memory write.
+
+Continuation: the bit-address defects above are now corrected in an isolated, hash-pinned language variant. See [decoder repair](decoder-bit-repair.md) for468 emulator cases, negative control and selected re-decompilation. Historical baseline exports remain unchanged.

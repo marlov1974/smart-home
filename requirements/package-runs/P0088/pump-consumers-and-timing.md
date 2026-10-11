@@ -20,7 +20,7 @@ select_primary_pump_level(demand):
     return level
 ```
 
-Thus the stored heating-pump level is not always the final output level. Demand2 selects fixed3, and profile2 can reduce the selected level with a floor of2. Even selected1 becomes2 when that reduction branch is active. The origin/meaning of49C7 and the full demand scheduler remain to trace; do not call it a user percentage or compressor limit.
+Thus the stored heating-pump level is not always the final output level. Demand2 selects fixed3, and profile2 can reduce the selected level with a floor of2. Even selected1 becomes2 when that reduction branch is active. The49C7 callback/state chain is now traced in [reduction and energy](reduction-and-energy-chain.md); generic dispatch eligibility and the full demand scheduler remain open; do not call it a user percentage or compressor limit.
 
 `B1A90` gates the output using3A32: zero calls B1B8A, nonzero calls B1AF0. B1AF0 maps level1/2/3/4 to intermediate52/41/31/20; other values map to0. It derives a16-bit timer value, stores3A36 and calls B1B9C. B1B9C configures Timer A2 through0338 and0320.bit2 and writes032A. Therefore we have reached a timer-backed actuator path. Actual duty polarity, physical connector and RPM calibration remain unresolved; the intermediate values are not asserted as RPM or duty percentages. The C representation of the multiword arithmetic is insufficient to qualify its physical transfer function.
 

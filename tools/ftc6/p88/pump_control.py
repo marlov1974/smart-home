@@ -29,3 +29,31 @@ def accounting_allowance(level, variant, configured, enabled):
     if configured == 9999:
         value = ALLOWANCE_ROWS[int(variant > 21)][level] if level < 6 else 0
     return min(value, 200) if enabled else 0
+
+
+def reduction_code(state, count):
+    if not 0 <= state <= 255 or not 0 <= count <= 255:
+        raise ValueError('raw uint8 state required')
+    return (0 if state == 0 else 1 if state == 1 else min(count, 5) + 2
+            if state == 2 else 255 if state == 3 else 0)
+
+
+def reduction_allowed(reference, flow_temp, return_temp, sensor_0686,
+                      flow_raw, configured_min_flow, level):
+    def signed16(x):
+        return ((x + 32768) & 65535) - 32768
+    if any(not -32768 <= x <= 32767 for x in (reference, flow_temp, return_temp, sensor_0686)):
+        raise ValueError('signed16 sensor inputs required')
+    if not 0 <= flow_raw <= 65535 or not 0 <= configured_min_flow <= 255 or not 0 <= level <= 255:
+        raise ValueError('unsigned input out of range')
+    return (signed16(reference-flow_temp) >= 300
+            and signed16(flow_temp-return_temp) >= 300
+            and return_temp <= 5000 and sensor_0686 >= 1000
+            and flow_raw >= 1000 and flow_raw >= configured_min_flow*100
+            and level >= 3)
+
+
+def sample_average(samples, previous):
+    if len(samples) > 17 or any(not 0 <= x <= 0xffffffff for x in [*samples, previous]):
+        raise ValueError('at most17 uint32 samples required')
+    return ((sum(samples) & 0xffffffff) // len(samples)) if samples else previous

@@ -7,7 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
-from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS
+from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_code,reduction_allowed,sample_average
 from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
@@ -18,6 +18,36 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_decoder_patch_rejects_wrong_source(self):
+        from patch_bit_decoder import patch
+        with tempfile.TemporaryDirectory() as folder:
+            source=Path(folder)/'source';dest=Path(folder)/'patched'
+            (source/'data/languages').mkdir(parents=True)
+            (source/'data/languages/m16c.slaspec').write_text('unqualified')
+            with self.assertRaises(ValueError):patch(source,dest)
+            self.assertFalse(dest.exists())
+
+
+    def test_reduction_predicates(self):
+        good=dict(reference=5600,flow_temp=5300,return_temp=5000,sensor_0686=1000,
+                  flow_raw=1000,configured_min_flow=10,level=3)
+        self.assertTrue(reduction_allowed(**good))
+        for field,value in [('reference',5599),('return_temp',5001),('sensor_0686',999),
+                            ('flow_raw',999),('configured_min_flow',11),('level',2)]:
+            case={**good,field:value};self.assertFalse(reduction_allowed(**case),field)
+        self.assertFalse(reduction_allowed(32767,-32768,-32768,1000,1000,0,3))
+        for count in range(256):
+            self.assertEqual(reduction_code(2,count),min(count,5)+2)
+        self.assertEqual([reduction_code(s,7) for s in (0,1,3,4)],[0,1,255,0])
+
+    def test_energy_sample_average(self):
+        self.assertEqual(sample_average([],1999),1999)
+        self.assertEqual(sample_average([999,1000],0),999)
+        self.assertEqual(sample_average([1000]*17,0),1000)
+        self.assertEqual(sample_average([0xffffffff,1],0),0)
+        with self.assertRaises(ValueError):sample_average([0]*18,0)
+
+
     def test_storage_fault_indexed_bit(self):
         self.assertEqual(bit_address(0x3acf,1),(0x3acf,1))
         self.assertNotEqual(bit_address(0x3acf,1),(0x075a,3))
@@ -182,6 +212,11 @@ class LocalImage(unittest.TestCase):
         cls.path=os.environ.get('P88_IMAGE');cls.catalog=os.environ.get('P88_CATALOG')
         if not cls.path or not cls.catalog:raise unittest.SkipTest('P88_IMAGE and P88_CATALOG needed for private-ROM checks')
         cls.image=Image(Path(cls.path).read_bytes())
+    def test_reduction_rom_anchors(self):
+        self.assertEqual(self.image.at(0x8419a,12).hex(),'c018023c0807c218023c5802')
+        self.assertEqual(self.image.at(0x81a3e,12).hex(),'3909c749948708002c970800')
+        self.assertEqual(self.image.ptr(0x887ae),0xd3cac)
+
     def test_pump_rom_rows(self):
         raw=self.image.at(0x87f9a,24)
         words=tuple(int.from_bytes(raw[i:i+2],'little') for i in range(0,24,2))

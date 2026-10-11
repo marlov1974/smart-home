@@ -1,0 +1,116 @@
+{
+  "result": "PASS",
+  "scope": "11 routines, baseline-decoder reproducibility only; signed-FB C known incorrect; see decoder-bit-repair.md for corrected separate project",
+  "files": [
+    {
+      "root": "d3d0c",
+      "kind": "c",
+      "sha256": "bab345c33f2fcc90a8759c977234d9dfd292079be8fb16f21c3dffdc11c2e317"
+    },
+    {
+      "root": "d3d0c",
+      "kind": "asm",
+      "sha256": "ca1c85955b9ed576dde18129c96b0d3935737f25d38424538f9e09c17466c073"
+    },
+    {
+      "root": "d3cac",
+      "kind": "c",
+      "sha256": "e0cd227729a4fba6a4c246e2e8582843dfe153afbe0e109baf267f79ca8e7782"
+    },
+    {
+      "root": "d3cac",
+      "kind": "asm",
+      "sha256": "3f851fd3fb4eef9abeca174f8fd1ef95e855ac3baf07f8c363035a6ee1505028"
+    },
+    {
+      "root": "d3e44",
+      "kind": "c",
+      "sha256": "51ebb3a2460e04966c8e50ddb85e9c836d558f2a90c31d415bccb1dd5d457747"
+    },
+    {
+      "root": "d3e44",
+      "kind": "asm",
+      "sha256": "6e4ac17550da6605337f2ba3a0955919be13a30975b5f2842ff17bc425c6585c"
+    },
+    {
+      "root": "d3e5e",
+      "kind": "c",
+      "sha256": "9dcbb2908e43224e608c3631ea1ada5bc0b71a052167fa3278d79b9a40b9fbe1"
+    },
+    {
+      "root": "d3e5e",
+      "kind": "asm",
+      "sha256": "696e50ab1e1e5c448dae3d4963b493bc24294d9022f7114a090d22e1036e04f3"
+    },
+    {
+      "root": "d3e8a",
+      "kind": "c",
+      "sha256": "8d56dbe12f1229f2b0aa3b8cc62235a6245fcafda902565cf42024686ec3c812"
+    },
+    {
+      "root": "d3e8a",
+      "kind": "asm",
+      "sha256": "eae559ac1667dc0b5f95fcc3e6dda118a0ec61b8355b77b3b53ad681985cd382"
+    },
+    {
+      "root": "cd576",
+      "kind": "c",
+      "sha256": "b5c319dc6ff378f142f0ce00afc0269c7ecb615c4ec2ee8b5140dabbeeb639f3"
+    },
+    {
+      "root": "cd576",
+      "kind": "asm",
+      "sha256": "5d66cafac2f0cb1fce480b1461e6239b54353e85b482aa137c32b9d4ed4e5090"
+    },
+    {
+      "root": "cd62e",
+      "kind": "c",
+      "sha256": "2ee032330ea1e7dd0d439f40629b84d8e210966afb371f5e2bdd9a18a471c5ae"
+    },
+    {
+      "root": "cd62e",
+      "kind": "asm",
+      "sha256": "d16f940d94771a8d38891d78fa43d222f68e13df65a718ba0fe755044fc8e81e"
+    },
+    {
+      "root": "cd69a",
+      "kind": "c",
+      "sha256": "aa2b40762bfe0c8370d7e081adfdb16d2e9746643301e66c97c97d2fd5021035"
+    },
+    {
+      "root": "cd69a",
+      "kind": "asm",
+      "sha256": "67c923a96cf7a13e87680d743e776e14a84e6af9f43ab240efd49499cb144213"
+    },
+    {
+      "root": "cd744",
+      "kind": "c",
+      "sha256": "3cd3dd4dd3687dade958c5f7540de754a3ae7ca7866d0528187c60d8b9e74c1f"
+    },
+    {
+      "root": "cd744",
+      "kind": "asm",
+      "sha256": "4639e010082baa00c453a03eb956256e1616ba313a70c3d22672b6fcb45005e4"
+    },
+    {
+      "root": "cd8f6",
+      "kind": "c",
+      "sha256": "b0a288367c26ca367e2766cf94ad981afc278f01684aa56aa3ad18e989482faf"
+    },
+    {
+      "root": "cd8f6",
+      "kind": "asm",
+      "sha256": "9b0a2548fc1f6e12c7c3c95168945cdc866bb3154c2f919991bb3cf35b572861"
+    },
+    {
+      "root": "cdfd2",
+      "kind": "c",
+      "sha256": "7eb3bd48a51390d264f4cf360658b677e66415c96b9d08c6eafd11fce492cc5b"
+    },
+    {
+      "root": "cdfd2",
+      "kind": "asm",
+      "sha256": "f4eff72beb909cbf4be9769036bb1a92ab87f0747a87d705a0aa0e75e5a010ea"
+    }
+  ]
+}

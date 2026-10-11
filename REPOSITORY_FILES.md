@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1045
+Tracked file count: 1051
 
 ## Files
 
@@ -740,6 +740,8 @@ Tracked file count: 1045
 - `requirements/package-runs/P0088/continuation-extraction.json`
 - `requirements/package-runs/P0088/coverage.json`
 - `requirements/package-runs/P0088/decoder-and-pin-corrections.md`
+- `requirements/package-runs/P0088/decoder-bit-repair.md`
+- `requirements/package-runs/P0088/decoder-verification.json`
 - `requirements/package-runs/P0088/design.md`
 - `requirements/package-runs/P0088/findings.md`
 - `requirements/package-runs/P0088/firmware-model.md`
@@ -751,6 +753,8 @@ Tracked file count: 1045
 - `requirements/package-runs/P0088/provenance.md`
 - `requirements/package-runs/P0088/pump-consumer-extraction.json`
 - `requirements/package-runs/P0088/pump-consumers-and-timing.md`
+- `requirements/package-runs/P0088/reduction-and-energy-chain.md`
+- `requirements/package-runs/P0088/reduction-extraction.json`
 - `requirements/package-runs/P0088/reproduce.md`
 - `requirements/package-runs/P0088/review.md`
 - `requirements/package-runs/P0088/settings-apply-order.md`
@@ -1034,12 +1038,14 @@ Tracked file count: 1045
 - `tools/ftc6/p87/tests/test_native_state.py`
 - `tools/ftc6/p87/verify_local.py`
 - `tools/ftc6/p88/P88A3Completion.java`
+- `tools/ftc6/p88/P88BitProof.java`
 - `tools/ftc6/p88/P88SourceSwitch.java`
 - `tools/ftc6/p88/addressing.py`
 - `tools/ftc6/p88/atlas.py`
 - `tools/ftc6/p88/extract.py`
 - `tools/ftc6/p88/matrix.py`
 - `tools/ftc6/p88/menu_inventory.json`
+- `tools/ftc6/p88/patch_bit_decoder.py`
 - `tools/ftc6/p88/pump_control.py`
 - `tools/ftc6/p88/reviewed.json`
 - `tools/ftc6/p88/settings_peer.py`

@@ -1,0 +1,31 @@
+{
+  "result": "PASS",
+  "baseline_spec_unchanged": "087e6afb29a7625e789b30467a12cad4ab2c2731e08a98c914969a308df3f46f",
+  "patched_spec": "1395807e49d7ef74e368fbd97b6aa0ca7a9cbeba6abe9843b68aa8739385e358",
+  "cases_per_run": 468,
+  "fresh_import_runs": 2,
+  "baseline_negative_control": "fails first negative FB displacement",
+  "scope": "BSET memory effects through shared operand constructors, not all instruction flags or full CPU correctness",
+  "targeted_exports": {
+    "d3e44": {
+      "c": "9175cc75feab6c3e75a8ddf106de902cbf199cb699c85c35b0b4f801c154c6a3",
+      "asm": "c37538d8cbe0d235ea7ec753777c1b478b12b0f0ee3bed9b195f08e6306f38cc"
+    },
+    "d3e5e": {
+      "c": "dc05cc319b91690193b2a6963f34c5b6be37e6cd34fc63fcea42d11812ec1f1e",
+      "asm": "070a293b27ed0c6573f13bbc2f3648ced1c9de8a73b230c0336e26a058a308a5"
+    },
+    "d3e8a": {
+      "c": "89e62ff5697447042ada9d914c51b6e73ca0ded01f646560dad9d834f0080c43",
+      "asm": "08b32a27ae35929c9701ae560f479a74c3ca1ef87788c92f1fc1aa92c95cc339"
+    },
+    "984d2": {
+      "c": "bd7c4b387318ccf0d101fd434c7c510733294d627b54fdb7fe3e506bc4378b3f",
+      "asm": "1abb73ae2755f784a5be5d71e57ddf5e29ccc780560f06a1db55d0c0d41665cf"
+    },
+    "923bc": {
+      "c": "f41c0fc4c904b5e02104da3d2dfc27388611e428186a5bf9b0363feaf5b728ce",
+      "asm": "b7f45c216f48879e91ec5b1d36fe2186ec98eb947c58a32a473ab8cc85d8fb19"
+    }
+  }
+}

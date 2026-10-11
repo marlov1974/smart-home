@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 910
+Tracked file count: 944
 
 ## Files
 
@@ -33,6 +33,7 @@ Tracked file count: 910
 - `dep/s/rec/weather_v0_9_0.json`
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
+- `docs/functions/ftc6-energy-uart1-qualification.md`
 - `docs/functions/ftc6-ports-access.md`
 - `docs/functions/ftc6-protocol-research.md`
 - `docs/functions/ftc6-screen-parity.md`
@@ -683,6 +684,23 @@ Tracked file count: 910
 - `requirements/package-runs/P0085/rights-matrix.md`
 - `requirements/package-runs/P0085/sources.md`
 - `requirements/package-runs/P0085/verification.json`
+- `requirements/package-runs/P0086/CHANGELOG.md`
+- `requirements/package-runs/P0086/design.md`
+- `requirements/package-runs/P0086/energy-qualification.md`
+- `requirements/package-runs/P0086/evidence.json`
+- `requirements/package-runs/P0086/findings.md`
+- `requirements/package-runs/P0086/functions.md`
+- `requirements/package-runs/P0086/open-questions.md`
+- `requirements/package-runs/P0086/physical-test-plan.md`
+- `requirements/package-runs/P0086/reproduce.md`
+- `requirements/package-runs/P0086/review.md`
+- `requirements/package-runs/P0086/settings-session.md`
+- `requirements/package-runs/P0086/uart1-clock-and-framing.md`
+- `requirements/package-runs/P0086/uart1-log-format.md`
+- `requirements/package-runs/P0086/uart1-memory-addressing.md`
+- `requirements/package-runs/P0086/uart1-mode-selection.md`
+- `requirements/package-runs/P0086/uart1-port-binding.md`
+- `requirements/package-runs/P0086/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -916,5 +934,21 @@ Tracked file count: 910
 - `tools/ftc6/p85/roots.txt`
 - `tools/ftc6/p85/targets.txt`
 - `tools/ftc6/p85/verify_local.py`
+- `tools/ftc6/p86/P86AddressProof.java`
+- `tools/ftc6/p86/README.md`
+- `tools/ftc6/p86/energy.py`
+- `tools/ftc6/p86/fixtures/energy.json`
+- `tools/ftc6/p86/fixtures/log.json`
+- `tools/ftc6/p86/fixtures/read.json`
+- `tools/ftc6/p86/fixtures/session.json`
+- `tools/ftc6/p86/fixtures/timeout.json`
+- `tools/ftc6/p86/reader.py`
+- `tools/ftc6/p86/roots.txt`
+- `tools/ftc6/p86/run_analysis.py`
+- `tools/ftc6/p86/settings.py`
+- `tools/ftc6/p86/targets.txt`
+- `tools/ftc6/p86/tests/test_p86.py`
+- `tools/ftc6/p86/uart1.py`
+- `tools/ftc6/p86/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

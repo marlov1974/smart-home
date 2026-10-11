@@ -1,0 +1,227 @@
+{
+  "package": "P0086",
+  "date": "2026-10-11",
+  "scope": "offline_only",
+  "physical": "NOT RUN",
+  "production_changes": false,
+  "analytical": {
+    "energy": "PARTIAL",
+    "settings": "PARTIAL; live BLOCKED",
+    "uart1": "PARTIAL; codec and near-load proof PASS"
+  },
+  "unit_tests": 21,
+  "exhaustive_bcd_words": 65536,
+  "emulator_cases": 8,
+  "identical_fresh_export_files": 222,
+  "requested_roots": 73,
+  "inputs": {
+    "image": {
+      "sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "bytes": 524288
+    },
+    "decoder": {
+      "sha256": "087e6afb29a7625e789b30467a12cad4ab2c2731e08a98c914969a308df3f46f",
+      "bytes": 64328
+    },
+    "manual_m16c60": {
+      "sha256": "c55315611cc6c6a1fc3416c291f5a34572a7335464972b9d0b8db5710e68b703",
+      "bytes": 1189945
+    },
+    "manual_m16c65": {
+      "sha256": "6f214a1970143263da2e264945149249dc310023d73a6f139a9f066ef098e438",
+      "bytes": 11619161
+    }
+  },
+  "python": "3.14.7 (main, Sep  1 2026, 14:05:28) [Clang 22.1.3 ]",
+  "ghidra": "12.1.4 PUBLIC",
+  "java": "Temurin21.0.12.1+1",
+  "input_mot_sha256": "e94f9d9369b5efb9d2af66209fb431fde6ed0a1690b9ce0960adbf5cdb53b0c3",
+  "input_id_sha256": "f488249ce1e39e098e5862458773133155eb135dd7f2a7fbf64b38fdf70924c2",
+  "commands": [
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/ftc6/p86/tests",
+        "-v"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "d72e9d68b88e2c2b412904061ce90eb62f6fdbad0e5422ee36922595b2f4dc93"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--help"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "f372b35abf3f4ef708a4a7b09f359ac77366afb75f0e305946118e080821acc4"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--operation",
+        "read",
+        "--address",
+        "0x400",
+        "--length",
+        "1"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "8905aedecb575cf5728e4573fd884501935c272e4850f2cbbf00edd7b034b217"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--fixture",
+        "tools/ftc6/p86/fixtures/session.json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "ec1b63470dc1ee8e06e232ea6b7a5aadf37f13fe8662d4be2f72cb75fc14fe26"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--operation",
+        "read",
+        "--address",
+        "0x400",
+        "--length",
+        "1",
+        "--fixture",
+        "tools/ftc6/p86/fixtures/read.json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "d6069957cc4712fa5837d7fc0a423ab4c73a08d709ac49c5569fbe1a2d6fe0b4"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--operation",
+        "log",
+        "--fixture",
+        "tools/ftc6/p86/fixtures/log.json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "739f10e0cac09f8ae158992cd5a85f4e0d4832b0191f7370a9910ca36ee185a0"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--operation",
+        "energy",
+        "--fixture",
+        "tools/ftc6/p86/fixtures/energy.json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "543bba220255093387addb08c126d4f33249507925328a771b58ecf0d612ac19"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--fixture",
+        "tools/ftc6/p86/fixtures/timeout.json"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "output_sha256": "6947e2912165f5d91c99426ad738d1a6381679945a1b37e3a1471687e1095d92"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--operation",
+        "read",
+        "--address",
+        "0x80000",
+        "--length",
+        "1"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output_sha256": "73a0611fa4b75b45cb4f0f8072dbf125fa5de931f5fe5ed5fb440465700e511b"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-diag-static",
+        "--execute"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output_sha256": "733d91a1cf1f412f6044d1406bc0eceaa229eef3baec912d382ac7ab814b9d65"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/reader.py",
+        "--profile",
+        "ftc6-20.01-normal-static"
+      ],
+      "expected_exit": 2,
+      "actual_exit": 2,
+      "output_sha256": "c4c5bb061bb9b04b7bacd16344e41deba14c65746934c00f5297d7c7412df7f0"
+    },
+    {
+      "command": [
+        "/Users/marcus/.local/bin/python3",
+        "tools/ftc6/p86/verify_local.py",
+        "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0082/private/ftc6.bin",
+        "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0086/private/fresh-a",
+        "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0086/private/fresh-b",
+        "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0086/private/fresh-a-proof.log",
+        "/tmp/p86-evidence-repeat.json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "output_sha256": "c68740d3e53996edd67c8216f72e555813037b0dc363c2f37b6b1478ee1863a4"
+    }
+  ],
+  "native_arm_tests": "NOT APPLICABLE: no production firmware or allowlist changes",
+  "synthetic_fixtures": true,
+  "knowhow_promoted": true,
+  "limitations": [
+    "No live transport backend",
+    "Settings observer is not full FTC emulator",
+    "20.01 addresses not transferred to21.00",
+    "Energy units and atomicity unqualified",
+    "Connector, exact MCU/package and absolute clock unresolved"
+  ],
+  "git_diff_check": "PASS",
+  "git_diff_cached_check": "PASS",
+  "relative_markdown_links": "PASS",
+  "publication_base": "c4b75ee1ed7bbdc5266e0155619673f56e7b57e3",
+  "concurrent_registration": "P0087 added during execution; fast-forwarded four commits, preserving staged P0086 work. No P0087 implementation."
+}

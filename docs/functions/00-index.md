@@ -103,3 +103,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0084 FTC6 screen/CN105 parity](ftc6-screen-parity.md): local transport, settings and capability evidence.
 
 - [P0085 FTC6 port/access research](ftc6-ports-access.md): UART0/1 diagnostics, unknown connector bindings and CN105 settings gates.
+
+- [P0086 FTC6 energy/settings/UART1 qualification](ftc6-energy-uart1-qualification.md): offline BCD/frame reader, settings observer, bounded UART1 codec/log decoder and address proof.

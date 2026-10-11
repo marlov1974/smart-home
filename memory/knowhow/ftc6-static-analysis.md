@@ -21,3 +21,11 @@ Shared internal setters do not imply transport parity. Preserve session/category
 Do not map physical ports by elimination from UART numbers. One peripheral can have multiple protocol personalities (UART1 here), and similarly named connectors can have unrelated functions across Mitsubishi product families. A diagnostic memory-read path proves code capability, not connector access or complete flash readout. Keep electrical mapping, packet validation, session eligibility and per-function reachability as separate evidence layers.
 
 An operator wiring correction supersedes a package premise: the reported CNRF WiFi installation is now probably installer miswiring, not evidence that CNRF supports MELCloud/CN105. Preserve the corrected provenance explicitly. Exact reset INTB and vector prologues resolved the D timer roots; mid-ISR exploratory seeds must not enter the final project.
+
+## P0086 lessons
+
+Inspect the final response packer as well as its numeric helper. The 20.01 odd energy helper computes four digits, but the service handler zeros two before transmission. Pair resolution is ten raw units. Forced reads divide pending accounting and discard remainders in calculation mode 1; repeating the high half can bias accounting. “Read intent” does not mean an operation is observationally neutral.
+
+A wide parser address and a 32-bit intermediate do not prove a far memory access. At9E99C, MOV.b [A0] uses only16 bits despite the upstream ADD/ADC. Check actual load bytes against the architecture manual and emulator before trying flash addresses; an apparent flash read may alias MMIO.
+
+A firmware log may be destructive and incomplete: this diagnostic reader drains its ring, flags loss without a count and omits the original CN105 checksum. Preserve raw fragments and unknown timestamps; do not retry drains or synthesize missing bytes as observed evidence. Session GET callbacks can also advance state. Keep an observer model distinct from a qualified wire transaction.

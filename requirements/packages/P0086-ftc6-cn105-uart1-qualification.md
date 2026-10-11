@@ -131,3 +131,7 @@ Under `requirements/package-runs/P0086/` create `review.md`, `design.md`, `funct
 Supply the Mac tool, tests, compact packet/reference tables and hashes. Each technical claim must identify firmware/tool version, address or documentary source, and CONFIRMED / STRONG HYPOTHESIS / UNKNOWN confidence. Address raw capture needs and lack of an expected 21.00 byte pattern honestly.
 
 On completion report what is now executable offline, what needs one specific physical observation, what remains unknown, and exactly which first physical stage is ready for authorization. Update the file index and function catalog; record whether knowhow was promoted. Commit/push only scoped verified tooling/research results, not active runtime changes. No tests or physical outcomes are predeclared successful by this requirement.
+
+## Offline delivery — 2026-10-11
+
+Implemented tooling and targeted analysis: [P0086 findings](../package-runs/P0086/findings.md), [verification](../package-runs/P0086/verification.json). Tracks A/B/C retain explicit PARTIAL/BLOCKED items; no physical stage, production activation or deployment was performed. The first prepared physical handoff is passive electrical/connector qualification, not a ready-to-send UART1 read or settings write.

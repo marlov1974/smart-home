@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 909
+Tracked file count: 910
 
 ## Files
 
@@ -97,14 +97,14 @@ Tracked file count: 909
 - `memory/physical/ftx/devices.md`
 - `memory/physical/ftx/sensors.md`
 - `memory/physical/ftx/temperatures.md`
+- `memory/physical/home/00-index.md`
+- `memory/physical/home/comfort-sensors.md`
+- `memory/physical/home/rooms-zones.md`
 - `memory/physical/heating/00-index.md`
 - `memory/physical/heating/brine.md`
 - `memory/physical/heating/geodan-smart-grid.md`
 - `memory/physical/heating/heat-pumps.md`
 - `memory/physical/heating/hot-water.md`
-- `memory/physical/home/00-index.md`
-- `memory/physical/home/comfort-sensors.md`
-- `memory/physical/home/rooms-zones.md`
 - `procon/.gitignore`
 - `procon/CODEX_TASK.md`
 - `procon/Makefile`
@@ -245,10 +245,10 @@ Tracked file count: 909
 - `procon/modular/release-snapshot/native-tests.log`
 - `procon/modular/release-snapshot/ota-plan.json`
 - `procon/modular/release-snapshot/ota-results.json`
-- `procon/modular/release-snapshot/ota-tests.log`
 - `procon/modular/release-snapshot/service.bin`
 - `procon/modular/release-snapshot/sizes.json`
 - `procon/modular/release-snapshot/snapshot-arm.log`
+- `procon/modular/release/release.log`
 - `procon/modular/release/SHA256SUMS`
 - `procon/modular/release/VERIFICATION.json`
 - `procon/modular/release/arm-final.txt`
@@ -741,6 +741,7 @@ Tracked file count: 909
 - `requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md`
 - `requirements/packages/P0085-ftc6-ports-access-research.md`
 - `requirements/packages/P0086-ftc6-cn105-uart1-qualification.md`
+- `requirements/packages/P0087-ftc6-flow-temperature-control-dynamics.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

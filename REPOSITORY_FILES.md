@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 888
+Tracked file count: 908
 
 ## Files
 
@@ -33,6 +33,7 @@ Tracked file count: 888
 - `dep/s/rec/weather_v0_9_0.json`
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
+- `docs/functions/ftc6-ports-access.md`
 - `docs/functions/ftc6-protocol-research.md`
 - `docs/functions/ftc6-screen-parity.md`
 - `docs/functions/ftc6-static-analysis.md`
@@ -667,6 +668,21 @@ Tracked file count: 888
 - `requirements/package-runs/P0084/settings-trace.md`
 - `requirements/package-runs/P0084/transport-comparison.md`
 - `requirements/package-runs/P0084/verification.json`
+- `requirements/package-runs/P0085/CHANGELOG.md`
+- `requirements/package-runs/P0085/access-gates.md`
+- `requirements/package-runs/P0085/address-evidence.json`
+- `requirements/package-runs/P0085/cnit-investigation.md`
+- `requirements/package-runs/P0085/design.md`
+- `requirements/package-runs/P0085/findings.md`
+- `requirements/package-runs/P0085/functions.md`
+- `requirements/package-runs/P0085/hardware-matrix.md`
+- `requirements/package-runs/P0085/open-questions.md`
+- `requirements/package-runs/P0085/protocol-matrix.md`
+- `requirements/package-runs/P0085/reproduce.md`
+- `requirements/package-runs/P0085/review.md`
+- `requirements/package-runs/P0085/rights-matrix.md`
+- `requirements/package-runs/P0085/sources.md`
+- `requirements/package-runs/P0085/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -894,5 +910,9 @@ Tracked file count: 888
 - `tools/ftc6/p84/roots.txt`
 - `tools/ftc6/p84/targets.txt`
 - `tools/ftc6/p84/verify_local.py`
+- `tools/ftc6/p85/evidence.py`
+- `tools/ftc6/p85/roots.txt`
+- `tools/ftc6/p85/targets.txt`
+- `tools/ftc6/p85/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

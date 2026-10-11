@@ -1,0 +1,5 @@
+# P0085 function design
+
+New offline evidence derive(binary, instructions): validates pinned image, extracts selected interrupt vectors and operand excerpts, returns compact JSON; no device/network side effects. CLI writes requested report. Verification: fixed image identity, missing operand rejection, deterministic extraction. Reuse P83Seed/P83Trace unchanged for bounded disassembly/exports. No firmware function changes. Catalog new analyzed functions under docs/functions/ftc6-ports-access.md after findings. If no additional decoder repairs are needed, retain P83 pinned decoder.
+
+Final implementation adds verify(binary,first,second,report) with a local snapshot(root) helper: compare complete export SHA manifests, function coverage and compact evidence; reject wrong-image/missing/altered instructions; write verification JSON. These are the planned verification steps factored into a portable CLI, no scope expansion. Coverage:177 export files,58 requested functions,8 vectors,42 operands and3 negative cases. Catalog updated at docs/functions/ftc6-ports-access.md.

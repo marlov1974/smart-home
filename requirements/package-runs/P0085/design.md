@@ -1,0 +1,3 @@
+# P0085 design
+
+Reuse a copy of P84 project; inspect additional UART0/1 and GPIO/interrupt paths and settings eligibility helpers. Preserve finalized P84 project. Compare exact operands with manufacturer register definitions and wiring drawings; do not assign connector names from peripheral numbering. Review manufacturer accessory references, especially CNIT and CNRF. Produce hardware/protocol/access matrices, evidence excerpts, gaps and reproducible verification. No runtime refactor or generated firmware. Publish only portable tooling, concise derived evidence and original analysis; vendor inputs and full exports stay private. Test image identity, vectors, selected operands, deterministic exports and missing/wrong-input rejection.

@@ -15,3 +15,9 @@ A dated energy snapshot is not a live/current-day counter. Trace source banks, r
 A shared diagnostic-ring writer can resemble a transport wrapper: distinguish RX/TX logging from the actual peripheral path. FTC's 9D8FE records both directions; UART2 uses separate receive/transmit buffers and interrupt handlers. Use vector entries including the prologue, not a plausible ENTER in the middle of an ISR.
 
 Shared internal setters do not imply transport parity. Preserve session/category gates, arbitration, direct-A3 restrictions and separate display-local behavior. Setting bytes staged by a CN105 command are not a complete safe write transaction, especially when neighboring fields are copied too. Similar response latency cannot identify a physical connector. Check indirect switch bounds from actual operands, and replay from a clean project after exploratory corrections.
+
+## P0085 lessons
+
+Do not map physical ports by elimination from UART numbers. One peripheral can have multiple protocol personalities (UART1 here), and similarly named connectors can have unrelated functions across Mitsubishi product families. A diagnostic memory-read path proves code capability, not connector access or complete flash readout. Keep electrical mapping, packet validation, session eligibility and per-function reachability as separate evidence layers.
+
+An operator wiring correction supersedes a package premise: the reported CNRF WiFi installation is now probably installer miswiring, not evidence that CNRF supports MELCloud/CN105. Preserve the corrected provenance explicitly. Exact reset INTB and vector prologues resolved the D timer roots; mid-ISR exploratory seeds must not enter the final project.

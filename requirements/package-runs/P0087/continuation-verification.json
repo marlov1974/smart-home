@@ -1,0 +1,26 @@
+{
+  "status": "PASS_SCOPED_CONTINUATION",
+  "complete_regulator": false,
+  "python_tests": 23,
+  "rom_observations_per_run": 53,
+  "independent_projects": [
+    "fresh-a",
+    "fresh-b"
+  ],
+  "identical_observations": true,
+  "live_operations": 0,
+  "hashes": {
+    "image": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+    "processor": "087e6afb29a7625e789b30467a12cad4ab2c2731e08a98c914969a308df3f46f",
+    "harness": "3226cb877125b626e0ec274e43eb8be24642e2bdf0785520263c6fd52b624974",
+    "model": "77e2fe2efe7f5dadf1318577570e8c8c38723dbd841681a91bd50590fbe5ff53",
+    "comparison": "46063090f5f541f8fff4adf406b36402950efab986baea978fe0cb9a80940bb3",
+    "fresh_a_log": "4b1d63203d80b71067afea53d9fa7cb1f5f766cc6425fa5b5ea8fea76892ae48",
+    "fresh_b_log": "c9116c2052470638d53eea1f0f0f9aae8a2f3b21a3dd694ed05080b5a2cefc60"
+  },
+  "architecture_shims": [
+    "EXITD return and stack restoration",
+    "signed bit-FB displacement"
+  ],
+  "scope": "FTC20.01 synthetic state; not physical Hz prediction"
+}

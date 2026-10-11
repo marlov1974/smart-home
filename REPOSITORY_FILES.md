@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 980
+Tracked file count: 987
 
 ## Files
 
@@ -704,6 +704,8 @@ Tracked file count: 980
 - `requirements/package-runs/P0086/verification.json`
 - `requirements/package-runs/P0087/CHANGELOG.md`
 - `requirements/package-runs/P0087/actuator-state-machine.md`
+- `requirements/package-runs/P0087/continuation-verification.json`
+- `requirements/package-runs/P0087/continuation.md`
 - `requirements/package-runs/P0087/controller-boundary.md`
 - `requirements/package-runs/P0087/demand-law.md`
 - `requirements/package-runs/P0087/design.md`
@@ -721,6 +723,7 @@ Tracked file count: 980
 - `requirements/package-runs/P0087/provenance.md`
 - `requirements/package-runs/P0087/reproduce.md`
 - `requirements/package-runs/P0087/review.md`
+- `requirements/package-runs/P0087/rom-proof.json`
 - `requirements/package-runs/P0087/scenarios.json`
 - `requirements/package-runs/P0087/signals.json`
 - `requirements/package-runs/P0087/states.json`
@@ -977,14 +980,18 @@ Tracked file count: 980
 - `tools/ftc6/p86/tests/test_p86.py`
 - `tools/ftc6/p86/uart1.py`
 - `tools/ftc6/p86/verify_local.py`
+- `tools/ftc6/p87/P87RoutineProof.java`
 - `tools/ftc6/p87/README.md`
+- `tools/ftc6/p87/compare_rom_proof.py`
 - `tools/ftc6/p87/model.py`
+- `tools/ftc6/p87/native_state.py`
 - `tools/ftc6/p87/replay.py`
 - `tools/ftc6/p87/roots.txt`
 - `tools/ftc6/p87/run_analysis.py`
 - `tools/ftc6/p87/scenarios.py`
 - `tools/ftc6/p87/tests/test_evidence.py`
 - `tools/ftc6/p87/tests/test_model.py`
+- `tools/ftc6/p87/tests/test_native_state.py`
 - `tools/ftc6/p87/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

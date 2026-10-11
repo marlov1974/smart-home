@@ -23,3 +23,21 @@ python3 tools/ftc6/p87/verify_local.py ../../P0082/private/ftc6.bin ../../P0087/
 Expected90 correct roots,273 matching files, actual table/operand checks. The initial runs used the same P83Seed/P83Trace command sequence; final wrapper merely removes an unused P86 proof option. Do not copy the exploratory work project or promote unsupported roots. Full exports stay private; extraction-verification.json contains only hashes and small relevant operand/table evidence.
 
 Run `git diff --check`, `git diff --cached --check`, and ensure only P87 plus catalog/knowhow/index changes are staged. Generate REPOSITORY_FILES.md using the repository's generate script and staged path set. Native firmware build/live tests are NOT RUN: no production source or deployment changed.
+
+## Continuation: original-ROM comparison
+
+From the VP workspace, with the original private projects and pinned P83 language module:
+
+```sh
+P0082/run_headless.sh P0087/private/projects fresh-a -process ftc6.mot -noanalysis -readOnly -scriptPath P0080/implementation-smart-home/tools/ftc6/p87 -postScript P87RoutineProof.java -log P0087/private/routine-proof-final-a.log
+```
+
+Repeat for fresh-b with a separate log. From the smart-home repository:
+
+```sh
+python3 tools/ftc6/p87/compare_rom_proof.py ../../P0087/private/routine-proof-final-a.log
+python3 tools/ftc6/p87/compare_rom_proof.py ../../P0087/private/routine-proof-final-b.log
+python3 -m unittest discover -s tools/ftc6/p87/tests -v
+```
+
+This invokes original instructions in synthetic RAM, with explicit EXITD and signed bit-FB architecture shims. It does not execute interrupts, drive hardware, reproduce all boot state, or validate the complete physical Hz response. The53 observations include two architecture checks;51 compare modeled numerical/state behavior. Do not count repeated runs as additional distinct cases.

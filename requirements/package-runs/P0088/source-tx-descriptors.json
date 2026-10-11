@@ -1,0 +1,2232 @@
+[
+  {
+    "address": "82a7a",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82a80",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82a86",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82a8c",
+        "bit_offset": 8,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15658
+      },
+      {
+        "operand": "82a92",
+        "bit_offset": 9,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 1495
+      },
+      {
+        "operand": "82a98",
+        "bit_offset": 10,
+        "width": 2,
+        "kind": "callback",
+        "source": 664136
+      },
+      {
+        "operand": "82a9e",
+        "bit_offset": 12,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 15663
+      },
+      {
+        "operand": "82aa4",
+        "bit_offset": 16,
+        "width": 3,
+        "kind": "callback",
+        "source": 628576
+      },
+      {
+        "operand": "82aaa",
+        "bit_offset": 19,
+        "width": 5,
+        "kind": "callback",
+        "source": 628474
+      },
+      {
+        "operand": "82ab0",
+        "bit_offset": 24,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14631
+      },
+      {
+        "operand": "82ab6",
+        "bit_offset": 25,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14632
+      },
+      {
+        "operand": "82abc",
+        "bit_offset": 28,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 1494
+      },
+      {
+        "operand": "82ac2",
+        "bit_offset": 29,
+        "width": 1,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82ac8",
+        "bit_offset": 30,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 15659
+      },
+      {
+        "operand": "82ace",
+        "bit_offset": 32,
+        "width": 4,
+        "kind": "callback",
+        "source": 629232
+      },
+      {
+        "operand": "82ad4",
+        "bit_offset": 36,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15660
+      },
+      {
+        "operand": "82ada",
+        "bit_offset": 37,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15661
+      },
+      {
+        "operand": "82ae0",
+        "bit_offset": 38,
+        "width": 1,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82ae6",
+        "bit_offset": 39,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15662
+      }
+    ],
+    "qualified_call_sites": [
+      "0009beff"
+    ]
+  },
+  {
+    "address": "82af2",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82af8",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82afe",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82b04",
+        "bit_offset": 9,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14543
+      },
+      {
+        "operand": "82b0a",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 14641
+      },
+      {
+        "operand": "82b10",
+        "bit_offset": 28,
+        "width": 1,
+        "kind": "callback",
+        "source": 628502
+      },
+      {
+        "operand": "82b16",
+        "bit_offset": 29,
+        "width": 1,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82b1c",
+        "bit_offset": 30,
+        "width": 4,
+        "kind": "callback",
+        "source": 629642
+      },
+      {
+        "operand": "82b22",
+        "bit_offset": 34,
+        "width": 4,
+        "kind": "callback",
+        "source": 629422
+      },
+      {
+        "operand": "82b28",
+        "bit_offset": 38,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      }
+    ],
+    "qualified_call_sites": [
+      "0009ba6f",
+      "0009bc9e"
+    ]
+  },
+  {
+    "address": "82b34",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82b3a",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82b40",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82b46",
+        "bit_offset": 8,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 14848
+      },
+      {
+        "operand": "82b4c",
+        "bit_offset": 10,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 14849
+      },
+      {
+        "operand": "82b52",
+        "bit_offset": 12,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 14847
+      },
+      {
+        "operand": "82b58",
+        "bit_offset": 16,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14846
+      },
+      {
+        "operand": "82b5e",
+        "bit_offset": 29,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82b64",
+        "bit_offset": 38,
+        "width": 1,
+        "kind": "constant",
+        "source": 0
+      }
+    ],
+    "qualified_call_sites": [
+      "0009ba8a",
+      "0009bcb9"
+    ]
+  },
+  {
+    "address": "82b70",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82b76",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82b7c",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82b82",
+        "bit_offset": 29,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82b88",
+        "bit_offset": 38,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      }
+    ],
+    "qualified_call_sites": [
+      "0009baa5"
+    ]
+  },
+  {
+    "address": "82b94",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82b9a",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "82ba0",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82ba6",
+        "bit_offset": 8,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82bac",
+        "bit_offset": 11,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14813
+      },
+      {
+        "operand": "82bb2",
+        "bit_offset": 12,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14797
+      },
+      {
+        "operand": "82bb8",
+        "bit_offset": 14,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14789
+      },
+      {
+        "operand": "82bbe",
+        "bit_offset": 15,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14790
+      },
+      {
+        "operand": "82bc4",
+        "bit_offset": 16,
+        "width": 6,
+        "kind": "callback",
+        "source": 628678
+      },
+      {
+        "operand": "82bca",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82bd0",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "callback",
+        "source": 628806
+      },
+      {
+        "operand": "82bd6",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15658
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bc29",
+      "0009bd44",
+      "0009be82"
+    ]
+  },
+  {
+    "address": "82be2",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82be8",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "82bee",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82bf4",
+        "bit_offset": 8,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 14801
+      },
+      {
+        "operand": "82bfa",
+        "bit_offset": 14,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 14640
+      },
+      {
+        "operand": "82c00",
+        "bit_offset": 16,
+        "width": 4,
+        "kind": "callback",
+        "source": 629532
+      },
+      {
+        "operand": "82c06",
+        "bit_offset": 20,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 14802
+      },
+      {
+        "operand": "82c0c",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "82c12",
+        "bit_offset": 24,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14803
+      },
+      {
+        "operand": "82c18",
+        "bit_offset": 29,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14804
+      },
+      {
+        "operand": "82c1e",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15658
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bb86",
+      "0009bdf6"
+    ]
+  },
+  {
+    "address": "82c2a",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82c30",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "82c36",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82c3c",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "callback",
+        "source": 631606
+      },
+      {
+        "operand": "82c42",
+        "bit_offset": 16,
+        "width": 6,
+        "kind": "callback",
+        "source": 631658
+      },
+      {
+        "operand": "82c48",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82c4e",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "callback",
+        "source": 631710
+      },
+      {
+        "operand": "82c54",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "callback",
+        "source": 631762
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bb9d",
+      "0009be0d"
+    ]
+  },
+  {
+    "address": "82c60",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82c66",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "82c6c",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82c72",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "constant",
+        "source": 3
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bbb4"
+    ]
+  },
+  {
+    "address": "82c7e",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82c84",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 25
+      },
+      {
+        "operand": "82c8a",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 1505
+      },
+      {
+        "operand": "82c90",
+        "bit_offset": 12,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82c96",
+        "bit_offset": 13,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 1506
+      },
+      {
+        "operand": "82c9c",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1507
+      },
+      {
+        "operand": "82ca2",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1508
+      },
+      {
+        "operand": "82ca8",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1509
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bcd0"
+    ]
+  },
+  {
+    "address": "82cb4",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82cba",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 25
+      },
+      {
+        "operand": "82cc0",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14859
+      },
+      {
+        "operand": "82cc6",
+        "bit_offset": 12,
+        "width": 1,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82ccc",
+        "bit_offset": 13,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14860
+      },
+      {
+        "operand": "82cd2",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 14861
+      },
+      {
+        "operand": "82cd8",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 14862
+      },
+      {
+        "operand": "82cde",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 14863
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bd5b"
+    ]
+  },
+  {
+    "address": "82cea",
+    "profile": 16,
+    "length": 4,
+    "checksum_kind": 0,
+    "symbol_encoding": false,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82cf0",
+        "bit_offset": 0,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82cf6",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15658
+      },
+      {
+        "operand": "82cfc",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82d02",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15658
+      }
+    ],
+    "qualified_call_sites": [
+      "0009ba20"
+    ]
+  },
+  {
+    "address": "82d0e",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82d14",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 13
+      },
+      {
+        "operand": "82d1a",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82d20",
+        "bit_offset": 9,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 14764
+      },
+      {
+        "operand": "82d26",
+        "bit_offset": 13,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 1459
+      }
+    ],
+    "qualified_call_sites": [
+      "0009ba30"
+    ]
+  },
+  {
+    "address": "82d32",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82d38",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 17
+      },
+      {
+        "operand": "82d3e",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82d44",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      },
+      {
+        "operand": "82d4a",
+        "bit_offset": 12,
+        "width": 2,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82d50",
+        "bit_offset": 14,
+        "width": 2,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "82d56",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1522
+      },
+      {
+        "operand": "82d5c",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 14777
+      },
+      {
+        "operand": "82d62",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 14778
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c023"
+    ]
+  },
+  {
+    "address": "82d6e",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82d74",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 17
+      },
+      {
+        "operand": "82d7a",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82d80",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      },
+      {
+        "operand": "82d86",
+        "bit_offset": 14,
+        "width": 2,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "82d8c",
+        "bit_offset": 16,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1523
+      },
+      {
+        "operand": "82d92",
+        "bit_offset": 20,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1524
+      },
+      {
+        "operand": "82d98",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1530
+      },
+      {
+        "operand": "82d9e",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "constant",
+        "source": 2
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c041"
+    ]
+  },
+  {
+    "address": "82daa",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82db0",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 17
+      },
+      {
+        "operand": "82db6",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82dbc",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      },
+      {
+        "operand": "82dc2",
+        "bit_offset": 14,
+        "width": 2,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "82dc8",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1523
+      },
+      {
+        "operand": "82dce",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1524
+      },
+      {
+        "operand": "82dd4",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "constant",
+        "source": 2
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c051"
+    ]
+  },
+  {
+    "address": "82de0",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82de6",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 17
+      },
+      {
+        "operand": "82dec",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82df2",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      },
+      {
+        "operand": "82df8",
+        "bit_offset": 14,
+        "width": 2,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82dfe",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1526
+      },
+      {
+        "operand": "82e04",
+        "bit_offset": 24,
+        "width": 6,
+        "kind": "memory-byte",
+        "source": 2292
+      },
+      {
+        "operand": "82e0a",
+        "bit_offset": 30,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82e10",
+        "bit_offset": 31,
+        "width": 1,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82e16",
+        "bit_offset": 32,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 2291
+      },
+      {
+        "operand": "82e1c",
+        "bit_offset": 37,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 2293
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c061"
+    ]
+  },
+  {
+    "address": "82e28",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82e2e",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 17
+      },
+      {
+        "operand": "82e34",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82e3a",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      },
+      {
+        "operand": "82e40",
+        "bit_offset": 14,
+        "width": 2,
+        "kind": "constant",
+        "source": 3
+      },
+      {
+        "operand": "82e46",
+        "bit_offset": 16,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82e4c",
+        "bit_offset": 17,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15658
+      },
+      {
+        "operand": "82e52",
+        "bit_offset": 18,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15659
+      },
+      {
+        "operand": "82e58",
+        "bit_offset": 19,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15660
+      },
+      {
+        "operand": "82e5e",
+        "bit_offset": 20,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15661
+      },
+      {
+        "operand": "82e64",
+        "bit_offset": 33,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15663
+      },
+      {
+        "operand": "82e6a",
+        "bit_offset": 37,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15662
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c0df"
+    ]
+  },
+  {
+    "address": "82e76",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82e7c",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 16
+      },
+      {
+        "operand": "82e82",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82e88",
+        "bit_offset": 8,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 1458
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bd7d"
+    ]
+  },
+  {
+    "address": "82e94",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82e9a",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82ea0",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82ea6",
+        "bit_offset": 8,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 15658
+      },
+      {
+        "operand": "82eac",
+        "bit_offset": 11,
+        "width": 1,
+        "kind": "memory-byte",
+        "source": 15659
+      },
+      {
+        "operand": "82eb2",
+        "bit_offset": 12,
+        "width": 4,
+        "kind": "memory-byte",
+        "source": 15660
+      },
+      {
+        "operand": "82eb8",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15661
+      },
+      {
+        "operand": "82ebe",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15662
+      },
+      {
+        "operand": "82ec4",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 15663
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bfc8"
+    ]
+  },
+  {
+    "address": "82ed0",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82ed6",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 20
+      },
+      {
+        "operand": "82edc",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82ee2",
+        "bit_offset": 8,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 15658
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bff3"
+    ]
+  },
+  {
+    "address": "82eee",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82ef4",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 28
+      },
+      {
+        "operand": "82efa",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      },
+      {
+        "operand": "82f00",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1033
+      },
+      {
+        "operand": "82f06",
+        "bit_offset": 16,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 1034
+      },
+      {
+        "operand": "82f0c",
+        "bit_offset": 22,
+        "width": 2,
+        "kind": "memory-byte",
+        "source": 1037
+      },
+      {
+        "operand": "82f12",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1035
+      },
+      {
+        "operand": "82f18",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 1036
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bd8d"
+    ]
+  },
+  {
+    "address": "82f24",
+    "profile": 16,
+    "length": 1,
+    "checksum_kind": 0,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82f2a",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "memory-byte",
+        "source": 15657
+      },
+      {
+        "operand": "82f30",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "memory-byte",
+        "source": 14759
+      }
+    ],
+    "qualified_call_sites": [
+      "0009bb1d"
+    ]
+  },
+  {
+    "address": "82f3c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82f42",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "82f48",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82f4e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13326
+      },
+      {
+        "operand": "82f54",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13327
+      },
+      {
+        "operand": "82f5a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13328
+      },
+      {
+        "operand": "82f60",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13329
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c116"
+    ]
+  },
+  {
+    "address": "82f6c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82f72",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "82f78",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82f7e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13330
+      },
+      {
+        "operand": "82f84",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13331
+      },
+      {
+        "operand": "82f8a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13332
+      },
+      {
+        "operand": "82f90",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13333
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c12c"
+    ]
+  },
+  {
+    "address": "82f9c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82fa2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "82fa8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82fae",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13334
+      },
+      {
+        "operand": "82fb4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13335
+      },
+      {
+        "operand": "82fba",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13336
+      },
+      {
+        "operand": "82fc0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13337
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c142"
+    ]
+  },
+  {
+    "address": "82fcc",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "82fd2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "82fd8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 1
+      },
+      {
+        "operand": "82fde",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13338
+      },
+      {
+        "operand": "82fe4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13339
+      },
+      {
+        "operand": "82fea",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13340
+      },
+      {
+        "operand": "82ff0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13341
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c152"
+    ]
+  },
+  {
+    "address": "82ffc",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83002",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83008",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "8300e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13342
+      },
+      {
+        "operand": "83014",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13343
+      },
+      {
+        "operand": "8301a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13344
+      },
+      {
+        "operand": "83020",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13345
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c167"
+    ]
+  },
+  {
+    "address": "8302c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83032",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83038",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "8303e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13346
+      },
+      {
+        "operand": "83044",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13347
+      },
+      {
+        "operand": "8304a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13348
+      },
+      {
+        "operand": "83050",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13349
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c17d"
+    ]
+  },
+  {
+    "address": "8305c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83062",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83068",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 2
+      },
+      {
+        "operand": "8306e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13350
+      },
+      {
+        "operand": "83074",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13351
+      },
+      {
+        "operand": "8307a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13352
+      },
+      {
+        "operand": "83080",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13353
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c18d"
+    ]
+  },
+  {
+    "address": "8308c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83092",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83098",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 4
+      },
+      {
+        "operand": "8309e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13362
+      },
+      {
+        "operand": "830a4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13363
+      },
+      {
+        "operand": "830aa",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13364
+      },
+      {
+        "operand": "830b0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13365
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1a2"
+    ]
+  },
+  {
+    "address": "830bc",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "830c2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "830c8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 4
+      },
+      {
+        "operand": "830ce",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13366
+      },
+      {
+        "operand": "830d4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13367
+      },
+      {
+        "operand": "830da",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13368
+      },
+      {
+        "operand": "830e0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13369
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1b1"
+    ]
+  },
+  {
+    "address": "830ec",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "830f2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "830f8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 3
+      },
+      {
+        "operand": "830fe",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13354
+      },
+      {
+        "operand": "83104",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13355
+      },
+      {
+        "operand": "8310a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13356
+      },
+      {
+        "operand": "83110",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13357
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1c5"
+    ]
+  },
+  {
+    "address": "8311c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83122",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83128",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 3
+      },
+      {
+        "operand": "8312e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13358
+      },
+      {
+        "operand": "83134",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13359
+      },
+      {
+        "operand": "8313a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13360
+      },
+      {
+        "operand": "83140",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13361
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1d4"
+    ]
+  },
+  {
+    "address": "8314c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83152",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83158",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "8315e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13370
+      },
+      {
+        "operand": "83164",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13371
+      },
+      {
+        "operand": "8316a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13372
+      },
+      {
+        "operand": "83170",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13373
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1e8"
+    ]
+  },
+  {
+    "address": "8317c",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "83182",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "83188",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 5
+      },
+      {
+        "operand": "8318e",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13374
+      },
+      {
+        "operand": "83194",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13375
+      },
+      {
+        "operand": "8319a",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13376
+      },
+      {
+        "operand": "831a0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13377
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c1f7"
+    ]
+  },
+  {
+    "address": "831ac",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "831b2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "831b8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "831be",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13318
+      },
+      {
+        "operand": "831c4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13319
+      },
+      {
+        "operand": "831ca",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13320
+      },
+      {
+        "operand": "831d0",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13321
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c20b"
+    ]
+  },
+  {
+    "address": "831dc",
+    "profile": 16,
+    "length": 6,
+    "checksum_kind": 1,
+    "symbol_encoding": true,
+    "bank_flag": false,
+    "fields": [
+      {
+        "operand": "831e2",
+        "bit_offset": 0,
+        "width": 5,
+        "kind": "constant",
+        "source": 21
+      },
+      {
+        "operand": "831e8",
+        "bit_offset": 5,
+        "width": 3,
+        "kind": "constant",
+        "source": 0
+      },
+      {
+        "operand": "831ee",
+        "bit_offset": 8,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13322
+      },
+      {
+        "operand": "831f4",
+        "bit_offset": 16,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13323
+      },
+      {
+        "operand": "831fa",
+        "bit_offset": 24,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13324
+      },
+      {
+        "operand": "83200",
+        "bit_offset": 32,
+        "width": 8,
+        "kind": "memory-byte",
+        "source": 13325
+      }
+    ],
+    "qualified_call_sites": [
+      "0009c21a"
+    ]
+  }
+]

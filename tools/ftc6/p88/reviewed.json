@@ -1,0 +1,1007 @@
+[
+  {
+    "id": "uart2.42.07",
+    "functional_name": "Consumed/produced power and increasing consumed counter",
+    "tx_fields": [
+      {
+        "position": 3,
+        "length": 2,
+        "endian": "big",
+        "signed": false,
+        "name": "consumed power",
+        "unit": "unvalidated"
+      },
+      {
+        "position": 5,
+        "length": 2,
+        "endian": "big",
+        "signed": false,
+        "name": "produced power",
+        "unit": "unvalidated"
+      },
+      {
+        "position": 11,
+        "length": 2,
+        "endian": "big",
+        "signed": false,
+        "name": "increasing consumed counter",
+        "scale": "public decoder /10; not calibrated"
+      }
+    ],
+    "semantic_confidence": "P86 operand-qualified fields",
+    "baseline": "newly explained from existing P81 reply",
+    "evidence": [
+      "A5724",
+      "P0086/energy-qualification.md"
+    ],
+    "completion": "reply is snapshot, no atomicity across fields",
+    "side_effects": "no counter clearing proven in GET07; do not equate with A3 energy fold",
+    "next_verification": "correlate dated meter/counter deltas; no precise live COP claim"
+  },
+  {
+    "id": "uart2.42.65",
+    "functional_name": "DHW pump configured level, within settings block",
+    "tx_fields": [
+      {
+        "position": 10,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "name": "configured DHW pump level",
+        "source_sink": "0770",
+        "unit": "level, not PWM/flow"
+      }
+    ],
+    "handler": [
+      "a7d48",
+      "cfb18"
+    ],
+    "semantic_confidence": "P84/P86 dataflow proven",
+    "baseline": "newly explained from existing P81 reply",
+    "side_effects": "CFB18 changes session flags; FF is not level zero",
+    "completion": "requires state9 and category match",
+    "evidence": [
+      "A7D48",
+      "CFB18",
+      "P0086/settings-session.md"
+    ]
+  },
+  {
+    "id": "uart2.42.79",
+    "functional_name": "Heating pump configured level, within settings block",
+    "tx_fields": [
+      {
+        "position": 7,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "name": "configured heating pump level",
+        "source_sink": "07E6",
+        "unit": "level, not PWM/flow"
+      }
+    ],
+    "handler": [
+      "a8bcc",
+      "cfb18"
+    ],
+    "semantic_confidence": "P84/P86 dataflow proven",
+    "baseline": "newly explained from existing P81 reply",
+    "side_effects": "CFB18 changes session flags; FF is not level zero",
+    "completion": "requires state9 and category match",
+    "evidence": [
+      "A8BCC",
+      "CFB18",
+      "P0086/settings-session.md"
+    ]
+  },
+  {
+    "id": "uart2.41.65",
+    "functional_name": "Stage DHW settings block including pump level",
+    "source_sink": "payload2/4/5/7/8/10 \u21921973/1975/1976/1978/1979/197B; forced zero1974/1977/197A",
+    "shared_function": "BD296 import to077D/077F/0770",
+    "semantic_confidence": "P86 whole-block stores proven; application sequence partial",
+    "baseline": "newly found static command",
+    "completion": "2373 phase6 import; internal1002 and CF978 acknowledgments required",
+    "side_effects": "changes neighboring settings; no local1..5 clamp; cannot use zero-filled payload",
+    "evidence": [
+      "AACA5",
+      "BD296",
+      "P0086/settings-session.md"
+    ]
+  },
+  {
+    "id": "uart2.41.79",
+    "functional_name": "Stage heating settings block including pump level",
+    "source_sink": "payload2/3/4/5/7/8/10/11/13\u21921CAB/1CAC/1CAD/1CAE/1CB0/1CB1/1CB3/1CB4/1CB6; zero1CAF/1CB2/1CB5",
+    "shared_function": "BD780 import to07E5..07E8",
+    "semantic_confidence": "P86 whole-block stores proven; application sequence partial",
+    "baseline": "newly found static command",
+    "completion": "2373 phase6 import and broader neighboring blocks",
+    "side_effects": "no local1..5 clamp; full rollback/persistence unqualified",
+    "evidence": [
+      "ABA09",
+      "BD780",
+      "P0086/settings-session.md"
+    ]
+  },
+  {
+    "id": "uart2.41.c8",
+    "functional_name": "Settings session open/stage/apply/close/abort",
+    "rx_fields": [
+      {
+        "position": 1,
+        "length": 1,
+        "name": "direction",
+        "range": "0 write;1 read"
+      },
+      {
+        "position": 2,
+        "length": 1,
+        "name": "action",
+        "range": "0..3 state-dependent"
+      },
+      {
+        "position": 3,
+        "length": 1,
+        "name": "category mask",
+        "range": "first set bit selects category1..7"
+      },
+      {
+        "position": 15,
+        "length": 1,
+        "name": "category on following settings block"
+      }
+    ],
+    "handler": [
+      "cee20",
+      "cf704",
+      "cf7c8"
+    ],
+    "semantic_confidence": "P86 state machine proven; external handshake partial",
+    "baseline": "newly found static command",
+    "completion": "zero reply is state/action acceptance, not applied/persisted",
+    "side_effects": "session ownership and staged imports; abort/link-loss behavior in P86",
+    "evidence": [
+      "P0086/settings-session.md"
+    ]
+  },
+  {
+    "id": "uart2.42.a3",
+    "functional_name": "Parameterized local or forwarded service",
+    "rx_fields": [
+      {
+        "position": 1,
+        "length": 2,
+        "endian": "big",
+        "signed": false,
+        "name": "selector",
+        "range": "uint16 parser;200 and>=700 rejected in CEDD6"
+      }
+    ],
+    "tx_fields": [
+      {
+        "position": 1,
+        "length": 2,
+        "endian": "big",
+        "name": "echo selector"
+      },
+      {
+        "position": 3,
+        "length": 1,
+        "name": "format"
+      },
+      {
+        "position": 4,
+        "length": 2,
+        "endian": "little for qualified numeric handlers",
+        "name": "value"
+      }
+    ],
+    "handler": [
+      "ceba8",
+      "cebee",
+      "8c0b4",
+      "ced82",
+      "a8f34"
+    ],
+    "forward_boundary": "class1 source peer; localclass2; class table is not permission",
+    "semantic_confidence": "P83/P86 route proven",
+    "baseline": "already in Procon for104 allowlisted selectors only",
+    "side_effects": "340,350..363,532 actions;520..531 accounting effects; read name is not non-mutating",
+    "evidence": [
+      "P0083/service-trace.md",
+      "P0086/energy-qualification.md"
+    ],
+    "completion": "async forwarded result or format6 ambiguity; not necessarily absence"
+  },
+  {
+    "id": "uart2.frame.5b",
+    "path": "uart2",
+    "functional_name": "About/configuration C9 through alternate frame type",
+    "operation_class": "read/status",
+    "wire": {
+      "frame": "FC",
+      "type": "5b",
+      "opcode": "c9",
+      "direction": "RX\u2192TX"
+    },
+    "handler": [
+      "a5148",
+      "a8f8a"
+    ],
+    "accepted_predicate": "connected2342.bit0;header02/7A;payload0=C9",
+    "semantic_confidence": "parser and packer proven",
+    "baseline": "known public reference only",
+    "evidence": [
+      "892A8 descriptor10",
+      "A5148",
+      "A8F8A",
+      "F1p Process0xC9"
+    ],
+    "side_effects": "downstream effects unqualified",
+    "reachability": "separate descriptor; GET42/C9 absence says nothing about5B/C9"
+  },
+  {
+    "id": "uart2.frame.5c",
+    "path": "uart2",
+    "functional_name": "CC frame family5C",
+    "wire": {
+      "type": "5c",
+      "opcode": "cc"
+    },
+    "handler": [
+      "a5172"
+    ],
+    "accepted_predicate": "connected;header02/7A;payload0=CC",
+    "evidence": [
+      "A5172",
+      "A8FF8",
+      "A4ADE"
+    ],
+    "baseline": "newly found static command",
+    "tx_fields": [
+      {
+        "position": 0,
+        "name": "CC marker",
+        "range": "CC"
+      },
+      {
+        "position": 1,
+        "name": "constant FF",
+        "range": "FF"
+      }
+    ],
+    "semantic_confidence": "parser and constant response proven",
+    "completion": "CC/FF reply; downstream purpose unresolved"
+  },
+  {
+    "id": "uart2.frame.5d",
+    "path": "uart2",
+    "functional_name": "CC frame family5D",
+    "wire": {
+      "type": "5d",
+      "opcode": "cc"
+    },
+    "handler": [
+      "a519c"
+    ],
+    "accepted_predicate": "connected;header02/7A;payload0=CC",
+    "evidence": [
+      "A519C"
+    ],
+    "baseline": "newly found static command"
+  },
+  {
+    "id": "uart2.frame.02.00",
+    "path": "uart2",
+    "functional_name": "Alternate02 frame subfamily00",
+    "wire": {
+      "frame": "02",
+      "type_position": 3,
+      "type": "00"
+    },
+    "handler": [
+      "a51c6",
+      "a5250"
+    ],
+    "accepted_predicate": "bytes1/2=FF/FF;A4FE0 alternate type offset3",
+    "evidence": [
+      "A51C6",
+      "A5250"
+    ],
+    "baseline": "newly found static command",
+    "reachability": "descriptor/parser proven; complete use and effects unresolved"
+  },
+  {
+    "id": "uart2.frame.02.01",
+    "path": "uart2",
+    "functional_name": "Alternate02 frame subfamily01",
+    "wire": {
+      "frame": "02",
+      "type_position": 3,
+      "type": "01"
+    },
+    "handler": [
+      "a51e2",
+      "a5250"
+    ],
+    "accepted_predicate": "bytes1/2=FF/FF and RAM234A=0",
+    "evidence": [
+      "A51E2",
+      "A5250"
+    ],
+    "baseline": "newly found static command",
+    "reachability": "descriptor/parser proven; complete use and effects unresolved"
+  },
+  {
+    "id": "uart1.diag.open",
+    "path": "uart1",
+    "functional_name": "Diagnostic session open",
+    "operation_class": "transient state",
+    "wire": {
+      "low_nibble": 0,
+      "length": 5,
+      "checksum": "sum0"
+    },
+    "handler": [
+      "9e77a"
+    ],
+    "gates": "06D8.bit7 diagnostic personality already selected",
+    "semantic_confidence": "P86 proven",
+    "side_effects": "sets3D4C session",
+    "completion": "0003FD response",
+    "evidence": [
+      "P0086/uart1-mode-selection.md"
+    ]
+  },
+  {
+    "id": "uart1.diag.read",
+    "path": "uart1",
+    "functional_name": "Near16 memory read despite wide request",
+    "operation_class": "read/status",
+    "wire": {
+      "low_nibble": 1,
+      "address": "bytes1..3 little endian",
+      "length": "high nibble lookup832BE:1,2,4,8,16,32,64,then1"
+    },
+    "handler": [
+      "9e938",
+      "9e99c"
+    ],
+    "gates": "diagnostic session;parser address>=400 and end<=FFFFF",
+    "source_sink": "effective address=(requested+i)&FFFF",
+    "semantic_confidence": "P86 operand/emulator proof",
+    "side_effects": "reading MMIO could have effects; not a flash dump",
+    "evidence": [
+      "P0086/uart1-memory-addressing.md"
+    ]
+  },
+  {
+    "id": "uart1.diag.log",
+    "path": "uart1",
+    "functional_name": "Drain diagnostic log",
+    "operation_class": "read/clear",
+    "wire": {
+      "low_nibble": 2,
+      "subcommand": "f0"
+    },
+    "handler": [
+      "9d88c",
+      "9d8a0"
+    ],
+    "semantic_confidence": "P86 proven",
+    "side_effects": "drains8 usable12-byte records; overflow drops; checksum absent from captured22-byteCN105",
+    "retry": "non-idempotent; no automatic retry",
+    "evidence": [
+      "P0086/uart1-log-format.md"
+    ]
+  },
+  {
+    "id": "uart1.diag.close",
+    "path": "uart1",
+    "functional_name": "Diagnostic close/default low nibble",
+    "operation_class": "transient state",
+    "wire": {
+      "low_nibble_range": [
+        3,
+        15
+      ]
+    },
+    "handler": [
+      "9e77a"
+    ],
+    "semantic_confidence": "P86 proven",
+    "completion": "silent; no acknowledged close",
+    "side_effects": "resets diagnostic session",
+    "evidence": [
+      "P0086/uart1-mode-selection.md"
+    ]
+  },
+  {
+    "id": "uart1.normal.52",
+    "path": "uart1",
+    "functional_name": "Normal personality memory/translation read",
+    "operation_class": "read/status",
+    "wire": {
+      "command": "52",
+      "address": "packed14 bits"
+    },
+    "handler": [
+      "8acfc"
+    ],
+    "gates": "normal8N2 personality",
+    "source_sink": "<100\u21920EE4+addr;<200\u21920AE4+addr-100;<400\u2192806A4 lookup;else near",
+    "semantic_confidence": "P86 proven",
+    "evidence": [
+      "P0086/uart1-memory-addressing.md"
+    ]
+  },
+  {
+    "id": "uart1.normal.45",
+    "path": "uart1",
+    "functional_name": "Blocking service loop E",
+    "operation_class": "destructive/maintenance potential",
+    "wire": {
+      "command": "45"
+    },
+    "handler": [
+      "8adf8"
+    ],
+    "gates": "normal personality",
+    "side_effects": "sustained service loop changes scheduler behavior",
+    "evidence": [
+      "P0085/protocol-matrix.md"
+    ]
+  },
+  {
+    "id": "uart1.normal.46",
+    "path": "uart1",
+    "functional_name": "Blocking service loop F",
+    "operation_class": "destructive/maintenance potential",
+    "wire": {
+      "command": "46"
+    },
+    "handler": [
+      "8a668"
+    ],
+    "gates": "normal personality",
+    "side_effects": "sustained service loop changes scheduler behavior",
+    "evidence": [
+      "P0085/protocol-matrix.md"
+    ]
+  },
+  {
+    "id": "uart2.42.1e",
+    "functional_name": "Explicit zero data response 1e",
+    "semantic_confidence": "instruction-qualified constant fields",
+    "baseline": "newly explained from existing P81 reply",
+    "tx_fields": [
+      {
+        "position": 1,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 2,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 3,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 4,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 5,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 6,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 7,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 8,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 9,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 10,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 11,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 12,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 13,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 14,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      }
+    ],
+    "handler": [
+      "a5ff6",
+      "a4cd2"
+    ],
+    "source_sink": "no sensor load in these payload assignments",
+    "evidence": [
+      "a5ff6",
+      "A4CD5 MOV.b0,-1[FB];A4CD7 return byte"
+    ],
+    "side_effects": "none in A4CD2",
+    "completion": "static20.01 only; does not prove21.00 identical"
+  },
+  {
+    "id": "uart2.42.1f",
+    "functional_name": "Explicit zero data response 1f",
+    "semantic_confidence": "instruction-qualified constant fields",
+    "baseline": "newly explained from existing P81 reply",
+    "tx_fields": [
+      {
+        "position": 1,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 2,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 3,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 4,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 5,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 6,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 7,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 8,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 9,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 10,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 11,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      },
+      {
+        "position": 12,
+        "name": "constant zero",
+        "range": 0,
+        "length": 1,
+        "endian": "byte",
+        "signed": false,
+        "source_sink": "A4CD2 returns0"
+      }
+    ],
+    "handler": [
+      "a6068",
+      "a4cd2"
+    ],
+    "source_sink": "no sensor load in these payload assignments",
+    "evidence": [
+      "a6068",
+      "A4CD5 MOV.b0,-1[FB];A4CD7 return byte"
+    ],
+    "side_effects": "none in A4CD2",
+    "completion": "static20.01 only; does not prove21.00 identical"
+  },
+  {
+    "id": "uart1.diag.12.00",
+    "path": "uart1",
+    "functional_name": "Plant status and sensor snapshot",
+    "operation_class": "read/status",
+    "wire": {
+      "byte0": "12",
+      "subcommand_byte1": "00",
+      "response_type": "12",
+      "response_length": 100
+    },
+    "handler": [
+      "9e77a",
+      "9dac0",
+      "9daf0"
+    ],
+    "gates": "diagnostic personality;3D4C=1;TX3D53=0",
+    "accepted_predicate": "low nibble2, high nibble1, matching subcommand; others9E92A error",
+    "semantic_confidence": "dispatch and response lengths proven; individual fields partial",
+    "baseline": "newly found static command",
+    "evidence": [
+      "9daf0",
+      "9E77A",
+      "9DAC0"
+    ],
+    "completion": "snapshot bytes; no timing/atomicity claim",
+    "side_effects": "not fully qualified; instruction audit required for packed bit fields"
+  },
+  {
+    "id": "uart1.diag.12.01",
+    "path": "uart1",
+    "functional_name": "Controller states and primary flow snapshot",
+    "operation_class": "read/status",
+    "wire": {
+      "byte0": "12",
+      "subcommand_byte1": "01",
+      "response_type": "12",
+      "response_length": 66
+    },
+    "handler": [
+      "9e77a",
+      "9dac0",
+      "9de68"
+    ],
+    "gates": "diagnostic personality;3D4C=1;TX3D53=0",
+    "accepted_predicate": "low nibble2, high nibble1, matching subcommand; others9E92A error",
+    "semantic_confidence": "dispatch and response lengths proven; individual fields partial",
+    "baseline": "newly found static command",
+    "evidence": [
+      "9de68",
+      "9E77A",
+      "9DAC0"
+    ],
+    "completion": "snapshot bytes; no timing/atomicity claim",
+    "side_effects": "not fully qualified; instruction audit required for packed bit fields"
+  },
+  {
+    "id": "uart1.diag.12.02",
+    "path": "uart1",
+    "functional_name": "Actuator and native request snapshot",
+    "operation_class": "read/status",
+    "wire": {
+      "byte0": "12",
+      "subcommand_byte1": "02",
+      "response_type": "12",
+      "response_length": 62
+    },
+    "handler": [
+      "9e77a",
+      "9dac0",
+      "9e224"
+    ],
+    "gates": "diagnostic personality;3D4C=1;TX3D53=0",
+    "accepted_predicate": "low nibble2, high nibble1, matching subcommand; others9E92A error",
+    "semantic_confidence": "dispatch and response lengths proven; individual fields partial",
+    "baseline": "newly found static command",
+    "evidence": [
+      "9e224",
+      "9E77A",
+      "9DAC0"
+    ],
+    "completion": "snapshot bytes; no timing/atomicity claim",
+    "side_effects": "not fully qualified; instruction audit required for packed bit fields"
+  },
+  {
+    "id": "uart1.diag.12.10",
+    "path": "uart1",
+    "functional_name": "Packed operation flags",
+    "operation_class": "read/status",
+    "wire": {
+      "byte0": "12",
+      "subcommand_byte1": "10",
+      "response_type": "12",
+      "response_length": 13
+    },
+    "handler": [
+      "9e77a",
+      "9dac0",
+      "9e47c"
+    ],
+    "gates": "diagnostic personality;3D4C=1;TX3D53=0",
+    "accepted_predicate": "low nibble2, high nibble1, matching subcommand; others9E92A error",
+    "semantic_confidence": "dispatch and response lengths proven; individual fields partial",
+    "baseline": "newly found static command",
+    "evidence": [
+      "9e47c",
+      "9E77A",
+      "9DAC0"
+    ],
+    "completion": "snapshot bytes; no timing/atomicity claim",
+    "side_effects": "not fully qualified; instruction audit required for packed bit fields"
+  },
+  {
+    "id": "source.service-result.1d",
+    "path": "source-software",
+    "functional_name": "Forwarded service-result envelope",
+    "operation_class": "read/status return",
+    "wire": {
+      "direction": "RX",
+      "type_low_five_bits": "1D",
+      "length": 6
+    },
+    "rx_fields": [
+      {
+        "position": 0,
+        "origin": "raw received byte0",
+        "name": "type; upper three bits unresolved",
+        "range": "low5=1D"
+      },
+      {
+        "position": 1,
+        "origin": "raw received byte0",
+        "name": "selector and format",
+        "length": 2,
+        "endian": "little",
+        "range": "selector low10; format high3; bits10..12 unresolved"
+      },
+      {
+        "position": 3,
+        "origin": "raw received byte0",
+        "name": "raw service value",
+        "length": 2,
+        "endian": "format dependent"
+      },
+      {
+        "position": 5,
+        "origin": "raw received byte0",
+        "name": "checksum",
+        "range": "sum of six bytes modulo256 equals0"
+      }
+    ],
+    "handler": [
+      "9c488",
+      "9c644",
+      "9c660",
+      "9c77c",
+      "9cbf6",
+      "9cf66",
+      "a04c4",
+      "8bde0"
+    ],
+    "accepted_predicate": "RX timing/state valid; checksum zero; translation to0A; dispatcher flags; pending0857=0; main-loop08F7=0",
+    "gates": "Previous type0B selects staging type0E, otherwise0F; exact active-profile ownership unresolved",
+    "source_sink": "P9.3 \u219208D3 \u2192085E \u219238A0; service word38A1 and raw38A3/4",
+    "forward_boundary": "External peer result; peer firmware absent",
+    "completion": "9C7BE marks RX ready; A04C4 sets389A.bit1 and0857=2",
+    "response_error": "Checksum failure9C7DE; full transport recovery unresolved",
+    "persistence": "No persistent write shown in this receive chain; downstream service semantics separate",
+    "semantic_confidence": "envelope and receive dataflow proven; sensor units and physical connector unverified",
+    "reachability": "static software receive path",
+    "baseline": "newly bound source receive path",
+    "physical_port": "CN3C candidate",
+    "physical_confidence": "manual FTC/C.B. role plus dataflow inference, no continuity",
+    "evidence": [
+      "source-link.md",
+      "source-extraction.json",
+      "9C68D",
+      "9C7AA",
+      "9CEFB",
+      "A059E",
+      "8BDED"
+    ]
+  },
+  {
+    "id": "uart2.a3.forwarded-lifecycle",
+    "path": "uart2",
+    "functional_name": "Forwarded A3 job submission, cached polling and cancellation",
+    "operation_class": "forwarding",
+    "wire": {
+      "frame": "FC42",
+      "opcode": "A3",
+      "selector": "class1, external eligibility separate"
+    },
+    "handler": [
+      "cedfa",
+      "cebee",
+      "cecfa",
+      "ced66",
+      "a8f34",
+      "8bfd0",
+      "9d29e"
+    ],
+    "accepted_predicate": "CEDD6 eligibility and class1; same selector suppresses re-submission",
+    "completion": "Source class1 result replaces shared cache; fetch with another A3 request; no outstanding-selector equality test in CECFA",
+    "side_effects": "Changed selector submits native job; unrelated commands can trigger request cancellation; repeated completed selector may return cached result",
+    "response_error": "Format0 pending; native failure state3 maps to format6; numeric1/2 accepted by Procon",
+    "semantic_confidence": "proven bounded static lifecycle; timing and fresh-measurement rearm unresolved",
+    "evidence": [
+      "a3-job-lifecycle.md",
+      "CECFA..CED47",
+      "CEBEE",
+      "CEDC0",
+      "8BFD0",
+      "9D29E"
+    ],
+    "baseline": "newly explained existing A3 behavior"
+  },
+  {
+    "id": "d.settings.advertisement1005",
+    "path": "d",
+    "functional_name": "Internal settings-session pending-request advertisement",
+    "operation_class": "read/status",
+    "wire": {
+      "internal_service": 1005,
+      "not_external_A3": true
+    },
+    "handler": [
+      "8d232"
+    ],
+    "accepted_predicate": "Normal role0630.bit1=0; state2372=1 announces pending request",
+    "completion": "format1, value=((497F<<2)&1FC)|(4980!=0); other statesformat6 with direction; alternate roleformat6 zero",
+    "side_effects": "No persistent write established in this helper",
+    "semantic_confidence": "proven helper and bounded state predicate; peer polling sequence incomplete",
+    "evidence": [
+      "settings-d-events.md",
+      "8D232"
+    ],
+    "baseline": "newly found static helper, not a ready CN105 command"
+  },
+  {
+    "id": "d.settings.extended-end",
+    "path": "d",
+    "functional_name": "Extended settings event selector zero supplies end marker",
+    "operation_class": "event",
+    "handler": [
+      "9f788",
+      "a0662",
+      "8b7e2",
+      "8bd02",
+      "ceea8",
+      "cf978"
+    ],
+    "accepted_predicate": "D normalized14, extended flag050B.bit0, normal role; accepted8BD02; tag1 selector0",
+    "completion": "0414=4000; CEEA8 derives tag1 and selector0, consumed byCF978",
+    "semantic_confidence": "static event-to-consumer path; external peer generator unresolved",
+    "evidence": [
+      "settings-d-events.md",
+      "8B8BF",
+      "CF978"
+    ],
+    "baseline": "newly explained settings completion prerequisite"
+  }
+]

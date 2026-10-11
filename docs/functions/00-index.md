@@ -107,3 +107,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0086 FTC6 energy/settings/UART1 qualification](ftc6-energy-uart1-qualification.md): offline BCD/frame reader, settings observer, bounded UART1 codec/log decoder and address proof.
 
 - [P0087 FTC flow-control dynamics](ftc6-flow-control.md): offline target/error paths, partial native model, pump correction, raw timers and historical replay.
+
+- [P0088 FTC6 command atlas](ftc6-command-atlas.md): bounded command/field extraction, source-link packing, A3 lifecycle, room/storage path identification and explicit partial coverage.

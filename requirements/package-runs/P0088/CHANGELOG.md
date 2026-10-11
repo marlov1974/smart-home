@@ -1,0 +1,5 @@
+# P0088 change log
+
+2026-10-11 — offline command/port investigation checkpoint. Added hash-gated bounded extraction, generated JSON/CSV and per-row ledger, UART6 room-report/target codec, UART1 snapshot decoder, manual-derived function backlog, SD/CNRF/CNIT/CN3C role ranking, current Procon slot assessment and explicit residual plan. Verified GET1E/1F constant-zero helpers; corrected earlier MCU port/peripheral labels and identified another indexed-bit decompiler defect. No live activity or production firmware change. Overall semantic atlas remains PARTIAL.
+
+Continuation adds source TX descriptors/packing, D settings announcements and end-event provenance, UART6 status consumers, A3 result/cancellation lifecycle, bounded CFG exporter and artifact-consistency verifier. Nineteen tests pass with private inputs; twelve public tests run without them. New package/tool paths and one function-catalog page require the tracked index update included with this checkpoint. Durable lessons promoted to memory/knowhow/ftc6-static-analysis.md. Semantic status remains PARTIAL.

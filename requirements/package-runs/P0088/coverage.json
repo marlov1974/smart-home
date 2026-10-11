@@ -1,0 +1,36 @@
+{
+  "status": "PARTIAL",
+  "structural": {
+    "descriptor_rows": 256,
+    "source_tx_descriptors": 37,
+    "source_tx_fields": 249,
+    "lookup_slots": 512,
+    "class_intervals": 26,
+    "local_service_branches": 110,
+    "switch_entries": 160,
+    "scope": "six bounded descriptor tables, source descriptor region, two byte lookups, one class table, five switches; not all firmware dispatches"
+  },
+  "semantic": {
+    "named_reviewed_rows": 169,
+    "inventoried_rows": 2373,
+    "complete_field_denominator": null,
+    "note": "Descriptor/classification/file names are not a full action/field denominator; nested handlers remain open."
+  },
+  "physical": {
+    "new_tests": 0,
+    "new_confirmed_connectors": 0,
+    "note": "CN105 uses historical P81 correlation; UART6/CNRF and UART0/storage are inferences"
+  },
+  "paths": {
+    "uart0": "PARTIAL",
+    "uart1": "PARTIAL",
+    "uart2": "PARTIAL",
+    "uart6": "PARTIAL",
+    "d": "PARTIAL",
+    "source-software": "PARTIAL",
+    "uart5": "PARTIAL",
+    "uart7": "PARTIAL",
+    "sio3": "PARTIAL",
+    "sio4": "PARTIAL"
+  }
+}

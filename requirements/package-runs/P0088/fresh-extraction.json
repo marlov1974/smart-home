@@ -1,0 +1,65 @@
+{
+  "scope": "12 targeted functions, independently seeded from two fresh baseline project copies; not two independent full-image decompilations",
+  "functions": [
+    {
+      "root": "a4fe0",
+      "asm_sha256": "dcbb044f13ae8ebf34ee79859a15e18493de8e449f6c0f2490841f7b4c2f3b2e",
+      "equal": true
+    },
+    {
+      "root": "a53d6",
+      "asm_sha256": "35da151d105dcab4ece1fbf933ca8078acc374c420155cd39c31ce69f504b27c",
+      "equal": true
+    },
+    {
+      "root": "c0550",
+      "asm_sha256": "861304456e1d21be583bfd0cfc912530211be52dbccd99b73f2aac9435259e1c",
+      "equal": true
+    },
+    {
+      "root": "c0748",
+      "asm_sha256": "4b7eed5d13e236085d36661b0dc2cb56bc17dc88db59d8b6118c512cb8e7fb5c",
+      "equal": true
+    },
+    {
+      "root": "8f75e",
+      "asm_sha256": "ea0a3df28c1ecfe7796c1b6098f825c6a7bef9c798e11caa882a7ab1f6146c1f",
+      "equal": true
+    },
+    {
+      "root": "c00d2",
+      "asm_sha256": "9b33b0a245506973276007b5e5aae93baec1c18e2dca50c54e950158eae5617d",
+      "equal": true
+    },
+    {
+      "root": "c006c",
+      "asm_sha256": "35821aae2bd0ee11fdc1a29ffdd0a6f39ea6e62042d5efd36180c6561a2d8123",
+      "equal": true
+    },
+    {
+      "root": "b9930",
+      "asm_sha256": "7b30e080d860dbe783c7aed004b2895085372b37c48ba7df041e731e0137c1a1",
+      "equal": true
+    },
+    {
+      "root": "c9278",
+      "asm_sha256": "5b030b683fc4bb8cfe8c2f96a0d1cc4ef25474a77aa0d3ea56c8b75775822220",
+      "equal": true
+    },
+    {
+      "root": "c94a6",
+      "asm_sha256": "6f96c2aa00045031d4d1b62dac448eb0a6a46ba7cf198ca3284524640aaab8b8",
+      "equal": true
+    },
+    {
+      "root": "c96e6",
+      "asm_sha256": "9d83b18964023a623f7bac15f3c5bc4be3d4f4ab722fdcc969ed2187db157921",
+      "equal": true
+    },
+    {
+      "root": "c939e",
+      "asm_sha256": "e3279ca2345211600bdcacd74f303cd3f1526a94e7f203af3e97c97159693773",
+      "equal": true
+    }
+  ]
+}

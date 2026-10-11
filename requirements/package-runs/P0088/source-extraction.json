@@ -1,0 +1,103 @@
+{
+  "status": "PASS",
+  "independent_projects": [
+    "fresh-a",
+    "fresh-b"
+  ],
+  "matching_files": 23,
+  "files": [
+    {
+      "file": "9c488.asm",
+      "sha256": "ab051705bdbdcb3a68bdd5d06e90fde1e70dd47a7adccd8cff8087738aeb5cf0"
+    },
+    {
+      "file": "9ca40.asm",
+      "sha256": "80288a255754bedc17287b151117fc929d982f97a70d310edb70715e67149066"
+    },
+    {
+      "file": "9cbd0.asm",
+      "sha256": "d7088aa6b2b400489d6beb08c49bac5609eb810c9462d04e74a6f40fdc3726d5"
+    },
+    {
+      "file": "9cbf6.asm",
+      "sha256": "9f7534ae76b1baccb77146758d21e5bd7c443c19d87fdb86a5e0eed89eb6e3a9"
+    },
+    {
+      "file": "9cfd2.asm",
+      "sha256": "c976292fde41849b17d0fb4a87a48f0031a4470da6c9b14cc782e12e325e621c"
+    },
+    {
+      "file": "9d08c.asm",
+      "sha256": "b5aefbef0cba84b5f9bec4db0b919ea848e08b1aae534f01b0fc0525583589ac"
+    },
+    {
+      "file": "9cf66.asm",
+      "sha256": "d460bcdda9c4ba65e7b580dd285ac9caf40b2ae0b34afb3baad629865f617aa9"
+    },
+    {
+      "file": "branch-00.asm",
+      "sha256": "cc76657892d87e60924b257235737458cd916b2a1716b20b83ed7f4e7b23109a"
+    },
+    {
+      "file": "branch-01.asm",
+      "sha256": "5aa67c248af30b5c144cbeba55aee9d26c350d3667f46dd741e2973aca3cf042"
+    },
+    {
+      "file": "branch-02.asm",
+      "sha256": "7c03e903d2b31e52bfd43a238e167c30ff49e17107e25231dbcc7048a7f970c7"
+    },
+    {
+      "file": "branch-03.asm",
+      "sha256": "a8923457cabd1141f65242d5d8338a1c78a6109eca27b3593eacf5c3f70d02a3"
+    },
+    {
+      "file": "branch-04.asm",
+      "sha256": "ca9781101cecbd28ee345da0e5986c942c94b44d4815a90fb5a6517a09941c11"
+    },
+    {
+      "file": "branch-05.asm",
+      "sha256": "97473ca59cd0369bc43e1215e0267b914d6d4b6a2b35e4c6ed238bffea2afeac"
+    },
+    {
+      "file": "branch-06.asm",
+      "sha256": "b60350b74d302dce7ce6b5bddf7f264acb3f6b94dc9957a41ba44c463184381d"
+    },
+    {
+      "file": "branch-07.asm",
+      "sha256": "1adee22e8b46902b83eb20f4a23020511d81ac8aaba176110b96aafbe9cc7b65"
+    },
+    {
+      "file": "branch-08.asm",
+      "sha256": "8e6dfd4f9cf8278f258a6dbd81327ef205f8cc7b0f5ff933619310d769dee230"
+    },
+    {
+      "file": "branch-09.asm",
+      "sha256": "eaa3ba0a354ff3b5d7d7b75c4cb8b5ee531cadde88546a08cf9c956e6eefd6ce"
+    },
+    {
+      "file": "branch-10.asm",
+      "sha256": "97473ca59cd0369bc43e1215e0267b914d6d4b6a2b35e4c6ed238bffea2afeac"
+    },
+    {
+      "file": "branch-11.asm",
+      "sha256": "218246b3d1b206cc288e8c5e8fd604426adf30ce2514abdc4dafe904a188f696"
+    },
+    {
+      "file": "branch-12.asm",
+      "sha256": "5814debe127df21d31048b1a58c5028fc424fb2a7ddd14ccc17c0f743b4b54d0"
+    },
+    {
+      "file": "branch-13.asm",
+      "sha256": "879316fef41df84d13465994327c15f84217694b3dfb2257e0de4600c02c1909"
+    },
+    {
+      "file": "branch-14.asm",
+      "sha256": "74f64c4e86efe521d93cb81dd2e0e0c8b489e225e9d1048708a1a176fbae376e"
+    },
+    {
+      "file": "branch-15.asm",
+      "sha256": "62e95e79ba4df1d4966e3e573e28383bb829be1407423bb38f814e11f1854513"
+    }
+  ],
+  "scope": "Seven source functions and sixteen bounded switch branches; RX 9C660/9C77C separately extracted once, not included in repeat claim."
+}

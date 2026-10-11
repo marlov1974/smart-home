@@ -1,0 +1,5 @@
+# P0088 design
+
+Inventory all peripheral/bit drivers, prioritizing BFD16/UART6. Trace lifecycle, buffers, framing and dispatch before assigning ports. Mechanically enumerate bounded descriptors and nested dispatch; record aliases/defaults/internal-only boundaries. Build stable per-command and per-field records, symbolic gates and effects. Cross-reference P81, pinned public implementations and current modular Procon. Separate structural, semantic and physical coverage and generate human reports from the same records. Preserve unresolved edges explicitly; no estimated denominator.
+
+Use a private P88 project and pinned20.01 image. Two fresh runs verify deterministic extraction. A portable Python extractor rejects wrong image, bad bounds, corrupt pointers and absent evidence. All default tooling uses local files only. Generate machine JSON/CSV plus functional matrix, missed-CN105 capabilities, path/port evidence and adaptation assessment. Regress P86 energy side effects and UART1 aliasing. No production changes.

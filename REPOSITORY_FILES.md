@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 987
+Tracked file count: 1034
 
 ## Files
 
@@ -33,6 +33,7 @@ Tracked file count: 987
 - `dep/s/rec/weather_v0_9_0.json`
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
+- `docs/functions/ftc6-command-atlas.md`
 - `docs/functions/ftc6-energy-uart1-qualification.md`
 - `docs/functions/ftc6-flow-control.md`
 - `docs/functions/ftc6-ports-access.md`
@@ -730,6 +731,37 @@ Tracked file count: 987
 - `requirements/package-runs/P0087/timers.json`
 - `requirements/package-runs/P0087/timing-and-thresholds.md`
 - `requirements/package-runs/P0087/verification.json`
+- `requirements/package-runs/P0088/CHANGELOG.md`
+- `requirements/package-runs/P0088/a3-job-lifecycle.md`
+- `requirements/package-runs/P0088/atlas-ledger.md`
+- `requirements/package-runs/P0088/cn105-new-capabilities.md`
+- `requirements/package-runs/P0088/command-atlas.csv`
+- `requirements/package-runs/P0088/command-atlas.json`
+- `requirements/package-runs/P0088/continuation-extraction.json`
+- `requirements/package-runs/P0088/coverage.json`
+- `requirements/package-runs/P0088/decoder-and-pin-corrections.md`
+- `requirements/package-runs/P0088/design.md`
+- `requirements/package-runs/P0088/findings.md`
+- `requirements/package-runs/P0088/fresh-extraction.json`
+- `requirements/package-runs/P0088/function-matrix.md`
+- `requirements/package-runs/P0088/functions.md`
+- `requirements/package-runs/P0088/port-role-analysis.md`
+- `requirements/package-runs/P0088/procon-port-choice.md`
+- `requirements/package-runs/P0088/provenance.md`
+- `requirements/package-runs/P0088/reproduce.md`
+- `requirements/package-runs/P0088/review.md`
+- `requirements/package-runs/P0088/settings-d-events.md`
+- `requirements/package-runs/P0088/source-extraction.json`
+- `requirements/package-runs/P0088/source-link.md`
+- `requirements/package-runs/P0088/source-outgoing.md`
+- `requirements/package-runs/P0088/source-tx-descriptors.json`
+- `requirements/package-runs/P0088/structural-inventory.json`
+- `requirements/package-runs/P0088/transport-inventory.md`
+- `requirements/package-runs/P0088/uart0-storage-path.md`
+- `requirements/package-runs/P0088/uart1-snapshots.md`
+- `requirements/package-runs/P0088/uart6-room-path.md`
+- `requirements/package-runs/P0088/unresolved-handlers.md`
+- `requirements/package-runs/P0088/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -993,5 +1025,20 @@ Tracked file count: 987
 - `tools/ftc6/p87/tests/test_model.py`
 - `tools/ftc6/p87/tests/test_native_state.py`
 - `tools/ftc6/p87/verify_local.py`
+- `tools/ftc6/p88/P88A3Completion.java`
+- `tools/ftc6/p88/P88SourceSwitch.java`
+- `tools/ftc6/p88/addressing.py`
+- `tools/ftc6/p88/atlas.py`
+- `tools/ftc6/p88/extract.py`
+- `tools/ftc6/p88/matrix.py`
+- `tools/ftc6/p88/menu_inventory.json`
+- `tools/ftc6/p88/reviewed.json`
+- `tools/ftc6/p88/settings_peer.py`
+- `tools/ftc6/p88/source_result.py`
+- `tools/ftc6/p88/source_tx.py`
+- `tools/ftc6/p88/test_p88.py`
+- `tools/ftc6/p88/uart1_snapshot.py`
+- `tools/ftc6/p88/uart6.py`
+- `tools/ftc6/p88/verify_artifacts.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

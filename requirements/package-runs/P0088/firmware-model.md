@@ -8,6 +8,7 @@ This is the entry point for the reconstructed FTC20.01 architecture. It is a par
 |Active settings import|90ABA→BC0D8→BD166 consumes event;ordinary importer runs earlier|Active settings, e.g.0770 and07E6; event cleared by90BD4|[Application ordering](settings-apply-order.md)|
 |D extended settings transfer|33 bounded range entries resolve742 selectors, including aliases;direction must match|Staging records, not a complete setting inventory|[Transfer mapping](settings-transfer-map.md), [events](settings-d-events.md)|
 |Settings persistence|Serialize selected profile; compare and write words;verify twice|Read/shadow bookkeeping, storage fault, startup reload|[Named persistence model](settings-store-model.md)|
+|Pump-level consumers|Active0770/07E6, demand and profile reduction|Timer A2 output and separate table-derived accounting contribution|[Consumers and timing](pump-consumers-and-timing.md)|
 |A3 job lifecycle|Request class/selector, queue and asynchronous completion|Cached result; cancellation can follow unrelated commands|[A3 lifecycle](a3-job-lifecycle.md)|
 |Source-board outgoing packer|37 qualified templates,249 bitfields, selected active values|Packed messages toward source-board path|[Outgoing descriptors](source-outgoing.md)|
 |Source-board result import|Response decode and result dispatch|Service values and completion state|[Source link](source-link.md)|
@@ -28,7 +29,7 @@ CN105 heating-pump staging1CB0
     -> startup96AF4 loads read image[1AB] back into07E6
 ```
 
-This connects communication, active RAM and persistence. It does not yet explain every downstream use of07E6 or prove any particular live pump speed. The neighboring byte in the word must be preserved.
+This connects communication, active RAM and persistence. The next module now follows07E6 through selected level3A33 into a timer-backed output and a separate accounting contribution; physical speed remains unqualified. The neighboring byte in the word must be preserved.
 
 ## Rules for extending the model
 
@@ -36,4 +37,4 @@ For each newly understood function: give it an analytical name; retain firmware 
 
 Do not merge staging, active state, physical memory and telemetry merely because values resemble one another. Do not promote a software UART role into a physical connector fact without supporting evidence. Export complete bounded control flow when the decompiler or function body is incomplete.
 
-The immediate remaining boundaries are visible storage-fault behavior, tick timing and profile selection, then active-setting consumers and source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.
+The immediate remaining boundaries are physical status-indicator attribution, timer clock qualification, pump-reduction ownership and accounting units, then source-board control requests. Exact compressor regulation remains incomplete; understanding the FTC-to-source contract alone does not establish the source board's internal control law.

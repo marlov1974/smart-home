@@ -1,0 +1,171 @@
+{
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "result": "PASS",
+  "scope": "16 targeted routines, identical C/assembly exports in fresh-a/fresh-b; not independent semantic validation. Indexed-bit C error corrected from assembly.",
+  "private_exports": [
+    "pump-timing-first",
+    "pump-timing-repeat"
+  ],
+  "files": [
+    {
+      "root": "af400",
+      "kind": "asm",
+      "sha256": "e07f89d41193cb3efca9425fe84c71772464303769e79c59acd2be5799de8674"
+    },
+    {
+      "root": "af400",
+      "kind": "c",
+      "sha256": "7f16984916200a0cf71a32c52c24f8bc15d901ef7d4252d4c7d85cde0030a133"
+    },
+    {
+      "root": "af452",
+      "kind": "asm",
+      "sha256": "3615f3d9ea36f7ecf35a9a335c7bc454fba6b92bcef22a394b9209ef5993082d"
+    },
+    {
+      "root": "af452",
+      "kind": "c",
+      "sha256": "7e9d88d3de33f7ed2f04a259c831e4ecb8084292e399f02c8bf549a4070af142"
+    },
+    {
+      "root": "b1af0",
+      "kind": "asm",
+      "sha256": "794263ce5a66c52a637843f306373253fed21878f9fa57f9c625d480498ae13d"
+    },
+    {
+      "root": "b1af0",
+      "kind": "c",
+      "sha256": "d718615211e73b83ff93e246c79dc0c69645f906941cedbba942c35bc8e44c2d"
+    },
+    {
+      "root": "b1b9c",
+      "kind": "asm",
+      "sha256": "55b3cc94e967f71de7651b5dbdbdf807a9bca1fe1c54d947174a97905defec01"
+    },
+    {
+      "root": "b1b9c",
+      "kind": "c",
+      "sha256": "878ab2892d1a4075dd6325ec892c29d4aac4aa10b651714017743d3167edbe2d"
+    },
+    {
+      "root": "b1a90",
+      "kind": "asm",
+      "sha256": "ea570eb9386e1259947171a67d034c6f5f9d206ebf3d4882cce2351fad8573f6"
+    },
+    {
+      "root": "b1a90",
+      "kind": "c",
+      "sha256": "597d626922d13693003aaaf38580f1941c3ac6d5f23750a52ff2f84c8cbdec2a"
+    },
+    {
+      "root": "ce2a4",
+      "kind": "asm",
+      "sha256": "3f3562e85ee596a2e61c981bd55af149e4bd061ebca45af4a099db277eb79802"
+    },
+    {
+      "root": "ce2a4",
+      "kind": "c",
+      "sha256": "e009d6ea5d267b6a78af75fbddacfdbec16bf4e891517ea35b15c2f3e4cd5c7a"
+    },
+    {
+      "root": "cd5aa",
+      "kind": "asm",
+      "sha256": "b0028eac6e05c4fc5d23980f21bf5dd27d6dac3c4b6e434897b99e583f886a34"
+    },
+    {
+      "root": "cd5aa",
+      "kind": "c",
+      "sha256": "1e7dae8c06a401c1cdad3e953ddb96c893ed7763ce6118734adc97cc4cd71d5b"
+    },
+    {
+      "root": "94324",
+      "kind": "asm",
+      "sha256": "aad5019e18bb0a0e8b98c9610a591f8035a9852ee1875541e26d112686cd2bb3"
+    },
+    {
+      "root": "94324",
+      "kind": "c",
+      "sha256": "a31c51b19f781fbe113090a62553d9517f4a35d8fe942fa5080e95003f54d7f3"
+    },
+    {
+      "root": "9435c",
+      "kind": "asm",
+      "sha256": "5aacfca9e9b7d9a8a44ce952f6449cb8b49ec47892f7fb27958a4237ec09d637"
+    },
+    {
+      "root": "9435c",
+      "kind": "c",
+      "sha256": "7782779eaad64ebac049264e67b1f8f34fd4e5030a63e47c6694254202ce994c"
+    },
+    {
+      "root": "9438e",
+      "kind": "asm",
+      "sha256": "2a36d9089873955c450276dad411a015cc77b20723abd7dc1619b5a5f5eca273"
+    },
+    {
+      "root": "9438e",
+      "kind": "c",
+      "sha256": "d41e0e35ad022415accff416ebc04f91848c483de44571a5cc564c47191ac2d2"
+    },
+    {
+      "root": "943dc",
+      "kind": "asm",
+      "sha256": "462a005d3c819eb0530bf3ce78a35038a4ce2c99f759431d6ac52023cd44d846"
+    },
+    {
+      "root": "943dc",
+      "kind": "c",
+      "sha256": "4689771aa0e54fa4e677c058d7a9d216b8d0abaf3a1ad68992b3f33751d9f54c"
+    },
+    {
+      "root": "94416",
+      "kind": "asm",
+      "sha256": "c62a41f94155e3b61a8543dc06add543d9193e29af93d76bdd5162ac75b114c6"
+    },
+    {
+      "root": "94416",
+      "kind": "c",
+      "sha256": "b9ffe59eec89a037e28781f08ab0fc5341cac0e638913451b3245a11f6274c9e"
+    },
+    {
+      "root": "9449a",
+      "kind": "asm",
+      "sha256": "a20fb4de0dd70f4af016ad1901186595a2b7b4acefc6a70479eaf45b31bfb918"
+    },
+    {
+      "root": "9449a",
+      "kind": "c",
+      "sha256": "6f1ff460fb95fe96cf6c448d2646c5e0bba710e29a116c757fde5d5c1b3f5ac3"
+    },
+    {
+      "root": "9850e",
+      "kind": "asm",
+      "sha256": "45102d4ab33e66cd921b2e5157baf533ff0c8a334fde7c43c02c903893c7245f"
+    },
+    {
+      "root": "9850e",
+      "kind": "c",
+      "sha256": "b8601d1a201c69b52ff04058c4fe3f041696725c0638e5123b5b72b06d3417e3"
+    },
+    {
+      "root": "984d2",
+      "kind": "asm",
+      "sha256": "1abb73ae2755f784a5be5d71e57ddf5e29ccc780560f06a1db55d0c0d41665cf"
+    },
+    {
+      "root": "984d2",
+      "kind": "c",
+      "sha256": "d35b0b417a52c9efee522796472d513863fa76349b6687d0114aae3ce5e784e7"
+    },
+    {
+      "root": "b7954",
+      "kind": "asm",
+      "sha256": "2b33f81dfaec9916fc4dd237304554c9342939ef6ecda944011e8f898c7eb0d9"
+    },
+    {
+      "root": "b7954",
+      "kind": "c",
+      "sha256": "43d2daa97a2a1f9e5e6c9e58688abea152ea5f324c080d71257c8c011cf6154d"
+    }
+  ]
+}

@@ -23,3 +23,5 @@ Scope: supplied20.01, hash-gated static analysis. No production firmware changes
 See `requirements/package-runs/P0088/reproduce.md`, `verification.json` and `unresolved-handlers.md`. The pending A3 job and the cached result are separate; production callers must retain selector validation and distinguish status polling from failed communication. This research does not change Procon's current retry policy.
 
 Readable reconstruction entry point: [firmware model](../../requirements/package-runs/P0088/firmware-model.md), with linked module contracts and named pseudocode.
+
+`pump_control.selected_level` reconstructs AF400/AF452 raw selection and bounded reduction. `accounting_allowance` reconstructs CE2A4 override/table/cap/enable logic. Both are pure offline functions. Tests cover mode exclusions, all reduction byte values, table boundary21/22, all level bytes, disable/cap behavior, and SHA-pinned ROM table/vector anchors. See P0088/pump-consumers-and-timing.md.

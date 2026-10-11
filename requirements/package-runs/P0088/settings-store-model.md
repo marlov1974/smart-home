@@ -85,9 +85,9 @@ The software organization is256×16 bits. This is consistent with a Microwire-st
 
 ## Fault and delay follow-through
 
-`89D6A` sets3ACF.bit1 when08DA.bit2 is set (or33F9.bit4 independently requests it). `984D2` mirrors08DA.bit2 into075A.bit3. This proves propagation beyond the writer, but not a particular display fault code or whether every product profile uses both paths. Neither reviewed consumer clears08DA.bit2.
+Both89D6A and984D2 feed3ACF.bit1. The earlier claim that984D2 writes075A.bit3 was a decompiler indexed-bit addressing error; the instruction targets3ACF[A0] with A0=1. The status bit is later latched by9850E on an indication request and drives a GPIO state machine. See [corrected propagation and timing](pump-consumers-and-timing.md).
 
-`94A46` increments3CED and caps it at6 during normal operation. Its caller/timebase is still unresolved, so the writer threshold cannot yet be labeled milliseconds. The bounded94A20..94A44 clock helper is31 instructions: bit set,28 NOPs, bit clear, return. Two private project exports agree. The first attempted bound included unmapped padding at94A45 and correctly failed; no missing bytes were manufactured.
+`94A46` increments3CED, capped at6, from the Timer B2 handler in normal profile2. Six interrupts provide the writer delay threshold; nominal15ms assumes a32MHz clock and is not an unconditional measured duration. The bounded clock helper94A20..94A44 remains31 instructions (bit set,28 NOPs,bit clear,return).
 
 ## Separate bulk verification path
 
@@ -95,4 +95,4 @@ Profile6's8AE38 accepts a512-byte image plus an8-bit additive checksum from365F 
 
 ## What this unlocks next
 
-Follow3ACF.bit1/075A.bit3 into visible fault behavior; qualify the delay-counter caller/timebase; connect default/profile selection to known product variants; then follow the active field consumers into control logic. The persistence model supplies reliable state names for those investigations without assuming every accepted command is durable.
+Qualify the GPIO indication physically and the timer clock route; connect default/profile selection to known product variants; then follow the active field consumers into control logic. The persistence model supplies reliable state names for those investigations without assuming every accepted command is durable.

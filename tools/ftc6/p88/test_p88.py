@@ -7,6 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
+from pump_control import selected_level,accounting_allowance,ALLOWANCE_ROWS
 from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
@@ -17,6 +18,37 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_storage_fault_indexed_bit(self):
+        self.assertEqual(bit_address(0x3acf,1),(0x3acf,1))
+        self.assertNotEqual(bit_address(0x3acf,1),(0x075a,3))
+
+    def test_pump_selection(self):
+        def pick(**kw):
+            args=dict(demand=1,operating_state=9,exclusion_a=0,exclusion_b=0,
+                      dhw_level=5,heating_level=3,profile=2,reduction=0)
+            args.update(kw);return selected_level(**args)
+        self.assertEqual(pick(),5)
+        for exclusion in ('exclusion_a','exclusion_b'):
+            self.assertEqual(pick(**{exclusion:2}),3)
+        self.assertEqual(pick(operating_state=10),5)
+        self.assertEqual(pick(operating_state=8),3)
+        self.assertEqual(pick(demand=2,reduction=7),3)
+        self.assertEqual(pick(demand=0),0)
+        for reduction in range(256):
+            self.assertEqual(pick(reduction=reduction),max(2,5-(reduction-2)) if 2<=reduction<=7 else 5)
+        self.assertEqual(pick(profile=1,reduction=7),5)
+        self.assertEqual(pick(dhw_level=1,reduction=2),2)
+
+    def test_pump_accounting(self):
+        for variant,row in ((21,0),(22,1)):
+            for level in range(256):
+                expected=ALLOWANCE_ROWS[row][level] if level<6 else 0
+                self.assertEqual(accounting_allowance(level,variant,9999,True),expected)
+                self.assertEqual(accounting_allowance(level,variant,9999,False),0)
+        self.assertEqual(accounting_allowance(255,0,201,True),200)
+        self.assertEqual(accounting_allowance(1,0,17,True),17)
+        with self.assertRaises(ValueError):accounting_allowance(256,0,9999,True)
+
     def test_settings_store_verification(self):
         desired=bytearray(512);desired[0x1aa:0x1ac]=bytes([0x71,5])
         shadow=bytes(512)
@@ -150,6 +182,12 @@ class LocalImage(unittest.TestCase):
         cls.path=os.environ.get('P88_IMAGE');cls.catalog=os.environ.get('P88_CATALOG')
         if not cls.path or not cls.catalog:raise unittest.SkipTest('P88_IMAGE and P88_CATALOG needed for private-ROM checks')
         cls.image=Image(Path(cls.path).read_bytes())
+    def test_pump_rom_rows(self):
+        raw=self.image.at(0x87f9a,24)
+        words=tuple(int.from_bytes(raw[i:i+2],'little') for i in range(0,24,2))
+        self.assertEqual(words,ALLOWANCE_ROWS[0]+ALLOWANCE_ROWS[1])
+        self.assertEqual(self.image.ptr(0xffd70),0x94324)
+
     def test_anchor_routes(self):
         inv=extract(self.image);m={(x['frame'],x['opcode']):x for x in inv['cn105_routes']}
         for c,i in [('07',0x3b),('15',0x49),('65',0x73),('79',0x87),('a3',0x8f)]:self.assertEqual(m['42',c]['internal'],i)

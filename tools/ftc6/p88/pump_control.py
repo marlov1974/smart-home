@@ -83,3 +83,19 @@ def reduction_configuration(mode_3a4a, state_3a4f, setting_07df, level_07e6,
                and setting_07ee != 1 and setting_0a45 != 1
                and not flags_06d7 & 1
                and not (flags_06d4 & 0x10 and setting_073c == 1))
+
+
+def reduction_source_class(flags_06d5, flags_06d6):
+    """C61F6: derive3A4F; external class names remain unqualified."""
+    if any(not isinstance(v, int) or not 0 <= v <= 255 for v in (flags_06d5, flags_06d6)):
+        raise ValueError('raw uint8 flags required')
+    if not flags_06d5 & 0x20:
+        return 0
+    return 1 if flags_06d6 & 0x20 or not flags_06d5 & 0x40 else 2
+
+
+def reduction_aux_inhibit(flags_06d9, state_06a5):
+    """91A70: derive0A45 before any later configuration overlay."""
+    if any(not isinstance(v, int) or not 0 <= v <= 255 for v in (flags_06d9, state_06a5)):
+        raise ValueError('raw uint8 state required')
+    return 0 if flags_06d9 & 0x10 and state_06a5 == 1 else int(bool(flags_06d9 & 8))

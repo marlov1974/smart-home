@@ -63,3 +63,5 @@ P0088 now provides a qualified opt-in bit decoder: `m16c:LE:16:p88-bits`, spec13
 P0088 reference-index lesson: cross-check instruction operands before declaring no writers. Writes8FBC4/8FBEF to0686 were absent from the collected near-reference search. Callback descriptor fields can also be RAM pointers rather than numeric command IDs:81A3E begins with configuration pointer0939, not service0939.
 
 P0088 configuration-owner lesson: RAM0939 has no literal instruction writer because917FE copies184 bytes09AA->08F2; its producer is09F1. Trace range writes and then later overlays before claiming a configuration gate.92298 profile2 overlay covers this byte but suppliesFF (retain), so the923BC calculation survives. See reduction-activation.md.
+
+P0088 ABI caution: B4674's decompiled candidate locals appear uninitialized because helper output arguments are missing from recovered signatures. Preserve the assembly-level caller-provided record contract; do not turn that C into an executable arbiter until arguments and priority are recovered. Also distinguish ROM defaults from installed/saved settings when interpreting disabled gates.

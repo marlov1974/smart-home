@@ -15,3 +15,5 @@ Reduction/decoder continuation: traced timed pump reduction, seven predicates an
 Activation continuation: resolved descriptor30 within33×26-byte table to0939 configuration,49C7 result and phase8-only update/reset. Connected effective heating target3908, selected0686 source/GET0B output and latched39EA producer.33 tests pass (22 public); eight assembly exports reproduce with the fixed language. One C export differs only in a generated symbol name. Added two indexed evidence/report files; knowhow updated for missing cross-references. No live actions, no production changes; PARTIAL.
 
 - Continued0939 ownership: traced09F1 calculation and184-byte configuration copy; checked profile overlay retain marker; added exhaustive gate model tests. No live access.
+
+- Continued gate provenance: persistent07DF/07EE defaults and staging sources, derived3A4F/0A45, sampled bit7 path and runtime arbitration boundary. Added pure gate tests and private default-byte checks. No tracked files added, removed or moved; index unchanged.

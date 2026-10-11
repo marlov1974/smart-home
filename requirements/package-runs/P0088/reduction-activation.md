@@ -80,3 +80,54 @@ Three owner routines were independently exported from both corrected projects;
 the assembly matches.92298 and the overlay bytes were separately inspected.
 A raw-byte3909 match atCBFAA was rejected as overlapping operands, not a0939
 reference; the exploratoryCBF90 seed supplies no evidence for this result.
+
+## Upstream gate provenance — continued mapping
+
+The gate inputs are not all persistent configuration. The following distinctions
+are now established in the20.01 reference:
+
+|Field|Producer and provenance|Meaning established|
+|---|---|---|
+|07DF|BD780 copies1CA1&1;96AF4 loads102A;94A82 stores0E2A|Persistent Boolean enable required by923BC; UI label unresolved|
+|07EE|BD780 copies1CC2&1;96AF4 loads0F6B;94A82 stores0D6B|Persistent Boolean inhibit; UI label unresolved|
+|07E6|BD780 copies1CB0; image offset1AB|Selected heating pump level, already traced to actuator consumer|
+|3A4F|C61F6 derives it from06D5 bits5/6 and06D6 bit5|Derived class, not directly a saved setting|
+|0A45|91A70 derives it from06D9 bits3/4 and06A5|Calculated configuration field; later overlay remains relevant|
+|3A4A|B4674 publishes a selected three-byte candidate record|Runtime arbitration result, not a fixed model identity|
+
+The desired/shadow offsets for07DF and07EE are146 and087 respectively.
+959DE reads the same offsets in its selected ROM defaults. **All three previously
+qualified default rows8000A/8020A/8040A contain07DF=0,07EE=0,07E6=5.**
+Therefore the07DF gate disables reduction in these defaults even though the
+pump level is high enough. This says nothing about saved settings, later
+transfers, another firmware version, or the current installed units.
+BD780's staging addresses must not be presented as Modbus registers or inferred
+D-selectors: they did not directly match the existing33-range transfer table.
+The missing staging-copy edge remains to be traced.
+
+C61F6 simplifies to:3A4F=0 if06D5.bit5 is clear; otherwise1 if06D6.bit5
+is set or06D5.bit6 is clear; otherwise2. Hence its zero/nonzero gate depends
+only on06D5.bit5.91A70 sets0A45=0 when06D9.bit4 and06A5==1; otherwise
+0A45 equals06D9.bit3. The model preserves this as a pre-overlay calculation.
+
+8E3DE copies the reduction prerequisite06D5.bit7 from3876.bit7 in all
+three profile branches.8E12C builds3876 by transposing bit1 from eight inverted
+snapshot bytes08E6..08ED; specifically3876.bit7=NOT08ED.bit1. It is a
+sampled input/configuration path, not evidence that the user must set a named
+physical DIP switch.8E37E can override3876 from ROM888D8 only with magic
+80FF4==5A5A and a nonzero override. This image has magic0000 and override00,
+so that ROM override is inactive. Physical switch-bank/pin identity is open.
+
+B4674 calls16 candidate producers, starts with mode0, and copies qualifying
+three-byte records into its selected result in an explicit order.0900==2 skips
+the ordinary selection block. It publishes3A4A..3A4D. Decompiled C shows
+uninitialized candidate locals and parameterless helper calls because the
+caller-provided output ABI is not recovered; it is not evidence of firmware
+reading genuinely uninitialized data. The exact candidate meanings and priority
+chain require assembly-level argument recovery before an executable arbiter.
+
+Four main routines match across both corrected projects.8E12C/8E37E andBD780
+were inspected in one corrected project; existing persistence exports supply
+the storage connections. Pure derived-gate helpers exhaust65,536 flag pairs
+and1,024 auxiliary cases. ROM defaults are separately checked against the
+hash-qualified binary. No physical readings or writes were performed.

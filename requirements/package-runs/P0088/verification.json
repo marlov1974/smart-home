@@ -2,9 +2,9 @@
   "package_status": "PARTIAL",
   "offline_tests": {
     "result": "PASS",
-    "tests": 34,
+    "tests": 36,
     "command": "P88_IMAGE=<private-ftc6.bin> P88_CATALOG=<private-catalog> python3 -m unittest discover -s tools/ftc6/p88 -p test_p88.py -v",
-    "public_only_tests": 23
+    "public_only_tests": 24
   },
   "artifact_consistency": {
     "result": "PASS",

@@ -29,3 +29,5 @@ Readable reconstruction entry point: [firmware model](../../requirements/package
 P0088 additions: `pump_control.reduction_code`, `reduction_allowed` and `sample_average` preserve native state encoding, signed16 thresholds and empty-window retention. `patch_bit_decoder.patch` validates source hash/anchors, creates a separate language variant and refuses existing output; `P88BitProof` exercises468 memory-effect cases. See reduction-and-energy-chain.md and decoder-bit-repair.md.
 
 `pump_control.reduction_active` models the record30 phase/configuration gate (0939 nonzero, phase8). Exhaustive byte/phase tests and private ROM descriptor/callback anchors verify the finite contract. See P0088/reduction-activation.md for initialization, resets and input ownership.
+
+P0088 gate provenance continuation: `pump_control.reduction_source_class` models C61F6's raw3A4F class; `reduction_aux_inhibit` models91A70's0A45 before overlays. Both are pure, byte-validated helpers. See reduction-activation.md for persistent07DF/07EE default/storage provenance and the unresolved B4674 candidate-output ABI.

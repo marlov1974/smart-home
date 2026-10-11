@@ -74,5 +74,50 @@
     ],
     "profile_override": "92298 descriptor6 maps09F1 to3C66; selected ROM row6 byte88E46=FF retains calculated value",
     "image_rom_88eee": 0
+  },
+  "gate_provenance": {
+    "result": "PASS",
+    "files": [
+      {
+        "root": "c61f6",
+        "assembly_sha256": "3ec9939f34437253de298f66ba42edca0add91a095c07a9524e7efaa3805db81",
+        "repeat_equal": true
+      },
+      {
+        "root": "b4674",
+        "assembly_sha256": "c66d263c705d44e7bfdea73e5c1b862f39bb45fc25694f45b0951f79dadfe59a",
+        "repeat_equal": true
+      },
+      {
+        "root": "8e3de",
+        "assembly_sha256": "b238fc06c18fe6cd995251cde78bccfeb4a0818ece7f4ccd40dfee0fab9a0981",
+        "repeat_equal": true
+      },
+      {
+        "root": "91a70",
+        "assembly_sha256": "76eef04f05bad7be15f0b4e13c832f77b9f649bb368069e01846082783436701",
+        "repeat_equal": true
+      }
+    ],
+    "single_export_support": [
+      "8e12c",
+      "8e37e",
+      "bd780"
+    ],
+    "default_offsets": {
+      "07DF": "146",
+      "07EE": "087",
+      "07E6": "1AB"
+    },
+    "default_rows": [
+      "8000A",
+      "8020A",
+      "8040A"
+    ],
+    "default_values": [
+      0,
+      0,
+      5
+    ]
   }
 }

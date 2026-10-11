@@ -7,7 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
-from pump_control import reduction_configuration,selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_active,reduction_code,reduction_allowed,sample_average
+from pump_control import reduction_source_class,reduction_aux_inhibit,reduction_configuration,selected_level,accounting_allowance,ALLOWANCE_ROWS,reduction_active,reduction_code,reduction_allowed,sample_average
 from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
@@ -18,6 +18,20 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_reduction_derived_gates(self):
+        truth={(0,0,0):0,(0,0,1):0,(0,1,0):0,(0,1,1):0,
+               (1,0,0):1,(1,0,1):1,(1,1,0):2,(1,1,1):1}
+        for d5 in range(256):
+            for d6 in range(256):
+                key=(int(bool(d5&32)),int(bool(d5&64)),int(bool(d6&32)))
+                self.assertEqual(reduction_source_class(d5,d6),truth[key])
+        for d9 in range(256):
+            for state in (0,1,2,255):
+                expected={0:0,8:1,16:0,24:int(state!=1)}[d9&24]
+                self.assertEqual(reduction_aux_inhibit(d9,state),expected)
+        with self.assertRaises(ValueError):reduction_source_class(-1,0)
+        with self.assertRaises(ValueError):reduction_aux_inhibit(0,256)
+
     def test_reduction_configuration(self):
         import itertools
         # Exhaust all nine enabling/inhibiting decisions independently.
@@ -231,6 +245,12 @@ class Offline(unittest.TestCase):
                 if isinstance(n,ast.Import):self.assertFalse(forbidden.intersection(a.name.split('.')[0] for a in n.names))
                 if isinstance(n,ast.ImportFrom):self.assertNotIn((n.module or '').split('.')[0],forbidden)
 class LocalImage(unittest.TestCase):
+    def test_reduction_default_profiles(self):
+        for base in (0x8000a,0x8020a,0x8040a):
+            self.assertEqual([self.image.at(base+off,1)[0] for off in (0x146,0x87,0x1ab)],[0,0,5])
+        self.assertEqual(self.image.at(0x80ff4,2),bytes(2))
+        self.assertEqual(self.image.at(0x888d8,1),bytes(1))
+
     @classmethod
     def setUpClass(cls):
         import os

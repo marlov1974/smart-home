@@ -1,0 +1,7 @@
+# P0087 function design
+
+Only new tools/ftc6/p87 code: local analysis wrapper and evidence verifier (pinned inputs/operands and repeat exports); model.py (verified target, demand/thermostat and actuator transitions with explicit unresolved dependencies); scenarios.py (deterministic prescribed trajectories and UNKNOWN specifications); historical.py (offline timestamp/quality-aware summaries of existing private records); tests for identity, integer arithmetic, boundaries, transitions and absence of transport. Exact modeled functions and evidence bindings will be added as they are qualified, before implementing their equations.
+
+Reports, compact evidence tables, relevant catalog/knowhow, package status and generated index may change. P86 helpers are reused read-only. Production EFFECT, control, telemetry, BL2 and settings tooling remain unchanged.
+
+Implemented: `model.evaluate/lookup/temperature_byte/error_byte/pump_step/TimerWord/water_balance_delta`; `scenarios.scenarios`; `replay.replay` (the planned historical.py responsibility); `verify_local.derive/verify`; `run_analysis.py`. Thermostat/peerHz remain UNKNOWN rather than an invented transition implementation. `evidence.json` binds source chains; `extraction-verification.json` records checked operands/table and deterministic export hashes. The final model is narrower than the initial design ambition, as documented in findings.

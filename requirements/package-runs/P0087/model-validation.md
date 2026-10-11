@@ -1,0 +1,15 @@
+# Validation and limits
+
+`model.py` transcribes the signed heating lookup, target/error encodings, conditional pump selection and generic timer-word state. It has no serial/network imports or device path. It returns UNKNOWN for Hz and stop/restart. Inputs are already selected/accepted, with the ordinary single-circuit heating branch explicitly assumed. It is not an emulator or an end-to-end SET32 handler.
+
+Eight required scenarios are generated in scenarios.json: history comparison; constant/zero/reverse error with external min/max labels; threshold/timer edges; fast/slow target trajectories; repeated/sparse commands; pump/water balance; DHW transition; stale/invalid/external limitation. Each reports unresolved terms and a discriminating proposal. Event indices are not native ticks, and no thermal plant is silently simulated. The two different external min/max labels yield identical local output because the missing peer state is deliberately not modeled; this is not evidence that real startup histories have no effect.
+
+Boundary tests cover each table edge, saturation, signed-word overflow,0.5C upward encoding, timer equality/reset/pause/resume, pump branch guards and invalid input. Wrong-image and empty-history rejection/UNKNOWN tests are separate. These establish transcription consistency, not physical correctness. See verification.json for actually executed test counts.
+
+Historical replay uses status1, no lost link, ages0..60s and source generations.60s is an analysis policy, not a recovered Mitsubishi timeout. Duplicate generation vectors are excluded; repeated subfields in a changed vector are still cached fields, not independent samples. Source time is midpoint minus age, or legacy captured_at_host minus age; no assumed atomic snapshot. Transition timelines are sanitized.
+
+- Down/up log:132 accepted captures, fixed and curve modes present,Hz0..62, measured flow24.5..34.5C, water flow19L/min. Target32.5C first appears at relative95.475s;Hz40 at144.251s and42 at170.898s,44 at579.641s. These are observational transition times, **not isolated native step latency**. Temperature, prior state, mode changes and cached-source skew (up to7.895s across fields) confound inference.
+- A down-step32.0C precedes observedHz0 then36 roughly five minutes later; an up-step38C also precedesHz0 and later36. The previous mode-transition command implementation is a confounder. These records cannot establish a fixed ten-minute minimum-off, or a pure temperature-only stop rule.
+- The shorter native capture has7 accepted observations across two circuits, all native heating-control mode2;Hz20 throughout, with one protocol operating-phase field0. It is not a clean fixed-flow trial and is not used to fit a gain. Source skew reaches6.894s.
+
+No measured native request field accompanies these captures. Demand/Hz prediction error, stop prediction accuracy and integration constant are therefore UNKNOWN, not zero error. No fit to a desired6kW curve is offered. Additional source temperatures, other-pump activity, true source limits and timestamps are needed to isolate a plant model.

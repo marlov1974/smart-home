@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 944
+Tracked file count: 979
 
 ## Files
 
@@ -34,6 +34,7 @@ Tracked file count: 944
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
 - `docs/functions/ftc6-energy-uart1-qualification.md`
+- `docs/functions/ftc6-flow-control.md`
 - `docs/functions/ftc6-ports-access.md`
 - `docs/functions/ftc6-protocol-research.md`
 - `docs/functions/ftc6-screen-parity.md`
@@ -701,6 +702,31 @@ Tracked file count: 944
 - `requirements/package-runs/P0086/uart1-mode-selection.md`
 - `requirements/package-runs/P0086/uart1-port-binding.md`
 - `requirements/package-runs/P0086/verification.json`
+- `requirements/package-runs/P0087/CHANGELOG.md`
+- `requirements/package-runs/P0087/actuator-state-machine.md`
+- `requirements/package-runs/P0087/controller-boundary.md`
+- `requirements/package-runs/P0087/demand-law.md`
+- `requirements/package-runs/P0087/design.md`
+- `requirements/package-runs/P0087/effect-integration-guidance.md`
+- `requirements/package-runs/P0087/evidence.json`
+- `requirements/package-runs/P0087/extraction-verification.json`
+- `requirements/package-runs/P0087/findings.md`
+- `requirements/package-runs/P0087/flow-target-trace.md`
+- `requirements/package-runs/P0087/functions.md`
+- `requirements/package-runs/P0087/historical-down-up.json`
+- `requirements/package-runs/P0087/historical-replay.json`
+- `requirements/package-runs/P0087/model-validation.md`
+- `requirements/package-runs/P0087/open-questions.md`
+- `requirements/package-runs/P0087/physical-test-proposal.md`
+- `requirements/package-runs/P0087/provenance.md`
+- `requirements/package-runs/P0087/reproduce.md`
+- `requirements/package-runs/P0087/review.md`
+- `requirements/package-runs/P0087/scenarios.json`
+- `requirements/package-runs/P0087/signals.json`
+- `requirements/package-runs/P0087/states.json`
+- `requirements/package-runs/P0087/timers.json`
+- `requirements/package-runs/P0087/timing-and-thresholds.md`
+- `requirements/package-runs/P0087/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -950,5 +976,14 @@ Tracked file count: 944
 - `tools/ftc6/p86/tests/test_p86.py`
 - `tools/ftc6/p86/uart1.py`
 - `tools/ftc6/p86/verify_local.py`
+- `tools/ftc6/p87/README.md`
+- `tools/ftc6/p87/model.py`
+- `tools/ftc6/p87/replay.py`
+- `tools/ftc6/p87/roots.txt`
+- `tools/ftc6/p87/run_analysis.py`
+- `tools/ftc6/p87/scenarios.py`
+- `tools/ftc6/p87/tests/test_evidence.py`
+- `tools/ftc6/p87/tests/test_model.py`
+- `tools/ftc6/p87/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

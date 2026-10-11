@@ -29,3 +29,9 @@ Inspect the final response packer as well as its numeric helper. The 20.01 odd e
 A wide parser address and a 32-bit intermediate do not prove a far memory access. At9E99C, MOV.b [A0] uses only16 bits despite the upstream ADD/ADC. Check actual load bytes against the architecture manual and emulator before trying flash addresses; an apparent flash read may alias MMIO.
 
 A firmware log may be destructive and incomplete: this diagnostic reader drains its ring, flags loss without a count and omits the original CN105 checksum. Preserve raw fragments and unknown timestamps; do not retry drains or synthesize missing bytes as observed evidence. Session GET callbacks can also advance state. Keep an observer model distinct from a qualified wire transaction.
+
+## P0087 lessons
+
+Trace both target preparation and outgoing serialization. A temperature-error lookup can produce synthetic temperature feedback rather thanHz: here larger deficit lowers29..24C table output, while a separate path packs actual target/feedback. A memoryless local lookup does not prove a memoryless whole machine. Identify active profile and receiver before deducing a gain or adding an outer integrator.
+
+Accepted fixed target38DE, effective heating3908 and fallback390C are different. Timer high-bit enable and low15 count semantics do not establish seconds. Preserve mode/age/generation confounders in historical replay; an old target command that transitions through curve mode cannot isolate fixed-flow stop behavior. P87 is a partial20.01 reconstruction, not installed21.00 address qualification.

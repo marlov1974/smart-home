@@ -1,0 +1,55 @@
+[
+  {
+    "id": "timer_word",
+    "source": "A330E..A3408",
+    "units": "raw counts",
+    "owner": "FTC",
+    "enable_bit": 15,
+    "count_mask": 32767,
+    "equality": "expires at count>=threshold",
+    "reset": "A330E=8000;A3322=0",
+    "pause": "A3354 retains count",
+    "resume": "A3334 retains count",
+    "cadence": "UNKNOWN",
+    "menu": "not established",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "3A2C_profile1",
+    "source": "A13C4",
+    "descriptor": "837E0",
+    "threshold": 180,
+    "comparison": ">=",
+    "units": "raw counts",
+    "owner": "FTC",
+    "mode": "0975=1",
+    "event": "3A2A=1 plus clearing gates",
+    "reset": "see A12D2; not a qualified minimum-off timer",
+    "cadence": "UNKNOWN",
+    "menu": "UNKNOWN",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "pump_gate",
+    "source": "AECA4/AEE84",
+    "threshold": 300,
+    "comparison": "< suppresses before overrides",
+    "units": "raw counts",
+    "owner": "FTC",
+    "mode": "caller-specific",
+    "event": "pump request evaluation",
+    "reset": "caller-specific unresolved descriptor",
+    "cadence": "UNKNOWN",
+    "menu": "UNKNOWN",
+    "confidence": "PARTIAL"
+  },
+  {
+    "id": "thermostat",
+    "source": "unresolved fixed-flow stop/restart",
+    "threshold": null,
+    "units": "UNKNOWN",
+    "owner": "FTC/peer boundary unresolved",
+    "cadence": "UNKNOWN",
+    "confidence": "UNKNOWN"
+  }
+]

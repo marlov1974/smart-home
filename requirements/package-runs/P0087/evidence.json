@@ -1,0 +1,74 @@
+[
+  {
+    "id": "target_accept",
+    "source": "B9AD0>A46FA>A4DDA>B9BFE",
+    "claim": "2340=1,0900!=2; enabled high-first byte pair; mode1 zone0 ->38DE",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "target_select",
+    "source": "B9C9E>B9E16>BAB56",
+    "claim": "38DE ->38D6 ->38D4 ->3908; explicit mode/alternate/special gates",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "sensor",
+    "source": "986E2/98702",
+    "claim": "0658/065A plus conditional0729/072B ->0662/0664",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "lookup",
+    "source": "A1ED8: A1FC7..A2039;8355A",
+    "claim": "signed error,25C floor,first <= threshold,11rows;4911override",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "virtual_encode",
+    "source": "A1EA4>997C6>9AEDE0E",
+    "claim": "lookup ->39C7; clamp800..3950 then /50 ->0890",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "temperature_encode",
+    "source": "BA962>9A336/9A39E>9AEDE10",
+    "claim": "39EF/39F1 ->ceil(clamp0..8000/50) ->08AA/08AB",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "error_encode",
+    "source": "BA8F0>99F5A",
+    "claim": "3949; signed16(error+4000), signed divide50 then clamp0..255",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "pump",
+    "source": "AF400>AF452",
+    "claim": "request/phase selects step; request1 &&3AD2=2 permits correction49C7",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "timer",
+    "source": "A330E/A3322/A3334/A3354/A3392",
+    "claim": "enable highbit,countlow15,reset/pause/resume and >= threshold",
+    "confidence": "CONFIRMED STATIC"
+  },
+  {
+    "id": "peer_law",
+    "source": "P83 service-trace;P87 serializers",
+    "claim": "temperature interface plausible; actualHz law/active profile unknown",
+    "confidence": "STRONG HYPOTHESIS"
+  },
+  {
+    "id": "history",
+    "source": "historical-down-up.json",
+    "claim": "132 qualified captures; constanttarget does not imply constantHz",
+    "confidence": "CORROBORATED BY EXISTING TRACE"
+  },
+  {
+    "id": "whole_machine",
+    "source": "absent source-board firmware and unqualified gates",
+    "claim": "no Hz or stop predictor",
+    "confidence": "UNKNOWN"
+  }
+]

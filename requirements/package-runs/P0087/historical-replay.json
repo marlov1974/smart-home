@@ -1,0 +1,206 @@
+{
+  "input_sha256": "04920e41d90b1bcbf7cd9dc54513476ec285b817507f26b1f7b9313afa3fe770",
+  "groups": [
+    {
+      "circuit": "circuit-1",
+      "samples": 4,
+      "ranges": {
+        "flow_cC": [
+          3000,
+          3200
+        ],
+        "return_cC": [
+          2950,
+          2950
+        ],
+        "flow_cL_min": [
+          1400,
+          1500
+        ],
+        "heat_W": [
+          487,
+          2612
+        ],
+        "compressor_Hz": [
+          20,
+          20
+        ],
+        "flow_target_cC": [
+          3050,
+          3050
+        ],
+        "operating_mode_raw": [
+          2,
+          2
+        ]
+      },
+      "max_source_skew_s": 3.2370000001974404,
+      "native_modes": [
+        2
+      ],
+      "timeline": [
+        {
+          "flow_cC": 3200,
+          "return_cC": 2950,
+          "flow_cL_min": 1500,
+          "heat_W": 2612,
+          "compressor_Hz": 20,
+          "flow_target_cC": 3050,
+          "operating_mode_raw": 2,
+          "source_skew_s": 1.6179999997839332,
+          "generations": {
+            "flow_cC": 79,
+            "return_cC": 79,
+            "flow_cL_min": 79,
+            "heat_W": 237,
+            "compressor_Hz": 79,
+            "flow_target_cC": 79,
+            "operating_mode_raw": 79
+          },
+          "native_mode": 2,
+          "lookup_counterfactual": {
+            "actual_hz": "UNKNOWN",
+            "stop_restart": "UNKNOWN",
+            "native_memory": "UNKNOWN",
+            "timing": "UNKNOWN",
+            "target_cC": 3050,
+            "feedback_cC": 3200,
+            "status": "PARTIAL",
+            "error_cC": -150,
+            "table_value_cC": 2850,
+            "virtual_temperature_byte": 41,
+            "error_byte": 77,
+            "target_byte": 61,
+            "feedback_byte": 64,
+            "local_lookup_memory": "none"
+          },
+          "host_relative_s": 0.0,
+          "flow_source_relative_s_estimate": -2.553
+        }
+      ]
+    },
+    {
+      "circuit": "circuit-2",
+      "samples": 3,
+      "ranges": {
+        "flow_cC": [
+          3150,
+          3150
+        ],
+        "return_cC": [
+          2950,
+          2950
+        ],
+        "flow_cL_min": [
+          1600,
+          1600
+        ],
+        "heat_W": [
+          2229,
+          2229
+        ],
+        "compressor_Hz": [
+          20,
+          20
+        ],
+        "flow_target_cC": [
+          3050,
+          3050
+        ],
+        "operating_mode_raw": [
+          0,
+          2
+        ]
+      },
+      "max_source_skew_s": 6.894000000320375,
+      "native_modes": [
+        2
+      ],
+      "timeline": [
+        {
+          "flow_cC": 3150,
+          "return_cC": 2950,
+          "flow_cL_min": 1600,
+          "heat_W": 2229,
+          "compressor_Hz": 20,
+          "flow_target_cC": 3050,
+          "operating_mode_raw": 2,
+          "source_skew_s": 6.894000000320375,
+          "generations": {
+            "flow_cC": 48,
+            "return_cC": 48,
+            "flow_cL_min": 48,
+            "heat_W": 144,
+            "compressor_Hz": 48,
+            "flow_target_cC": 47,
+            "operating_mode_raw": 47
+          },
+          "native_mode": 2,
+          "lookup_counterfactual": {
+            "actual_hz": "UNKNOWN",
+            "stop_restart": "UNKNOWN",
+            "native_memory": "UNKNOWN",
+            "timing": "UNKNOWN",
+            "target_cC": 3050,
+            "feedback_cC": 3150,
+            "status": "PARTIAL",
+            "error_cC": -100,
+            "table_value_cC": 2800,
+            "virtual_temperature_byte": 40,
+            "error_byte": 78,
+            "target_byte": 61,
+            "feedback_byte": 63,
+            "local_lookup_memory": "none"
+          },
+          "host_relative_s": 0.0,
+          "flow_source_relative_s_estimate": -0.662
+        },
+        {
+          "flow_cC": 3150,
+          "return_cC": 2950,
+          "flow_cL_min": 1600,
+          "heat_W": 2229,
+          "compressor_Hz": 20,
+          "flow_target_cC": 3050,
+          "operating_mode_raw": 0,
+          "source_skew_s": 4.98700000019744,
+          "generations": {
+            "flow_cC": 57,
+            "return_cC": 57,
+            "flow_cL_min": 57,
+            "heat_W": 171,
+            "compressor_Hz": 57,
+            "flow_target_cC": 58,
+            "operating_mode_raw": 61
+          },
+          "native_mode": 2,
+          "lookup_counterfactual": {
+            "actual_hz": "UNKNOWN",
+            "stop_restart": "UNKNOWN",
+            "native_memory": "UNKNOWN",
+            "timing": "UNKNOWN",
+            "target_cC": 3050,
+            "feedback_cC": 3150,
+            "status": "PARTIAL",
+            "error_cC": -100,
+            "table_value_cC": 2800,
+            "virtual_temperature_byte": 40,
+            "error_byte": 78,
+            "target_byte": 61,
+            "feedback_byte": 63,
+            "local_lookup_memory": "none"
+          },
+          "host_relative_s": 71.706,
+          "flow_source_relative_s_estimate": 66.238
+        }
+      ]
+    }
+  ],
+  "excluded_invalid": 0,
+  "duplicate_generation_vectors": 0,
+  "source_time": "host snapshot midpoint (or legacy captured_at_host) minus cached age; estimate, not simultaneous sampling; timeline keeps Hz/target/mode transitions",
+  "replay_policy_max_age_ms": 60000,
+  "policy_is_native_timeout": false,
+  "prediction_validation": "UNKNOWN",
+  "note": "Counterfactual ordinary20.01 heating lookup, not observed native demand. No Hz model; latency/error/stop accuracy not identifiable without outbound request, gates and phase-aligned captures."
+}

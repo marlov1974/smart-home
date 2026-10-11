@@ -1,0 +1,57 @@
+{
+  "package": "P0087",
+  "status": "OFFLINE_COMPLETE_PARTIAL_RECONSTRUCTION",
+  "tracks": {
+    "A": {
+      "status": "PARTIAL",
+      "physical": "NOT RUN"
+    },
+    "B": {
+      "status": "PARTIAL",
+      "physical": "NOT RUN"
+    },
+    "C": {
+      "status": "PARTIAL",
+      "physical": "NOT RUN"
+    },
+    "D": {
+      "status": "PARTIAL",
+      "physical": "NOT RUN"
+    },
+    "E": {
+      "status": "PASS",
+      "physical": "NOT RUN"
+    }
+  },
+  "tests": {
+    "unittest_count": 14,
+    "result": "PASS",
+    "compileall": "PASS",
+    "scenario_count": 8,
+    "scenario_reproduction": "PASS",
+    "extraction": "PASS:90 roots,273 identical files",
+    "operand_checks": 21,
+    "image_and_table": "PASS",
+    "diff_check": "PASS"
+  },
+  "production_unchanged_sha256": {
+    "procon/modular/firmware/src/effect.c": "dbb45ed86f8e20d70b5f0d7317cc271ed3a5cda12def2dec8032de9f2d05ce8e",
+    "procon/modular/firmware/src/effect_feedback.c": "639294e34f79a61b4de8ace9d9337f4f85e9ed6180830da5992034067ff5472c",
+    "procon/modular/firmware/src/control.c": "e7fdac3693a6e9474d58a8c8d3803a260b25ef89079a944cabab48b9cbcdc6dd"
+  },
+  "live_device_calls": 0,
+  "firmware_deployments": 0,
+  "limitations": [
+    "active peer/profile",
+    "native timer seconds",
+    "fixed-flow stop/restart",
+    "source frequency/brine law"
+  ],
+  "tool_sha256": {
+    "scenarios.py": "843d1d271c321cf96d6c312d11dc72c279073ad879fd2fdebdae6c5963ebf2c5",
+    "run_analysis.py": "570725e29d2170f98ae441d4edd4450164603899d7e96a23ff1c1d402b8351ba",
+    "model.py": "9fe9904cdbd2342cfd880408be5679317c06e536d7c7827b08761593d6266ea8",
+    "replay.py": "74f3cc2d09e0ca87097a7d42c8eda28e94fd2c42fc69c5713e8f130a893abdd1",
+    "verify_local.py": "7f0af09802068e5e7eb7453d45b7de654f953078d364e42c211b84a7f88535f0"
+  }
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "pump_selection",
+    "states": [
+      0,
+      1,
+      2
+    ],
+    "meaning": "caller request off/selected/step3",
+    "source": "AF400",
+    "transitions": "upstream scheduler PARTIAL",
+    "model": "pump_step"
+  },
+  {
+    "id": "timer",
+    "states": [
+      "disabled",
+      "enabled-below-threshold",
+      "enabled-expired"
+    ],
+    "source": "A3392",
+    "transitions": "clear/start/pause/resume",
+    "model": "TimerWord"
+  },
+  {
+    "id": "3E02",
+    "states": [
+      0,
+      1,
+      2
+    ],
+    "source": "AC79A",
+    "transitions": "0->1 gate+error<200;1->2 when3D07!=2;2->0 expiry;2->1 reentry",
+    "model": "UNKNOWN: not included in executable control loop; physical meaning unresolved"
+  },
+  {
+    "id": "machine",
+    "states": [
+      "off",
+      "pre-circulate",
+      "startup",
+      "modulate",
+      "minimum",
+      "thermostat-off",
+      "overrun",
+      "restart"
+    ],
+    "source": "required observation vocabulary only",
+    "transitions": "UNKNOWN",
+    "model": "not invented"
+  }
+]

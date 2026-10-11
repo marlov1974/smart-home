@@ -1,5 +1,9 @@
 # P0087 — FTC6 flow-temperature control: compressor, pumps and time
 
+## Execution handoff — 2026-10-11
+
+Authorized offline work completed with a partial native reconstruction. See [P0087 findings](../package-runs/P0087/findings.md) and verification.json. Tracks A–D remain PARTIAL; E passes for the explicitly bounded model and tests. Physical testing NOT RUN; EFFECT unchanged. Original order and acceptance requirements follow.
+
 ## Status, order and authorization
 **Ordered next package for Codex, after P0086.** The operator reports that Codex is currently executing P0086. Do not interrupt that run, extend its scope, edit its requirements/results, or reuse a live Ghidra project concurrently. Prepare this independent package now; execute it in a separate package context after the P0086 handoff. Read its committed findings when available and reuse relevant clock/decoder evidence rather than repeating the work.
 

@@ -105,3 +105,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0085 FTC6 port/access research](ftc6-ports-access.md): UART0/1 diagnostics, unknown connector bindings and CN105 settings gates.
 
 - [P0086 FTC6 energy/settings/UART1 qualification](ftc6-energy-uart1-qualification.md): offline BCD/frame reader, settings observer, bounded UART1 codec/log decoder and address proof.
+
+- [P0087 FTC flow-control dynamics](ftc6-flow-control.md): offline target/error paths, partial native model, pump correction, raw timers and historical replay.

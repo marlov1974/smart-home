@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 887
+Tracked file count: 888
 
 ## Files
 
@@ -723,6 +723,7 @@ Tracked file count: 887
 - `requirements/packages/P0082-ftc6-ghidra-m16c-static-analysis.md`
 - `requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md`
 - `requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md`
+- `requirements/packages/P0085-ftc6-ports-access-research.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`

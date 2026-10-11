@@ -1,5 +1,5 @@
 {
-  "version": 28,
+  "version": 29,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -107,7 +107,8 @@
     "requirements/packages/P0080-procon-bl2-modular-ota-feasibility.md",
     "requirements/packages/P0081-procon-async-raw-cn105-a3-mapping.md",
     "requirements/packages/P0082-ftc6-ghidra-m16c-static-analysis.md",
-    "requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md"
+    "requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md",
+    "requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md"
   ],
   "governance": {
     "truth_hierarchy": [

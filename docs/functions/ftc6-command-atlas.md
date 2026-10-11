@@ -33,3 +33,5 @@ P0088 additions: `pump_control.reduction_code`, `reduction_allowed` and `sample_
 P0088 gate provenance continuation: `pump_control.reduction_source_class` models C61F6's raw3A4F class; `reduction_aux_inhibit` models91A70's0A45 before overlays. Both are pure, byte-validated helpers. See reduction-activation.md for persistent07DF/07EE default/storage provenance and the unresolved B4674 candidate-output ABI.
 
 P0088 command-level navigation: `tools/ftc6/p88/port_matrix.py` builds/renders a public-input port matrix with explicit route/template/range counting and raw-store deduplication. Read `requirements/package-runs/P0088/port-sprint.md` before selecting deeper work. Raw translations are conditional on history, not unconditional wire command handlers.
+
+P0088 fast-GET contracts: cn105_fields.flow_byte reproduces unsigned division and low-byte truncation; state_byte reproduces06C2 enumeration; control_flags extractsA4AE8 bits. The six payload contracts live in port-sprint-evidence.json and cn105-fast-fields.md and feed the generated matrix. They preserve unresolved validity/freshness rather than interpreting every raw value as valid.

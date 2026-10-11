@@ -173,6 +173,16 @@ def build(folder):
         elif d['address'] == '82eee':
             rows[-1]['name'] = 'Queued source service request template'
 
+    for code, contract in proof.get('fast_get', {}).items():
+        row=next(r for r in rows if r['id']=='uart2.42.'+code)
+        covered=[i for f in contract['fields'] for i in range(f['position'], f['position']+f['length'])]
+        if sorted(covered)!=list(range(contract['payload_length'])) or contract['payload_length']!=16:
+            raise ValueError('incomplete/overlapping fast GET contract '+code)
+        row['name']=contract['name']
+        row['tx_fields']=contract['fields']
+        row['semantic_evidence']=contract['status']
+        row['evidence'].append(contract['evidence'])
+        row['gap']='Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md'
     for r in rows:
         if r['gap'].startswith('finish named dataflow'):
             r['gap'] = 'Trace '+','.join(r['handlers'])+' and its callees: field encoding, enable masks, effect and completion; stop at15min'

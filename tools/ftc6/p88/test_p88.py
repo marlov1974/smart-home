@@ -18,6 +18,27 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_cn105_byte_mappings(self):
+        from cn105_fields import flow_byte,state_byte,control_flags
+        for raw in range(65536):
+            self.assertEqual(flow_byte(raw), (raw//100)%256)
+            self.assertEqual(control_flags(raw,0),sum((1<<i) for i in range(3) if raw&(1<<(i+11))))
+        self.assertEqual([flow_byte(x) for x in (99,100,25599,25600,65535)],[0,1,255,0,143])
+        self.assertEqual([state_byte(x) for x in range(6)],[0,2,1,3,4,0])
+        for flags in range(256):
+            self.assertEqual(control_flags(0,flags),16 if flags&2 else 0)
+        for bad in (-1,65536):
+            with self.assertRaises(ValueError):flow_byte(bad)
+
+    def test_fast_get_contract_coverage(self):
+        from port_matrix import build
+        report=build(ROOT/'requirements/package-runs/P0088')
+        for code in ('0b','0c','14','15','26','28'):
+            row=next(r for r in report['rows'] if r['id']=='uart2.42.'+code)
+            positions=[i for f in row['tx_fields'] for i in range(f['position'],f['position']+f['length'])]
+            self.assertEqual(sorted(positions),list(range(16)))
+            self.assertFalse(row['fully_documented'])
+
     def test_port_matrix_route_conservation(self):
         from port_matrix import build
         folder=ROOT/'requirements/package-runs/P0088'
@@ -294,6 +315,7 @@ class LocalImage(unittest.TestCase):
         for row in evidence['translations'].values():
             self.assertEqual(list(self.image.at(int(row['address'],16),len(row['values']))),row['values'])
         self.assertEqual(list(self.image.at(0x84ade,4)),evidence['about']['rom84ade'])
+        self.assertEqual(list(self.image.at(0x8703e,12)),evidence['fast_get_tables']['8703e'])
 
     def test_reduction_default_profiles(self):
         for base in (0x8000a,0x8020a,0x8040a):

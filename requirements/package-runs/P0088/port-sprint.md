@@ -94,7 +94,7 @@ The physical CN22 assignment still needs independent verification.
 
 |Priority / gap|Next bounded action|Done when|Evidence type / stop|
 |---|---|---|---|
-|1 CN105 frequent GET fields|Trace getters for0B/0C/14/15/26/28, plus GET04 record producers and reuse converters|Each byte has source, encoding, invalid marker and uncertainty|Offline,15min per command; park unresolved writers|
+|1 CN105 frequent GET fields|Byte-source layouts0B/0C/14/15/26/28 are mapped; next qualify sampled companions, A4D5E rounding and GET04 record producers|Each byte has source, encoding, invalid marker and uncertainty|Offline,15min per command; park unresolved writers|
 |2 CN105 SET32/34 remaining fields|Follow enable masks and native setter calls|Each enabled field has effect and admission; distinguish response ACK from application|Offline; no full regulator reconstruction|
 |3 Source RX non-service families|Use new raw-type candidates and bounded branch exports|One family at a time: length, staged fields, consumers, history gates|Offline; stop at absent source-board firmware|
 |4 D base command families|Follow normalized handlers with raw/state maps|Identify settings, telemetry and transaction roles with aliases|Offline; do not invent peer scheduling|
@@ -108,3 +108,5 @@ not growth of raw inventory rows. Zero whole-command completions is an honest
 strict baseline; field-level closures and usable partial contracts are reported
 separately. Existing coverage.json remains the raw atlas coverage, not this
 new command-level accounting.
+
+Continuation: [six frequent GET payloads](cn105-fast-fields.md) now have explicit byte-source contracts. Remaining work is sensor/flag meaning, freshness and the identified helper gaps rather than rediscovering packers.

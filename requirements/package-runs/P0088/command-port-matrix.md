@@ -91,16 +91,16 @@ protocol/P81 corroborated.
 |uart2.42.06 / mapped command route|GET 06|a56a4|1/0/13|Trace a56a4 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.07 / mapped command route|Consumed/produced power and increasing consumed counter|a5724|1/3/13|correlate dated meter/counter deltas; no precise live COP claim|
 |uart2.42.09 / mapped command route|GET 09|a57a4|1/0/14|Trace a57a4 and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.0b / mapped command route|GET 0b|a5832|1/0/12|Trace a5832 and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.0c / mapped command route|GET 0c|a58a2|1/0/13|Trace a58a2 and its callees: field encoding, enable masks, effect and completion; stop at15min|
+|uart2.42.0b / mapped command route|Room/selected temperature sources|a5832|1/12/12|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
+|uart2.42.0c / mapped command route|Primary flow/return/DHW temperatures and sampled companions|a58a2|1/12/13|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
 |uart2.42.0d / mapped command route|GET 0d|a591c|1/0/13|Trace a591c and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.0e / mapped command route|GET 0e|a599a|1/0/7|Trace a599a and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.0f / mapped command route|GET 0f|a59e4|1/0/7|Trace a59e4 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.10 / mapped command route|GET 10|a5a3e|1/0/8|Trace a5a3e and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.11 / mapped command route|GET 11|a5a7e|1/0/13|Trace a5a7e and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.13 / mapped command route|GET 13|a5b08|1/0/12|Trace a5b08 and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.14 / mapped command route|GET 14|a5b7a|1/0/14|Trace a5b7a and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.15 / mapped command route|GET 15|a5bf8|1/0/14|Trace a5bf8 and its callees: field encoding, enable masks, effect and completion; stop at15min|
+|uart2.42.14 / mapped command route|Input flags, multi-unit words and quantized primary flow|a5b7a|1/13/14|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
+|uart2.42.15 / mapped command route|Actuator/native-state report|a5bf8|1/16/14|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
 |uart2.42.16 / mapped command route|GET 16|a5c62|1/0/4|Trace a5c62 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.17 / mapped command route|GET 17|a5c86|1/0/12|Trace a5c86 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.18 / mapped command route|GET 18|a5d3a|1/0/13|Trace a5d3a and its callees: field encoding, enable masks, effect and completion; stop at15min|
@@ -112,9 +112,9 @@ protocol/P81 corroborated.
 |uart2.42.1e / mapped command route|Explicit zero data response 1e|a5ff6,a4cd2|1/14/15|Trace a5ff6,a4cd2 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.1f / mapped command route|Explicit zero data response 1f|a6068,a4cd2|1/12/13|Trace a6068,a4cd2 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.20 / mapped command route|GET 20|a60cc|1/0/1|Trace a60cc and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.26 / mapped command route|GET 26|a612c|1/0/15|Trace a612c and its callees: field encoding, enable masks, effect and completion; stop at15min|
+|uart2.42.26 / mapped command route|Reported modes and requested target words|a612c|1/13/15|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
 |uart2.42.27 / mapped command route|GET 27|a61b2|1/0/9|Trace a61b2 and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.42.28 / mapped command route|GET 28|a61f2|1/0/13|Trace a61f2 and its callees: field encoding, enable masks, effect and completion; stop at15min|
+|uart2.42.28 / mapped command route|Boost, holiday and flag report|a61f2|1/16/13|Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md|
 |uart2.42.29 / mapped command route|GET 29|a624e|1/0/8|Trace a624e and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.50 / mapped command route|GET 50|a629c|1/0/13|Trace a629c and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.42.51 / mapped command route|GET 51|a630e|1/0/14|Trace a630e and its callees: field encoding, enable masks, effect and completion; stop at15min|

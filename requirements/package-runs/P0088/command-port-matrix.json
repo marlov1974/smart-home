@@ -6,7 +6,7 @@
   "input_sha256": {
     "command-atlas.json": "f204a8bf480d8fda8ecc9045db0989c08ff4c40f5a5ee8bb271f106d9c0deae7",
     "source-tx-descriptors.json": "f18fddbc9c0b56167c837bcafb39117af57b5ff1d7422b479541b3830752f720",
-    "port-sprint-evidence.json": "8ce797890d2c0f16375c375b157769546b115421a7454334c82b8c5c87262f45"
+    "port-sprint-evidence.json": "264f36a6b5bc4b058e76e38fd25e3e57ed266367bdaa3fba565a6f928b1e57b8"
   },
   "summary": {
     "uart2": {
@@ -17,7 +17,7 @@
       "fully_documented": 0,
       "partial": 141,
       "known_total_all_commands": null,
-      "with_any_reviewed_detail": 13
+      "with_any_reviewed_detail": 19
     },
     "source-software": {
       "units": {
@@ -4930,7 +4930,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 0b",
+      "name": "Room/selected temperature sources",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -4954,7 +4954,80 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "11",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 2,
+          "source": "066C",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 3,
+          "length": 2,
+          "source": "068C",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 5,
+          "length": 2,
+          "source": "0646",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "0ACE",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "063A",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "0ACF",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "0686",
+          "encoding": "A4D5E(min=-4000,step=50); runtime division rounding not yet qualified"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "365ca93c9791869f",
         "3d0ce8141c39a1c1",
@@ -4972,16 +5045,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "85146",
-        "lookup index 10"
+        "lookup index 10",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a5832 and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {
@@ -4990,7 +5064,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 0c",
+      "name": "Primary flow/return/DHW temperatures and sampled companions",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -5014,7 +5088,80 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "12",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 2,
+          "source": "0662 (flow)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "0AD0",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 4,
+          "length": 2,
+          "source": "0664 (return)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "0AD1",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 7,
+          "length": 2,
+          "source": "0668 (tank)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "0AD3",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "0666",
+          "encoding": "BE16 direct raw bits"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0AD2",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "149427b1973f25d2",
         "40adbd1a2694c6cc",
@@ -5033,16 +5180,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "85156",
-        "lookup index 11"
+        "lookup index 11",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a58a2 and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {
@@ -5399,7 +5547,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 14",
+      "name": "Input flags, multi-unit words and quantized primary flow",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -5423,7 +5571,86 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "20",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "06CF",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "06C5",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "06C7",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "06C9",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "06CB",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 6,
+          "length": 2,
+          "source": "397F (record4)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "398B (record5)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "3997 (record6)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "322E",
+          "encoding": "(unsigned16 //100) &255; truncation, not saturation"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "0d15e090b37030be",
         "107dd6802ea32103",
@@ -5443,16 +5670,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "851d6",
-        "lookup index 19"
+        "lookup index 19",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a5b7a and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {
@@ -5461,7 +5689,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 15",
+      "name": "Actuator/native-state report",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -5485,7 +5713,104 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "21",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "3A34",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "3A38",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "3E9D",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "06A9",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "06AB",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "3A3B",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "06B3",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "source": "3FAB",
+          "encoding": "8703E[2*index], index=3FAB if<=5 else0"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "3FAB",
+          "encoding": "8703F[2*index], index=3FAB if<=5 else0"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "06C0",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "06C2",
+          "encoding": "0->0,1->2,2->1,3->3,4->4,other->0"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "00040319df37889e",
         "04c036e7814a299f",
@@ -5505,16 +5830,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "851e6",
-        "lookup index 20"
+        "lookup index 20",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a5bf8 and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {
@@ -6476,7 +6802,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 26",
+      "name": "Reported modes and requested target words",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -6500,7 +6826,86 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "38",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "38BF",
+          "encoding": "0..3 retained; other->0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "A29EC()",
+          "encoding": "0/FF->0,1->3,2->2,3->1,4->6,other->0; phase3CB7==7 overrides to5"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "3912",
+          "encoding": "0/1 retained; other->0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "3916",
+          "encoding": "0..5 retained; other->0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "3918",
+          "encoding": "0..5 retained; other->0"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "3906 (DHW target)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "38E8",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 12,
+          "length": 2,
+          "source": "3900",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "082A and0630",
+          "encoding": "082A.bits11..13 -> bits0..2;0630.bit1 ->bit4"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "01c8143c99a3b8f7",
         "1683c00565a9cec0",
@@ -6521,16 +6926,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "852f6",
-        "lookup index 37"
+        "lookup index 37",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a612c and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {
@@ -6596,7 +7002,7 @@
       "counting_unit": "mapped command route",
       "port": "CN105",
       "physical_confidence": "protocol/P81 corroborated",
-      "name": "GET 28",
+      "name": "Boost, holiday and flag report",
       "wire": {
         "frame": "FC",
         "type": "42",
@@ -6620,7 +7026,104 @@
           "source_sink": "UNKNOWN"
         }
       ],
-      "tx_fields": [],
+      "tx_fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "40",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "3919 (boost)",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "391B (holiday)",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit1"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit2"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit3"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit4"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "39A3",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "39EC",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "39A4",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
       "raw_response_fields": [
         "19c09bf913af59d1",
         "389f99e26eee1bdf",
@@ -6639,16 +7142,17 @@
       "effect": "UNKNOWN",
       "gates": "A508A and downstream role gates remain command-specific",
       "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "semantic_evidence": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "893cf",
         "85316",
-        "lookup index 39"
+        "lookup index 39",
+        "cn105-fast-fields.md"
       ],
-      "gap": "Trace a61f2 and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md",
       "links": []
     },
     {

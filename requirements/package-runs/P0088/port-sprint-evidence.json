@@ -218,5 +218,781 @@
       "assembly_sha256": "0c987c9896bdf2b3622a1f9c678455b20960440461720dece54f83905505c326",
       "repeat_equal": null
     }
-  ]
+  ],
+  "fast_get": {
+    "0b": {
+      "name": "Room/selected temperature sources",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "11",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 2,
+          "source": "066C",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 3,
+          "length": 2,
+          "source": "068C",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 5,
+          "length": 2,
+          "source": "0646",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "0ACE",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "063A",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "0ACF",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "0686",
+          "encoding": "A4D5E(min=-4000,step=50); runtime division rounding not yet qualified"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    },
+    "0c": {
+      "name": "Primary flow/return/DHW temperatures and sampled companions",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "12",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 2,
+          "source": "0662 (flow)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "0AD0",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 4,
+          "length": 2,
+          "source": "0664 (return)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "0AD1",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 7,
+          "length": 2,
+          "source": "0668 (tank)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "0AD3",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "0666",
+          "encoding": "BE16 direct raw bits"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0AD2",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    },
+    "14": {
+      "name": "Input flags, multi-unit words and quantized primary flow",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "20",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "06CF",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "06C5",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "06C7",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "06C9",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "06CB",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 6,
+          "length": 2,
+          "source": "397F (record4)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "398B (record5)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "3997 (record6)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "322E",
+          "encoding": "(unsigned16 //100) &255; truncation, not saturation"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    },
+    "15": {
+      "name": "Actuator/native-state report",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "21",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "3A34",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "3A38",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "3E9D",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "06A9",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "06AB",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "3A3B",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "06B3",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "source": "3FAB",
+          "encoding": "8703E[2*index], index=3FAB if<=5 else0"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "3FAB",
+          "encoding": "8703F[2*index], index=3FAB if<=5 else0"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "06C0",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "06C2",
+          "encoding": "0->0,1->2,2->1,3->3,4->4,other->0"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    },
+    "26": {
+      "name": "Reported modes and requested target words",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "38",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "38BF",
+          "encoding": "0..3 retained; other->0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "A29EC()",
+          "encoding": "0/FF->0,1->3,2->2,3->1,4->6,other->0; phase3CB7==7 overrides to5"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "3912",
+          "encoding": "0/1 retained; other->0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "3916",
+          "encoding": "0..5 retained; other->0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "3918",
+          "encoding": "0..5 retained; other->0"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "source": "3906 (DHW target)",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "source": "38E8",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 12,
+          "length": 2,
+          "source": "3900",
+          "encoding": "BE16 raw word"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "082A and0630",
+          "encoding": "082A.bits11..13 -> bits0..2;0630.bit1 ->bit4"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    },
+    "28": {
+      "name": "Boost, holiday and flag report",
+      "payload_length": 16,
+      "fields": [
+        {
+          "position": 0,
+          "length": 1,
+          "source": "40",
+          "encoding": "opcode"
+        },
+        {
+          "position": 1,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 2,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 3,
+          "length": 1,
+          "source": "3919 (boost)",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "source": "391B (holiday)",
+          "encoding": "1 iff source ==1, else0"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit0"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit1"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit2"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit3"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "source": "399A",
+          "encoding": "Boolean bit4"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "source": "39A3",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "source": "39EC",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "source": "39A4",
+          "encoding": "raw byte"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        },
+        {
+          "position": 15,
+          "length": 1,
+          "source": "0",
+          "encoding": "constant after frame initialization"
+        }
+      ],
+      "status": "byte sources mapped; native labels, validity and upstream mode ownership remain partial",
+      "evidence": "cn105-fast-fields.md"
+    }
+  },
+  "fast_get_repeat_exports": [
+    {
+      "root": "a4040",
+      "assembly_sha256": "3d957f94d08a1b0c7773d0d027a3ec3edc1e9fc5dd0bea78f8932e1f52356ffa"
+    },
+    {
+      "root": "a4052",
+      "assembly_sha256": "7613fc5326250ba50ac5fcf137e34563e3c4083d1b75ad7b040bca8bc6255cc5"
+    },
+    {
+      "root": "a4064",
+      "assembly_sha256": "6a5071aeb1b4db7eecbac757ec594488ce6ed7f2b650422e5b7a6fb2380daefd"
+    },
+    {
+      "root": "a4076",
+      "assembly_sha256": "1831e3d0d98a31cc7d5fee98cc6dd32f3b939e59020a7989bea12a8b1aec7449"
+    },
+    {
+      "root": "a4088",
+      "assembly_sha256": "f183fbdce614272b753f054e944b0839cf3bd386f5b59f8489c670b646d17077"
+    },
+    {
+      "root": "a40a2",
+      "assembly_sha256": "55a192e5bfdaae06ccff505759f6cdd72a6bfd86fdd4c4c5a6b8bd9cfb545ea5"
+    },
+    {
+      "root": "a40b4",
+      "assembly_sha256": "b8b71f8366aa4e1318f1ff37414b5af5af4f01033a74bc318fdaffe7e88e0615"
+    },
+    {
+      "root": "a40c6",
+      "assembly_sha256": "5b8ac5ea4da192387f8485414f50c183bd960c151630707d2cdea652b763807b"
+    },
+    {
+      "root": "a4144",
+      "assembly_sha256": "5e2e34adda60a72a7043ed9aad0de735eb55bab11fcec1494937ad50d1a179df"
+    },
+    {
+      "root": "a42a0",
+      "assembly_sha256": "7b7061c7e42fd7b16986fc7a0cfb4b46e014c4e53cca47f7acd8a35b57535f33"
+    },
+    {
+      "root": "a42c6",
+      "assembly_sha256": "80f040b843abc3016d719e15bf2e2f95e0371e89c4458d64d3a39bd95860dbfc"
+    },
+    {
+      "root": "a42d6",
+      "assembly_sha256": "3b67a73e1b863fdd00fca084224d0daf504794d38476ed602792da042604d263"
+    },
+    {
+      "root": "a42e6",
+      "assembly_sha256": "254258c12330862ee870ef83c6acd24a2c5d7c7053b893fedd0eac216bc100e1"
+    },
+    {
+      "root": "a42f6",
+      "assembly_sha256": "6bc36de2b819c554c9381794fe0f9ec6a85b0e0c8a7433fe6ec15b5d870bfcbf"
+    },
+    {
+      "root": "a4306",
+      "assembly_sha256": "f3b863e9aa788d5d6ff7dfd5e2be4cf58236306af2958be5c34414b770dbaba5"
+    },
+    {
+      "root": "a4316",
+      "assembly_sha256": "8dabd4f615fb04ba3505ea73d5090e595e429a911e96ae2dc4b2447d8e3a9938"
+    },
+    {
+      "root": "a432a",
+      "assembly_sha256": "451622441c1c0fd3dcfaf85b6e01c9b94816348a068505b40e21480fbf763a5f"
+    },
+    {
+      "root": "a4334",
+      "assembly_sha256": "0356cb69785420403c6ff2ac1b4eceeb69b1e8d3054d71873429d8b9ed1b6a15"
+    },
+    {
+      "root": "a4344",
+      "assembly_sha256": "c7b560927de36f53579104cbd5616819a12bc222f55b073d9911808a7cb9ac40"
+    },
+    {
+      "root": "a4350",
+      "assembly_sha256": "5398fc305cf6e87d23c61cb4965f42bc0e03f0f67e2910da018782c73b58f1f6"
+    },
+    {
+      "root": "a435c",
+      "assembly_sha256": "ce0fc4948bf1cfe67075b6852d10e42fd9296d8c72b90e0da5315b662241dc29"
+    },
+    {
+      "root": "a436c",
+      "assembly_sha256": "fbe12be004eecf68fbca7f828e09e6ce17439f7f06a10ec1f7f61a504d4ed82d"
+    },
+    {
+      "root": "a437c",
+      "assembly_sha256": "d6c7a6d49404ec0b7ecfb2cd0ae9c6da856cada938f70e124e00fe17f60bca8e"
+    },
+    {
+      "root": "a438c",
+      "assembly_sha256": "c00b9f08216a125072163cb46db1a01adb046722df2f57145d2a393087674eeb"
+    },
+    {
+      "root": "a439c",
+      "assembly_sha256": "c2c9b9060dc1ec23805e9b256987ed712cbe9ea1a5ee32585be7b7a2ca6bb6f5"
+    },
+    {
+      "root": "a43ac",
+      "assembly_sha256": "bb0f2c3d5cdfe4f1be7b43a9cbc13d5ee2b8836a8eda20e69153ab533b78905e"
+    },
+    {
+      "root": "a43bc",
+      "assembly_sha256": "b02a61ccb5e46829e34171713814b05c01630f81a11b295e65c12ea3bb151ec5"
+    },
+    {
+      "root": "a43c8",
+      "assembly_sha256": "0381b54f4b5d838155764f1b665fee026753e99b8d097fb1a1b00b2830d07bad"
+    },
+    {
+      "root": "a43fc",
+      "assembly_sha256": "88a583cd347b52057283682c38ec39b960661a53820d4759e483564cb490b99c"
+    },
+    {
+      "root": "a4406",
+      "assembly_sha256": "4504a68b5bb99b4523abea52aad8beb7d272157c862fe527ca7c32adae3b9447"
+    },
+    {
+      "root": "a4570",
+      "assembly_sha256": "1c2b6f3c4e90d7cdc23f9cd51727d4a1c5edc72b9b716d3e3c963f15dfb85f7e"
+    },
+    {
+      "root": "a45c0",
+      "assembly_sha256": "813507bd3640223b2da709443f6c1243605289c2de716c55a4f3ddcf5181e3d9"
+    },
+    {
+      "root": "a4610",
+      "assembly_sha256": "7b0b5c229726c5622c3eed20c15681f96a72a01d9a03e5be2d00fa69743cd05d"
+    },
+    {
+      "root": "a464e",
+      "assembly_sha256": "6829499adbe88acccd148d7127fdb19ac7773602b964406ce56384736581c5d4"
+    },
+    {
+      "root": "a46b2",
+      "assembly_sha256": "e402ba943bb4e38f3626b4b10d4120c63949476272a8f988b56b9520b4063528"
+    },
+    {
+      "root": "a46e6",
+      "assembly_sha256": "4c4a0522938e873f30456a1bbcd2b46c1c731675d51999c096894ffd0ff4e48a"
+    },
+    {
+      "root": "a471c",
+      "assembly_sha256": "f3eb5c53deddc8bba391d13ed0ed0e620b829842c34036ba44fd2dfcd90649ef"
+    },
+    {
+      "root": "a4750",
+      "assembly_sha256": "e013532479b3908e3be567f455e5aeb6f0ea2e28457ecbfc4c63c434e3526cc5"
+    },
+    {
+      "root": "a4784",
+      "assembly_sha256": "0695d1532c6bc0f4b926f60536ef68a70a9797065e7c6c6f7cf2ad615b2d3c5d"
+    },
+    {
+      "root": "a47ba",
+      "assembly_sha256": "af99b4735fd93b8d15453b90224fef2192b1f615e559913ae6bbf2b77ac6e28f"
+    },
+    {
+      "root": "a47f0",
+      "assembly_sha256": "ebbe23020cc08384ed918e6b0dd16e01ddc65ad8b16f1c6bf90b1b06fcd7f962"
+    },
+    {
+      "root": "a4826",
+      "assembly_sha256": "207486a8ef00e31351ad020b84be9d00e94973c8b7adb349d7e6570fba9f345d"
+    },
+    {
+      "root": "a485c",
+      "assembly_sha256": "105154ef72a4f29c8fd5516c2e287918b014b98affe72cd465e3f2580a6f8bdd"
+    },
+    {
+      "root": "a4892",
+      "assembly_sha256": "e42016b025e89adb09102ccb52299732ab04036cf8e507980c64799a95ed31ba"
+    },
+    {
+      "root": "a48c2",
+      "assembly_sha256": "51c50bf4f8e82db9763111058ceace34ae3eafc3f2fea34e6b380bd264c5110c"
+    },
+    {
+      "root": "a4ae8",
+      "assembly_sha256": "b6e5fffbbe52e40a21860979e73c81701fa6e0cf9560b780ba5fe06cc4e8477b"
+    },
+    {
+      "root": "a4c1e",
+      "assembly_sha256": "62d6e5d3dda1edb5af25d53c1b3e7e91c3c862d5e19121f5fa3527f04081e115"
+    },
+    {
+      "root": "a4d5e",
+      "assembly_sha256": "ac53ea4c2778e6b7b7d3a884685eca7f9a07240f66fe50b637ad3d743081734a"
+    },
+    {
+      "root": "a5832",
+      "assembly_sha256": "01eac6b7a650388fe7b7586f8f439a789a402e38883866cbb924b398049130d0"
+    },
+    {
+      "root": "a58a2",
+      "assembly_sha256": "272f1854985ffce9177dd8ffd511a773689b8be29fc6a63bc1e0e7211eb76a53"
+    },
+    {
+      "root": "a5b7a",
+      "assembly_sha256": "6e2f391eb2e063e2967cede8c177748e14c61e8870947e591c7cc698b2b97574"
+    },
+    {
+      "root": "a5bf8",
+      "assembly_sha256": "0a1b00f0582fe7d0308419900c7dfc13b9487ca5a76dc0e309f6860c800a1ebf"
+    },
+    {
+      "root": "a612c",
+      "assembly_sha256": "f8cd72c9d441984a0088a0e7951f885d904e534c3e73cdb3d61acfd37957893c"
+    },
+    {
+      "root": "a61f2",
+      "assembly_sha256": "6114798be40c11f49188aaa4bddf628a35c94e2b96ab3e72c85e8fd34be93758"
+    }
+  ],
+  "fast_get_tables": {
+    "8703e": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      1,
+      0,
+      0
+    ]
+  }
 }

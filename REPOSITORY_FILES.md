@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 908
+Tracked file count: 909
 
 ## Files
 
@@ -740,6 +740,7 @@ Tracked file count: 908
 - `requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md`
 - `requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md`
 - `requirements/packages/P0085-ftc6-ports-access-research.md`
+- `requirements/packages/P0086-ftc6-cn105-uart1-qualification.md`
 - `requirements/packages/TEMPLATE.md`
 - `src/ha/assets/ftx-industrial.svg`
 - `src/ha/dashboards/ftx.yaml`
@@ -790,14 +791,6 @@ Tracked file count: 908
 - `src/shelly/ftx/brain/main.js`
 - `src/shelly/ftx/brain/modes.js`
 - `src/shelly/ftx/brain/output.js`
-- `src/shelly/ftx/common/helpers.js`
-- `src/shelly/ftx/common/kvs.js`
-- `src/shelly/ftx/common/number.js`
-- `src/shelly/ftx/common/script.js`
-- `src/shelly/ftx/common/shelly.js`
-- `src/shelly/ftx/common/wrapper.end.js`
-- `src/shelly/ftx/common/wrapper.start.js`
-- `src/shelly/ftx/import-manifest.json`
 - `src/shelly/ftx/recipes/boot.json`
 - `src/shelly/ftx/recipes/brain.json`
 - `src/shelly/ftx/recipes/dampers/boot.json`

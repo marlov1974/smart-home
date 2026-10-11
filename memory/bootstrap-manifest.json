@@ -1,5 +1,5 @@
 {
-  "version": 26,
+  "version": 27,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -105,7 +105,8 @@
     "requirements/packages/P0078-geodan-ftc-system-identification.md",
     "requirements/packages/P0079-procon-one-time-memory-dump.md",
     "requirements/packages/P0080-procon-bl2-modular-ota-feasibility.md",
-    "requirements/packages/P0081-procon-async-raw-cn105-a3-mapping.md"
+    "requirements/packages/P0081-procon-async-raw-cn105-a3-mapping.md",
+    "requirements/packages/P0082-ftc6-ghidra-m16c-static-analysis.md"
   ],
   "governance": {
     "truth_hierarchy": [

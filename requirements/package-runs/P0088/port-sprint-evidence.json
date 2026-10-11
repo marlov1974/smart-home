@@ -994,5 +994,250 @@
       0,
       0
     ]
+  },
+  "control_set": {
+    "32": {
+      "event": 1,
+      "evidence": "cn105-control-fields.md",
+      "fields": [
+        {
+          "position": 3,
+          "length": 1,
+          "enable": "p1.bit0",
+          "effect": "A459C maps 0/1; invalid or disabled -> FF. 90368 copies valid value to38BF and clears082E.bit7; additional side effects remain",
+          "handler": "90338/90368"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "enable": "p1.bit2;0900!=2",
+          "effect": "DHW mode through A462A ->3912; FF ignored",
+          "handler": "BC02C"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "enable": "p1.bit3;0900!=2",
+          "effect": "Zone1 mode through A468E ->BBE92; also unconditional mode context for target branch",
+          "handler": "BBCB6/B9AD0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "enable": "p1.bit4;0900!=2",
+          "effect": "Zone2 mode through A468E ->BBE92; also unconditional mode context for target branch",
+          "handler": "BBCB6/B9AD0"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "enable": "p1.bit5;0900!=2",
+          "effect": "BE16 DHW target viaA46C4; FFFF ignored ->3906",
+          "handler": "BBA48"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "enable": "p1.bit7;0900!=2",
+          "effect": "BE16 zone1 target viaA46FA ->B9BFE with decoded p6; mode2/5 skipped at caller; FFFF ignored downstream",
+          "handler": "B9AD0"
+        },
+        {
+          "position": 12,
+          "length": 2,
+          "enable": "p2.bit1;0900!=2",
+          "effect": "BE16 zone2 target viaA46FA ->B9BFE with decoded p7; mode2/5 skipped at caller; FFFF ignored downstream",
+          "handler": "B9AD0"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "enable": "p2.bit3",
+          "effect": "low3bits ->082A.bits11..13;2342.bit2 clears these afterward",
+          "handler": "92B92"
+        }
+      ],
+      "gap": "p4/operating request, remaining enable bits and native admission/overrides; complete persistence and error semantics"
+    },
+    "34": {
+      "event": 3,
+      "evidence": "cn105-control-fields.md",
+      "fields": [
+        {
+          "position": 3,
+          "length": 1,
+          "enable": "p1.bit0;0900!=2",
+          "effect": "0/1 viaA472C ->B95E0 ->3919 boost; FF ignored",
+          "handler": "B95A4"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "enable": "p1.bit1;0900!=2",
+          "effect": "0/1 viaA4760 ->C0AD0 ->391B holiday; FF ignored",
+          "handler": "C0A98"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "enable": "p1.bit2",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit0",
+          "handler": "8F816/A4796"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "enable": "p1.bit3",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit1",
+          "handler": "8F816/A47CC"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "enable": "p1.bit4",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit2",
+          "handler": "8F816/A4802"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "enable": "p1.bit5",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit3",
+          "handler": "8F816/A4838"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "enable": "p1.bit6",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit4",
+          "handler": "8F816/A486E"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "enable": "p1.bit7",
+          "effect": "0 sets4977=1;1 sets4976=1;invalid/disabled unchanged. Event flags, not direct assignment of both",
+          "handler": "CE8E2/A489E"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "enable": "p2.bit0",
+          "effect": "1 increments byte33EA and sets39EC=1;0 clears both;invalid/disabled unchanged. Counter>=10 contributes39ED=1",
+          "handler": "CE920/A48CE"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "enable": "p2.bit1",
+          "effect": "0/1 ->39A4;invalid/disabled ignored",
+          "handler": "CE8E2/A4C2A"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "enable": "p2.bit2",
+          "effect": "8929D lookup times10 ->3E06 ->3933; values>10 select index0; ABE04==1 overrides3933=100",
+          "handler": "ABDDE/A3D3E"
+        }
+      ],
+      "gap": "Physical meaning and downstream lifetime of flags39A6/4976/4977/39EC/39A4; timer units; installed firmware equivalence"
+    }
+  },
+  "control_set_ack": {
+    "32": "A541A",
+    "34": "A5446",
+    "payload_length": 16,
+    "payload": "all zero after shared initialization; p0 explicitly zero",
+    "meaning": "packer does not inspect native acceptance/application; verify native state separately"
+  },
+  "control_set_tables": {
+    "84af2": [
+      0,
+      1,
+      255,
+      255
+    ],
+    "84af8": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      255
+    ],
+    "84afe": [
+      0,
+      1
+    ],
+    "84b00": [
+      0,
+      1
+    ],
+    "8929d": [
+      10,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      0
+    ]
+  },
+  "control_set_extraction": {
+    "repeat_roots": [
+      "b9ad0",
+      "bba48",
+      "bbcb6",
+      "bc02c",
+      "b95a4",
+      "c0a98",
+      "abdde",
+      "ce8e2",
+      "ce920",
+      "a541a",
+      "a5446"
+    ],
+    "repeat_asm_sha256": {
+      "b9ad0": "2034ca7d1c51faaa680dc7cb63b732750244b3b185fb413067e72680a9c4f4f7",
+      "bba48": "d191d406364f2aa701e690e4918aca8d1c61c26ff7c4c13020b483245f926b09",
+      "bbcb6": "1473dce4e1cb826a1c1c60e4934d546521d7d498380b72237003e838273bb569",
+      "bc02c": "9f7638dd925ac9f8e7859a1adc6add2e2beb49067791238200650dad94b528a7",
+      "b95a4": "1ccc7ad336362f718fa72de6a443d18e186bf820d4c74597581ca5a964213ced",
+      "c0a98": "24c0c71187cd6b7448c8a226fd69e3dd7ca7374859f2adaa248fd47c4e2cba9c",
+      "abdde": "a3b7a09dda08c9c4f076fcaa49a68562cf2a6805cf7f395d01791b7255dea09a",
+      "ce8e2": "8138c9511cdbdfd59d8a8a6a53bfcba6bc8f68a8107090f50b99ba85c0984a65",
+      "ce920": "0eb66c400f5f025f022b87d4e5b0aae934c0ee52eb7cfba089b867eeee967a50",
+      "a541a": "9a072bd4421fc6496b063a9e53991b34416f4467a12493efca60971cbcc4217f",
+      "a5446": "6fe08a2d206c26590de2f836a2eade1883a02f7e65a3e290e23b541d76723297"
+    },
+    "single_project_asm_sha256": {
+      "a468e": "2e14af1fd37690ca4054d2576feaf9a3db7454c03f177099279fb6e07ec157d9",
+      "a3d3e": "bc08ac48a02b20720865043c0853490511203b09ac4147df6b807664fa07ce8d",
+      "a472c": "6c5db32f866ee49bd258d87bb58d27bd94f7880944e85a857fbf2d23bf4eb169",
+      "8f816": "c0238df233c81f41e2b0777e5c083166a02782802dc3ac7ed299a76b9f051221",
+      "90338": "83c3e1d34ca8da7447a669c04654d350fd878e99fc82448e3ff1f2da9346eb73",
+      "a46fa": "5586e4cbc36ea88a72734f587662caecc4ffdc7011c473a7aeb3bd2e9801ac6b",
+      "a4760": "041cf1f3a96abf3cd1c9db4efa47be21fdb7422f0a4adf3eb05bce88a93f9773",
+      "a4c2a": "e91dcb2826f30fc53383bc097fac330877d5f2bd24a5fcd03e4cb75f989b7ab5",
+      "92b92": "3ceeb5298ede7263ee7082519f2917c9ebb5735e400a1b1222f502b4e180b4bf",
+      "a489e": "acafdddc3c82e3ccc02ea2e80025478ef0e5b02803811e8918a063bf7f9f6f29",
+      "a48ce": "577e819d571144453d29d51c5c1fd8edae3987890b2be05284c78e5530e1a360",
+      "a4dfc": "0bb35cb5e0b7338998224be91da2de3571ab93fb8134bb757e81cabef702eab8",
+      "90368": "7e926e68b441d5faec6b0c39c1244aeee5c40e1793c8b22c88df90e15ebf5d35",
+      "a486e": "befcb16f634e938a41d946738404ee6bfe9460f8572f3744d4745e6907b230be",
+      "a4838": "b4d67c07093b419ee4089128965e802d7b722dc59664ce9da2200790f8f5eb9f",
+      "a4796": "657fb663fab61e5dea666be3def4d4ab832e8def17e5578cd5ba4dc371133674",
+      "a459c": "166efbeff640b711f1819b7a5398036a1b3a0a91ebf8dfb884c1652ff4688e7a",
+      "a4802": "a663e37f00c2cc938c5190ad80dea90111f306c981acd878d0d75fcefbf25142",
+      "a47cc": "f7703514c5b3e3ea456db6e6e7bb696cb213c7207cb38a42e1d08256c4f7f8e6",
+      "a4b30": "da39163d652809c8373102c03ead213227a28056dc2b2d954397ac712d9f20f2",
+      "a4dda": "96a495afa8eedd477871c0c29fbf63557af7096425799ea04a283446171ef8d4"
+    },
+    "limitation": "same corrected decoder in two projects, not independent ISA validation; stack arguments checked in assembly"
   }
 }

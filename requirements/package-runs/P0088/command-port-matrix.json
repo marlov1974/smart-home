@@ -6,7 +6,7 @@
   "input_sha256": {
     "command-atlas.json": "f204a8bf480d8fda8ecc9045db0989c08ff4c40f5a5ee8bb271f106d9c0deae7",
     "source-tx-descriptors.json": "f18fddbc9c0b56167c837bcafb39117af57b5ff1d7422b479541b3830752f720",
-    "port-sprint-evidence.json": "264f36a6b5bc4b058e76e38fd25e3e57ed266367bdaa3fba565a6f928b1e57b8"
+    "port-sprint-evidence.json": "c780d4c12182e34f5b7d170e03c5b9d95ec6555a5124dbdab7900036f3d29ea0"
   },
   "summary": {
     "uart2": {
@@ -17,7 +17,7 @@
       "fully_documented": 0,
       "partial": 141,
       "known_total_all_commands": null,
-      "with_any_reviewed_detail": 19
+      "with_any_reviewed_detail": 20
     },
     "source-software": {
       "units": {
@@ -1770,24 +1770,68 @@
       ],
       "rx_fields": [
         {
-          "position": 0,
-          "origin": "payload0 (frame byte5 for FC)",
+          "position": 3,
           "length": 1,
-          "endian": "byte",
-          "signed": false,
-          "scale": "UNKNOWN",
-          "unit": "UNKNOWN",
-          "range": "32",
-          "name": "command",
-          "source_sink": "UNKNOWN"
+          "enable": "p1.bit0",
+          "effect": "A459C maps 0/1; invalid or disabled -> FF. 90368 copies valid value to38BF and clears082E.bit7; additional side effects remain",
+          "handler": "90338/90368"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "enable": "p1.bit2;0900!=2",
+          "effect": "DHW mode through A462A ->3912; FF ignored",
+          "handler": "BC02C"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "enable": "p1.bit3;0900!=2",
+          "effect": "Zone1 mode through A468E ->BBE92; also unconditional mode context for target branch",
+          "handler": "BBCB6/B9AD0"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "enable": "p1.bit4;0900!=2",
+          "effect": "Zone2 mode through A468E ->BBE92; also unconditional mode context for target branch",
+          "handler": "BBCB6/B9AD0"
+        },
+        {
+          "position": 8,
+          "length": 2,
+          "enable": "p1.bit5;0900!=2",
+          "effect": "BE16 DHW target viaA46C4; FFFF ignored ->3906",
+          "handler": "BBA48"
+        },
+        {
+          "position": 10,
+          "length": 2,
+          "enable": "p1.bit7;0900!=2",
+          "effect": "BE16 zone1 target viaA46FA ->B9BFE with decoded p6; mode2/5 skipped at caller; FFFF ignored downstream",
+          "handler": "B9AD0"
+        },
+        {
+          "position": 12,
+          "length": 2,
+          "enable": "p2.bit1;0900!=2",
+          "effect": "BE16 zone2 target viaA46FA ->B9BFE with decoded p7; mode2/5 skipped at caller; FFFF ignored downstream",
+          "handler": "B9AD0"
+        },
+        {
+          "position": 14,
+          "length": 1,
+          "enable": "p2.bit3",
+          "effect": "low3bits ->082A.bits11..13;2342.bit2 clears these afterward",
+          "handler": "92B92"
         }
       ],
       "tx_fields": [],
       "raw_response_fields": [],
-      "effect": "Enabled BE16 target ->38DE -> mode/holiday/override selection ->3908 ->BA962 ->39EF; requested and effective targets differ",
-      "gates": "A508A and downstream role gates remain command-specific",
-      "completion": "UNKNOWN",
-      "semantic_evidence": "cross-report static contract; not every field complete",
+      "effect": "A459C maps 0/1; invalid or disabled -> FF. 90368 copies valid value to38BF and clears082E.bit7; additional side effects remain; DHW mode through A462A ->3912; FF ignored; Zone1 mode through A468E ->BBE92; also unconditional mode context for target branch; Zone2 mode through A468E ->BBE92; also unconditional mode context for target branch; BE16 DHW target viaA46C4; FFFF ignored ->3906; BE16 zone1 target viaA46FA ->B9BFE with decoded p6; mode2/5 skipped at caller; FFFF ignored downstream; BE16 zone2 target viaA46FA ->B9BFE with decoded p7; mode2/5 skipped at caller; FFFF ignored downstream; low3bits ->082A.bits11..13;2342.bit2 clears these afterward",
+      "gates": "Per-field enables and profile guards; see rx_fields",
+      "completion": "Zero ACK payload is independent of native application; verify native state separately",
+      "semantic_evidence": "Selected SET fields and consumers traced; downstream and remaining fields partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
@@ -1796,9 +1840,10 @@
         "84d66",
         "lookup index 49",
         "../P0087/flow-target-trace.md",
-        "source-outgoing.md"
+        "source-outgoing.md",
+        "cn105-control-fields.md"
       ],
-      "gap": "Finish all SET32 flags/fields and profile gates; ordinary zone1 target chain is qualified",
+      "gap": "p4/operating request, remaining enable bits and native admission/overrides; complete persistence and error semantics",
       "links": [
         "source.packet.82c2a"
       ]
@@ -1868,33 +1913,99 @@
       ],
       "rx_fields": [
         {
-          "position": 0,
-          "origin": "payload0 (frame byte5 for FC)",
+          "position": 3,
           "length": 1,
-          "endian": "byte",
-          "signed": false,
-          "scale": "UNKNOWN",
-          "unit": "UNKNOWN",
-          "range": "34",
-          "name": "command",
-          "source_sink": "UNKNOWN"
+          "enable": "p1.bit0;0900!=2",
+          "effect": "0/1 viaA472C ->B95E0 ->3919 boost; FF ignored",
+          "handler": "B95A4"
+        },
+        {
+          "position": 4,
+          "length": 1,
+          "enable": "p1.bit1;0900!=2",
+          "effect": "0/1 viaA4760 ->C0AD0 ->391B holiday; FF ignored",
+          "handler": "C0A98"
+        },
+        {
+          "position": 5,
+          "length": 1,
+          "enable": "p1.bit2",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit0",
+          "handler": "8F816/A4796"
+        },
+        {
+          "position": 6,
+          "length": 1,
+          "enable": "p1.bit3",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit1",
+          "handler": "8F816/A47CC"
+        },
+        {
+          "position": 7,
+          "length": 1,
+          "enable": "p1.bit4",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit2",
+          "handler": "8F816/A4802"
+        },
+        {
+          "position": 8,
+          "length": 1,
+          "enable": "p1.bit5",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit3",
+          "handler": "8F816/A4838"
+        },
+        {
+          "position": 9,
+          "length": 1,
+          "enable": "p1.bit6",
+          "effect": "0/1 accepted, other/disabled FF preserves prior39A6.bit4",
+          "handler": "8F816/A486E"
+        },
+        {
+          "position": 10,
+          "length": 1,
+          "enable": "p1.bit7",
+          "effect": "0 sets4977=1;1 sets4976=1;invalid/disabled unchanged. Event flags, not direct assignment of both",
+          "handler": "CE8E2/A489E"
+        },
+        {
+          "position": 11,
+          "length": 1,
+          "enable": "p2.bit0",
+          "effect": "1 increments byte33EA and sets39EC=1;0 clears both;invalid/disabled unchanged. Counter>=10 contributes39ED=1",
+          "handler": "CE920/A48CE"
+        },
+        {
+          "position": 12,
+          "length": 1,
+          "enable": "p2.bit1",
+          "effect": "0/1 ->39A4;invalid/disabled ignored",
+          "handler": "CE8E2/A4C2A"
+        },
+        {
+          "position": 13,
+          "length": 1,
+          "enable": "p2.bit2",
+          "effect": "8929D lookup times10 ->3E06 ->3933; values>10 select index0; ABE04==1 overrides3933=100",
+          "handler": "ABDDE/A3D3E"
         }
       ],
       "tx_fields": [],
       "raw_response_fields": [],
-      "effect": "UNKNOWN",
-      "gates": "A508A and downstream role gates remain command-specific",
-      "completion": "UNKNOWN",
-      "semantic_evidence": "unresolved",
+      "effect": "0/1 viaA472C ->B95E0 ->3919 boost; FF ignored; 0/1 viaA4760 ->C0AD0 ->391B holiday; FF ignored; 0/1 accepted, other/disabled FF preserves prior39A6.bit0; 0/1 accepted, other/disabled FF preserves prior39A6.bit1; 0/1 accepted, other/disabled FF preserves prior39A6.bit2; 0/1 accepted, other/disabled FF preserves prior39A6.bit3; 0/1 accepted, other/disabled FF preserves prior39A6.bit4; 0 sets4977=1;1 sets4976=1;invalid/disabled unchanged. Event flags, not direct assignment of both; 1 increments byte33EA and sets39EC=1;0 clears both;invalid/disabled unchanged. Counter>=10 contributes39ED=1; 0/1 ->39A4;invalid/disabled ignored; 8929D lookup times10 ->3E06 ->3933; values>10 select index0; ABE04==1 overrides3933=100",
+      "gates": "Per-field enables and profile guards; see rx_fields",
+      "completion": "Zero ACK payload is independent of native application; verify native state separately",
+      "semantic_evidence": "Selected SET fields and consumers traced; downstream and remaining fields partial",
       "status": "PARTIAL",
       "fully_documented": false,
       "evidence": [
         "cn105-new-capabilities.md",
         "8931e",
         "84d86",
-        "lookup index 1"
+        "lookup index 1",
+        "cn105-control-fields.md"
       ],
-      "gap": "Trace a5446 and its callees: field encoding, enable masks, effect and completion; stop at15min",
+      "gap": "Physical meaning and downstream lifetime of flags39A6/4976/4977/39EC/39A4; timer units; installed firmware equivalence",
       "links": []
     },
     {

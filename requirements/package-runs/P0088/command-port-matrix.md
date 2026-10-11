@@ -31,9 +31,9 @@ protocol/P81 corroborated.
 
 |ID / kind|Function|Handlers|Fields RX/TX/raw stores|Remaining gap|
 |---|---|---|---|---|
-|uart2.41.32 / mapped command route|Operating controls including zone1 fixed-flow target|a541a|1/0/0|Finish all SET32 flags/fields and profile gates; ordinary zone1 target chain is qualified|
+|uart2.41.32 / mapped command route|Operating controls including zone1 fixed-flow target|a541a|8/0/0|p4/operating request, remaining enable bits and native admission/overrides; complete persistence and error semantics|
 |uart2.41.33 / mapped command route|SET 33|a5430|1/0/0|Trace a5430 and its callees: field encoding, enable masks, effect and completion; stop at15min|
-|uart2.41.34 / mapped command route|SET 34|a5446|1/0/0|Trace a5446 and its callees: field encoding, enable masks, effect and completion; stop at15min|
+|uart2.41.34 / mapped command route|SET 34|a5446|11/0/0|Physical meaning and downstream lifetime of flags39A6/4976/4977/39EC/39A4; timer units; installed firmware equivalence|
 |uart2.41.35 / mapped command route|SET 35|a545c|1/0/0|Trace a545c and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.41.50 / mapped command route|SET 50|a5472|1/0/1|Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min|
 |uart2.41.51 / mapped command route|SET 51|a5472|1/0/1|Trace a5472 and its callees: field encoding, enable masks, effect and completion; stop at15min|

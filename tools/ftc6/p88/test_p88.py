@@ -30,6 +30,23 @@ class Offline(unittest.TestCase):
         for bad in (-1,65536):
             with self.assertRaises(ValueError):flow_byte(bad)
 
+    def test_control_set_contracts(self):
+        from port_matrix import build
+        report=build(ROOT/'requirements/package-runs/P0088')
+        rows={r['id']:r for r in report['rows']}
+        a=rows['uart2.41.32'];b=rows['uart2.41.34']
+        fields={f['position']:f for f in a['rx_fields']}
+        self.assertIn('p1.bit7',fields[10]['enable'])
+        self.assertIn('p2.bit1',fields[12]['enable'])
+        self.assertIn('decoded p6',fields[10]['effect'])
+        self.assertEqual([f['position'] for f in b['rx_fields']],list(range(3,14)))
+        counter=next(f for f in b['rx_fields'] if f['position']==11)
+        self.assertEqual(counter['enable'],'p2.bit0')
+        self.assertIn('increments byte33EA',counter['effect'])
+        for row in (a,b):
+            self.assertFalse(row['fully_documented'])
+            self.assertIn('independent of native application',row['completion'])
+
     def test_fast_get_contract_coverage(self):
         from port_matrix import build
         report=build(ROOT/'requirements/package-runs/P0088')
@@ -312,6 +329,8 @@ class LocalImage(unittest.TestCase):
     def test_port_sprint_pinned_tables(self):
         evidence=json.loads((ROOT/'requirements/package-runs/P0088/port-sprint-evidence.json').read_text())
         self.assertEqual(evidence['image_sha256'],SHA)
+        for address,values in evidence['control_set_tables'].items():
+            self.assertEqual(list(self.image.at(int(address,16),len(values))),values)
         for row in evidence['translations'].values():
             self.assertEqual(list(self.image.at(int(row['address'],16),len(row['values']))),row['values'])
         self.assertEqual(list(self.image.at(0x84ade,4)),evidence['about']['rom84ade'])

@@ -183,6 +183,15 @@ def build(folder):
         row['semantic_evidence']=contract['status']
         row['evidence'].append(contract['evidence'])
         row['gap']='Payload sources mapped; qualify native field names, freshness/invalid states and upstream ownership; see cn105-fast-fields.md'
+    for code, contract in proof.get('control_set', {}).items():
+        row=next(r for r in rows if r['id']=='uart2.41.'+code)
+        row['rx_fields']=contract['fields']
+        row['completion']='Zero ACK payload is independent of native application; verify native state separately'
+        row['gates']='Per-field enables and profile guards; see rx_fields'
+        row['effect']='; '.join(f['effect'] for f in contract['fields'])
+        row['semantic_evidence']='Selected SET fields and consumers traced; downstream and remaining fields partial'
+        row['evidence'].append(contract['evidence'])
+        row['gap']=contract['gap']
     for r in rows:
         if r['gap'].startswith('finish named dataflow'):
             r['gap'] = 'Trace '+','.join(r['handlers'])+' and its callees: field encoding, enable masks, effect and completion; stop at15min'

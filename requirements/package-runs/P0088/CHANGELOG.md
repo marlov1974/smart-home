@@ -21,3 +21,5 @@ Activation continuation: resolved descriptor30 within33×26-byte table to0939 co
 - Port sprint: public-input command/port matrix with269 mixed-unit rows, deduplicated response-store registry,64 pre-history raw translations and explicit cross-port links. Closed C9/GET04 byte sources and shared zero-initialization; constant5C/5D payloads. Added five tracked files and updated repository index. No live actions;40 tests including deterministic report and pinned tables.
 
 - Fast-GET continuation:0B/0C/14/15/26/28 byte-source contracts,54 matching targeted exports; sampled companions not presumed validity flags; unsigned flow truncation/wrap and flag mapping tests. Added cn105_fields.py and cn105-fast-fields.md; index updated. No live actions.
+
+Command catalog continuation: added reproducible Swedish code/function/port list and JSON, covering269 matrix records,136 service records and64 translations with6 evidenced relationships. Added catalog generator and conservation/namespace tests. File index updated for3 new tracked files. No live actions; no new global knowhow needed for this offline documentation consolidation.

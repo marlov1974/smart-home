@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "independent_projects": [
+    "fresh-a",
+    "fresh-b"
+  ],
+  "matching_files": 17,
+  "files": [
+    {
+      "file": "90aba.asm",
+      "sha256": "90263bc12c7340669a7928bc228f0be0b41d12f96f46982949bbde3af7f05b31"
+    },
+    {
+      "file": "90bd4.asm",
+      "sha256": "547450e27e4a319285b0c8460e8cf5d108f4414eb834b244cb8057ba75de7dfb"
+    },
+    {
+      "file": "923bc.asm",
+      "sha256": "b318229e4ac443acb491a10370482992b32d8f50198acf11fb0a56fddf63e117"
+    },
+    {
+      "file": "b984a.asm",
+      "sha256": "4a90ae5f5fcab739a3d963b9bfaf9fe44a67b16e5c2e96fe3018b12f81f73d29"
+    },
+    {
+      "file": "bb9dc.asm",
+      "sha256": "72fae94ac795d7a91496867af24a32db30288bdab7c26aea7b600dd1520724a2"
+    },
+    {
+      "file": "bbbea.asm",
+      "sha256": "420db28d167b7f97ad8e261711e270625b3ff55a14848d1a9216b74dc1f10364"
+    },
+    {
+      "file": "bbfca.asm",
+      "sha256": "2142a87731e2e3b767d9c61a7cf9b8e561e8e61a6ec6a3fb3f9010790751cbf2"
+    },
+    {
+      "file": "bc0d8.asm",
+      "sha256": "0c3659318c67a7eff1b04d2ecfb6185f42a261032c3d4165874efccf8954c56b"
+    },
+    {
+      "file": "bc9da.asm",
+      "sha256": "ddc097daac0c6adc456963e742c071b40509489c4487b3c1f2f1eaee66617aac"
+    },
+    {
+      "file": "bcb0a.asm",
+      "sha256": "dbb128b111933d86d9d9fc9e91558d2dfd23e95c34106317e03f3997500cf0ba"
+    },
+    {
+      "file": "bcff4.asm",
+      "sha256": "deefcf4e145ba16f42e6a345b42904f08a2e1bbf7d7773fb4a2efd4b905659b8"
+    },
+    {
+      "file": "bd166.asm",
+      "sha256": "e3712e6eccee0bedd4e1cd80479ddd0738039e408f7172e9ac68b1d168945029"
+    },
+    {
+      "file": "bd296.asm",
+      "sha256": "7072dc30e0785c20dc601c915fbc4ac6a6e684a1b45329021ee5d322641222c0"
+    },
+    {
+      "file": "bd780.asm",
+      "sha256": "228b0356363ceceb41afb36f4dc2ca337f29a95de16e1cd259ec62d4dd5d2d88"
+    },
+    {
+      "file": "cf12e.asm",
+      "sha256": "3ce10699caa2cd40bdc6955675911f14c97f31f4b0844daaeafe742ba8b9e5ee"
+    },
+    {
+      "file": "cf35c.asm",
+      "sha256": "d141c2879ebd9a06d7e8b6f7d5fcf70fc01913e54edf90e7c1c737894d1dadbf"
+    },
+    {
+      "file": "cf846.asm",
+      "sha256": "c66138583d1d44f212083bc9ab3a33b36a6074b3d6083e81fcc98c93ef1d6bf5"
+    }
+  ]
+}

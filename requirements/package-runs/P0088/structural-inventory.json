@@ -11468,6 +11468,338 @@
     "d5662",
     "fffff"
   ],
+  "d_settings_ranges": [
+    {
+      "index": 0,
+      "operand": "807ea",
+      "first": 1,
+      "last": 1,
+      "bank": 0,
+      "offset": 0,
+      "staging_first": 6464,
+      "staging_last": 6466
+    },
+    {
+      "index": 1,
+      "operand": "807f2",
+      "first": 2,
+      "last": 4,
+      "bank": 0,
+      "offset": 6,
+      "staging_first": 6470,
+      "staging_last": 6478
+    },
+    {
+      "index": 2,
+      "operand": "807fa",
+      "first": 5,
+      "last": 9,
+      "bank": 0,
+      "offset": 18,
+      "staging_first": 6482,
+      "staging_last": 6496
+    },
+    {
+      "index": 3,
+      "operand": "80802",
+      "first": 51,
+      "last": 53,
+      "bank": 0,
+      "offset": 21,
+      "staging_first": 6485,
+      "staging_last": 6493
+    },
+    {
+      "index": 4,
+      "operand": "8080a",
+      "first": 54,
+      "last": 56,
+      "bank": 0,
+      "offset": 39,
+      "staging_first": 6503,
+      "staging_last": 6511
+    },
+    {
+      "index": 5,
+      "operand": "80812",
+      "first": 101,
+      "last": 135,
+      "bank": 0,
+      "offset": 0,
+      "staging_first": 6464,
+      "staging_last": 6568
+    },
+    {
+      "index": 6,
+      "operand": "8081a",
+      "first": 151,
+      "last": 178,
+      "bank": 0,
+      "offset": 105,
+      "staging_first": 6569,
+      "staging_last": 6652
+    },
+    {
+      "index": 7,
+      "operand": "80822",
+      "first": 201,
+      "last": 235,
+      "bank": 1,
+      "offset": 0,
+      "staging_first": 6976,
+      "staging_last": 7080
+    },
+    {
+      "index": 8,
+      "operand": "8082a",
+      "first": 251,
+      "last": 278,
+      "bank": 1,
+      "offset": 105,
+      "staging_first": 7081,
+      "staging_last": 7164
+    },
+    {
+      "index": 9,
+      "operand": "80832",
+      "first": 301,
+      "last": 363,
+      "bank": 2,
+      "offset": 0,
+      "staging_first": 7488,
+      "staging_last": 7676
+    },
+    {
+      "index": 10,
+      "operand": "8083a",
+      "first": 401,
+      "last": 435,
+      "bank": 3,
+      "offset": 0,
+      "staging_first": 8000,
+      "staging_last": 8104
+    },
+    {
+      "index": 11,
+      "operand": "80842",
+      "first": 500,
+      "last": 500,
+      "bank": 3,
+      "offset": 105,
+      "staging_first": 8105,
+      "staging_last": 8107
+    },
+    {
+      "index": 12,
+      "operand": "8084a",
+      "first": 364,
+      "last": 398,
+      "bank": 4,
+      "offset": 0,
+      "staging_first": 8512,
+      "staging_last": 8616
+    },
+    {
+      "index": 13,
+      "operand": "80852",
+      "first": 21,
+      "last": 48,
+      "bank": 4,
+      "offset": 105,
+      "staging_first": 8617,
+      "staging_last": 8700
+    },
+    {
+      "index": 14,
+      "operand": "8085a",
+      "first": 501,
+      "last": 503,
+      "bank": 0,
+      "offset": 0,
+      "staging_first": 6464,
+      "staging_last": 6472
+    },
+    {
+      "index": 15,
+      "operand": "80862",
+      "first": 511,
+      "last": 514,
+      "bank": 0,
+      "offset": 9,
+      "staging_first": 6473,
+      "staging_last": 6484
+    },
+    {
+      "index": 16,
+      "operand": "8086a",
+      "first": 521,
+      "last": 522,
+      "bank": 0,
+      "offset": 21,
+      "staging_first": 6485,
+      "staging_last": 6490
+    },
+    {
+      "index": 17,
+      "operand": "80872",
+      "first": 524,
+      "last": 524,
+      "bank": 0,
+      "offset": 27,
+      "staging_first": 6491,
+      "staging_last": 6493
+    },
+    {
+      "index": 18,
+      "operand": "8087a",
+      "first": 551,
+      "last": 558,
+      "bank": 0,
+      "offset": 0,
+      "staging_first": 6464,
+      "staging_last": 6487
+    },
+    {
+      "index": 19,
+      "operand": "80882",
+      "first": 571,
+      "last": 573,
+      "bank": 0,
+      "offset": 24,
+      "staging_first": 6488,
+      "staging_last": 6496
+    },
+    {
+      "index": 20,
+      "operand": "8088a",
+      "first": 581,
+      "last": 590,
+      "bank": 0,
+      "offset": 33,
+      "staging_first": 6497,
+      "staging_last": 6526
+    },
+    {
+      "index": 21,
+      "operand": "80892",
+      "first": 601,
+      "last": 602,
+      "bank": 0,
+      "offset": 165,
+      "staging_first": 6629,
+      "staging_last": 6634
+    },
+    {
+      "index": 22,
+      "operand": "8089a",
+      "first": 651,
+      "last": 685,
+      "bank": 1,
+      "offset": 0,
+      "staging_first": 6976,
+      "staging_last": 7080
+    },
+    {
+      "index": 23,
+      "operand": "808a2",
+      "first": 701,
+      "last": 735,
+      "bank": 1,
+      "offset": 105,
+      "staging_first": 7081,
+      "staging_last": 7185
+    },
+    {
+      "index": 24,
+      "operand": "808aa",
+      "first": 751,
+      "last": 785,
+      "bank": 1,
+      "offset": 210,
+      "staging_first": 7186,
+      "staging_last": 7290
+    },
+    {
+      "index": 25,
+      "operand": "808b2",
+      "first": 801,
+      "last": 807,
+      "bank": 1,
+      "offset": 315,
+      "staging_first": 7291,
+      "staging_last": 7311
+    },
+    {
+      "index": 26,
+      "operand": "808ba",
+      "first": 10,
+      "last": 16,
+      "bank": 1,
+      "offset": 414,
+      "staging_first": 7390,
+      "staging_last": 7410
+    },
+    {
+      "index": 27,
+      "operand": "808c2",
+      "first": 811,
+      "last": 873,
+      "bank": 0,
+      "offset": 0,
+      "staging_first": 6464,
+      "staging_last": 6652
+    },
+    {
+      "index": 28,
+      "operand": "808ca",
+      "first": 874,
+      "last": 936,
+      "bank": 1,
+      "offset": 0,
+      "staging_first": 6976,
+      "staging_last": 7164
+    },
+    {
+      "index": 29,
+      "operand": "808d2",
+      "first": 937,
+      "last": 999,
+      "bank": 2,
+      "offset": 0,
+      "staging_first": 7488,
+      "staging_last": 7676
+    },
+    {
+      "index": 30,
+      "operand": "808da",
+      "first": 451,
+      "last": 485,
+      "bank": 3,
+      "offset": 0,
+      "staging_first": 8000,
+      "staging_last": 8104
+    },
+    {
+      "index": 31,
+      "operand": "808e2",
+      "first": 61,
+      "last": 95,
+      "bank": 4,
+      "offset": 0,
+      "staging_first": 8512,
+      "staging_last": 8616
+    },
+    {
+      "index": 32,
+      "operand": "808ea",
+      "first": 611,
+      "last": 638,
+      "bank": 4,
+      "offset": 105,
+      "staging_first": 8617,
+      "staging_last": 8700
+    }
+  ],
   "source_tx_descriptors": [
     {
       "address": "82a7a",

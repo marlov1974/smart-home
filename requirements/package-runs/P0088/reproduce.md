@@ -6,7 +6,7 @@ From the repository root, run the synthetic checks without firmware or devices:
 python3 -m unittest discover -s tools/ftc6/p88 -p test_p88.py -v
 ```
 
-Private image tests require the exact SHA-pinned image and a P83Trace catalog. Set `P88_IMAGE` to the binary path and `P88_CATALOG` to the targeted catalog directory, then repeat the same command. All 19 tests pass with these inputs; the private-image class is skipped without them.
+Private image tests require the exact SHA-pinned image and a P83Trace catalog. Set `P88_IMAGE` to the binary path and `P88_CATALOG` to the targeted catalog directory, then repeat the same command. All 21 tests pass with these inputs; the private-image class is skipped without them.
 
 Generate the atlas from those private inputs:
 
@@ -36,3 +36,5 @@ python3 tools/ftc6/p88/source_tx.py "$P88_IMAGE" "$P88_SOURCE_LISTING" requireme
 It rejects any descriptor lacking a contiguous qualified PUSH/PUSH/JSR caller. Earlier listings taken before switch expansion are intentionally insufficient.
 
 For the continuation comparison, seed/export routines `9a336,9a36a,9a39e,9a3d2,9bc40,9be98,9bf0e,9c002,9c0ee,9c34a,9c39e,9c40e,8b7e2,8bd02,8d36c,8d694,cefa8,cf28a,cf306` in both independent projects. Run `P88SourceSwitch <private-directory> tx` in each. Run `P88A3Completion <private-output-file> <reference-binary>` in each to obtain the complete CECFA CFG; a stale function-body export is insufficient. Compare all43 assembly exports byte-for-byte. Require the explicit success marker and no SCRIPT ERROR; Ghidra process exit zero alone is not success.
+
+Settings continuation repeats17 roots in the two independent projects: `b984a,bb9dc,bbbea,bbfca,bd166,bd296,bd780,cf846,90bd4,bcb0a,bcff4,923bc,cf12e,cf35c,90aba,bc0d8,bc9da`. P83Seed depth1 followed by P83Trace produces the files hashed in settings-transfer-extraction.json. Review923BC using signed-FB-corrected assembly, not its erroneous constant-return C. Atlas generation also regenerates the33-range settings-transfer-map.md.

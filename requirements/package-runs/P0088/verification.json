@@ -2,16 +2,18 @@
   "package_status": "PARTIAL",
   "offline_tests": {
     "result": "PASS",
-    "tests": 19,
+    "tests": 21,
     "command": "P88_IMAGE=<private-ftc6.bin> P88_CATALOG=<private-catalog> python3 -m unittest discover -s tools/ftc6/p88 -p test_p88.py -v",
-    "public_only_tests": 12
+    "public_only_tests": 13
   },
   "artifact_consistency": {
     "result": "PASS",
-    "json_rows": 2373,
-    "csv_rows": 2373,
+    "json_rows": 2407,
+    "csv_rows": 2407,
     "human_ledger_all_ids_present": true,
-    "source_fields": 249
+    "source_fields": 249,
+    "d_settings_ranges": 33,
+    "d_settings_selectors": 742
   },
   "fresh_extraction": {
     "result": "PASS",
@@ -21,12 +23,14 @@
     "evidence": [
       "fresh-extraction.json",
       "source-extraction.json",
-      "continuation-extraction.json"
+      "continuation-extraction.json",
+      "settings-transfer-extraction.json"
     ],
     "scope": "Targeted assembly equality, not full-image independent semantic validation",
     "continuation_routines": 19,
     "outgoing_switch_branches": 23,
-    "a3_completion_instructions": 24
+    "a3_completion_instructions": 24,
+    "settings_transfer_routines": 17
   },
   "hardware_calls": 0,
   "deployment": false,
@@ -36,7 +40,7 @@
   "repository_checks": {
     "scoped_paths": "PASS",
     "index": "PASS",
-    "tracked_file_count": 1034,
+    "tracked_file_count": 1038,
     "git_diff_check": "PASS",
     "private_identifier_scan": "PASS"
   }

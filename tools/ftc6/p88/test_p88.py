@@ -9,12 +9,25 @@ from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
+from settings_transfer import ranges as transfer_ranges,resolve,extended_fields,admitted
 ROOT=Path(__file__).resolve().parents[3]
 def load(name,path):
     spec=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_extended_settings_direction(self):
+        for selector in (0,1,589,1023):
+            for direction in (0,1):
+                for fmt in range(16):
+                    word=(selector<<6)|(direction<<5)|(fmt<<1)|1
+                    self.assertEqual(extended_fields(word),{'selector':selector,'format':fmt,'direction':direction})
+                    self.assertTrue(admitted(word,direction,0x16,2))
+                    self.assertFalse(admitted(word,1-direction,0x16,2))
+                    self.assertFalse(admitted(word,direction,4,2))
+                    self.assertFalse(admitted(word,direction,0x16,1))
+        for word in (-1,0,65536):
+            with self.assertRaises(ValueError):extended_fields(word)
     def test_public_artifacts(self):
         import shutil
         source=ROOT/'requirements/package-runs/P0088'
@@ -129,6 +142,29 @@ class LocalImage(unittest.TestCase):
             packed=pack_logical(r,values)
             self.assertEqual(len(packed),r['length'])
             if r['checksum_kind']:self.assertEqual(sum(packed)&255,0 if r['checksum_kind']==1 else 255)
+    def test_settings_transfer_ranges(self):
+        table=transfer_ranges(self.image)
+        self.assertEqual(len(table),33)
+        self.assertEqual(resolve(table,0)['kind'],'end-marker')
+        self.assertEqual(resolve(table,120)['staging_address'],0x1979)
+        self.assertEqual(resolve(table,589)['staging_address'],0x1979)
+        self.assertEqual(resolve(table,1000)['kind'],'unmapped')
+        covered=set()
+        for selector in range(1,1024):
+            result=resolve(table,selector)
+            matching=[r for r in table if r['first']<=selector<=r['last']]
+            self.assertEqual(result['kind']=='triple',bool(matching))
+            if matching:
+                self.assertEqual(result['range_index'],matching[0]['index'])
+                covered.update(range(result['staging_address'],result['staging_address']+3))
+        self.assertIn(0x197b,covered)
+        self.assertNotIn(0x1cb0,covered)
+        for row in table:
+            self.assertEqual(resolve(table,row['first'])['staging_address'],row['staging_first'])
+            self.assertEqual(resolve(table,row['last'])['staging_address']+2,row['staging_last'])
+        fake=object.__new__(Image);data=bytearray(self.image.data)
+        data[0x7ec:0x7ee]=bytes(2);fake.data=bytes(data)
+        with self.assertRaises(ValueError):transfer_ranges(fake)
     def test_settings_response_matrix(self):
         actions=set()
         for state in range(13):

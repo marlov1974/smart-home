@@ -3,6 +3,1986 @@
   "status": "PARTIAL",
   "rows": [
     {
+      "id": "d.transfer.range.00",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 1,
+        "selector_max": 1,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 1..1",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 0 + 3*(selector-1); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "807ea",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.01",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 2,
+        "selector_max": 4,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 2..4",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 6 + 3*(selector-2); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "807f2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.02",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 5,
+        "selector_max": 9,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 5..9",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 18 + 3*(selector-5); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "807fa",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.03",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 51,
+        "selector_max": 53,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 51..53",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 21 + 3*(selector-51); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80802",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.04",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 54,
+        "selector_max": 56,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 54..56",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 39 + 3*(selector-54); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8080a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.05",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 101,
+        "selector_max": 135,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 101..135",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 0 + 3*(selector-101); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80812",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.06",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 151,
+        "selector_max": 178,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 151..178",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 105 + 3*(selector-151); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8081a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.07",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 201,
+        "selector_max": 235,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 201..235",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 0 + 3*(selector-201); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80822",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.08",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 251,
+        "selector_max": 278,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 251..278",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 105 + 3*(selector-251); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8082a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.09",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 301,
+        "selector_max": 363,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 301..363",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 2*512 + 0 + 3*(selector-301); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80832",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.10",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 401,
+        "selector_max": 435,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 401..435",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 3*512 + 0 + 3*(selector-401); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8083a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.11",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 500,
+        "selector_max": 500,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 500..500",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 3*512 + 105 + 3*(selector-500); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80842",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.12",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 364,
+        "selector_max": 398,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 364..398",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 4*512 + 0 + 3*(selector-364); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8084a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.13",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 21,
+        "selector_max": 48,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 21..48",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 4*512 + 105 + 3*(selector-21); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80852",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.14",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 501,
+        "selector_max": 503,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 501..503",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 0 + 3*(selector-501); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8085a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.15",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 511,
+        "selector_max": 514,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 511..514",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 9 + 3*(selector-511); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80862",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.16",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 521,
+        "selector_max": 522,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 521..522",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 21 + 3*(selector-521); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8086a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.17",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 524,
+        "selector_max": 524,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 524..524",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 27 + 3*(selector-524); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80872",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.18",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 551,
+        "selector_max": 558,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 551..558",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 0 + 3*(selector-551); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8087a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.19",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 571,
+        "selector_max": 573,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 571..573",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 24 + 3*(selector-571); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80882",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.20",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 581,
+        "selector_max": 590,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 581..590",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 33 + 3*(selector-581); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8088a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.21",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 601,
+        "selector_max": 602,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 601..602",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 165 + 3*(selector-601); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "80892",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.22",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 651,
+        "selector_max": 685,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 651..685",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 0 + 3*(selector-651); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "8089a",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.23",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 701,
+        "selector_max": 735,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 701..735",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 105 + 3*(selector-701); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808a2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.24",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 751,
+        "selector_max": 785,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 751..785",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 210 + 3*(selector-751); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808aa",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.25",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 801,
+        "selector_max": 807,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 801..807",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 315 + 3*(selector-801); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808b2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.26",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 10,
+        "selector_max": 16,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 10..16",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 414 + 3*(selector-10); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808ba",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.27",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 811,
+        "selector_max": 873,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 811..873",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 0*512 + 0 + 3*(selector-811); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808c2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.28",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 874,
+        "selector_max": 936,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 874..936",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 1*512 + 0 + 3*(selector-874); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808ca",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.29",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 937,
+        "selector_max": 999,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 937..999",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 2*512 + 0 + 3*(selector-937); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808d2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.30",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 451,
+        "selector_max": 485,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 451..485",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 3*512 + 0 + 3*(selector-451); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808da",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.31",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 61,
+        "selector_max": 95,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 61..95",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 4*512 + 0 + 3*(selector-61); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808e2",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "d.transfer.range.32",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "d",
+      "physical_port": "UNKNOWN",
+      "physical_confidence": "unverified",
+      "wire": {
+        "direction": "bidirectional relative to FTC",
+        "selector_min": 611,
+        "selector_max": 638,
+        "extended_word_bit0": 1
+      },
+      "rx_fields": [
+        {
+          "position": 0,
+          "origin": "internal word050B",
+          "length": 2,
+          "endian": "little",
+          "signed": false,
+          "scale": "UNKNOWN",
+          "unit": "UNKNOWN",
+          "range": "selector bits6..15; direction bit5; format bits1..4; bit0=1",
+          "name": "Extended selector/format/direction",
+          "source_sink": "UNKNOWN"
+        }
+      ],
+      "tx_fields": [],
+      "functional_name": "Extended settings selectors 611..638",
+      "operation_class": "setting",
+      "accepted_predicate": "Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates",
+      "gates": "Shared staging aliases require category/session context; not external A3 selector reachability",
+      "handler": [
+        "8b7e2",
+        "8bd02",
+        "8d694"
+      ],
+      "source_sink": "1940 + 4*512 + 105 + 3*(selector-611); format then two raw bytes",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Staging only in8D694; native import is separate and may precede session close",
+      "side_effects": "Direction1 mutates staged data; handler sets0868 to cancel native service request",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "extended D route, not standalone CN105 command",
+      "semantic_confidence": "bounded selector-to-staging mapping proven; individual setting meaning remains contextual",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly itemized settings transfer range",
+      "evidence": [
+        "808ea",
+        "8D6C8",
+        "8D742",
+        "8D77E",
+        "settings-transfer-map.md"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
       "id": "source.tx.82a7a.00",
       "firmware": "FTC6 supplied 20.01",
       "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
@@ -128223,6 +130203,56 @@
         "settings-d-events.md",
         "8B8BF",
         "CF978"
+      ],
+      "next_verification": "finish named dataflow and gates offline before physical work"
+    },
+    {
+      "id": "uart2.settings.apply-order",
+      "firmware": "FTC6 supplied 20.01",
+      "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+      "path": "uart2",
+      "physical_port": "CN105",
+      "physical_confidence": "protocol/P81 corroboration; no new physical test",
+      "wire": {
+        "frame": "FC41",
+        "opcode": "C8",
+        "payload2": 1
+      },
+      "rx_fields": [],
+      "tx_fields": [],
+      "functional_name": "Settings application event before handshake completion",
+      "operation_class": "setting",
+      "accepted_predicate": "Write session state3, accepted action1; category4981 determines import event2373",
+      "gates": "UNKNOWN",
+      "handler": [
+        "cf0e0",
+        "cf846",
+        "90aba",
+        "bc0d8",
+        "bd166",
+        "90bd4"
+      ],
+      "source_sink": "UNKNOWN",
+      "shared_function": "UNKNOWN",
+      "forward_boundary": "UNKNOWN",
+      "completion": "2373 consumed later in same main pass; state4 waits for peer end event, then state5; close and persistence separate",
+      "response_error": "UNKNOWN",
+      "cadence": "UNKNOWN",
+      "persistence": "Not established by these import/reset paths",
+      "side_effects": "Imports grouped staged settings into active control; category6 includes both DHW and heating groups; later reset-to-idle is not a rollback guarantee",
+      "retry": "not qualified; never infer idempotence from GET",
+      "failure_exit": "UNKNOWN",
+      "reachability": "qualified CN105 settings-state path; complete external peer choreography remains open",
+      "semantic_confidence": "event ordering and bounded import consumers proven; full field names/validation/persistence incomplete",
+      "physical_validation": "NOT RUN in P88",
+      "baseline": "newly explained settings application timing",
+      "evidence": [
+        "settings-apply-order.md",
+        "settings-transfer-extraction.json",
+        "CF0E0",
+        "CF846",
+        "BC0D8",
+        "BD166"
       ],
       "next_verification": "finish named dataflow and gates offline before physical work"
     }

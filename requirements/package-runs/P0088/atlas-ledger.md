@@ -4,6 +4,39 @@ Every machine row is represented here. Raw field rows are **not semantic complet
 
 | ID | Function | Path | Handler / evidence | Confidence |
 |---|---|---|---|---|
+| d.transfer.range.00 | Extended settings selectors 1..1 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.01 | Extended settings selectors 2..4 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.02 | Extended settings selectors 5..9 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.03 | Extended settings selectors 51..53 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.04 | Extended settings selectors 54..56 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.05 | Extended settings selectors 101..135 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.06 | Extended settings selectors 151..178 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.07 | Extended settings selectors 201..235 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.08 | Extended settings selectors 251..278 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.09 | Extended settings selectors 301..363 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.10 | Extended settings selectors 401..435 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.11 | Extended settings selectors 500..500 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.12 | Extended settings selectors 364..398 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.13 | Extended settings selectors 21..48 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.14 | Extended settings selectors 501..503 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.15 | Extended settings selectors 511..514 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.16 | Extended settings selectors 521..522 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.17 | Extended settings selectors 524..524 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.18 | Extended settings selectors 551..558 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.19 | Extended settings selectors 571..573 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.20 | Extended settings selectors 581..590 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.21 | Extended settings selectors 601..602 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.22 | Extended settings selectors 651..685 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.23 | Extended settings selectors 701..735 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.24 | Extended settings selectors 751..785 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.25 | Extended settings selectors 801..807 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.26 | Extended settings selectors 10..16 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.27 | Extended settings selectors 811..873 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.28 | Extended settings selectors 874..936 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.29 | Extended settings selectors 937..999 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.30 | Extended settings selectors 451..485 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.31 | Extended settings selectors 61..95 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
+| d.transfer.range.32 | Extended settings selectors 611..638 | d | 8b7e2, 8bd02, 8d694 | bounded selector-to-staging mapping proven; individual setting meaning remains contextual |
 | source.tx.82a7a.00 | Staged memory field | source-software | 9c228, 9c34a, 9c40e | unresolved |
 | source.tx.82a7a.01 | Staged memory field | source-software | 9c228, 9c34a, 9c40e | unresolved |
 | source.tx.82a7a.02 | Staged memory field | source-software | 9c228, 9c34a, 9c40e | unresolved |
@@ -2377,3 +2410,4 @@ Every machine row is represented here. Raw field rows are **not semantic complet
 | uart2.a3.forwarded-lifecycle | Forwarded A3 job submission, cached polling and cancellation | uart2 | cedfa, cebee, cecfa, ced66, a8f34, 8bfd0, 9d29e | proven bounded static lifecycle; timing and fresh-measurement rearm unresolved |
 | d.settings.advertisement1005 | Internal settings-session pending-request advertisement | d | 8d232 | proven helper and bounded state predicate; peer polling sequence incomplete |
 | d.settings.extended-end | Extended settings event selector zero supplies end marker | d | 9f788, a0662, 8b7e2, 8bd02, ceea8, cf978 | static event-to-consumer path; external peer generator unresolved |
+| uart2.settings.apply-order | Settings application event before handshake completion | uart2 | cf0e0, cf846, 90aba, bc0d8, bd166, 90bd4 | event ordering and bounded import consumers proven; full field names/validation/persistence incomplete |

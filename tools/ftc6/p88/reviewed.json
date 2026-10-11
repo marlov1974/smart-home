@@ -1003,5 +1003,39 @@
       "CF978"
     ],
     "baseline": "newly explained settings completion prerequisite"
+  },
+  {
+    "id": "uart2.settings.apply-order",
+    "path": "uart2",
+    "functional_name": "Settings application event before handshake completion",
+    "operation_class": "setting",
+    "wire": {
+      "frame": "FC41",
+      "opcode": "C8",
+      "payload2": 1
+    },
+    "handler": [
+      "cf0e0",
+      "cf846",
+      "90aba",
+      "bc0d8",
+      "bd166",
+      "90bd4"
+    ],
+    "accepted_predicate": "Write session state3, accepted action1; category4981 determines import event2373",
+    "completion": "2373 consumed later in same main pass; state4 waits for peer end event, then state5; close and persistence separate",
+    "side_effects": "Imports grouped staged settings into active control; category6 includes both DHW and heating groups; later reset-to-idle is not a rollback guarantee",
+    "persistence": "Not established by these import/reset paths",
+    "semantic_confidence": "event ordering and bounded import consumers proven; full field names/validation/persistence incomplete",
+    "evidence": [
+      "settings-apply-order.md",
+      "settings-transfer-extraction.json",
+      "CF0E0",
+      "CF846",
+      "BC0D8",
+      "BD166"
+    ],
+    "reachability": "qualified CN105 settings-state path; complete external peer choreography remains open",
+    "baseline": "newly explained settings application timing"
   }
 ]

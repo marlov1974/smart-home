@@ -11,3 +11,5 @@ Manuals already held locally: Mitsubishi OCH722A, printed pages 11–12, 20–23
 The repeated extraction evidence covers twelve earlier targeted functions, seven source functions and sixteen bounded source switch branches. It does not establish complete semantic coverage. The later 9C660/9C77C receive/checksum extraction is a single clean-project extraction, separately qualified in source-link.md.
 
 Continuation: nineteen further routines,23 outgoing switch branches and the24-instruction CECFA CFG match across fresh-a/fresh-b; hashes are in continuation-extraction.json. Scheduler/cancellation supporting exports are from fresh-a only. The A3 CFG exporter hashes the FF-filled reference and compares each used project byte; MOT gaps prevent treating one contiguous Ghidra memory read as the entire reconstructed binary.
+
+Settings-transfer continuation:17 further assembly exports match across fresh-a/fresh-b; see settings-transfer-extraction.json. Direction polarity was checked against M16C/60 Software Manual STZX printedp128. This corrects a P88 prose error; the shared decoder and historical P86/P87 outputs remain unchanged.

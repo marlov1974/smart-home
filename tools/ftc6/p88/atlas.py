@@ -5,6 +5,7 @@ import argparse,csv,hashlib,json,re
 from pathlib import Path
 from extract import Image,extract,SHA
 from source_tx import descriptors
+from settings_transfer import ranges as transfer_ranges
 PROFILE='FTC6 supplied 20.01'
 UNKNOWN='UNKNOWN'
 
@@ -28,6 +29,20 @@ def field(position,name,source=UNKNOWN,**kw):
 
 def build(image,catalog):
     inv=extract(image);rows=[]
+    inv['d_settings_ranges']=transfer_ranges(image)
+    for r in inv['d_settings_ranges']:
+        rows.append(record(f"d.transfer.range.{r['index']:02d}",'d',f"Extended settings selectors {r['first']}..{r['last']}",'setting',
+            wire={'direction':'bidirectional relative to FTC','selector_min':r['first'],'selector_max':r['last'],'extended_word_bit0':1},
+            rx_fields=[field(0,'Extended selector/format/direction',origin='internal word050B',length=2,endian='little',range='selector bits6..15; direction bit5; format bits1..4; bit0=1')],
+            handler=['8b7e2','8bd02','8d694'],
+            source_sink=f"1940 + {r['bank']}*512 + {r['offset']} + 3*(selector-{r['first']}); format then two raw bytes",
+            accepted_predicate='Normal role; dispatcher low nibble6; transfer-kind argument2; word bit5 equals4980; earlier D parser gates',
+            gates='Shared staging aliases require category/session context; not external A3 selector reachability',
+            completion='Direction1 copies incoming triple to staging; direction0 reads staging into response; 8D36C then applies session response policy',
+            persistence='Staging only in8D694; native import is separate and may precede session close',
+            side_effects='Direction1 mutates staged data; handler sets0868 to cancel native service request',
+            semantic_confidence='bounded selector-to-staging mapping proven; individual setting meaning remains contextual',
+            evidence=[r['operand'],'8D6C8','8D742','8D77E','settings-transfer-map.md'],reachability='extended D route, not standalone CN105 command',baseline='newly itemized settings transfer range'))
     inv['source_tx_descriptors']=descriptors(image)
     source_names={0x9a336:('Selected target temperature','ceil(clamp(signed39EF,0,8000)/50)','0.5 C'),
       0x9a36a:('Primary return temperature','ceil(clamp(signed39F3,0,6000)/100)','1 C'),
@@ -175,10 +190,17 @@ def write(image,catalog,out):
     lines=['# P0088 itemized structural and field ledger','','Every machine row is represented here. Raw field rows are **not semantic completion**. See function-matrix.md for reviewed actions.','','| ID | Function | Path | Handler / evidence | Confidence |','|---|---|---|---|---|']
     for r in rows:lines.append('| '+ ' | '.join([r['id'],r['functional_name'].replace('|','/'),r['path'],', '.join(r['handler']),r['semantic_confidence']])+' |')
     (out/'atlas-ledger.md').write_text('\n'.join(lines)+'\n')
-    coverage={'status':'PARTIAL','structural':{'descriptor_rows':sum(t['count'] for t in inv['tables']),'source_tx_descriptors':len(inv['source_tx_descriptors']),'source_tx_fields':sum(len(d['fields']) for d in inv['source_tx_descriptors']),'lookup_slots':512,'class_intervals':26,'local_service_branches':sum(r['id'].startswith('service.local.') for r in rows),'switch_entries':sum(s['count'] for s in inv['switches']),'scope':'six bounded descriptor tables, source descriptor region, two byte lookups, one class table, five switches; not all firmware dispatches'},
+    transfer=['# D extended settings transfer ranges','','All33 records of807EA, stride8, bounded by8D6C8. Direction bit5 equals session direction4980. Direction1 writes a staged triple; direction0 reads it. Selector0 is a separate accepted end marker. Category/session context is required because different selectors alias the same storage. These are not external CN105 A3 numbers.','','| Range | Selectors | Bank | Offset | Staging bytes |','|---|---|---|---|---|']
+    for r in inv['d_settings_ranges']:
+        transfer.append(f"| {r['index']} | {r['first']}..{r['last']} | {r['bank']} | {r['offset']:04X} | {r['staging_first']:04X}..{r['staging_last']:04X} |")
+    transfer += ['', 'Selectors120 and589 both map to triple1979..197B. The DHW-pump import reads197B, but the meaning of an alias still depends on category. The heating-pump staged byte1CB0 is outside every range in this table; SET79 has a separate direct staging route. This proves a finite table gap, not global D-path absence.', '', 'See settings-d-events.md and settings-apply-order.md for state gates, application timing and remaining peer dependencies.']
+    (out/'settings-transfer-map.md').write_text('\n'.join(transfer)+'\n')
+    coverage={'status':'PARTIAL','structural':{'descriptor_rows':sum(t['count'] for t in inv['tables']),'source_tx_descriptors':len(inv['source_tx_descriptors']),'source_tx_fields':sum(len(d['fields']) for d in inv['source_tx_descriptors']),'lookup_slots':512,'class_intervals':26,'local_service_branches':sum(r['id'].startswith('service.local.') for r in rows),'switch_entries':sum(s['count'] for s in inv['switches']),'scope':'six bounded descriptor tables, source descriptor region, 33 D settings ranges, two byte lookups, one class table, five switches; not all firmware dispatches'},
       'semantic':{'named_reviewed_rows':sum(r['semantic_confidence']!='unresolved' for r in rows),'inventoried_rows':len(rows),'complete_field_denominator':None,'note':'Descriptor/classification/file names are not a full action/field denominator; nested handlers remain open.'},
       'physical':{'new_tests':0,'new_confirmed_connectors':0,'note':'CN105 uses historical P81 correlation; UART6/CNRF and UART0/storage are inferences'},
       'paths':{p:'PARTIAL' for p in ['uart0','uart1','uart2','uart6','d','source-software','uart5','uart7','sio3','sio4']}}
+    coverage['structural']['d_settings_ranges']=len(inv['d_settings_ranges'])
+    coverage['structural']['d_settings_selectors']=len({s for r in inv['d_settings_ranges'] for s in range(r['first'],r['last']+1)})
     (out/'coverage.json').write_text(json.dumps(coverage,indent=2)+'\n')
     return rows
 

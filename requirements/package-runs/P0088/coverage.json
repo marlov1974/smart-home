@@ -8,11 +8,13 @@
     "class_intervals": 26,
     "local_service_branches": 110,
     "switch_entries": 160,
-    "scope": "six bounded descriptor tables, source descriptor region, two byte lookups, one class table, five switches; not all firmware dispatches"
+    "scope": "six bounded descriptor tables, source descriptor region, 33 D settings ranges, two byte lookups, one class table, five switches; not all firmware dispatches",
+    "d_settings_ranges": 33,
+    "d_settings_selectors": 742
   },
   "semantic": {
-    "named_reviewed_rows": 169,
-    "inventoried_rows": 2373,
+    "named_reviewed_rows": 203,
+    "inventoried_rows": 2407,
     "complete_field_denominator": null,
     "note": "Descriptor/classification/file names are not a full action/field denominator; nested handlers remain open."
   },

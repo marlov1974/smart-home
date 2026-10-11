@@ -36,8 +36,17 @@ def verify(directory):
     inventory = json.loads((directory / 'structural-inventory.json').read_text())
     if [{k: v for k, v in d.items() if k != 'qualified_call_sites'} for d in descriptors] != inventory['source_tx_descriptors']:
         raise ValueError('source descriptor copies differ')
+    ranges = inventory['d_settings_ranges']
+    if coverage['structural']['d_settings_ranges'] != len(ranges):
+        raise ValueError('stale settings range count')
+    selectors = {s for r in ranges for s in range(r['first'], r['last']+1)}
+    if coverage['structural']['d_settings_selectors'] != len(selectors):
+        raise ValueError('stale settings selector count')
+    if len([r for r in rows if r['id'].startswith('d.transfer.range.')]) != len(ranges):
+        raise ValueError('settings ranges missing from atlas')
     return {'result': 'PASS', 'json_rows': len(rows), 'csv_rows': len(csv_rows),
-            'human_ledger_all_ids_present': True, 'source_fields': fields}
+            'human_ledger_all_ids_present': True, 'source_fields': fields,
+            'd_settings_ranges': len(ranges), 'd_settings_selectors': len(selectors)}
 
 
 if __name__ == '__main__':

@@ -14,6 +14,7 @@ Scope: supplied20.01, hash-gated static analysis. No production firmware changes
 | `source_tx.descriptors` / `call_sites` | Image + private listing →37 templates and249 fields | Bounded region and contiguous caller qualification | Counts, missing/noncontiguous caller rejection |
 | `source_tx.pack_logical` | Descriptor + supplied callback/memory values → logical bytes | No callback execution, symbols, GPIO or transport | Known fixture, masked fields, checksums, missing inputs |
 | `settings_peer.advertisement` / `control_response` | State/direction/category + image → response tuple | Partial internal protocol model, no external transaction claim | State/mask bounds, response action matrix |
+| `settings_transfer.ranges` / `resolve` / `extended_fields` / `admitted` | Image, selector and explicit gate state → staging map and local admission |33 ranges,742 selectors; aliases preserved; no packet sender | All selectors, range corruption, direction/role/kind boundaries |
 | `verify_artifacts.verify` | Public report directory → consistency result | Read-only local files; no private firmware needed | JSON/CSV/ledger equivalence, corrupted ledger |
 | `P88SourceSwitch` | Private Ghidra project → bounded RX/TX branch listings | Research project only; no device IO | Two independent targeted exports |
 | `P88A3Completion` | SHA-pinned binary + private project → bounded CECFA CFG | Verifies used project bytes; avoids stale function-body boundaries | Two identical24-instruction exports |

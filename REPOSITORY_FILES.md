@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1034
+Tracked file count: 1038
 
 ## Files
 
@@ -750,7 +750,10 @@ Tracked file count: 1034
 - `requirements/package-runs/P0088/provenance.md`
 - `requirements/package-runs/P0088/reproduce.md`
 - `requirements/package-runs/P0088/review.md`
+- `requirements/package-runs/P0088/settings-apply-order.md`
 - `requirements/package-runs/P0088/settings-d-events.md`
+- `requirements/package-runs/P0088/settings-transfer-extraction.json`
+- `requirements/package-runs/P0088/settings-transfer-map.md`
 - `requirements/package-runs/P0088/source-extraction.json`
 - `requirements/package-runs/P0088/source-link.md`
 - `requirements/package-runs/P0088/source-outgoing.md`
@@ -1034,6 +1037,7 @@ Tracked file count: 1034
 - `tools/ftc6/p88/menu_inventory.json`
 - `tools/ftc6/p88/reviewed.json`
 - `tools/ftc6/p88/settings_peer.py`
+- `tools/ftc6/p88/settings_transfer.py`
 - `tools/ftc6/p88/source_result.py`
 - `tools/ftc6/p88/source_tx.py`
 - `tools/ftc6/p88/test_p88.py`

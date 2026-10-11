@@ -1,0 +1,213 @@
+{
+  "image_binary_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "version_caution": "image 20.01 candidate; physical P0081 FTC21.00",
+  "get_routes": [
+    {
+      "command": "0x7",
+      "input_descriptor": "0x893cf",
+      "lookup_index": 6,
+      "internal_id": "0x3b",
+      "output_descriptor": "0x85106",
+      "header": "0xa9080",
+      "packer": "0xa5724",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0x15",
+      "input_descriptor": "0x893cf",
+      "lookup_index": 20,
+      "internal_id": "0x49",
+      "output_descriptor": "0x851e6",
+      "header": "0xa9080",
+      "packer": "0xa5bf8",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0x65",
+      "input_descriptor": "0x89445",
+      "lookup_index": 0,
+      "internal_id": "0x73",
+      "output_descriptor": "0x85486",
+      "header": "0xa9080",
+      "packer": "0xa7d48",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0x79",
+      "input_descriptor": "0x89445",
+      "lookup_index": 20,
+      "internal_id": "0x87",
+      "output_descriptor": "0x855c6",
+      "header": "0xa9080",
+      "packer": "0xa8bcc",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0xa1",
+      "input_descriptor": "0x89480",
+      "lookup_index": 10,
+      "internal_id": "0x8d",
+      "output_descriptor": "0x85626",
+      "header": "0xa9080",
+      "packer": "0xa8e38",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0xa2",
+      "input_descriptor": "0x89480",
+      "lookup_index": 11,
+      "internal_id": "0x8e",
+      "output_descriptor": "0x85636",
+      "header": "0xa9080",
+      "packer": "0xa8eb6",
+      "checksum": "0xa90a0"
+    },
+    {
+      "command": "0xa3",
+      "input_descriptor": "0x89480",
+      "lookup_index": 12,
+      "internal_id": "0x8f",
+      "output_descriptor": "0x85646",
+      "header": "0xa9080",
+      "packer": "0xa8f34",
+      "checksum": "0xa90a0"
+    }
+  ],
+  "service_classes": [
+    {
+      "selector": 17,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 18,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 19,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 27,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 28,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 52,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 54,
+      "class_id": 1,
+      "table_row": "0x806ac"
+    },
+    {
+      "selector": 175,
+      "class_id": 2,
+      "table_row": "0x806af"
+    },
+    {
+      "selector": 176,
+      "class_id": 2,
+      "table_row": "0x806af"
+    },
+    {
+      "selector": 340,
+      "class_id": 2,
+      "table_row": "0x806b5"
+    },
+    {
+      "selector": 506,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 511,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 520,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 521,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 522,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 523,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 524,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 525,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 526,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 527,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 528,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 529,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 530,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 531,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 532,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 540,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    },
+    {
+      "selector": 550,
+      "class_id": 2,
+      "table_row": "0x806bb"
+    }
+  ]
+}

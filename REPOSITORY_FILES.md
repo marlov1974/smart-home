@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 841
+Tracked file count: 868
 
 ## Files
 
@@ -33,6 +33,7 @@ Tracked file count: 841
 - `dep/s/rec/weather_v0_9_0.json`
 - `docs/functions/00-index.md`
 - `docs/functions/TEMPLATE.md`
+- `docs/functions/ftc6-protocol-research.md`
 - `docs/functions/ftc6-static-analysis.md`
 - `docs/functions/mac/chatgpt-mcp-access.md`
 - `docs/functions/mac/local-kvs-read-poc.md`
@@ -636,6 +637,22 @@ Tracked file count: 841
 - `requirements/package-runs/P0082/service-dispatch-candidates.json`
 - `requirements/package-runs/P0082/toolchain.md`
 - `requirements/package-runs/P0082/verification.json`
+- `requirements/package-runs/P0083/CHANGELOG.md`
+- `requirements/package-runs/P0083/address-evidence.json`
+- `requirements/package-runs/P0083/candidate-cn105-actions.md`
+- `requirements/package-runs/P0083/decoder-validation.md`
+- `requirements/package-runs/P0083/design.md`
+- `requirements/package-runs/P0083/energy-trace.md`
+- `requirements/package-runs/P0083/findings.md`
+- `requirements/package-runs/P0083/functions.md`
+- `requirements/package-runs/P0083/open-questions.md`
+- `requirements/package-runs/P0083/physical-crosscheck.json`
+- `requirements/package-runs/P0083/provenance.md`
+- `requirements/package-runs/P0083/pump-control-trace.md`
+- `requirements/package-runs/P0083/reproduce.md`
+- `requirements/package-runs/P0083/review.md`
+- `requirements/package-runs/P0083/service-trace.md`
+- `requirements/package-runs/P0083/verification.json`
 - `requirements/package-runs/README.md`
 - `requirements/package-runs/TEMPLATE-attempts.md`
 - `requirements/package-runs/TEMPLATE-changelog.md`
@@ -847,5 +864,15 @@ Tracked file count: 841
 - `tools/ftc6/P82Audit.java`
 - `tools/ftc6/extract_service_map.py`
 - `tools/ftc6/inspect_image.py`
+- `tools/ftc6/p83/P83Repair.java`
+- `tools/ftc6/p83/P83Seed.java`
+- `tools/ftc6/p83/P83Trace.java`
+- `tools/ftc6/p83/P83Vectors.java`
+- `tools/ftc6/p83/crosscheck.py`
+- `tools/ftc6/p83/extract_evidence.py`
+- `tools/ftc6/p83/make_vectors.py`
+- `tools/ftc6/p83/patch_module.py`
+- `tools/ftc6/p83/trace-targets.txt`
+- `tools/ftc6/p83/verify_local.py`
 - `tools/ftc6/run-analysis.sh`
 - `tools/ftc6/test_inspect_image.py`

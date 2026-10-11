@@ -97,3 +97,5 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0081 raw mapper](procon-raw-mapper.md): bounded diagnostic request/result and mapping workflow.
 
 - [P0082 FTC6 static analysis](ftc6-static-analysis.md): local image validation and qualified M16C investigation.
+
+- [P0083 FTC6 protocol research](ftc6-protocol-research.md): qualified offline service, pump and energy tracing.

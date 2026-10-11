@@ -112,3 +112,5 @@ new command-level accounting.
 Continuation: [six frequent GET payloads](cn105-fast-fields.md) now have explicit byte-source contracts. Remaining work is sensor/flag meaning, freshness and the identified helper gaps rather than rediscovering packers.
 
 Continuation: [SET32/SET34 field contracts](cn105-control-fields.md) distinguish zero ACK from application, target mode context from mode-update enable, and the SET34 repeat-sensitive counter.
+
+Start with the [code/function/port catalog](command-catalog.md) for the complete currently identified inventory and evidenced cross-interface relationships. Unknown functions remain visible.

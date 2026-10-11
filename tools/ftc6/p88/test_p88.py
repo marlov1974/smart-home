@@ -30,6 +30,29 @@ class Offline(unittest.TestCase):
         for bad in (-1,65536):
             with self.assertRaises(ValueError):flow_byte(bad)
 
+    def test_catalog_conservation(self):
+        from catalog import build,render
+        folder=ROOT/'requirements/package-runs/P0088'
+        report=build(folder)
+        matrix=json.loads((folder/'command-port-matrix.json').read_text())
+        atlas=json.loads((folder/'command-atlas.json').read_text())['rows']
+        self.assertEqual({r['id'] for r in report['routes']},{r['id'] for r in matrix['rows']})
+        self.assertEqual({r['id'] for r in report['services']},{r['id'] for r in atlas if r['path']=='shared-service'})
+        self.assertEqual(len(report['translations']),64)
+        self.assertEqual(report,json.loads((folder/'command-catalog.json').read_text()))
+        self.assertEqual(render(report),(folder/'command-catalog.md').read_text())
+
+    def test_catalog_code_namespaces(self):
+        from catalog import build
+        report=build(ROOT/'requirements/package-runs/P0088')
+        rows={r['id']:r for r in report['routes']}
+        self.assertIn('b0.bits0..4=0x1C',rows['source.packet.82eee']['code'])
+        self.assertNotIn('82eee',rows['source.packet.82eee']['code'])
+        self.assertIn('operation0x52',rows['uart0.transaction.01']['code'])
+        self.assertIn('1005 (decimal)',rows['d.settings.advertisement1005']['code'])
+        self.assertIn('kod0x32',rows['uart2.41.32']['code'])
+        self.assertEqual(len(report['relationships']),6)
+
     def test_control_set_contracts(self):
         from port_matrix import build
         report=build(ROOT/'requirements/package-runs/P0088')

@@ -2,9 +2,9 @@
   "package_status": "PARTIAL",
   "offline_tests": {
     "result": "PASS",
-    "tests": 43,
+    "tests": 45,
     "command": "P88_IMAGE=<private-ftc6.bin> P88_CATALOG=<private-catalog> python3 -m unittest discover -s tools/ftc6/p88 -p test_p88.py -v",
-    "public_only_tests": 30
+    "public_only_tests": 32
   },
   "artifact_consistency": {
     "result": "PASS",
@@ -50,7 +50,7 @@
   "repository_checks": {
     "scoped_paths": "PASS",
     "index": "PASS",
-    "tracked_file_count": 1061,
+    "tracked_file_count": 1064,
     "git_diff_check": "PASS",
     "private_identifier_scan": "PASS"
   },
@@ -76,5 +76,13 @@
     "fast_get_repeat_roots": 54,
     "control_set_contracts": 2,
     "control_set_repeat_roots": 11
+  },
+  "command_catalog": {
+    "result": "PASS",
+    "routes": 269,
+    "service_records": 136,
+    "translations": 64,
+    "cross_interface_relationships": 6,
+    "scope": "complete current inventory, incomplete firmware semantics"
   }
 }

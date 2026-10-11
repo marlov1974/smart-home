@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1061
+Tracked file count: 1064
 
 ## Files
 
@@ -740,6 +740,8 @@ Tracked file count: 1061
 - `requirements/package-runs/P0088/cn105-new-capabilities.md`
 - `requirements/package-runs/P0088/command-atlas.csv`
 - `requirements/package-runs/P0088/command-atlas.json`
+- `requirements/package-runs/P0088/command-catalog.json`
+- `requirements/package-runs/P0088/command-catalog.md`
 - `requirements/package-runs/P0088/command-port-matrix.json`
 - `requirements/package-runs/P0088/command-port-matrix.md`
 - `requirements/package-runs/P0088/continuation-extraction.json`
@@ -1050,6 +1052,7 @@ Tracked file count: 1061
 - `tools/ftc6/p88/P88SourceSwitch.java`
 - `tools/ftc6/p88/addressing.py`
 - `tools/ftc6/p88/atlas.py`
+- `tools/ftc6/p88/catalog.py`
 - `tools/ftc6/p88/cn105_fields.py`
 - `tools/ftc6/p88/extract.py`
 - `tools/ftc6/p88/matrix.py`

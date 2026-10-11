@@ -1,5 +1,5 @@
 {
-  "version": 30,
+  "version": 31,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -109,7 +109,8 @@
     "requirements/packages/P0082-ftc6-ghidra-m16c-static-analysis.md",
     "requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md",
     "requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md",
-    "requirements/packages/P0085-ftc6-ports-access-research.md"
+    "requirements/packages/P0085-ftc6-ports-access-research.md",
+    "requirements/packages/P0086-ftc6-cn105-uart1-qualification.md"
   ],
   "governance": {
     "truth_hierarchy": [

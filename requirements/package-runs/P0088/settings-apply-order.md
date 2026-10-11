@@ -24,7 +24,7 @@ This is a list of the reviewed direct consumers, not a proof that categories3/7 
 
 BC9DA uses a different event4452. When4452=10(hex), it imports the ordinary store throughBCB0A andBCFF4. For the pump examples that is274F→0770 and2A84→07E6. In the same pass, BD166 runs **after** this importer and can override those active fields from CN105 staging when2373=6. Cleanup90BD4 clears both event fields.
 
-These stores must not be confused with one another or with nonvolatile memory. Their later save/reload mechanisms remain a separate edge.
+These stores must not be confused with one another or with nonvolatile memory. The selected pump fields now connect to serialization and startup reload in [the persistence model](settings-store-model.md); this still does not prove every imported field is durable.
 
 ## Transfer-table coverage is not full setting coverage
 

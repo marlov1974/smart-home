@@ -4,7 +4,7 @@ This file is generated from tracked Git files.
 
 Use it when GitHub/chat review contexts cannot enumerate repository files directly.
 
-Tracked file count: 1038
+Tracked file count: 1042
 
 ## Files
 
@@ -742,6 +742,7 @@ Tracked file count: 1038
 - `requirements/package-runs/P0088/decoder-and-pin-corrections.md`
 - `requirements/package-runs/P0088/design.md`
 - `requirements/package-runs/P0088/findings.md`
+- `requirements/package-runs/P0088/firmware-model.md`
 - `requirements/package-runs/P0088/fresh-extraction.json`
 - `requirements/package-runs/P0088/function-matrix.md`
 - `requirements/package-runs/P0088/functions.md`
@@ -752,6 +753,8 @@ Tracked file count: 1038
 - `requirements/package-runs/P0088/review.md`
 - `requirements/package-runs/P0088/settings-apply-order.md`
 - `requirements/package-runs/P0088/settings-d-events.md`
+- `requirements/package-runs/P0088/settings-store-extraction.json`
+- `requirements/package-runs/P0088/settings-store-model.md`
 - `requirements/package-runs/P0088/settings-transfer-extraction.json`
 - `requirements/package-runs/P0088/settings-transfer-map.md`
 - `requirements/package-runs/P0088/source-extraction.json`
@@ -1037,6 +1040,7 @@ Tracked file count: 1038
 - `tools/ftc6/p88/menu_inventory.json`
 - `tools/ftc6/p88/reviewed.json`
 - `tools/ftc6/p88/settings_peer.py`
+- `tools/ftc6/p88/settings_store.py`
 - `tools/ftc6/p88/settings_transfer.py`
 - `tools/ftc6/p88/source_result.py`
 - `tools/ftc6/p88/source_tx.py`

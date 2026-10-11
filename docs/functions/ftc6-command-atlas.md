@@ -17,6 +17,9 @@ Scope: supplied20.01, hash-gated static analysis. No production firmware changes
 | `settings_transfer.ranges` / `resolve` / `extended_fields` / `admitted` | Image, selector and explicit gate state → staging map and local admission |33 ranges,742 selectors; aliases preserved; no packet sender | All selectors, range corruption, direction/role/kind boundaries |
 | `verify_artifacts.verify` | Public report directory → consistency result | Read-only local files; no private firmware needed | JSON/CSV/ledger equivalence, corrupted ledger |
 | `P88SourceSwitch` | Private Ghidra project → bounded RX/TX branch listings | Research project only; no device IO | Two independent targeted exports |
-| `P88A3Completion` | SHA-pinned binary + private project → bounded CECFA CFG | Verifies used project bytes; avoids stale function-body boundaries | Two identical24-instruction exports |
+| `P88A3Completion` | SHA-pinned binary + private project → bounded A3 or settings-clock CFG | Whitelisted ranges, byte validation, no-escape traversal; original default retained | A3 regression and two identical31-instruction clock exports |
+| `settings_store` | Desired/shadow images, readbacks and retry count → dirty word and verification outcome | Pure offline model; fault-accounted shadow is separate from persistence | Word pairing, two-read disagreement, third failure, bounds and raw pump bytes |
 
 See `requirements/package-runs/P0088/reproduce.md`, `verification.json` and `unresolved-handlers.md`. The pending A3 job and the cached result are separate; production callers must retain selector validation and distinguish status polling from failed communication. This research does not change Procon's current retry policy.
+
+Readable reconstruction entry point: [firmware model](../../requirements/package-runs/P0088/firmware-model.md), with linked module contracts and named pseudocode.

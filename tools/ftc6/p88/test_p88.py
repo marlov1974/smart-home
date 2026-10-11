@@ -7,6 +7,7 @@ from uart1_snapshot import decode as snapshot
 from addressing import bit_address
 from source_result import decode as source_result
 from source_tx import descriptors,pack_logical,call_sites
+from settings_store import first_dirty_word,verify_word,pump_fields
 from settings_peer import advertisement,control_response
 from verify_artifacts import verify
 from settings_transfer import ranges as transfer_ranges,resolve,extended_fields,admitted
@@ -16,6 +17,41 @@ def load(name,path):
 energy=load('p86energy',ROOT/'tools/ftc6/p86/energy.py')
 uart1=load('p86uart1',ROOT/'tools/ftc6/p86/uart1.py')
 class Offline(unittest.TestCase):
+    def test_settings_store_verification(self):
+        desired=bytearray(512);desired[0x1aa:0x1ac]=bytes([0x71,5])
+        shadow=bytes(512)
+        self.assertEqual(first_dirty_word(desired,shadow),0x1aa)
+        result=verify_word(desired,shadow,0x1aa,[0x571,0x571],2)
+        self.assertTrue(result['persistence_verified'])
+        self.assertFalse(result['fault'])
+        self.assertEqual(result['shadow'][0x1aa:0x1ac],bytes([0x71,5]))
+        self.assertIsNone(first_dirty_word(desired,result['shadow']))
+        failures=0
+        for attempt in range(3):
+            result=verify_word(desired,shadow,0x1aa,[0x571,0],failures)
+            failures=result['failures'];shadow=result['shadow']
+            self.assertFalse(result['persistence_verified'])
+            self.assertEqual(result['fault'],attempt==2)
+            self.assertEqual(result['accounted'],attempt==2)
+        self.assertIsNone(first_dirty_word(desired,shadow))
+        self.assertEqual(failures,0)
+        mismatch=verify_word(desired,bytes(512),0x1aa,[0,0],0)
+        self.assertEqual(mismatch['failures'],1)
+        self.assertFalse(mismatch['accounted'])
+
+    def test_settings_store_boundaries(self):
+        image=bytearray(512);image[0x160]=255;image[0x1ab]=0
+        self.assertEqual(pump_fields(image),{'dhw_pump_raw':255,'heating_pump_raw':0})
+        for offset in (-2,1,511,512):
+            with self.assertRaises(ValueError):verify_word(image,image,offset,[0,0],0)
+        for readings in ([0],[0,0,0],[-1,0],[65536,0]):
+            with self.assertRaises(ValueError):verify_word(image,image,0,readings,0)
+        for failures in (-1,3):
+            with self.assertRaises(ValueError):verify_word(image,image,0,[0,0],failures)
+        for size in (0,511,513):
+            with self.assertRaises(ValueError):pump_fields(bytes(size))
+        self.assertIsNone(first_dirty_word(image,image))
+
     def test_extended_settings_direction(self):
         for selector in (0,1,589,1023):
             for direction in (0,1):

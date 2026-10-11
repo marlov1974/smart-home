@@ -1,0 +1,437 @@
+{
+  "image_sha256": "d828c2e18a013a6adea8a191448b5c5f7d52ac17b3bbc1182c977e190b60976a",
+  "scope": "Targeted private exports repeated in fresh-a and fresh-b; not an independent decoder. Stale function bodies require explicit bounded CFG for clock.",
+  "files": [
+    {
+      "root": "94a82",
+      "kind": "asm",
+      "same": true,
+      "sha256": "08e8e67296b2ebaab3f2d1d97d7d9ae0c13a6ac78e825940dbf5b66d7ef92183",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "94a82",
+      "kind": "c",
+      "same": true,
+      "sha256": "9f68239ed4592e50f46b45c7913e1329e8de135f99e4a66fde96f76e14ce6dcf",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "959de",
+      "kind": "asm",
+      "same": true,
+      "sha256": "f887ed105f04b4ae382c4ea588ec04384e82430170d76859b240adf82a7d0ea0",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "959de",
+      "kind": "c",
+      "same": true,
+      "sha256": "c6ac203ce5041a0afcf3a799a7b47ba2d5da5e9fe2834724c10352d4721f49fc",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "96af4",
+      "kind": "asm",
+      "same": true,
+      "sha256": "a415c3c6ecf5ce2dd18840a4accadb2a61d37029e5b498434dd6d0084cc29401",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "96af4",
+      "kind": "c",
+      "same": true,
+      "sha256": "1d20d0f2dea0d023333a2662adeadb275ee8679dec0edce0fc64bff59dc4d8c6",
+      "first_export": "settings-store"
+    },
+    {
+      "root": "94a54",
+      "kind": "asm",
+      "same": true,
+      "sha256": "21a340776de6df886a8ec267ebb772990e33ba5bc68db4e8defbf59053a28d8f",
+      "first_export": "settings-store-control"
+    },
+    {
+      "root": "94a54",
+      "kind": "c",
+      "same": true,
+      "sha256": "e6e97db535ad2aaefa3e6176f55113ea36e7480efe041bc4400831f923c19b73",
+      "first_export": "settings-store-control"
+    },
+    {
+      "root": "911bc",
+      "kind": "asm",
+      "same": true,
+      "sha256": "6b85927053bf0e1a01e86ce7f52555c5c2ced4d67e0cc3cbefd4f769a1d7fdad",
+      "first_export": "settings-store-control"
+    },
+    {
+      "root": "911bc",
+      "kind": "c",
+      "same": true,
+      "sha256": "60fa88095c986f54f2c3071602d229a2e18d031f35e83801ff3a324933b91607",
+      "first_export": "settings-store-control"
+    },
+    {
+      "root": "96a18",
+      "kind": "asm",
+      "same": true,
+      "sha256": "c9d7c36e367193ba94f23a2c0ca7e8b8b0951d9ec0ba439ce3a3f4b9f923303f",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "96a18",
+      "kind": "c",
+      "same": true,
+      "sha256": "be1427a809cbca284e3a564d80a372c9d55e415d2bc916d80fd5acb3300d34b3",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "9804e",
+      "kind": "asm",
+      "same": true,
+      "sha256": "1625359b0b30108cead341534e774847702985326a359eea91f4d0be8f414117",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "9804e",
+      "kind": "c",
+      "same": true,
+      "sha256": "0203c2035ed6efc14aa2035cdfba12c33a0fe645d3f067df3688c38000ead339",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "959cc",
+      "kind": "asm",
+      "same": true,
+      "sha256": "5f69c22beed910634973522d09460b4a072520532c3a4a3d73f4d0ca2bc26d9c",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "959cc",
+      "kind": "c",
+      "same": true,
+      "sha256": "bee28d18e581487973c37ac1112b8cddb5162fbff4043626df75f71245dad94a",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "91310",
+      "kind": "asm",
+      "same": true,
+      "sha256": "d7ad123550e211a79e14e7ad98886d8d477272e3372959523c4d5b22061aca82",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "91310",
+      "kind": "c",
+      "same": true,
+      "sha256": "10637ce39afdbb2a05e015693c303a56550d035f72f5cb563785140c3c4d2637",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8ae38",
+      "kind": "asm",
+      "same": true,
+      "sha256": "ca67f7829dfcac8940f957341331f3f755ce2c1b75387f6942d277dab20a1320",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8ae38",
+      "kind": "c",
+      "same": true,
+      "sha256": "e00ab46d5e10ad1ebec07da24aef8169e431febaa6e57f4e4ef14a7df0877cb6",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8aec0",
+      "kind": "asm",
+      "same": true,
+      "sha256": "0515066eb3e65ee7f0798253b64504b9045b71516fad2183620b1fada487fcac",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8aec0",
+      "kind": "c",
+      "same": true,
+      "sha256": "9289bbaf6e497ef337f4e117974f5418004b70f61dc692911af3d1fe56e199bc",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8af42",
+      "kind": "asm",
+      "same": true,
+      "sha256": "0f45cc1965793f269177882313b1d2c757d279a996013fc6338a9f0339c891af",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "8af42",
+      "kind": "c",
+      "same": true,
+      "sha256": "955335c657f77bde6104be41339abbe487fa1a20357e01e81a6e0af54dcf1e4a",
+      "first_export": "settings-storage"
+    },
+    {
+      "root": "9687c",
+      "kind": "asm",
+      "same": true,
+      "sha256": "41eff2941d2da8623df198d712c37db3daffeb7b5482ae4dd8dfacadb2586551",
+      "first_export": "settings-nvm"
+    },
+    {
+      "root": "9687c",
+      "kind": "c",
+      "same": true,
+      "sha256": "25cbdd5138f11eacf87054b4765f35e9decc88c87527004c76a8ce12a2708db5",
+      "first_export": "settings-nvm"
+    },
+    {
+      "root": "96a9c",
+      "kind": "asm",
+      "same": true,
+      "sha256": "a7605bf44d589d63b6bbf532f1f247ab0b9a58555992ab060904991e3e733918",
+      "first_export": "settings-nvm"
+    },
+    {
+      "root": "96a9c",
+      "kind": "c",
+      "same": true,
+      "sha256": "f9e7f9ac07d4e1ee73d3bc660b6917be3a928ba137fb562640412059e21e5c70",
+      "first_export": "settings-nvm"
+    },
+    {
+      "root": "968e0",
+      "kind": "asm",
+      "same": true,
+      "sha256": "0cb0f2f712d0b1b1885f520f8556dd8b39c174a1326b8a4f3165f1416860cee8",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "968e0",
+      "kind": "c",
+      "same": true,
+      "sha256": "b5ccd55542ac616c193080278e9cdafb7567c438c54cb09720b8ad1c4f2dabeb",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "948a2",
+      "kind": "asm",
+      "same": true,
+      "sha256": "0e6265569dd23851511afe2bd668519128c926d457561cc4cd24f41e2c48aaa2",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "948a2",
+      "kind": "c",
+      "same": true,
+      "sha256": "eed076bdf7c45c9bd278c47428b16020d632b283c3e2cdbcec4ac5c815e5a741",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "948d4",
+      "kind": "asm",
+      "same": true,
+      "sha256": "78130dcbeeac581b343b19a50b428a0559a9b2041080697ebaef77f49ba900bc",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "948d4",
+      "kind": "c",
+      "same": true,
+      "sha256": "2429529f690bfc9f74f322f979d0a354a690af8c5f637a9b50bed838c117d44c",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "9497e",
+      "kind": "asm",
+      "same": true,
+      "sha256": "31a6413f9b6ecd0417ad3b02012663219fb1ce63a3a44583ab731f53d5461821",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "9497e",
+      "kind": "c",
+      "same": true,
+      "sha256": "a0abfa4d109b55495d54cfe340eeb26d2d7ad2566d72156c6b7cd9a6ed6ef48c",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "9495a",
+      "kind": "asm",
+      "same": true,
+      "sha256": "30de40ab4265efe432c5317273a29447646c143f0f51fb9d1f1f56c2f4642e25",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "9495a",
+      "kind": "c",
+      "same": true,
+      "sha256": "d15d2b41d00e0b436255fd9ceb5f90ad9357dbec86f11e2f491807eb01104631",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "94998",
+      "kind": "asm",
+      "same": true,
+      "sha256": "051884cc83562479d5d68a8d654324805cb5500da5f1ebe9cfc48750e2cf6fda",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "94998",
+      "kind": "c",
+      "same": true,
+      "sha256": "9a74242f8c6e34eef10f7d427fdac709b117e0b15ce18657ac720524275f5002",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "94a0c",
+      "kind": "asm",
+      "same": true,
+      "sha256": "dd9165a5190abdb872705546744485d72e49632bbc75e9d713eb49ba6539cab1",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "94a0c",
+      "kind": "c",
+      "same": true,
+      "sha256": "82fa1b3f8cc9aaa22f98a59c591bcc8142560a5c81d9cd1e80f9a178ceb071a9",
+      "first_export": "settings-driver"
+    },
+    {
+      "root": "949b0",
+      "kind": "asm",
+      "same": true,
+      "sha256": "b70e93c2ebda7716b24f80368e13b73746d77f0b9e4f377b1dcaa166d23a84cc",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "949b0",
+      "kind": "c",
+      "same": true,
+      "sha256": "c415b66bbe56da8a4e39b7ecab8d21a46d44d515e8dc83483c0aef32e6d7d28c",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "949fe",
+      "kind": "asm",
+      "same": true,
+      "sha256": "dc125e0c818f34f8f16fe57b81786aab47c5dd23b834485bc20dc271b5ee323c",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "949fe",
+      "kind": "c",
+      "same": true,
+      "sha256": "2546cdad25120ee3329518346ca5452f3186ebef444e4ee9381a990f6833353c",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a06",
+      "kind": "asm",
+      "same": true,
+      "sha256": "8f67da0496d9768b810f57b63b0b41167fec8506112bcf3eac867c0ee1771f04",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a06",
+      "kind": "c",
+      "same": true,
+      "sha256": "9e8cc76d832623227526a8ac3a5dccc2e012f9fa980ef3abfe8fed4fefcc13fe",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a12",
+      "kind": "asm",
+      "same": true,
+      "sha256": "4d113d0e14e22b50065d3e3fa98117adeb9726504f1a20ee87338b203468e45a",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a12",
+      "kind": "c",
+      "same": true,
+      "sha256": "1551d1cfee918183d9ab0319284bc1d8fbea361d3a1033ba25c6270c11a23f20",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a20",
+      "kind": "asm",
+      "same": true,
+      "sha256": "243ed369c5e762c15d5d42cd86df582a989c47035cd0b2938e9a050c2d8179a6",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "94a20",
+      "kind": "c",
+      "same": true,
+      "sha256": "087f352ca5af6a9eb1ebe1ff6b945dc550d72be80193adcaf53515ad28bda230",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "92482",
+      "kind": "asm",
+      "same": true,
+      "sha256": "9ee1484cca94a79806f1b9167b74bf80d39c1883e2bdcf0f847ca7679003d39b",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "92482",
+      "kind": "c",
+      "same": true,
+      "sha256": "447acdfbe251ab2a0e191424b4f0cd2d91c09e97f8a690c4f759608cca17361f",
+      "first_export": "settings-pins"
+    },
+    {
+      "root": "89d6a",
+      "kind": "asm",
+      "same": true,
+      "sha256": "6fa2cd504e33cc5ffeecd2f37b108a04388ad49a5fc272ca15d4e9ca11ff4150",
+      "first_export": "settings-fault"
+    },
+    {
+      "root": "89d6a",
+      "kind": "c",
+      "same": true,
+      "sha256": "e2d40070a29c7fcc0812f37dcc5d94d2318733d2f4a9bc9c566d3e4086c64729",
+      "first_export": "settings-fault"
+    },
+    {
+      "root": "984d2",
+      "kind": "asm",
+      "same": true,
+      "sha256": "1abb73ae2755f784a5be5d71e57ddf5e29ccc780560f06a1db55d0c0d41665cf",
+      "first_export": "settings-fault"
+    },
+    {
+      "root": "984d2",
+      "kind": "c",
+      "same": true,
+      "sha256": "d35b0b417a52c9efee522796472d513863fa76349b6687d0114aae3ce5e784e7",
+      "first_export": "settings-fault"
+    },
+    {
+      "root": "94a46",
+      "kind": "asm",
+      "same": true,
+      "sha256": "c3d1915ca9568b5600a447776f8f7160a998d29585cfc07518e5d99e28dc81e1",
+      "first_export": "settings-tick"
+    },
+    {
+      "root": "94a46",
+      "kind": "c",
+      "same": true,
+      "sha256": "c48c6a101c6a031ea1a8c5b6a3fe8861941d54102835fe10368934b081c29b55",
+      "first_export": "settings-tick"
+    }
+  ],
+  "bounded_clock": {
+    "instructions": 31,
+    "sha256": "bff7fd98317c9634253763b0640d5bcab8985cbc5bb2ee1ca4edf5d91970c2ee",
+    "repeated_identically": true,
+    "range": "94A20..<94A45",
+    "initial_attempt": "Rejected unmapped padding at94A45; bound narrowed to code ending94A44 RTS; no image bytes synthesized."
+  },
+  "a3_default_regression": {
+    "instructions": 24,
+    "sha256": "06900cdfadb5406152bcfe6c68851866323c28fef2303f59f15f49e6f3d16e5b"
+  }
+}

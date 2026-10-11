@@ -1,5 +1,5 @@
 {
-  "version": 31,
+  "version": 32,
   "repo": "marlov1974/smart-home",
   "ref": "main",
   "mandatory": true,
@@ -110,7 +110,8 @@
     "requirements/packages/P0083-ftc6-m16c-service-pump-energy-research.md",
     "requirements/packages/P0084-ftc6-cn22-screen-cn105-parity.md",
     "requirements/packages/P0085-ftc6-ports-access-research.md",
-    "requirements/packages/P0086-ftc6-cn105-uart1-qualification.md"
+    "requirements/packages/P0086-ftc6-cn105-uart1-qualification.md",
+    "requirements/packages/P0087-ftc6-flow-temperature-control-dynamics.md"
   ],
   "governance": {
     "truth_hierarchy": [

@@ -1,0 +1,10 @@
+PASS actual ARM pump A3: four codes, level/RPM diagnostics, derived running and link-loss invalidation
+PASS actual ARM direct targets: FLOW-only replacements, pending BUSY, original snapshot and AUTO restoration
+PASS actual ARM Hz-leading demand:45C startup and thermal-priority reduction
+PASS actual ARM early startup: first SETTLING pair, kind2/readback, repeated thermal reduction, absent/aged pair rejection
+PASS actual ARM cached READY/native transition: allowed pause yields; invalid native mode aborts
+PASS actual ARM atomic entry: combined45C, shared thermal caps, fresh native pause overrides old Hz, dual readback and original AUTO, partial pair rejection
+PASS actual ARM predictive law: flat42Hz/rising mean holds;52Hz future overshoot receives bounded100cC braking
+PASS actual ARM thermal feedback: signed steady offsets, bounded high input, forecast never raises lower cap, bounded cooling release
+PASS actual ARM response memory: plateau hold, bounded decay,1C recovery and correction despite modest power rise
+PASS actual ELF: all veneers, module initialization, P76 identity, native handoff gates, corrupt-slot rejection

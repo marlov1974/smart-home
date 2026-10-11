@@ -1,0 +1,11 @@
+{
+  "package": "P0080",
+  "status": "offline-verified-candidate",
+  "base": "0x8008000",
+  "end_exclusive": "0x8020000",
+  "raw_bytes": 53312,
+  "padded_bytes": 98304,
+  "initial_sp": "0x20004000",
+  "reset_vector": "0x8009741",
+  "sha256": "7e6193edad6aaeb92c3a03468a1e28fb04764dd48a16f9da3f7bdc4b9c03fc24"
+}

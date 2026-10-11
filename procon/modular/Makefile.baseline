@@ -1,0 +1,60 @@
+# P0080 preserved P76 native regressions.
+PYTHON ?= python3
+HOSTFLAGS := -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include
+HEADERS := $(wildcard firmware/include/*.h)
+CN := firmware/src/debug_telemetry.c firmware/src/debug_command.c firmware/src/cn105.c firmware/src/service.c firmware/src/telemetry.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c
+HOST_TESTS := build/raw-test  build/predictive-test build/atomic-entry-test build/host-test build/cn-test build/tele-test build/control-test build/effect-test build/feedback-test build/address-test build/pause-test build/snapshot-test
+build/host-test: tests/test_modbus.c firmware/src/modbus.c firmware/src/identity.c $(CN) $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/cn-test: tests/test_cn105.c $(CN) $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/tele-test: tests/test_telemetry.c firmware/src/telemetry.c firmware/src/service.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/control-test: tests/test_control.c firmware/src/control.c firmware/src/effect.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/effect-test: tests/test_effect.c firmware/src/control.c firmware/src/effect.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/feedback-test: tests/test_effect_feedback.c firmware/src/effect_feedback.c firmware/src/telemetry.c firmware/src/service.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/address-test: tests/test_addressing.c firmware/src/modbus.c firmware/src/identity.c firmware/src/debug_command.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) -DUNIT_TEST $(filter %.c,$^) -o $@
+build/pause-test: tests/test_pause_integration.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c firmware/src/telemetry.c firmware/src/service.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/predictive-test: tests/test_predictive_candidate.c firmware/src/effect.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/atomic-entry-test: tests/test_atomic_entry_candidate.c firmware/src/control.c firmware/src/effect.c $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+build/raw-test: tests/test_raw_diagnostic.c firmware/src/modbus.c firmware/src/identity.c $(CN) $(HEADERS)
+	mkdir -p build
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@
+host-test: $(HOST_TESTS)
+	./build/raw-test
+	$(PYTHON) tests/test_raw_mapper.py
+	./build/predictive-test
+	./build/atomic-entry-test
+	./build/host-test
+	./build/cn-test
+	./build/tele-test
+	./build/control-test
+	./build/effect-test
+	./build/feedback-test
+	./build/address-test
+	./build/pause-test
+	./build/snapshot-test
+	$(PYTHON) tests/test_read_snapshot.py
+	$(PYTHON) tests/test_control_command.py
+	$(PYTHON) tests/test_read_mvp.py
+	$(PYTHON) tests/test_commission_units.py
+
+build/snapshot-test: tests/test_snapshot.c firmware/src/modbus.c firmware/src/identity.c $(CN) $(HEADERS)
+	clang $(HOSTFLAGS) $(filter %.c,$^) -o $@

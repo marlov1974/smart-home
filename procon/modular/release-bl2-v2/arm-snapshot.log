@@ -1,0 +1,2 @@
+PASS actual ELF: all veneers, module initialization, P76 identity, native handoff gates, corrupt-slot rejection
+PASS actual ARM snapshot: resident -> dispatcher -> Drift, frozen fields, stale refresh, sequence rollover, reset

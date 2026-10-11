@@ -1,0 +1,28 @@
+{
+  "package": "P0080",
+  "baseline": "P0076 pause-r2 local latest EFFECT source",
+  "source_files": {
+    "firmware/linker.ld": "fd94a2cf15f68fd119e6963f72ea0e92369b8cb684210c197a5bc44a24aad6a4",
+    "firmware/include/control.h": "f89c503acf72159a967710662b0a10c08fb380d220761154f47f319a28a4ec1a",
+    "firmware/include/service.h": "226d8ace6c0a1da14fd6decd449d15e1b040e778b59a1efde5a305df5dc211d3",
+    "firmware/include/effect_feedback.h": "9cfeb7a5e7289a05de3ebe68248c34bf0023f959fea093df4028795c899356c4",
+    "firmware/include/identity.h": "773f8ed936e67731cd344b755795894516dd6a815880e9cf759ce45552609836",
+    "firmware/include/effect.h": "0644edb58a57befc858675d2bf69a04fb9ab98cedd1817630ffb544c78f8f5a4",
+    "firmware/include/cn105.h": "a39ed62085eec9579dd0bbd539cf377c6c036d7277742e65a4d9d3981a985b2c",
+    "firmware/include/modbus.h": "aa751fbd964f2f8ed2e8909a42035cc6c12daa697af5a5f14f8aed208338ae70",
+    "firmware/include/platform.h": "844c97a964ca4d5f871d10f60787dabfb4f31e56ad29baa423ce6058a318ed1a",
+    "firmware/include/telemetry.h": "c8154a518fb9892c75c347068d312880dedbc49e46fba011d0f9da847d8ff77f",
+    "firmware/startup/startup.S": "cb36519b583438738ddf91d018e693f2dbc6d24122549c6635dc01609bd3be68",
+    "firmware/src/identity.c": "8da08f2d7c86c230405370b4e6e2c9fdf0d647bbb73d40acfc262407580391dc",
+    "firmware/src/runtime.c": "1024d732a4b3e882860aa3dc6f709bc5222501d9a10316aab092dc8fc1234348",
+    "firmware/src/modbus.c": "149ec984c82c03318eee6371ecd6a5f58b5cddbd74621fe3b827bc3caa6988b7",
+    "firmware/src/cn105.c": "d408f92818128d78ac977e5e76ce0afb0dc7970f5ee70a199324ed9e018da794",
+    "firmware/src/effect.c": "f7b180991b174723e7b01e4c2e3bcf163af4f16e19deebfc5cd5a8cc1c5ed697",
+    "firmware/src/telemetry.c": "a2266b8fe248a5841e986b2d38c0ac4497d685f2c0e87348dc1decc03a06fca2",
+    "firmware/src/platform.c": "cf82c3fc6e8c7ea9b3986221f02d5a0e02dfeeea6413d6d2515676ab0d1ca167",
+    "firmware/src/control.c": "d58acb98dc8d728d7b0e0bf2fcf2f959bcf13f57e9b29282783d1757da94e95f",
+    "firmware/src/main.c": "6b349a28a80497cc9e7669c036948851f491bb9d28b7ec29b3afbb9d56693d29",
+    "firmware/src/service.c": "f6b0fd8dc714d1101dcdc635abe9a4cce5b5c1afe5ee89c03dcab2ff5a8c198a",
+    "firmware/src/effect_feedback.c": "2e502c8a975decce7ce9e23f2bc92fef2b1f34ca3ccdf09b5370333464508b79"
+  }
+}

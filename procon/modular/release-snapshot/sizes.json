@@ -1,0 +1,187 @@
+{
+  "layout": 3833993797,
+  "manifest_address": 134303744,
+  "slots": [
+    {
+      "id": 0,
+      "name": "bl2",
+      "address": 134250496,
+      "size": 8192,
+      "ram": 536870912,
+      "ram_size": 4096,
+      "exports": [
+        "platform_init",
+        "uart_init",
+        "uart_receive",
+        "uart_send",
+        "micros",
+        "watchdog_refresh",
+        "heartbeat",
+        "cn_uart_init",
+        "cn_uart_receive",
+        "cn_uart_ready",
+        "cn_uart_write",
+        "platform_uid_word",
+        "platform_dip_read",
+        "identity_init_dip",
+        "modbus_address",
+        "identity_read",
+        "cn_service"
+      ],
+      "ram_used": 856,
+      "used": 6624,
+      "free": 1568,
+      "crc32": 3371576148,
+      "sha256": "1977cf563546c1c885e96f7b9775136694c3d640e9d4243938f05a63e019a3d3"
+    },
+    {
+      "id": 1,
+      "name": "common",
+      "address": 134258688,
+      "size": 12288,
+      "ram": 536875008,
+      "ram_size": 2048,
+      "exports": [
+        "cn_init",
+        "cn_feed",
+        "cn_tick",
+        "cn_tx_byte",
+        "cn_tx_sent",
+        "cn_read",
+        "cn_command",
+        "maintenance_ready"
+      ],
+      "ram_used": 152,
+      "used": 2704,
+      "free": 9584,
+      "crc32": 3368382211,
+      "sha256": "611117719b73f2504a0e82797b7451318068c440fdf3acd0ea1b7600c483acdd"
+    },
+    {
+      "id": 2,
+      "name": "dispatcher",
+      "address": 134270976,
+      "size": 4096,
+      "ram": 536877056,
+      "ram_size": 256,
+      "exports": [
+        "modbus_reply"
+      ],
+      "ram_used": 8,
+      "used": 584,
+      "free": 3512,
+      "crc32": 2485044401,
+      "sha256": "ce6b97638a1b5bf03c66e9f086c40682981bf4f3795ed7edf1ee63d408d7d7af"
+    },
+    {
+      "id": 3,
+      "name": "mode",
+      "address": 134275072,
+      "size": 12288,
+      "ram": 536877312,
+      "ram_size": 4096,
+      "exports": [
+        "ctl_feedback",
+        "ctl_link_lost",
+        "ctl_init",
+        "ctl_observe",
+        "ctl_submit",
+        "ctl_tick",
+        "ctl_busy",
+        "ctl_next",
+        "ctl_reply",
+        "ctl_timeout",
+        "ctl_read",
+        "effect_feedback_init",
+        "effect_feedback_tick",
+        "effect_feedback_get",
+        "effect_feedback_hard_invalid"
+      ],
+      "ram_used": 840,
+      "used": 9648,
+      "free": 2640,
+      "crc32": 2284350039,
+      "sha256": "b8445aa7bfd9780af7fc82126f737a8696edd9bb3829452159fa9d66c4325467"
+    },
+    {
+      "id": 4,
+      "name": "drift",
+      "address": 134287360,
+      "size": 4096,
+      "ram": 536881408,
+      "ram_size": 2048,
+      "exports": [
+        "tele_snapshot",
+        "tele_init",
+        "tele_tick",
+        "tele_invalidate",
+        "tele_accept",
+        "tele_read"
+      ],
+      "ram_used": 616,
+      "used": 2624,
+      "free": 1472,
+      "crc32": 1510586136,
+      "sha256": "eabb4c7bb1be0f95b69116953ee49915d385fa2f2328c1225bedc6fb7d9d9204"
+    },
+    {
+      "id": 5,
+      "name": "service",
+      "address": 134291456,
+      "size": 4096,
+      "ram": 536883456,
+      "ram_size": 1024,
+      "exports": [
+        "svc_init",
+        "svc_start_cycle",
+        "svc_link",
+        "svc_tick",
+        "svc_due",
+        "svc_sent",
+        "svc_reply",
+        "svc_timeout",
+        "svc_bad_frame",
+        "svc_read"
+      ],
+      "ram_used": 104,
+      "used": 1336,
+      "free": 2760,
+      "crc32": 3899181157,
+      "sha256": "035ed768b603e9ce2e677f41875d506d5f3e16c209da4862711afd392d4d7618"
+    },
+    {
+      "id": 6,
+      "name": "debug_command",
+      "address": 134295552,
+      "size": 4096,
+      "ram": 536884480,
+      "ram_size": 256,
+      "exports": [
+        "debug_command"
+      ],
+      "ram_used": 0,
+      "used": 72,
+      "free": 4024,
+      "crc32": 3051094737,
+      "sha256": "2a4ee9512d76d4877342d39ca11fffb229cae5e47925bfe3c21b61dbbb1bb8a1"
+    },
+    {
+      "id": 7,
+      "name": "debug_telemetry",
+      "address": 134299648,
+      "size": 4096,
+      "ram": 536884736,
+      "ram_size": 256,
+      "exports": [
+        "feedback_read"
+      ],
+      "ram_used": 0,
+      "used": 208,
+      "free": 3888,
+      "crc32": 1233799129,
+      "sha256": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702"
+    }
+  ],
+  "ram_reserved": 14080,
+  "stack_reserved": 2304
+}

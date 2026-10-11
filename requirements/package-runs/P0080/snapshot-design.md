@@ -1,0 +1,11 @@
+# P0080 snapshot follow-up design / review / functions
+
+WARN: explicit user request continues authorized local P0080 implementation. Fetch succeeded, HEAD equals origin/main; existing uncommitted P0080 work is our just-built/installed baseline and is preserved. Exact sync status saved in snapshot-sync-status.txt. No merge, commit, push or live action in this follow-up. Delta bootstrap used.
+
+The original single-Drift proposal is impossible with the installed dispatcher routing: only raw100..255 reaches Drift and all addresses already have legacy semantics. Add Dispatcher routing for FC04 raw400..527 directly to existing tele_read ABI, keeping every legacy address and BL2 unchanged. Two 4KiB slots update atomically via existing full-set manifest. No new exports, RAM reservations or layout fingerprint.
+
+Read raw400 triggers one frozen RAM image (schema1, 32-bit nonzero sequence, link-lost flag, count20, reserved). Header400..407, twenty records408..527, six words each: signed value32 or invalid sentinel, status16, age_ms32, source generation16. All fields copied in one scheduler call; sensor acquisition remains asynchronous. Existing freshness/skew checks retained. Image stays frozen until next trigger/reset; reader must timestamp acquisition, verify sequence402..403 after all blocks and retry on interference. Sequence wraps UINT32_MAX to1; boot clears it. No controls/writes.
+
+Changed functions: tele_init clears image/sequence, tele_read captures/routes new read area, modbus_reply validates complete new-range request and dispatches existing tele_read. New private capture obtains each sample once and stores value/status/age/generation together. New Python read_snapshot accepts callback, reads at most16 words, checks header and sequence, decodes signed values and rejects invalid/status disagreement; bounded retry. Build accepts comma-separated revision slots; metadata only.
+
+Tests: real native C through dispatcher for freeze across invalidation/ticks/new CN samples, signed/invalid/unavailable, ages, regeneration, invalid/broadcast/CRC/cross-boundary/short-buffer no capture; Python mocked interleaving and retry exhaustion; actual ARM image path; P76 baseline regressions; compare all binary chunks and OTA plan to installed release; two-slot actual C update and mutation cuts. Physical OTA is a later authorized step.

@@ -1,0 +1,10 @@
+{
+  "package": "P0080",
+  "protocol": 2,
+  "status": "tested-awaiting-installation",
+  "BL2_bytes": 6584,
+  "unchanged_feature_chunks": 7,
+  "manifest_fingerprint": "CRC32 of first56 bytes",
+  "mutation_cuts": 523,
+  "tests": "actual ARM status/snapshot/flash; real C OTA including same-residue wrong base and legacy protocol; host delayed ACK/old protocol rejection"
+}

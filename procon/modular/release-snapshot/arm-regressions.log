@@ -1,0 +1,38 @@
+PASS ARM read input0=888: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM bad CRC: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM broadcast: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM write rejected: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM UART framing error: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM TX timeout recovery: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM PC12 heartbeat over 1.1 seconds: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=False: 16 Modbus bytes, CN RX=188, overlap=1, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 0Hz corrupt=False: 16 Modbus bytes, CN RX=188, overlap=2, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM concurrent CN105 48Hz corrupt=True: 16 Modbus bytes, CN RX=139, overlap=2, GET04=1, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM A3 pending and complete in exclusive sequence with Modbus: 185 Modbus bytes, CN RX=498, overlap=30, GET04=3, services={27: 2, 28: 2}; PD2 released; whitelist/no flash writes
+PASS ARM A3 repeated pending with no interleaved Hz and responsive Modbus: 148 Modbus bytes, CN RX=249, overlap=0, GET04=1, services={27: 3, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM MVP values and validity during exclusive service: 74 Modbus bytes, CN RX=205, overlap=18, GET04=1, services={27: 1, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0072 r3 unrelated flags permit FIXED38 then AUTO with exclusive A3: 90 Modbus bytes, CN RX=1311, overlap=0, GET04=5, services={27: 5, 28: 4}; PD2 released; whitelist/no flash writes
+PASS ARM P0072 r3 heating inhibit blocks before SET and exposes reason: 82 Modbus bytes, CN RX=799, overlap=18, GET04=4, services={27: 4, 28: 2}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 startup UID / silent unaddressed+broadcast commands: 48 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 under-range watts: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 single-unit 18kW rejected: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 missing routing attestation: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 valid lower bounds need feedback: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address1 valid upper bounds need feedback: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 startup UID / silent unaddressed+broadcast commands: 48 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 under-range watts: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 single-unit 18kW rejected: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 missing routing attestation: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 valid lower bounds need feedback: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 address2 valid upper bounds need feedback: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM DIP address remains latched after physical input changes: 7 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unsupported DIP 00 silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unsupported DIP 60 silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unsupported DIP 7f silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unsupported DIP 21 silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unsupported DIP 41 silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM unstable startup DIP silent: 0 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM invalid MCU UID blocks FC16: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM invalid MCU UID blocks FC16: 5 Modbus bytes, CN RX=0, overlap=0, GET04=0, services={27: 0, 28: 0}; PD2 released; whitelist/no flash writes
+PASS ARM P0076 integrated distinct-feedback warmup, EFFECT survives FAST pending, AUTO restores: 151 Modbus bytes, CN RX=3746, overlap=18, GET04=16, services={27: 16, 28: 15}; PD2 released; whitelist/no flash writes
+PASS ARM suite: 37 cases; hardware remains unverified

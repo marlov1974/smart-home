@@ -1,0 +1,164 @@
+{
+  "package": "P0080",
+  "layout": 3833993797,
+  "expected_manifest_crc": 2061167857,
+  "mask": 3,
+  "slots": [
+    0,
+    1
+  ],
+  "payload_data_max": 232,
+  "wire_max": 252,
+  "new": "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0080/implementation-smart-home/procon/modular/build-p81",
+  "old": "/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0080/implementation-smart-home/procon/modular/build-effect-response",
+  "manifest": "464d385001000000451a86e40100000032e654c5b7a08baf284586d3c02cea16dd361e5bd102dcb5d9478a490000000000000000000000003708b371544d4f43",
+  "sizes": [
+    {
+      "id": 1,
+      "name": "common",
+      "address": 134258688,
+      "size": 12288,
+      "ram": 536875008,
+      "ram_size": 2048,
+      "exports": [
+        "cn_init",
+        "cn_feed",
+        "cn_tick",
+        "cn_tx_byte",
+        "cn_tx_sent",
+        "cn_read",
+        "cn_command",
+        "maintenance_ready"
+      ],
+      "ram_used": 216,
+      "used": 4280,
+      "free": 8008,
+      "crc32": 3310675506,
+      "sha256": "d50a8a7df4deefc1f7f6ead4ad4e73da948f37489abae610c4dc8af65f833a71"
+    },
+    {
+      "id": 2,
+      "name": "dispatcher",
+      "address": 134270976,
+      "size": 4096,
+      "ram": 536877056,
+      "ram_size": 256,
+      "exports": [
+        "modbus_reply"
+      ],
+      "ram_used": 8,
+      "used": 672,
+      "free": 3424,
+      "crc32": 2945163447,
+      "sha256": "f73976dceafc1884a7b8ccc201bd0b5a642e3abca71778438e12448de2be9635"
+    },
+    {
+      "id": 3,
+      "name": "mode",
+      "address": 134275072,
+      "size": 12288,
+      "ram": 536877312,
+      "ram_size": 4096,
+      "exports": [
+        "ctl_feedback",
+        "ctl_link_lost",
+        "ctl_init",
+        "ctl_observe",
+        "ctl_submit",
+        "ctl_tick",
+        "ctl_busy",
+        "ctl_next",
+        "ctl_reply",
+        "ctl_timeout",
+        "ctl_read",
+        "effect_feedback_init",
+        "effect_feedback_tick",
+        "effect_feedback_get",
+        "effect_feedback_hard_invalid"
+      ],
+      "ram_used": 992,
+      "used": 12280,
+      "free": 8,
+      "crc32": 3548792104,
+      "sha256": "dbde21ba318988583cbc1aac86c1d6ffae23f3c991ce70693c2d68f7279904b6"
+    },
+    {
+      "id": 4,
+      "name": "drift",
+      "address": 134287360,
+      "size": 4096,
+      "ram": 536881408,
+      "ram_size": 2048,
+      "exports": [
+        "tele_snapshot",
+        "tele_init",
+        "tele_tick",
+        "tele_invalidate",
+        "tele_accept",
+        "tele_read"
+      ],
+      "ram_used": 616,
+      "used": 2736,
+      "free": 1360,
+      "crc32": 384445632,
+      "sha256": "b07edc34349fee028dd6455dbde407c81a1006cab8c4c753c9709de4faab42be"
+    },
+    {
+      "id": 5,
+      "name": "service",
+      "address": 134291456,
+      "size": 4096,
+      "ram": 536883456,
+      "ram_size": 1024,
+      "exports": [
+        "svc_init",
+        "svc_start_cycle",
+        "svc_link",
+        "svc_tick",
+        "svc_due",
+        "svc_sent",
+        "svc_reply",
+        "svc_timeout",
+        "svc_bad_frame",
+        "svc_read"
+      ],
+      "ram_used": 160,
+      "used": 1360,
+      "free": 2736,
+      "crc32": 1528706781,
+      "sha256": "388c5e9486265ba7f1e2dd912650b97006ed2b22b5047fc66fc8f97075d8823f"
+    },
+    {
+      "id": 6,
+      "name": "debug_command",
+      "address": 134295552,
+      "size": 4096,
+      "ram": 536884480,
+      "ram_size": 256,
+      "exports": [
+        "debug_command"
+      ],
+      "ram_used": 0,
+      "used": 72,
+      "free": 4024,
+      "crc32": 3051094737,
+      "sha256": "2a4ee9512d76d4877342d39ca11fffb229cae5e47925bfe3c21b61dbbb1bb8a1"
+    },
+    {
+      "id": 7,
+      "name": "debug_telemetry",
+      "address": 134299648,
+      "size": 4096,
+      "ram": 536884736,
+      "ram_size": 256,
+      "exports": [
+        "feedback_read"
+      ],
+      "ram_used": 0,
+      "used": 208,
+      "free": 3888,
+      "crc32": 1233799129,
+      "sha256": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702"
+    }
+  ]
+}

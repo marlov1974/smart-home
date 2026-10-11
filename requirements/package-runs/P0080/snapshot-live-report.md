@@ -1,0 +1,13 @@
+# P0080 physical snapshot OTA — 2026-10-09
+
+Operator authorized OTA. Single connected Procon, address1, UID5898296/909201410/540096578. Native handoff preflight passed; no pump control commands. OTA_ENTER via FC16 system envelope then115200. Selected mask10: Dispatcher+Drift,4096bytes each. BEGIN and36 WRITE frames acknowledged; no re-erase/retransmit of data. Other modules protected by unselected CRC validation against new manifest. BL2 untouched.
+
+Initial host aborted at COMMIT:300ms receive window closed with empty response; subsequent send raised Shelly error (consistent with late response tripping unsolicited-RX guard). Script then stopped; automatic cleanup's baud call reported not-running. Protocol status on recovery showed active0,next_seq39, proving commit had completed. First recovery expected active1 incorrectly and stopped without mutation; corrected guard accepted completed state. Exact duplicate COMMIT38 returned cached success; EXIT39 acknowledged; MCU rebooted without DIP/power intervention. No second erase or application data rewrite.
+
+Postboot all modules valid; snapshot sequence1,2,3, matching field/value/status consistency and source generations advancing. CN105 linked1, errors0/UART errors0, uptime24→45→66 seconds. Compressor20Hz; flow32C, return30.5C, water13L/min, calculated thermal1358W in valid captures, brine5/5C. Control state0; no EFFECT activation. Final helper stopped/disabled, UART restored115200; cleanup verified.
+
+Host fix: wait2s for COMMIT and EXIT rather than300ms. Offline host integration now simulates700ms delayed commit; tests pass. Physical retest of improved one-shot host is not performed because no additional firmware change is needed.
+
+IMPORTANT protocol1 defect: CRC32(manifest64) includes its own CRC field and constant trailer, so both old/new return0xc13b1aef. It cannot identify the exact installed version or enforce expected-base identity. Actual prefix56 CRCs differ: old9521f732/newd9dd3c62. Packet CRCs, manifest-prefix CRC, module CRC checks, unchanged-slot checks and commit validation still operate. This session success is supported by the full exact command transcript/commit ACK plus new snapshot feature, not the constant status CRC. BL2 should expose/check prefix56 CRC (or a proper build identifier), with matching protocol/schema and host updates; BL2 replacement needs the original flash path. Not silently changed/flashed in this OTA-only task.
+
+Evidence directories: snapshot-live-ota-20261009; snapshot-ota-finish-20261009; snapshot-ota-finish-20261009b; snapshot-normal-20261009T174323Z. Initial interruption and first recovery guard failure preserved. No commit/push.

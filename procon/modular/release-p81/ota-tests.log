@@ -1,0 +1,20 @@
+PASS actual C OTA: success, duplicate/status/conflict, bounds, UID, base hash, 2065 mutation cuts
+PASS actual C OTA: full-set repair and valid-frame/wrong-image commit rejection
+PASS protocol2: legacy request rejected; different valid base with same whole-manifest residue rejected before erase
+Acknowledged frames 10
+Acknowledged frames 20
+Acknowledged frames 30
+Acknowledged frames 40
+Acknowledged frames 50
+Acknowledged frames 60
+Acknowledged frames 70
+Acknowledged frames 10
+Acknowledged frames 20
+Acknowledged frames 30
+Acknowledged frames 40
+Acknowledged frames 50
+Acknowledged frames 60
+Acknowledged frames 70
+PASS host through fake Shelly RPC into actual C: target/WAIT ordering, full chunk update, lost ACK duplicate, post-reset validation, duplicate UID rejected, cleanup
+PASS host protocol2: old status rejected before handoff
+PASS exact Shelly helper JS: staging252, RX, bounds, unsolicited traffic gate, timer cleanup

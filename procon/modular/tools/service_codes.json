@@ -1,0 +1,740 @@
+{
+  "source": "Mitsubishi OCH722A service manual, printed pages 30-32; concise factual labels, not CN105 calibration",
+  "codes": {
+    "0": {
+      "label": "Operating state",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "1": {
+      "label": "Compressor RMS current",
+      "manual_display_unit": "A",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "2": {
+      "label": "Compressor runtime",
+      "manual_display_unit": "10 hours",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "3": {
+      "label": "Compressor starts",
+      "manual_display_unit": "100 starts",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "4": {
+      "label": "Discharge TH4",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "5": {
+      "label": "Liquid pipe TH3",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "9": {
+      "label": "Outdoor TH7",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "10": {
+      "label": "Heat sink TH8",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "12": {
+      "label": "Discharge superheat",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "13": {
+      "label": "Subcooling",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "14": {
+      "label": "Condensing temperature",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "16": {
+      "label": "Compressor actual frequency",
+      "manual_display_unit": "Hz",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "17": {
+      "label": "Compressor target frequency",
+      "manual_display_unit": "Hz",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "18": {
+      "label": "Brine pump command",
+      "manual_display_unit": "step 0-10",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "19": {
+      "label": "Brine pump speed",
+      "manual_display_unit": "rpm",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "22": {
+      "label": "Expansion valve A",
+      "manual_display_unit": "pulses",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "25": {
+      "label": "Primary current",
+      "manual_display_unit": "A",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "26": {
+      "label": "DC link voltage",
+      "manual_display_unit": "V",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "27": {
+      "label": "Brine inlet TH32",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "28": {
+      "label": "Brine outlet TH34",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "48": {
+      "label": "Thermostat-on duration",
+      "manual_display_unit": "minutes",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "51": {
+      "label": "Compressor-board control",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "52": {
+      "label": "Frequency limiting/control",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "53": {
+      "label": "Fan control",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "54": {
+      "label": "Actuator outputs",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "55": {
+      "label": "U9 details",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 30,
+      "wire_scale": "unverified"
+    },
+    "70": {
+      "label": "Compressor-board capacity configuration",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "71": {
+      "label": "Compressor-board settings",
+      "manual_display_unit": "status",
+      "historical": false,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "90": {
+      "label": "Compressor-board version",
+      "manual_display_unit": "version digits",
+      "historical": false,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "91": {
+      "label": "Compressor-board version suffix",
+      "manual_display_unit": "version digits",
+      "historical": false,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "100": {
+      "label": "Deferred-fault history entry 1",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "101": {
+      "label": "Deferred-fault history entry 2",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "102": {
+      "label": "Deferred-fault history entry 3",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "103": {
+      "label": "Fault history entry 1",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "104": {
+      "label": "Fault history entry 2",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "105": {
+      "label": "Fault history entry 3",
+      "manual_display_unit": "fault code",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "106": {
+      "label": "TH3/TH7/TH8 fault sensor",
+      "manual_display_unit": "sensor identifier",
+      "historical": false,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "107": {
+      "label": "Operating state at fault",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "108": {
+      "label": "Compressor RMS current at fault",
+      "manual_display_unit": "A",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "109": {
+      "label": "Compressor runtime at fault",
+      "manual_display_unit": "10 hours",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "110": {
+      "label": "Compressor starts at fault",
+      "manual_display_unit": "100 starts",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "111": {
+      "label": "Discharge TH4 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "112": {
+      "label": "Liquid pipe TH3 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "113": {
+      "label": "Brine outlet TH34 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "115": {
+      "label": "Brine inlet TH32 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "116": {
+      "label": "Outdoor TH7 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "117": {
+      "label": "Heat sink TH8 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "118": {
+      "label": "Discharge superheat at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "119": {
+      "label": "Subcooling at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "120": {
+      "label": "Compressor actual frequency at fault",
+      "manual_display_unit": "Hz",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "121": {
+      "label": "Brine pump command at fault",
+      "manual_display_unit": "step 0-10",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "122": {
+      "label": "Fan 1 speed at fault (manual wording; Geodan interpretation uncertain)",
+      "manual_display_unit": "rpm",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "125": {
+      "label": "Expansion valve A at fault",
+      "manual_display_unit": "pulses",
+      "historical": true,
+      "manual_page": 31,
+      "wire_scale": "unverified"
+    },
+    "129": {
+      "label": "Condensing temperature at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "130": {
+      "label": "Thermostat-on duration before fault",
+      "manual_display_unit": "minutes",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "154": {
+      "label": "Water pump 1 runtime since reset",
+      "manual_display_unit": "10 hours",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "156": {
+      "label": "Water pump 2 runtime since reset",
+      "manual_display_unit": "10 hours",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "157": {
+      "label": "Water pump 3 runtime since reset",
+      "manual_display_unit": "10 hours",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "158": {
+      "label": "Water pump 4 runtime since reset",
+      "manual_display_unit": "10 hours",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "162": {
+      "label": "FTC DIP bank 1 readback",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "163": {
+      "label": "FTC DIP bank 2 readback",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "164": {
+      "label": "FTC DIP bank 3 readback",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "165": {
+      "label": "FTC DIP bank 4 readback",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "166": {
+      "label": "FTC DIP bank 5 readback",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "175": {
+      "label": "FTC outputs",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "176": {
+      "label": "FTC inputs",
+      "manual_display_unit": "bitfield",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "177": {
+      "label": "Mixing valve command",
+      "manual_display_unit": "step 0-10",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "190": {
+      "label": "FTC version first half",
+      "manual_display_unit": "version digits",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "191": {
+      "label": "FTC version second half",
+      "manual_display_unit": "version digits",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "504": {
+      "label": "Zone 1 room TH1A",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "505": {
+      "label": "Refrigerant liquid TH2",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "506": {
+      "label": "Return water THW2",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "507": {
+      "label": "Zone 2 room TH1B",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "508": {
+      "label": "DHW lower THW5B",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "509": {
+      "label": "Zone 1 supply THW6",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "510": {
+      "label": "Outdoor TH7 via FTC",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "511": {
+      "label": "Supply water THW1",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "512": {
+      "label": "Zone 1 return THW7",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "513": {
+      "label": "Zone 2 supply THW8",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "514": {
+      "label": "Zone 2 return THW9",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "515": {
+      "label": "Boiler supply THWB1",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "534": {
+      "label": "DHW upper THW5A",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "535": {
+      "label": "Mixing tank THW10",
+      "manual_display_unit": "degC",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "540": {
+      "label": "Primary water flow",
+      "manual_display_unit": "L/min",
+      "historical": false,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "550": {
+      "label": "Latest FTC deferred fault",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "551": {
+      "label": "FTC heat source at fault",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "552": {
+      "label": "FTC operating mode at fault",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "553": {
+      "label": "FTC outputs at fault",
+      "manual_display_unit": "bitfield",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "554": {
+      "label": "FTC inputs at fault",
+      "manual_display_unit": "bitfield",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "555": {
+      "label": "Zone 1 room TH1A at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "556": {
+      "label": "Zone 2 room TH1B at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "557": {
+      "label": "Refrigerant liquid TH2 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "558": {
+      "label": "Supply water THW1 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "559": {
+      "label": "Return water THW2 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "560": {
+      "label": "DHW lower THW5B at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "561": {
+      "label": "Zone 1 supply THW6 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "562": {
+      "label": "Zone 1 return THW7 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "563": {
+      "label": "Zone 2 supply THW8 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "564": {
+      "label": "Zone 2 return THW9 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "565": {
+      "label": "Boiler supply THWB1 at fault",
+      "manual_display_unit": "degC",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "567": {
+      "label": "Fault thermistor identifier",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "568": {
+      "label": "Mixing valve command at fault",
+      "manual_display_unit": "step 0-10",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "569": {
+      "label": "Fault flow-switch identifier",
+      "manual_display_unit": "status",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    },
+    "571": {
+      "label": "Primary water flow at fault",
+      "manual_display_unit": "L/min",
+      "historical": true,
+      "manual_page": 32,
+      "wire_scale": "unverified"
+    }
+  },
+  "excluded": {
+    "200": "Function-setting initialization",
+    "340": "Water pump 1 runtime reset",
+    "342": "Water pump 2 runtime reset",
+    "343": "Water pump 3 runtime reset",
+    "344": "Water pump 4 runtime reset"
+  }
+}

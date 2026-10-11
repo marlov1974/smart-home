@@ -1,0 +1,6 @@
+{
+  "changed_chunks": [
+    "service"
+  ],
+  "test": "32-byte implementation shift and revision2 header in service; all other binaries identical"
+}

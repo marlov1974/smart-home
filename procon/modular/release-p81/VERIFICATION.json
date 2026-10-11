@@ -1,0 +1,47 @@
+{
+  "package": "P0081",
+  "manifest_prefix_crc": "0x71b30837",
+  "base_manifest_prefix_crc": "0x7adaecf1",
+  "changed_ota_slots": [
+    0,
+    1
+  ],
+  "BL2_unchanged": true,
+  "effect_mode_unchanged": true,
+  "layout_unchanged": true,
+  "host_tests": "PASS",
+  "actual_ARM": "PASS",
+  "OTA_interruption_cases": 2065,
+  "fake_Shelly_sender": "PASS",
+  "portable_export_binary_match": true,
+  "physical_installed": true,
+  "physical_scan_run": true,
+  "source_repo_commit": "76a4bd6a5c87b5cbc40cea521ac477c45b7a083b",
+  "source_sha256": {
+    "procon/modular/firmware/src/cn105.c": "7b616109100a3b1eaf114677d4a9d003f9d79e8172a79ef3ecfffdb8d39b293e",
+    "procon/modular/firmware/src/modbus.c": "7a71d0d07cb2347d658982f1b90d66186d0b2e71a40aa932e25839fd8aa4dcbe",
+    "procon/modular/tools/raw_mapper.py": "98fddd3d138cbfe65e0a4d06dbddc4dcbe6f9aa9d4fe7a7821fdc6d83f70a1d2",
+    "procon/modular/tools/service_codes.json": "f8ec61cd4169fcd3819c66596252a29e6d804b804bb2141b0db8b656ca4f6d5f"
+  },
+  "physical_scan_complete": true,
+  "installed_device": "VP1 only; VP2 remains previous build",
+  "installation_evidence": "P0081/install-vp1-20261010T204721Z",
+  "modbus_transition_evidence": "P0081/modbus-20261010T205218Z",
+  "baseline_observations": 10,
+  "baseline_valid": 10,
+  "mapping_evidence": "P0081/mapping-20261010T205704Z",
+  "host_mapper_tests": 7,
+  "host_log_fix": "Persist submit intent and terminal reply even when post-read health check fails; current physical runner predates this host-only fix.",
+  "physical_observations": 720,
+  "physical_direct_observations": 512,
+  "physical_a3_observations": 208,
+  "physical_log_audit": "PASS",
+  "final_native_curve_both": true,
+  "communication_error_count": 0,
+  "completed_utc": "2026-10-10T22:38:53.417146+00:00",
+  "evidence_sha256": {
+    "direct": "0865e7e9b2b54d6a0f80a72937ec27d739f554b30dfa1cc01290bfbddb46ddf2",
+    "a3": "fa851598d99a50fd4f9b7481e540f7aea94d1c04aa21c14915c392dd3da280b8"
+  },
+  "publication_readback": "PASS"
+}

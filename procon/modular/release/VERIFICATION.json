@@ -1,0 +1,18 @@
+{
+  "package": "P0080",
+  "status": "offline-verified-hardware-pending",
+  "install_sha256": "7e6193edad6aaeb92c3a03468a1e28fb04764dd48a16f9da3f7bdc4b9c03fc24",
+  "arm_regressions": 37,
+  "native_suites": 8,
+  "actual_ota_C_mutation_cuts": 523,
+  "independent_chunk_change": "service-only with internal functions shifted32bytes",
+  "ram_used_bytes": 2320,
+  "live_commands": 0,
+  "physical_OTA_verified": false,
+  "known_limits": [
+    "physical single/dual-unit qualification pending",
+    "ECC power-cut may need physical recovery",
+    "native reset restoration remains baseline limitation",
+    "CRC integrity only, not firmware signatures"
+  ]
+}

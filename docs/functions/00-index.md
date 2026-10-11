@@ -91,3 +91,7 @@ Created by `P0007-codex-phased-package-build-process`.
 - [P0072 r2 supervised control contracts](procon-control.md)
 
 - [P0075 bounded firmware readback research](procon-readback.md)
+
+- [P0080 modular EFFECT firmware and chunk OTA](procon-modular-ota.md)
+
+- [P0081 raw mapper](procon-raw-mapper.md): bounded diagnostic request/result and mapping workflow.

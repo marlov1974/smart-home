@@ -1,0 +1,16 @@
+{
+  "package": "P0080",
+  "status": "offline-verified-not-deployed",
+  "changed_chunks": [
+    "dispatcher",
+    "drift"
+  ],
+  "layout_unchanged": true,
+  "arm_regressions": 37,
+  "native_C_suites": 9,
+  "OTA_mutation_cuts": 1037,
+  "OTA_image_bytes": 8192,
+  "OTA_protocol_frames": 39,
+  "live_commands": 0,
+  "sha256": "3d2695f20cb4d412346c3b350986627e0c95f518fabd6eb3fe55673dd756afe3"
+}

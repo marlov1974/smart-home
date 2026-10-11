@@ -1,0 +1,59 @@
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_modbus.c firmware/src/modbus.c firmware/src/identity.c firmware/src/debug_telemetry.c firmware/src/debug_command.c firmware/src/cn105.c firmware/src/service.c firmware/src/telemetry.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c -o build/host-test
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_cn105.c firmware/src/debug_telemetry.c firmware/src/debug_command.c firmware/src/cn105.c firmware/src/service.c firmware/src/telemetry.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c -o build/cn-test
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_telemetry.c firmware/src/telemetry.c firmware/src/service.c -o build/tele-test
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_effect_feedback.c firmware/src/effect_feedback.c firmware/src/telemetry.c firmware/src/service.c -o build/feedback-test
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include -DUNIT_TEST tests/test_addressing.c firmware/src/modbus.c firmware/src/identity.c firmware/src/debug_command.c -o build/address-test
+mkdir -p build
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_pause_integration.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c firmware/src/telemetry.c firmware/src/service.c -o build/pause-test
+clang -std=c11 -g -O1 -Wall -Wextra -Werror -fsanitize=address,undefined -Ifirmware/include tests/test_snapshot.c firmware/src/modbus.c firmware/src/identity.c firmware/src/debug_telemetry.c firmware/src/debug_command.c firmware/src/cn105.c firmware/src/service.c firmware/src/telemetry.c firmware/src/control.c firmware/src/effect.c firmware/src/effect_feedback.c -o build/snapshot-test
+./build/host-test
+PASS host: CRC golden vector, 64 corruptions, 256 unit IDs, exceptions, capacities, RTU timing/overflow/error recovery/wrap, 20000 malformed packets (ASan/UBSan)
+./build/cn-test
+PASS CN105 service simulation mode0, base0, normal23, svc27=33 svc28=33 cycles22
+PASS CN105 service simulation mode1, base0, normal7, svc27=34 svc28=30 cycles6
+PASS CN105 service simulation mode2, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode3, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode4, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode5, base0, normal71, svc27=36 svc28=35 cycles71
+PASS CN105 service simulation mode7, base0, normal6, svc27=30 svc28=30 cycles6
+PASS CN105 service simulation mode0, base4294963200, normal23, svc27=34 svc28=33 cycles22
+PASS CN105 P0072: protocol/ownership/retry/exhaustion/retained raw/TTL/wrap/reconnect/exclusive FAST->27->FAST->28 sequence; ASan+UBSan
+./build/tele-test
+PASS P0072 telemetry: all mapped queries, unavailable, raw bytes, signed/zero/boundary power, stale/skew/invalid propagation, pump codes, negative brine; ASan+UBSan
+./build/control-test
+PASS P0072 r3 controls + 84 flag cases: ranges, sequence/idempotence, renewal, snapshot, OFF/FIXED/DHW/targets, readback not ack, restoration, lease/wrap, missing replies and reboot limits
+./build/effect-test
+PASS P0076 EFFECT: ABI/legacy AUTO, guards, limits, smoothing inputs, hysteresis/derivative, snapshot retention, readback, lease/link/feedback failure and reboot uncertainty
+./build/feedback-test
+PASS P0076 feedback: independent generations, trailing heating mode, zero/invalid/link guards, skew/age edges, bounded exact windows, quantization, wrap and clean reset
+./build/address-test
+PASS addressing: all 256 DIP bytes, stability/mode/reserved rejection, addresses 1/2/30, UID high/low, all request IDs, broadcast/CRC silence, FC04/FC16 gates and boot latch
+./build/pause-test
+PASS P0076 r2 integrated sampler/control: two10min pauses, zero flow, fresh restart, no prestart raises, budgets retained, AUTO restored
+./build/snapshot-test
+PASS snapshot: freeze, stale/skew/signed/unavailable, refresh, reset, bounds, CRC, broadcast, short buffer
+python3 tests/test_read_snapshot.py
+PASS snapshot reader: signed/age decoding, replacement retry, bounded failure, unsupported header
+python3 tests/test_control_command.py
+.......
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK
+python3 tests/test_read_mvp.py
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 0.001s
+
+OK
+python3 tests/test_commission_units.py
+.........
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

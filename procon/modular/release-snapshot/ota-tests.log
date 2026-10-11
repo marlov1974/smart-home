@@ -1,0 +1,2 @@
+PASS actual C OTA: success, duplicate/status/conflict, bounds, UID, base hash, 1037 mutation cuts
+PASS actual C OTA: full-set repair and valid-frame/wrong-image commit rejection

@@ -1,0 +1,3 @@
+PASS actual C OTA: success, duplicate/status/conflict, bounds, UID, base hash, 523 mutation cuts
+PASS actual C OTA: full-set repair and valid-frame/wrong-image commit rejection
+PASS protocol2: legacy request rejected; different valid base with same whole-manifest residue rejected before erase

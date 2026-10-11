@@ -1,0 +1,11 @@
+build/
+build-next/
+__pycache__/
+*.pyc
+*.dSYM/
+build-snapshot/
+build-bl2-v2/
+build-bl2-v2-next/
+
+# Historical build outputs preserved in workspace-sync archive.
+build-*/

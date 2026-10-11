@@ -1,0 +1,6 @@
+Acknowledged frames 10
+Acknowledged frames 20
+Acknowledged frames 10
+Acknowledged frames 20
+PASS host through fake Shelly RPC into actual C: target/WAIT ordering, full chunk update, lost ACK duplicate, post-reset validation, duplicate UID rejected, cleanup
+PASS host protocol2: old status rejected before handoff

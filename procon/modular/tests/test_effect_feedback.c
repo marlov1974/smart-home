@@ -3,6 +3,7 @@
 #include "telemetry.h"
 #include "service.h"
 #include <assert.h>
+uint16_t ctl_read(unsigned a) {(void)a;return 0;} /* Pure telemetry: idle controller. */
 #include <stdio.h>
 #include <string.h>
 static uint32_t now;

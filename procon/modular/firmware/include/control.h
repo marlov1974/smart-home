@@ -2,6 +2,12 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 #include <stdint.h>
+/* The65C/OFF-focus sweep is an explicit experimental build, not production. */
+#ifdef PROCON_DELTA_SWEEP
+#define MANUAL_FLOW_MAX_CC 6500
+#else
+#define MANUAL_FLOW_MAX_CC 6000
+#endif
 #include "effect.h"
 void ctl_feedback(const effect_measurement *sample);
 void ctl_link_lost(uint32_t now);

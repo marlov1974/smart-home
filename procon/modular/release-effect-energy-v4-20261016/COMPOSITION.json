@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "package": "P0080",
+  "created": "2026-10-16",
+  "physical_install": true,
+  "live_control_test": false,
+  "device_specific": true,
+  "layout_id": 3833993797,
+  "ota_protocol": 2,
+  "ota_mask": 52,
+  "changed_modules": [
+    "mode",
+    "service",
+    "debug_command"
+  ],
+  "ota_slots": [
+    2,
+    4,
+    5
+  ],
+  "private_service_veneers": {
+    "effect_model_op": "0x08012069",
+    "effect_model_tick": "0x0801206d"
+  },
+  "preserved_modules": [
+    "bl2",
+    "common",
+    "dispatcher",
+    "drift",
+    "debug_telemetry"
+  ],
+  "module_sizes": {
+    "mode": {
+      "used": 11904,
+      "capacity": 12288,
+      "free": 384,
+      "sha256": "f9a7b1596917ad2abdd3201fcfc6565b8ce4c7cdbdadc62f72ce131f968f547b"
+    },
+    "service": {
+      "used": 2824,
+      "capacity": 4096,
+      "free": 1272,
+      "sha256": "6b7fc086cf9e7c63b12037f1c3aee45f7a8d1aecc2c09e7e4627f16a010b37e7"
+    },
+    "debug_command": {
+      "used": 192,
+      "capacity": 4096,
+      "free": 3904,
+      "sha256": "2ca969da6cc5a6c53ca094fe2e473f1d7df260f6ed03adcbd6ba0489df9ec873"
+    }
+  },
+  "gain_seed": {
+    "command": "0xC077",
+    "telemetry_schema": 4,
+    "range_a10": [
+      700,
+      2000
+    ],
+    "uid_bits": 96,
+    "persistence": "Shelly KVS only; firmware RAM-only",
+    "default_a10": 1350
+  },
+  "devices": {
+    "vp1": {
+      "modbus_address": 1,
+      "base_manifest": "4bf657aa",
+      "candidate_manifest": "57ee1885",
+      "changed_ota_slots": [
+        2,
+        4,
+        5
+      ],
+      "install_sha256": "08c6c281ed52f14012249fe80cbb01b8c95c90ce036e05b11a279d53887c7194",
+      "manifest_sha256": "096f5ab4774637c620ab6afeefe5fde7ecbfa4b1c64b4b784f0bb26fdac19f1e"
+    },
+    "vp2": {
+      "modbus_address": 2,
+      "base_manifest": "e11851e8",
+      "candidate_manifest": "fd001ec7",
+      "changed_ota_slots": [
+        2,
+        4,
+        5
+      ],
+      "install_sha256": "18cbbf4e7acf3ee1606764f9a8e076912b97b6ff3e218ece1aad5fdc3e2200e2",
+      "manifest_sha256": "18f0034792b27b90c6c24dba26d0dfb2e84d06c26728fc6a78cf84ee99aee698"
+    }
+  },
+  "shelly": {
+    "source": "shelly/energy_pair_v1.js",
+    "version": "1.5.1",
+    "bytes": 30501,
+    "sha256": "29813a747a7c2decef73aa80bc041383344a51dd8c5ab8d907dd926e9f1832a5"
+  },
+  "host_runner": {
+    "source_archive_path": "procon-modular-effect-energy-v4/procon/modular/tools/run_shelly_energy.py",
+    "source_sha256": "8960c517a4347975387a57183e0d5c3fdba17581f32cc29b246d5d0aeb38ac9a",
+    "test_archive_path": "procon-modular-effect-energy-v4/procon/modular/tests/test_run_shelly_energy.py",
+    "test_sha256": "c8c4dfacd908ffc3c2f5dc172bd5e4c4dd7e66bb750919d7de8e4a1ba20fc249",
+    "safety_test_count": 10
+  },
+  "source_archive_sha256": "1aea84114dc575eed8c09388f85dca7e7da5ffee1709e4b6c108481bd1ad659c",
+  "installation_record": "INSTALLATION.json"
+}

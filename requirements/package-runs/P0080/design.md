@@ -1,4 +1,64 @@
 # P0080 modular implementation design
+
+## EFFECT + rolling energy v4 — 2026-10-16
+
+Keep the four business layers explicit: rolling quarter energy selects pair
+power; pair allocation selects each pump's watt target; the Procon model maps
+watts to a frequency goal; the inner controller converts frequency error to a
+bounded requested-flow command. L4 remains responsible for day/week COP and
+quarter targets. Shelly performs only scalar four-quarter delivery, calm
+cross-pump allocation and correction from measured energy.
+
+Persist only the slowly learned kW-to-Hz gain. Shelly binds a strict record to
+all 96 UID bits and uses compare-and-swap plus exact readback. Firmware accepts
+that gain through C077 only behind the maintenance gate, at most once per boot,
+and keeps it in RAM. Do not write EEPROM or flash, and do not persist bias,
+trim, response transients or confidence as if they were plant constants.
+
+The rolling plan is an atomic KVS string with current-quarter alignment and
+four Wh targets. A later revision for the next boundary is staged and activated
+as one unit. Missing/stale measurements remain unknown energy while an existing
+lease is held; no plan creates no ownership. Temperature priority, physical
+reachability and native DHW/pause states remain best-effort constraints rather
+than abort conditions.
+
+Runtime validation is a separate non-actuating path. It must read both exact
+identities, model diagnostics, feedback blocks and the complete plan, execute
+the scalar planner, publish proof and stop before any EFFECT or C077 write.
+Unqualified startup feedback cannot prevent this self-stop; production mode
+continues to hold until both power samples are fresh.
+
+## Four-quarter energy mode — 2026-10-14
+
+Use measured delivered Wh as the controlled quantity; do not book assumed
+linear ramps. A Shelly pair planner allocates the house plan between D1/D2, and
+a per-device Common executor retargets the existing Mode EFFECT loop. Low demand
+is scheduled asymmetrically because 2 kW per running pump was below the observed
+continuous range. Common has 7,984 bytes free and Mode only 240 bytes; extend
+Common and Dispatcher without changing BL2/layout. Full controller, protocol,
+feasibility and delivery design: `energy-mode-design-2026-10-14.md`.
+
+The binding initial response model is per device: 5min zero-output startup from
+zero, +4kW/5min maximum ramp-up and -2kW/5min maximum ramp-down. Targets and
+errors belong to the pair, so recovery and ramps can cross VP1/VP2. Replan from
+measured state every30s. Minimize four-quarter energy error first. L4 already
+accounts for COP when selecting kWh/quarter; local execution only divides work
+when both pumps can stay above their continuous floors and prefers a calm
+combined curve over short high-power bursts. With initial3kW floors,4kW total
+remains4+OFF while6kW becomes3+3.
+
+L4 alone measures/learns pair COP and uses it for day/week quarter selection.
+Shelly does not calculate COP or compare COP bands; it may only forward raw
+telemetry. Its executor minimizes four-quarter delivery error, keeps combined
+power calm and divides that power evenly subject to each pump's physical state.
+The3+3kW/16h versus2+2kW/24h decision for equal96kWh belongs to L4.
+An unreachable target saturates to best effort and remains active.
+
+Shelly implementation constraint: no JavaScript arrays. Simulate the24 planning
+steps serially with scalar VP states and scalar q0/q1/q2/q3 energy accumulators.
+Evaluate and discard one scalar candidate at a time; retain only the current best
+candidate's named scalars. Parse compact KVS fields without `split`. Python list
+usage is confined to offline reference/testing and is not a device design.
 Eight fixed flash slots: BL2 8K, Common12K, dispatcher4K, mode12K, drift4K, service4K, debug-command4K, debug-telemetry4K, manifest2K. All aligned2K. Measure and change budgets only with evidence.
 Each module independently linked with 64-byte header and fixed4-byte Thumb branch veneers. External symbols resolve only to versioned veneers; no cross-image LTO. Per-slot RAM regions and startup data copy/BSS zero; no per-module VTOR/stack/heap. BL2 owns peripherals and mainloop; Common owns CN105 scheduling, service module A3 state, mode owns unchanged P76 effect/control/feedback. Debug adapters are explicitly small and not claims of a new full RAW implementation.
 BL2 validates every slot CRC/header/ABI and last-written manifest before any module execution. All-or-nothing feature activation, maintenance remains when invalid. Native reset restoration remains P76 limitation: OTA entry requires fresh native curve/DHW readbacks and no active lease; invalid image repair cannot assert restoration.
@@ -73,3 +133,306 @@ The155246 experiment ended at the unpaired D1 capture t1434.8s: actual40.5C desp
 The measured e8fc6d86 run exposed a demand hold across a42Hz plateau and slow recovery after thermal limiting. Preserve a bounded positive acceleration forecast (maximum1500W), decaying at10W/s when fresh decisions continue, so a short plateau cannot immediately erase recent momentum. Clear it on observed deceleration, weak demand (requested minus actual below2C), native pause/history discontinuity or actual thermal clipping. This is an empirical lead estimate, not a claimed reconstruction of the native integral.
 Replace unconditional rising-power suppression with a30s projection near target. If predicted power is still at least750W below target and demand is within2C of actual supply, allow a bounded1C positive correction rather than the normal0.5C bound; retain fresh-data admission and the existing decision/readback cadence. Thermal ceiling remains unchanged and applies after every proposed correction; clipped demand is never accumulated for later release. Existing legacy cap<=40C mode remains unchanged.
 Test retained lead on quantized plateaus, decay and fresh mission reset, recent-frequency decline, stale data, recovery despite modest positive power slope, no added demand near goal, and thermal priority. Replay recorded inputs as a one-step counterfactual diagnostic only, never as a predicted closed-loop trajectory. Build within existing12KiB mode slot; if necessary qualify a mode-only compiler size setting, without changing other module binaries. No live deployment is part of this follow-up's offline validation.
+
+## Source-aware persistent EFFECT continuation — 2026-10-11
+User authorizes implementing and live-testing on VP1. Keep all module boundaries,
+export veneers and `effect_measurement` ABI unchanged. Mode reads existing Drift
+`tele_snapshot` for independent source generation and source time (`now-age`) of
+Hz and supply. Duplicate polls cannot create history; wrapped generations and
+clock wrap must work. Reject invalid/link-lost sources and hold ordinary control
+with 15–59s old data; existing >=60s recovery remains.
+Unify EFFECT at every configured demand cap, retaining finite lease, native
+interlocks and exact original-state restoration. Remove cumulative/unresponsive
+latches and cap-dependent native-pause abort. Fix link-loss during restoration.
+Add a soft temperature constraint before the existing emergency ceiling: reduce
+requested acceleration as predicted supply approaches39C, retain braking when
+thermal margin is exhausted, and clear positive carry. Existing signed hard
+ceiling and actual40C trial limit remain. This is an empirical control hypothesis,
+not a recovered Mitsubishi Hz equation. Fixed110W/Hz is not changed in this pass.
+Build against VP1 build-p81; only Mode should change, BL2 must be identical.
+Run host sanitizers, real ARM module tests and OTA cut/sender regressions before
+OTA. VP1: target6000W, demand cap55C, actual supply maximum40C,15min observation,
+lease180s renewed under supervision. Capture/restore original native settings.
+VP2 receives no heating-control writes; temporary protocol WAIT isolates OTA.
+
+## Predictive thermal envelope, dual trial — 2026-10-11
+Explicit user continuation authorizes the thermal correction, OTA both units and
+VP1 6kW / VP2 5kW trial. Keep P0080 scope, native safeguards, finite lease,
+restoration and actual40C/requested55C bounds. Preserve both installed feature
+sets, building per-device manifests with only Mode replaced. No BL2 update.
+With fresh independent supply history spanning>=40s, forecast supply over60s
+plus sample age. Positive slope only; falling temperature never excuses an
+already hot actual reading. Use margin3900-forecast and requested ceiling
+3900+(margin>0?8*margin:margin), capped by configured demand and floor3000.
+This permits47C at flat38C instead of42C, but progressively tightens with rise
+and retains39.5/40C actual ->38.5/38C demand protection. The gain8 and60s horizon
+are cautious empirical trial parameters, not identified native constants.
+Retain original conservative ceiling without fresh established history. Soft
+Hz-acceleration constraint uses the same forecast; existing bounded actuator
+steps and no repeated startup boosts stay. Tests cover trend/age sensitivity,
+fallback, thermal recovery, hot correction, stale data and configured caps.
+Build within12KiB Mode, run host/actualARM/OTA checks, then supervised900s dual
+trial with independent logging and restoration. No exact tracking claim until
+physical results. Record both source freshness and applied thermal restrictions.
+
+### Operator correction: temperature is a regulation condition, not abort
+The user explicitly rejected restoring/aborting on40C,42C or time above40C.
+Log these exposures, continue the mission and reduce demand smoothly. The
+predictive ceiling is now a soft actuator goal: during running regulation use
+floor=min(current_verified_request,actual+0.5C), then limit downward movement
+to0.5C per30s after verified readback. Configured demand cap remains binding.
+Do not chase a hot actual temperature upward. Apply the same taper during
+SETTLING recovery; remove the hot-ceiling bypass of the30s decision gate.
+Native FTC protections, lease expiry, identity/native-priority checks and
+telemetry failure handling remain. Existing stale/invalid-feedback soft39.5C
+fallback is a separate data-loss path, not a temperature-triggered abort.
+Continuous compressor operation cannot be guaranteed when native minimum output
+exceeds demand or actual has already overtaken the request. The trial observes
+this directly; no external stop is commanded merely for a warm supply reading.
+Operator clarifies priority explicitly: (1) keep actual supply below40C;
+(2) produce requested kW within that thermal envelope. Temperature is a higher
+priority regulation objective, not a mission-abort trigger. Report actual
+delivered power and thermal-limited state instead of claiming unmet power is a
+fault or letting accumulated power deficit override the thermal constraint.
+
+### Shared floor circuit and remaining prediction limit — 2026-10-11
+The operator confirms that VP1 and VP2 feed the same floor-heating circuit.
+Their controllers are independent, but their thermal load is not: one pump can
+change the return conditions seen by the other. The dual6/5kW experiment must
+therefore report individual and summed delivery, each return/flow measurement,
+and temperature-limited intervals. Opposite power movements alone do not prove
+controller hunting; source timing, smoothing, warmup and shared load are alternative
+explanations. Any future house-level allocation should prioritize the common heat
+request within each pump's temperature constraints rather than assume fixed6/5kW
+is always the best split. This coordination is not implemented by this Mode OTA.
+
+Code review also identifies an unmodelled actuator delay: thermal prediction uses
+60s plus source age, while the0.5C/30s taper can take several minutes to move a
+high request to its eventual limit. It does not explicitly include that remaining
+slew time. Frequency response begins before all steps finish, so simply adding
+the entire slew time would not be a validated model either. Future identification
+should fit the measured response to the actual bounded request trajectory. No
+mid-trial firmware changes were made to test this hypothesis.
+
+
+## 2026-10-12 — user-authorized fixed60 candidate
+Extend v2 flow validation and host encoder from45C to60C; GET09 maximum55C to60C. Preserve leases, readback verification, restoration and EFFECT behavior. Build separate build-fixed60 candidate, keeping deployed artifacts intact. Test6000 accepted/applied/restored,6001 rejected, encoder boundary and existing sanitized host regressions.
+
+
+## 2026-10-12 — VP2 fixed60 plateau repeat
+VP2 repeat of fixed60: compose only the already-tested Mode into VP2 baseline, preserving its Common/Dispatcher/BL2 and all other chunks. Verify C OTA1551 cuts and actual ARM before transfer; preserve VP1 firmware. Trial VP2 fixed60,VP1OFF; stop after180s unchanged Hz>=90 with>=10 distinct source generations, or50C actual/1800s; restore both. Passive DHW wait before heating. Log brine and source age; compare transitions with VP1 without assuming identical starting thermal state.
+
+
+## P0080 A3 frequency comparison — 2026-10-12
+Add service16/17 after existing27/28/18/19. Preserve exclusive retry ownership and FAST rounds between services. Publish raw/value validity/age/status/completion/ever in unused input372..383. GET04 stays independent. Update only Common+Service on VP2 with all other installed chunks byte-identical. Repeat60C with stop50C,30min or high-frequency plateau180s; restore both originals. A3 timestamps represent reply completion, not underlying acquisition.
+
+
+### Dense A3 follow-up 2026-10-12
+Priority automatically only when controller ACTIVE fixed-flow target6000:16,17,16,17 then one rotating background27/28/18/19. Decide next operation at start boundary, never interrupt retries. Leaving60C restores normal six-code queue; no TTL extension. Background samples can expire honestly. Test existing regressions, explicit scheduling/exit and actual ARM composite. Preserve VP2 installed chunks exceptService. Repeat trial with restoration.
+
+
+## 2026-10-12 — prioritize host diagnostic17 after normal refresh
+Use existing bounded diagnostic mailbox rather than a new firmware profile/ABI. Current diag_finish starts normal FAST plus an ordinary service, delaying next queued diagnostic until that extra service ends. Permit a queued diagnostic at service READY only after all eight FAST replies have completed. Keep existing DONE admission, full exclusive A3 retry sequence, max10 attempts,30s job bound,1s quarantine and IDLE-only control gate. No interleaving inside an A3 job, no change to retry timing or native SET traffic. A finite host runner submits diagnostic17 for~3min while both pumps remain in curve, then stops and verifies ordinary services resume. Retained TTL flags remain honest for background services. Common-only composite preserves all installed other chunks/BL2. Before live: host arbitration test, actual ARM composite regression, scoped byte/manifest/layout assertions. Live count new bounded jobs, pending->completion behavior, generations, temperatures and communication counters; do not infer new acquisition merely from repeated cached replies. Expected upper useful cadence~7.3s per17 (~8/min) from measured5.1s A3+2.15sFAST, to be measured rather than promised.
+
+Live qualification found a composition omission: D2's preserved584-byte Dispatcher predates P81 mailbox, so FC04addr600 was rejected beforeanydiagnosticwrite. Correctwiththeexisting672-byte P81 Dispatcher, unchangedsource, as a second dispatcher-only OTA frominstalled86d693a9. All otherchunksremainbyteidentical. Extendcompiledtest throughactualModbusread600/616 andwrite600, includingrejectionatcontroladdress300; directCommonAPItestingalonecouldnotdetectthis.
+
+
+## 2026-10-12 — target-only Service during supervised fixed60
+ReplaceexperimentalpairedServiceprioritywithA3decimal17onlywhenctlstateACTIVE,modefixed-flow,appliedtarget6000. Keepordinarysixcodequeueoutsideconditionandresumeitspositionafterleavingexperiment. EveryoperationretainsfullFASTrefreshbeforeit,exclusive1000msretry,10attemptbound;Common/control/diagnosticgatesunchanged. ComposeonlyServicefromfreshbuildagainstinstalled5fc25d43;verifyallotherchunksbyteidenticalandARMexports/layout. Hosttestscoverselection,repeat17pending/timeout/rearm,exitandcontrolarbitration;actualARMchecksfinalcomposite.
+
+Hostrunnerusesdocumentedcontrol300,180sleasewith60srenewal,peerOFF,verifiednative60C,actual50C/1800s/highplateau180sstopsandfinallyrestoresboth. ReadService378..383coherentlyandonpendingpollsoverModbus;theseareRAMreadsanddonotinterleaveCN105. Highratepollinginsidethemainobservationsprovidesjobgenerationandpending/completiontimingswithoutthreadscompetingforthebus. Primarymonitoringcontinuesatafewseconds. Analyzechangetimeintervalsagainstminutegridandlookforresolvedoff-grid1Hz/2Hzchanges;7secondresolutioncannotexcludeintraframechanges.
+
+
+## 2026-10-12 — four constant measured-delta series
+P0080 scoped candidate: manual v2 flow command/readback/host encoder max6500; leave DHW6000/EFFECT5500. Experimental Service selects17 for ACTIVE fixed-flow or ACTIVE OFF at operation boundary, keeping fullFAST,1s exclusive retries/max10,TTL,cursor and allcontrol arbitration. All other firmware sources untouched. Composite changesMode+Service only from installedVP2 manifest33143fde; preserveVP1c7a0fbcb and BL2/otherchunks. After controlled trials and native restoration, restore prior VP2 modules via addressed OTA and verify ordinary queue.
+
+Host state machine: preflight/save originals; VP1OFF throughout; VP2OFF cooling until fresh~30C, and minimum900s verified compressor-off between series. Four series actual+500/+1000/+1500/+2000cC, from~30C up to firstactual>=4500. Upper requested6500. Retarget only on newfresh supply generation and changed>=50cC, once previous accepted/applied/native readback is verified; preserve original session snapshot. No periodicminute retarget; renewsame command only forlease. Poll coherentA3/17 allphases and normal primary telemetry, record actual native delta, sourceage and everySETtransaction. Do not equate replycadence with underboard acquisition. Directretarget canlower8/min; report actual cadence. NativeOFF<->fixed transitions requireAUTO/IDLE; verify originalcurve then enternew mission, no hidden changes. Pause starts after confirmedHz0/power0. Finite series bound60min; finite cooling bound90min afterminimum15; failure toreach45 or~30 is explicit partial evidence, not a fabricated completedrange. Each state has boundedentry/readback,identity,lease and primary telemetry guards. On any exit restoreboth viafinally. Ordinary DHW priority must be preserved outside explicitly commandedOFF; heatingseries that entersDHW is markedinterrupted, no forceDHWsettings.
+
+Tests: hostcommand bounds6500/6501, unchangedothercaps, directmovingtargets/originalsnapshot/lease/readbackfailure; ServiceOFF/fixedfocus and AUTO/IDLE/EFFECT normal; integratedretargetmidA3 preservingexclusiveattempts and completion/primaryprogress; fullASan/UBSan and finalARM. Hostrunner syntheticfixture tests for fresh-generationtargeting, pendingcommands,45Cstopbeforewrite,minimumOFFpause,30Cstart,timeout/restoration. Livequalification65 only when needed and verified, never bypassnative readback tocontinue.
+# 2026-10-12 — delta-series continuation after native DHW selection
+
+Series1 reached45C; series2 was not started because restoringAUTO after the
+902s cooling pause selected nativeGET26mode1(DHW), even though GET04/flow
+remainedzero. Bothoriginalcurve settings were verifiedrestored. Preserve this
+interruption evidence. Extend only the hostrunner with validated continuation
+from a completed prefix, matching saved originals and verifiedrestoration.
+Do not repeatseries1. NativeDHW is allowed in baseline/waiting only; wait without
+heat commands, then obtain a new900sOFFpause andactual<=30.5C. A priority
+selection beforestage_start defers the stage rather than falsely logging it as
+started. Keep the existing heating-stage boundary unchanged. Limit priority
+waiting and repeated deferrals. Firmware remainsunchanged. Tests must cover
+prefix validation, pendingDHW producing no heat command, and correct remaining
+series dispatch/restoration on error.
+
+
+### Completed sweep and bounded cleanup
+
+Four endpoints reached under existing stop/pause gates. Final native-state
+restoration and prior-profile OTA are distinct verified steps; both completed.
+Normal-service recovery uses individual success generations plus error counters,
+not terminal-job count. Physical results support phase-dependent startup/holds
+and native reductions, not a universal proportional delta law. Frozen integral
+hypotheses failed on later runs. See final changelog and local report; no EFFECT
+algorithm changed. All raw command/evidence chain links retained.
+
+
+Nondecreasing +10 trial (2026-10-12): MonotoneTrial overrides requested_target
+with max(previous accepted target, fresh supply+1000cC). Busy/rejected
+commands cannot advance the accepted floor. Command boundary rejects any
+FIXED decrease; AUTO restoration remains permitted. Stop at actual45C before
+another write; maximum55C. Single-run cooling has no mandatory15min pause.
+Offline runner and boundary fixtures passed. Live oscillation remained:
+three84→70 drops, zero target decreases,27:26 to45C. See monotone trial report.
+
+
+## Two-loop EFFECT follow-up, 2026-10-13
+Replace effect_fast's acceleration-memory controller with a bounded Hz-target controller. RAM-only affine model starts a=135W/Hz,b=-1090W; a represented in0.1W/Hz. Stable independent120s windows update bias10%, capped100W; comparable plateau pairs >=15Hz apart update slope5% only after repeated agreement. Slope70..200W/Hz are engineering bounds; retain prediction at currentHz on slope change. Learn actual A3/16, never desired A3/17. Gate new coherent power generations, fresh Hz/supply/return/flow, stable temperatures/frequency, heating and no heater flags; pause invalid windows, retain learned model across sessions until reboot.
+Outer initial Hz target inverse affine; power-feedback trim at most1Hz per60s only when near requested frequency, no thermal/oscillation limiting. Inner loop uses valid A3/17 (<60s), one decision per new generation plus >=30s cadence, +/-0.5C regular correction, no boost from oneHz fall. Near goal hold applied setpoint instead of chasing measured temperature. Large alternating A3 changes enter120s applied-setpoint hold, temperature priority still active; cooldown avoids permanent freeze. Startup retains existing bounded qualified entry policy.
+Actual40C soft priority: predictive entry near39C, gradual lowering,90s cool dwell before release, no fresh startup boost on release. Preserve native pause/DHW/lease/restore/SET readback. No below-native safety bypass. Model learning frozen when thermal or oscillation limited.
+Add direct EFFECT retarget acceptance during quiescent ACTIVE mission, preserve original snapshot/model and reject ambiguous in-flight changes. Read-only diagnostics308..319 use existing Common->Mode route, no export-layout change. Installed service queue left unchanged to preserve brine and A3 actual; async ages respected.
+Verification: model unit tests with temperature-confounded pairs/duplicate generations/poll invariance; inner target hold, loneHzdrop, pendulum hold, thermal release, retarget/restore; existing control/transport/feedback/session tests updated only for changed regulator behavior. ASan/UBSan host tests, ARM built artifacts through public API, Mode<=12KiB/RAM<=4KiB, OTA composition against pinned manifests, preservation of other chunks. Then serial OTA, both native restoration verification, VP1 only6kW then5kW supervised withVP2OFF and finalboth restore.
+
+Fixed-slot implementation note (2026-10-14): the completed controller initially
+used12784/12288bytes in Mode. Its RAM-only affine model is now linked into the
+underused Service slot and reached through two private veneers immediately after
+Service's ten public veneers. Public exports, addresses and layout ID remain
+unchanged; Mode and Service form one version-coupled update and must be composed
+together. The complete manifest already rejects a mixed or partial image set.
+The first composed build uses Mode11352/12288bytes and Service2728/4096bytes;
+their RAM use is1152/4096 and352/1024bytes respectively.
+
+### Two-loop build qualification follow-up, 2026-10-13
+
+The initial implementation exceeded Mode12KiB by1976bytes. Grouping private
+controller state for a single reset and using bounded32-bit sums/rates removes
+unnecessary code without changing exported ABI, fixed flash/RAM boundaries,
+or native safety handling. Current Mode uses11760/12288bytes. Diagnostic power
+rates use whole-second elapsed time; they are not regulator acceleration inputs.
+Sampler power is bounded to2MW before64-sample32-bit accumulation (far above
+this17kW unit and above the validated telemetry range).
+
+Full composed ARM testing found D1's installed fixed60 Service has only the
+older service set and returns zero for372–383. Therefore D1 requires Mode+Service;
+D2's frequency-focus baseline already has16/17 and needs Mode only. Both resident
+BL2 images, Common, Dispatcher and other modules are byte-preserved. This
+supersedes the preliminary Mode-only-both plan. Layout/export order is unchanged.
+
+Host ASan/UBSan regressions, model numerics, public ARM controller/Service tests,
+and snapshot routing pass. The old acceleration-predictor assertions were
+replaced with explicit frequency-loop tests; native guards, restoration,
+leases, thermal cadence/floor and old-source gates remain tested. Composed ARM
+service replies are injected through exported service APIs at45s cadence.
+
+Live plan: VP2 OFF, VP1 EFFECT6kW15min then5kW15min without AUTO between targets,
+finite180s leases renewed at55s, original native states restored in finally.
+Actual40C remains the higher-priority soft constraint; a brief overshoot does
+not terminate the mission. This test establishes observed behavior, not universal
+stability or an exact plant model.
+
+## Braking integration and dual quarter trial — 2026-10-14
+
+Mode-only replacement, preserve device-specific baselines5903105e/f3ed161c and BL2/Common/Service. Permit fresh-qualified A3 running braking down to supply−1C when far above Hz goal,−0.5C near it. No ordinary negative braking at<=25Hz; release toward supply+0.5C when within3Hz of goal. Reduce demand at most0.5C per60s; bounded upward release0.5C per decision. Thermal40C priority may use−1C floor even at lowHz; native protections remain. Stale sources do not grant negative braking or upward demand. Pause still gets positive restart demand. Two independent regulators execute the same2/4/6/4kW steps at wall-clock15min boundaries; native waits/DHW do not extend quarters. Leases renewed, all readbacks checked, originals captured and restored finally. Tests: host sanitizer regression, focused braking/release/stale/min-Hz tests, composed ARM ABI/readback/thermal checks, slot fit, OTA manifests, then one-hour live evidence.
+
+## Requested45C actual-supply priority — 2026-10-14
+
+User replaces40C actual-supply limit with45C. Requested setpoint ceiling remains55C. Implement one named compile-time actual-temperature policy, deriving the existing anticipation/release offsets from it. Do not combine this threshold change with the separately proposed thermal/Hz redesign; the old latching weakness remains explicitly documented. Preserve historical40C host fixtures under explicit test-only compile definition and add production45C boundary coverage plus actual-image ARM qualification. Build a new offline image; no further hour test was requested in this message.
+
+## 2026-10-14: continuous 45C envelope candidate
+User requests remaining controller improvements. Replace sticky thermal latch with current forecast/actuator constraint; continue Hz law underneath. Upward requests limited to 2C/decision far from Hz goal, 1C intermediate, 0.5C near; reductions remain 0.5C/60s. Ordinary negative delta allowed above20Hz, with earlier brake release below24Hz when target is falling. Thermal priority overrides low-Hz protection. No native safety, ABI, lease, restoration or live device change. Qualify synthetic behavior and composed ARM binaries before any installation.
+
+## 2026-10-14: EFFECT v3 tracking refinement after the autonomous energy trial
+
+The 105-minute pair trial showed that frequent supervisory retargets and the
+local actuator dynamics must be treated separately.  A changed watt target must
+not erase the bounded per-device frequency correction learned during the same
+running session.  Retargeting preserves that correction and the RAM-only affine
+model, resets only reversal classification, and transfers the new watt target
+directly into a new Hz goal.  A planned reversal therefore cannot be mistaken
+for an oscillation caused by the plant.
+
+The inner loop records the A3/17 target present at every verified flow change.
+It does not stack another change in the same direction for one native minute
+while that target is unchanged.  Once A3/17 moves in the requested
+direction, normal cadence resumes; after the response window expires, best
+effort also resumes rather than declaring failure.  This is bounded response
+memory, not an accumulated integral actuator command.
+
+Direct retargeting no longer discards an otherwise qualified model window.  A
+physical change in actual Hz, temperature or water flow breaks that window
+through the model's existing range gates.  Coefficients still require a stable
+120-second window, and slope still requires repeated comparable plateaus; rapid
+supervisory changes therefore do not fabricate learning evidence.
+
+Upward and downward dynamics are distinct.  Upward steps retain the existing
+0.5/1/2 C bounds.  Ordinary reduction is 0.5 C/min near the Hz goal and may be
+1 C/min when more than 10 Hz above it.  A falling native target does not freeze
+that far-above-goal reduction.  The 45 C actual-supply priority may reduce by
+1 C every 30 seconds; it remains a regulating action and never commands OFF.
+Near the goal, at the observed low-frequency boundary, or with stale source
+data, the conservative existing behavior remains.
+
+Diagnostics version 3 retains every existing register.  Phase/reason now
+distinguish tracking, response wait, configured request ceiling, observed
+minimum-output boundary and thermal limiting.  Input315 keeps bits0/1 and adds
+direction/response/minimum/cap/tracking bits.  These reports are advisory plant
+state for the Shelly planner; they do not weaken native guards or convert an
+unreachable request into an abort.
+
+## Pair-energy supervisor 1.4.1
+
+Keep the Shelly supervisor constant-time and array-free. Every 30 seconds it
+derives pair power from remaining cumulative energy, response lag and the
+current/next deadline, then clips that demand to the observed conservative pair
+seeds of +2.0/-1.25 kW per five minutes and
+observed capability. EFFECT target changes dwell at least 120 seconds except
+for a limiter-driven reduction; identical writes remain lease renewals through
+the existing `equal_intent` control path.
+
+Treat EFFECT phase 4 with reason 4 or 15 as measured saturation. Learn a
+per-device temporary cap from actual power, inhibit positive windup, expose
+reachable power and forecast energy error, and keep delivering best effort.
+Invalid or stale samples cannot reopen a cap. Learn VP1/VP2 response gains only
+from fresh stable HOLD observations.
+
+Split every 500 W pair command exactly between two 500 W device requests,
+alternating the extra share unless learned gains identify the more productive
+pump. Integrate both power streams independently and split a trapezoid at the
+exact 900-second boundary. Safe lease expiry and verified native restoration
+remain unchanged. This supervisor change does not alter EFFECT firmware.
+
+A missing RPC or a decoded power age of 60 seconds or more suspends planning
+and retargeting. The interval is accumulated as unknown rather than zero, the
+last limiter phase/reason is retained, and an already accepted pair is renewed
+with exactly the same targets once either write is 55 seconds old. `lastPlan`
+is intentionally left expired so the first subsequent complete fresh pair
+replans immediately. Because integration needs two fresh endpoints, the
+recovery sample closes no invented trapezoid; the next fresh interval resumes
+normal accounting.
+
+This is current+next cumulative-deadline control, not the full four-quarter
+candidate-grid MPC used for offline exploration. Longer-horizon L4 planning
+still selects quarter energy goals; Shelly executes them with scalar state.
+
+## Combined EFFECT module placement — 2026-10-14
+
+Mode exceeded its fixed 12 KiB budget when the final regulator and model were
+linked together. Keep the regulator and public control API in Mode, but build
+`effect_model.c` into Service. Two private, fixed Thumb veneers follow Service's
+ten public exports: `effect_model_op` at `0x08012069` and `effect_model_tick` at
+`0x0801206d`. They do not extend the public export list or change layout ID
+`3833993797`.
+
+The private edge makes Mode and Service an atomic feature pair even though OTA
+transfers them as separate chunks. Compose both over each device's own installed
+baseline, stage both, then commit one manifest. Never deploy only one of them.
+The final pair uses 11,928/12,288 bytes in Mode and 2,728/4,096 in Service.
+BL2, Common, Dispatcher, Drift and both debug chunks remain byte-identical to
+the corresponding installed device baseline.
+
+The final source policy separates freshness from speed. A coherent value with
+age <60 seconds remains usable; only age <15 seconds permits the quick law.
+Older usable data can make at most a conservative 0.5 C/minute positive move.
+The regulator represents minimum output, request cap and stale source directly.
+Actual supply has a 45 C priority envelope independent of the requested-flow
+cap; thermal braking is bounded to 1 C/30 seconds and ordinary braking is
+slower. The demand floor cannot lift a request already within its cap.

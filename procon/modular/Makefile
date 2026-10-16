@@ -6,6 +6,7 @@ all:
 	$(PYTHON) build.py --toolchain $(TOOLCHAIN)
 test: all
 	$(MAKE) -f Makefile.baseline host-test PYTHON=$(PYTHON)
+	$(PYTHON) tests/test_energy_planner.py
 	$(PYTHON) build.py --toolchain $(TOOLCHAIN) --out build-next --change-slot service --revision 2 --probe-slot service
 	clang -shared -fPIC -std=c11 -Wall -Wextra -Werror -Ifirmware/include -Ibuild firmware/src/ota.c tests/ota_backend.c -o build/ota-test.dylib
 	$(PYTHON) tests/test_ota.py
@@ -27,3 +28,16 @@ bl2-v2-test: bl2-v2
 	P80_OTA_LIB=build-bl2-v2/ota-test.dylib P80_OTA_OLD=build-bl2-v2 P80_OTA_NEW=build-bl2-v2-next $(PYTHON) tests/test_sender.py
 	$(PYTHON) tests/test_snapshot_arm.py build-bl2-v2
 	$(PYTHON) tests/test_flash_ram_arm.py build-bl2-v2/bl2.elf
+
+# VP1 source-aware EFFECT; retain the installed P81 header revisions.
+.PHONY: effect-source
+effect-source:
+	$(PYTHON) build.py --toolchain $(TOOLCHAIN) --out build-effect-source --revision 2 --change-slot common,dispatcher,mode,drift,service
+
+.PHONY: effect-adaptive
+effect-adaptive:
+	$(PYTHON) build.py --toolchain $(TOOLCHAIN) --out build-effect-adaptive --revision 2 --change-slot common,dispatcher,mode,drift,service
+
+.PHONY: effect-two-loop
+effect-two-loop:
+	$(PYTHON) build.py --toolchain $(TOOLCHAIN) --out build-effect-two-loop-production --revision 2 --change-slot common,dispatcher,mode,drift,service

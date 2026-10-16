@@ -1,5 +1,6 @@
 /* P0072. Signed little-endian interpretation is reference-backed, provisional. */
 #include "service.h"
+#include "control.h"
 #define AGE_MAX 65535000u
 #define RETRY_MS 1000u
 #define MAX_ATTEMPTS 10u
@@ -10,10 +11,10 @@ typedef struct {
     uint16_t raw, status, completions;
     uint32_t age;
 } sample;
-static const uint8_t codes[]={27,28,18,19};
+static const uint8_t codes[]={27,28,18,19,16,17};
 #define SERVICE_COUNT (sizeof codes/sizeof codes[0])
 static sample samples[SERVICE_COUNT];
-static uint8_t next_index;
+static uint8_t next_index, focused;
 static uint8_t state, index, attempts, wire_payload[16], had_request;
 static uint16_t last_status, accepted, failures, exhausted, seen, gap_ms, cycles;
 static uint32_t request_at, previous_request;
@@ -27,10 +28,22 @@ void svc_init(void) {
     }
     for(unsigned i=0;i<16;++i)wire_payload[i]=0;
     state=IDLE; next_index=index=attempts=had_request=0;
+    focused=0;
     last_status=65535;accepted=failures=exhausted=seen=gap_ms=cycles=0;
     request_at=previous_request=0;
 }
-void svc_start_cycle(void) {state=READY;index=next_index;attempts=0;}
+void svc_start_cycle(void) {
+    /* P0080: target-frequency focus during supervised fixed-flow/OFF missions.
+       Selection occurs between operations; retry ownership is unchanged.
+       Background records retain their normal TTL while sampling is paused. */
+#ifdef PROCON_DELTA_SWEEP
+    focused=ctl_read(256)==4 && (ctl_read(263)==0 || ctl_read(263)==2);
+#else
+    focused=ctl_read(256)==4 && ctl_read(263)==2 && ctl_read(275)==6000;
+#endif
+    index=focused?5:next_index;
+    state=READY;attempts=0;
+}
 void svc_link(int up, uint32_t t) {
     (void)t;
     if(up) svc_start_cycle();
@@ -62,7 +75,7 @@ void svc_sent(uint32_t t) {
 static void advance(uint32_t t) {
     (void)t;
     attempts=0;
-    next_index=(uint8_t)((index+1u)%SERVICE_COUNT);
+    if(!focused)next_index=(uint8_t)((index+1u)%SERVICE_COUNT);
     state=DONE;++cycles;
 }
 static void retry(uint32_t t) {
@@ -87,6 +100,18 @@ int svc_reply(const uint8_t p[16], uint32_t t, int owned) {
 void svc_timeout(uint32_t t) {++failures;if(state==WAIT_REPLY)retry(t);}
 void svc_bad_frame(void) {++failures;}
 uint16_t svc_read(unsigned a) {
+    /* P0080: separate A3 actual/target frequency replies; raw units retained. */
+    if(a>=372 && a<384) {
+        sample *s=&samples[4+(a-372)/6];
+        switch((a-372)%6) {
+        case 0:return s->ever?s->raw:65535;
+        case 1:return s->valid;
+        case 2:return s->ever?(uint16_t)(s->age/1000u):65535;
+        case 3:return s->status;
+        case 4:return s->completions;
+        default:return s->ever;
+        }
+    }
     /* P0080: OCH722A18/19 candidates, outside identity72..86. */
     if(a>=87 && a<99) {
         sample *s=&samples[2+(a-87)/6];

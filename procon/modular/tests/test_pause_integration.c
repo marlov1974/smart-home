@@ -71,13 +71,12 @@ int main(void){
     until(605000);assert(ctl_read(256)==4 && sets==1 && ctl_read(321)==EFFECT_WAIT_NATIVE && !ctl_read(346));
     cmd[1]=2;assert(!ctl_submit(cmd,now));
     operating=2;hz=30;litres=20;
-    until(665000);assert(sets==1); /* Fresh60s plus the adjustment interval. */
-    until(725000);assert(sets==1);
-    until(735000);assert(sets==2 && native_target==3050 && ctl_read(344)==100 && !ctl_read(346));
+    until(620000);assert(sets==2 && native_target==3800); /* First coherent pair starts bounded demand. */
+    until(735000);assert(sets==2 && native_target==3800 && ctl_read(344)==850 && !ctl_read(346));
     operating=0;hz=0;litres=0;until(740000);
-    until(1340000);assert(sets==2 && ctl_read(256)==4 && ctl_read(344)==100 && !ctl_read(346));
+    until(1340000);assert(sets==2 && ctl_read(256)==4 && ctl_read(344)==850 && !ctl_read(346));
     uint16_t stop[8]={0xc072,3,1,0,0,0,0,2};assert(!ctl_submit(stop,now));until(1350000);
     assert(ctl_read(256)==0 && native_mode==2 && native_target==2950 && ctl_read(267)==1);
-    puts("PASS P0076 r2 integrated sampler/control: two10min pauses, zero flow, fresh restart, no prestart raises, budgets retained, AUTO restored");
+    puts("PASS P0076 r2 integrated sampler/control: two10min pauses, zero flow, fresh restart, no prestart raises, prompt bounded restart, persistent low-cap hold, AUTO restored");
     same_ms_transition();
 }

@@ -23,9 +23,9 @@ static unsigned drain(uint8_t *b) {unsigned n=0;while(cn_tx_byte(b+n)){cn_tx_sen
  *4 wrong echo,5 terminal status6,6 no replies at all,7 delayed late A3. */
 static void simulation(unsigned mode,uint32_t base,unsigned duration) {
     cn_init();uint8_t tx[22],rx[22],late[22];unsigned rxlen=0,late_len=0;
-    uint32_t due=0,late_due=0,last_service[4]={0};
-    unsigned count[4]={0},normals=0,connected=0,phase=4,phase_attempts=0,fast=0,next=27;
-    const unsigned codes[]={27,28,18,19};
+    uint32_t due=0,late_due=0,last_service[6]={0};
+    unsigned count[6]={0},normals=0,connected=0,phase=4,phase_attempts=0,fast=0,next=27;
+    const unsigned codes[]={27,28,18,19,16,17};
     for(unsigned step=0;step<duration;++step) {
         uint32_t t=base+step;cn_tick(t);
         if(rxlen && (int32_t)(t-due)>=0){feed(rx,rxlen,t);rxlen=0;}
@@ -43,9 +43,9 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
                     if(++fast==8){fast=0;phase=next;phase_attempts=0;}
                     response(rx,tx[5],0,0,20+(int)(normals%30));rxlen=22;
                 } else {
-                    assert(tx[5]==0xa3 && tx[6]==0 && (tx[7]==27 || tx[7]==28 || tx[7]==18 || tx[7]==19));
+                    assert(tx[5]==0xa3 && tx[6]==0 && (tx[7]==27 || tx[7]==28 || tx[7]==18 || tx[7]==19 || tx[7]==16 || tx[7]==17));
                     for(unsigned i=8;i<21;++i)assert(tx[i]==0);
-                    unsigned idx=0;while(idx<4 && codes[idx]!=tx[7])++idx;assert(idx<4);assert(tx[21]==(uint8_t)(0x8f-tx[7]));
+                    unsigned idx=0;while(idx<6 && codes[idx]!=tx[7])++idx;assert(idx<6);assert(tx[21]==(uint8_t)(0x8f-tx[7]));
                     assert(tx[7]==phase);++phase_attempts;assert(phase_attempts<=10);
                     if(phase_attempts>1)assert(t-last_service[idx]>=1000u);
                     last_service[idx]=t;++count[idx];
@@ -57,7 +57,7 @@ static void simulation(unsigned mode,uint32_t base,unsigned duration) {
                     if(mode==4){rx[7]=(uint8_t)(idx?27:28);seal(rx,22);}
                     if(mode==7){memcpy(late,rx,22);late_len=22;late_due=t+900;rxlen=0;}
                     if((mode==0 && status) || mode==5 || phase_attempts==10) {
-                        next=codes[(idx+1)%4];phase=4;phase_attempts=0;
+                        next=codes[(idx+1)%6];phase=4;phase_attempts=0;
                     }
                 }
             }
@@ -109,6 +109,22 @@ static void service_units(void) {
     svc_sent(600);p[2]=28;assert(!svc_reply(p,650,1) && svc_read(32)==2);
     assert(!svc_reply(p,650,0));
 }
+static void frequency_services(void) {
+    uint8_t p[16]={0xa3,0,0,2,0,0},code;
+    svc_init();svc_link(1,0);
+    assert(cn_read(372)==65535 && cn_read(377)==0);
+    for(unsigned i=0;i<6;++i) {
+        if(i)svc_start_cycle();
+        assert(svc_due(i*1000,&code));svc_sent(i*1000);
+        p[2]=code;p[4]=code==16?0:0x34;p[5]=code==17?0x12:0;
+        assert(svc_reply(p,i*1000+10,1));
+    }
+    assert(cn_read(372)==0 && cn_read(373)==1 && cn_read(375)==2 && cn_read(376)==1 && cn_read(377)==1);
+    assert(cn_read(378)==0x1234 && cn_read(379)==1 && cn_read(382)==1);
+    svc_tick(60000,65010);
+    assert(cn_read(372)==0 && cn_read(373)==0 && cn_read(374)==60 && cn_read(376)==1);
+    assert(cn_read(378)==0x1234 && cn_read(379)==0);
+}
 static void parser_units(void) {
     uint8_t b[22],tx[22];cn_init();cn_tick(1000);assert(drain(tx)==8);feed(ack,7,1050);
     cn_tick(1100);assert(drain(tx)==22 && tx[5]==4);
@@ -139,6 +155,7 @@ static void parser_units(void) {
 /* P0080: real scheduler/sampler/control; prior entry failed at Hz age10000ms. */
 static void effect_wire(unsigned delay,unsigned attempts,unsigned offset,unsigned fault){
  unsigned trouble=fault>4?fault-4:fault;
+ unsigned fault_until=fault<=4?145000:100000,unsafe_writes=0,held=0;
  unsigned char tx[22],rx[22];unsigned len=0,due=0,svc=0,mode=2,target=3050,submitted=0,active_at=0,auto_sent=0,refreshed=0;
  cn_init();
  for(unsigned t=0;t<180000;t++){
@@ -148,7 +165,10 @@ static void effect_wire(unsigned delay,unsigned attempts,unsigned offset,unsigne
   if(!submitted && t>35000+offset && f->ready){unsigned short w[8]={0xc076,1,5,6000,(uint16_t)(fault && fault<=4?3800:5500),300,1,3};if(!cn_command(w))submitted=t;}
   unsigned st=ctl_read(256);
   if(st==4 && ctl_read(258)==1 && !active_at)active_at=t;
-  if((!fault || fault>4) && active_at && t>150000 && st==4 && !auto_sent){
+  if(fault && active_at && t==140000 && fault<=4){
+   assert(st==4 && !ctl_read(260) && ctl_read(261));held=1;
+  }
+  if(active_at && t>150000 && st==4 && !auto_sent){
    assert(ctl_read(343)>0);
    uint16_t w[8]={0xc072,2,1,0,0,0,0,2};if(!cn_command(w))auto_sent=1;
   }
@@ -157,29 +177,109 @@ static void effect_wire(unsigned delay,unsigned attempts,unsigned offset,unsigne
    assert(!len);if(submitted && !active_at && tx[5]==4)++refreshed;
    memset(rx,0,22);rx[0]=252;rx[1]=0x62;rx[2]=2;rx[3]=0x7a;rx[4]=16;rx[5]=tx[5];len=22;
    if(tx[1]==0x5a){rx[1]=0x7a;rx[4]=1;rx[5]=0;len=7;}
-   else if(tx[1]==0x41){if(tx[6]&8)mode=tx[11];if(tx[6]&0x80)target=tx[15]*256+tx[16];rx[1]=0x61;rx[4]=1;rx[5]=0;len=7;assert(target<=5500);}
+   else if(tx[1]==0x41){if(fault && t>=120000 && t<140000 && fault<=4)++unsafe_writes;if(tx[6]&8)mode=tx[11];if(tx[6]&0x80)target=tx[15]*256+tx[16];rx[1]=0x61;rx[4]=1;rx[5]=0;len=7;assert(target<=(fault && fault<=4?3800:5500));}
    else switch(tx[5]){
     case 4:rx[6]=28;break;
     case 0x0c:rx[6]=0x0b;rx[7]=0x86;rx[9]=0x0a;rx[10]=0x8c;rx[12]=0x14;rx[13]=0x50;break;
-    case 0x14:rx[17]=(trouble==3 && active_at && (fault<=4 || t<100000))?0:19;break;
-    case 0x26:rx[8]=1;rx[9]=(trouble==2 && active_at && (fault<=4 || t<100000))?1:2;rx[11]=mode;rx[13]=0x14;rx[14]=0x50;break;
+    case 0x14:rx[17]=(trouble==3 && active_at && t<fault_until)?0:19;break;
+    case 0x26:rx[8]=1;rx[9]=(trouble==2 && active_at && t<fault_until)?1:2;rx[11]=mode;rx[13]=0x14;rx[14]=0x50;break;
     case 9:rx[10]=target>>8;rx[11]=target;break;
     case 0xa3:rx[7]=tx[7];rx[8]=++svc%attempts?0:1;rx[9]=4;break;
    }
    seal(rx,len);due=t+delay;
-   if(active_at && (fault<=4 || t<100000) && (trouble==4 || (trouble==1 && tx[5]==4)))len=0;
+   if(active_at && t<fault_until && (trouble==4 || (trouble==1 && tx[5]==4)))len=0;
   }
   if(active_at && st==0)break;
  }
  assert(submitted && active_at && refreshed);
- if(!fault || fault>4)fprintf(stderr,"wire auto%u state%u applied%u err%u reason%u target%u\n",auto_sent,ctl_read(256),ctl_read(258),ctl_read(260),ctl_read(322),target);
- if(!fault || fault>4)assert(auto_sent && ctl_read(256)==0 && ctl_read(258)==2 && !ctl_read(260));
- else assert(ctl_read(256)!=4 && ctl_read(260));
- if(fault!=4)assert(mode==2 && target==3050 && ctl_read(267)==1);
+ assert(auto_sent && ctl_read(256)==0 && ctl_read(258)==2 && !ctl_read(260));
+ if(fault && fault<=4)assert(held && !unsafe_writes);
+ assert(mode==2 && target==3050 && ctl_read(267)==1);
  printf("PASS EFFECT wire delay%u attempts%u offset%u fault%u state%u reason%u\n",delay,attempts,offset,fault,ctl_read(256),ctl_read(322));
 }
+/* Real control admission/restore and arbiter: focus cannot trade temperature
+   freshness or exclusive retries for more target-frequency observations. */
+#ifdef PROCON_DELTA_SWEEP
+static void delta_focus_wire(unsigned intent){
+ uint8_t tx[22],rx[22];unsigned len=0,due=0,mode=2,target=3050,submitted=0,auto_sent=0;
+ unsigned active=0,owned=0,attempts=0,focused=0,focus_jobs=0,last_focus=0,normal_count=0;
+ unsigned power=1,retarget_sent=0,retarget_done=0,sets=0;
+ unsigned resumed=0,restored=0,last_request=0,last_code=0;
+ const unsigned normal_codes[]={27,28,18,19,16,17};
+ cn_init();
+ for(unsigned t=0;t<180000;t++){
+  cn_tick(t);
+  if(len && t>=due){
+   feed(rx,len,t);
+   if(rx[5]==0xa3 && rx[8]==2){
+    assert(owned);owned=0;
+    if(focused)focus_jobs++;
+    if(restored){
+     unsigned i=0;while(i<6 && normal_codes[i]!=rx[7])i++;assert(i<6);
+     if(resumed)assert(rx[7]==normal_codes[(last_code+1)%6]);
+     last_code=i;resumed++;
+    }
+   }
+   len=0;
+  }
+  if(!submitted && t>30000){uint16_t w[8]={0xc072,1,(uint16_t)intent,(uint16_t)(intent?3500:0),0,180,(uint16_t)(intent?1:0),2};assert(!cn_command(w));submitted=1;}
+  if(ctl_read(256)==4 && ctl_read(258)==1)active=1;
+  if(intent==2 && focus_jobs==3 && owned==17 && attempts==2 && !retarget_sent){
+   uint16_t w[8]={0xc072,2,2,6500,0,180,1,2};assert(!cn_command(w));retarget_sent=1;
+  }
+  if(retarget_sent && ctl_read(256)==4 && ctl_read(258)==2){
+   retarget_done=1;assert(target==6500 && mode==1 && ctl_read(269)==2 && ctl_read(270)==3050);
+  }
+  if(active && focus_jobs>=8 && !auto_sent){uint16_t w[8]={0xc072,(uint16_t)(intent?3:2),1,0,0,0,0,2};assert(!cn_command(w));auto_sent=1;}
+  if(auto_sent && ctl_read(256)==0)restored=1;
+  unsigned n=drain(tx);
+  if(n){
+   assert(!len);memset(rx,0,22);rx[0]=252;rx[1]=0x62;rx[2]=2;rx[3]=0x7a;rx[4]=16;rx[5]=tx[5];len=22;
+   unsigned owner=cn_read(39);
+   if(tx[1]==0x5a){memcpy(rx,ack,7);len=7;}
+   else if(tx[1]==0x41){
+    assert(!owned && owner==4);sets++;
+    if(tx[6]&1)power=tx[8];if(tx[6]&8)mode=tx[11];if(tx[6]&0x80)target=tx[15]*256+tx[16];
+    rx[1]=0x61;rx[4]=1;rx[5]=0;len=7;
+   }else{
+    assert(tx[1]==0x42);
+    if(owner==2){assert(!owned && tx[5]==fast_codes[normal_count%8]);normal_count++;}
+    if(owner==4)assert(!owned);
+    switch(tx[5]){
+     case 4:rx[6]=28;break;
+     case 0x0c:rx[6]=0x0b;rx[7]=0x86;rx[9]=0x0a;rx[10]=0x8c;rx[12]=0x14;rx[13]=0x50;break;
+     case 0x14:rx[17]=19;break;
+     case 0x26:rx[8]=power;rx[9]=2;rx[11]=mode;rx[13]=0x14;rx[14]=0x50;break;
+     case 9:rx[10]=target>>8;rx[11]=target;break;
+     case 0xa3:
+      assert(owner==3);
+      if(!owned){
+       focused=ctl_read(256)==4 && (ctl_read(263)==0 || ctl_read(263)==2);
+       if(focused){assert(tx[7]==17);if(last_focus && !auto_sent)assert(normal_count>=8 && normal_count%8==0);}
+       assert(normal_count>=8);normal_count=0;owned=tx[7];attempts=0;last_focus=focused;
+      }else assert(tx[7]==owned && normal_count==0 && t-last_request==1000);
+      last_request=t;attempts++;assert(attempts<=6);
+      rx[7]=tx[7];rx[8]=attempts==6?2:0;rx[9]=42;
+      break;
+    }
+   }
+   seal(rx,len);due=t+220;
+  }
+  if(restored && resumed>=6)break;
+ }
+ assert(active && focus_jobs==8 && auto_sent && restored && resumed==6);
+ assert(mode==2 && target==3050 && power==1 && ctl_read(256)==0 && !ctl_read(260) && !ctl_read(261));
+ assert(intent==2?(retarget_done && sets==5):(sets==2));
+ printf("PASS real delta focus intent%u: eight17 jobs, six exclusive attempts, full FAST, retarget%u, AUTO and ordinary queue\n",intent,retarget_done);
+}
 
+#endif
 int main(void) {
+    #ifdef PROCON_DELTA_SWEEP
+    delta_focus_wire(2);
+    delta_focus_wire(0);
+    #endif
+    frequency_services();
     service_units();parser_units();
     effect_wire(220,6,0,0);effect_wire(220,6,333,0);effect_wire(220,6,777,0);
     effect_wire(500,3,0,0);

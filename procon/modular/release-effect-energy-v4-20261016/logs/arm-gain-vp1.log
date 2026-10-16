@@ -1,0 +1,7 @@
+PASS actual ARM pump A3: four codes, level/RPM diagnostics, derived running and link-loss invalidation
+PASS actual ARM direct targets: FLOW-only replacements, pending BUSY, original snapshot and AUTO restoration
+SKIP private ARM helper probes: optimized image has no stable private ABI; running public controller qualification instead
+Thermal qualification policy: 4500
+PASS actual ARM public EFFECT: atomic entry/readback, hot1C/30s taper and bounded negative margin, no pump-off, bounded cooling release, independent aged-source best effort and exact AUTO restoration
+PASS actual ELF: all veneers, module initialization, P76 identity, native handoff gates, corrupt-slot rejection
+PASS actual ARM gain seed: resident/Dispatcher route, exact UID, busy gate, one-per-boot retry lock and reboot fallback

@@ -13,7 +13,7 @@ Only Modbus FC16 at zero-based holding offset300,count8,bytecount16 (25byte RTU 
 |0|0xC072 magic|
 |1|Sequence1–65535; first1 afterboot, thereafter exact next,65535→1|
 |2|0 OFF;1 AUTO/restore saved session;2 FIXED_FLOW;3 DHW boost;4 TARGETS only|
-|3|Flow target centidegrees20–45C if flag1,otherwise0|
+|3|Flow target centidegrees20–60C if flag1,otherwise0|
 |4|DHW target centidegrees40–60C if flag2,otherwise0|
 |5|Lease30–1800seconds;AUTO requires0|
 |6|Flags bit0 flow,bit1 DHW; others rejected|
@@ -97,3 +97,177 @@ GET28 is now the eighth FAST query:04/0C/14/0B/09/15/26/28, followed by the comp
 |297/298|First rejected byte offset/value;0 when no GET28 flag rejection|
 
 Relevant-mask bits4 and10 are always selected; bit6 for flow/heating, bit5 for DHW. Blocking-mask can also contain irrelevant bits when their encoding exceeds1. Masks/rejection persist through passive polling, so they may refer to an older command than the raw bytes; next accepted new session clears them before its snapshot. Invalid boost/range or timeout failures still use error260 and can have zero GET28 mask. Raw payload may be stale or never received: consult283/284. Passive reads permit diagnosis without submitting a control command. Helper `read_mvp.py` accepts r1/r2/r3, preserves `control_words_256_282`, and adds `controller_diagnostics` for r3.
+
+## P0080 two-loop EFFECT — 2026-10-13
+
+Input308–319 is a new diagnostic block (raw zero-based addresses):
+
+| Address | Meaning | Unit |
+|---|---|---|
+|308|Two-loop diagnostic version|4|
+|309|Current compressor-frequency goal|Hz ×100|
+|310|Adaptive slope `a`|W/Hz ×10|
+|311–312|Adaptive offset `b`, signed32, high word first|W|
+|313|Accepted offset-learning windows|wrapping uint16 count|
+|314|Accepted slope updates|wrapping uint16 count|
+|315|bit0 thermal limit; bit1 oscillation hold; bit2 ramp up; bit3 ramp down; bit4 waiting for native response; bit5 observed minimum output; bit6 requested-temperature ceiling; bit7 tracking|bits|
+|316|Remaining oscillation hold|seconds|
+|317|Retained A3/16 raw actual frequency|Hz; quality is mirrored at300–303|
+|318|Retained A3/17 raw desired frequency|Hz; quality is mirrored at304–307|
+|319|Power-error frequency trim, signed16|Hz ×100|
+
+The outer model starts with `P_W=135*Hz-1090`, independently on each device.
+This is an empirical initialization, not a calibrated universal conversion.
+The inner controller uses A3/17, while learning uses A3/16. GET04 remains a
+separate freshness/running check. Reads are not an atomic snapshot; retain
+A3 validity, age and generation when interpreting317/318.
+
+A new EFFECT packet with a different watt target can replace an ACTIVE,
+fully applied EFFECT mission directly. It preserves the first native snapshot
+and learned model, changes the frequency goal, preserves the bounded per-device
+trim, and renews the finite lease.  Retargeting alone does not break a model
+window: any resulting change in actual frequency, water temperature or flow is
+rejected by the existing physical-stability gates.  A qualified coefficient
+window still needs120 seconds of stable observations.  An in-flight transaction
+remains BUSY for changed intent;
+identical-intent renewal retains its existing behavior. AUTO still restores
+the original native settings. Model coefficients survive mission boundaries
+in RAM. Version 4 can explicitly seed gain after reboot; offset, trim and the
+seed itself still reset on reboot. Firmware writes none of them to flash/EEPROM.
+
+Input300–303 contains A3/16 validity, age(seconds), completion generation and
+ever-seen. Input304–307 contains the same fields for A3/17. These FC04 input
+registers are separate from the FC16 command at holding300–307. They route
+through Mode even when an older Common does not route372–383 to Service.
+Use these mirrors with317/318 on both devices. Input350 keeps its original
+nonpersistent-recovery flag1; only308 is the two-loop version field.
+
+Version3 adds reversible capability states without changing the command or
+diagnostic addresses.  Phase4 (`LIMITED`) with reason4 means the actual-supply
+envelope currently has priority; reason16 means the requested-temperature cap
+is reached while more compressor frequency is requested; reason17 means the
+observed low-frequency boundary still overproduces.  Phase2 (`CAPTURE`) with
+reason15 is the bounded native-response wait, and reason18 means source samples
+are too old to authorize an increase.  These are current observations, not
+latched aborts.  A later fresh sample with headroom returns to tracking.  While
+thermally or request-cap limited, positive frequency trim is frozen so an
+unreachable power request cannot wind the learned goal upward.  Invalid A3/17
+status clears direction/tracking bits instead of presenting zero Hz as a real
+actuator state.
+
+The v3 inner loop binds each verified flow-temperature change to the current
+A3/17 target and waits up to one native minute before stacking another change
+in the same direction when that target has not moved.  Far above the goal,
+downward authority is1C per60 seconds; near it,0.5C per60 seconds.  Thermal
+priority may reduce1C per30 seconds.  A supervisor-requested reversal clears
+the oscillation candidate, while same-direction response memory is retained.
+None of these paths commands OFF or changes lease, restoration or native-safety
+handling.
+
+
+Two-loop production refinement (2026-10-13): initial demand is supply plus
+10/5/3/2C according to distance to the inverse-model Hz goal. At the goal,
+excess delta above2C tapers by0.5C per qualified decision, unless native target
+is falling. Transient asynchronous power/skew readings are skipped for model
+learning rather than erasing a valid plateau. Only fresh coherent samples
+contribute; genuine invalid/link states and60s gaps still interrupt learning.
+This does not establish that arbitrary power downsteps can avoid native stops.
+
+### Slow-approach refinement — 2026-10-13
+
+When more than3Hz below the model goal, slow native progress does not repeatedly reduce gas. A fresh independent A3/17 target unchanged for90s permits a0.5C increment, with another full observation interval before repeating. Thermal limiting, oscillation hold and stale raw telemetry inhibit increases. The positive supply+0.5C floor remains: the final physical6→5kW trial exposed insufficient downward authority near zero temperature delta. This is a known control limitation, not a qualified5kW tracking result. See the P0080 dated two-loop report.
+
+### Qualified braking update — 2026-10-14
+
+Supersedes the preceding positive-floor limitation: fresh water and independent A3/17 permit actual−1C above the Hz goal by more than6Hz, actual−0.5C above by more than3Hz. Near goal or at/below25Hz ordinary braking releases in bounded0.5C increases toward actual+0.5C. Native declining Hz suppresses further ordinary cuts. Every decrease is limited to0.5C and spaced at least60s from the last verified adjustment. Thermal priority may brake to actual−1C independently of the power goal. Invalid/stale source data cannot authorize this negative ordinary envelope. The supported requested-temperature lower bound is20C instead of the old artificial30C running floor. Native pause/restart and restoration remain unchanged. These limits reduce observed pause risk; they do not promise uninterrupted minimum-output operation.
+
+### Requested45C policy — offline candidate2026-10-14
+
+Default actual-supply priority is now45C in source (`EFFECT_SUPPLY_LIMIT_CC`), requested ceiling remains55C. Existing thermal approach and release thresholds derive from this policy (44C approach,43C release with43.5C forecast). This threshold-only candidate does not fix the known thermal-latch inhibition of power corrections. Installed units remain0f48da4e/a5a6dc0c with40C policy until a subsequent OTA. Native safeties unchanged;45C is a regulation goal, not a new emergency-off threshold.
+
+## 2026-10-14: continuous envelope / faster upward response (installed)
+Actual supply regulation priority is45C, requested-flow ceiling55C. The current thermal forecast and actuator ceiling replace the90s cooling latch; no cooling-to43C prerequisite remains. The Hz controller continues underneath the thermal envelope, including negative power correction. Positive goal trim is inhibited when constrained; negative correction is allowed. Temperature priority still overrides the power goal and does not commandOFF.
+
+After independent fresh A3/17 feedback, upward slew is at most2C/decision when more than10Hz short,1C when more than6Hz short, otherwise0.5C. Decisions remain at least30s apart; this is a ceiling, not a compulsory boost. Initial demand selection and unchanged-target90s nudge remain. Downward slew remains0.5C per60s. Ordinary braking can reach actual-0.5C/-1C above20Hz; it releases at20Hz or early below24Hz when the observed target is falling. This replaces the fixed25Hz guard.20Hz is an observed operating point, not a universal minimum guarantee.
+
+ABI,12KiB Mode slot, leases, restoration, telemetry freshness and native protections are unchanged. Only Mode was included in device-specific OTA compositions. VP1 manifest is `9580f1d1`; VP2 is `3f6ef793`.
+
+The supervised90-minute 2/4/6/4/2/6kW-per-pump trial completed with verified restoration. Maximum sampled actual supply was43C, maximum request47.5C, and no thermal-limited sample occurred. Six-to-four and four-to-two down-ramps remained slow and unequal; the final low-to-six transition gained only about0.6–0.8kW per pump in five minutes. Two kW was below the observed stable continuous range. Treat ramps as delayed steps and integrate measured pair energy. Full findings are in `requirements/package-runs/P0080/dual-six-quarters-report-2026-10-14.md`.
+
+## Combined EFFECT/energy v2 offline API — 2026-10-14
+
+The command envelope is unchanged: holding 300--307 carries the version-3
+EFFECT request and input 300 onward reports controller diagnostics. The final
+candidate keeps the public register/layout ABI, but its private implementation
+spans Mode and Service. Those chunks must be updated together; neither mixed
+version is supported.
+
+Input 308 reports diagnostic version 4. Input 315 retains the existing bits and
+reports response wait, minimum output, request cap and tracking. Input 321/322
+reports phase/reason, including temperature cap, request cap, minimum output and
+stale source. Input 325--336 retains signed 32-bit power/error plus quality,
+readiness, pair count and age. Shelly 1.4.1 reads 321--336 in one FC04 request;
+the returned words are one non-atomic diagnostic snapshot and remain subject to
+their validity/age fields.
+
+Telemetry age <60 seconds is usable by EFFECT. Only <15 seconds authorizes its
+quick response; 15--59 seconds yields conservative best effort. The actual
+supply priority is 45 C and the independent requested-flow cap remains at most
+55 C. Thermal braking is bounded to 1 C/30 s; ordinary reduction is slower.
+Reaching a limiter is reported and regulation continues best effort rather than
+aborting the mission.
+
+The Shelly 1.4.1 energy executor preserves the existing 180-second lease and
+version-3 command. Normal target changes dwell 120 seconds; an active limiter
+may lower a target immediately. Missing/stale pair feedback causes no target
+change: the exact last target is renewed after 55 seconds, its interval is
+reported unknown, and a fresh complete pair triggers immediate replanning. It
+uses current+next cumulative deadlines, not a full four-quarter MPC.
+
+These semantics are source/host/ARM qualified only. The combined firmware and
+Shelly 1.4.1 have not been installed or physically qualified.
+
+## Version 4 RAM-only gain export/import
+
+Version 4 adds a second, mutually exclusive envelope at the existing atomic
+FC16 holding offset 300, count 8 and byte count 16. It imports only the
+long-term model gain `a`; the heating envelopes above are unchanged.
+
+|Word|Gain-seed value|
+|---:|---|
+|0|`0xC077`: schema/operation magic for gain import|
+|1|Gain `a`, 700--2000 W/Hz x10|
+|2--7|Exact factory UID input words 78--83, in that order|
+
+The complete 96-bit factory UID is carried without hashing or truncation. This
+catches a seed addressed to the wrong commissioned Procon; it is not an
+authentication mechanism. Modbus unit address, factory-identity validity and
+RTU CRC retain their existing checks.
+
+Only the first valid seed is accepted during a boot. An exact repeat of that
+same packet is idempotent even while the bus is temporarily busy. Another gain
+or a UID mismatch returns exception 3 and cannot replace the accepted seed
+until reboot. A valid first seed outside the quiescent gate returns exception
+6. There is deliberately no wire sequence: a KVS generation/sequence is host
+metadata and is never trusted by this firmware boundary.
+
+The quiescent gate is the existing `maintenance_ready()` boundary: controller
+IDLE with no saved session, no active CN105/control/diagnostic owner, a current
+link, recent GET26/GET28, native curve mode 2, and no active holiday/server,
+zone-1 heating or DHW prohibition. It does not send a CN105 command. Acceptance
+changes gain only and discards any partial learning window. It preserves the
+current RAM offset, offset/slope counters and EFFECT trim.
+
+Read input 310 to export the current gain and input 346 for the seed-accepted
+flag (0/1). Input 308 is 4 when this contract exists. Inputs 311--314 and 319
+remain offset/counters/trim and allow the host to verify that a seed did not
+import them. On reset input 310 is the deterministic fallback 1350, input 346
+is 0, offset is -1090 W and trim is 0. Inputs 350/351 continue to advertise
+unknown reboot recovery/no persistent recovery. There are no EEPROM,
+option-byte or application-flash writes in this path.
+
+The intended host flow is: read and verify UID 78--83; wait for
+`maintenance_ready`/IDLE; read 308/310/346; retrieve a UID-keyed, validated
+gain from external storage; send one C077 envelope; then read back 310 and 346.
+Qualification and write-rate policy belong to the host. This firmware change
+does not add Shelly KVS persistence by itself.

@@ -1,0 +1,8 @@
+{
+  "key": "vp.energy.plan",
+  "value": "v=1|rev=1792128400|start=1792127700|q0=1500|q1=1500|q2=1500|q3=1500",
+  "readback_verified": true,
+  "previous": {
+    "present": false
+  }
+}

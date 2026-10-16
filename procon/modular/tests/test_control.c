@@ -75,6 +75,15 @@ static void direct_targets(void){
  until(4,200);assert(flow==3200 && mode==1 && sets==before+1 && mode_sets==1 && power_sets==0);
  assert(ctl_read(258)==2 && ctl_read(269)==2 && ctl_read(270)==2950);
  assert(!ctl_submit(next,time_ms));until(4,200);assert(flow==3400 && mode_sets==1 && power_sets==0);
+ /* Moving delta can cross the old60C ceiling without a mode/power cycle. */
+ const uint16_t moving[]={6000,(MANUAL_FLOW_MAX_CC-1),MANUAL_FLOW_MAX_CC,4000};
+ for(unsigned i=0;i<4;i++){
+  next[1]=(uint16_t)(4+i);next[3]=moving[i];
+  assert(!ctl_submit(next,time_ms));until(4,200);
+  assert(flow==moving[i] && mode_sets==1 && power_sets==0);
+  assert(ctl_read(269)==2 && ctl_read(270)==2950 && ctl_read(258)==4+i);
+ }
+ next[1]=8;next[3]=(MANUAL_FLOW_MAX_CC+1);before=sets;assert(ctl_submit(next,time_ms)==3 && sets==before && flow==4000);
  auto_restore();assert(mode_sets==2 && power_sets==0);
  /* New target has its own lease, which restores the original curve/target. */
  reset();assert(!ctl_submit(cmd,0));until(4,200);cmd[1]=2;cmd[3]=3200;
@@ -99,9 +108,13 @@ static void direct_targets(void){
  puts("PASS P0080 direct targets: multiple targets, single FLOW writes, preserved original, pending/retry/lease/guards/readback/failure");
 }
 int main(void){
+ /* P0080: moving-delta ceiling applies/readbacks/restores, including expiry. */
+ reset();cmd[3]=MANUAL_FLOW_MAX_CC;assert(!ctl_submit(cmd,0));until(4,200);assert(flow==MANUAL_FLOW_MAX_CC && ctl_read(275)==MANUAL_FLOW_MAX_CC);auto_restore();
+ reset();cmd[3]=MANUAL_FLOW_MAX_CC;assert(!ctl_submit(cmd,0));until(4,200);time_ms=30001;tick();until(0,200);assert(flow==2950 && mode==2);
+
  direct_targets();
  flag_matrix();
- reset();uint16_t w[8];memcpy(w,cmd,sizeof w);w[3]=4501;assert(ctl_submit(w,0)==3 && !sets);w[3]=1999;assert(ctl_submit(w,0)==3);w[3]=3800;w[5]=1801;assert(ctl_submit(w,0)==3);
+ reset();uint16_t w[8];memcpy(w,cmd,sizeof w);w[3]=(MANUAL_FLOW_MAX_CC+1);assert(ctl_submit(w,0)==3 && !sets);w[3]=1999;assert(ctl_submit(w,0)==3);w[3]=3800;w[5]=1801;assert(ctl_submit(w,0)==3);
  w[5]=30;w[4]=3900;w[6]=3;assert(ctl_submit(w,0)==3);w[4]=6001;assert(ctl_submit(w,0)==3);w[4]=5200;w[2]=5;assert(ctl_submit(w,0)==3);
  reset();assert(!ctl_submit(cmd,0));until(4,200);assert(mode==1 && flow==3800 && ctl_read(258)==1 && sets==2 && ctl_read(265)==2);
  /* Exact retry doesn't extend lease; conflicting same sequence rejected. */

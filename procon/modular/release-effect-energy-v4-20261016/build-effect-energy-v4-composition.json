@@ -1,0 +1,57 @@
+{
+  "physical_install": false,
+  "device_specific": true,
+  "atomic_modules": [
+    "mode",
+    "service",
+    "debug_command"
+  ],
+  "private_service_veneers": [
+    "0x08012069",
+    "0x0801206d"
+  ],
+  "devices": {
+    "1": {
+      "base_manifest": "4bf657aa",
+      "candidate_manifest": "57ee1885",
+      "changed_ota_slots": [
+        2,
+        4,
+        5
+      ],
+      "changed_modules": [
+        "mode",
+        "service",
+        "debug_command"
+      ],
+      "mode_used": 11904,
+      "mode_capacity": 12288,
+      "service_used": 2824,
+      "service_capacity": 4096,
+      "debug_command_used": 192,
+      "debug_command_capacity": 4096,
+      "install_sha256": "08c6c281ed52f14012249fe80cbb01b8c95c90ce036e05b11a279d53887c7194"
+    },
+    "2": {
+      "base_manifest": "e11851e8",
+      "candidate_manifest": "fd001ec7",
+      "changed_ota_slots": [
+        2,
+        4,
+        5
+      ],
+      "changed_modules": [
+        "mode",
+        "service",
+        "debug_command"
+      ],
+      "mode_used": 11904,
+      "mode_capacity": 12288,
+      "service_used": 2824,
+      "service_capacity": 4096,
+      "debug_command_used": 192,
+      "debug_command_capacity": 4096,
+      "install_sha256": "18cbbf4e7acf3ee1606764f9a8e076912b97b6ff3e218ece1aad5fdc3e2200e2"
+    }
+  }
+}

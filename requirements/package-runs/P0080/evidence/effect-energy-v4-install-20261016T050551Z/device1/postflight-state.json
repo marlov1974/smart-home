@@ -1,0 +1,124 @@
+{
+  "shelly": {
+    "serial": {
+      "mode": "mb_client",
+      "serial": {
+        "baud": 9600,
+        "format": "8N1"
+      },
+      "mb_server": {
+        "addr": 1
+      }
+    },
+    "scripts": {
+      "scripts": [
+        {
+          "id": 1,
+          "name": "Installer",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 2,
+          "name": "boot_v1_0_0",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 3,
+          "name": "master_v1_0_0",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 4,
+          "name": "spot_v1_3_0",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 5,
+          "name": "weather_v1_1_0",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 6,
+          "name": "op_v1_9_0",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 7,
+          "name": "optimize_v1_1_2",
+          "enable": false,
+          "running": false
+        },
+        {
+          "id": 8,
+          "name": "P0075 write reference",
+          "enable": false,
+          "running": false
+        }
+      ]
+    },
+    "switch0": {
+      "id": 0,
+      "source": "init",
+      "tag": null,
+      "output": false,
+      "counts": {
+        "on_time": 0,
+        "on_time_rst_ts": 0,
+        "switch_on": 3,
+        "switch_on_rst_ts": 0
+      },
+      "temperature": {
+        "tC": 32.2,
+        "tF": 90.0
+      }
+    },
+    "switch1": {
+      "id": 1,
+      "source": "init",
+      "tag": null,
+      "output": false,
+      "counts": {
+        "on_time": 0,
+        "on_time_rst_ts": 0,
+        "switch_on": 4,
+        "switch_on_rst_ts": 0
+      },
+      "temperature": {
+        "tC": 36.7,
+        "tF": 98.1
+      }
+    }
+  },
+  "devices": {
+    "1": {
+      "valid": 1,
+      "mode": 0,
+      "layout": 3833993797,
+      "manifest_crc": 1475221637,
+      "uid": [
+        5898296,
+        909201410,
+        540096578
+      ],
+      "ready": 0
+    },
+    "2": {
+      "valid": 1,
+      "mode": 0,
+      "layout": 3833993797,
+      "manifest_crc": 3776467432,
+      "uid": [
+        5373989,
+        909201412,
+        540096578
+      ],
+      "ready": 1
+    }
+  }
+}

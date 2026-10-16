@@ -53,7 +53,7 @@ def encode(sequence, mode, flow=None, dhw=None, lease=0, *, slave=1,
         if target_w is not None or max_flow is not None or boundary_verified is not False:
             raise ValueError('EFFECT options cannot be used with a v2 command')
         flags = (1 if flow is not None else 0) | (2 if dhw is not None else 0)
-        f = temperature(flow, 2000, 4500) if flow is not None else 0
+        f = temperature(flow, 2000, 6500) if flow is not None else 0
         d = temperature(dhw, 4000, 6000) if dhw is not None else 0
         if mode == 'auto':
             if flags or lease:

@@ -55,7 +55,11 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
     state={'instructions':0,'time':0,'index':0,'pending':None,'de':False,'tx_done':0,'tx':bytearray(),'de_high':0,'de_low':0,'led_edges':0,'rx_times':[]}
     writes=set()
     boot={'ready':False,'offset':0,'checking':False}
-    cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0, 'svc_counts':{27:0,28:0}, 'svc_times':{27:[],28:[]}, 'normal':0, 'overlap':0, 'phase':4, 'phase_attempts':0}
+    service_codes=(27,28,18,19,16,17)
+    cn={'tx':bytearray(),'wire':bytearray(),'schedule':[], 'next_tx':0, 'rx':0,
+        'svc_counts':{27:0,28:0}, 'svc_all':{c:0 for c in service_codes},
+        'svc_times':{c:[] for c in service_codes}, 'normal':0, 'overlap':0,
+        'phase':4, 'next':27, 'phase_attempts':0}
     model={'power':1,'mode':2,'flow':2950,'dhw':5200,'boost':0,'sets':0,'actual':2,'fixed_flow':4500}
     cn['model']=model
     request_times=[request_start+i*baud_gap for i in range(len(request))]
@@ -125,12 +129,14 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                 allowed=[bytes.fromhex('fc 5a 02 7a 02 ca 01 5d')]
                 fast_codes=[4,0x0c,0x14,0x0b,9,0x15,0x26,0x28]
                 allowed += [cn_packet(0x42,bytes([q])+bytes(15)) for q in fast_codes]
-                allowed += [cn_packet(0x42,bytes([0xa3,0,c])+bytes(13)) for c in (27,28)]
+                allowed += [cn_packet(0x42,bytes([0xa3,0,c])+bytes(13)) for c in service_codes]
                 assert packet in allowed or (control_model and ((packet[1]==0x42 and packet[5]==0x28) or packet[1]==0x41)), 'forbidden CN105 command'
                 assert not cn['schedule'], 'overlapping CN105 transactions'
                 if cn_hz is not None:
                     if packet[1]==0x5a: response=cn_packet(0x7a,bytes([0]))
-                    elif control_model and (packet[1]==0x41 or cn.get('control',False) or (packet[5]==0x26 and cn['phase']==4 and cn.get('fast',0)==0)) and packet[5]!=4:
+                    elif control_model and (packet[1]==0x41 or cn.get('control',False) or
+                         (cn['phase']==4 and packet[5] in (9,0x26,0x28) and
+                          packet[5]!=fast_codes[cn.get('fast',0)])) and packet[5]!=4:
                         assert cn['phase']==4, 'control interleaved inside service operation'
                         cn['control']=True
                         payload=bytearray(16);payload[0]=packet[5]
@@ -167,9 +173,9 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                         cn['control']=False
                         assert cn['phase']==4, 'FAST interleaved inside service operation'
                         f=cn.get('fast',0)
-                        assert packet[5]==fast_codes[f]
+                        assert packet[5]==fast_codes[f], (state['time'],packet[5],fast_codes[f],f,cn)
                         cn['fast']=(f+1)%len(fast_codes)
-                        if f==len(fast_codes)-1: cn['phase']=cn.get('next',27);cn['phase_attempts']=0
+                        if f==len(fast_codes)-1:cn['phase_attempts']=0
                         if packet[5]==4: cn['normal']+=1
                         payload=bytearray(16);payload[0]=packet[5]
                         if packet[5]==4: payload[1]=cn_hz
@@ -184,17 +190,29 @@ def run_case(path, name, request, expected, rx_error=False, stall_tx=False, baud
                         response=cn_packet(0x62,bytes(payload))
                         if cn_corrupt and packet[5]==4: response=response[:-1]+bytes([response[-1]^1])
                     else:
-                        c=packet[7];cn['svc_counts'][c]+=1
-                        assert c==cn['phase'], 'service order violated'
+                        c=packet[7];cn['svc_all'][c]+=1
+                        if c in cn['svc_counts']:cn['svc_counts'][c]+=1
+                        # Supervised EFFECT may focus A3/17 without consuming the
+                        # retained six-code ordinary cursor. A service operation
+                        # starts only after FAST; control-owned FAST rounds need
+                        # not be followed by a service operation.
+                        if cn['phase']==4:
+                            focused=c==17 and c!=cn['next']
+                            assert c==cn['next'] or focused, 'service order violated'
+                            cn['phase']=c;cn['focused']=focused
+                        else:
+                            assert c==cn['phase'], 'service retry code changed'
+                            focused=cn['focused']
                         cn['phase_attempts']+=1
                         previous=cn['svc_times'][c]
                         if cn['phase_attempts']>1: assert cn['frame_started']-previous[-1]>=999000, f'retry too fast c={c} now={state["time"]} previous={previous[-1]} delta={state["time"]-previous[-1]}'
                         previous.append(cn['frame_started'])
-                        status=(1 if c==27 else 2) if cn['svc_counts'][c]%2==0 else 0
+                        status=(1 if c==27 else 2) if cn['svc_all'][c]%2==0 else 0
                         if service_mode=='pending': status=0
                         if status or cn['phase_attempts']==10:
-                            cn['next']=28 if c==27 else 27;cn['phase']=4;cn['phase_attempts']=0
-                        value=7 if c==27 else 65533
+                            if not focused:cn['next']=service_codes[(service_codes.index(c)+1)%len(service_codes)]
+                            cn['phase']=4;cn['phase_attempts']=0
+                        value={27:7,28:65533,18:5,19:2500,16:cn_hz,17:cn_hz}[c]
                         response=cn_packet(0x62,bytes([0xa3,0,c,status,value&255,value>>8])+bytes(10))
                     begin=state['time']+20000
                     cn['schedule'] += [(begin+i*4584,b) for i,b in enumerate(response)]
@@ -299,7 +317,9 @@ if __name__=='__main__':
         words,states=parse_replies(data)
         vals=[int.from_bytes(words[i].to_bytes(2,'big')+words[i+1].to_bytes(2,'big'),'big',signed=True) for i in range(0,16,2)]
         assert vals==[3500,3000,500,2000,6966,48,1,-2147483648], vals
-        assert states[3:10]==[1]*7 and states[10:12]==[4,4]
+        # This short run has not yet reached the new A3/18 and A3/19 pump
+        # records, so their provenance is NEVER rather than derived UNAVAILABLE.
+        assert states[3:10]==[1]*7 and states[10:12]==[0,0], states
         assert cn['normal']==1 and cn['svc_counts'][27]>0
     run_case(path,'MVP values and validity during exclusive service',req(106,16),None,duration=3600000,cn_hz=48,request_start=3130000,extra_requests=[(3400000,req(140,16))],inspect=inspect_mvp)
 
@@ -374,22 +394,26 @@ if __name__=='__main__':
             assert len(data)>=5
             n=5 if data[1]&0x80 else 8 if data[1]==16 else data[2]+5
             p=data[:n];assert len(p)==n and p[-2:]==crc(p[:-2]);blocks.append(p);data=data[n:]
-        writes=blocks[:4];assert all(p[1] in (16,0x90) for p in writes)
+        writes=[p for p in blocks if p[1] in (16,0x90)]
+        reads=[p for p in blocks if p[1]==4]
+        assert len(writes)>=2 and len(reads)==3, [p.hex() for p in blocks]
         assert any(p[1]==16 for p in writes),[p.hex() for p in writes]
         for p in writes:
             if p[1]==0x90:assert p[2]==6  # transient incomplete pair/warmup only
-        active=parse_replies(blocks[4])[0];sampler=parse_replies(blocks[5])[0]
+        active=parse_replies(reads[0])[0];sampler=parse_replies(reads[1])[0]
         assert active[:3]==[4,1,1] and active[5]==1,active
         assert sampler[0]==1 and sampler[3]>=3 and sampler[5]>=20,sampler
-        assert blocks[6][1]==16,blocks[6].hex()
-        restored=parse_replies(blocks[7])[0]
+        assert blocks.index(writes[-1])<blocks.index(reads[-1])
+        restored=parse_replies(reads[-1])[0]
         assert restored[:3]==[0,2,2] and restored[11]>=1,restored
         assert cn['model']['sets']==3 and cn['model']['mode']==2 and cn['model']['flow']==2950,cn['model']
         assert cn['normal']>=8 and min(cn['svc_counts'].values())>=6,cn
     run_case(path,'P0076 integrated distinct-feedback warmup, EFFECT survives FAST pending, AUTO restores',
         effect_command(),None,duration=61000000,cn_hz=30,request_start=31000000,
         extra_requests=[(34000000,effect_command()),(37000000,effect_command()),(40000000,effect_command()),
-                        (48000000,req(256,16)),(48500000,req(352,16)),(50000000,command(2,1)),(60000000,req(256,16))],
+                        (48000000,req(256,16)),(48500000,req(352,16)),
+                        (50000000,command(2,1)),(53000000,command(2,1)),(56000000,command(2,1)),
+                        (60000000,req(256,16))],
         inspect=inspect_effect,control_model=True)
 
     assert EXECUTED, "No ARM cases matched the requested filter"

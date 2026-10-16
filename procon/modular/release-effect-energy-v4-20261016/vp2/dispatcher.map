@@ -1,0 +1,244 @@
+
+Discarded input sections
+
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .text.rtu_feed
+                0x00000000       0x58 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .text.rtu_poll
+                0x00000000       0x3e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .text.memset   0x00000000       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_info    0x00000000       0xdd /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_abbrev  0x00000000       0xb2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_loclists
+                0x00000000       0x52 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_aranges
+                0x00000000       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_rnglists
+                0x00000000       0x1f /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_macro   0x00000000       0x1a /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_macro   0x00000000      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_line    0x00000000      0x11e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_str     0x00000000     0x31e8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .debug_frame   0x00000000       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .ARM.attributes
+                0x00000000       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0800d000         0x00001000         xr
+RAM              0x20001800         0x00000100         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc4UiWYf.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+LOAD /private/tmp/procon-arm-fixed60/arm-gnu-toolchain-14.3.rel1-darwin-arm64-arm-none-eabi/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a
+
+.header         0x0800d000       0x40
+ *(.header)
+ .header        0x0800d000       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.exports        0x0800d040        0x4
+ *(.exports)
+ .exports       0x0800d040        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.text           0x0800d044      0x25c
+ *(.layout_probe)
+ *(.text*)
+ .text.crc16    0x0800d044       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+                0x0800d044                crc16
+ *fill*         0x0800d072        0x2 
+ .text.modbus_reply
+                0x0800d074      0x22c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+                0x0800d074                modbus_reply
+ *(.rodata*)
+                0x0800d2a0                        . = ALIGN (0x8)
+
+.glue_7         0x0800d2a0        0x0
+ .glue_7        0x0800d2a0        0x0 linker stubs
+
+.glue_7t        0x0800d2a0        0x0
+ .glue_7t       0x0800d2a0        0x0 linker stubs
+
+.vfp11_veneer   0x0800d2a0        0x0
+ .vfp11_veneer  0x0800d2a0        0x0 linker stubs
+
+.v4_bx          0x0800d2a0        0x0
+ .v4_bx         0x0800d2a0        0x0 linker stubs
+
+.iplt           0x0800d2a0        0x0
+ .iplt          0x0800d2a0        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.rel.dyn        0x0800d2a0        0x0
+ .rel.iplt      0x0800d2a0        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.data           0x20001800        0x0 load address 0x0800d2a0
+                0x20001800                        _data_start = .
+                0x20001800                        _ramfunc_start = .
+ *(.ramfunc*)
+                0x20001800                        _ramfunc_end = .
+ *(.data*)
+                0x20001800                        . = ALIGN (0x8)
+                0x20001800                        _data_end = .
+                0x0800d2a0                        _data_load = LOADADDR (.data)
+
+.igot.plt       0x20001800        0x0 load address 0x0800d2a0
+ .igot.plt      0x20001800        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.bss            0x20001800        0x8 load address 0x0800d2a0
+                0x20001800                        _bss_start = .
+ *(.bss*)
+ .bss.request_count
+                0x20001800        0x2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ *(COMMON)
+                0x20001808                        . = ALIGN (0x8)
+ *fill*         0x20001802        0x6 
+                0x20001808                        _bss_end = .
+
+/DISCARD/
+ *(.comment*)
+ *(.note*)
+ *(.ARM.exidx*)
+                0x00000000                        _data_size = (_data_end - _data_start)
+                0x00000008                        _bss_size = (_bss_end - _bss_start)
+                0x20004000                        _stack_top = 0x20004000
+                0x00000001                        ASSERT ((_bss_end <= (ORIGIN (RAM) + LENGTH (RAM))), RAM slot overflow)
+                [!provide]                        PROVIDE (platform_init = 0x8008201)
+                [!provide]                        PROVIDE (uart_init = 0x8008205)
+                [!provide]                        PROVIDE (uart_receive = 0x8008209)
+                [!provide]                        PROVIDE (uart_send = 0x800820d)
+                [!provide]                        PROVIDE (micros = 0x8008211)
+                [!provide]                        PROVIDE (watchdog_refresh = 0x8008215)
+                [!provide]                        PROVIDE (heartbeat = 0x8008219)
+                [!provide]                        PROVIDE (cn_uart_init = 0x800821d)
+                [!provide]                        PROVIDE (cn_uart_receive = 0x8008221)
+                [!provide]                        PROVIDE (cn_uart_ready = 0x8008225)
+                [!provide]                        PROVIDE (cn_uart_write = 0x8008229)
+                [!provide]                        PROVIDE (platform_uid_word = 0x800822d)
+                [!provide]                        PROVIDE (platform_dip_read = 0x8008231)
+                [!provide]                        PROVIDE (identity_init_dip = 0x8008235)
+                0x08008239                        PROVIDE (modbus_address = 0x8008239)
+                0x0800823d                        PROVIDE (identity_read = 0x800823d)
+                [!provide]                        PROVIDE (cn_service = 0x8008241)
+                [!provide]                        PROVIDE (cn_init = 0x800a041)
+                [!provide]                        PROVIDE (cn_feed = 0x800a045)
+                [!provide]                        PROVIDE (cn_tick = 0x800a049)
+                [!provide]                        PROVIDE (cn_tx_byte = 0x800a04d)
+                [!provide]                        PROVIDE (cn_tx_sent = 0x800a051)
+                0x0800a055                        PROVIDE (cn_read = 0x800a055)
+                [!provide]                        PROVIDE (cn_command = 0x800a059)
+                [!provide]                        PROVIDE (maintenance_ready = 0x800a05d)
+                [!provide]                        PROVIDE (ctl_feedback = 0x800e041)
+                [!provide]                        PROVIDE (ctl_link_lost = 0x800e045)
+                [!provide]                        PROVIDE (ctl_init = 0x800e049)
+                [!provide]                        PROVIDE (ctl_observe = 0x800e04d)
+                [!provide]                        PROVIDE (ctl_submit = 0x800e051)
+                [!provide]                        PROVIDE (ctl_tick = 0x800e055)
+                [!provide]                        PROVIDE (ctl_busy = 0x800e059)
+                [!provide]                        PROVIDE (ctl_next = 0x800e05d)
+                [!provide]                        PROVIDE (ctl_reply = 0x800e061)
+                [!provide]                        PROVIDE (ctl_timeout = 0x800e065)
+                [!provide]                        PROVIDE (ctl_read = 0x800e069)
+                [!provide]                        PROVIDE (effect_feedback_init = 0x800e06d)
+                [!provide]                        PROVIDE (effect_feedback_tick = 0x800e071)
+                [!provide]                        PROVIDE (effect_feedback_get = 0x800e075)
+                [!provide]                        PROVIDE (effect_feedback_hard_invalid = 0x800e079)
+                [!provide]                        PROVIDE (tele_snapshot = 0x8011041)
+                [!provide]                        PROVIDE (tele_init = 0x8011045)
+                [!provide]                        PROVIDE (tele_tick = 0x8011049)
+                [!provide]                        PROVIDE (tele_invalidate = 0x801104d)
+                [!provide]                        PROVIDE (tele_accept = 0x8011051)
+                0x08011055                        PROVIDE (tele_read = 0x8011055)
+                [!provide]                        PROVIDE (svc_init = 0x8012041)
+                [!provide]                        PROVIDE (svc_start_cycle = 0x8012045)
+                [!provide]                        PROVIDE (svc_link = 0x8012049)
+                [!provide]                        PROVIDE (svc_tick = 0x801204d)
+                [!provide]                        PROVIDE (svc_due = 0x8012051)
+                [!provide]                        PROVIDE (svc_sent = 0x8012055)
+                [!provide]                        PROVIDE (svc_reply = 0x8012059)
+                [!provide]                        PROVIDE (svc_timeout = 0x801205d)
+                [!provide]                        PROVIDE (svc_bad_frame = 0x8012061)
+                [!provide]                        PROVIDE (svc_read = 0x8012065)
+                0x08013041                        PROVIDE (debug_command = 0x8013041)
+                [!provide]                        PROVIDE (feedback_read = 0x8014041)
+OUTPUT(/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0080/implementation-smart-home/procon/modular/build-frequency-target/dispatcher.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2c
+ .ARM.attributes
+                0x00000000       0x2e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .ARM.attributes
+                0x0000002e       0x21 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_info     0x00000000      0x56d
+ .debug_info    0x00000000      0x549 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_info    0x00000549       0x24 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_abbrev   0x00000000      0x205
+ .debug_abbrev  0x00000000      0x1f1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_abbrev  0x000001f1       0x14 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_loclists
+                0x00000000      0x5c0
+ .debug_loclists
+                0x00000000      0x5c0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.debug_aranges  0x00000000       0x58
+ .debug_aranges
+                0x00000000       0x38 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_aranges
+                0x00000038       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_rnglists
+                0x00000000       0x89
+ .debug_rnglists
+                0x00000000       0x89 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.debug_macro    0x00000000     0x1074
+ .debug_macro   0x00000000       0x70 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00000070      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00000b36      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00000cc6      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00001014       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00001024       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_macro   0x00001034       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.debug_line     0x00000000      0x6cf
+ .debug_line    0x00000000      0x688 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+ .debug_line    0x00000688       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_str      0x00000000     0x3d0e
+ .debug_str     0x00000000     0x3d0e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+                               0x3eb9 (size before relaxing)
+ .debug_str     0x00003d0e       0x36 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o
+
+.debug_frame    0x00000000       0x94
+ .debug_frame   0x00000000       0x94 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccPDcqav.o
+
+.debug_line_str
+                0x00000000       0x28
+ .debug_line_str
+                0x00000000       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc9gTj6T.o

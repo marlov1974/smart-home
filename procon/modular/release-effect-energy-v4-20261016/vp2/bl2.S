@@ -1,0 +1,22 @@
+.syntax unified
+.cpu cortex-m4
+.thumb
+.section .header,"a"
+.section .exports,"ax"
+b.w platform_init
+b.w uart_init
+b.w uart_receive
+b.w uart_send
+b.w micros
+b.w watchdog_refresh
+b.w heartbeat
+b.w cn_uart_init
+b.w cn_uart_receive
+b.w cn_uart_ready
+b.w cn_uart_write
+b.w platform_uid_word
+b.w platform_dip_read
+b.w identity_init_dip
+b.w modbus_address
+b.w identity_read
+b.w cn_service

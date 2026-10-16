@@ -1,0 +1,41 @@
+test_bounded_runtime_and_restoration (tests.test_shelly_energy.ShellyEnergyScriptTest.test_bounded_runtime_and_restoration) ... ok
+test_cap_aware_split_preserves_sum_and_uses_peer_headroom (tests.test_shelly_energy.ShellyEnergyScriptTest.test_cap_aware_split_preserves_sum_and_uses_peer_headroom) ... ok
+test_clock_regression_fixture (tests.test_shelly_energy.ShellyEnergyScriptTest.test_clock_regression_fixture) ... ok
+test_deadline_projection_and_collapse_recovery_fixture (tests.test_shelly_energy.ShellyEnergyScriptTest.test_deadline_projection_and_collapse_recovery_fixture) ... ok
+test_each_pump_energy_is_integrated_independently (tests.test_shelly_energy.ShellyEnergyScriptTest.test_each_pump_energy_is_integrated_independently) ... ok
+test_energy_debt_is_cumulative (tests.test_shelly_energy.ShellyEnergyScriptTest.test_energy_debt_is_cumulative) ... ok
+test_energy_is_split_at_exact_quarter_boundary (tests.test_shelly_energy.ShellyEnergyScriptTest.test_energy_is_split_at_exact_quarter_boundary) ... ok
+test_executor_is_constant_time (tests.test_shelly_energy.ShellyEnergyScriptTest.test_executor_is_constant_time) ... ok
+test_installer_reads_complete_script_in_bounded_chunks (tests.test_shelly_energy.ShellyEnergyScriptTest.test_installer_reads_complete_script_in_bounded_chunks) ... ok
+test_lag_and_reachability_replace_fixed_correction (tests.test_shelly_energy.ShellyEnergyScriptTest.test_lag_and_reachability_replace_fixed_correction) ... ok
+test_odd_pair_command_is_preserved_exactly (tests.test_shelly_energy.ShellyEnergyScriptTest.test_odd_pair_command_is_preserved_exactly) ... ok
+test_plan_runtime_regression_fixture (tests.test_shelly_energy.ShellyEnergyScriptTest.test_plan_runtime_regression_fixture) ... ok
+test_replanning_does_not_retarget_effect_every_tick (tests.test_shelly_energy.ShellyEnergyScriptTest.test_replanning_does_not_retarget_effect_every_tick) ... ok
+test_rolling_plan_replaces_fixed_curve (tests.test_shelly_energy.ShellyEnergyScriptTest.test_rolling_plan_replaces_fixed_curve) ... ok
+test_runtime_validation_stops_with_unready_feedback (tests.test_shelly_energy.ShellyEnergyScriptTest.test_runtime_validation_stops_with_unready_feedback) ... ok
+test_scalar_optimizer (tests.test_shelly_energy.ShellyEnergyScriptTest.test_scalar_optimizer) ... ok
+test_status_fits_observed_kvs_value_limit (tests.test_shelly_energy.ShellyEnergyScriptTest.test_status_fits_observed_kvs_value_limit) ... ok
+test_telemetry_chain_is_serialized (tests.test_shelly_energy.ShellyEnergyScriptTest.test_telemetry_chain_is_serialized) ... ok
+test_temperature_limiter_prevents_positive_windup (tests.test_shelly_energy.ShellyEnergyScriptTest.test_temperature_limiter_prevents_positive_windup) ... ok
+test_transient_feedback_failure_holds_and_recovers (tests.test_shelly_energy.ShellyEnergyScriptTest.test_transient_feedback_failure_holds_and_recovers) ... ok
+test_uid_bound_model_persistence_fixture_and_size (tests.test_shelly_energy.ShellyEnergyScriptTest.test_uid_bound_model_persistence_fixture_and_size) ... ok
+test_cleanup_does_not_overwrite_a_plan_rolled_by_l4 (tests.test_run_shelly_energy.RunShellyEnergyTest.test_cleanup_does_not_overwrite_a_plan_rolled_by_l4) ... ok
+test_deadline_is_exactly_four_quarters_plus_cleanup (tests.test_run_shelly_energy.RunShellyEnergyTest.test_deadline_is_exactly_four_quarters_plus_cleanup) ... ok
+test_identity_and_model_diagnostics_are_in_baseline_evidence (tests.test_run_shelly_energy.RunShellyEnergyTest.test_identity_and_model_diagnostics_are_in_baseline_evidence) ... ok
+test_original_script_evidence_is_complete_and_never_overwritten (tests.test_run_shelly_energy.RunShellyEnergyTest.test_original_script_evidence_is_complete_and_never_overwritten) ... ok
+test_plan_encoder_is_exact_and_strict (tests.test_run_shelly_energy.RunShellyEnergyTest.test_plan_encoder_is_exact_and_strict) ... ok
+test_plan_is_set_then_read_back_byte_for_byte (tests.test_run_shelly_energy.RunShellyEnergyTest.test_plan_is_set_then_read_back_byte_for_byte) ... ok
+test_serial_invariant_failure_rolls_back_original_script (tests.test_run_shelly_energy.RunShellyEnergyTest.test_serial_invariant_failure_rolls_back_original_script) ... ok
+test_success_installs_exact_production_stopped_disabled (tests.test_run_shelly_energy.RunShellyEnergyTest.test_success_installs_exact_production_stopped_disabled) ... ok
+test_upload_failure_restores_complete_original_slot_and_kvs (tests.test_run_shelly_energy.RunShellyEnergyTest.test_upload_failure_restores_complete_original_slot_and_kvs) ... ok
+test_validation_guard_precedes_plan_and_every_upload (tests.test_run_shelly_energy.RunShellyEnergyTest.test_validation_guard_precedes_plan_and_every_upload) ... ok
+test_composes_exact_atomic_slots_and_preserves_all_others (tests.test_compose_effect_energy_v4.ComposeEffectEnergyV4Test.test_composes_exact_atomic_slots_and_preserves_all_others) ... ok
+test_rejects_chunk_crc_mismatch (tests.test_compose_effect_energy_v4.ComposeEffectEnergyV4Test.test_rejects_chunk_crc_mismatch) ... ok
+test_rejects_install_slice_mismatch (tests.test_compose_effect_energy_v4.ComposeEffectEnergyV4Test.test_rejects_install_slice_mismatch) ... ok
+test_rejects_manifest_crc_that_disagrees_with_sizes (tests.test_compose_effect_energy_v4.ComposeEffectEnergyV4Test.test_rejects_manifest_crc_that_disagrees_with_sizes) ... ok
+test_rejects_non_atomic_candidate (tests.test_compose_effect_energy_v4.ComposeEffectEnergyV4Test.test_rejects_non_atomic_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 36 tests in 0.239s
+
+OK

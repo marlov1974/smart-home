@@ -1,0 +1,6 @@
+PASS rolling KVS energy plan: passive wait, atomic revisions, roll and expiry restore
+PASS energy clock gate: zero epoch, backstep and forward jump are not integrated
+PASS energy transient feedback: hold, lease renewal, unknown accounting and fresh recovery
+PASS energy deadline projection and bounded collapse recovery
+PASS UID-bound Shelly gain persistence: strict records, seed readback, gates, CAS and restore ordering
+PASS energy runtime validation: stale startup feedback, no writes, self-stop

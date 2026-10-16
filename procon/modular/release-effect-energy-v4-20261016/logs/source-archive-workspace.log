@@ -1,0 +1,12 @@
+archive=source.tar.gz
+members=122
+regular_files=110
+unique_member_names=122
+duplicate_member_names=0
+inventory_entries=110
+inventory_exact=True
+normalized_metadata=True
+bad_metadata_count=0
+workspace_missing=0
+workspace_mismatches=0
+RESULT=PASS

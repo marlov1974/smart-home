@@ -1,0 +1,50 @@
+{
+  "1": {
+    "control": {
+      "state": 0,
+      "accepted": 550,
+      "applied": 550,
+      "rejected": 234,
+      "error": 0,
+      "saved": 0,
+      "touched": 0,
+      "mode": 1,
+      "lease_s": 0,
+      "acks": 214
+    },
+    "native": {
+      "power": 1,
+      "mode": 2,
+      "flow": 3000,
+      "dhw": 5200,
+      "boost": 0,
+      "operating_mode": 0,
+      "diagnostic_age_s": 4
+    },
+    "verified": true
+  },
+  "2": {
+    "control": {
+      "state": 0,
+      "accepted": 553,
+      "applied": 553,
+      "rejected": 49,
+      "error": 0,
+      "saved": 0,
+      "touched": 0,
+      "mode": 1,
+      "lease_s": 0,
+      "acks": 208
+    },
+    "native": {
+      "power": 1,
+      "mode": 2,
+      "flow": 3000,
+      "dhw": 5200,
+      "boost": 0,
+      "operating_mode": 0,
+      "diagnostic_age_s": 1
+    },
+    "verified": true
+  }
+}

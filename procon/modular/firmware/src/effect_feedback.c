@@ -1,6 +1,8 @@
 /* P0076: no controls; accept independent, coherent heating observations only. */
 #include "effect_feedback.h"
 #include "telemetry.h"
+#include "effect_math.h"
+/* <=64 samples *2MW stays within signed32 bits. */
 #define RING_SIZE 64u
 #define SAMPLE_MIN_MS 4000u
 #define MAX_AGE_MS 60000u
@@ -39,7 +41,7 @@ static void reject(unsigned quality,const tele_sample *temp,const tele_sample *f
     consumed_temp=temp->generation;consumed_flow=flow->generation;consumed=1;
 }
 static void windows(uint32_t now){
-    int64_t short_sum=0,slow_sum=0;
+    int32_t short_sum=0,slow_sum=0;
     unsigned ns=0,nl=0;
     uint32_t short_old=0,short_new=UINT32_MAX,slow_old=0,slow_new=UINT32_MAX;
     int32_t oldest_w=0,newest_w=0;
@@ -59,11 +61,11 @@ static void windows(uint32_t now){
     result.short_count=(uint16_t)ns;result.slow_count=(uint16_t)nl;
     result.short_span_ms=ns?short_old-short_new:0;
     result.slow_span_ms=nl?slow_old-slow_new:0;
-    result.short_w=ns?(int32_t)(short_sum/(int64_t)ns):INT32_MIN;
-    result.slow_w=nl?(int32_t)(slow_sum/(int64_t)nl):INT32_MIN;
+    result.short_w=ns?(int32_t)(short_sum/(int32_t)ns):INT32_MIN;
+    result.slow_w=nl?(int32_t)(slow_sum/(int32_t)nl):INT32_MIN;
     /* Diagnostic endpoint slope, not an extra control input or precision claim. */
     result.derivative_w_per_min=result.short_span_ms>=MIN_SPAN_MS?
-        (int32_t)(((int64_t)newest_w-oldest_w)*60000/(int64_t)result.short_span_ms):0;
+        minute_rate(newest_w-oldest_w,result.short_span_ms):0;
 }
 static void pending(void){result.quality=resuming?EF_SETTLING:EF_PENDING;result.ready=0;result.instant_w=INT32_MIN;}
 void effect_feedback_tick(uint32_t now){
@@ -105,7 +107,7 @@ void effect_feedback_tick(uint32_t now){
     if(count && result.last_age_ms>=MAX_AGE_MS){reject(EF_STALE,&temp,&flow);return;}
     /* GET26 follows GET0C/14 in FAST. A prior heating mode cannot bless a new pair. */
     if(mode.age_ms>newer || older-newer>2000u){pending();return;}
-    if(power.status!=TELE_VALID || power.value<0){reject(EF_INVALID,&temp,&flow);return;}
+    if(power.status!=TELE_VALID || power.value<0 || power.value>2000000){reject(EF_INVALID,&temp,&flow);return;}
     uint8_t new_temp=!consumed || temp.generation!=consumed_temp;
     uint8_t new_flow=!consumed || flow.generation!=consumed_flow;
     if(new_temp!=new_flow){pending();return;}

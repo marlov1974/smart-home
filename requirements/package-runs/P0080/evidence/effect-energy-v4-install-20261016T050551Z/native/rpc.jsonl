@@ -1,0 +1,625 @@
+{"time": "2026-10-16T05:05:51.360418+00:00", "method": "Shelly.GetDeviceInfo", "params": {}}
+{"time": "2026-10-16T05:05:51.428093+00:00", "result": {"name": null, "id": "shellypro2-80f3dac8bfec", "mac": "80F3DAC8BFEC", "slot": 0, "model": "SPSW-202XE12UL", "gen": 2, "fw_id": "20260923-075632/2.0.1-ge1a198b", "ver": "2.0.1", "app": "Pro2", "auth_en": false, "auth_domain": null, "provision": "complete", "enhanced_security": false}}
+{"time": "2026-10-16T05:05:51.428217+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:05:51.466327+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:05:51.466406+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:05:51.542441+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:05:51.542746+00:00", "method": "Schedule.List", "params": {}}
+{"time": "2026-10-16T05:05:51.585882+00:00", "result": {"jobs": [], "rev": 0}}
+{"time": "2026-10-16T05:05:51.586271+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:05:51.635120+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.3, "tF": 90.2}}}
+{"time": "2026-10-16T05:05:51.635537+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:05:51.685672+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.0}}}
+{"time": "2026-10-16T05:05:51.687284+00:00", "method": "Shelly.GetDeviceInfo", "params": {}}
+{"time": "2026-10-16T05:05:51.746911+00:00", "result": {"name": null, "id": "shellypro2-80f3dac8bfec", "mac": "80F3DAC8BFEC", "slot": 0, "model": "SPSW-202XE12UL", "gen": 2, "fw_id": "20260923-075632/2.0.1-ge1a198b", "ver": "2.0.1", "app": "Pro2", "auth_en": false, "auth_domain": null, "provision": "complete", "enhanced_security": false}}
+{"time": "2026-10-16T05:05:51.747470+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:05:51.791619+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:05:51.792464+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:05:51.865517+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:05:51.866394+00:00", "method": "Schedule.List", "params": {}}
+{"time": "2026-10-16T05:05:51.903410+00:00", "result": {"jobs": [], "rev": 0}}
+{"time": "2026-10-16T05:05:51.904005+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:05:51.953979+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.3, "tF": 90.2}}}
+{"time": "2026-10-16T05:05:51.954985+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:05:52.000562+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.0}}}
+{"time": "2026-10-16T05:05:52.001499+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:05:52.090811+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 19446, 22442, 90, 56, 13873, 20482, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:05:52.091825+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:05:52.202173+00:00", "result": {"values": [888, 76, 0, 1, 4, 16557, 64619, 0, 32727, 55103, 1993, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:05:52.203077+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:05:52.301312+00:00", "result": {"values": [0, 165, 165, 0, 0, 0, 0, 1, 0, 56, 169, 1, 1, 2, 3050, 5200]}}
+{"time": "2026-10-16T05:05:52.302204+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:05:52.393788+00:00", "result": {"values": [0, 1, 2, 3050, 5200, 0, 2, 2, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:52.394804+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:05:52.486519+00:00", "result": {"values": [1801, 2000, 2768, 3568, 6572, 14436, 23160, 0]}}
+{"time": "2026-10-16T05:05:52.487160+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:05:52.567676+00:00", "result": {"values": [38, 256, 2, 514, 20500, 61450, 44045, 0]}}
+{"time": "2026-10-16T05:05:52.568254+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:05:52.667281+00:00", "result": {"values": [1, 3, 16612, 0, 1104, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:52.668327+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:05:52.748329+00:00", "result": {"values": [4, 3, 3, 4]}}
+{"time": "2026-10-16T05:05:52.749219+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:05:52.839629+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:05:52.840641+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:05:52.929642+00:00", "result": {"values": [21376, 1, 0, 9, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:05:52.930676+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:05:53.032108+00:00", "result": {"values": [0, 400, 1, 0, 12000, 2730, 0, 400, 1, 0, 5000, 2732, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:05:53.033135+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:05:53.153035+00:00", "result": {"values": [12000, 5462, 0, 2700, 1, 0, 5424, 16557, 0, 2700, 1, 0, 5424, 16557, 0, 0]}}
+{"time": "2026-10-16T05:05:53.154007+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:05:53.256244+00:00", "result": {"values": [1, 0, 5424, 33114, 0, 1300, 1, 0, 5155, 16557, 0, 0, 1, 0, 5424, 49671]}}
+{"time": "2026-10-16T05:05:53.257243+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:05:53.353676+00:00", "result": {"values": [0, 0, 1, 0, 5694, 16557, 0, 0, 1, 0, 5694, 16557, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:05:53.354782+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:05:53.459823+00:00", "result": {"values": [34000, 2728, 0, 0, 1, 0, 42000, 2730, 0, 1, 1, 0, 4345, 16557, 0, 5]}}
+{"time": "2026-10-16T05:05:53.460861+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:05:53.565157+00:00", "result": {"values": [1, 0, 4345, 16557, 0, 4600, 1, 0, 5424, 16557, 0, 1200, 1, 0, 4885, 16557]}}
+{"time": "2026-10-16T05:05:53.566221+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:05:53.669694+00:00", "result": {"values": [0, 2800, 1, 0, 4614, 16613, 0, 5200, 1, 0, 4076, 16615, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:05:53.670702+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:05:53.753313+00:00", "result": {"values": [4076, 16615, 0, 0, 1, 0, 5155, 16557]}}
+{"time": "2026-10-16T05:05:53.754335+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:05:53.827241+00:00", "result": {"values": [0, 9]}}
+{"time": "2026-10-16T05:05:53.827943+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:05:53.930459+00:00", "result": {"values": [1, 0, 9, 4500, 5500, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:05:53.931425+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:05:54.034828+00:00", "result": {"values": [8257, 0, 3050, 64886, 65535, 0, 185, 54, 2950, 2050, 0, 0, 0, 3050, 1, 0]}}
+{"time": "2026-10-16T05:05:54.035886+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:05:54.139246+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 8257, 15433, 15433, 0, 7138, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:05:54.140388+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:05:54.216875+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:54.218774+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:05:54.324429+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:05:54.325520+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:05:54.425639+00:00", "result": {"values": [888, 76, 0, 1, 7, 16459, 37872, 0, 31512, 54471, 1928, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:05:54.426773+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:05:54.531462+00:00", "result": {"values": [0, 159, 159, 0, 0, 0, 0, 1, 0, 42, 127, 1, 1, 2, 3050, 5200]}}
+{"time": "2026-10-16T05:05:54.532605+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:05:54.623573+00:00", "result": {"values": [0, 1, 2, 3050, 5200, 0, 2, 2, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:54.624626+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:05:54.712005+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:05:54.713000+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:05:54.808742+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:05:54.809780+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:05:54.904886+00:00", "result": {"values": [1, 5, 16500, 0, 1104, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:54.906042+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:05:54.983849+00:00", "result": {"values": [6, 6, 6, 7]}}
+{"time": "2026-10-16T05:05:54.984861+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:05:55.062412+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:05:55.063466+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:05:55.153908+00:00", "result": {"values": [21376, 1, 0, 7, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:05:55.155003+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:05:55.257897+00:00", "result": {"values": [0, 700, 1, 0, 14000, 2737, 0, 900, 1, 0, 8000, 2737, 65535, 65336, 1, 0]}}
+{"time": "2026-10-16T05:05:55.258924+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:05:55.360182+00:00", "result": {"values": [14000, 5474, 0, 2700, 1, 0, 130, 16460, 0, 2700, 1, 0, 130, 16460, 0, 0]}}
+{"time": "2026-10-16T05:05:55.360779+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:05:55.463633+00:00", "result": {"values": [1, 0, 130, 32920, 0, 1400, 1, 0, 7298, 16459, 32768, 0, 2, 0, 7298, 49379]}}
+{"time": "2026-10-16T05:05:55.464570+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:05:55.569376+00:00", "result": {"values": [0, 0, 1, 0, 399, 16460, 0, 0, 1, 0, 399, 16460, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:05:55.570475+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:05:55.672262+00:00", "result": {"values": [35000, 2736, 0, 0, 1, 0, 0, 2737, 0, 1, 1, 0, 6491, 16459, 0, 5]}}
+{"time": "2026-10-16T05:05:55.673339+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:05:55.778048+00:00", "result": {"values": [1, 0, 6491, 16459, 0, 5300, 1, 0, 130, 16460, 0, 1200, 1, 0, 7029, 16459]}}
+{"time": "2026-10-16T05:05:55.779043+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:05:55.889623+00:00", "result": {"values": [0, 2850, 1, 0, 6760, 16501, 0, 5200, 1, 0, 6222, 16503, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:05:55.890649+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:05:55.971614+00:00", "result": {"values": [6222, 16503, 0, 0, 1, 0, 7298, 16459]}}
+{"time": "2026-10-16T05:05:55.972669+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:05:56.050987+00:00", "result": {"values": [0, 7]}}
+{"time": "2026-10-16T05:05:56.052163+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:05:56.164260+00:00", "result": {"values": [1, 0, 9, 5000, 5500, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:05:56.165248+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:05:56.266239+00:00", "result": {"values": [115, 0, 3050, 50, 65535, 0, 121, 40, 2450, 1250, 0, 0, 65436, 3050, 1, 0]}}
+{"time": "2026-10-16T05:05:56.267334+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:05:56.379217+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 115, 16444, 16444, 0, 10976, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:05:56.380338+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:05:56.457767+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:05:56.459574+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:05:56.564687+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 19446, 22442, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:05:56.565203+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:05:56.673411+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:05:56.675356+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:05:56.712774+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:05:56.713178+00:00", "method": "Serial.SetConfig", "params": {"id": 100, "config": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}}}}
+{"time": "2026-10-16T05:05:56.877254+00:00", "result": {"restart_required": true}}
+{"time": "2026-10-16T05:05:56.877726+00:00", "method": "Shelly.Reboot", "params": {}}
+{"time": "2026-10-16T05:05:56.969300+00:00", "result": null}
+{"time": "2026-10-16T05:05:56.969743+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:05:59.072400+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:06:04.339117+00:00", "result": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:03.774874+00:00", "method": "Script.Stop", "params": {"id": 8}}
+{"time": "2026-10-16T05:08:03.847337+00:00", "result": {"was_running": true}}
+{"time": "2026-10-16T05:08:03.847823+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:03.920532+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:03.921057+00:00", "method": "Script.SetConfig", "params": {"id": 8, "config": {"enable": false}}}
+{"time": "2026-10-16T05:08:04.057533+00:00", "result": {"restart_required": false}}
+{"time": "2026-10-16T05:08:04.057906+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:04.132348+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:04.132874+00:00", "method": "Script.PutCode", "params": {"id": 8, "code": "let u=UART.get(0),rx='',waiting=false,tx='',stray=0;\nif(!u)throw new Error('UART_UNAVAILABLE');\nu.recv(function(d){if(waiting){rx+=d;if(rx.length>512)rx=rx.slice(0,513);}else{stray+=d.length;}});\nfunction baud(b){if(b!==9600&&b!==115200)throw new Error('BAUD');u.configure({baud:b,format:'8N1'});return true;}\nfunction stage(b){if(waiting)throw new Error('BUSY');tx=atob(b);if(tx.length>252)throw new Error('FRAME');return tx.length;}\nfunction send(){if(waiting||stray)throw new Error('BUSY');rx='';waiting=true;return u.send(tx);}\nfunction result(){waiting=false;return btoa(rx);}\nTimer.set(3600000,false,function(){u.configure({baud:115200,format:'8N1'});Shelly.call('Script.Stop',{id:8});});\n", "append": false}}
+{"time": "2026-10-16T05:08:04.227613+00:00", "result": {"len": 695}}
+{"time": "2026-10-16T05:08:04.277169+00:00", "method": "Script.Stop", "params": {"id": 8}}
+{"time": "2026-10-16T05:08:04.311019+00:00", "result": {"was_running": false}}
+{"time": "2026-10-16T05:08:04.311463+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:04.383628+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:04.384142+00:00", "method": "Script.SetConfig", "params": {"id": 8, "config": {"enable": false}}}
+{"time": "2026-10-16T05:08:04.497772+00:00", "result": {"restart_required": false}}
+{"time": "2026-10-16T05:08:04.498249+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:04.574497+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:04.575027+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:08:04.614806+00:00", "result": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:04.615292+00:00", "method": "Serial.SetConfig", "params": {"id": 100, "config": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}}}}
+{"time": "2026-10-16T05:08:04.802120+00:00", "result": {"restart_required": true}}
+{"time": "2026-10-16T05:08:04.802601+00:00", "method": "Shelly.Reboot", "params": {}}
+{"time": "2026-10-16T05:08:04.893693+00:00", "result": null}
+{"time": "2026-10-16T05:08:04.894160+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:08:11.954998+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:11.955593+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:08:11.998708+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:52.759528+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:08:52.805141+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:52.805618+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:52.874425+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:52.875117+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:08:52.923393+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.2, "tF": 90.0}}}
+{"time": "2026-10-16T05:08:52.923858+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:08:52.974125+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.1}}}
+{"time": "2026-10-16T05:08:52.974582+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:08:53.069812+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:08:53.070367+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:08:53.174925+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:08:53.176187+00:00", "method": "Shelly.GetDeviceInfo", "params": {}}
+{"time": "2026-10-16T05:08:53.232657+00:00", "result": {"name": null, "id": "shellypro2-80f3dac8bfec", "mac": "80F3DAC8BFEC", "slot": 0, "model": "SPSW-202XE12UL", "gen": 2, "fw_id": "20260923-075632/2.0.1-ge1a198b", "ver": "2.0.1", "app": "Pro2", "auth_en": false, "auth_domain": null, "provision": "complete", "enhanced_security": false}}
+{"time": "2026-10-16T05:08:53.233138+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:08:53.297275+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:08:53.297765+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:08:53.374417+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:08:53.374909+00:00", "method": "Schedule.List", "params": {}}
+{"time": "2026-10-16T05:08:53.416666+00:00", "result": {"jobs": [], "rev": 0}}
+{"time": "2026-10-16T05:08:53.417149+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:08:53.457717+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.2, "tF": 90.0}}}
+{"time": "2026-10-16T05:08:53.458190+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:08:53.502322+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.1}}}
+{"time": "2026-10-16T05:08:53.502872+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:08:53.606219+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:08:53.606937+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:08:53.705346+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:08:53.706767+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:08:53.809928+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:08:53.811009+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:08:53.914138+00:00", "result": {"values": [888, 76, 0, 1, 1, 14, 4165, 0, 190, 99, 40, 1, 0, 98, 38, 1]}}
+{"time": "2026-10-16T05:08:53.915203+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:08:54.021153+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:08:54.022103+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:08:54.110737+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:08:54.111606+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:08:54.200523+00:00", "result": {"values": [1801, 2000, 2768, 3568, 6572, 14436, 23160, 0]}}
+{"time": "2026-10-16T05:08:54.201482+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:08:54.285507+00:00", "result": {"values": [38, 256, 2, 514, 20500, 61450, 44045, 0]}}
+{"time": "2026-10-16T05:08:54.286472+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:08:54.384288+00:00", "result": {"values": [1, 0, 14, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:08:54.385282+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:08:54.460191+00:00", "result": {"values": [1, 0, 0, 1]}}
+{"time": "2026-10-16T05:08:54.461169+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:08:54.543589+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:08:54.544669+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:08:54.630589+00:00", "result": {"values": [21376, 1, 0, 3, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:08:54.631722+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:08:54.732115+00:00", "result": {"values": [0, 500, 1, 0, 2000, 3, 0, 600, 1, 0, 39000, 2, 65535, 65436, 1, 0]}}
+{"time": "2026-10-16T05:08:54.733234+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:08:54.835984+00:00", "result": {"values": [39000, 5, 0, 2700, 1, 0, 2096, 14, 0, 2700, 1, 0, 2096, 14, 0, 0]}}
+{"time": "2026-10-16T05:08:54.837065+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:08:54.943702+00:00", "result": {"values": [1, 0, 2096, 28, 0, 1300, 1, 0, 1826, 14, 0, 0, 1, 0, 2096, 42]}}
+{"time": "2026-10-16T05:08:54.944724+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:08:55.050578+00:00", "result": {"values": [0, 0, 1, 0, 2365, 14, 0, 0, 1, 0, 2365, 14, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:08:55.051784+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:08:55.149882+00:00", "result": {"values": [25000, 2, 0, 0, 1, 0, 32000, 2, 0, 1, 1, 0, 1015, 14, 0, 5]}}
+{"time": "2026-10-16T05:08:55.150973+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:08:55.255817+00:00", "result": {"values": [1, 0, 1015, 14, 0, 4600, 1, 0, 2096, 14, 0, 1300, 1, 0, 1556, 14]}}
+{"time": "2026-10-16T05:08:55.256997+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:08:55.358123+00:00", "result": {"values": [0, 2800, 1, 0, 1287, 14, 0, 5200, 1, 0, 747, 14, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:08:55.367613+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:08:55.445985+00:00", "result": {"values": [747, 14, 0, 0, 1, 0, 1826, 14]}}
+{"time": "2026-10-16T05:08:55.446938+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:08:55.520172+00:00", "result": {"values": [0, 3]}}
+{"time": "2026-10-16T05:08:55.520833+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:08:55.624261+00:00", "result": {"values": [1, 0, 0, 0, 0, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:08:55.625172+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:08:55.727299+00:00", "result": {"values": [65535, 0, 0, 0, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:08:55.728313+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:08:55.830025+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 65535, 0, 0, 0, 0, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:08:55.831034+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:08:55.910248+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:08:59.915646+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:09:00.034276+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:09:00.035264+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:09:00.138236+00:00", "result": {"values": [888, 76, 0, 1, 0, 15, 4363, 0, 200, 105, 62, 1, 0, 98, 12, 1]}}
+{"time": "2026-10-16T05:09:00.139357+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:09:00.243972+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:00.245337+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:09:00.335499+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:00.336736+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:09:00.425096+00:00", "result": {"values": [1801, 2000, 2768, 3568, 6572, 14436, 23160, 0]}}
+{"time": "2026-10-16T05:09:00.426408+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:09:00.508981+00:00", "result": {"values": [38, 256, 2, 514, 20500, 61450, 44045, 0]}}
+{"time": "2026-10-16T05:09:00.510158+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:09:00.606850+00:00", "result": {"values": [1, 6, 14, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:00.608129+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:09:00.686057+00:00", "result": {"values": [7, 6, 6, 0]}}
+{"time": "2026-10-16T05:09:00.687437+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:09:00.765743+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:09:00.767033+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:09:00.852237+00:00", "result": {"values": [21376, 1, 0, 4, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:09:00.853559+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:09:00.956341+00:00", "result": {"values": [0, 500, 1, 0, 8000, 3, 0, 400, 1, 0, 1000, 3, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:09:00.957648+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:09:01.061176+00:00", "result": {"values": [8000, 6, 0, 2700, 1, 0, 908, 15, 0, 2700, 1, 0, 908, 15, 0, 0]}}
+{"time": "2026-10-16T05:09:01.062399+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:09:01.167142+00:00", "result": {"values": [1, 0, 908, 30, 0, 1300, 1, 0, 639, 15, 0, 0, 1, 0, 908, 45]}}
+{"time": "2026-10-16T05:09:01.168395+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:09:01.270044+00:00", "result": {"values": [0, 0, 1, 0, 1178, 15, 0, 0, 1, 0, 1178, 15, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:09:01.271284+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:09:01.375256+00:00", "result": {"values": [32000, 2, 0, 0, 1, 0, 38000, 2, 0, 1, 1, 0, 7259, 14, 0, 5]}}
+{"time": "2026-10-16T05:09:01.376055+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:09:01.480243+00:00", "result": {"values": [1, 0, 7259, 14, 0, 4600, 1, 0, 908, 15, 0, 1300, 1, 0, 367, 15]}}
+{"time": "2026-10-16T05:09:01.481468+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:09:01.584629+00:00", "result": {"values": [0, 2800, 1, 0, 99, 15, 0, 5200, 1, 0, 6991, 14, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:09:01.585899+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:09:01.669490+00:00", "result": {"values": [6991, 14, 0, 0, 1, 0, 639, 15]}}
+{"time": "2026-10-16T05:09:01.670746+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:09:01.743947+00:00", "result": {"values": [0, 4]}}
+{"time": "2026-10-16T05:09:01.745337+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:09:01.854104+00:00", "result": {"values": [1, 0, 0, 0, 0, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:09:01.855337+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:09:01.952453+00:00", "result": {"values": [65535, 0, 0, 0, 107, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:09:01.953711+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:09:02.056996+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 65535, 0, 0, 0, 0, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:09:02.058094+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:09:02.143377+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:02.144854+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:09:02.239653+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:09:02.240778+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:09:02.344336+00:00", "result": {"values": [888, 76, 36, 1, 2, 16486, 45919, 0, 31877, 54659, 1957, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:09:02.345572+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:09:02.448754+00:00", "result": {"values": [0, 159, 159, 0, 0, 0, 0, 1, 0, 42, 127, 1, 1, 2, 3050, 5200]}}
+{"time": "2026-10-16T05:09:02.449807+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:09:02.550237+00:00", "result": {"values": [0, 1, 2, 3050, 5200, 0, 2, 2, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:02.551355+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:09:02.630553+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:09:02.631580+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:09:02.717060+00:00", "result": {"values": [38, 256, 0, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:09:02.718085+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:09:02.814841+00:00", "result": {"values": [1, 0, 16527, 0, 1104, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:02.815921+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:09:02.893071+00:00", "result": {"values": [1, 1, 1, 2]}}
+{"time": "2026-10-16T05:09:02.894183+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:09:02.971817+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:09:02.972896+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:09:03.061129+00:00", "result": {"values": [21376, 1, 0, 8, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:09:03.062248+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:09:03.163855+00:00", "result": {"values": [0, 500, 1, 0, 29000, 2741, 0, 400, 1, 0, 22000, 2741, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:09:03.164858+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:09:03.272051+00:00", "result": {"values": [29000, 5482, 0, 3200, 1, 0, 2684, 16486, 0, 2700, 1, 0, 2684, 16486, 0, 500]}}
+{"time": "2026-10-16T05:09:03.273025+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:09:03.376302+00:00", "result": {"values": [1, 0, 2684, 32972, 0, 1400, 1, 0, 2415, 16486, 0, 4876, 1, 0, 2684, 49458]}}
+{"time": "2026-10-16T05:09:03.377704+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:09:03.476617+00:00", "result": {"values": [0, 36, 1, 0, 2952, 16486, 0, 1, 1, 0, 2952, 16486, 0, 1, 1, 0]}}
+{"time": "2026-10-16T05:09:03.477724+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:09:03.581236+00:00", "result": {"values": [9000, 2741, 0, 10, 1, 0, 16000, 2741, 0, 1, 1, 0, 1609, 16486, 0, 5]}}
+{"time": "2026-10-16T05:09:03.582602+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:09:03.685648+00:00", "result": {"values": [1, 0, 1609, 16486, 0, 5300, 1, 0, 2684, 16486, 0, 1200, 1, 0, 2146, 16486]}}
+{"time": "2026-10-16T05:09:03.686906+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:09:03.789033+00:00", "result": {"values": [0, 2850, 1, 0, 1876, 16528, 0, 5200, 1, 0, 1340, 16530, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:09:03.790107+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:09:03.876342+00:00", "result": {"values": [1340, 16530, 0, 0, 1, 0, 2415, 16486]}}
+{"time": "2026-10-16T05:09:03.877356+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:09:03.951243+00:00", "result": {"values": [0, 8]}}
+{"time": "2026-10-16T05:09:07.960767+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:09:08.077654+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 57624, 20968, 82, 37, 13873, 20484, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:09:08.078778+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:09:08.173734+00:00", "result": {"values": [888, 76, 36, 1, 1, 16487, 46160, 0, 31888, 54665, 1975, 1, 0, 98, 21, 1]}}
+{"time": "2026-10-16T05:09:08.174789+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:09:08.282757+00:00", "result": {"values": [0, 159, 159, 0, 0, 0, 0, 1, 0, 42, 127, 1, 1, 2, 3050, 5200]}}
+{"time": "2026-10-16T05:09:08.283769+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:09:08.371469+00:00", "result": {"values": [0, 1, 2, 3050, 5200, 0, 2, 2, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:08.372524+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:09:08.458512+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:09:08.459555+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:09:08.548020+00:00", "result": {"values": [38, 256, 0, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:09:08.549027+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:09:08.643096+00:00", "result": {"values": [1, 0, 16528, 0, 1104, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:09:08.644064+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:09:08.726552+00:00", "result": {"values": [1, 0, 0, 1]}}
+{"time": "2026-10-16T05:09:08.727536+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:09:08.811885+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:09:08.812998+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:09:08.899238+00:00", "result": {"values": [21376, 1, 0, 9, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:09:08.900359+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:09:09.006844+00:00", "result": {"values": [0, 500, 1, 0, 35000, 2741, 0, 400, 1, 0, 28000, 2741, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:09:09.008001+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:09:09.108499+00:00", "result": {"values": [35000, 5482, 0, 3200, 1, 0, 2085, 16487, 0, 2700, 1, 0, 2085, 16487, 0, 500]}}
+{"time": "2026-10-16T05:09:09.109541+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:09:09.211236+00:00", "result": {"values": [1, 0, 2085, 32974, 0, 1400, 1, 0, 1817, 16487, 0, 4876, 1, 0, 2085, 49461]}}
+{"time": "2026-10-16T05:09:09.212419+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:09:09.318599+00:00", "result": {"values": [0, 36, 1, 0, 2354, 16487, 0, 1, 1, 0, 2354, 16487, 0, 1, 1, 0]}}
+{"time": "2026-10-16T05:09:09.319641+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:09:09.419174+00:00", "result": {"values": [15000, 2741, 0, 10, 1, 0, 21000, 2741, 0, 1, 1, 0, 1010, 16487, 0, 5]}}
+{"time": "2026-10-16T05:09:09.420216+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:09:09.526991+00:00", "result": {"values": [1, 0, 1010, 16487, 0, 5300, 1, 0, 2085, 16487, 0, 1200, 1, 0, 1546, 16487]}}
+{"time": "2026-10-16T05:09:09.528139+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:09:09.635387+00:00", "result": {"values": [0, 2850, 1, 0, 1279, 16529, 0, 5200, 1, 0, 740, 16531, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:09:09.636400+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:09:09.722969+00:00", "result": {"values": [740, 16531, 0, 0, 1, 0, 1817, 16487]}}
+{"time": "2026-10-16T05:09:09.723944+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:09:09.804025+00:00", "result": {"values": [0, 9]}}
+{"time": "2026-10-16T05:09:09.805962+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:09:09.852450+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:09:09.852887+00:00", "method": "Serial.SetConfig", "params": {"id": 100, "config": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}}}}
+{"time": "2026-10-16T05:09:10.263950+00:00", "result": {"restart_required": true}}
+{"time": "2026-10-16T05:09:10.264434+00:00", "method": "Shelly.Reboot", "params": {}}
+{"time": "2026-10-16T05:09:10.326432+00:00", "result": null}
+{"time": "2026-10-16T05:09:10.326883+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:09:12.422315+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:09:17.678942+00:00", "result": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:11:25.091800+00:00", "method": "Script.Stop", "params": {"id": 8}}
+{"time": "2026-10-16T05:11:25.161043+00:00", "result": {"was_running": true}}
+{"time": "2026-10-16T05:11:25.161477+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:11:25.232194+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:11:25.232755+00:00", "method": "Script.SetConfig", "params": {"id": 8, "config": {"enable": false}}}
+{"time": "2026-10-16T05:11:25.368835+00:00", "result": {"restart_required": false}}
+{"time": "2026-10-16T05:11:25.369330+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:11:25.442789+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:11:25.443294+00:00", "method": "Script.PutCode", "params": {"id": 8, "code": "let u=UART.get(0),rx='',waiting=false,tx='',stray=0;\nif(!u)throw new Error('UART_UNAVAILABLE');\nu.recv(function(d){if(waiting){rx+=d;if(rx.length>512)rx=rx.slice(0,513);}else{stray+=d.length;}});\nfunction baud(b){if(b!==9600&&b!==115200)throw new Error('BAUD');u.configure({baud:b,format:'8N1'});return true;}\nfunction stage(b){if(waiting)throw new Error('BUSY');tx=atob(b);if(tx.length>252)throw new Error('FRAME');return tx.length;}\nfunction send(){if(waiting||stray)throw new Error('BUSY');rx='';waiting=true;return u.send(tx);}\nfunction result(){waiting=false;return btoa(rx);}\nTimer.set(3600000,false,function(){u.configure({baud:115200,format:'8N1'});Shelly.call('Script.Stop',{id:8});});\n", "append": false}}
+{"time": "2026-10-16T05:11:25.538273+00:00", "result": {"len": 695}}
+{"time": "2026-10-16T05:11:25.585973+00:00", "method": "Script.Stop", "params": {"id": 8}}
+{"time": "2026-10-16T05:11:25.625092+00:00", "result": {"was_running": false}}
+{"time": "2026-10-16T05:11:25.625517+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:11:25.697268+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:11:25.697742+00:00", "method": "Script.SetConfig", "params": {"id": 8, "config": {"enable": false}}}
+{"time": "2026-10-16T05:11:25.831159+00:00", "result": {"restart_required": false}}
+{"time": "2026-10-16T05:11:25.831624+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:11:25.919724+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:11:25.920264+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:11:25.963063+00:00", "result": {"mode": "js_uart", "serial": {"baud": 115200, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:11:25.963531+00:00", "method": "Serial.SetConfig", "params": {"id": 100, "config": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}}}}
+{"time": "2026-10-16T05:11:26.115089+00:00", "result": {"restart_required": true}}
+{"time": "2026-10-16T05:11:26.115585+00:00", "method": "Shelly.Reboot", "params": {}}
+{"time": "2026-10-16T05:11:26.206495+00:00", "result": null}
+{"time": "2026-10-16T05:11:26.207018+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:11:28.315756+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:11:33.458404+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:11:33.458965+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:11:33.509119+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:12:17.565612+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:12:17.607942+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:12:17.608439+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:12:17.683643+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:12:17.684036+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:12:17.727831+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.4, "tF": 90.2}}}
+{"time": "2026-10-16T05:12:17.728044+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:12:17.779720+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.0}}}
+{"time": "2026-10-16T05:12:17.780102+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:17.867581+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:12:17.868168+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:17.977972+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 64768, 7879, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:17.979327+00:00", "method": "Shelly.GetDeviceInfo", "params": {}}
+{"time": "2026-10-16T05:12:18.037737+00:00", "result": {"name": null, "id": "shellypro2-80f3dac8bfec", "mac": "80F3DAC8BFEC", "slot": 0, "model": "SPSW-202XE12UL", "gen": 2, "fw_id": "20260923-075632/2.0.1-ge1a198b", "ver": "2.0.1", "app": "Pro2", "auth_en": false, "auth_domain": null, "provision": "complete", "enhanced_security": false}}
+{"time": "2026-10-16T05:12:18.038241+00:00", "method": "Serial.GetConfig", "params": {"id": 100}}
+{"time": "2026-10-16T05:12:18.080944+00:00", "result": {"mode": "mb_client", "serial": {"baud": 9600, "format": "8N1"}, "mb_server": {"addr": 1}}}
+{"time": "2026-10-16T05:12:18.081403+00:00", "method": "Script.List", "params": {}}
+{"time": "2026-10-16T05:12:18.151074+00:00", "result": {"scripts": [{"id": 1, "name": "Installer", "enable": false, "running": false}, {"id": 2, "name": "boot_v1_0_0", "enable": false, "running": false}, {"id": 3, "name": "master_v1_0_0", "enable": false, "running": false}, {"id": 4, "name": "spot_v1_3_0", "enable": false, "running": false}, {"id": 5, "name": "weather_v1_1_0", "enable": false, "running": false}, {"id": 6, "name": "op_v1_9_0", "enable": false, "running": false}, {"id": 7, "name": "optimize_v1_1_2", "enable": false, "running": false}, {"id": 8, "name": "P0075 write reference", "enable": false, "running": false}]}}
+{"time": "2026-10-16T05:12:18.151714+00:00", "method": "Schedule.List", "params": {}}
+{"time": "2026-10-16T05:12:18.194658+00:00", "result": {"jobs": [], "rev": 0}}
+{"time": "2026-10-16T05:12:18.195105+00:00", "method": "Switch.GetStatus", "params": {"id": 0}}
+{"time": "2026-10-16T05:12:18.255653+00:00", "result": {"id": 0, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 3, "switch_on_rst_ts": 0}, "temperature": {"tC": 32.4, "tF": 90.3}}}
+{"time": "2026-10-16T05:12:18.256044+00:00", "method": "Switch.GetStatus", "params": {"id": 1}}
+{"time": "2026-10-16T05:12:18.311155+00:00", "result": {"id": 1, "source": "init", "tag": null, "output": false, "counts": {"on_time": 0, "on_time_rst_ts": 0, "switch_on": 4, "switch_on_rst_ts": 0}, "temperature": {"tC": 36.7, "tF": 98.1}}}
+{"time": "2026-10-16T05:12:18.311660+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:18.402002+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:18.402556+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:18.507015+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 64768, 7879, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:18.508113+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:18.615574+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:18.616621+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:12:18.713639+00:00", "result": {"values": [888, 76, 0, 1, 3, 42, 12745, 0, 580, 305, 91, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:12:18.714594+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:12:18.819381+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:18.819977+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:12:18.915612+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:18.916647+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:12:18.998196+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 23160, 0]}}
+{"time": "2026-10-16T05:12:18.998853+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:12:19.086684+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:12:19.087681+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:12:19.184198+00:00", "result": {"values": [1, 2, 42, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:19.185213+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:12:19.261295+00:00", "result": {"values": [3, 2, 2, 3]}}
+{"time": "2026-10-16T05:12:19.262004+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:12:19.343225+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:12:19.344298+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:12:19.429990+00:00", "result": {"values": [21376, 1, 0, 5, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:12:19.430952+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:12:19.535391+00:00", "result": {"values": [0, 400, 1, 0, 31000, 7, 0, 400, 1, 0, 23000, 7, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:19.535708+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:12:19.637624+00:00", "result": {"values": [31000, 14, 0, 2750, 1, 0, 4311, 42, 0, 2750, 1, 0, 4311, 42, 0, 0]}}
+{"time": "2026-10-16T05:12:19.637794+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:12:19.741073+00:00", "result": {"values": [1, 0, 4311, 84, 0, 1300, 1, 0, 4041, 42, 0, 0, 1, 0, 4311, 126]}}
+{"time": "2026-10-16T05:12:19.741448+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:12:19.846369+00:00", "result": {"values": [0, 0, 1, 0, 4580, 42, 0, 0, 1, 0, 4580, 42, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:19.847044+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:12:19.957418+00:00", "result": {"values": [11000, 7, 0, 0, 1, 0, 16000, 7, 0, 1, 1, 0, 3231, 42, 0, 5]}}
+{"time": "2026-10-16T05:12:19.958108+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:12:20.058080+00:00", "result": {"values": [1, 0, 3231, 42, 0, 4600, 1, 0, 4311, 42, 0, 1200, 1, 0, 3771, 42]}}
+{"time": "2026-10-16T05:12:20.059303+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:12:20.162385+00:00", "result": {"values": [0, 2850, 1, 0, 3501, 42, 0, 5200, 1, 0, 2961, 42, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:12:20.163467+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:12:20.247676+00:00", "result": {"values": [2961, 42, 0, 0, 1, 0, 4041, 42]}}
+{"time": "2026-10-16T05:12:20.248314+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:12:20.321201+00:00", "result": {"values": [0, 5]}}
+{"time": "2026-10-16T05:12:20.322206+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:12:20.428228+00:00", "result": {"values": [1, 0, 0, 0, 0, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:12:20.428947+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:12:20.532355+00:00", "result": {"values": [65535, 0, 0, 0, 307, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:20.533100+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:12:20.642707+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 65535, 0, 0, 0, 0, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:12:20.643720+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:12:20.713583+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:24.725759+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:24.826948+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 22510, 6277, 90, 56, 13873, 20482, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:24.827710+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:12:24.925398+00:00", "result": {"values": [888, 76, 0, 1, 4, 43, 13031, 0, 593, 311, 113, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:12:24.926335+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:12:25.026586+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:25.027209+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:12:25.124027+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:25.124766+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:12:25.209156+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 23160, 0]}}
+{"time": "2026-10-16T05:12:25.210275+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:12:25.299401+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:12:25.300532+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:12:25.397284+00:00", "result": {"values": [1, 3, 43, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:25.398273+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:12:25.482433+00:00", "result": {"values": [4, 3, 3, 4]}}
+{"time": "2026-10-16T05:12:25.483488+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:12:25.562067+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:12:25.563077+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:12:25.653842+00:00", "result": {"values": [21376, 1, 0, 6, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:12:25.654941+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:12:25.778049+00:00", "result": {"values": [0, 400, 1, 0, 37000, 7, 0, 400, 1, 0, 29000, 7, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:25.779280+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:12:25.871918+00:00", "result": {"values": [37000, 14, 0, 2750, 1, 0, 5110, 43, 0, 2750, 1, 0, 5110, 43, 0, 0]}}
+{"time": "2026-10-16T05:12:25.872934+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:12:25.981302+00:00", "result": {"values": [1, 0, 5110, 86, 0, 1300, 1, 0, 4841, 43, 0, 0, 1, 0, 5110, 129]}}
+{"time": "2026-10-16T05:12:25.982352+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:12:26.083076+00:00", "result": {"values": [0, 0, 1, 0, 5381, 43, 0, 0, 1, 0, 5381, 43, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:26.083833+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:12:26.185918+00:00", "result": {"values": [17000, 7, 0, 0, 1, 0, 22000, 7, 0, 1, 1, 0, 4032, 43, 0, 5]}}
+{"time": "2026-10-16T05:12:26.186920+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:12:26.291437+00:00", "result": {"values": [1, 0, 4032, 43, 0, 4600, 1, 0, 5110, 43, 0, 1200, 1, 0, 4570, 43]}}
+{"time": "2026-10-16T05:12:26.292025+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:12:26.404572+00:00", "result": {"values": [0, 2850, 1, 0, 4301, 43, 0, 5200, 1, 0, 3760, 43, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:12:26.405778+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:12:26.493244+00:00", "result": {"values": [3760, 43, 0, 0, 1, 0, 4841, 43]}}
+{"time": "2026-10-16T05:12:26.494490+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:12:26.564247+00:00", "result": {"values": [0, 6]}}
+{"time": "2026-10-16T05:12:26.565587+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 320, "qty": 16}}
+{"time": "2026-10-16T05:12:26.672621+00:00", "result": {"values": [1, 0, 0, 0, 0, 32768, 0, 32768, 0, 32768, 0, 32768, 0, 8, 0, 0]}}
+{"time": "2026-10-16T05:12:26.673602+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 336, "qty": 16}}
+{"time": "2026-10-16T05:12:26.774459+00:00", "result": {"values": [65535, 0, 0, 0, 313, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:26.775557+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 352, "qty": 16}}
+{"time": "2026-10-16T05:12:26.876954+00:00", "result": {"values": [1, 8, 0, 0, 0, 0, 0, 65535, 0, 0, 0, 0, 32768, 0, 32768, 0]}}
+{"time": "2026-10-16T05:12:26.878091+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 1, "addr": 368, "qty": 4}}
+{"time": "2026-10-16T05:12:26.955961+00:00", "result": {"values": [32768, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:26.957779+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:27.064238+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 64768, 7879, 82, 37, 13873, 20484, 8241, 14402, 0, 1]}}
+{"time": "2026-10-16T05:12:27.065497+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:12:27.165718+00:00", "result": {"values": [888, 76, 0, 1, 0, 16, 4649, 0, 212, 111, 40, 1, 0, 98, 20, 1]}}
+{"time": "2026-10-16T05:12:27.166816+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:12:27.268935+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:27.269939+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:12:27.363949+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:27.365001+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:12:27.448732+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:12:27.449850+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:12:27.537301+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:12:27.538423+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:12:27.640743+00:00", "result": {"values": [1, 6, 15, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:27.641891+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:12:27.724083+00:00", "result": {"values": [0, 7, 7, 0]}}
+{"time": "2026-10-16T05:12:27.725209+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:12:27.804635+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:12:27.805703+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:12:27.892212+00:00", "result": {"values": [21376, 1, 0, 3, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:12:27.893330+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:12:28.002067+00:00", "result": {"values": [0, 600, 1, 0, 17000, 3, 0, 500, 1, 0, 9000, 3, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:12:28.003177+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:12:28.099482+00:00", "result": {"values": [17000, 6, 0, 2700, 1, 0, 1089, 16, 0, 2750, 1, 0, 1089, 16, 65535, 65486]}}
+{"time": "2026-10-16T05:12:28.100682+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:12:28.203951+00:00", "result": {"values": [1, 0, 1089, 32, 0, 1400, 1, 0, 818, 16, 65535, 65049, 1, 0, 1089, 48]}}
+{"time": "2026-10-16T05:12:28.205039+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:12:28.307577+00:00", "result": {"values": [0, 0, 1, 0, 1358, 16, 0, 0, 1, 0, 1358, 16, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:28.308660+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:12:28.413028+00:00", "result": {"values": [37000, 2, 0, 0, 1, 0, 1000, 3, 0, 1, 1, 0, 13, 16, 0, 5]}}
+{"time": "2026-10-16T05:12:28.414213+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:12:28.518050+00:00", "result": {"values": [1, 0, 13, 16, 0, 5300, 1, 0, 1089, 16, 0, 1200, 1, 0, 551, 16]}}
+{"time": "2026-10-16T05:12:28.519364+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:12:28.620616+00:00", "result": {"values": [0, 2850, 1, 0, 282, 16, 0, 5200, 1, 0, 7183, 15, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:12:28.621674+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:12:28.707577+00:00", "result": {"values": [7183, 15, 0, 0, 1, 0, 818, 16]}}
+{"time": "2026-10-16T05:12:28.708679+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:12:28.782808+00:00", "result": {"values": [0, 3]}}
+{"time": "2026-10-16T05:12:32.794895+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:32.896174+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 64768, 7879, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:32.897267+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:12:33.006349+00:00", "result": {"values": [888, 76, 0, 1, 6, 16, 4869, 0, 222, 117, 58, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:12:33.007426+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:12:33.104229+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:33.105253+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:12:33.199290+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:33.200266+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:12:33.285220+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:12:33.286145+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:12:33.374008+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:12:33.375122+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:12:33.471692+00:00", "result": {"values": [1, 5, 16, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:33.472746+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:12:33.550432+00:00", "result": {"values": [5, 5, 5, 6]}}
+{"time": "2026-10-16T05:12:33.551502+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:12:33.629665+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:12:33.630785+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:12:33.715045+00:00", "result": {"values": [21376, 1, 0, 4, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:12:33.716063+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:12:33.821205+00:00", "result": {"values": [0, 600, 1, 0, 23000, 3, 0, 500, 1, 0, 14000, 3, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:12:33.822158+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:12:33.924473+00:00", "result": {"values": [23000, 6, 0, 2700, 1, 0, 6916, 16, 0, 2750, 1, 0, 6916, 16, 65535, 65486]}}
+{"time": "2026-10-16T05:12:33.925482+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:12:34.028724+00:00", "result": {"values": [1, 0, 6916, 32, 0, 1400, 1, 0, 6645, 16, 65535, 65049, 1, 0, 6916, 48]}}
+{"time": "2026-10-16T05:12:34.029620+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:12:34.135793+00:00", "result": {"values": [0, 0, 1, 0, 7185, 16, 0, 0, 1, 0, 7185, 16, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:34.136844+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:12:34.238544+00:00", "result": {"values": [0, 3, 0, 0, 1, 0, 7000, 3, 0, 1, 1, 0, 5840, 16, 0, 5]}}
+{"time": "2026-10-16T05:12:34.239850+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:12:34.340497+00:00", "result": {"values": [1, 0, 5840, 16, 0, 5300, 1, 0, 6916, 16, 0, 1200, 1, 0, 6378, 16]}}
+{"time": "2026-10-16T05:12:34.341650+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:12:34.443762+00:00", "result": {"values": [0, 2850, 1, 0, 6109, 16, 0, 5200, 1, 0, 5572, 16, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:12:34.444899+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:12:34.531123+00:00", "result": {"values": [5572, 16, 0, 0, 1, 0, 6645, 16]}}
+{"time": "2026-10-16T05:12:34.532151+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:12:34.606015+00:00", "result": {"values": [0, 4]}}
+{"time": "2026-10-16T05:12:38.611999+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 384, "qty": 16}}
+{"time": "2026-10-16T05:12:38.708327+00:00", "result": {"values": [45440, 2, 1, 0, 58502, 6725, 64768, 7879, 82, 37, 13873, 20484, 8241, 14402, 1, 1]}}
+{"time": "2026-10-16T05:12:38.709408+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 0, "qty": 16}}
+{"time": "2026-10-16T05:12:38.811728+00:00", "result": {"values": [888, 76, 0, 1, 4, 17, 5133, 0, 234, 123, 76, 1, 0, 98, 163, 1]}}
+{"time": "2026-10-16T05:12:38.812746+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 256, "qty": 16}}
+{"time": "2026-10-16T05:12:38.915963+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:38.917309+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 272, "qty": 11}}
+{"time": "2026-10-16T05:12:39.009146+00:00", "result": {"values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:39.010197+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 232, "qty": 8}}
+{"time": "2026-10-16T05:12:39.096950+00:00", "result": {"values": [1801, 2000, 3024, 3362, 6572, 14436, 25740, 0]}}
+{"time": "2026-10-16T05:12:39.097967+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 248, "qty": 8}}
+{"time": "2026-10-16T05:12:39.185546+00:00", "result": {"values": [38, 256, 2, 514, 20500, 8715, 44045, 0]}}
+{"time": "2026-10-16T05:12:39.186496+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 283, "qty": 13}}
+{"time": "2026-10-16T05:12:39.281972+00:00", "result": {"values": [1, 3, 17, 0, 0, 40, 0, 0, 256, 256, 0, 0, 0]}}
+{"time": "2026-10-16T05:12:39.282945+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 176, "qty": 4}}
+{"time": "2026-10-16T05:12:39.361500+00:00", "result": {"values": [4, 3, 3, 4]}}
+{"time": "2026-10-16T05:12:39.362592+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 156, "qty": 4}}
+{"time": "2026-10-16T05:12:39.440707+00:00", "result": {"values": [1, 1, 1, 1]}}
+{"time": "2026-10-16T05:12:39.441852+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 400, "qty": 8}}
+{"time": "2026-10-16T05:12:39.533535+00:00", "result": {"values": [21376, 1, 0, 5, 0, 20, 0, 0]}}
+{"time": "2026-10-16T05:12:39.534003+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 408, "qty": 16}}
+{"time": "2026-10-16T05:12:39.633932+00:00", "result": {"values": [0, 600, 1, 0, 29000, 3, 0, 500, 1, 0, 20000, 3, 0, 100, 1, 0]}}
+{"time": "2026-10-16T05:12:39.635032+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 424, "qty": 16}}
+{"time": "2026-10-16T05:12:39.738973+00:00", "result": {"values": [29000, 6, 0, 2700, 1, 0, 5288, 17, 0, 2750, 1, 0, 5288, 17, 65535, 65486]}}
+{"time": "2026-10-16T05:12:39.740047+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 440, "qty": 16}}
+{"time": "2026-10-16T05:12:39.843004+00:00", "result": {"values": [1, 0, 5288, 34, 0, 1400, 1, 0, 5021, 17, 65535, 65049, 1, 0, 5288, 51]}}
+{"time": "2026-10-16T05:12:39.843714+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 456, "qty": 16}}
+{"time": "2026-10-16T05:12:39.951899+00:00", "result": {"values": [0, 0, 1, 0, 5558, 17, 0, 0, 1, 0, 5558, 17, 0, 0, 1, 0]}}
+{"time": "2026-10-16T05:12:39.952947+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 472, "qty": 16}}
+{"time": "2026-10-16T05:12:40.049980+00:00", "result": {"values": [5000, 3, 0, 0, 1, 0, 13000, 3, 0, 1, 1, 0, 4214, 17, 0, 5]}}
+{"time": "2026-10-16T05:12:40.051036+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 488, "qty": 16}}
+{"time": "2026-10-16T05:12:40.159803+00:00", "result": {"values": [1, 0, 4214, 17, 0, 5300, 1, 0, 5288, 17, 0, 1200, 1, 0, 4752, 17]}}
+{"time": "2026-10-16T05:12:40.160859+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 504, "qty": 16}}
+{"time": "2026-10-16T05:12:40.268458+00:00", "result": {"values": [0, 2850, 1, 0, 4483, 17, 0, 5200, 1, 0, 3945, 17, 0, 2, 1, 0]}}
+{"time": "2026-10-16T05:12:40.269517+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 520, "qty": 8}}
+{"time": "2026-10-16T05:12:40.353013+00:00", "result": {"values": [3945, 17, 0, 0, 1, 0, 5021, 17]}}
+{"time": "2026-10-16T05:12:40.354098+00:00", "method": "MbRtuClient.ReadInputRegisters", "params": {"id": 100, "sid": 2, "addr": 402, "qty": 2}}
+{"time": "2026-10-16T05:12:40.428261+00:00", "result": {"values": [0, 5]}}

@@ -1,0 +1,82 @@
+{
+  "target": 2,
+  "peer": 1,
+  "peer_wait_started": 2717783.361377166,
+  "peer_wait_until": 2717942.357412833,
+  "peer_wait_seconds": 150,
+  "target_enter_started": 2717790.061791458,
+  "target_ota_until": 2717963.836327666,
+  "last_ota_tx": 2717839.836327666,
+  "repair_attempted": false,
+  "final_status": {
+    "valid": 1,
+    "mode": 0,
+    "layout": 3833993797,
+    "manifest_crc": 4244643527,
+    "uid": [
+      5373989,
+      909201412,
+      540096578
+    ],
+    "ready": 1
+  },
+  "events": [
+    {
+      "event": "ready_validated",
+      "monotonic": 2717783.36110625
+    },
+    {
+      "event": "peer_wait_tx_possible",
+      "monotonic": 2717783.361382916,
+      "sid": 1,
+      "seconds": 150
+    },
+    {
+      "event": "peer_wait_ack",
+      "monotonic": 2717790.060852291,
+      "attempt": 6
+    },
+    {
+      "event": "target_enter_tx_possible",
+      "monotonic": 2717790.061799416,
+      "attempt": 0
+    },
+    {
+      "event": "target_enter_ack",
+      "monotonic": 2717790.757633583,
+      "attempt": 0
+    },
+    {
+      "event": "ota_hello",
+      "monotonic": 2717791.504312333,
+      "status": {
+        "status": 0,
+        "active": 0,
+        "next_seq": 1,
+        "slot": 0,
+        "offset": 0,
+        "uid0": 5373989,
+        "uid1": 909201412,
+        "uid2": 540096578
+      }
+    },
+    {
+      "event": "upload_verified",
+      "monotonic": 2717845.837880375,
+      "label": "delta",
+      "frames": 92,
+      "status": {
+        "valid": 1,
+        "mode": 0,
+        "layout": 3833993797,
+        "manifest_crc": 4244643527,
+        "uid": [
+          5373989,
+          909201412,
+          540096578
+        ],
+        "ready": 1
+      }
+    }
+  ]
+}

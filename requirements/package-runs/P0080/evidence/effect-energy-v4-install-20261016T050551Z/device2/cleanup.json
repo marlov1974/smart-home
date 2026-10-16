@@ -1,0 +1,35 @@
+[
+  {
+    "helper_stopped": true,
+    "attempt": 1
+  },
+  {
+    "helper_disabled": true,
+    "attempt": 1
+  },
+  {
+    "helper_source_restored": true,
+    "attempt": 1
+  },
+  {
+    "helper_final_stop_verified": true,
+    "attempt": 1
+  },
+  {
+    "helper_final_disable_verified": true,
+    "attempt": 1
+  },
+  {
+    "serial_restored": true,
+    "attempt": 1
+  },
+  {
+    "peer_wait_remaining_seconds": 44.043802332598716
+  },
+  {
+    "peer_wait_remaining_seconds": 14.03792641684413
+  },
+  {
+    "peer_wait_expired": true
+  }
+]

@@ -1,0 +1,3399 @@
+{
+  "verified_both": true,
+  "manifest_crc": {
+    "1": "0x57ee1885",
+    "2": "0xfd001ec7"
+  },
+  "uid": {
+    "1": [
+      5898296,
+      909201410,
+      540096578
+    ],
+    "2": [
+      5373989,
+      909201412,
+      540096578
+    ]
+  },
+  "changed_modules": [
+    "mode",
+    "service",
+    "debug_command"
+  ],
+  "changed_slots_zero_based": {
+    "1": [
+      2,
+      4,
+      5
+    ],
+    "2": [
+      2,
+      4,
+      5
+    ]
+  },
+  "ota_mask": "0x34",
+  "serial_restored": true,
+  "helper_source_restored": true,
+  "native_settings_preserved": true,
+  "native_curve_verified_after_each_device": true,
+  "results": {
+    "1": {
+      "target_status": {
+        "valid": 1,
+        "mode": 0,
+        "layout": 3833993797,
+        "manifest_crc": 1475221637,
+        "uid": [
+          5898296,
+          909201410,
+          540096578
+        ],
+        "ready": 1
+      },
+      "target_before_peer_return": [
+        {
+          "sid": 1,
+          "status": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 1475221637,
+            "uid": [
+              5898296,
+              909201410,
+              540096578
+            ],
+            "ready": 1
+          },
+          "base": [
+            888,
+            76,
+            0,
+            1,
+            5,
+            1,
+            271,
+            0,
+            13,
+            6,
+            2,
+            1,
+            0,
+            98,
+            163,
+            1
+          ],
+          "control": {
+            "state": 0,
+            "accepted": 0,
+            "applied": 0,
+            "rejected": 0,
+            "error": 0,
+            "saved": 0,
+            "touched": 0,
+            "mode": 0,
+            "lease_s": 0,
+            "acks": 0,
+            "readbacks": 0,
+            "restores": 0,
+            "original_power": 0,
+            "original_mode": 0,
+            "original_flow": 0,
+            "original_dhw": 0,
+            "original_boost": 0,
+            "current_power": 0,
+            "current_mode": 0,
+            "current_flow": 0,
+            "current_dhw": 0,
+            "current_boost": 0,
+            "action": 0,
+            "actions": 0,
+            "phase": 0,
+            "retries": 0,
+            "persistent_recovery": 0
+          },
+          "native": {
+            "power": 1,
+            "mode": 2,
+            "flow": 2800,
+            "dhw": 5200,
+            "boost": 0,
+            "operating_mode": 2,
+            "flags28": [
+              40,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "snapshot": {
+            "captured_at_host": "2026-10-16T05:07:26.813256+00:00",
+            "sequence": 1,
+            "link_lost": false,
+            "samples": {
+              "brine_in_cC": {
+                "value": 400,
+                "status": 1,
+                "age_ms": 4000,
+                "generation": 1
+              },
+              "brine_out_cC": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "brine_delta_cC": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 1
+              },
+              "flow_cC": {
+                "value": 2700,
+                "status": 1,
+                "age_ms": 4398,
+                "generation": 2
+              },
+              "return_cC": {
+                "value": 2700,
+                "status": 1,
+                "age_ms": 4398,
+                "generation": 2
+              },
+              "water_delta_cC": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 4398,
+                "generation": 4
+              },
+              "flow_cL_min": {
+                "value": 1300,
+                "status": 1,
+                "age_ms": 4129,
+                "generation": 2
+              },
+              "heat_W": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 4398,
+                "generation": 6
+              },
+              "compressor_Hz": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 4666,
+                "generation": 2
+              },
+              "compressor_running": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 4666,
+                "generation": 2
+              },
+              "brine_pump_running": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "brine_pump_step": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "water_pump_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 3319,
+                "generation": 2
+              },
+              "water_pump_level": {
+                "value": 5,
+                "status": 1,
+                "age_ms": 3319,
+                "generation": 2
+              },
+              "dhw_cC": {
+                "value": 4600,
+                "status": 1,
+                "age_ms": 4398,
+                "generation": 2
+              },
+              "outdoor_cC": {
+                "value": 1300,
+                "status": 1,
+                "age_ms": 3859,
+                "generation": 2
+              },
+              "flow_target_cC": {
+                "value": 2800,
+                "status": 1,
+                "age_ms": 3589,
+                "generation": 2
+              },
+              "dhw_target_cC": {
+                "value": 5200,
+                "status": 1,
+                "age_ms": 3049,
+                "generation": 2
+              },
+              "operating_mode_raw": {
+                "value": 2,
+                "status": 1,
+                "age_ms": 3049,
+                "generation": 2
+              },
+              "heater_bits": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 4129,
+                "generation": 2
+              }
+            }
+          }
+        },
+        {
+          "sid": 1,
+          "status": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 1475221637,
+            "uid": [
+              5898296,
+              909201410,
+              540096578
+            ],
+            "ready": 1
+          },
+          "base": [
+            888,
+            76,
+            0,
+            1,
+            5,
+            4,
+            1173,
+            0,
+            54,
+            28,
+            21,
+            1,
+            0,
+            98,
+            163,
+            1
+          ],
+          "control": {
+            "state": 0,
+            "accepted": 0,
+            "applied": 0,
+            "rejected": 0,
+            "error": 0,
+            "saved": 0,
+            "touched": 0,
+            "mode": 0,
+            "lease_s": 0,
+            "acks": 0,
+            "readbacks": 0,
+            "restores": 0,
+            "original_power": 0,
+            "original_mode": 0,
+            "original_flow": 0,
+            "original_dhw": 0,
+            "original_boost": 0,
+            "current_power": 0,
+            "current_mode": 0,
+            "current_flow": 0,
+            "current_dhw": 0,
+            "current_boost": 0,
+            "action": 0,
+            "actions": 0,
+            "phase": 0,
+            "retries": 0,
+            "persistent_recovery": 0
+          },
+          "native": {
+            "power": 1,
+            "mode": 2,
+            "flow": 2800,
+            "dhw": 5200,
+            "boost": 0,
+            "operating_mode": 2,
+            "flags28": [
+              40,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "snapshot": {
+            "captured_at_host": "2026-10-16T05:07:48.050537+00:00",
+            "sequence": 2,
+            "link_lost": false,
+            "samples": {
+              "brine_in_cC": {
+                "value": 400,
+                "status": 1,
+                "age_ms": 26000,
+                "generation": 1
+              },
+              "brine_out_cC": {
+                "value": 700,
+                "status": 1,
+                "age_ms": 19000,
+                "generation": 1
+              },
+              "brine_delta_cC": {
+                "value": -300,
+                "status": 1,
+                "age_ms": 26000,
+                "generation": 2
+              },
+              "flow_cC": {
+                "value": 2700,
+                "status": 1,
+                "age_ms": 3394,
+                "generation": 5
+              },
+              "return_cC": {
+                "value": 2700,
+                "status": 1,
+                "age_ms": 3394,
+                "generation": 5
+              },
+              "water_delta_cC": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3394,
+                "generation": 10
+              },
+              "flow_cL_min": {
+                "value": 1300,
+                "status": 1,
+                "age_ms": 3124,
+                "generation": 5
+              },
+              "heat_W": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3394,
+                "generation": 15
+              },
+              "compressor_Hz": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3663,
+                "generation": 5
+              },
+              "compressor_running": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3663,
+                "generation": 5
+              },
+              "brine_pump_running": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3000,
+                "generation": 1
+              },
+              "brine_pump_step": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 11000,
+                "generation": 1
+              },
+              "water_pump_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 2315,
+                "generation": 5
+              },
+              "water_pump_level": {
+                "value": 5,
+                "status": 1,
+                "age_ms": 2315,
+                "generation": 5
+              },
+              "dhw_cC": {
+                "value": 4600,
+                "status": 1,
+                "age_ms": 3394,
+                "generation": 5
+              },
+              "outdoor_cC": {
+                "value": 1300,
+                "status": 1,
+                "age_ms": 2855,
+                "generation": 5
+              },
+              "flow_target_cC": {
+                "value": 2800,
+                "status": 1,
+                "age_ms": 2585,
+                "generation": 5
+              },
+              "dhw_target_cC": {
+                "value": 5200,
+                "status": 1,
+                "age_ms": 2045,
+                "generation": 5
+              },
+              "operating_mode_raw": {
+                "value": 2,
+                "status": 1,
+                "age_ms": 2045,
+                "generation": 5
+              },
+              "heater_bits": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3124,
+                "generation": 5
+              }
+            }
+          }
+        }
+      ],
+      "postflight_state": {
+        "shelly": {
+          "serial": {
+            "mode": "mb_client",
+            "serial": {
+              "baud": 9600,
+              "format": "8N1"
+            },
+            "mb_server": {
+              "addr": 1
+            }
+          },
+          "scripts": {
+            "scripts": [
+              {
+                "id": 1,
+                "name": "Installer",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 2,
+                "name": "boot_v1_0_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 3,
+                "name": "master_v1_0_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 4,
+                "name": "spot_v1_3_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 5,
+                "name": "weather_v1_1_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 6,
+                "name": "op_v1_9_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 7,
+                "name": "optimize_v1_1_2",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 8,
+                "name": "P0075 write reference",
+                "enable": false,
+                "running": false
+              }
+            ]
+          },
+          "switch0": {
+            "id": 0,
+            "source": "init",
+            "tag": null,
+            "output": false,
+            "counts": {
+              "on_time": 0,
+              "on_time_rst_ts": 0,
+              "switch_on": 3,
+              "switch_on_rst_ts": 0
+            },
+            "temperature": {
+              "tC": 32.2,
+              "tF": 90.0
+            }
+          },
+          "switch1": {
+            "id": 1,
+            "source": "init",
+            "tag": null,
+            "output": false,
+            "counts": {
+              "on_time": 0,
+              "on_time_rst_ts": 0,
+              "switch_on": 4,
+              "switch_on_rst_ts": 0
+            },
+            "temperature": {
+              "tC": 36.7,
+              "tF": 98.1
+            }
+          }
+        },
+        "devices": {
+          "1": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 1475221637,
+            "uid": [
+              5898296,
+              909201410,
+              540096578
+            ],
+            "ready": 0
+          },
+          "2": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 3776467432,
+            "uid": [
+              5373989,
+              909201412,
+              540096578
+            ],
+            "ready": 1
+          }
+        }
+      },
+      "identity_after_peer_return": {
+        "1": {
+          "valid": 1,
+          "mode": 0,
+          "layout": 3833993797,
+          "manifest_crc": 1475221637,
+          "uid": [
+            5898296,
+            909201410,
+            540096578
+          ],
+          "ready": 0
+        },
+        "2": {
+          "valid": 1,
+          "mode": 0,
+          "layout": 3833993797,
+          "manifest_crc": 3776467432,
+          "uid": [
+            5373989,
+            909201412,
+            540096578
+          ],
+          "ready": 1
+        }
+      },
+      "both_after_peer_return": {
+        "1": {
+          "first": {
+            "sid": 1,
+            "t": 2717739.351438875,
+            "capture_started_monotonic": 2717738.513528875,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              1,
+              14,
+              4165,
+              0,
+              190,
+              99,
+              40,
+              1,
+              0,
+              98,
+              38,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2800,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:08:54.544265+00:00",
+              "sequence": 3,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 2000,
+                  "generation": 3
+                },
+                "brine_out_cC": {
+                  "value": 600,
+                  "status": 1,
+                  "age_ms": 39000,
+                  "generation": 2
+                },
+                "brine_delta_cC": {
+                  "value": -100,
+                  "status": 1,
+                  "age_ms": 39000,
+                  "generation": 5
+                },
+                "flow_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 2096,
+                  "generation": 14
+                },
+                "return_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 2096,
+                  "generation": 14
+                },
+                "water_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 2096,
+                  "generation": 28
+                },
+                "flow_cL_min": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 1826,
+                  "generation": 14
+                },
+                "heat_W": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 2096,
+                  "generation": 42
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 2365,
+                  "generation": 14
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 2365,
+                  "generation": 14
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 25000,
+                  "generation": 2
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 32000,
+                  "generation": 2
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 1015,
+                  "generation": 14
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 1015,
+                  "generation": 14
+                },
+                "dhw_cC": {
+                  "value": 4600,
+                  "status": 1,
+                  "age_ms": 2096,
+                  "generation": 14
+                },
+                "outdoor_cC": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 1556,
+                  "generation": 14
+                },
+                "flow_target_cC": {
+                  "value": 2800,
+                  "status": 1,
+                  "age_ms": 1287,
+                  "generation": 14
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 747,
+                  "generation": 14
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 747,
+                  "generation": 14
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1826,
+                  "generation": 14
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717739.351458166,
+              "end": 2717739.438468916,
+              "midpoint": 2717739.394963541
+            },
+            "effect": {
+              "words_320_351": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                8,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                101,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "schema": 1,
+              "phase": 0,
+              "limit_reason": 0,
+              "target_w": 0,
+              "maximum_flow_cC": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "error_w": null,
+              "quality": 8,
+              "ready": false,
+              "pairs": 0,
+              "age_s": 65535,
+              "short_span_s": 0,
+              "flow_target_cC": 0,
+              "last_adjustment_cC": 0,
+              "adjustment_age_s": 101,
+              "compressor_hz": 0,
+              "decisions": 0,
+              "adjustments": 0,
+              "cumulative_up_cC": 0,
+              "cumulative_down_cC": 0,
+              "unresponsive_count": 0,
+              "pending_flow_cC": 0,
+              "derivative_w_per_min": 0,
+              "initial_flow_cC": 0,
+              "boot_recovery_unknown": true,
+              "persistent_recovery_supported": false,
+              "atomic": false
+            },
+            "feedback": {
+              "words_352_371": [
+                1,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                0,
+                0
+              ],
+              "schema": 1,
+              "quality": 8,
+              "quality_name": "wait-native",
+              "ready": false,
+              "short_count": 0,
+              "slow_count": 0,
+              "short_span_s": 0,
+              "slow_span_s": 0,
+              "short_window_s": 60,
+              "slow_window_s": 180,
+              "last_age_s": null,
+              "last_age_s_raw": 65535,
+              "temperature_generation": 0,
+              "flow_generation": 0,
+              "accepted_count": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "derivative_w_per_min": 0,
+              "atomic": false,
+              "note": "Multi-block diagnostic snapshot; counts/spans describe actual partial coverage, not a guaranteed full window. Source generations are the last accepted pair; repeated reads are not new samples."
+            },
+            "feedback_capture_interval": {
+              "begin": 2717740.535106541,
+              "end": 2717740.718021333,
+              "midpoint": 2717740.6265639374
+            },
+            "capture_finished_monotonic": 2717740.718025333
+          },
+          "last": {
+            "sid": 1,
+            "t": 2717745.573641416,
+            "capture_started_monotonic": 2717744.721556875,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              0,
+              15,
+              4363,
+              0,
+              200,
+              105,
+              62,
+              1,
+              0,
+              98,
+              12,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2800,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:09:00.766587+00:00",
+              "sequence": 4,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 8000,
+                  "generation": 3
+                },
+                "brine_out_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 1000,
+                  "generation": 3
+                },
+                "brine_delta_cC": {
+                  "value": 100,
+                  "status": 1,
+                  "age_ms": 8000,
+                  "generation": 6
+                },
+                "flow_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 908,
+                  "generation": 15
+                },
+                "return_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 908,
+                  "generation": 15
+                },
+                "water_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 908,
+                  "generation": 30
+                },
+                "flow_cL_min": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 639,
+                  "generation": 15
+                },
+                "heat_W": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 908,
+                  "generation": 45
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1178,
+                  "generation": 15
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1178,
+                  "generation": 15
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 32000,
+                  "generation": 2
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 38000,
+                  "generation": 2
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 7259,
+                  "generation": 14
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 7259,
+                  "generation": 14
+                },
+                "dhw_cC": {
+                  "value": 4600,
+                  "status": 1,
+                  "age_ms": 908,
+                  "generation": 15
+                },
+                "outdoor_cC": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 367,
+                  "generation": 15
+                },
+                "flow_target_cC": {
+                  "value": 2800,
+                  "status": 1,
+                  "age_ms": 99,
+                  "generation": 15
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 6991,
+                  "generation": 14
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 6991,
+                  "generation": 14
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 639,
+                  "generation": 15
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717745.573661291,
+              "end": 2717745.660107333,
+              "midpoint": 2717745.616884312
+            },
+            "effect": {
+              "words_320_351": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                8,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                107,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "schema": 1,
+              "phase": 0,
+              "limit_reason": 0,
+              "target_w": 0,
+              "maximum_flow_cC": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "error_w": null,
+              "quality": 8,
+              "ready": false,
+              "pairs": 0,
+              "age_s": 65535,
+              "short_span_s": 0,
+              "flow_target_cC": 0,
+              "last_adjustment_cC": 0,
+              "adjustment_age_s": 107,
+              "compressor_hz": 0,
+              "decisions": 0,
+              "adjustments": 0,
+              "cumulative_up_cC": 0,
+              "cumulative_down_cC": 0,
+              "unresponsive_count": 0,
+              "pending_flow_cC": 0,
+              "derivative_w_per_min": 0,
+              "initial_flow_cC": 0,
+              "boot_recovery_unknown": true,
+              "persistent_recovery_supported": false,
+              "atomic": false
+            },
+            "feedback": {
+              "words_352_371": [
+                1,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                0,
+                0
+              ],
+              "schema": 1,
+              "quality": 8,
+              "quality_name": "wait-native",
+              "ready": false,
+              "short_count": 0,
+              "slow_count": 0,
+              "short_span_s": 0,
+              "slow_span_s": 0,
+              "short_window_s": 60,
+              "slow_window_s": 180,
+              "last_age_s": null,
+              "last_age_s_raw": 65535,
+              "temperature_generation": 0,
+              "flow_generation": 0,
+              "accepted_count": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "derivative_w_per_min": 0,
+              "atomic": false,
+              "note": "Multi-block diagnostic snapshot; counts/spans describe actual partial coverage, not a guaranteed full window. Source generations are the last accepted pair; repeated reads are not new samples."
+            },
+            "feedback_capture_interval": {
+              "begin": 2717746.760299625,
+              "end": 2717746.951049666,
+              "midpoint": 2717746.8556746454
+            },
+            "capture_finished_monotonic": 2717746.951054833
+          }
+        },
+        "2": {
+          "first": {
+            "sid": 2,
+            "t": 2717747.77950775,
+            "capture_started_monotonic": 2717746.951561416,
+            "base": [
+              888,
+              76,
+              36,
+              1,
+              2,
+              16486,
+              45919,
+              0,
+              31877,
+              54659,
+              1957,
+              1,
+              0,
+              98,
+              163,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 159,
+              "applied": 159,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 1,
+              "lease_s": 0,
+              "acks": 42,
+              "readbacks": 127,
+              "restores": 1,
+              "original_power": 1,
+              "original_mode": 2,
+              "original_flow": 3050,
+              "original_dhw": 5200,
+              "original_boost": 0,
+              "current_power": 1,
+              "current_mode": 2,
+              "current_flow": 3050,
+              "current_dhw": 5200,
+              "current_boost": 0,
+              "action": 2,
+              "actions": 2,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 0,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:09:02.972493+00:00",
+              "sequence": 8,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 29000,
+                  "generation": 2741
+                },
+                "brine_out_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 22000,
+                  "generation": 2741
+                },
+                "brine_delta_cC": {
+                  "value": 100,
+                  "status": 1,
+                  "age_ms": 29000,
+                  "generation": 5482
+                },
+                "flow_cC": {
+                  "value": 3200,
+                  "status": 1,
+                  "age_ms": 2684,
+                  "generation": 16486
+                },
+                "return_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 2684,
+                  "generation": 16486
+                },
+                "water_delta_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 2684,
+                  "generation": 32972
+                },
+                "flow_cL_min": {
+                  "value": 1400,
+                  "status": 1,
+                  "age_ms": 2415,
+                  "generation": 16486
+                },
+                "heat_W": {
+                  "value": 4876,
+                  "status": 1,
+                  "age_ms": 2684,
+                  "generation": 49458
+                },
+                "compressor_Hz": {
+                  "value": 36,
+                  "status": 1,
+                  "age_ms": 2952,
+                  "generation": 16486
+                },
+                "compressor_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 2952,
+                  "generation": 16486
+                },
+                "brine_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 9000,
+                  "generation": 2741
+                },
+                "brine_pump_step": {
+                  "value": 10,
+                  "status": 1,
+                  "age_ms": 16000,
+                  "generation": 2741
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 1609,
+                  "generation": 16486
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 1609,
+                  "generation": 16486
+                },
+                "dhw_cC": {
+                  "value": 5300,
+                  "status": 1,
+                  "age_ms": 2684,
+                  "generation": 16486
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 2146,
+                  "generation": 16486
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 1876,
+                  "generation": 16528
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 1340,
+                  "generation": 16530
+                },
+                "operating_mode_raw": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1340,
+                  "generation": 16530
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 2415,
+                  "generation": 16486
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717747.779523375,
+              "end": 2717747.868852666,
+              "midpoint": 2717747.8241880205
+            },
+            "capture_finished_monotonic": 2717748.758895083
+          },
+          "last": {
+            "sid": 2,
+            "t": 2717753.619496041,
+            "capture_started_monotonic": 2717752.766616666,
+            "base": [
+              888,
+              76,
+              36,
+              1,
+              1,
+              16487,
+              46160,
+              0,
+              31888,
+              54665,
+              1975,
+              1,
+              0,
+              98,
+              21,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 159,
+              "applied": 159,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 1,
+              "lease_s": 0,
+              "acks": 42,
+              "readbacks": 127,
+              "restores": 1,
+              "original_power": 1,
+              "original_mode": 2,
+              "original_flow": 3050,
+              "original_dhw": 5200,
+              "original_boost": 0,
+              "current_power": 1,
+              "current_mode": 2,
+              "current_flow": 3050,
+              "current_dhw": 5200,
+              "current_boost": 0,
+              "action": 2,
+              "actions": 2,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 0,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:09:08.812594+00:00",
+              "sequence": 9,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 35000,
+                  "generation": 2741
+                },
+                "brine_out_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 28000,
+                  "generation": 2741
+                },
+                "brine_delta_cC": {
+                  "value": 100,
+                  "status": 1,
+                  "age_ms": 35000,
+                  "generation": 5482
+                },
+                "flow_cC": {
+                  "value": 3200,
+                  "status": 1,
+                  "age_ms": 2085,
+                  "generation": 16487
+                },
+                "return_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 2085,
+                  "generation": 16487
+                },
+                "water_delta_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 2085,
+                  "generation": 32974
+                },
+                "flow_cL_min": {
+                  "value": 1400,
+                  "status": 1,
+                  "age_ms": 1817,
+                  "generation": 16487
+                },
+                "heat_W": {
+                  "value": 4876,
+                  "status": 1,
+                  "age_ms": 2085,
+                  "generation": 49461
+                },
+                "compressor_Hz": {
+                  "value": 36,
+                  "status": 1,
+                  "age_ms": 2354,
+                  "generation": 16487
+                },
+                "compressor_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 2354,
+                  "generation": 16487
+                },
+                "brine_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 15000,
+                  "generation": 2741
+                },
+                "brine_pump_step": {
+                  "value": 10,
+                  "status": 1,
+                  "age_ms": 21000,
+                  "generation": 2741
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 1010,
+                  "generation": 16487
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 1010,
+                  "generation": 16487
+                },
+                "dhw_cC": {
+                  "value": 5300,
+                  "status": 1,
+                  "age_ms": 2085,
+                  "generation": 16487
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 1546,
+                  "generation": 16487
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 1279,
+                  "generation": 16529
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 740,
+                  "generation": 16531
+                },
+                "operating_mode_raw": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 740,
+                  "generation": 16531
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1817,
+                  "generation": 16487
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717753.619511791,
+              "end": 2717753.706846291,
+              "midpoint": 2717753.663179041
+            },
+            "capture_finished_monotonic": 2717754.611610875
+          }
+        }
+      },
+      "helper_and_serial_restored": true,
+      "both_native_curve_states_verified": true
+    },
+    "2": {
+      "target_status": {
+        "valid": 1,
+        "mode": 0,
+        "layout": 3833993797,
+        "manifest_crc": 4244643527,
+        "uid": [
+          5373989,
+          909201412,
+          540096578
+        ],
+        "ready": 1
+      },
+      "target_before_peer_return": [
+        {
+          "sid": 2,
+          "status": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 4244643527,
+            "uid": [
+              5373989,
+              909201412,
+              540096578
+            ],
+            "ready": 1
+          },
+          "base": [
+            888,
+            76,
+            26,
+            1,
+            5,
+            1,
+            271,
+            0,
+            13,
+            6,
+            2,
+            1,
+            0,
+            98,
+            163,
+            1
+          ],
+          "control": {
+            "state": 0,
+            "accepted": 0,
+            "applied": 0,
+            "rejected": 0,
+            "error": 0,
+            "saved": 0,
+            "touched": 0,
+            "mode": 0,
+            "lease_s": 0,
+            "acks": 0,
+            "readbacks": 0,
+            "restores": 0,
+            "original_power": 0,
+            "original_mode": 0,
+            "original_flow": 0,
+            "original_dhw": 0,
+            "original_boost": 0,
+            "current_power": 0,
+            "current_mode": 0,
+            "current_flow": 0,
+            "current_dhw": 0,
+            "current_boost": 0,
+            "action": 0,
+            "actions": 0,
+            "phase": 0,
+            "retries": 0,
+            "persistent_recovery": 0
+          },
+          "native": {
+            "power": 1,
+            "mode": 2,
+            "flow": 2850,
+            "dhw": 5200,
+            "boost": 0,
+            "operating_mode": 0,
+            "flags28": [
+              40,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "snapshot": {
+            "captured_at_host": "2026-10-16T05:10:48.172429+00:00",
+            "sequence": 1,
+            "link_lost": false,
+            "samples": {
+              "brine_in_cC": {
+                "value": 400,
+                "status": 1,
+                "age_ms": 4000,
+                "generation": 1
+              },
+              "brine_out_cC": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "brine_delta_cC": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 1
+              },
+              "flow_cC": {
+                "value": 3100,
+                "status": 1,
+                "age_ms": 3639,
+                "generation": 2
+              },
+              "return_cC": {
+                "value": 2750,
+                "status": 1,
+                "age_ms": 3639,
+                "generation": 2
+              },
+              "water_delta_cC": {
+                "value": 350,
+                "status": 1,
+                "age_ms": 3639,
+                "generation": 4
+              },
+              "flow_cL_min": {
+                "value": 1400,
+                "status": 1,
+                "age_ms": 3370,
+                "generation": 2
+              },
+              "heat_W": {
+                "value": 3413,
+                "status": 1,
+                "age_ms": 3639,
+                "generation": 6
+              },
+              "compressor_Hz": {
+                "value": 26,
+                "status": 1,
+                "age_ms": 3906,
+                "generation": 2
+              },
+              "compressor_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 3906,
+                "generation": 2
+              },
+              "brine_pump_running": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "brine_pump_step": {
+                "value": null,
+                "status": 0,
+                "age_ms": 65535000,
+                "generation": 0
+              },
+              "water_pump_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 2564,
+                "generation": 2
+              },
+              "water_pump_level": {
+                "value": 5,
+                "status": 1,
+                "age_ms": 2564,
+                "generation": 2
+              },
+              "dhw_cC": {
+                "value": 5300,
+                "status": 1,
+                "age_ms": 3639,
+                "generation": 2
+              },
+              "outdoor_cC": {
+                "value": 1200,
+                "status": 1,
+                "age_ms": 3100,
+                "generation": 2
+              },
+              "flow_target_cC": {
+                "value": 2850,
+                "status": 1,
+                "age_ms": 2833,
+                "generation": 2
+              },
+              "dhw_target_cC": {
+                "value": 5200,
+                "status": 1,
+                "age_ms": 2295,
+                "generation": 2
+              },
+              "operating_mode_raw": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 2295,
+                "generation": 2
+              },
+              "heater_bits": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 3370,
+                "generation": 2
+              }
+            }
+          }
+        },
+        {
+          "sid": 2,
+          "status": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 4244643527,
+            "uid": [
+              5373989,
+              909201412,
+              540096578
+            ],
+            "ready": 1
+          },
+          "base": [
+            888,
+            76,
+            26,
+            1,
+            4,
+            4,
+            1173,
+            0,
+            54,
+            28,
+            21,
+            1,
+            0,
+            98,
+            163,
+            1
+          ],
+          "control": {
+            "state": 0,
+            "accepted": 0,
+            "applied": 0,
+            "rejected": 0,
+            "error": 0,
+            "saved": 0,
+            "touched": 0,
+            "mode": 0,
+            "lease_s": 0,
+            "acks": 0,
+            "readbacks": 0,
+            "restores": 0,
+            "original_power": 0,
+            "original_mode": 0,
+            "original_flow": 0,
+            "original_dhw": 0,
+            "original_boost": 0,
+            "current_power": 0,
+            "current_mode": 0,
+            "current_flow": 0,
+            "current_dhw": 0,
+            "current_boost": 0,
+            "action": 0,
+            "actions": 0,
+            "phase": 0,
+            "retries": 0,
+            "persistent_recovery": 0
+          },
+          "native": {
+            "power": 1,
+            "mode": 2,
+            "flow": 2850,
+            "dhw": 5200,
+            "boost": 0,
+            "operating_mode": 0,
+            "flags28": [
+              40,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "snapshot": {
+            "captured_at_host": "2026-10-16T05:11:09.497647+00:00",
+            "sequence": 2,
+            "link_lost": false,
+            "samples": {
+              "brine_in_cC": {
+                "value": 400,
+                "status": 1,
+                "age_ms": 25000,
+                "generation": 1
+              },
+              "brine_out_cC": {
+                "value": 400,
+                "status": 1,
+                "age_ms": 18000,
+                "generation": 1
+              },
+              "brine_delta_cC": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 25000,
+                "generation": 2
+              },
+              "flow_cC": {
+                "value": 3100,
+                "status": 1,
+                "age_ms": 654,
+                "generation": 5
+              },
+              "return_cC": {
+                "value": 2750,
+                "status": 1,
+                "age_ms": 654,
+                "generation": 5
+              },
+              "water_delta_cC": {
+                "value": 350,
+                "status": 1,
+                "age_ms": 654,
+                "generation": 10
+              },
+              "flow_cL_min": {
+                "value": 1400,
+                "status": 1,
+                "age_ms": 385,
+                "generation": 5
+              },
+              "heat_W": {
+                "value": 3413,
+                "status": 1,
+                "age_ms": 654,
+                "generation": 15
+              },
+              "compressor_Hz": {
+                "value": 26,
+                "status": 1,
+                "age_ms": 923,
+                "generation": 5
+              },
+              "compressor_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 923,
+                "generation": 5
+              },
+              "brine_pump_running": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 1000,
+                "generation": 1
+              },
+              "brine_pump_step": {
+                "value": 10,
+                "status": 1,
+                "age_ms": 10000,
+                "generation": 1
+              },
+              "water_pump_running": {
+                "value": 1,
+                "status": 1,
+                "age_ms": 9016,
+                "generation": 4
+              },
+              "water_pump_level": {
+                "value": 5,
+                "status": 1,
+                "age_ms": 9016,
+                "generation": 4
+              },
+              "dhw_cC": {
+                "value": 5300,
+                "status": 1,
+                "age_ms": 654,
+                "generation": 5
+              },
+              "outdoor_cC": {
+                "value": 1200,
+                "status": 1,
+                "age_ms": 116,
+                "generation": 5
+              },
+              "flow_target_cC": {
+                "value": 2850,
+                "status": 1,
+                "age_ms": 9285,
+                "generation": 4
+              },
+              "dhw_target_cC": {
+                "value": 5200,
+                "status": 1,
+                "age_ms": 8747,
+                "generation": 4
+              },
+              "operating_mode_raw": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 8747,
+                "generation": 4
+              },
+              "heater_bits": {
+                "value": 0,
+                "status": 1,
+                "age_ms": 385,
+                "generation": 5
+              }
+            }
+          }
+        }
+      ],
+      "postflight_state": {
+        "shelly": {
+          "serial": {
+            "mode": "mb_client",
+            "serial": {
+              "baud": 9600,
+              "format": "8N1"
+            },
+            "mb_server": {
+              "addr": 1
+            }
+          },
+          "scripts": {
+            "scripts": [
+              {
+                "id": 1,
+                "name": "Installer",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 2,
+                "name": "boot_v1_0_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 3,
+                "name": "master_v1_0_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 4,
+                "name": "spot_v1_3_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 5,
+                "name": "weather_v1_1_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 6,
+                "name": "op_v1_9_0",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 7,
+                "name": "optimize_v1_1_2",
+                "enable": false,
+                "running": false
+              },
+              {
+                "id": 8,
+                "name": "P0075 write reference",
+                "enable": false,
+                "running": false
+              }
+            ]
+          },
+          "switch0": {
+            "id": 0,
+            "source": "init",
+            "tag": null,
+            "output": false,
+            "counts": {
+              "on_time": 0,
+              "on_time_rst_ts": 0,
+              "switch_on": 3,
+              "switch_on_rst_ts": 0
+            },
+            "temperature": {
+              "tC": 32.4,
+              "tF": 90.2
+            }
+          },
+          "switch1": {
+            "id": 1,
+            "source": "init",
+            "tag": null,
+            "output": false,
+            "counts": {
+              "on_time": 0,
+              "on_time_rst_ts": 0,
+              "switch_on": 4,
+              "switch_on_rst_ts": 0
+            },
+            "temperature": {
+              "tC": 36.7,
+              "tF": 98.0
+            }
+          }
+        },
+        "devices": {
+          "1": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 1475221637,
+            "uid": [
+              5898296,
+              909201410,
+              540096578
+            ],
+            "ready": 0
+          },
+          "2": {
+            "valid": 1,
+            "mode": 0,
+            "layout": 3833993797,
+            "manifest_crc": 4244643527,
+            "uid": [
+              5373989,
+              909201412,
+              540096578
+            ],
+            "ready": 1
+          }
+        }
+      },
+      "identity_after_peer_return": {
+        "1": {
+          "valid": 1,
+          "mode": 0,
+          "layout": 3833993797,
+          "manifest_crc": 1475221637,
+          "uid": [
+            5898296,
+            909201410,
+            540096578
+          ],
+          "ready": 1
+        },
+        "2": {
+          "valid": 1,
+          "mode": 0,
+          "layout": 3833993797,
+          "manifest_crc": 4244643527,
+          "uid": [
+            5373989,
+            909201412,
+            540096578
+          ],
+          "ready": 1
+        }
+      },
+      "both_after_peer_return": {
+        "1": {
+          "first": {
+            "sid": 1,
+            "t": 2717944.147177083,
+            "capture_started_monotonic": 2717943.310976041,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              3,
+              42,
+              12745,
+              0,
+              580,
+              305,
+              91,
+              1,
+              0,
+              98,
+              163,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:12:19.343944+00:00",
+              "sequence": 5,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 31000,
+                  "generation": 7
+                },
+                "brine_out_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 23000,
+                  "generation": 7
+                },
+                "brine_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 31000,
+                  "generation": 14
+                },
+                "flow_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 4311,
+                  "generation": 42
+                },
+                "return_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 4311,
+                  "generation": 42
+                },
+                "water_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4311,
+                  "generation": 84
+                },
+                "flow_cL_min": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 4041,
+                  "generation": 42
+                },
+                "heat_W": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4311,
+                  "generation": 126
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4580,
+                  "generation": 42
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4580,
+                  "generation": 42
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 11000,
+                  "generation": 7
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 16000,
+                  "generation": 7
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 3231,
+                  "generation": 42
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 3231,
+                  "generation": 42
+                },
+                "dhw_cC": {
+                  "value": 4600,
+                  "status": 1,
+                  "age_ms": 4311,
+                  "generation": 42
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 3771,
+                  "generation": 42
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 3501,
+                  "generation": 42
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 2961,
+                  "generation": 42
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 2961,
+                  "generation": 42
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4041,
+                  "generation": 42
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717944.147193666,
+              "end": 2717944.233831333,
+              "midpoint": 2717944.1905125
+            },
+            "effect": {
+              "words_320_351": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                8,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                307,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "schema": 1,
+              "phase": 0,
+              "limit_reason": 0,
+              "target_w": 0,
+              "maximum_flow_cC": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "error_w": null,
+              "quality": 8,
+              "ready": false,
+              "pairs": 0,
+              "age_s": 65535,
+              "short_span_s": 0,
+              "flow_target_cC": 0,
+              "last_adjustment_cC": 0,
+              "adjustment_age_s": 307,
+              "compressor_hz": 0,
+              "decisions": 0,
+              "adjustments": 0,
+              "cumulative_up_cC": 0,
+              "cumulative_down_cC": 0,
+              "unresponsive_count": 0,
+              "pending_flow_cC": 0,
+              "derivative_w_per_min": 0,
+              "initial_flow_cC": 0,
+              "boot_recovery_unknown": true,
+              "persistent_recovery_supported": false,
+              "atomic": false
+            },
+            "feedback": {
+              "words_352_371": [
+                1,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                0,
+                0
+              ],
+              "schema": 1,
+              "quality": 8,
+              "quality_name": "wait-native",
+              "ready": false,
+              "short_count": 0,
+              "slow_count": 0,
+              "short_span_s": 0,
+              "slow_span_s": 0,
+              "short_window_s": 60,
+              "slow_window_s": 180,
+              "last_age_s": null,
+              "last_age_s_raw": 65535,
+              "temperature_generation": 0,
+              "flow_generation": 0,
+              "accepted_count": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "derivative_w_per_min": 0,
+              "atomic": false,
+              "note": "Multi-block diagnostic snapshot; counts/spans describe actual partial coverage, not a guaranteed full window. Source generations are the last accepted pair; repeated reads are not new samples."
+            },
+            "feedback_capture_interval": {
+              "begin": 2717945.336102416,
+              "end": 2717945.51721125,
+              "midpoint": 2717945.426656833
+            },
+            "capture_finished_monotonic": 2717945.517213416
+          },
+          "last": {
+            "sid": 1,
+            "t": 2717950.365900541,
+            "capture_started_monotonic": 2717949.527680208,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              4,
+              43,
+              13031,
+              0,
+              593,
+              311,
+              113,
+              1,
+              0,
+              98,
+              163,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:12:25.562797+00:00",
+              "sequence": 6,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 37000,
+                  "generation": 7
+                },
+                "brine_out_cC": {
+                  "value": 400,
+                  "status": 1,
+                  "age_ms": 29000,
+                  "generation": 7
+                },
+                "brine_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 37000,
+                  "generation": 14
+                },
+                "flow_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 5110,
+                  "generation": 43
+                },
+                "return_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 5110,
+                  "generation": 43
+                },
+                "water_delta_cC": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5110,
+                  "generation": 86
+                },
+                "flow_cL_min": {
+                  "value": 1300,
+                  "status": 1,
+                  "age_ms": 4841,
+                  "generation": 43
+                },
+                "heat_W": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5110,
+                  "generation": 129
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5381,
+                  "generation": 43
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5381,
+                  "generation": 43
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 17000,
+                  "generation": 7
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 22000,
+                  "generation": 7
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 4032,
+                  "generation": 43
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 4032,
+                  "generation": 43
+                },
+                "dhw_cC": {
+                  "value": 4600,
+                  "status": 1,
+                  "age_ms": 5110,
+                  "generation": 43
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 4570,
+                  "generation": 43
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 4301,
+                  "generation": 43
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 3760,
+                  "generation": 43
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 3760,
+                  "generation": 43
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 4841,
+                  "generation": 43
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717950.365926,
+              "end": 2717950.457639958,
+              "midpoint": 2717950.411782979
+            },
+            "effect": {
+              "words_320_351": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                8,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                313,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ],
+              "schema": 1,
+              "phase": 0,
+              "limit_reason": 0,
+              "target_w": 0,
+              "maximum_flow_cC": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "error_w": null,
+              "quality": 8,
+              "ready": false,
+              "pairs": 0,
+              "age_s": 65535,
+              "short_span_s": 0,
+              "flow_target_cC": 0,
+              "last_adjustment_cC": 0,
+              "adjustment_age_s": 313,
+              "compressor_hz": 0,
+              "decisions": 0,
+              "adjustments": 0,
+              "cumulative_up_cC": 0,
+              "cumulative_down_cC": 0,
+              "unresponsive_count": 0,
+              "pending_flow_cC": 0,
+              "derivative_w_per_min": 0,
+              "initial_flow_cC": 0,
+              "boot_recovery_unknown": true,
+              "persistent_recovery_supported": false,
+              "atomic": false
+            },
+            "feedback": {
+              "words_352_371": [
+                1,
+                8,
+                0,
+                0,
+                0,
+                0,
+                0,
+                65535,
+                0,
+                0,
+                0,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                32768,
+                0,
+                0,
+                0
+              ],
+              "schema": 1,
+              "quality": 8,
+              "quality_name": "wait-native",
+              "ready": false,
+              "short_count": 0,
+              "slow_count": 0,
+              "short_span_s": 0,
+              "slow_span_s": 0,
+              "short_window_s": 60,
+              "slow_window_s": 180,
+              "last_age_s": null,
+              "last_age_s_raw": 65535,
+              "temperature_generation": 0,
+              "flow_generation": 0,
+              "accepted_count": 0,
+              "instant_w": null,
+              "short_w": null,
+              "slow_w": null,
+              "derivative_w_per_min": 0,
+              "atomic": false,
+              "note": "Multi-block diagnostic snapshot; counts/spans describe actual partial coverage, not a guaranteed full window. Source generations are the last accepted pair; repeated reads are not new samples."
+            },
+            "feedback_capture_interval": {
+              "begin": 2717951.57823075,
+              "end": 2717951.759804458,
+              "midpoint": 2717951.6690176036
+            },
+            "capture_finished_monotonic": 2717951.759810583
+          }
+        },
+        "2": {
+          "first": {
+            "sid": 2,
+            "t": 2717952.608377083,
+            "capture_started_monotonic": 2717951.760466666,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              0,
+              16,
+              4649,
+              0,
+              212,
+              111,
+              40,
+              1,
+              0,
+              98,
+              20,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:12:27.805308+00:00",
+              "sequence": 3,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 600,
+                  "status": 1,
+                  "age_ms": 17000,
+                  "generation": 3
+                },
+                "brine_out_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 9000,
+                  "generation": 3
+                },
+                "brine_delta_cC": {
+                  "value": 100,
+                  "status": 1,
+                  "age_ms": 17000,
+                  "generation": 6
+                },
+                "flow_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 1089,
+                  "generation": 16
+                },
+                "return_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 1089,
+                  "generation": 16
+                },
+                "water_delta_cC": {
+                  "value": -50,
+                  "status": 1,
+                  "age_ms": 1089,
+                  "generation": 32
+                },
+                "flow_cL_min": {
+                  "value": 1400,
+                  "status": 1,
+                  "age_ms": 818,
+                  "generation": 16
+                },
+                "heat_W": {
+                  "value": -487,
+                  "status": 1,
+                  "age_ms": 1089,
+                  "generation": 48
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1358,
+                  "generation": 16
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1358,
+                  "generation": 16
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 37000,
+                  "generation": 2
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 1000,
+                  "generation": 3
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 13,
+                  "generation": 16
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 13,
+                  "generation": 16
+                },
+                "dhw_cC": {
+                  "value": 5300,
+                  "status": 1,
+                  "age_ms": 1089,
+                  "generation": 16
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 551,
+                  "generation": 16
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 282,
+                  "generation": 16
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 7183,
+                  "generation": 15
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 7183,
+                  "generation": 15
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 818,
+                  "generation": 16
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717952.608392875,
+              "end": 2717952.695944666,
+              "midpoint": 2717952.6521687703
+            },
+            "capture_finished_monotonic": 2717953.586383083
+          },
+          "last": {
+            "sid": 2,
+            "t": 2717964.244243708,
+            "capture_started_monotonic": 2717963.413667375,
+            "base": [
+              888,
+              76,
+              0,
+              1,
+              4,
+              17,
+              5133,
+              0,
+              234,
+              123,
+              76,
+              1,
+              0,
+              98,
+              163,
+              1
+            ],
+            "control": {
+              "state": 0,
+              "accepted": 0,
+              "applied": 0,
+              "rejected": 0,
+              "error": 0,
+              "saved": 0,
+              "touched": 0,
+              "mode": 0,
+              "lease_s": 0,
+              "acks": 0,
+              "readbacks": 0,
+              "restores": 0,
+              "original_power": 0,
+              "original_mode": 0,
+              "original_flow": 0,
+              "original_dhw": 0,
+              "original_boost": 0,
+              "current_power": 0,
+              "current_mode": 0,
+              "current_flow": 0,
+              "current_dhw": 0,
+              "current_boost": 0,
+              "action": 0,
+              "actions": 0,
+              "phase": 0,
+              "retries": 0,
+              "persistent_recovery": 0
+            },
+            "native": {
+              "power": 1,
+              "mode": 2,
+              "flow": 2850,
+              "dhw": 5200,
+              "boost": 0,
+              "operating_mode": 2,
+              "flags28": [
+                40,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            },
+            "snapshot": {
+              "captured_at_host": "2026-10-16T05:12:39.441398+00:00",
+              "sequence": 5,
+              "link_lost": false,
+              "samples": {
+                "brine_in_cC": {
+                  "value": 600,
+                  "status": 1,
+                  "age_ms": 29000,
+                  "generation": 3
+                },
+                "brine_out_cC": {
+                  "value": 500,
+                  "status": 1,
+                  "age_ms": 20000,
+                  "generation": 3
+                },
+                "brine_delta_cC": {
+                  "value": 100,
+                  "status": 1,
+                  "age_ms": 29000,
+                  "generation": 6
+                },
+                "flow_cC": {
+                  "value": 2700,
+                  "status": 1,
+                  "age_ms": 5288,
+                  "generation": 17
+                },
+                "return_cC": {
+                  "value": 2750,
+                  "status": 1,
+                  "age_ms": 5288,
+                  "generation": 17
+                },
+                "water_delta_cC": {
+                  "value": -50,
+                  "status": 1,
+                  "age_ms": 5288,
+                  "generation": 34
+                },
+                "flow_cL_min": {
+                  "value": 1400,
+                  "status": 1,
+                  "age_ms": 5021,
+                  "generation": 17
+                },
+                "heat_W": {
+                  "value": -487,
+                  "status": 1,
+                  "age_ms": 5288,
+                  "generation": 51
+                },
+                "compressor_Hz": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5558,
+                  "generation": 17
+                },
+                "compressor_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5558,
+                  "generation": 17
+                },
+                "brine_pump_running": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5000,
+                  "generation": 3
+                },
+                "brine_pump_step": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 13000,
+                  "generation": 3
+                },
+                "water_pump_running": {
+                  "value": 1,
+                  "status": 1,
+                  "age_ms": 4214,
+                  "generation": 17
+                },
+                "water_pump_level": {
+                  "value": 5,
+                  "status": 1,
+                  "age_ms": 4214,
+                  "generation": 17
+                },
+                "dhw_cC": {
+                  "value": 5300,
+                  "status": 1,
+                  "age_ms": 5288,
+                  "generation": 17
+                },
+                "outdoor_cC": {
+                  "value": 1200,
+                  "status": 1,
+                  "age_ms": 4752,
+                  "generation": 17
+                },
+                "flow_target_cC": {
+                  "value": 2850,
+                  "status": 1,
+                  "age_ms": 4483,
+                  "generation": 17
+                },
+                "dhw_target_cC": {
+                  "value": 5200,
+                  "status": 1,
+                  "age_ms": 3945,
+                  "generation": 17
+                },
+                "operating_mode_raw": {
+                  "value": 2,
+                  "status": 1,
+                  "age_ms": 3945,
+                  "generation": 17
+                },
+                "heater_bits": {
+                  "value": 0,
+                  "status": 1,
+                  "age_ms": 5021,
+                  "generation": 17
+                }
+              }
+            },
+            "snapshot_capture_interval": {
+              "begin": 2717964.244259416,
+              "end": 2717964.336643583,
+              "midpoint": 2717964.2904514996
+            },
+            "capture_finished_monotonic": 2717965.231762791
+          }
+        }
+      },
+      "helper_and_serial_restored": true,
+      "both_native_curve_states_verified": true
+    }
+  }
+}

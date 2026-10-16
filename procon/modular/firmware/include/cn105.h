@@ -13,4 +13,5 @@ void cn_tx_sent(void);
 uint16_t cn_read(unsigned address);
 void cn_service(void);
 uint8_t cn_command(const uint16_t words[8]);
+int maintenance_ready(void);
 #endif

@@ -1,0 +1,387 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_macro   0x00000000       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_macro   0x00000000      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_macro   0x00000000      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .group         0x00000000        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_macro   0x00000000      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .comment       0x00000000       0x47 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .text          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+ .data          0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+ .bss           0x00000000        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+FLASH            0x0800e000         0x00003000         xr
+RAM              0x20001900         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccZ2Yt2R.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cckbFuOT.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccOFjQt7.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccTXt0Dj.o
+LOAD /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+LOAD /private/tmp/arm-toolchain-full/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v7e-m/nofp/libgcc.a
+
+.header         0x0800e000       0x40
+ *(.header)
+ .header        0x0800e000       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.exports        0x0800e040       0x3c
+ *(.exports)
+ .exports       0x0800e040       0x3c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.text           0x0800e07c     0x2e04
+ *(.layout_probe)
+ *(.text*)
+ .text.soft_lower
+                0x0800e07c       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_waiting
+                0x0800e0bc       0x18 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.native_heat_or_pause
+                0x0800e0d4       0x2c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_mode_matches
+                0x0800e100       0x54 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.heating  0x0800e154       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_feedback_ok
+                0x0800e164       0x38 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_collecting
+                0x0800e19c       0x3c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.pause_demand_ok
+                0x0800e1d8       0x8c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.gate28   0x0800e264       0x94 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.add      0x0800e2f8       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.apply_plan
+                0x0800e318       0xa8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.ctl_read.part.0
+                0x0800e3c0      0x160 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.minute_rate.lto_priv.0
+                0x0800e520       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_stop
+                0x0800e548       0x18 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.restore_plan
+                0x0800e560       0xa4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.slope    0x0800e604       0x30 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.thermal_ceiling
+                0x0800e634       0x68 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.response_waiting
+                0x0800e69c       0x48 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.start_demand
+                0x0800e6e4       0x40 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_discard_pending
+                0x0800e724       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_verified
+                0x0800e734       0x60 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.empty    0x0800e794       0x30 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.windows  0x0800e7c4      0x118 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.pending  0x0800e8dc       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.reject.isra.0
+                0x0800e904       0x30 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_model_break
+                0x0800e934        0x8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_wait
+                0x0800e93c       0x54 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.recover_wait
+                0x0800e990       0x44 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.fail     0x0800e9d4       0x94 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_model_target
+                0x0800ea68        0x8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.history  0x0800ea70      0x1b4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.startup_target
+                0x0800ec24      0x1b8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_entry_demand
+                0x0800eddc       0x74 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_pause_demand
+                0x0800ee50      0x110 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_fast
+                0x0800ef60      0x738 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.effect_read
+                0x0800f698      0x3bc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.ctl_feedback
+                0x0800fa54       0x18 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x0800fa54                ctl_feedback
+ .text.ctl_link_lost
+                0x0800fa6c       0x30 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x0800fa6c                ctl_link_lost
+ .text.ctl_observe
+                0x0800fa9c       0xa8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x0800fa9c                ctl_observe
+ .text.ctl_reply.part.0
+                0x0800fb44      0x394 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .text.ctl_init
+                0x0800fed8       0x38 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x0800fed8                ctl_init
+ .text.ctl_submit
+                0x0800ff10      0x468 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x0800ff10                ctl_submit
+ .text.ctl_tick
+                0x08010378      0x3a0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010378                ctl_tick
+ .text.ctl_busy
+                0x08010718       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010718                ctl_busy
+ .text.ctl_next
+                0x08010738      0x2ac /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010738                ctl_next
+ .text.ctl_reply
+                0x080109e4       0x1c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x080109e4                ctl_reply
+ .text.ctl_timeout
+                0x08010a00       0x48 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010a00                ctl_timeout
+ .text.ctl_read
+                0x08010a48       0x38 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010a48                ctl_read
+ .text.effect_feedback_hard_invalid
+                0x08010a80        0xc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010a80                effect_feedback_hard_invalid
+ .text.effect_feedback_init
+                0x08010a8c       0x90 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010a8c                effect_feedback_init
+ .text.effect_feedback_tick
+                0x08010b1c      0x348 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010b1c                effect_feedback_tick
+ .text.effect_feedback_get
+                0x08010e64        0x8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010e64                effect_feedback_get
+ .text.memset   0x08010e6c       0x10 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010e6c                memset
+ *(.rodata*)
+ .rodata.q.0    0x08010e7c        0x3 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+                0x08010e80                        . = ALIGN (0x8)
+ *fill*         0x08010e7f        0x1 
+
+.glue_7         0x08010e80        0x0
+ .glue_7        0x08010e80        0x0 linker stubs
+
+.glue_7t        0x08010e80        0x0
+ .glue_7t       0x08010e80        0x0 linker stubs
+
+.vfp11_veneer   0x08010e80        0x0
+ .vfp11_veneer  0x08010e80        0x0 linker stubs
+
+.v4_bx          0x08010e80        0x0
+ .v4_bx         0x08010e80        0x0 linker stubs
+
+.iplt           0x08010e80        0x0
+ .iplt          0x08010e80        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.rel.dyn        0x08010e80        0x0
+ .rel.iplt      0x08010e80        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.data           0x20001900        0x0 load address 0x08010e80
+                0x20001900                        _data_start = .
+                0x20001900                        _ramfunc_start = .
+ *(.ramfunc*)
+                0x20001900                        _ramfunc_end = .
+ *(.data*)
+                0x20001900                        . = ALIGN (0x8)
+                0x20001900                        _data_end = .
+                0x08010e80                        _data_load = LOADADDR (.data)
+
+.igot.plt       0x20001900        0x0 load address 0x08010e80
+ .igot.plt      0x20001900        0x0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.bss            0x20001900      0x480 load address 0x08010e80
+                0x20001900                        _bss_start = .
+ *(.bss*)
+ .bss.ring      0x20001900      0x200 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.running_since
+                0x20001b00        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.consumed  0x20001b04        0x1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.ever_sample
+                0x20001b05        0x1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.polled    0x20001b06        0x1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.resuming  0x20001b07        0x1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.running   0x20001b08        0x1 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ *fill*         0x20001b09        0x1 
+ .bss.consumed_temp
+                0x20001b0a        0x2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.consumed_flow
+                0x20001b0c        0x2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ *fill*         0x20001b0e        0x2 
+ .bss.last_sample_at
+                0x20001b10        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.last_poll
+                0x20001b14        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.result    0x20001b18       0x2c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.head      0x20001b44        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.count     0x20001b48        0x4 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.reg       0x20001b4c      0x174 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .bss.controller
+                0x20001cc0       0xbc /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ *(COMMON)
+                0x20001d80                        . = ALIGN (0x8)
+ *fill*         0x20001d7c        0x4 
+                0x20001d80                        _bss_end = .
+
+/DISCARD/
+ *(.comment*)
+ *(.note*)
+ *(.ARM.exidx*)
+                0x00000000                        _data_size = (_data_end - _data_start)
+                0x00000480                        _bss_size = (_bss_end - _bss_start)
+                0x20004000                        _stack_top = 0x20004000
+                0x00000001                        ASSERT ((_bss_end <= (ORIGIN (RAM) + LENGTH (RAM))), RAM slot overflow)
+                [!provide]                        PROVIDE (platform_init = 0x8008201)
+                [!provide]                        PROVIDE (uart_init = 0x8008205)
+                [!provide]                        PROVIDE (uart_receive = 0x8008209)
+                [!provide]                        PROVIDE (uart_send = 0x800820d)
+                [!provide]                        PROVIDE (micros = 0x8008211)
+                [!provide]                        PROVIDE (watchdog_refresh = 0x8008215)
+                [!provide]                        PROVIDE (heartbeat = 0x8008219)
+                [!provide]                        PROVIDE (cn_uart_init = 0x800821d)
+                [!provide]                        PROVIDE (cn_uart_receive = 0x8008221)
+                [!provide]                        PROVIDE (cn_uart_ready = 0x8008225)
+                [!provide]                        PROVIDE (cn_uart_write = 0x8008229)
+                [!provide]                        PROVIDE (platform_uid_word = 0x800822d)
+                [!provide]                        PROVIDE (platform_dip_read = 0x8008231)
+                [!provide]                        PROVIDE (identity_init_dip = 0x8008235)
+                [!provide]                        PROVIDE (modbus_address = 0x8008239)
+                [!provide]                        PROVIDE (identity_read = 0x800823d)
+                [!provide]                        PROVIDE (cn_service = 0x8008241)
+                [!provide]                        PROVIDE (cn_init = 0x800a041)
+                [!provide]                        PROVIDE (cn_feed = 0x800a045)
+                [!provide]                        PROVIDE (cn_tick = 0x800a049)
+                [!provide]                        PROVIDE (cn_tx_byte = 0x800a04d)
+                [!provide]                        PROVIDE (cn_tx_sent = 0x800a051)
+                [!provide]                        PROVIDE (cn_read = 0x800a055)
+                [!provide]                        PROVIDE (cn_command = 0x800a059)
+                [!provide]                        PROVIDE (maintenance_ready = 0x800a05d)
+                [!provide]                        PROVIDE (modbus_reply = 0x800d041)
+                0x08011041                        PROVIDE (tele_snapshot = 0x8011041)
+                [!provide]                        PROVIDE (tele_init = 0x8011045)
+                [!provide]                        PROVIDE (tele_tick = 0x8011049)
+                [!provide]                        PROVIDE (tele_invalidate = 0x801104d)
+                [!provide]                        PROVIDE (tele_accept = 0x8011051)
+                [!provide]                        PROVIDE (tele_read = 0x8011055)
+                [!provide]                        PROVIDE (svc_init = 0x8012041)
+                [!provide]                        PROVIDE (svc_start_cycle = 0x8012045)
+                [!provide]                        PROVIDE (svc_link = 0x8012049)
+                [!provide]                        PROVIDE (svc_tick = 0x801204d)
+                [!provide]                        PROVIDE (svc_due = 0x8012051)
+                [!provide]                        PROVIDE (svc_sent = 0x8012055)
+                [!provide]                        PROVIDE (svc_reply = 0x8012059)
+                [!provide]                        PROVIDE (svc_timeout = 0x801205d)
+                [!provide]                        PROVIDE (svc_bad_frame = 0x8012061)
+                0x08012065                        PROVIDE (svc_read = 0x8012065)
+                [!provide]                        PROVIDE (debug_command = 0x8013041)
+                [!provide]                        PROVIDE (feedback_read = 0x8014041)
+                0x08012069                        PROVIDE (effect_model_op = 0x8012069)
+                0x0801206d                        PROVIDE (effect_model_tick = 0x801206d)
+OUTPUT(/Users/marcus/Documents/Codex/2026-09-09/fetcha-vp-fr-n-github-och/P0080/implementation-smart-home/procon/modular/build-effect-energy-v4-final/mode.elf elf32-littlearm)
+LOAD linker stubs
+
+.ARM.attributes
+                0x00000000       0x2a
+ .ARM.attributes
+                0x00000000       0x2c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .ARM.attributes
+                0x0000002c       0x21 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.debug_info     0x00000000     0x41a1
+ .debug_info    0x00000000     0x224c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .debug_info    0x0000224c      0xac8 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+                0x0000224c                control.c.44e211f8
+ .debug_info    0x00002d14      0xe62 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+                0x00002d14                effect.c.3be28ce9
+ .debug_info    0x00003b76      0x565 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+                0x00003b76                effect_feedback.c.d16f9418
+ .debug_info    0x000040db       0xa2 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+                0x000040db                runtime.c.3977160d
+ .debug_info    0x0000417d       0x24 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.debug_abbrev   0x00000000      0x928
+ .debug_abbrev  0x00000000      0x1ef /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .debug_abbrev  0x000001ef      0x2b5 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_abbrev  0x000004a4      0x261 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_abbrev  0x00000705      0x186 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_abbrev  0x0000088b       0x89 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_abbrev  0x00000914       0x14 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.debug_loclists
+                0x00000000     0x245b
+ .debug_loclists
+                0x00000000     0x245b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+
+.debug_aranges  0x00000000      0x1e0
+ .debug_aranges
+                0x00000000      0x1c0 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .debug_aranges
+                0x000001c0       0x20 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.debug_rnglists
+                0x00000000      0x2c7
+ .debug_rnglists
+                0x00000000      0x2c7 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+
+.debug_line     0x00000000     0x45f7
+ .debug_line    0x00000000     0x443f /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .debug_line    0x0000443f       0x5b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_line    0x0000449a       0x6a /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_line    0x00004504       0x5b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_line    0x0000455f       0x43 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_line    0x000045a2       0x55 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+
+.debug_str      0x00000000     0x4de3
+ .debug_str     0x00000000      0x1ca /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+ .debug_str     0x00000000     0x41ec /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_str     0x00000000     0x4511 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_str     0x00000000     0x3d70 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_str     0x00000000     0x322c /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_str     0x00000000     0x4de3 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+                                 0x36 (size before relaxing)
+
+.debug_frame    0x00000000      0x578
+ .debug_frame   0x00000000      0x578 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccj0J4xw.ltrans0.ltrans.o
+
+.debug_macro    0x00000000     0x10f6
+ .debug_macro   0x00000000       0x4b /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_macro   0x0000004b      0xac6 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_macro   0x00000b11      0x34e /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_macro   0x00000e5f       0x28 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_macro   0x00000e87       0x5f /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_macro   0x00000ee6       0x66 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_macro   0x00000f4c       0x1a /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_macro   0x00000f66      0x190 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+
+.debug_line_str
+                0x00000000      0x16d
+ .debug_line_str
+                0x00000000       0xc3 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccQNwQ3O.debug.temp.o
+ .debug_line_str
+                0x00000000       0xea /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//ccveEGSE.debug.temp.o
+ .debug_line_str
+                0x00000000       0xda /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cciZEwH4.debug.temp.o
+ .debug_line_str
+                0x00000000       0x80 /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc3MipQH.debug.temp.o
+ .debug_line_str
+                0x00000000      0x16d /var/folders/xc/cmggf_js2678y5ypxw3r8xth0000gn/T//cc2tiiDu.o
+                                 0x28 (size before relaxing)

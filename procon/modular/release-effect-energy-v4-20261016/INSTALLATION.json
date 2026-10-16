@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "package": "P0080",
+  "date": "2026-10-16",
+  "result": "pass",
+  "physical_firmware_install": true,
+  "live_control_test": false,
+  "firmware": {
+    "atomic_slots": [
+      2,
+      4,
+      5
+    ],
+    "ota_mask": "0x34",
+    "frames_per_device": 92,
+    "all_response_status_zero": true,
+    "retries": 0,
+    "repair_used": false,
+    "devices": {
+      "vp1": {
+        "sid": 1,
+        "before": "4bf657aa",
+        "after": "57ee1885"
+      },
+      "vp2": {
+        "sid": 2,
+        "before": "e11851e8",
+        "after": "fd001ec7"
+      }
+    },
+    "preserved": [
+      "bl2",
+      "common",
+      "dispatcher",
+      "drift",
+      "debug_telemetry"
+    ],
+    "cleanup": {
+      "first_attempt": true,
+      "helper_stopped_disabled_and_source_restored": true,
+      "serial": "mb_client 9600 8N1",
+      "relays_off": true,
+      "controllers_idle_native_curve": true
+    },
+    "evidence": "requirements/package-runs/P0080/evidence/effect-energy-v4-install-20261016T050551Z"
+  },
+  "shelly_runtime_validation": {
+    "version": "1.5.1",
+    "source_bytes": 30501,
+    "source_sha256": "29813a747a7c2decef73aa80bc041383344a51dd8c5ab8d907dd926e9f1832a5",
+    "mode": "read-only validation",
+    "result": "pass",
+    "holding_register_writes": 0,
+    "self_stopped": true,
+    "production_source_left_stopped_disabled": true,
+    "temporary_kvs_restored_absent": true,
+    "serial_unchanged": true,
+    "gain_seed_sent": false,
+    "successful_evidence": "requirements/package-runs/P0080/evidence/shelly-energy-v4-validation-20261016-attempt2",
+    "failed_attempt": {
+      "version": "1.5.0",
+      "reason": "validation-only path was unreachable while startup power feedback was stale",
+      "transactional_rollback": "pass",
+      "evidence": "requirements/package-runs/P0080/evidence/shelly-energy-v4-validation-20261016"
+    }
+  },
+  "report": "requirements/package-runs/P0080/effect-energy-v4-installation-2026-10-16.md",
+  "qualification_boundary": "Installation and non-actuating runtime path only; no physical energy-delivery or tracking trial."
+}

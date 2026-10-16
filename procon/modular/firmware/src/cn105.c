@@ -218,7 +218,11 @@ void cn_tick(uint32_t t) {
         if(t-diag.attempt_at>=1000u)begin(DIAGNOSTIC,0,t);
         return;
     }
-    if(diag.state==D_QUEUED && svc_read(32)==4){begin(DIAGNOSTIC,0,t);return;}
+    /* A queued follow-up may take the READY service slot after the complete
+       FAST refresh. It never displaces an already-started service operation.
+       With no follow-up, the ordinary service queue resumes automatically. */
+    if(diag.state==D_QUEUED && (svc_read(32)==4 ||
+       (svc_read(32)==1 && fast_index>=FAST_COUNT))){begin(DIAGNOSTIC,0,t);return;}
     if(svc_read(32)==4){fast_index=0;svc_start_cycle();}
     if(fast_index<FAST_COUNT){begin(NORMAL,0,t);return;}
     uint8_t code;
@@ -230,6 +234,7 @@ void cn_tx_sent(void) {
 }
 uint16_t cn_read(unsigned a) {
     if(a>=600 && a<632)return diag_read(a);
+    if(a>=372 && a<384)return svc_read(a);
     switch(a) {
     case 0:return 888;
     case 1:return 76;

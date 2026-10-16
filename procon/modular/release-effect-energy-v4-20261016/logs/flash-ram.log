@@ -1,0 +1,12 @@
+PASS RAM writer ok
+PASS RAM writer rdp1
+PASS RAM writer rdp2
+PASS RAM writer debug
+PASS RAM writer vtor
+PASS RAM writer cpu
+PASS RAM writer density
+PASS RAM writer unlock
+PASS RAM writer erase-error
+PASS RAM writer program-error
+PASS RAM writer timeout
+PASS RAM writer immutable ranges/alignment/length gates

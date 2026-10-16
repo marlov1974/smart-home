@@ -1,5 +1,65 @@
 # P0080 current release: BL2 protocol2 + frozen telemetry
 
+## Installed EFFECT + rolling pair-energy v4 — 2026-10-16
+
+Both devices run the atomic Mode+Service+Debug Command v4 update: VP1 manifest
+`57ee1885`, VP2 `fd001ec7`. Actual-supply priority is 45 C and requested flow
+may reach 55 C. Firmware diagnostic schema 4 exposes the adaptive model and
+accepts one exact-UID C077 gain seed per boot; the seed changes RAM only.
+
+Shelly Script 7 contains executor 1.5.1, SHA-256
+`29813a747a7c2decef73aa80bc041383344a51dd8c5ab8d907dd926e9f1832a5`,
+stopped and disabled. It consumes a strict rolling four-quarter KVS plan,
+integrates the two pumps independently and stores only qualified long-term gain
+in UID-bound Shelly KVS. A read-only live runtime validation passed after fixing
+the validation self-stop for unready post-flash feedback. No physical energy
+mission was part of that installation. See the P0080 installation report and
+`release-effect-energy-v4-20261016/`.
+
+## RAM-only adaptive-gain seed candidate — 2026-10-15
+
+The firmware now has a bounded way for an external controller to preserve only
+the long-term `kW -> Hz` gain across a reboot without using Procon EEPROM.
+FC16/300..307 accepts the versioned `C077` gain envelope only while the existing
+native maintenance gate is quiescent. It validates gain range and carries all
+96 factory UID bits exactly. Input310 exports the current gain, input346 reports
+whether this boot accepted a seed, and input308 reports
+diagnostic version4. Bias, EFFECT trim and learning counters are neither
+imported nor reset by acceptance. A reboot restores gain1350, bias-1090 and
+seed flag0. Only the first valid seed per boot is accepted; exact retries are
+idempotent and conflicting gain/UID packets fail. No flash,
+EEPROM or option-byte path is called. The exact wire contract and host flow
+are documented in `../docs/CONTROL_API.md`; Shelly KVS persistence is a separate
+host-side change.
+
+Latest physical repeat (2026-10-12), unchanged firmware: both requested5kW.
+Last5min delivery6.190/6.035kW, maximum actual40.5/39.5C. VP1 waited about5min
+before starting; neither stopped after startup. Both restored to their current
+30C curve settings. This repeat failed sustained5/5kW tracking and the strict
+<40C goal on VP1. The demand floor can prevent further gentle braking when the
+request is already near/below actual. See the latest P0080 CHANGELOG for evidence
+and limits; the previous trial's good temperature result is not a general guarantee.
+
+Latest EFFECT continuation (2026-10-11): both units now have the same adaptive
+Mode, with manifest fingerprints D1 `b39273d4` and D2 `b8fb9712`. Their other
+modules remain different intentionally; BL2 is unchanged. Build the controller
+with `make effect-adaptive`. D2 keeps its prior Common/Dispatcher when composing
+the Mode-only update. See the latest P0080 CHANGELOG section for exact hashes,
+qualification and live evidence; the dated sections below describe earlier work.
+
+The current operating priority is **actual supply below40C first, requested heat
+power second**. The requested temperature is an actuator, allowed up to55C.
+A60s/source-age temperature forecast limits demand; running reductions are
+bounded0.5C per30s and avoid a new request below min(current,actual+0.5C).
+Neither a brief temperature overshoot nor time above40C ends the mission.
+Native safeguards, valid-data/ownership guards, lease and AUTO remain in force.
+The controller may deliver less than the requested kW to respect temperature;
+this is not proof of the pump's maximum physical capacity. The dual6/5kW trial
+completed900s with maximum actual39C on both and no observed in-trial compressor
+stops. Both original curves were restored and verified. Last5min mean delivery
+was4.719/5.568kW: temperature control passed this trial, sustained6/5kW tracking
+did not. See the latest package CHANGELOG for the shared-load limitations.
+
 Use `release-bl2-v2/` for the authorized original-bootloader installation.
 Build with `make bl2-v2`; validate with `make bl2-v2-test` (Unicorn Python/toolchain
 settings as below). All seven feature chunks are identical to the snapshot OTA
@@ -73,6 +133,14 @@ Every module's .data and .bss is initialized by BL2 before calling Common.cn_ini
 There is one stack/VTOR and no private module heap or interrupt owner. BL2 exports
 low-level UART access for the current scheduler. All modules are one compatible
 set: if any is invalid, none runs; resident identity/status and OTA remain.
+
+The adaptive EFFECT model is a paired Mode/Service implementation detail. To
+keep Mode inside its fixed 12KiB slot, Service owns its code and RAM and exposes
+two private veneers at `08012068` and `0801206C` (Thumb entry addresses
+`08012069` and `0801206D`). They immediately follow Service's ten public veneers,
+so the public export count, export order and layout fingerprint remain unchanged.
+Any build changing this private interface must update Mode and Service together;
+the complete-manifest CRC gate prevents either half from running alone.
 
 Common owns transaction sequencing; A3-specific timing/state remains in the
 service chunk. EFFECT calls common services and does not require debug commands.
@@ -302,3 +370,110 @@ Explicitly authorized OTA installation completed on D1/VP1 and D2/VP2. Evidence:
 Candidate71b30837 adds isolated FC16/600 submission and FC04/600..631 sticky raw results. See [RAW_API.md](RAW_API.md). Only Common/Dispatcher change; BL2/layout/mode preserved. Offline host/ARM/2065 OTA-cut tests pass. Source published in standalone Procon commit7f7ca23285c5f5c4ca5c1a4d9cb84549f14dfc1d; physical activation and mapping pending. Existing installed units remain7adaecf1 until explicit activation.
 
 P0081 physical mapping completed: 720/720 observations and final native curve verified on both pumps. See [the package report](../../requirements/package-runs/P0081/implementation-report.md) and [sanitized code map](../../requirements/package-runs/P0081/command-map.md).
+
+
+### P0080 A3 frequency comparison
+
+Input372..377 (service16, manual actual frequency) and378..383 (service17, manual target frequency) each contain six words: retained raw little-endian payload value; valid; completed-reply age in seconds; last wire status; successful completion generation; ever completed. Never-read raw is65535 and must be qualified by ever/valid. New completion does not prove new source-board acquisition. Normal GET04 remains unchanged. Service queue27,28,18,19,16,17 owns each entire retry operation, with a full FAST round between operations. No diagnostic injection during active control is required. Status1/2 retain the existing raw decoder; live scale/correlation must be established.
+
+The earlier dense A3 experiment selected16,17,16,17 then one rotating background code. The current target-focused experiment instead selects17 for every service operation when the controller is ACTIVE, mode fixed-flow and applied target6000. It preserves the ordinary six-code queue cursor and resumes that queue outside this condition. FAST temperature/status polling still occurs between complete service operations; retry cadence/bounds are unchanged. A3/16 and background A3 records may expire while the experiment runs, retaining honest60s validity. No priority in EFFECT or curve mode.
+
+
+### P0080 focused diagnostic cadence (2026-10-12)
+Queued read diagnostics can take a not-yet-started Service operation after its complete eight-query FAST refresh. Each A3 retry sequence stays exclusive and bounded; no cadence/timeout/control-admission changes. The existing mailbox still requires controller IDLE, so this focused host-driven read mode is qualified in AUTO/curve and is not enabled during an active fixed-flow/EFFECT mission. Stop submitting and the ordinary service queue resumes automatically. Ordinary background A3 values can expire while diagnostics are prioritized; their TTL/status remains truthful. No extra persistent configuration or ABI field. Repeated same-selector results must show valid pending-to-completion rearm evidence before being counted as new jobs.
+
+Live qualification on VP2 (`5fc25d43`) completed24 jobs in180s: mean7.583s,
+median7.471s, approximately7.9 completed jobs/min. Every operation had valid
+pending→completion; all returned20Hz. Primary telemetry continued updating and
+the ordinary service queue recovered after stopping submissions. This is an
+IDLE/curve-mode diagnostic result, separate from the later fixed60 Service profile.
+See the2026-10-12 focused-cadence entry in the P0080 changelog.
+
+
+### P0080 moving-delta experiment candidate — 2026-10-12
+
+`build-delta-sweep-vp2` temporarily extends manual v2 FLOW/readback to65C for
+actual+5/+10/+15/+20C trials stopping at45C actual. DHW60C and EFFECT55C bounds
+are unchanged. Its Service selects A3/17 during ACTIVE fixed-flow at any target
+or ACTIVE OFF cooling; AUTO/IDLE/EFFECT retain ordinary services. Each operation
+keeps its selector through retries and complete FAST rounds separate jobs.
+Direct retargets preserve original settings and require native readback; they
+consume transport time, so8 A3 completions/min is an aim, not a guarantee.
+All applied deltas and command timings are logged. The prior modules/profile
+are to be restored after the bounded four-series experiment. Native65C
+representation is supported by static evidence but installedFTC acceptance
+requires live verification. See P0080 changelog for installed state/results.
+
+
+### Moving-delta profile restored — 2026-10-12 19:45 UTC
+
+All four series reached45C. TemporaryVP2d3cbb1d2 restored through Mode+Service
+OTA to prior33143fde, VP1c7a0fbcb preserved. Both verified power1/curve2/DHW5200/
+boost0, controlIDLE/saved0/error0/lease0; read curve target3050. Prior native
+Modbus restored, helper stopped/source restored, peerWAIT expired. Ordinary
+A3 codes27/28/18/19/16/17 each produced a new valid successful generation in
+45.025s with no new failure/exhaustion and no transition rebaseline. Thus
+post-check passed directly, unlike the earlier fixed60 focus transition.
+Evidence: outer effect-learning/restore-delta-sweep-vp2-20261012T194106Z,
+recovery.json/outcome.json/cleanup.json. No physical session remains active.
+Temporary65C mode/focusedOFF profile is not installed. No commit/push.
+
+### Two-loop EFFECT candidate — 2026-10-13
+
+`make effect-two-loop TOOLCHAIN=...` builds the replacement controller in the
+unchanged12KiB Mode slot (11936bytes,352bytes free). Outer affine heat-power
+model starts at135W/Hz and-1090W; inner demand follows A3/17. Stable qualified
+A3/16/power windows update the offset slowly, and repeated comparable separated
+plateaus may update slope. Coefficients remain in RAM across missions only.
+Thermal priority remains40C actual with gentle target reductions;55C is the
+separate requested-temperature ceiling. No native protections are disabled.
+
+Direct ACTIVE EFFECT target changes preserve the original restoration snapshot.
+Input300–319 exposes validity/age/generation, model, goal and hold state through
+the existing controller route, including old Common builds. Holding300–307
+commands are unchanged. Read CONTROL_API.md for scaling and validity rules.
+Host/ARM qualification covers thermal priority during oscillation hold, stale
+source behavior, direct target replacement and restored originals. Physical
+trial outcomes are recorded in the P0080 changelog; a passing synthetic test
+is not proof of physical stability.
+
+## Installed braking follow-up — 2026-10-14
+
+Both installed images now use Mode-only qualified negative-delta braking: VP1 manifest0f48da4e, VP2a5a6dc0c. Release: `release-effect-braking-20261014`. Four-quarter2/4/6/4kW trial completed; both restored curve. Tracking is partial, especially2kW and temperature-limited6kW. See `../../../requirements/package-runs/P0080/dual-quarters-report-2026-10-14.md` (repository-relative report path is requirements/package-runs/P0080). Do not treat successful OTA as proof of full tracking.
+
+## EFFECT + pair-energy v2 offline candidate — 2026-10-14
+
+The final EFFECT build moves its RAM-only affine model into Service to keep Mode
+inside its fixed 12 KiB slot. Mode calls private Service veneers at
+`0x08012069`/`0x0801206d`; these are deliberately absent from the public export
+ABI. Consequently **Mode and Service must always be OTA-staged and committed
+together**. Final use is 11,928/12,288 bytes and 2,728/4,096 bytes respectively.
+The device compositions are not interchangeable:
+
+- VP1: installed `9580f1d1`, candidate `4bf657aa`;
+- VP2: installed `3f6ef793`, candidate `e11851e8`.
+
+Only those two chunks differ. BL2 and all other chunks remain the installed
+device-specific bytes. `tools/compose_effect_energy.py` performs this offline
+composition and rejects a layout, BL2 or unexpected-slot mismatch.
+
+EFFECT now uses coherent telemetry until age 60 seconds. Ages below 15 seconds
+permit fast correction; 15--59 seconds permit conservative best effort without
+an aggressive increase. Diagnostics distinguish minimum output, request cap,
+temperature limiting and stale source. Actual-supply priority is 45 C;
+requested flow can be capped independently up to 55 C. Thermal braking is
+limited to 1 C/30 s and ordinary downward control remains gentler.
+
+`shelly/energy_pair_v1.js` version 1.4.2 executes a scalar current+next
+cumulative-deadline plan. It applies response-lag, asymmetric ramp and learned
+capability bounds, holds normal targets for 120 seconds, splits every 500 W pair
+request exactly, and redistributes within fresh per-device caps. Missing or
+>=60-second feedback holds/renews the exact accepted pair, records the interval
+as unknown and replans on the first complete fresh pair. A falling command or
+active thermal limiter now lowers the energy credited inside the response-lag
+window. An output collapse larger than the normal ramp may bypass the remaining
+dwell once with a 1 kW recovery step; a separate 120-second cooldown prevents
+repeated target chasing. It is not the offline full four-quarter MPC.
+
+All statements above describe an offline candidate. Host, ARM, FC04 mailbox and
+mock OTA qualification do not constitute a live firmware or Shelly trial.

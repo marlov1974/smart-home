@@ -1,0 +1,311 @@
+{
+  "offline_only": false,
+  "baselines": {
+    "1": "0x4bf657aa",
+    "2": "0xe11851e8"
+  },
+  "candidates": {
+    "1": "0x57ee1885",
+    "2": "0xfd001ec7"
+  },
+  "changed_modules": [
+    "mode",
+    "service",
+    "debug_command"
+  ],
+  "changed_slots_zero_based": {
+    "1": [
+      2,
+      4,
+      5
+    ],
+    "2": [
+      2,
+      4,
+      5
+    ]
+  },
+  "ota_mask": "0x34",
+  "peer_wait_seconds": {
+    "1": {
+      "delta": 150,
+      "full_repair": 270
+    },
+    "2": {
+      "delta": 150,
+      "full_repair": 270
+    }
+  },
+  "frozen_images": {
+    "1": {
+      "sid": 1,
+      "uid": [
+        5898296,
+        909201410,
+        540096578
+      ],
+      "base_manifest_crc": "0x4bf657aa",
+      "candidate_manifest_crc": "0x57ee1885",
+      "layout": 3833993797,
+      "delta_frames": 92,
+      "repair_frames": 199,
+      "delta_wait_seconds": 150,
+      "repair_wait_seconds": 270,
+      "delta_stream_sha256": "520ef718918bd25a318e8c4cbd68bca2b033a7b076033f7cb54d032607b2d931",
+      "repair_stream_sha256": "44004b081b5d12365ad8027854e2e1f785ae94bf931f3cbcdaef5389d33e72cb"
+    },
+    "2": {
+      "sid": 2,
+      "uid": [
+        5373989,
+        909201412,
+        540096578
+      ],
+      "base_manifest_crc": "0xe11851e8",
+      "candidate_manifest_crc": "0xfd001ec7",
+      "layout": 3833993797,
+      "delta_frames": 92,
+      "repair_frames": 199,
+      "delta_wait_seconds": 150,
+      "repair_wait_seconds": 270,
+      "delta_stream_sha256": "c94f01bf4f9dbce07f370b2f6092810a77f2f9a4a68bafbce7b59656a233b0d2",
+      "repair_stream_sha256": "b67c7168dae0958efe12e4fc844b6b0d2c94671af211545adcee761a0c4618a4"
+    }
+  },
+  "artifact_report": {
+    "devices": {
+      "1": {
+        "base": "release-effect-energy-v2-20261014/vp1",
+        "base_manifest_crc": "0x4bf657aa",
+        "candidate": "release-effect-energy-v4-20261016/vp1",
+        "candidate_manifest_crc": "0x57ee1885",
+        "layout": 3833993797,
+        "ota_protocol": 2,
+        "ota_slots": [
+          2,
+          4,
+          5
+        ],
+        "ota_mask": "0x34",
+        "bl2_sha256": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+        "module_sha256": {
+          "bl2": {
+            "base": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+            "candidate": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+            "changed": false
+          },
+          "common": {
+            "base": "d50a8a7df4deefc1f7f6ead4ad4e73da948f37489abae610c4dc8af65f833a71",
+            "candidate": "d50a8a7df4deefc1f7f6ead4ad4e73da948f37489abae610c4dc8af65f833a71",
+            "changed": false
+          },
+          "dispatcher": {
+            "base": "f73976dceafc1884a7b8ccc201bd0b5a642e3abca71778438e12448de2be9635",
+            "candidate": "f73976dceafc1884a7b8ccc201bd0b5a642e3abca71778438e12448de2be9635",
+            "changed": false
+          },
+          "mode": {
+            "base": "980927c92a4d54295907f4a4721b8615022aba9597925ee5c112873d8951bc05",
+            "candidate": "f9a7b1596917ad2abdd3201fcfc6565b8ce4c7cdbdadc62f72ce131f968f547b",
+            "changed": true
+          },
+          "drift": {
+            "base": "b07edc34349fee028dd6455dbde407c81a1006cab8c4c753c9709de4faab42be",
+            "candidate": "b07edc34349fee028dd6455dbde407c81a1006cab8c4c753c9709de4faab42be",
+            "changed": false
+          },
+          "service": {
+            "base": "c271160d402f8b6f43483d5834045fafe391854cf1dcc444bb561ef591b20b18",
+            "candidate": "6b7fc086cf9e7c63b12037f1c3aee45f7a8d1aecc2c09e7e4627f16a010b37e7",
+            "changed": true
+          },
+          "debug_command": {
+            "base": "2a4ee9512d76d4877342d39ca11fffb229cae5e47925bfe3c21b61dbbb1bb8a1",
+            "candidate": "2ca969da6cc5a6c53ca094fe2e473f1d7df260f6ed03adcbd6ba0489df9ec873",
+            "changed": true
+          },
+          "debug_telemetry": {
+            "base": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702",
+            "candidate": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702",
+            "changed": false
+          }
+        }
+      },
+      "2": {
+        "base": "release-effect-energy-v2-20261014/vp2",
+        "base_manifest_crc": "0xe11851e8",
+        "candidate": "release-effect-energy-v4-20261016/vp2",
+        "candidate_manifest_crc": "0xfd001ec7",
+        "layout": 3833993797,
+        "ota_protocol": 2,
+        "ota_slots": [
+          2,
+          4,
+          5
+        ],
+        "ota_mask": "0x34",
+        "bl2_sha256": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+        "module_sha256": {
+          "bl2": {
+            "base": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+            "candidate": "6b3d119948a7bc6744e59a8a4a100160d225e341074f8500e901f29e12aa3b66",
+            "changed": false
+          },
+          "common": {
+            "base": "32bf3a46a091311c3a7e7d0f6349d161c404518d8a804cfbe94f5da668220d49",
+            "candidate": "32bf3a46a091311c3a7e7d0f6349d161c404518d8a804cfbe94f5da668220d49",
+            "changed": false
+          },
+          "dispatcher": {
+            "base": "f73976dceafc1884a7b8ccc201bd0b5a642e3abca71778438e12448de2be9635",
+            "candidate": "f73976dceafc1884a7b8ccc201bd0b5a642e3abca71778438e12448de2be9635",
+            "changed": false
+          },
+          "mode": {
+            "base": "980927c92a4d54295907f4a4721b8615022aba9597925ee5c112873d8951bc05",
+            "candidate": "f9a7b1596917ad2abdd3201fcfc6565b8ce4c7cdbdadc62f72ce131f968f547b",
+            "changed": true
+          },
+          "drift": {
+            "base": "b07edc34349fee028dd6455dbde407c81a1006cab8c4c753c9709de4faab42be",
+            "candidate": "b07edc34349fee028dd6455dbde407c81a1006cab8c4c753c9709de4faab42be",
+            "changed": false
+          },
+          "service": {
+            "base": "c271160d402f8b6f43483d5834045fafe391854cf1dcc444bb561ef591b20b18",
+            "candidate": "6b7fc086cf9e7c63b12037f1c3aee45f7a8d1aecc2c09e7e4627f16a010b37e7",
+            "changed": true
+          },
+          "debug_command": {
+            "base": "2a4ee9512d76d4877342d39ca11fffb229cae5e47925bfe3c21b61dbbb1bb8a1",
+            "candidate": "2ca969da6cc5a6c53ca094fe2e473f1d7df260f6ed03adcbd6ba0489df9ec873",
+            "changed": true
+          },
+          "debug_telemetry": {
+            "base": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702",
+            "candidate": "3fecc9bcca65cd9e6e6f2b6dd21137fa2c86aa3a30304249738c700a625be702",
+            "changed": false
+          }
+        }
+      }
+    },
+    "changed_modules": [
+      "mode",
+      "service",
+      "debug_command"
+    ],
+    "ota_slots_zero_based": [
+      2,
+      4,
+      5
+    ],
+    "ota_mask": "0x34",
+    "all_other_chunks_byte_identical": true,
+    "abi_byte_identical": true,
+    "device_specific_images_not_interchangeable": true,
+    "artifact_validation_used_physical_io": false,
+    "candidate_source": "frozen audited release-effect-energy-v4-20261016",
+    "frozen_before_live_rpc": {
+      "1": {
+        "sid": 1,
+        "uid": [
+          5898296,
+          909201410,
+          540096578
+        ],
+        "base_manifest_crc": "0x4bf657aa",
+        "candidate_manifest_crc": "0x57ee1885",
+        "layout": 3833993797,
+        "delta_frames": 92,
+        "repair_frames": 199,
+        "delta_wait_seconds": 150,
+        "repair_wait_seconds": 270,
+        "delta_stream_sha256": "520ef718918bd25a318e8c4cbd68bca2b033a7b076033f7cb54d032607b2d931",
+        "repair_stream_sha256": "44004b081b5d12365ad8027854e2e1f785ae94bf931f3cbcdaef5389d33e72cb"
+      },
+      "2": {
+        "sid": 2,
+        "uid": [
+          5373989,
+          909201412,
+          540096578
+        ],
+        "base_manifest_crc": "0xe11851e8",
+        "candidate_manifest_crc": "0xfd001ec7",
+        "layout": 3833993797,
+        "delta_frames": 92,
+        "repair_frames": 199,
+        "delta_wait_seconds": 150,
+        "repair_wait_seconds": 270,
+        "delta_stream_sha256": "c94f01bf4f9dbce07f370b2f6092810a77f2f9a4a68bafbce7b59656a233b0d2",
+        "repair_stream_sha256": "b67c7168dae0958efe12e4fc844b6b0d2c94671af211545adcee761a0c4618a4"
+      }
+    }
+  },
+  "operation": "install",
+  "read_only": false,
+  "prior_serial": {
+    "mode": "mb_client",
+    "serial": {
+      "baud": 9600,
+      "format": "8N1"
+    },
+    "mb_server": {
+      "addr": 1
+    }
+  },
+  "original_native": {
+    "1": {
+      "power": 1,
+      "mode": 2,
+      "flow": 2800,
+      "dhw": 5200,
+      "boost": 0
+    },
+    "2": {
+      "power": 1,
+      "mode": 2,
+      "flow": 2850,
+      "dhw": 5200,
+      "boost": 0
+    }
+  },
+  "original_identity": {
+    "1": {
+      "valid": 1,
+      "mode": 0,
+      "layout": 3833993797,
+      "manifest_crc": 1274435498,
+      "uid": [
+        5898296,
+        909201410,
+        540096578
+      ],
+      "ready": 0
+    },
+    "2": {
+      "valid": 1,
+      "mode": 0,
+      "layout": 3833993797,
+      "manifest_crc": 3776467432,
+      "uid": [
+        5373989,
+        909201412,
+        540096578
+      ],
+      "ready": 1
+    }
+  },
+  "expected_uid": {
+    "1": [
+      5898296,
+      909201410,
+      540096578
+    ],
+    "2": [
+      5373989,
+      909201412,
+      540096578
+    ]
+  }
+}

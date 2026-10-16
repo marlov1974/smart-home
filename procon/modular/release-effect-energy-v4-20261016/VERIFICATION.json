@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "result": "pass",
+  "physical_install": true,
+  "live_control_test": false,
+  "checks": {
+    "composition": {
+      "result": "pass",
+      "atomic_modules": [
+        "mode",
+        "service",
+        "debug_command"
+      ],
+      "ota_slots": [
+        2,
+        4,
+        5
+      ],
+      "ota_mask": 52,
+      "preserved_modules_byte_identical": true,
+      "layout_id_preserved": true,
+      "replay_byte_identical": true,
+      "record": "build-effect-energy-v4-composition.json",
+      "log": "logs/composition-replay.log"
+    },
+    "build_artifact_audit": {
+      "result": "pass",
+      "mode_used": 11904,
+      "mode_capacity": 12288,
+      "service_used": 2824,
+      "service_capacity": 4096,
+      "debug_command_used": 192,
+      "debug_command_capacity": 4096,
+      "release_copies_byte_identical": true,
+      "log": "logs/artifact-audit.log",
+      "copy_log": "logs/release-artifact-copy.log"
+    },
+    "host_sanitized": {
+      "result": "pass",
+      "command": "make -f Makefile.baseline host-test PYTHON=python3",
+      "gain_seed": true,
+      "production_45c": true,
+      "log": "logs/host-tests.log"
+    },
+    "energy_and_composer": {
+      "result": "pass",
+      "python_unittest_count": 36,
+      "shelly_and_runner_safety_test_count": 31,
+      "node_syntax": true,
+      "node_regressions": 6,
+      "rolling_plan": true,
+      "clock_discontinuities": true,
+      "model_persistence": true,
+      "transient_feedback": true,
+      "deadline_recovery": true,
+      "logs": [
+        "logs/energy-tests.log",
+        "logs/runner-safety-tests.log",
+        "logs/node-tests.log"
+      ],
+      "runtime_validation_regression": true
+    },
+    "host_runner_safety": {
+      "result": "pass",
+      "complete_script_snapshot": true,
+      "original_evidence_write_once": true,
+      "quiescent_before_plan_and_upload": true,
+      "plan_readback": true,
+      "failed_validation_full_rollback": true,
+      "serial_transport_invariant": true,
+      "successful_validation_stopped_disabled": true,
+      "test_count": 10,
+      "log": "logs/runner-safety-tests.log"
+    },
+    "arm_vp1": {
+      "result": "pass",
+      "public_effect": true,
+      "snapshot": true,
+      "energy_mailbox": true,
+      "gain_seed": true,
+      "exact_uid": true,
+      "reboot_fallback": true,
+      "logs": [
+        "logs/arm-modules-vp1.log",
+        "logs/arm-snapshot-vp1.log",
+        "logs/arm-gain-vp1.log"
+      ]
+    },
+    "arm_vp2": {
+      "result": "pass",
+      "public_effect": true,
+      "snapshot": true,
+      "energy_mailbox": true,
+      "gain_seed": true,
+      "exact_uid": true,
+      "reboot_fallback": true,
+      "logs": [
+        "logs/arm-modules-vp2.log",
+        "logs/arm-snapshot-vp2.log",
+        "logs/arm-gain-vp2.log"
+      ]
+    },
+    "arm_full": {
+      "result": "pass",
+      "case_count": 37,
+      "log": "logs/arm-full.log"
+    },
+    "flash_ram": {
+      "result": "pass",
+      "fault_scenarios": 12,
+      "range_alignment_length_gates": true,
+      "log": "logs/flash-ram.log"
+    },
+    "mock_ota_vp1": {
+      "result": "pass",
+      "mutation_cuts": 2579,
+      "physical": false,
+      "record": "vp1/ota-results.json",
+      "log": "logs/ota-mock-vp1.log"
+    },
+    "mock_ota_vp2": {
+      "result": "pass",
+      "mutation_cuts": 2579,
+      "physical": false,
+      "record": "vp2/ota-results.json",
+      "log": "logs/ota-mock-vp2.log"
+    },
+    "source_archive": {
+      "result": "pass",
+      "file_count": 110,
+      "workspace_sources_byte_identical": true,
+      "fresh_extraction": true,
+      "host_chain": true,
+      "selected_python_test_count": 63,
+      "node_syntax": true,
+      "node_regressions": 6,
+      "standalone_arm_rebuild": true,
+      "rebuild_comparison_target": "build-effect-energy-v4-final",
+      "rebuilt_artifacts_byte_identical": [
+        "bl2.bin",
+        "common.bin",
+        "dispatcher.bin",
+        "mode.bin",
+        "drift.bin",
+        "service.bin",
+        "debug_command.bin",
+        "debug_telemetry.bin",
+        "manifest.bin",
+        "install.bin",
+        "sizes.json",
+        "layout.h"
+      ],
+      "archive_layout": "procon-modular-effect-energy-v4/procon/modular",
+      "sha256": "1aea84114dc575eed8c09388f85dca7e7da5ffee1709e4b6c108481bd1ad659c",
+      "inventory": "SOURCE_FILES.txt",
+      "logs": [
+        "logs/source-archive-workspace.log",
+        "logs/source-archive-host.log",
+        "logs/source-archive-python.log",
+        "logs/source-archive-js-syntax.log",
+        "logs/source-archive-plan-kvs.log",
+        "logs/source-archive-clock.log",
+        "logs/source-archive-model.log",
+        "logs/source-archive-transient.log",
+        "logs/source-archive-deadline.log",
+        "logs/source-archive-validation.log",
+        "logs/source-archive-build.log",
+        "logs/source-archive-rebuild.log"
+      ]
+    },
+    "release_hygiene": {
+      "result": "pass",
+      "no_dylibs": true,
+      "no_python_cache": true,
+      "ota_plans_sanitized_and_audit_only": true,
+      "diff_check": "logs/diff-check.log"
+    },
+    "live_firmware_installation": {
+      "result": "pass",
+      "devices": {
+        "vp1": {
+          "sid": 1,
+          "base_manifest": "4bf657aa",
+          "installed_manifest": "57ee1885"
+        },
+        "vp2": {
+          "sid": 2,
+          "base_manifest": "e11851e8",
+          "installed_manifest": "fd001ec7"
+        }
+      },
+      "changed_slots": [
+        2,
+        4,
+        5
+      ],
+      "frames_per_device": 92,
+      "all_response_status_zero": true,
+      "frame_retries": 0,
+      "repair_frames_used": 0,
+      "cleanup_first_attempt": true,
+      "serial_restored_modbus_9600_8n1": true,
+      "native_curve_and_controller_idle_verified": true,
+      "report": "requirements/package-runs/P0080/effect-energy-v4-installation-2026-10-16.md",
+      "evidence": "requirements/package-runs/P0080/evidence/effect-energy-v4-install-20261016T050551Z"
+    },
+    "shelly_runtime_validation": {
+      "result": "pass",
+      "version": "1.5.1",
+      "source_bytes": 30501,
+      "source_sha256": "29813a747a7c2decef73aa80bc041383344a51dd8c5ab8d907dd926e9f1832a5",
+      "read_only": true,
+      "holding_register_writes": 0,
+      "self_stop_verified": true,
+      "installed_stopped_disabled": true,
+      "temporary_plan_and_status_restored_absent": true,
+      "serial_transport_unchanged": true,
+      "first_attempt_rollback_verified": true,
+      "successful_evidence": "requirements/package-runs/P0080/evidence/shelly-energy-v4-validation-20261016-attempt2",
+      "failed_attempt_evidence": "requirements/package-runs/P0080/evidence/shelly-energy-v4-validation-20261016"
+    }
+  },
+  "limits": [
+    "No physical energy-delivery or tracking mission was run with v4.",
+    "The first Shelly 1.5.0 validation attempt timed out on stale startup feedback; transactional rollback passed, the defect was fixed in 1.5.1, and the second read-only validation passed.",
+    "Device images are not interchangeable and must only be applied over their exact stated v2 manifests.",
+    "The included OTA plans are sanitized audit records and must not be used for installation."
+  ]
+}
